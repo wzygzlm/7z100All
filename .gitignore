@@ -1,0 +1,17 @@
+*.cache
+*.Xil
+*.hw
+*.ioplanning
+*.ip_user_files
+*.runs
+*.sim
+*.swp
+*log
+*.jou
+*history
+*~
+*Debug
+*.str
+*.sdk/image.ub
+*.srcs/sources_1/bd/brd/ipshared
+*.srcs/sources_1/bd/brd/sim
