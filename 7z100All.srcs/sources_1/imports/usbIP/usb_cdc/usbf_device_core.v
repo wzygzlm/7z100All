@@ -114,6 +114,8 @@ module usbf_device_core
     ,output [  7:0]  rx_data_o
     ,output          rx_last_o
     
+    ,output [ 15:0]  tx_sent_data_counter_o
+
     ,output          rx_crc_err_o
     ,output          ep0_rx_setup_o
     ,output          ep0_rx_valid_o
@@ -141,7 +143,7 @@ module usbf_device_core
 // SE0 idle detection time is 2^(`USB_RESET_CNT_W-1) * clk_cycle_T
 // if USB_RESET_CNT_W=17, clock frequency is 60M, then this time is
 // 2^16*16.7ns=1094451.2ns about 1.1ms 
-`define USB_RESET_CNT_W     17
+`define USB_RESET_CNT_W     15
 
 localparam STATE_W                       = 3;
 localparam STATE_RX_IDLE                 = 3'd0;
@@ -253,6 +255,7 @@ u_sie_tx
     .sie_tx_state_q_o(sie_tx_state_q_o),
 
     // Data
+    .tx_sent_data_counter_o(tx_sent_data_counter_o),
     .data_valid_i(tx_data_valid_r),
     .data_strb_i(tx_data_strb_r),
     .data_i(tx_data_r),

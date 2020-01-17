@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Tue Jan 14 18:29:35 2020
+-- Date        : Fri Jan 17 12:53:20 2020
 -- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_usb_cdc_core_0_0/brd_usb_cdc_core_0_0_stub.vhdl
@@ -69,6 +69,8 @@ entity brd_usb_cdc_core_0_0 is
     setup_resp_valid_delay_q_do : out STD_LOGIC;
     token_valid_cnt_q_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
     status_stage_w_do : out STD_LOGIC;
+    ep2_tx_data_valid_w_do : out STD_LOGIC;
+    ep2_tx_data_w_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
     vendorReqRecived_o : out STD_LOGIC;
     axi_bram_addr_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
     axi_bram_w_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -80,6 +82,7 @@ entity brd_usb_cdc_core_0_0 is
     utmi_termselect_o : out STD_LOGIC;
     utmi_dppulldown_o : out STD_LOGIC;
     utmi_dmpulldown_o : out STD_LOGIC;
+    tx_sent_data_counter_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
     inport_accept_o : out STD_LOGIC;
     outport_valid_o : out STD_LOGIC;
     outport_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -93,7 +96,7 @@ architecture stub of brd_usb_cdc_core_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clk_i,rst_i,enable_i,utmi_data_in_i[7:0],utmi_txready_i,utmi_rxvalid_i,utmi_rxactive_i,utmi_rxerror_i,utmi_linestate_i[1:0],inport_valid_i,inport_data_i[7:0],outport_accept_i,ctrl_host_ack_i,setup_token_valid_intr_o,setup_valid_conter_q_o[15:0],state_r_do[2:0],usb_rst_time_do[31:0],token_valid_w_do,token_dev_w_do[6:0],token_ep_w_do[3:0],current_addr_i_do[6:0],reg_dev_addr_i_do[6:0],ctrl_sending_r_do,ctrl_send_accept_w_do,desc_addr_q_do[6:0],setup_valid_q_do,setup_frame_q_do,rx_last_w_do,bmRequestType_w_do[7:0],bRequest_w_do[7:0],wValue_w_do[15:0],usb_reset_w_do,usb_reset_counter_q_do[7:0],debug_counter_q_do[63:0],current_token_debug_counter_q_do[63:0],token_valid_counter_q_do[7:0],setup_wr_idx_q_do[2:0],ep0_rx_valid_w_do,rx_strb_w_do,ctrl_txvalid_q_do,ctrl_txdata_q_do[7:0],ctrl_txstall_q_do,ctrl_stall_r_do,ctrl_ack_r_do,readAXIBRAM_r_do,sie_tx_state_q_o[2:0],usbf_tx_valid_q_do,usbf_tx_pid_q_do[7:0],usbf_state_q_do[2:0],usbf_ep_data_bit_r_do,usbf_new_data_bit_r_do,data_complete_o_do,setup_resp_valid_delay_q_do,token_valid_cnt_q_do[31:0],status_stage_w_do,vendorReqRecived_o,axi_bram_addr_o[1:0],axi_bram_w_data_o[7:0],axi_bram_r_data_i[7:0],utmi_data_out_o[7:0],utmi_txvalid_o,utmi_op_mode_o[1:0],utmi_xcvrselect_o[1:0],utmi_termselect_o,utmi_dppulldown_o,utmi_dmpulldown_o,inport_accept_o,outport_valid_o,outport_data_o[7:0],rx_out_do,ep0_rx_setup_w_do";
+attribute black_box_pad_pin of stub : architecture is "clk_i,rst_i,enable_i,utmi_data_in_i[7:0],utmi_txready_i,utmi_rxvalid_i,utmi_rxactive_i,utmi_rxerror_i,utmi_linestate_i[1:0],inport_valid_i,inport_data_i[7:0],outport_accept_i,ctrl_host_ack_i,setup_token_valid_intr_o,setup_valid_conter_q_o[15:0],state_r_do[2:0],usb_rst_time_do[31:0],token_valid_w_do,token_dev_w_do[6:0],token_ep_w_do[3:0],current_addr_i_do[6:0],reg_dev_addr_i_do[6:0],ctrl_sending_r_do,ctrl_send_accept_w_do,desc_addr_q_do[6:0],setup_valid_q_do,setup_frame_q_do,rx_last_w_do,bmRequestType_w_do[7:0],bRequest_w_do[7:0],wValue_w_do[15:0],usb_reset_w_do,usb_reset_counter_q_do[7:0],debug_counter_q_do[63:0],current_token_debug_counter_q_do[63:0],token_valid_counter_q_do[7:0],setup_wr_idx_q_do[2:0],ep0_rx_valid_w_do,rx_strb_w_do,ctrl_txvalid_q_do,ctrl_txdata_q_do[7:0],ctrl_txstall_q_do,ctrl_stall_r_do,ctrl_ack_r_do,readAXIBRAM_r_do,sie_tx_state_q_o[2:0],usbf_tx_valid_q_do,usbf_tx_pid_q_do[7:0],usbf_state_q_do[2:0],usbf_ep_data_bit_r_do,usbf_new_data_bit_r_do,data_complete_o_do,setup_resp_valid_delay_q_do,token_valid_cnt_q_do[31:0],status_stage_w_do,ep2_tx_data_valid_w_do,ep2_tx_data_w_do[7:0],vendorReqRecived_o,axi_bram_addr_o[1:0],axi_bram_w_data_o[7:0],axi_bram_r_data_i[7:0],utmi_data_out_o[7:0],utmi_txvalid_o,utmi_op_mode_o[1:0],utmi_xcvrselect_o[1:0],utmi_termselect_o,utmi_dppulldown_o,utmi_dmpulldown_o,tx_sent_data_counter_o[15:0],inport_accept_o,outport_valid_o,outport_data_o[7:0],rx_out_do,ep0_rx_setup_w_do";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "usb_cdc_core,Vivado 2018.1";
 begin

@@ -51,6 +51,7 @@ module usbf_sie_tx
     ,output [  2:0]  sie_tx_state_q_o
 
     // Outputs
+    ,output [ 15:0]  tx_sent_data_counter_o
     ,output [  7:0]  utmi_data_o
     ,output          utmi_txvalid_o
     ,output          tx_accept_o
@@ -259,6 +260,21 @@ end
 
 assign data_accept_o = data_accept_r;
 
+//-----------------------------------------------------------------
+// Data Output Counter: it is used to count how many data have been
+// sent within one packet.
+//-----------------------------------------------------------------
+reg[15:0] tx_sent_data_counter_q;
+always @ (posedge clk_i or posedge rst_i)
+if (rst_i)
+    tx_sent_data_counter_q   <= 0;
+else if (state_q == STATE_TX_IDLE)
+    tx_sent_data_counter_q   <= 0;
+else if (state_q == STATE_TX_DATA && utmi_txready_i)
+    tx_sent_data_counter_q   <= tx_sent_data_counter_q + 1;
+
+assign tx_sent_data_counter_o = tx_sent_data_counter_q;    
+        
 //-----------------------------------------------------------------
 // CRC16: Generate CRC16 on outgoing data
 //-----------------------------------------------------------------

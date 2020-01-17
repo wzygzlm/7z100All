@@ -110,6 +110,8 @@ ENTITY brd_usb_cdc_core_0_0 IS
     setup_resp_valid_delay_q_do : OUT STD_LOGIC;
     token_valid_cnt_q_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     status_stage_w_do : OUT STD_LOGIC;
+    ep2_tx_data_valid_w_do : OUT STD_LOGIC;
+    ep2_tx_data_w_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     vendorReqRecived_o : OUT STD_LOGIC;
     axi_bram_addr_o : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     axi_bram_w_data_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -121,6 +123,7 @@ ENTITY brd_usb_cdc_core_0_0 IS
     utmi_termselect_o : OUT STD_LOGIC;
     utmi_dppulldown_o : OUT STD_LOGIC;
     utmi_dmpulldown_o : OUT STD_LOGIC;
+    tx_sent_data_counter_o : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     inport_accept_o : OUT STD_LOGIC;
     outport_valid_o : OUT STD_LOGIC;
     outport_data_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -192,6 +195,8 @@ ARCHITECTURE brd_usb_cdc_core_0_0_arch OF brd_usb_cdc_core_0_0 IS
       setup_resp_valid_delay_q_do : OUT STD_LOGIC;
       token_valid_cnt_q_do : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       status_stage_w_do : OUT STD_LOGIC;
+      ep2_tx_data_valid_w_do : OUT STD_LOGIC;
+      ep2_tx_data_w_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       vendorReqRecived_o : OUT STD_LOGIC;
       axi_bram_addr_o : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       axi_bram_w_data_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -203,6 +208,7 @@ ARCHITECTURE brd_usb_cdc_core_0_0_arch OF brd_usb_cdc_core_0_0 IS
       utmi_termselect_o : OUT STD_LOGIC;
       utmi_dppulldown_o : OUT STD_LOGIC;
       utmi_dmpulldown_o : OUT STD_LOGIC;
+      tx_sent_data_counter_o : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       inport_accept_o : OUT STD_LOGIC;
       outport_valid_o : OUT STD_LOGIC;
       outport_data_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -277,6 +283,8 @@ BEGIN
       setup_resp_valid_delay_q_do => setup_resp_valid_delay_q_do,
       token_valid_cnt_q_do => token_valid_cnt_q_do,
       status_stage_w_do => status_stage_w_do,
+      ep2_tx_data_valid_w_do => ep2_tx_data_valid_w_do,
+      ep2_tx_data_w_do => ep2_tx_data_w_do,
       vendorReqRecived_o => vendorReqRecived_o,
       axi_bram_addr_o => axi_bram_addr_o,
       axi_bram_w_data_o => axi_bram_w_data_o,
@@ -288,6 +296,7 @@ BEGIN
       utmi_termselect_o => utmi_termselect_o,
       utmi_dppulldown_o => utmi_dppulldown_o,
       utmi_dmpulldown_o => utmi_dmpulldown_o,
+      tx_sent_data_counter_o => tx_sent_data_counter_o,
       inport_accept_o => inport_accept_o,
       outport_valid_o => outport_valid_o,
       outport_data_o => outport_data_o,

@@ -104,6 +104,8 @@ module usb_cdc_core
     ,output          setup_resp_valid_delay_q_do
     ,output [ 31:0]  token_valid_cnt_q_do
     ,output          status_stage_w_do
+    ,output          ep2_tx_data_valid_w_do
+    ,output [  7:0]  ep2_tx_data_w_do
         
     // Interrupts
     ,output          vendorReqRecived_o
@@ -121,6 +123,8 @@ module usb_cdc_core
     ,output          utmi_termselect_o
     ,output          utmi_dppulldown_o
     ,output          utmi_dmpulldown_o
+    
+    ,output [ 15:0]  tx_sent_data_counter_o
     ,output          inport_accept_o
     ,output          outport_valid_o
     ,output [  7:0]  outport_data_o
@@ -680,6 +684,7 @@ u_core
     .status_stage_w_do(status_stage_w_do),
     .usbf_ep_data_bit_r_do(usbf_ep_data_bit_r_do),
     .usbf_new_data_bit_r_do(usbf_new_data_bit_r_do),
+    .tx_sent_data_counter_o(tx_sent_data_counter_o),
     
     // Status
     .reg_sts_rst_clr_i(1'b1),
@@ -1296,7 +1301,8 @@ assign ep3_rx_space_w      = 1'b0;
 //-----------------------------------------------------------------
 reg       inport_valid_q;
 reg [7:0] inport_data_q;
-wire      inport_last_w  = !inport_valid_i;
+wire      inport_last_w  = !inport_valid_i || (tx_sent_data_counter_o >= 499);
+//wire      inport_last_w  = !inport_valid_i;
 
 always @ (posedge clk_i or posedge rst_i)
 if (rst_i)
@@ -1395,5 +1401,8 @@ assign ep0_rx_setup_w_do = ep0_rx_setup_w;
 
 assign ctrl_stall_r_do = ctrl_stall_r;
 assign ctrl_ack_r_do = ctrl_ack_r;
+
+assign ep2_tx_data_valid_w_do = ep2_tx_data_valid_w;
+assign ep2_tx_data_w_do       = ep2_tx_data_w;
 
 endmodule

@@ -178,8 +178,23 @@ reg[1:0] pulseCnt_q;
 //else if(outPktReceived_q)
 //    pulseCnt_q <= pulseCnt_q + 1;
 
-wire dataSPIToSendPrepared_w;    
-assign dataSPIToSendPrepared_w = setup_packet_q[0][7] ? setupPktReceived_q : outPktReceived_q;
+reg dataSPIToSendPrepared_r;    
+
+always @ *
+begin
+    if (setup_packet_q[0] == 8'hc0)
+    begin
+        dataSPIToSendPrepared_r = setupPktReceived_q;
+    end
+    else if (setup_packet_q[0] == 8'h40)
+    begin   
+        dataSPIToSendPrepared_r = outPktReceived_q;
+    end
+    else
+        dataSPIToSendPrepared_r = 0;
+end
+
+wire dataSPIToSendPrepared_w = dataSPIToSendPrepared_r;
 
 //-----------------------------------------------------------------
 // SPI: output data to SPI master for sending to the DVS 
@@ -227,7 +242,9 @@ else if(setupDataRecStart_i)   //  Setup token received, de-active the rxDataCom
 begin
     rxDataComplete_q <= 0;
 end
-else if(!setup_packet_q[0][7] && setupPktReceived_q)  // Setup data received and it is a OUT Setup request, so we don't need to prepared data.
+// We received a new setup request and it is not a Vendor Setup in request.
+// In this case, act the host immediatelly.
+else if (setup_packet_q[0] != 8'hC0 && setupPktReceived_q)  
 begin
     rxDataComplete_q <= 1;
 end

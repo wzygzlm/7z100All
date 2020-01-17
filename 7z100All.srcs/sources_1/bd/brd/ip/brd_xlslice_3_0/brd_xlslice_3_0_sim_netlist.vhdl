@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Tue Jan 14 18:24:52 2020
+-- Date        : Wed Jan 15 14:19:23 2020
 -- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_xlslice_3_0/brd_xlslice_3_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top brd_xlslice_3_0 -prefix
+--               brd_xlslice_3_0_ brd_xlslice_3_0_sim_netlist.vhdl
 -- Design      : brd_xlslice_3_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -17,7 +17,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity brd_xlslice_3_0 is
   port (
     Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+    Dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of brd_xlslice_3_0 : entity is true;
@@ -32,6 +32,6 @@ end brd_xlslice_3_0;
 architecture STRUCTURE of brd_xlslice_3_0 is
   signal \^din\ : STD_LOGIC_VECTOR ( 31 downto 0 );
 begin
-  Dout(7 downto 0) <= \^din\(31 downto 24);
-  \^din\(31 downto 24) <= Din(31 downto 24);
+  Dout(15 downto 0) <= \^din\(31 downto 16);
+  \^din\(31 downto 16) <= Din(31 downto 16);
 end STRUCTURE;

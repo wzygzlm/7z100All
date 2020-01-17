@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
---Date        : Wed Jan 15 12:48:12 2020
+--Date        : Fri Jan 17 12:51:24 2020
 --Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
 --Command     : generate_target brd.bd
 --Design      : brd
@@ -1829,7 +1829,7 @@ entity brd is
     vid_vsync : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of brd : entity is "brd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=brd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=42,numReposBlks=35,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=3,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=25,da_clkrst_cnt=20,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of brd : entity is "brd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=brd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=49,numReposBlks=42,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=3,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=25,da_clkrst_cnt=29,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of brd : entity is "brd.hwdef";
 end brd;
@@ -1939,105 +1939,6 @@ architecture STRUCTURE of brd is
     o_SPI_CS_n : out STD_LOGIC
   );
   end component brd_SPI_Master_With_Sing_0_2;
-  component brd_USBFifoToDVSSPI_0_0 is
-  port (
-    clk_i : in STD_LOGIC;
-    rst_i : in STD_LOGIC;
-    spiReady_i : in STD_LOGIC;
-    setupDataRecStart_i : in STD_LOGIC;
-    outDataRecStart_i : in STD_LOGIC;
-    dataRecEnd_i : in STD_LOGIC;
-    inputDataValid_i : in STD_LOGIC;
-    inputData_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    dvsRXDataValid_i : in STD_LOGIC;
-    dvsRXByte_i : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    dvs_resp_addr_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    setupPktReceived_q_do : out STD_LOGIC;
-    outPktReceived_q_do : out STD_LOGIC;
-    dataSPIToSendPrepared_w_do : out STD_LOGIC;
-    wrSetupIndex_q_do : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    wrOUTIndex_q_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    outputDataValid_o : out STD_LOGIC;
-    outputData_o : out STD_LOGIC_VECTOR ( 47 downto 0 );
-    rxDataComplete_o : out STD_LOGIC;
-    dvs_resp_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component brd_USBFifoToDVSSPI_0_0;
-  component brd_usb_cdc_core_0_0 is
-  port (
-    clk_i : in STD_LOGIC;
-    rst_i : in STD_LOGIC;
-    enable_i : in STD_LOGIC;
-    utmi_data_in_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    utmi_txready_i : in STD_LOGIC;
-    utmi_rxvalid_i : in STD_LOGIC;
-    utmi_rxactive_i : in STD_LOGIC;
-    utmi_rxerror_i : in STD_LOGIC;
-    utmi_linestate_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    inport_valid_i : in STD_LOGIC;
-    inport_data_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    outport_accept_i : in STD_LOGIC;
-    ctrl_host_ack_i : in STD_LOGIC;
-    setup_token_valid_intr_o : out STD_LOGIC;
-    setup_valid_conter_q_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    state_r_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    usb_rst_time_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    token_valid_w_do : out STD_LOGIC;
-    token_dev_w_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
-    token_ep_w_do : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    current_addr_i_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
-    reg_dev_addr_i_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
-    ctrl_sending_r_do : out STD_LOGIC;
-    ctrl_send_accept_w_do : out STD_LOGIC;
-    desc_addr_q_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
-    setup_valid_q_do : out STD_LOGIC;
-    setup_frame_q_do : out STD_LOGIC;
-    rx_last_w_do : out STD_LOGIC;
-    bmRequestType_w_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    bRequest_w_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    wValue_w_do : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    usb_reset_w_do : out STD_LOGIC;
-    usb_reset_counter_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    debug_counter_q_do : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    current_token_debug_counter_q_do : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    token_valid_counter_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    setup_wr_idx_q_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    ep0_rx_valid_w_do : out STD_LOGIC;
-    rx_strb_w_do : out STD_LOGIC;
-    ctrl_txvalid_q_do : out STD_LOGIC;
-    ctrl_txdata_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    ctrl_txstall_q_do : out STD_LOGIC;
-    ctrl_stall_r_do : out STD_LOGIC;
-    ctrl_ack_r_do : out STD_LOGIC;
-    readAXIBRAM_r_do : out STD_LOGIC;
-    sie_tx_state_q_o : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    usbf_tx_valid_q_do : out STD_LOGIC;
-    usbf_tx_pid_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    usbf_state_q_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    usbf_ep_data_bit_r_do : out STD_LOGIC;
-    usbf_new_data_bit_r_do : out STD_LOGIC;
-    data_complete_o_do : out STD_LOGIC;
-    setup_resp_valid_delay_q_do : out STD_LOGIC;
-    token_valid_cnt_q_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    status_stage_w_do : out STD_LOGIC;
-    vendorReqRecived_o : out STD_LOGIC;
-    axi_bram_addr_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    axi_bram_w_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    axi_bram_r_data_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    utmi_data_out_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    utmi_txvalid_o : out STD_LOGIC;
-    utmi_op_mode_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    utmi_xcvrselect_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    utmi_termselect_o : out STD_LOGIC;
-    utmi_dppulldown_o : out STD_LOGIC;
-    utmi_dmpulldown_o : out STD_LOGIC;
-    inport_accept_o : out STD_LOGIC;
-    outport_valid_o : out STD_LOGIC;
-    outport_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    rx_out_do : out STD_LOGIC;
-    ep0_rx_setup_w_do : out STD_LOGIC
-  );
-  end component brd_usb_cdc_core_0_0;
   component brd_EVFastCornerStream_0_0 is
   port (
     s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -2313,12 +2214,6 @@ architecture STRUCTURE of brd is
     s2mm_introut : out STD_LOGIC
   );
   end component brd_axi_vdma_0_0;
-  component brd_c_counter_binary_0_0 is
-  port (
-    CLK : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component brd_c_counter_binary_0_0;
   component brd_const_HIGH_0 is
   port (
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
@@ -2579,7 +2474,13 @@ architecture STRUCTURE of brd is
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe2 : in STD_LOGIC_VECTOR ( 10 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 14 downto 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component brd_system_ila_0_1;
   component brd_system_ila_2_1 is
@@ -2593,13 +2494,13 @@ architecture STRUCTURE of brd is
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe6 : in STD_LOGIC_VECTOR ( 47 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe12 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe13 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe14 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe15 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe16 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe17 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2607,37 +2508,47 @@ architecture STRUCTURE of brd is
     probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe20 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe21 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe22 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe22 : in STD_LOGIC_VECTOR ( 5 downto 0 );
     probe23 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe24 : in STD_LOGIC_VECTOR ( 5 downto 0 );
     probe25 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe26 : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    probe27 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe28 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe29 : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    probe30 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe31 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe26 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe27 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe28 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe29 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe30 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe31 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe32 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe33 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe34 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe35 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe36 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe34 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe35 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe36 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe37 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe38 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe38 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe39 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe40 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe41 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe44 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe44 : in STD_LOGIC_VECTOR ( 2 downto 0 );
     probe45 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe46 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe47 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe48 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe49 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe50 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe50 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe52 : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    probe52 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe53 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe54 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe55 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe56 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe57 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe58 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe59 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe60 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe61 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component brd_system_ila_2_1;
   component brd_util_vector_logic_0_0 is
@@ -2646,12 +2557,6 @@ architecture STRUCTURE of brd is
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component brd_util_vector_logic_0_0;
-  component brd_util_vector_logic_1_0 is
-  port (
-    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component brd_util_vector_logic_1_0;
   component brd_v_axi4s_vid_out_0_0 is
   port (
     aclk : in STD_LOGIC;
@@ -2744,9 +2649,180 @@ architecture STRUCTURE of brd is
   component brd_xlslice_3_0 is
   port (
     Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+    Dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component brd_xlslice_3_0;
+  component brd_fifo_generator_0_0 is
+  port (
+    rst : in STD_LOGIC;
+    wr_clk : in STD_LOGIC;
+    rd_clk : in STD_LOGIC;
+    din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    wr_en : in STD_LOGIC;
+    rd_en : in STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    full : out STD_LOGIC;
+    almost_full : out STD_LOGIC;
+    empty : out STD_LOGIC;
+    rd_data_count : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    wr_data_count : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    wr_rst_busy : out STD_LOGIC;
+    rd_rst_busy : out STD_LOGIC
+  );
+  end component brd_fifo_generator_0_0;
+  component brd_util_vector_logic_2_1 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_util_vector_logic_2_1;
+  component brd_xlslice_5_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_xlslice_5_0;
+  component brd_xlconstant_1_0 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_xlconstant_1_0;
+  component brd_util_vector_logic_3_0 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_util_vector_logic_3_0;
+  component brd_c_addsub_0_0 is
+  port (
+    A : in STD_LOGIC_VECTOR ( 0 to 0 );
+    CLK : in STD_LOGIC;
+    S : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_c_addsub_0_0;
+  component brd_xlslice_6_0 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component brd_xlslice_6_0;
+  component brd_xlslice_6_1 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component brd_xlslice_6_1;
+  component brd_xlconcat_1_0 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component brd_xlconcat_1_0;
+  component brd_USBFifoToDVSSPI_0_0 is
+  port (
+    clk_i : in STD_LOGIC;
+    rst_i : in STD_LOGIC;
+    spiReady_i : in STD_LOGIC;
+    setupDataRecStart_i : in STD_LOGIC;
+    outDataRecStart_i : in STD_LOGIC;
+    dataRecEnd_i : in STD_LOGIC;
+    inputDataValid_i : in STD_LOGIC;
+    inputData_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dvsRXDataValid_i : in STD_LOGIC;
+    dvsRXByte_i : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    dvs_resp_addr_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    setupPktReceived_q_do : out STD_LOGIC;
+    outPktReceived_q_do : out STD_LOGIC;
+    dataSPIToSendPrepared_w_do : out STD_LOGIC;
+    wrSetupIndex_q_do : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    wrOUTIndex_q_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    outputDataValid_o : out STD_LOGIC;
+    outputData_o : out STD_LOGIC_VECTOR ( 47 downto 0 );
+    rxDataComplete_o : out STD_LOGIC;
+    dvs_resp_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component brd_USBFifoToDVSSPI_0_0;
+  component brd_usb_cdc_core_0_0 is
+  port (
+    clk_i : in STD_LOGIC;
+    rst_i : in STD_LOGIC;
+    enable_i : in STD_LOGIC;
+    utmi_data_in_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    utmi_txready_i : in STD_LOGIC;
+    utmi_rxvalid_i : in STD_LOGIC;
+    utmi_rxactive_i : in STD_LOGIC;
+    utmi_rxerror_i : in STD_LOGIC;
+    utmi_linestate_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    inport_valid_i : in STD_LOGIC;
+    inport_data_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    outport_accept_i : in STD_LOGIC;
+    ctrl_host_ack_i : in STD_LOGIC;
+    setup_token_valid_intr_o : out STD_LOGIC;
+    setup_valid_conter_q_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    state_r_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    usb_rst_time_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    token_valid_w_do : out STD_LOGIC;
+    token_dev_w_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
+    token_ep_w_do : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    current_addr_i_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
+    reg_dev_addr_i_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
+    ctrl_sending_r_do : out STD_LOGIC;
+    ctrl_send_accept_w_do : out STD_LOGIC;
+    desc_addr_q_do : out STD_LOGIC_VECTOR ( 6 downto 0 );
+    setup_valid_q_do : out STD_LOGIC;
+    setup_frame_q_do : out STD_LOGIC;
+    rx_last_w_do : out STD_LOGIC;
+    bmRequestType_w_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    bRequest_w_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    wValue_w_do : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    usb_reset_w_do : out STD_LOGIC;
+    usb_reset_counter_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    debug_counter_q_do : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    current_token_debug_counter_q_do : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    token_valid_counter_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    setup_wr_idx_q_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    ep0_rx_valid_w_do : out STD_LOGIC;
+    rx_strb_w_do : out STD_LOGIC;
+    ctrl_txvalid_q_do : out STD_LOGIC;
+    ctrl_txdata_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ctrl_txstall_q_do : out STD_LOGIC;
+    ctrl_stall_r_do : out STD_LOGIC;
+    ctrl_ack_r_do : out STD_LOGIC;
+    readAXIBRAM_r_do : out STD_LOGIC;
+    sie_tx_state_q_o : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    usbf_tx_valid_q_do : out STD_LOGIC;
+    usbf_tx_pid_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    usbf_state_q_do : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    usbf_ep_data_bit_r_do : out STD_LOGIC;
+    usbf_new_data_bit_r_do : out STD_LOGIC;
+    data_complete_o_do : out STD_LOGIC;
+    setup_resp_valid_delay_q_do : out STD_LOGIC;
+    token_valid_cnt_q_do : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    status_stage_w_do : out STD_LOGIC;
+    ep2_tx_data_valid_w_do : out STD_LOGIC;
+    ep2_tx_data_w_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    vendorReqRecived_o : out STD_LOGIC;
+    axi_bram_addr_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    axi_bram_w_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    axi_bram_r_data_i : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    utmi_data_out_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    utmi_txvalid_o : out STD_LOGIC;
+    utmi_op_mode_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    utmi_xcvrselect_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    utmi_termselect_o : out STD_LOGIC;
+    utmi_dppulldown_o : out STD_LOGIC;
+    utmi_dmpulldown_o : out STD_LOGIC;
+    tx_sent_data_counter_o : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    inport_accept_o : out STD_LOGIC;
+    outport_valid_o : out STD_LOGIC;
+    outport_data_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    rx_out_do : out STD_LOGIC;
+    ep0_rx_setup_w_do : out STD_LOGIC
+  );
+  end component brd_usb_cdc_core_0_0;
   signal DVSAERData_AI_0_1 : STD_LOGIC_VECTOR ( 10 downto 0 );
   attribute DEBUG : string;
   attribute DEBUG of DVSAERData_AI_0_1 : signal is "true";
@@ -2882,12 +2958,12 @@ architecture STRUCTURE of brd is
   signal bmRequestType_w_do : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute DEBUG of bmRequestType_w_do : signal is "true";
   attribute MARK_DEBUG of bmRequestType_w_do : signal is std.standard.true;
+  signal c_addsub_as_invert_and_delay_S : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute DEBUG of c_addsub_as_invert_and_delay_S : signal is "true";
+  attribute MARK_DEBUG of c_addsub_as_invert_and_delay_S : signal is std.standard.true;
   signal c_counter_binary_0_Q : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute DEBUG of c_counter_binary_0_Q : signal is "true";
   attribute MARK_DEBUG of c_counter_binary_0_Q : signal is std.standard.true;
-  signal c_counter_binary_0_Q1 : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute DEBUG of c_counter_binary_0_Q1 : signal is "true";
-  attribute MARK_DEBUG of c_counter_binary_0_Q1 : signal is std.standard.true;
   signal const_VCC_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal ctrl_ack_r_do : STD_LOGIC;
   attribute DEBUG of ctrl_ack_r_do : signal is "true";
@@ -2913,12 +2989,30 @@ architecture STRUCTURE of brd is
   signal dvs_resp_data_o : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute DEBUG of dvs_resp_data_o : signal is "true";
   attribute MARK_DEBUG of dvs_resp_data_o : signal is std.standard.true;
+  signal ep2_tx_data_valid_w_do : STD_LOGIC;
+  attribute DEBUG of ep2_tx_data_valid_w_do : signal is "true";
+  attribute MARK_DEBUG of ep2_tx_data_valid_w_do : signal is std.standard.true;
+  signal ep2_tx_data_w_do : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute DEBUG of ep2_tx_data_w_do : signal is "true";
+  attribute MARK_DEBUG of ep2_tx_data_w_do : signal is std.standard.true;
   signal eventStreamToConstEn_0_frameStream_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal eventStreamToConstEn_0_frameStream_TKEEP : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal eventStreamToConstEn_0_frameStream_TLAST : STD_LOGIC_VECTOR ( 0 to 0 );
   signal eventStreamToConstEn_0_frameStream_TREADY : STD_LOGIC;
   signal eventStreamToConstEn_0_frameStream_TUSER : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal eventStreamToConstEn_0_frameStream_TVALID : STD_LOGIC;
+  signal fifo_generator_0_almost_full : STD_LOGIC;
+  attribute DEBUG of fifo_generator_0_almost_full : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_0_almost_full : signal is std.standard.true;
+  signal fifo_generator_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute DEBUG of fifo_generator_0_dout : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_0_dout : signal is std.standard.true;
+  signal fifo_generator_0_empty : STD_LOGIC;
+  attribute DEBUG of fifo_generator_0_empty : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_0_empty : signal is std.standard.true;
+  signal fifo_generator_0_full : STD_LOGIC;
+  attribute DEBUG of fifo_generator_0_full : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_0_full : signal is std.standard.true;
   signal o_RX_Count : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute DEBUG of o_RX_Count : signal is "true";
   attribute MARK_DEBUG of o_RX_Count : signal is std.standard.true;
@@ -3080,6 +3174,9 @@ architecture STRUCTURE of brd is
   signal r_TX_Bit_Count_do : STD_LOGIC_VECTOR ( 5 downto 0 );
   attribute DEBUG of r_TX_Bit_Count_do : signal is "true";
   attribute MARK_DEBUG of r_TX_Bit_Count_do : signal is std.standard.true;
+  signal rd_data_count : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute DEBUG of rd_data_count : signal is "true";
+  attribute MARK_DEBUG of rd_data_count : signal is std.standard.true;
   signal readAXIBRAM_r_do : STD_LOGIC;
   attribute DEBUG of readAXIBRAM_r_do : signal is "true";
   attribute MARK_DEBUG of readAXIBRAM_r_do : signal is std.standard.true;
@@ -3095,18 +3192,30 @@ architecture STRUCTURE of brd is
   signal setup_valid_q_do : STD_LOGIC;
   attribute DEBUG of setup_valid_q_do : signal is "true";
   attribute MARK_DEBUG of setup_valid_q_do : signal is std.standard.true;
+  signal sie_tx_state_q_o : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute DEBUG of sie_tx_state_q_o : signal is "true";
+  attribute MARK_DEBUG of sie_tx_state_q_o : signal is std.standard.true;
+  signal slice_swap_event_data_0_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal slice_swap_event_data_1_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal state_o : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute DEBUG of state_o : signal is "true";
   attribute MARK_DEBUG of state_o : signal is std.standard.true;
+  signal state_r_do : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute DEBUG of state_r_do : signal is "true";
+  attribute MARK_DEBUG of state_r_do : signal is std.standard.true;
   signal status_stage_w_do : STD_LOGIC;
   attribute DEBUG of status_stage_w_do : signal is "true";
   attribute MARK_DEBUG of status_stage_w_do : signal is std.standard.true;
   signal testAERDVSSM_0_AERSMOutFifoData_DO : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute DEBUG of testAERDVSSM_0_AERSMOutFifoData_DO : signal is "true";
   attribute MARK_DEBUG of testAERDVSSM_0_AERSMOutFifoData_DO : signal is std.standard.true;
-  signal testAERDVSSM_0_AERSMOutFifoWrite_SO : STD_LOGIC;
-  attribute DEBUG of testAERDVSSM_0_AERSMOutFifoWrite_SO : signal is "true";
-  attribute MARK_DEBUG of testAERDVSSM_0_AERSMOutFifoWrite_SO : signal is std.standard.true;
+  signal testAERDVSSM_0_AERSMOutFifoData_DO1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute DEBUG of testAERDVSSM_0_AERSMOutFifoData_DO1 : signal is "true";
+  attribute MARK_DEBUG of testAERDVSSM_0_AERSMOutFifoData_DO1 : signal is std.standard.true;
+  signal testAERDVSSM_0_AERSMOutFifoData_DO2 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal testAERDVSSM_0_AERSMOutFifoWrite_SO1 : STD_LOGIC;
+  attribute DEBUG of testAERDVSSM_0_AERSMOutFifoWrite_SO1 : signal is "true";
+  attribute MARK_DEBUG of testAERDVSSM_0_AERSMOutFifoWrite_SO1 : signal is std.standard.true;
   signal testAERDVSSM_0_ChipBiasAddrSelect_SBO : STD_LOGIC;
   signal testAERDVSSM_0_ChipBiasBitIn_DO : STD_LOGIC;
   signal testAERDVSSM_0_ChipBiasClock_CBO : STD_LOGIC;
@@ -3125,6 +3234,9 @@ architecture STRUCTURE of brd is
   signal token_valid_w_do : STD_LOGIC;
   attribute DEBUG of token_valid_w_do : signal is "true";
   attribute MARK_DEBUG of token_valid_w_do : signal is std.standard.true;
+  signal tx_sent_data_counter_o : STD_LOGIC_VECTOR ( 15 downto 0 );
+  attribute DEBUG of tx_sent_data_counter_o : signal is "true";
+  attribute MARK_DEBUG of tx_sent_data_counter_o : signal is std.standard.true;
   signal ulpi_clk60_i_0_1 : STD_LOGIC;
   signal ulpi_data_in_o_d : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute DEBUG of ulpi_data_in_o_d : signal is "true";
@@ -3142,6 +3254,8 @@ architecture STRUCTURE of brd is
   attribute DEBUG of ulpi_wrapper_0_ulpi_stp_o : signal is "true";
   attribute MARK_DEBUG of ulpi_wrapper_0_ulpi_stp_o : signal is std.standard.true;
   signal ulpi_wrapper_0_utmi_data_in_o : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute DEBUG of ulpi_wrapper_0_utmi_data_in_o : signal is "true";
+  attribute MARK_DEBUG of ulpi_wrapper_0_utmi_data_in_o : signal is std.standard.true;
   signal ulpi_wrapper_0_utmi_linestate_o : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ulpi_wrapper_0_utmi_rxactive_o : STD_LOGIC;
   attribute DEBUG of ulpi_wrapper_0_utmi_rxactive_o : signal is "true";
@@ -3151,12 +3265,17 @@ architecture STRUCTURE of brd is
   attribute DEBUG of ulpi_wrapper_0_utmi_rxvalid_o : signal is "true";
   attribute MARK_DEBUG of ulpi_wrapper_0_utmi_rxvalid_o : signal is std.standard.true;
   signal ulpi_wrapper_0_utmi_txready_o : STD_LOGIC;
+  attribute DEBUG of ulpi_wrapper_0_utmi_txready_o : signal is "true";
+  attribute MARK_DEBUG of ulpi_wrapper_0_utmi_txready_o : signal is std.standard.true;
   signal usb_cdc_core_0_data_complete_o_do : STD_LOGIC;
   attribute DEBUG of usb_cdc_core_0_data_complete_o_do : signal is "true";
   attribute MARK_DEBUG of usb_cdc_core_0_data_complete_o_do : signal is std.standard.true;
   signal usb_cdc_core_0_ep0_rx_setup_w_do : STD_LOGIC;
   attribute DEBUG of usb_cdc_core_0_ep0_rx_setup_w_do : signal is "true";
   attribute MARK_DEBUG of usb_cdc_core_0_ep0_rx_setup_w_do : signal is std.standard.true;
+  signal usb_cdc_core_0_inport_accept_o1 : STD_LOGIC;
+  attribute DEBUG of usb_cdc_core_0_inport_accept_o1 : signal is "true";
+  attribute MARK_DEBUG of usb_cdc_core_0_inport_accept_o1 : signal is std.standard.true;
   signal usb_cdc_core_0_outport_data_o : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute DEBUG of usb_cdc_core_0_outport_data_o : signal is "true";
   attribute MARK_DEBUG of usb_cdc_core_0_outport_data_o : signal is std.standard.true;
@@ -3173,9 +3292,15 @@ architecture STRUCTURE of brd is
   signal usb_cdc_core_0_utmi_termselect_o : STD_LOGIC;
   signal usb_cdc_core_0_utmi_txvalid_o : STD_LOGIC;
   signal usb_cdc_core_0_utmi_xcvrselect_o : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal usb_reset_counter_q_do : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute DEBUG of usb_reset_counter_q_do : signal is "true";
+  attribute MARK_DEBUG of usb_reset_counter_q_do : signal is std.standard.true;
   signal usb_reset_w_do : STD_LOGIC;
   attribute DEBUG of usb_reset_w_do : signal is "true";
   attribute MARK_DEBUG of usb_reset_w_do : signal is std.standard.true;
+  signal usb_rst_time_do : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute DEBUG of usb_rst_time_do : signal is "true";
+  attribute MARK_DEBUG of usb_rst_time_do : signal is std.standard.true;
   signal usbf_ep_data_bit_r_do : STD_LOGIC;
   attribute DEBUG of usbf_ep_data_bit_r_do : signal is "true";
   attribute MARK_DEBUG of usbf_ep_data_bit_r_do : signal is std.standard.true;
@@ -3192,7 +3317,7 @@ architecture STRUCTURE of brd is
   attribute DEBUG of usbf_tx_valid_q_do : signal is "true";
   attribute MARK_DEBUG of usbf_tx_valid_q_do : signal is std.standard.true;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal util_vector_logic_2_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_axi4s_vid_out_0_vid_data : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal v_axi4s_vid_out_0_vid_hsync : STD_LOGIC;
   signal v_axi4s_vid_out_0_vid_vsync : STD_LOGIC;
@@ -3211,12 +3336,16 @@ architecture STRUCTURE of brd is
   signal wrSetupIndex_q_do : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute DEBUG of wrSetupIndex_q_do : signal is "true";
   attribute MARK_DEBUG of wrSetupIndex_q_do : signal is std.standard.true;
+  signal wr_data_count : STD_LOGIC_VECTOR ( 14 downto 0 );
+  attribute DEBUG of wr_data_count : signal is "true";
+  attribute MARK_DEBUG of wr_data_count : signal is std.standard.true;
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal xlconstant_1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal xlconstant_ONE_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal xlslice_4_Dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal xlslice_5_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_EVFastCornerStream_0_ap_done_UNCONNECTED : STD_LOGIC;
   signal NLW_EVFastCornerStream_0_ap_idle_UNCONNECTED : STD_LOGIC;
   signal NLW_EVFastCornerStream_0_ap_ready_UNCONNECTED : STD_LOGIC;
@@ -3264,6 +3393,8 @@ architecture STRUCTURE of brd is
   signal NLW_eventStreamToConstEn_0_tsReg_V_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_eventStreamToConstEn_0_vCnt_V_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_eventStreamToConstEn_0_vgaEn_V_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_fifo_generator_0_rd_rst_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_fifo_generator_0_wr_rst_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_proc_sys_reset_0_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_proc_sys_reset_0_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3314,7 +3445,6 @@ architecture STRUCTURE of brd is
   signal NLW_ulpi_wrapper_0_xcvrselect_o_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_usb_cdc_core_0_ctrl_send_accept_w_do_UNCONNECTED : STD_LOGIC;
   signal NLW_usb_cdc_core_0_ep0_rx_valid_w_do_UNCONNECTED : STD_LOGIC;
-  signal NLW_usb_cdc_core_0_inport_accept_o_UNCONNECTED : STD_LOGIC;
   signal NLW_usb_cdc_core_0_rx_last_w_do_UNCONNECTED : STD_LOGIC;
   signal NLW_usb_cdc_core_0_rx_strb_w_do_UNCONNECTED : STD_LOGIC;
   signal NLW_usb_cdc_core_0_setup_frame_q_do_UNCONNECTED : STD_LOGIC;
@@ -3329,15 +3459,12 @@ architecture STRUCTURE of brd is
   signal NLW_usb_cdc_core_0_reg_dev_addr_i_do_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal NLW_usb_cdc_core_0_setup_valid_conter_q_o_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_usb_cdc_core_0_setup_wr_idx_q_do_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal NLW_usb_cdc_core_0_sie_tx_state_q_o_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal NLW_usb_cdc_core_0_state_r_do_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_usb_cdc_core_0_token_dev_w_do_UNCONNECTED : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal NLW_usb_cdc_core_0_token_ep_w_do_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_usb_cdc_core_0_token_valid_cnt_q_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_usb_cdc_core_0_token_valid_counter_q_do_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal NLW_usb_cdc_core_0_usb_reset_counter_q_do_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal NLW_usb_cdc_core_0_usb_rst_time_do_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_usb_cdc_core_0_wValue_w_do_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_util_vector_logic_3_Res_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_v_axi4s_vid_out_0_locked_UNCONNECTED : STD_LOGIC;
   signal NLW_v_axi4s_vid_out_0_overflow_UNCONNECTED : STD_LOGIC;
   signal NLW_v_axi4s_vid_out_0_underflow_UNCONNECTED : STD_LOGIC;
@@ -3465,7 +3592,7 @@ EVMUXDataToXYTSStream_0: component brd_EVMUXDataToXYTSStream_0_0
       ap_start => const_VCC_dout(0),
       dataReg_V(15 downto 0) => NLW_EVMUXDataToXYTSStream_0_dataReg_V_UNCONNECTED(15 downto 0),
       dataReg_V_ap_vld => NLW_EVMUXDataToXYTSStream_0_dataReg_V_ap_vld_UNCONNECTED,
-      eventFIFODataValid_V(0) => testAERDVSSM_0_AERSMOutFifoWrite_SO,
+      eventFIFODataValid_V(0) => xlconstant_1_dout(0),
       eventFIFOIn_V(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO(15 downto 0),
       polRegReg_V(0) => NLW_EVMUXDataToXYTSStream_0_polRegReg_V_UNCONNECTED(0),
       polRegReg_V_ap_vld => NLW_EVMUXDataToXYTSStream_0_polRegReg_V_ap_vld_UNCONNECTED,
@@ -3720,10 +3847,17 @@ axi_vdma_0: component brd_axi_vdma_0_0
       s_axis_s2mm_tuser(0) => eventStreamToConstEn_0_frameStream_TUSER(0),
       s_axis_s2mm_tvalid => eventStreamToConstEn_0_frameStream_TVALID
     );
-c_counter_binary_0: component brd_c_counter_binary_0_0
+c_addsub_as_invert_and_delay: component brd_c_addsub_0_0
      port map (
+      A(0) => fifo_generator_0_empty,
       CLK => ulpi_clk60_i_0_1,
-      Q(7 downto 0) => c_counter_binary_0_Q1(7 downto 0)
+      S(0) => c_addsub_as_invert_and_delay_S(0)
+    );
+concat_swap_event_data: component brd_xlconcat_1_0
+     port map (
+      In0(7 downto 0) => slice_swap_event_data_1_Dout(7 downto 0),
+      In1(7 downto 0) => slice_swap_event_data_0_Dout(7 downto 0),
+      dout(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO1(15 downto 0)
     );
 cons_HIGH: component brd_xlconstant_0_1
      port map (
@@ -3808,6 +3942,23 @@ eventStreamToConstEn_0: component brd_eventStreamToConstEn_0_1
       yStream_V_V_TDATA(15 downto 0) => EVABMOFStream_0_yStreamOut_V_V_TDATA(15 downto 0),
       yStream_V_V_TREADY => EVABMOFStream_0_yStreamOut_V_V_TREADY,
       yStream_V_V_TVALID => EVABMOFStream_0_yStreamOut_V_V_TVALID
+    );
+fifo_generator_0: component brd_fifo_generator_0_0
+     port map (
+      almost_full => fifo_generator_0_almost_full,
+      din(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO1(15 downto 0),
+      dout(7 downto 0) => fifo_generator_0_dout(7 downto 0),
+      empty => fifo_generator_0_empty,
+      full => fifo_generator_0_full,
+      rd_clk => ulpi_clk60_i_0_1,
+      rd_data_count(15 downto 0) => rd_data_count(15 downto 0),
+      rd_en => usb_cdc_core_0_inport_accept_o1,
+      rd_rst_busy => NLW_fifo_generator_0_rd_rst_busy_UNCONNECTED,
+      rst => '0',
+      wr_clk => processing_system7_0_FCLK_CLK0,
+      wr_data_count(14 downto 0) => wr_data_count(14 downto 0),
+      wr_en => testAERDVSSM_0_AERSMOutFifoWrite_SO1,
+      wr_rst_busy => NLW_fifo_generator_0_wr_rst_busy_UNCONNECTED
     );
 proc_sys_reset_0: component brd_proc_sys_reset_0_0
      port map (
@@ -4114,79 +4265,105 @@ ps7_0_axi_periph: entity work.brd_ps7_0_axi_periph_1
       S00_AXI_wstrb(3 downto 0) => processing_system7_0_M_AXI_GP0_WSTRB(3 downto 0),
       S00_AXI_wvalid => processing_system7_0_M_AXI_GP0_WVALID
     );
+slice_swap_event_data_0: component brd_xlslice_6_0
+     port map (
+      Din(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO2(15 downto 0),
+      Dout(7 downto 0) => slice_swap_event_data_0_Dout(7 downto 0)
+    );
+slice_swap_event_data_1: component brd_xlslice_6_1
+     port map (
+      Din(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO2(15 downto 0),
+      Dout(7 downto 0) => slice_swap_event_data_1_Dout(7 downto 0)
+    );
 system_ila_0: component brd_system_ila_0_1
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       probe0(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO(15 downto 0),
-      probe1(0) => testAERDVSSM_0_AERSMOutFifoWrite_SO,
+      probe1(0) => xlconstant_1_dout(0),
+      probe10(7 downto 0) => fifo_generator_0_dout(7 downto 0),
       probe2(10 downto 0) => DVSAERData_AI_0_1(10 downto 0),
       probe3(0) => DVSAERReq_ABI_0_1,
-      probe4(0) => testAERDVSSM_0_DVSAERAck_SBO
+      probe4(0) => testAERDVSSM_0_DVSAERAck_SBO,
+      probe5(0) => fifo_generator_0_almost_full,
+      probe6(0) => fifo_generator_0_full,
+      probe7(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO1(15 downto 0),
+      probe8(14 downto 0) => wr_data_count(14 downto 0),
+      probe9(0) => testAERDVSSM_0_AERSMOutFifoWrite_SO1
     );
 system_ila_2: component brd_system_ila_2_1
      port map (
       clk => ulpi_clk60_i_0_1,
       probe0(1 downto 0) => o_RX_Count(1 downto 0),
       probe1(0) => setupPktReceived_q_do,
-      probe10(0) => '0',
-      probe11(0) => '0',
-      probe12(47 downto 0) => SPI_Master_With_Sing_0_o_RX_Byte(47 downto 0),
-      probe13(1 downto 0) => c_counter_binary_0_Q(1 downto 0),
-      probe14(7 downto 0) => usb_cdc_core_0_outport_data_o(7 downto 0),
-      probe15(0) => usb_cdc_core_0_outport_valid_o,
-      probe16(0) => usb_cdc_core_0_data_complete_o_do,
-      probe17(0) => usb_cdc_core_0_rx_out_do,
-      probe18(0) => ulpi_dir_i_0_1,
-      probe19(0) => ulpi_nxt_i_0_1,
+      probe10(47 downto 0) => SPI_Master_With_Sing_0_o_RX_Byte(47 downto 0),
+      probe11(1 downto 0) => c_counter_binary_0_Q(1 downto 0),
+      probe12(7 downto 0) => usb_cdc_core_0_outport_data_o(7 downto 0),
+      probe13(0) => usb_cdc_core_0_outport_valid_o,
+      probe14(0) => usb_cdc_core_0_data_complete_o_do,
+      probe15(0) => usb_cdc_core_0_rx_out_do,
+      probe16(0) => ulpi_dir_i_0_1,
+      probe17(0) => ulpi_nxt_i_0_1,
+      probe18(0) => ulpi_wrapper_0_ulpi_stp_o,
+      probe19(0) => token_valid_w_do,
       probe2(0) => dataSPIToSendPrepared_w_do,
-      probe20(0) => ulpi_wrapper_0_ulpi_stp_o,
-      probe21(0) => token_valid_w_do,
-      probe22(0) => usb_cdc_core_0_ep0_rx_setup_w_do,
-      probe23(0) => SPI_Master_With_Sing_0_o_RX_DV,
-      probe24(5 downto 0) => r_RX_Bit_Count_do(5 downto 0),
-      probe25(0) => w_Master_Ready_do,
-      probe26(5 downto 0) => r_TX_Bit_Count_do(5 downto 0),
-      probe27(0) => outPktReceived_q_do,
-      probe28(0) => ctrl_sending_r_do,
-      probe29(3 downto 0) => wrSetupIndex_q_do(3 downto 0),
+      probe20(0) => usb_cdc_core_0_ep0_rx_setup_w_do,
+      probe21(0) => SPI_Master_With_Sing_0_o_RX_DV,
+      probe22(5 downto 0) => r_RX_Bit_Count_do(5 downto 0),
+      probe23(0) => w_Master_Ready_do,
+      probe24(5 downto 0) => r_TX_Bit_Count_do(5 downto 0),
+      probe25(0) => outPktReceived_q_do,
+      probe26(0) => ctrl_sending_r_do,
+      probe27(3 downto 0) => wrSetupIndex_q_do(3 downto 0),
+      probe28(2 downto 0) => wrOUTIndex_q_do(2 downto 0),
+      probe29(0) => setup_resp_valid_delay_q_do,
       probe3(0) => rxDataComplete_o,
-      probe30(2 downto 0) => wrOUTIndex_q_do(2 downto 0),
-      probe31(0) => setup_resp_valid_delay_q_do,
-      probe32(0) => setup_valid_q_do,
-      probe33(7 downto 0) => ctrl_txdata_q_do(7 downto 0),
-      probe34(0) => ctrl_txvalid_q_do,
-      probe35(7 downto 0) => ulpi_data_out_i_d(7 downto 0),
-      probe36(7 downto 0) => ulpi_data_in_o_d(7 downto 0),
-      probe37(0) => ctrl_txstall_q_do,
-      probe38(0) => ctrl_stall_r_do,
-      probe39(0) => ctrl_ack_r_do,
+      probe30(0) => setup_valid_q_do,
+      probe31(7 downto 0) => ctrl_txdata_q_do(7 downto 0),
+      probe32(0) => ctrl_txvalid_q_do,
+      probe33(7 downto 0) => ulpi_data_out_i_d(7 downto 0),
+      probe34(7 downto 0) => ulpi_data_in_o_d(7 downto 0),
+      probe35(0) => ctrl_txstall_q_do,
+      probe36(0) => ctrl_stall_r_do,
+      probe37(0) => ctrl_ack_r_do,
+      probe38(7 downto 0) => bmRequestType_w_do(7 downto 0),
+      probe39(0) => readAXIBRAM_r_do,
       probe4(7 downto 0) => dvs_resp_data_o(7 downto 0),
-      probe40(7 downto 0) => bmRequestType_w_do(7 downto 0),
-      probe41(0) => readAXIBRAM_r_do,
-      probe42(0) => status_stage_w_do,
-      probe43(7 downto 0) => usbf_tx_pid_q_do(7 downto 0),
-      probe44(0) => usbf_ep_data_bit_r_do,
-      probe45(0) => usbf_tx_valid_q_do,
-      probe46(2 downto 0) => usbf_state_q_do(2 downto 0),
-      probe47(0) => usbf_new_data_bit_r_do,
-      probe48(0) => ulpi_wrapper_0_utmi_rxvalid_o,
-      probe49(0) => ulpi_wrapper_0_utmi_rxactive_o,
+      probe40(0) => status_stage_w_do,
+      probe41(7 downto 0) => usbf_tx_pid_q_do(7 downto 0),
+      probe42(0) => usbf_ep_data_bit_r_do,
+      probe43(0) => usbf_tx_valid_q_do,
+      probe44(2 downto 0) => usbf_state_q_do(2 downto 0),
+      probe45(0) => usbf_new_data_bit_r_do,
+      probe46(0) => ulpi_wrapper_0_utmi_rxvalid_o,
+      probe47(0) => ulpi_wrapper_0_utmi_rxactive_o,
+      probe48(1 downto 0) => state_o(1 downto 0),
+      probe49(0) => usb_reset_w_do,
       probe5(0) => SPI_Master_With_Sing_0_o_TX_Ready,
-      probe50(1 downto 0) => state_o(1 downto 0),
-      probe51(0) => usb_reset_w_do,
-      probe52(7 downto 0) => c_counter_binary_0_Q1(7 downto 0),
+      probe50(15 downto 0) => rd_data_count(15 downto 0),
+      probe51(0) => testAERDVSSM_0_AERSMOutFifoWrite_SO1,
+      probe52(0) => usb_cdc_core_0_inport_accept_o1,
+      probe53(2 downto 0) => sie_tx_state_q_o(2 downto 0),
+      probe54(0) => ulpi_wrapper_0_utmi_txready_o,
+      probe55(0) => c_addsub_as_invert_and_delay_S(0),
+      probe56(0) => ep2_tx_data_valid_w_do,
+      probe57(7 downto 0) => ep2_tx_data_w_do(7 downto 0),
+      probe58(2 downto 0) => state_r_do(2 downto 0),
+      probe59(31 downto 0) => usb_rst_time_do(31 downto 0),
       probe6(47 downto 0) => USBFifoToDVSSPI_0_outputData_o(47 downto 0),
+      probe60(7 downto 0) => usb_reset_counter_q_do(7 downto 0),
+      probe61(15 downto 0) => tx_sent_data_counter_o(15 downto 0),
+      probe62(7 downto 0) => ulpi_wrapper_0_utmi_data_in_o(7 downto 0),
       probe7(0) => USBFifoToDVSSPI_0_outputDataValid_o,
-      probe8(0) => '0',
-      probe9(0) => '0'
+      probe8(7 downto 0) => fifo_generator_0_dout(7 downto 0),
+      probe9(0) => fifo_generator_0_empty
     );
 testAERDVSSM_0: component brd_testAERDVSSM_0_0
      port map (
       ADCClk_CI => processing_system7_0_FCLK_CLK0,
-      AERSMFifoAlmostFull_AI => Net1(0),
-      AERSMFifoFull_AI => Net1(0),
-      AERSMOutFifoData_DO(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO(15 downto 0),
-      AERSMOutFifoWrite_SO => testAERDVSSM_0_AERSMOutFifoWrite_SO,
+      AERSMFifoAlmostFull_AI => fifo_generator_0_almost_full,
+      AERSMFifoFull_AI => fifo_generator_0_full,
+      AERSMOutFifoData_DO(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO2(15 downto 0),
+      AERSMOutFifoWrite_SO => testAERDVSSM_0_AERSMOutFifoWrite_SO1,
       ChipBiasAddrSelect_SBO => testAERDVSSM_0_ChipBiasAddrSelect_SBO,
       ChipBiasBitIn_DO => testAERDVSSM_0_ChipBiasBitIn_DO,
       ChipBiasClock_CBO => testAERDVSSM_0_ChipBiasClock_CBO,
@@ -4279,9 +4456,11 @@ usb_cdc_core_0: component brd_usb_cdc_core_0_0
       enable_i => xlconstant_1_dout(0),
       ep0_rx_setup_w_do => usb_cdc_core_0_ep0_rx_setup_w_do,
       ep0_rx_valid_w_do => NLW_usb_cdc_core_0_ep0_rx_valid_w_do_UNCONNECTED,
-      inport_accept_o => NLW_usb_cdc_core_0_inport_accept_o_UNCONNECTED,
-      inport_data_i(7 downto 0) => xlslice_4_Dout(7 downto 0),
-      inport_valid_i => util_vector_logic_1_Res(0),
+      ep2_tx_data_valid_w_do => ep2_tx_data_valid_w_do,
+      ep2_tx_data_w_do(7 downto 0) => ep2_tx_data_w_do(7 downto 0),
+      inport_accept_o => usb_cdc_core_0_inport_accept_o1,
+      inport_data_i(7 downto 0) => fifo_generator_0_dout(7 downto 0),
+      inport_valid_i => c_addsub_as_invert_and_delay_S(0),
       outport_accept_i => xlconstant_1_dout(0),
       outport_data_o(7 downto 0) => usb_cdc_core_0_outport_data_o(7 downto 0),
       outport_valid_o => usb_cdc_core_0_outport_valid_o,
@@ -4297,17 +4476,18 @@ usb_cdc_core_0: component brd_usb_cdc_core_0_0
       setup_valid_conter_q_o(15 downto 0) => NLW_usb_cdc_core_0_setup_valid_conter_q_o_UNCONNECTED(15 downto 0),
       setup_valid_q_do => setup_valid_q_do,
       setup_wr_idx_q_do(2 downto 0) => NLW_usb_cdc_core_0_setup_wr_idx_q_do_UNCONNECTED(2 downto 0),
-      sie_tx_state_q_o(2 downto 0) => NLW_usb_cdc_core_0_sie_tx_state_q_o_UNCONNECTED(2 downto 0),
-      state_r_do(2 downto 0) => NLW_usb_cdc_core_0_state_r_do_UNCONNECTED(2 downto 0),
+      sie_tx_state_q_o(2 downto 0) => sie_tx_state_q_o(2 downto 0),
+      state_r_do(2 downto 0) => state_r_do(2 downto 0),
       status_stage_w_do => status_stage_w_do,
       token_dev_w_do(6 downto 0) => NLW_usb_cdc_core_0_token_dev_w_do_UNCONNECTED(6 downto 0),
       token_ep_w_do(3 downto 0) => NLW_usb_cdc_core_0_token_ep_w_do_UNCONNECTED(3 downto 0),
       token_valid_cnt_q_do(31 downto 0) => NLW_usb_cdc_core_0_token_valid_cnt_q_do_UNCONNECTED(31 downto 0),
       token_valid_counter_q_do(7 downto 0) => NLW_usb_cdc_core_0_token_valid_counter_q_do_UNCONNECTED(7 downto 0),
       token_valid_w_do => token_valid_w_do,
-      usb_reset_counter_q_do(7 downto 0) => NLW_usb_cdc_core_0_usb_reset_counter_q_do_UNCONNECTED(7 downto 0),
+      tx_sent_data_counter_o(15 downto 0) => tx_sent_data_counter_o(15 downto 0),
+      usb_reset_counter_q_do(7 downto 0) => usb_reset_counter_q_do(7 downto 0),
       usb_reset_w_do => usb_reset_w_do,
-      usb_rst_time_do(31 downto 0) => NLW_usb_cdc_core_0_usb_rst_time_do_UNCONNECTED(31 downto 0),
+      usb_rst_time_do(31 downto 0) => usb_rst_time_do(31 downto 0),
       usbf_ep_data_bit_r_do => usbf_ep_data_bit_r_do,
       usbf_new_data_bit_r_do => usbf_new_data_bit_r_do,
       usbf_state_q_do(2 downto 0) => usbf_state_q_do(2 downto 0),
@@ -4334,10 +4514,17 @@ util_vector_logic_0: component brd_util_vector_logic_0_0
       Op1(0) => xlconstant_1_dout(0),
       Res(0) => util_vector_logic_0_Res(0)
     );
-util_vector_logic_1: component brd_util_vector_logic_1_0
+util_vector_logic_2: component brd_util_vector_logic_2_1
      port map (
-      Op1(0) => c_counter_binary_0_Q1(0),
-      Res(0) => util_vector_logic_1_Res(0)
+      Op1(0) => xlslice_5_Dout(0),
+      Op2(0) => xlconstant_ONE_dout(0),
+      Res(0) => util_vector_logic_2_Res(0)
+    );
+util_vector_logic_3: component brd_util_vector_logic_3_0
+     port map (
+      Op1(0) => util_vector_logic_2_Res(0),
+      Op2(0) => usb_cdc_core_0_inport_accept_o1,
+      Res(0) => NLW_util_vector_logic_3_Res_UNCONNECTED(0)
     );
 v_axi4s_vid_out_0: component brd_v_axi4s_vid_out_0_0
      port map (
@@ -4395,6 +4582,10 @@ xlconstant_0: component brd_xlconstant_0_0
      port map (
       dout(2 downto 0) => xlconstant_0_dout(2 downto 0)
     );
+xlconstant_ONE: component brd_xlconstant_1_0
+     port map (
+      dout(0) => xlconstant_ONE_dout(0)
+    );
 xlslice_0: component brd_xlslice_0_0
      port map (
       Din(31 downto 0) => axi_gpio_0_gpio_io_o(31 downto 0),
@@ -4418,6 +4609,11 @@ xlslice_3: component brd_xlslice_2_1
 xlslice_4: component brd_xlslice_3_0
      port map (
       Din(31 downto 0) => axi_gpio_0_gpio_io_o(31 downto 0),
-      Dout(7 downto 0) => xlslice_4_Dout(7 downto 0)
+      Dout(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO(15 downto 0)
+    );
+xlslice_5: component brd_xlslice_5_0
+     port map (
+      Din(12 downto 0) => wr_data_count(12 downto 0),
+      Dout(0) => xlslice_5_Dout(0)
     );
 end STRUCTURE;

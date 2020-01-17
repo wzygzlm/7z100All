@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
 // Date        : Tue Jan 14 18:15:51 2020
 // Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_proc_sys_reset_0_0/brd_proc_sys_reset_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top brd_proc_sys_reset_0_0 -prefix
+//               brd_proc_sys_reset_0_0_ brd_proc_sys_reset_0_0_stub.v
 // Design      : brd_proc_sys_reset_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z100ffg900-1

@@ -59,12 +59,12 @@ module brd_xlslice_3_0 (
 );
 
 input wire [31 : 0] Din;
-output wire [7 : 0] Dout;
+output wire [15 : 0] Dout;
 
   xlslice_v1_0_1_xlslice #(
     .DIN_WIDTH(32),
     .DIN_FROM(31),
-    .DIN_TO(24)
+    .DIN_TO(16)
   ) inst (
     .Din(Din),
     .Dout(Dout)
