@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Fri Jan 17 12:27:35 2020
+// Date        : Fri Jan 17 20:21:44 2020
 // Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_ulpi_wrapper_0_0/brd_ulpi_wrapper_0_0_sim_netlist.v
@@ -21,6 +21,8 @@ module brd_ulpi_wrapper_0_0
     ulpi_dir_i,
     ulpi_nxt_i,
     ulpi_stp_o,
+    sample_clk_i,
+    ulpi_clk_pos_o,
     mode_update_o,
     otg_update_o,
     state_o,
@@ -39,6 +41,9 @@ module brd_ulpi_wrapper_0_0
     turnaround_d,
     tx_wr_idx_q_d,
     tx_rd_idx_q_d,
+    test_for_debug_q_do,
+    ulpi_dir_i_resample_q_do,
+    ulpi_nxt_i_resample_q_do,
     utmi_txvalid_i,
     utmi_txready_o,
     utmi_rxvalid_o,
@@ -58,6 +63,8 @@ module brd_ulpi_wrapper_0_0
   input ulpi_dir_i;
   input ulpi_nxt_i;
   output ulpi_stp_o;
+  input sample_clk_i;
+  output ulpi_clk_pos_o;
   output mode_update_o;
   output otg_update_o;
   output [1:0]state_o;
@@ -76,6 +83,9 @@ module brd_ulpi_wrapper_0_0
   output turnaround_d;
   output tx_wr_idx_q_d;
   output tx_rd_idx_q_d;
+  output test_for_debug_q_do;
+  output ulpi_dir_i_resample_q_do;
+  output ulpi_nxt_i_resample_q_do;
   input utmi_txvalid_i;
   output utmi_txready_o;
   output utmi_rxvalid_o;
@@ -96,12 +106,14 @@ module brd_ulpi_wrapper_0_0
   wire [1:0]opmode_o;
   wire otg_complete_o;
   wire otg_update_o;
+  wire sample_clk_i;
   wire [1:0]state_o;
   wire termselect_o;
   wire turnaround_d;
   wire tx_delay_complete_o;
   wire tx_wr_idx_q_d;
   wire ulpi_clk60_i;
+  wire ulpi_clk_pos_o;
   wire [7:0]ulpi_data_in_o_d;
   (* DRIVE = "12" *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVCMOS33" *) 
   (* SLEW = "SLOW" *) wire [7:0]ulpi_data_io;
@@ -109,7 +121,9 @@ module brd_ulpi_wrapper_0_0
   (* SLEW = "SLOW" *) wire [7:0]ulpi_data_out_i_d;
   (* DRIVE = "12" *) (* IBUF_LOW_PWR *) (* IOSTANDARD = "LVCMOS33" *) 
   (* SLEW = "SLOW" *) wire ulpi_dir_i;
+  wire ulpi_dir_i_resample_q_do;
   wire ulpi_nxt_i;
+  wire ulpi_nxt_i_resample_q_do;
   wire ulpi_rst_i;
   wire ulpi_stp_o;
   wire [7:0]utmi_data_in_o;
@@ -129,6 +143,7 @@ module brd_ulpi_wrapper_0_0
   wire [1:0]utmi_xcvrselect_i;
   wire [1:0]xcvrselect_o;
 
+  assign test_for_debug_q_do = utmi_rxvalid_o;
   assign tx_rd_idx_q_d = tx_wr_idx_q_d;
   assign ulpi_data_dir_d = ulpi_dir_i;
   assign ulpi_reg_read_flag_d = \<const0> ;
@@ -140,6 +155,7 @@ module brd_ulpi_wrapper_0_0
         .opmode_o(opmode_o),
         .otg_complete_o(otg_complete_o),
         .otg_update_o(otg_update_o),
+        .sample_clk_i(sample_clk_i),
         .\state_o[0] (state_o[0]),
         .\state_o[1] (state_o[1]),
         .termselect_o(termselect_o),
@@ -147,11 +163,14 @@ module brd_ulpi_wrapper_0_0
         .tx_delay_complete_o(tx_delay_complete_o),
         .tx_wr_idx_q_d(tx_wr_idx_q_d),
         .ulpi_clk60_i(ulpi_clk60_i),
+        .ulpi_clk_pos_o(ulpi_clk_pos_o),
         .ulpi_data_in_o_d(ulpi_data_in_o_d),
         .ulpi_data_io(ulpi_data_io),
         .ulpi_data_out_i_d(ulpi_data_out_i_d),
         .ulpi_dir_i(ulpi_dir_i),
+        .ulpi_dir_i_resample_q_do(ulpi_dir_i_resample_q_do),
         .ulpi_nxt_i(ulpi_nxt_i),
+        .ulpi_nxt_i_resample_q_do(ulpi_nxt_i_resample_q_do),
         .ulpi_rst_i(ulpi_rst_i),
         .ulpi_stp_o(ulpi_stp_o),
         .utmi_data_in_o(utmi_data_in_o),
@@ -189,6 +208,8 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
     ulpi_stp_o,
     ulpi_data_in_o_d,
     utmi_rxvalid_o,
+    ulpi_dir_i_resample_q_do,
+    ulpi_nxt_i_resample_q_do,
     utmi_data_in_o,
     utmi_linestate_o,
     turnaround_d,
@@ -196,6 +217,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
     mode_complete_o,
     utmi_txready_o,
     tx_delay_complete_o,
+    ulpi_clk_pos_o,
     utmi_rxerror_o,
     ulpi_data_io,
     ulpi_dir_i,
@@ -208,6 +230,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
     utmi_op_mode_i,
     utmi_dmpulldown_i,
     utmi_dppulldown_i,
+    sample_clk_i,
     utmi_data_out_i);
   output \state_o[0] ;
   output \state_o[1] ;
@@ -224,6 +247,8 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
   output ulpi_stp_o;
   output [7:0]ulpi_data_in_o_d;
   output utmi_rxvalid_o;
+  output ulpi_dir_i_resample_q_do;
+  output ulpi_nxt_i_resample_q_do;
   output [7:0]utmi_data_in_o;
   output [1:0]utmi_linestate_o;
   output turnaround_d;
@@ -231,6 +256,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
   output mode_complete_o;
   output utmi_txready_o;
   output tx_delay_complete_o;
+  output ulpi_clk_pos_o;
   output utmi_rxerror_o;
   inout [7:0]ulpi_data_io;
   input ulpi_dir_i;
@@ -243,6 +269,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
   input [1:0]utmi_op_mode_i;
   input utmi_dmpulldown_i;
   input utmi_dppulldown_i;
+  input sample_clk_i;
   input [7:0]utmi_data_out_i;
 
   wire [5:0]data_q;
@@ -274,6 +301,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
   wire otg_write_q_reg_n_0;
   wire phy_reset_q;
   wire phy_reset_q_i_1_n_0;
+  wire sample_clk_i;
   wire \state_o[0] ;
   wire \state_o[1] ;
   wire \state_q[0]_i_1_n_0 ;
@@ -305,6 +333,8 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
   wire tx_wr_idx_q_i_1_n_0;
   wire tx_wr_idx_q_i_2_n_0;
   wire ulpi_clk60_i;
+  wire ulpi_clk_pos_o;
+  wire ulpi_clk_q;
   wire [7:0]ulpi_data_in_o_d;
   wire [7:0]ulpi_data_io;
   wire [7:0]ulpi_data_out_i_d;
@@ -343,8 +373,10 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
   wire \ulpi_data_q_reg_n_0_[6] ;
   wire \ulpi_data_q_reg_n_0_[7] ;
   wire ulpi_dir_i;
+  wire ulpi_dir_i_resample_q_do;
   wire ulpi_dir_q;
   wire ulpi_nxt_i;
+  wire ulpi_nxt_i_resample_q_do;
   wire ulpi_rst_i;
   wire ulpi_stp_o;
   wire ulpi_stp_q13_out;
@@ -420,7 +452,6 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .IO(ulpi_data_io[7]),
         .O(ulpi_data_out_i_d[7]),
         .T(ulpi_dir_i));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \data_q[0]_i_1 
@@ -450,14 +481,14 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
        (.I0(opmode_o[0]),
         .I1(mode_update_o),
         .O(data_q[3]));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \data_q[4]_i_1 
        (.I0(opmode_o[1]),
         .I1(mode_update_o),
         .O(data_q[4]));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \data_q[5]_i_1 
@@ -528,7 +559,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .D(utmi_dppulldown_i),
         .PRE(ulpi_rst_i),
         .Q(dppulldown_q));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
     .INIT(32'h00008000)) 
     mode_complete_o_INST_0
@@ -547,7 +578,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I3(ulpi_dir_i),
         .I4(mode_update_q_i_3_n_0),
         .O(mode_update_q_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT3 #(
     .INIT(8'h80)) 
     mode_update_q_i_2
@@ -608,7 +639,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .D(utmi_op_mode_i[1]),
         .PRE(ulpi_rst_i),
         .Q(opmode_o[1]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'h00008000)) 
     otg_complete_o_INST_0
@@ -695,7 +726,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I4(ulpi_data_q),
         .I5(\state_o[0] ),
         .O(\state_q[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT3 #(
     .INIT(8'h9D)) 
     \state_q[0]_i_2 
@@ -703,7 +734,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I1(ulpi_dir_i),
         .I2(ulpi_nxt_i),
         .O(\state_q[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'hFCFD)) 
     \state_q[0]_i_3 
@@ -722,7 +753,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I4(ulpi_data_q),
         .I5(\state_o[1] ),
         .O(\state_q[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'h0302FFFF)) 
     \state_q[1]_i_2 
@@ -750,7 +781,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .CLR(ulpi_rst_i),
         .D(utmi_termselect_i),
         .Q(termselect_o));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h6)) 
     turnaround_d_INST_0
@@ -1000,6 +1031,18 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .CLR(ulpi_rst_i),
         .D(tx_wr_idx_q_i_1_n_0),
         .Q(tx_wr_idx_q_d));
+  LUT2 #(
+    .INIT(4'h6)) 
+    ulpi_clk_pos_o_INST_0
+       (.I0(ulpi_clk60_i),
+        .I1(ulpi_clk_q),
+        .O(ulpi_clk_pos_o));
+  FDCE ulpi_clk_q_reg
+       (.C(sample_clk_i),
+        .CE(1'b1),
+        .CLR(ulpi_rst_i),
+        .D(ulpi_clk60_i),
+        .Q(ulpi_clk_q));
   LUT6 #(
     .INIT(64'hA8A8A8080808A808)) 
     \ulpi_data_q[0]_rep_i_1 
@@ -1080,7 +1123,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I4(\data_q_reg_n_0_[3] ),
         .I5(\ulpi_data_q[3]_rep_i_5_n_0 ),
         .O(\ulpi_data_q[3]_rep_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT3 #(
     .INIT(8'hEF)) 
     \ulpi_data_q[3]_rep_i_2 
@@ -1098,7 +1141,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I4(\tx_valid_q_reg_n_0_[1] ),
         .I5(\tx_valid_q_reg_n_0_[0] ),
         .O(\ulpi_data_q[3]_rep_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'hDF)) 
     \ulpi_data_q[3]_rep_i_4 
@@ -1106,7 +1149,6 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I1(\state_o[1] ),
         .I2(ulpi_nxt_i),
         .O(\ulpi_data_q[3]_rep_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \ulpi_data_q[3]_rep_i_5 
@@ -1173,7 +1215,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I3(\tx_valid_q_reg_n_0_[0] ),
         .I4(\tx_valid_q_reg_n_0_[1] ),
         .O(\ulpi_data_q[6]_rep_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h0E020202)) 
     \ulpi_data_q[6]_rep_i_3 
@@ -1203,7 +1245,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I4(\ulpi_data_q[7]_rep_i_7_n_0 ),
         .I5(\state_q[0]_i_3_n_0 ),
         .O(\ulpi_data_q[7]_rep_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT5 #(
     .INIT(32'hFF0FFF11)) 
     \ulpi_data_q[7]_rep_i_3 
@@ -1369,12 +1411,24 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .CLR(ulpi_rst_i),
         .D(\ulpi_data_q[7]_rep_i_2_n_0 ),
         .Q(ulpi_data_in_o_d[7]));
+  FDRE ulpi_dir_i_resample_q_reg
+       (.C(sample_clk_i),
+        .CE(1'b1),
+        .D(ulpi_dir_i),
+        .Q(ulpi_dir_i_resample_q_do),
+        .R(1'b0));
   FDCE ulpi_dir_q_reg
        (.C(ulpi_clk60_i),
         .CE(1'b1),
         .CLR(ulpi_rst_i),
         .D(ulpi_dir_i),
         .Q(ulpi_dir_q));
+  FDRE ulpi_nxt_i_resample_q_reg
+       (.C(sample_clk_i),
+        .CE(1'b1),
+        .D(ulpi_nxt_i),
+        .Q(ulpi_nxt_i_resample_q_do),
+        .R(1'b0));
   LUT6 #(
     .INIT(64'h000000000000D000)) 
     ulpi_stp_q_i_1
@@ -1440,7 +1494,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .CLR(ulpi_rst_i),
         .D(ulpi_data_out_i_d[7]),
         .Q(utmi_data_in_o[7]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
     .INIT(32'hFFBF0080)) 
     \utmi_linestate_q[0]_i_1 
@@ -1450,7 +1504,7 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I3(ulpi_nxt_i),
         .I4(utmi_linestate_o[0]),
         .O(\utmi_linestate_q[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'hFFBF0080)) 
     \utmi_linestate_q[1]_i_1 
@@ -1527,14 +1581,14 @@ module brd_ulpi_wrapper_0_0_ulpi_wrapper
         .I4(ulpi_dir_q),
         .I5(utmi_tx_accept_o_INST_0_i_2_n_0),
         .O(utmi_tx_accept_o));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
     .INIT(4'h8)) 
     utmi_tx_accept_o_INST_0_i_1
        (.I0(ulpi_nxt_i),
         .I1(\state_o[1] ),
         .O(utmi_tx_accept_o_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT3 #(
     .INIT(8'h01)) 
     utmi_tx_accept_o_INST_0_i_2

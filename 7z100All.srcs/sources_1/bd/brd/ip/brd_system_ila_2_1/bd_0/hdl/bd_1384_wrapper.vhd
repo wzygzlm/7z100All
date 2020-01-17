@@ -71,6 +71,12 @@ entity bd_1384_wrapper is
     probe60 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe61 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe63 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe64 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe65 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe66 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe67 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe68 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -143,7 +149,13 @@ architecture STRUCTURE of bd_1384_wrapper is
     probe59 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe60 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe61 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe63 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe64 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe65 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe66 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe67 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe68 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component bd_1384;
 begin
@@ -210,6 +222,12 @@ bd_1384_i: component bd_1384
       probe60(7 downto 0) => probe60(7 downto 0),
       probe61(15 downto 0) => probe61(15 downto 0),
       probe62(7 downto 0) => probe62(7 downto 0),
+      probe63(2 downto 0) => probe63(2 downto 0),
+      probe64(7 downto 0) => probe64(7 downto 0),
+      probe65(15 downto 0) => probe65(15 downto 0),
+      probe66(0) => probe66(0),
+      probe67(0) => probe67(0),
+      probe68(0) => probe68(0),
       probe7(0) => probe7(0),
       probe8(7 downto 0) => probe8(7 downto 0),
       probe9(0) => probe9(0)

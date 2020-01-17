@@ -221,6 +221,12 @@ proc create_root_design { parentCell } {
   set probe60 [ create_bd_port -dir I -from 7 -to 0 probe60 ]
   set probe61 [ create_bd_port -dir I -from 15 -to 0 probe61 ]
   set probe62 [ create_bd_port -dir I -from 7 -to 0 probe62 ]
+  set probe63 [ create_bd_port -dir I -from 2 -to 0 probe63 ]
+  set probe64 [ create_bd_port -dir I -from 7 -to 0 probe64 ]
+  set probe65 [ create_bd_port -dir I -from 15 -to 0 probe65 ]
+  set probe66 [ create_bd_port -dir I -from 0 -to 0 probe66 ]
+  set probe67 [ create_bd_port -dir I -from 0 -to 0 probe67 ]
+  set probe68 [ create_bd_port -dir I -from 0 -to 0 probe68 ]
 
   # Create instance: ila_lib, and set properties
   set ila_lib [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_lib ]
@@ -234,7 +240,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ILA_CLK_FREQ {100000000} \
    CONFIG.C_INPUT_PIPE_STAGES {0} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {63} \
+   CONFIG.C_NUM_OF_PROBES {69} \
    CONFIG.C_PROBE0_MU_CNT {1} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE0_WIDTH {2} \
@@ -412,6 +418,24 @@ proc create_root_design { parentCell } {
    CONFIG.C_PROBE62_MU_CNT {1} \
    CONFIG.C_PROBE62_TYPE {0} \
    CONFIG.C_PROBE62_WIDTH {8} \
+   CONFIG.C_PROBE63_MU_CNT {1} \
+   CONFIG.C_PROBE63_TYPE {0} \
+   CONFIG.C_PROBE63_WIDTH {3} \
+   CONFIG.C_PROBE64_MU_CNT {1} \
+   CONFIG.C_PROBE64_TYPE {0} \
+   CONFIG.C_PROBE64_WIDTH {8} \
+   CONFIG.C_PROBE65_MU_CNT {1} \
+   CONFIG.C_PROBE65_TYPE {0} \
+   CONFIG.C_PROBE65_WIDTH {16} \
+   CONFIG.C_PROBE66_MU_CNT {1} \
+   CONFIG.C_PROBE66_TYPE {0} \
+   CONFIG.C_PROBE66_WIDTH {1} \
+   CONFIG.C_PROBE67_MU_CNT {1} \
+   CONFIG.C_PROBE67_TYPE {0} \
+   CONFIG.C_PROBE67_WIDTH {1} \
+   CONFIG.C_PROBE68_MU_CNT {1} \
+   CONFIG.C_PROBE68_TYPE {0} \
+   CONFIG.C_PROBE68_WIDTH {1} \
    CONFIG.C_PROBE6_MU_CNT {1} \
    CONFIG.C_PROBE6_TYPE {0} \
    CONFIG.C_PROBE6_WIDTH {48} \
@@ -491,6 +515,12 @@ proc create_root_design { parentCell } {
   connect_bd_net -net probe60_1 [get_bd_ports probe60] [get_bd_pins ila_lib/probe60]
   connect_bd_net -net probe61_1 [get_bd_ports probe61] [get_bd_pins ila_lib/probe61]
   connect_bd_net -net probe62_1 [get_bd_ports probe62] [get_bd_pins ila_lib/probe62]
+  connect_bd_net -net probe63_1 [get_bd_ports probe63] [get_bd_pins ila_lib/probe63]
+  connect_bd_net -net probe64_1 [get_bd_ports probe64] [get_bd_pins ila_lib/probe64]
+  connect_bd_net -net probe65_1 [get_bd_ports probe65] [get_bd_pins ila_lib/probe65]
+  connect_bd_net -net probe66_1 [get_bd_ports probe66] [get_bd_pins ila_lib/probe66]
+  connect_bd_net -net probe67_1 [get_bd_ports probe67] [get_bd_pins ila_lib/probe67]
+  connect_bd_net -net probe68_1 [get_bd_ports probe68] [get_bd_pins ila_lib/probe68]
   connect_bd_net -net probe6_1 [get_bd_ports probe6] [get_bd_pins ila_lib/probe6]
   connect_bd_net -net probe7_1 [get_bd_ports probe7] [get_bd_pins ila_lib/probe7]
   connect_bd_net -net probe8_1 [get_bd_ports probe8] [get_bd_pins ila_lib/probe8]

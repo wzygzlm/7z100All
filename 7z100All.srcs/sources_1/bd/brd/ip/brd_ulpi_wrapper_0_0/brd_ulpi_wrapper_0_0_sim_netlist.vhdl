@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Jan 17 12:27:35 2020
+-- Date        : Fri Jan 17 20:21:44 2020
 -- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_ulpi_wrapper_0_0/brd_ulpi_wrapper_0_0_sim_netlist.vhdl
@@ -31,6 +31,8 @@ entity brd_ulpi_wrapper_0_0_ulpi_wrapper is
     ulpi_stp_o : out STD_LOGIC;
     ulpi_data_in_o_d : out STD_LOGIC_VECTOR ( 7 downto 0 );
     utmi_rxvalid_o : out STD_LOGIC;
+    ulpi_dir_i_resample_q_do : out STD_LOGIC;
+    ulpi_nxt_i_resample_q_do : out STD_LOGIC;
     utmi_data_in_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
     utmi_linestate_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
     turnaround_d : out STD_LOGIC;
@@ -38,6 +40,7 @@ entity brd_ulpi_wrapper_0_0_ulpi_wrapper is
     mode_complete_o : out STD_LOGIC;
     utmi_txready_o : out STD_LOGIC;
     tx_delay_complete_o : out STD_LOGIC;
+    ulpi_clk_pos_o : out STD_LOGIC;
     utmi_rxerror_o : out STD_LOGIC;
     ulpi_data_io : inout STD_LOGIC_VECTOR ( 7 downto 0 );
     ulpi_dir_i : in STD_LOGIC;
@@ -50,6 +53,7 @@ entity brd_ulpi_wrapper_0_0_ulpi_wrapper is
     utmi_op_mode_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
     utmi_dmpulldown_i : in STD_LOGIC;
     utmi_dppulldown_i : in STD_LOGIC;
+    sample_clk_i : in STD_LOGIC;
     utmi_data_out_i : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -112,6 +116,7 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   signal \^tx_wr_idx_q_d\ : STD_LOGIC;
   signal tx_wr_idx_q_i_1_n_0 : STD_LOGIC;
   signal tx_wr_idx_q_i_2_n_0 : STD_LOGIC;
+  signal ulpi_clk_q : STD_LOGIC;
   signal \^ulpi_data_out_i_d\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal ulpi_data_q : STD_LOGIC;
   signal \ulpi_data_q[0]_rep_i_1_n_0\ : STD_LOGIC;
@@ -172,30 +177,28 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   attribute BOX_TYPE of \ULPIBUS[6].IOBUF_inst\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \ULPIBUS[7].IOBUF_inst\ : label is "PRIMITIVE";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \data_q[0]_i_1\ : label is "soft_lutpair14";
   attribute SOFT_HLUTNM of \data_q[1]_i_1\ : label is "soft_lutpair12";
   attribute SOFT_HLUTNM of \data_q[2]_i_1\ : label is "soft_lutpair11";
   attribute SOFT_HLUTNM of \data_q[3]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \data_q[4]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \data_q[5]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of mode_complete_o_INST_0 : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of mode_update_q_i_2 : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of otg_complete_o_INST_0 : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \state_q[0]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \state_q[0]_i_3\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \state_q[1]_i_2\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of turnaround_d_INST_0 : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \data_q[4]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \data_q[5]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of mode_complete_o_INST_0 : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of mode_update_q_i_2 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of otg_complete_o_INST_0 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \state_q[0]_i_2\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \state_q[0]_i_3\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \state_q[1]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of turnaround_d_INST_0 : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of tx_delay_complete_o_INST_0 : label is "soft_lutpair10";
   attribute SOFT_HLUTNM of \tx_delay_q[0]_i_1\ : label is "soft_lutpair10";
   attribute SOFT_HLUTNM of \tx_delay_q[1]_i_1\ : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of \tx_delay_q[2]_i_1\ : label is "soft_lutpair9";
   attribute SOFT_HLUTNM of \tx_valid_q[0]_i_2\ : label is "soft_lutpair8";
   attribute SOFT_HLUTNM of tx_wr_idx_q_i_1 : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \ulpi_data_q[3]_rep_i_2\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \ulpi_data_q[3]_rep_i_4\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \ulpi_data_q[3]_rep_i_5\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \ulpi_data_q[6]_rep_i_3\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \ulpi_data_q[7]_rep_i_3\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \ulpi_data_q[3]_rep_i_2\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \ulpi_data_q[3]_rep_i_4\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \ulpi_data_q[6]_rep_i_3\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \ulpi_data_q[7]_rep_i_3\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \ulpi_data_q[7]_rep_i_7\ : label is "soft_lutpair5";
   attribute ORIG_CELL_NAME : string;
   attribute ORIG_CELL_NAME of \ulpi_data_q_reg[0]\ : label is "ulpi_data_q_reg[0]";
@@ -224,10 +227,10 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   attribute IOB of \ulpi_data_q_reg[7]_rep\ : label is "TRUE";
   attribute ORIG_CELL_NAME of \ulpi_data_q_reg[7]_rep\ : label is "ulpi_data_q_reg[7]";
   attribute IOB of ulpi_stp_q_reg : label is "TRUE";
-  attribute SOFT_HLUTNM of \utmi_linestate_q[0]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \utmi_linestate_q[1]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of utmi_tx_accept_o_INST_0_i_1 : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of utmi_tx_accept_o_INST_0_i_2 : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \utmi_linestate_q[0]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \utmi_linestate_q[1]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of utmi_tx_accept_o_INST_0_i_1 : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of utmi_tx_accept_o_INST_0_i_2 : label is "soft_lutpair11";
   attribute SOFT_HLUTNM of utmi_tx_ready_o_INST_0 : label is "soft_lutpair5";
 begin
   mode_update_o <= \^mode_update_o\;
@@ -1056,6 +1059,23 @@ tx_wr_idx_q_reg: unisim.vcomponents.FDCE
       D => tx_wr_idx_q_i_1_n_0,
       Q => \^tx_wr_idx_q_d\
     );
+ulpi_clk_pos_o_INST_0: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => ulpi_clk60_i,
+      I1 => ulpi_clk_q,
+      O => ulpi_clk_pos_o
+    );
+ulpi_clk_q_reg: unisim.vcomponents.FDCE
+     port map (
+      C => sample_clk_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => ulpi_clk60_i,
+      Q => ulpi_clk_q
+    );
 \ulpi_data_q[0]_rep_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"A8A8A8080808A808"
@@ -1505,6 +1525,14 @@ tx_wr_idx_q_reg: unisim.vcomponents.FDCE
       D => \ulpi_data_q[7]_rep_i_2_n_0\,
       Q => ulpi_data_in_o_d(7)
     );
+ulpi_dir_i_resample_q_reg: unisim.vcomponents.FDRE
+     port map (
+      C => sample_clk_i,
+      CE => '1',
+      D => ulpi_dir_i,
+      Q => ulpi_dir_i_resample_q_do,
+      R => '0'
+    );
 ulpi_dir_q_reg: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
@@ -1512,6 +1540,14 @@ ulpi_dir_q_reg: unisim.vcomponents.FDCE
       CLR => ulpi_rst_i,
       D => ulpi_dir_i,
       Q => ulpi_dir_q
+    );
+ulpi_nxt_i_resample_q_reg: unisim.vcomponents.FDRE
+     port map (
+      C => sample_clk_i,
+      CE => '1',
+      D => ulpi_nxt_i,
+      Q => ulpi_nxt_i_resample_q_do,
+      R => '0'
     );
 ulpi_stp_q_i_1: unisim.vcomponents.LUT6
     generic map(
@@ -1782,6 +1818,8 @@ entity brd_ulpi_wrapper_0_0 is
     ulpi_dir_i : in STD_LOGIC;
     ulpi_nxt_i : in STD_LOGIC;
     ulpi_stp_o : out STD_LOGIC;
+    sample_clk_i : in STD_LOGIC;
+    ulpi_clk_pos_o : out STD_LOGIC;
     mode_update_o : out STD_LOGIC;
     otg_update_o : out STD_LOGIC;
     state_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -1800,6 +1838,9 @@ entity brd_ulpi_wrapper_0_0 is
     turnaround_d : out STD_LOGIC;
     tx_wr_idx_q_d : out STD_LOGIC;
     tx_rd_idx_q_d : out STD_LOGIC;
+    test_for_debug_q_do : out STD_LOGIC;
+    ulpi_dir_i_resample_q_do : out STD_LOGIC;
+    ulpi_nxt_i_resample_q_do : out STD_LOGIC;
     utmi_txvalid_i : in STD_LOGIC;
     utmi_txready_o : out STD_LOGIC;
     utmi_rxvalid_o : out STD_LOGIC;
@@ -1836,12 +1877,15 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0 is
   attribute IOSTANDARD of ulpi_dir_i : signal is "LVCMOS33";
   attribute SLEW : string;
   attribute SLEW of ulpi_dir_i : signal is "SLOW";
+  signal \^utmi_rxvalid_o\ : STD_LOGIC;
 begin
   \^ulpi_dir_i\ <= ulpi_dir_i;
+  test_for_debug_q_do <= \^utmi_rxvalid_o\;
   tx_rd_idx_q_d <= \^tx_wr_idx_q_d\;
   tx_wr_idx_q_d <= \^tx_wr_idx_q_d\;
   ulpi_data_dir_d <= \^ulpi_dir_i\;
   ulpi_reg_read_flag_d <= \<const0>\;
+  utmi_rxvalid_o <= \^utmi_rxvalid_o\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -1853,6 +1897,7 @@ U0: entity work.brd_ulpi_wrapper_0_0_ulpi_wrapper
       opmode_o(1 downto 0) => opmode_o(1 downto 0),
       otg_complete_o => otg_complete_o,
       otg_update_o => otg_update_o,
+      sample_clk_i => sample_clk_i,
       \state_o[0]\ => state_o(0),
       \state_o[1]\ => state_o(1),
       termselect_o => termselect_o,
@@ -1860,11 +1905,14 @@ U0: entity work.brd_ulpi_wrapper_0_0_ulpi_wrapper
       tx_delay_complete_o => tx_delay_complete_o,
       tx_wr_idx_q_d => \^tx_wr_idx_q_d\,
       ulpi_clk60_i => ulpi_clk60_i,
+      ulpi_clk_pos_o => ulpi_clk_pos_o,
       ulpi_data_in_o_d(7 downto 0) => ulpi_data_in_o_d(7 downto 0),
       ulpi_data_io(7 downto 0) => ulpi_data_io(7 downto 0),
       ulpi_data_out_i_d(7 downto 0) => ulpi_data_out_i_d(7 downto 0),
       ulpi_dir_i => \^ulpi_dir_i\,
+      ulpi_dir_i_resample_q_do => ulpi_dir_i_resample_q_do,
       ulpi_nxt_i => ulpi_nxt_i,
+      ulpi_nxt_i_resample_q_do => ulpi_nxt_i_resample_q_do,
       ulpi_rst_i => ulpi_rst_i,
       ulpi_stp_o => ulpi_stp_o,
       utmi_data_in_o(7 downto 0) => utmi_data_in_o(7 downto 0),
@@ -1875,7 +1923,7 @@ U0: entity work.brd_ulpi_wrapper_0_0_ulpi_wrapper
       utmi_op_mode_i(1 downto 0) => utmi_op_mode_i(1 downto 0),
       utmi_rxactive_o => utmi_rxactive_o,
       utmi_rxerror_o => utmi_rxerror_o,
-      utmi_rxvalid_o => utmi_rxvalid_o,
+      utmi_rxvalid_o => \^utmi_rxvalid_o\,
       utmi_termselect_i => utmi_termselect_i,
       utmi_tx_accept_o => utmi_tx_accept_o,
       utmi_tx_ready_o => utmi_tx_ready_o,
