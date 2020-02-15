@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Thu Jan 16 18:01:23 2020
--- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top brd_fifo_generator_0_0 -prefix
---               brd_fifo_generator_0_0_ brd_fifo_generator_0_0_sim_netlist.vhdl
+-- Date        : Sat Feb  8 12:49:46 2020
+-- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               G:/github_prjs/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_0_0/brd_fifo_generator_0_0_sim_netlist.vhdl
 -- Design      : brd_fifo_generator_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -25,6 +25,8 @@ entity brd_fifo_generator_0_0_xpm_cdc_gray is
   attribute DEST_SYNC_FF of brd_fifo_generator_0_0_xpm_cdc_gray : entity is 2;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of brd_fifo_generator_0_0_xpm_cdc_gray : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_xpm_cdc_gray : entity is "xpm_cdc_gray";
   attribute REG_OUTPUT : integer;
   attribute REG_OUTPUT of brd_fifo_generator_0_0_xpm_cdc_gray : entity is 1;
   attribute SIM_ASSERT_CHK : integer;
@@ -1881,6 +1883,8 @@ entity brd_fifo_generator_0_0_xpm_cdc_single is
   attribute DEST_SYNC_FF of brd_fifo_generator_0_0_xpm_cdc_single : entity is 5;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of brd_fifo_generator_0_0_xpm_cdc_single : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of brd_fifo_generator_0_0_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -2074,6 +2078,8 @@ entity brd_fifo_generator_0_0_xpm_cdc_sync_rst is
   attribute INIT of brd_fifo_generator_0_0_xpm_cdc_sync_rst : entity is "1";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of brd_fifo_generator_0_0_xpm_cdc_sync_rst : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_xpm_cdc_sync_rst : entity is "xpm_cdc_sync_rst";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of brd_fifo_generator_0_0_xpm_cdc_sync_rst : entity is 0;
   attribute VERSION : integer;
@@ -2992,6 +2998,8 @@ entity brd_fifo_generator_0_0_blk_mem_gen_prim_wrapper is
     din : in STD_LOGIC_VECTOR ( 15 downto 0 );
     p_20_out : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end brd_fifo_generator_0_0_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_blk_mem_gen_prim_wrapper is
@@ -7161,6 +7169,8 @@ entity brd_fifo_generator_0_0_compare is
     \out\ : in STD_LOGIC;
     comp1 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_compare : entity is "compare";
 end brd_fifo_generator_0_0_compare;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_compare is
@@ -7494,6 +7504,8 @@ entity brd_fifo_generator_0_0_rd_bin_cntr is
     ram_empty_fb_i_reg : in STD_LOGIC;
     WR_PNTR_RD : in STD_LOGIC_VECTOR ( 14 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_rd_bin_cntr : entity is "rd_bin_cntr";
 end brd_fifo_generator_0_0_rd_bin_cntr;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_rd_bin_cntr is
@@ -8286,6 +8298,8 @@ entity brd_fifo_generator_0_0_rd_dc_as is
     rd_clk : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_rd_dc_as : entity is "rd_dc_as";
 end brd_fifo_generator_0_0_rd_dc_as;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_rd_dc_as is
@@ -8573,6 +8587,8 @@ entity brd_fifo_generator_0_0_wr_bin_cntr is
     RD_PNTR_WR : in STD_LOGIC_VECTOR ( 14 downto 0 );
     ENA_dly_D : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_wr_bin_cntr : entity is "wr_bin_cntr";
 end brd_fifo_generator_0_0_wr_bin_cntr;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_wr_bin_cntr is
@@ -9736,6 +9752,8 @@ entity brd_fifo_generator_0_0_wr_dc_as is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_wr_rst_ic_reg\ : in STD_LOGIC;
     wr_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_wr_dc_as : entity is "wr_dc_as";
 end brd_fifo_generator_0_0_wr_dc_as;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_wr_dc_as is
@@ -10020,6 +10038,8 @@ entity brd_fifo_generator_0_0_blk_mem_gen_prim_width is
     p_20_out : in STD_LOGIC;
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end brd_fifo_generator_0_0_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_blk_mem_gen_prim_width is
@@ -10822,6 +10842,8 @@ entity brd_fifo_generator_0_0_clk_x_pntrs is
     \gic0.gc1.count_d3_reg[14]\ : in STD_LOGIC_VECTOR ( 14 downto 0 );
     rd_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_clk_x_pntrs : entity is "clk_x_pntrs";
 end brd_fifo_generator_0_0_clk_x_pntrs;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_clk_x_pntrs is
@@ -11333,6 +11355,8 @@ entity brd_fifo_generator_0_0_rd_status_flags_as is
     rd_clk : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_rd_status_flags_as : entity is "rd_status_flags_as";
 end brd_fifo_generator_0_0_rd_status_flags_as;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_rd_status_flags_as is
@@ -11425,6 +11449,8 @@ entity brd_fifo_generator_0_0_reset_blk_ramfifo is
     rd_clk : in STD_LOGIC;
     POR_B : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_reset_blk_ramfifo : entity is "reset_blk_ramfifo";
 end brd_fifo_generator_0_0_reset_blk_ramfifo;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_reset_blk_ramfifo is
@@ -11728,6 +11754,8 @@ entity brd_fifo_generator_0_0_wr_status_flags_as is
     \out\ : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_wr_status_flags_as : entity is "wr_status_flags_as";
 end brd_fifo_generator_0_0_wr_status_flags_as;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_wr_status_flags_as is
@@ -11885,6 +11913,8 @@ entity brd_fifo_generator_0_0_blk_mem_gen_generic_cstr is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end brd_fifo_generator_0_0_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_blk_mem_gen_generic_cstr is
@@ -12165,6 +12195,8 @@ entity brd_fifo_generator_0_0_rd_logic is
     ENB_dly_D : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_rd_logic : entity is "rd_logic";
 end brd_fifo_generator_0_0_rd_logic;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_rd_logic is
@@ -12272,6 +12304,8 @@ entity brd_fifo_generator_0_0_wr_logic is
     \out\ : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_wr_logic : entity is "wr_logic";
 end brd_fifo_generator_0_0_wr_logic;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_wr_logic is
@@ -12435,6 +12469,8 @@ entity brd_fifo_generator_0_0_blk_mem_gen_top is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end brd_fifo_generator_0_0_blk_mem_gen_top;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_blk_mem_gen_top is
@@ -12540,6 +12576,8 @@ entity brd_fifo_generator_0_0_blk_mem_gen_v8_4_1_synth is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_blk_mem_gen_v8_4_1_synth : entity is "blk_mem_gen_v8_4_1_synth";
 end brd_fifo_generator_0_0_blk_mem_gen_v8_4_1_synth;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_blk_mem_gen_v8_4_1_synth is
@@ -12645,6 +12683,8 @@ entity brd_fifo_generator_0_0_blk_mem_gen_v8_4_1 is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_blk_mem_gen_v8_4_1 : entity is "blk_mem_gen_v8_4_1";
 end brd_fifo_generator_0_0_blk_mem_gen_v8_4_1;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_blk_mem_gen_v8_4_1 is
@@ -12750,6 +12790,8 @@ entity brd_fifo_generator_0_0_memory is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : in STD_LOGIC;
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_memory : entity is "memory";
 end brd_fifo_generator_0_0_memory;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_memory is
@@ -12824,6 +12866,8 @@ entity brd_fifo_generator_0_0_fifo_generator_ramfifo is
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end brd_fifo_generator_0_0_fifo_generator_ramfifo;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_fifo_generator_ramfifo is
@@ -13089,6 +13133,8 @@ entity brd_fifo_generator_0_0_fifo_generator_top is
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_fifo_generator_top : entity is "fifo_generator_top";
 end brd_fifo_generator_0_0_fifo_generator_top;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_fifo_generator_top is
@@ -13132,6 +13178,8 @@ entity brd_fifo_generator_0_0_fifo_generator_v13_2_2_synth is
     wr_en : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_fifo_generator_v13_2_2_synth : entity is "fifo_generator_v13_2_2_synth";
 end brd_fifo_generator_0_0_fifo_generator_v13_2_2_synth;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_fifo_generator_v13_2_2_synth is
@@ -13796,6 +13844,8 @@ entity brd_fifo_generator_0_0_fifo_generator_v13_2_2 is
   attribute C_WR_PNTR_WIDTH_WRCH of brd_fifo_generator_0_0_fifo_generator_v13_2_2 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of brd_fifo_generator_0_0_fifo_generator_v13_2_2 : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_fifo_generator_0_0_fifo_generator_v13_2_2 : entity is "fifo_generator_v13_2_2";
 end brd_fifo_generator_0_0_fifo_generator_v13_2_2;
 
 architecture STRUCTURE of brd_fifo_generator_0_0_fifo_generator_v13_2_2 is

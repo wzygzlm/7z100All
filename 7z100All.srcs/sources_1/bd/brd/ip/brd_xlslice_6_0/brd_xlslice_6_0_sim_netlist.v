@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Thu Jan 16 15:32:27 2020
-// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top brd_xlslice_6_0 -prefix
-//               brd_xlslice_6_0_ brd_xlslice_6_0_sim_netlist.v
+// Date        : Sat Feb  8 12:46:41 2020
+// Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim
+//               G:/github_prjs/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_xlslice_6_0/brd_xlslice_6_0_sim_netlist.v
 // Design      : brd_xlslice_6_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

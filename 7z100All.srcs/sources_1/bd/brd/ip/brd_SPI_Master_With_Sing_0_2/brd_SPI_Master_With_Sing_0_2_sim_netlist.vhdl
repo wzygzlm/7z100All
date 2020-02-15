@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Jan 17 20:09:45 2020
--- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+-- Date        : Sat Feb  8 12:39:47 2020
+-- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_SPI_Master_With_Sing_0_2/brd_SPI_Master_With_Sing_0_2_sim_netlist.vhdl
+--               G:/github_prjs/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_SPI_Master_With_Sing_0_2/brd_SPI_Master_With_Sing_0_2_sim_netlist.vhdl
 -- Design      : brd_SPI_Master_With_Sing_0_2
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -3211,7 +3211,7 @@ architecture STRUCTURE of brd_SPI_Master_With_Sing_0_2 is
   attribute x_interface_info : string;
   attribute x_interface_info of i_Clk : signal is "xilinx.com:signal:clock:1.0 i_Clk CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of i_Clk : signal is "XIL_INTERFACENAME i_Clk, FREQ_HZ 40000000, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK1";
+  attribute x_interface_parameter of i_Clk : signal is "XIL_INTERFACENAME i_Clk, FREQ_HZ 100000000, PHASE 0.000";
   attribute x_interface_info of o_SPI_Clk : signal is "xilinx.com:signal:clock:1.0 o_SPI_Clk CLK";
   attribute x_interface_parameter of o_SPI_Clk : signal is "XIL_INTERFACENAME o_SPI_Clk, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN brd_SPI_Master_With_Sing_0_2_o_SPI_Clk";
 begin
