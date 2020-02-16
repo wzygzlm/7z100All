@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="35">
   <CompositeFile CompositeFileTopName="brd" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1579261899"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1579261899"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1579261899"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1579261899"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1581890846"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1581890846"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1581890846"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1581890846"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\brd_LEDShifter_0_0\brd_LEDShifter_0_0.xci" Type="IP">
         <Instance HierarchyPath="LEDShifter_0"/>
@@ -351,6 +351,22 @@
       <File Name="sim\brd.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\brd_c_addsub_as_invert_and_delay_0\brd_c_addsub_as_invert_and_delay_0.xci" Type="IP">
+        <Instance HierarchyPath="c_addsub_as_invert_and_delay1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\brd_util_vector_logic_1_0\brd_util_vector_logic_1_0.xci" Type="IP">
+        <Instance HierarchyPath="util_vector_logic_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\brd_auto_pc_0\brd_auto_pc_0.xci" Type="IP">

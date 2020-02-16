@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jan 17 12:51:39 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Feb 16 23:07:25 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="brd" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -27,14 +27,14 @@
     <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef"/>
     <PORT DIR="I" LEFT="10" NAME="DVSAERData_AI_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_DVSAERData_AI_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="testAERDVSSM_0" PORT="DVSAERData_AI"/>
         <CONNECTION INSTANCE="system_ila_0" PORT="probe2"/>
+        <CONNECTION INSTANCE="testAERDVSSM_0" PORT="DVSAERData_AI"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="DVSAERReq_ABI_0" SIGIS="undef" SIGNAME="External_Ports_DVSAERReq_ABI_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="testAERDVSSM_0" PORT="DVSAERReq_ABI"/>
         <CONNECTION INSTANCE="system_ila_0" PORT="probe3"/>
+        <CONNECTION INSTANCE="testAERDVSSM_0" PORT="DVSAERReq_ABI"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="IMUInterrupt_AI_0" SIGIS="undef" SIGNAME="External_Ports_IMUInterrupt_AI_0">
@@ -147,27 +147,16 @@
         <CONNECTION INSTANCE="v_axi4s_vid_out_0" PORT="vid_vsync"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="ulpi_clk60_i_0" SIGIS="undef" SIGNAME="External_Ports_ulpi_clk60_i_0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_clk60_i"/>
-        <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_Clk"/>
-        <CONNECTION INSTANCE="fifo_generator_0" PORT="rd_clk"/>
-        <CONNECTION INSTANCE="c_addsub_as_invert_and_delay" PORT="CLK"/>
-        <CONNECTION INSTANCE="USBFifoToDVSSPI_0" PORT="clk_i"/>
-        <CONNECTION INSTANCE="usb_cdc_core_0" PORT="clk_i"/>
-        <CONNECTION INSTANCE="system_ila_2" PORT="clk"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="I" NAME="ulpi_dir_i_0" SIGIS="undef" SIGNAME="External_Ports_ulpi_dir_i_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_dir_i"/>
         <CONNECTION INSTANCE="system_ila_2" PORT="probe16"/>
+        <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_dir_i"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="ulpi_nxt_i_0" SIGIS="undef" SIGNAME="External_Ports_ulpi_nxt_i_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_nxt_i"/>
         <CONNECTION INSTANCE="system_ila_2" PORT="probe17"/>
+        <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_nxt_i"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" LEFT="7" NAME="ulpi_data_io_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ulpi_data_io_0">
@@ -178,6 +167,18 @@
     <PORT DIR="O" NAME="ulpi_stp_o_0" SIGIS="undef" SIGNAME="ulpi_wrapper_0_ulpi_stp_o">
       <CONNECTIONS>
         <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_stp_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="ulpi_clk60_i_0" SIGIS="undef" SIGNAME="External_Ports_ulpi_clk60_i_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_clk60_i"/>
+        <CONNECTION INSTANCE="c_addsub_as_invert_and_delay" PORT="CLK"/>
+        <CONNECTION INSTANCE="USBFifoToDVSSPI_0" PORT="clk_i"/>
+        <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_Clk"/>
+        <CONNECTION INSTANCE="fifo_generator_0" PORT="rd_clk"/>
+        <CONNECTION INSTANCE="c_addsub_as_invert_and_delay1" PORT="CLK"/>
+        <CONNECTION INSTANCE="system_ila_2" PORT="clk"/>
+        <CONNECTION INSTANCE="usb_cdc_core_0" PORT="clk_i"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -1486,7 +1487,7 @@
             <CONNECTION INSTANCE="cons_HIGH" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="40000000" DIR="I" NAME="i_Clk" SIGIS="clk" SIGNAME="External_Ports_ulpi_clk60_i_0">
+        <PORT CLKFREQUENCY="60000000" DIR="I" NAME="i_Clk" SIGIS="clk" SIGNAME="External_Ports_ulpi_clk60_i_0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ulpi_clk60_i_0"/>
           </CONNECTIONS>
@@ -1656,14 +1657,14 @@
         </PORT>
         <PORT DIR="O" NAME="outputDataValid_o" SIGIS="undef" SIGNAME="USBFifoToDVSSPI_0_outputDataValid_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_TX_DV"/>
             <CONNECTION INSTANCE="system_ila_2" PORT="probe7"/>
+            <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_TX_DV"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="47" NAME="outputData_o" RIGHT="0" SIGIS="undef" SIGNAME="USBFifoToDVSSPI_0_outputData_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_TX_Byte"/>
             <CONNECTION INSTANCE="system_ila_2" PORT="probe6"/>
+            <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_TX_Byte"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="rxDataComplete_o" SIGIS="undef" SIGNAME="USBFifoToDVSSPI_0_rxDataComplete_o">
@@ -4759,22 +4760,91 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="A" RIGHT="0" SIGIS="data" SIGNAME="util_vector_logic_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_1" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="60000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="External_Ports_ulpi_clk60_i_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ulpi_clk60_i_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S" RIGHT="0" SIGIS="data"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/c_addsub_as_invert_and_delay1" HWVERSION="12.0" INSTANCE="c_addsub_as_invert_and_delay1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="c_addsub" VLNV="xilinx.com:ip:c_addsub:12.0">
+      <DOCUMENTS>
+        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=c_addsub;v=v12_0;d=pg120-c-addsub.pdf"/>
+      </DOCUMENTS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_VERBOSITY" VALUE="0"/>
+        <PARAMETER NAME="C_XDEVICEFAMILY" VALUE="zynq"/>
+        <PARAMETER NAME="C_IMPLEMENTATION" VALUE="0"/>
+        <PARAMETER NAME="C_A_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_B_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_OUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_CE_OVERRIDES_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_A_TYPE" VALUE="1"/>
+        <PARAMETER NAME="C_B_TYPE" VALUE="1"/>
+        <PARAMETER NAME="C_LATENCY" VALUE="1"/>
+        <PARAMETER NAME="C_ADD_MODE" VALUE="0"/>
+        <PARAMETER NAME="C_B_CONSTANT" VALUE="1"/>
+        <PARAMETER NAME="C_B_VALUE" VALUE="1"/>
+        <PARAMETER NAME="C_AINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_SINIT_VAL" VALUE="0"/>
+        <PARAMETER NAME="C_CE_OVERRIDES_BYPASS" VALUE="1"/>
+        <PARAMETER NAME="C_BYPASS_LOW" VALUE="0"/>
+        <PARAMETER NAME="C_SCLR_OVERRIDES_SSET" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_C_IN" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_C_OUT" VALUE="0"/>
+        <PARAMETER NAME="C_BORROW_LOW" VALUE="1"/>
+        <PARAMETER NAME="C_HAS_CE" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_BYPASS" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SCLR" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SSET" VALUE="0"/>
+        <PARAMETER NAME="C_HAS_SINIT" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="brd_c_addsub_as_invert_and_delay_0"/>
+        <PARAMETER NAME="Implementation" VALUE="Fabric"/>
+        <PARAMETER NAME="A_Type" VALUE="Unsigned"/>
+        <PARAMETER NAME="B_Type" VALUE="Unsigned"/>
+        <PARAMETER NAME="A_Width" VALUE="1"/>
+        <PARAMETER NAME="B_Width" VALUE="1"/>
+        <PARAMETER NAME="Add_Mode" VALUE="Add"/>
+        <PARAMETER NAME="Out_Width" VALUE="1"/>
+        <PARAMETER NAME="Latency_Configuration" VALUE="Manual"/>
+        <PARAMETER NAME="Latency" VALUE="1"/>
+        <PARAMETER NAME="B_Constant" VALUE="true"/>
+        <PARAMETER NAME="B_Value" VALUE="1"/>
+        <PARAMETER NAME="CE" VALUE="false"/>
+        <PARAMETER NAME="C_In" VALUE="false"/>
+        <PARAMETER NAME="C_Out" VALUE="false"/>
+        <PARAMETER NAME="Borrow_Sense" VALUE="Active_Low"/>
+        <PARAMETER NAME="SCLR" VALUE="false"/>
+        <PARAMETER NAME="SSET" VALUE="false"/>
+        <PARAMETER NAME="SINIT" VALUE="false"/>
+        <PARAMETER NAME="SINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="Bypass" VALUE="false"/>
+        <PARAMETER NAME="Bypass_Sense" VALUE="Active_High"/>
+        <PARAMETER NAME="Sync_Ctrl_Priority" VALUE="Reset_Overrides_Set"/>
+        <PARAMETER NAME="Sync_CE_Priority" VALUE="Sync_Overrides_CE"/>
+        <PARAMETER NAME="Bypass_CE_Priority" VALUE="CE_Overrides_Bypass"/>
+        <PARAMETER NAME="AINIT_Value" VALUE="0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
         <PORT DIR="I" LEFT="0" NAME="A" RIGHT="0" SIGIS="data" SIGNAME="fifo_generator_0_empty">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fifo_generator_0" PORT="empty"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="External_Ports_ulpi_clk60_i_0">
+        <PORT CLKFREQUENCY="60000000" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="External_Ports_ulpi_clk60_i_0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ulpi_clk60_i_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="S" RIGHT="0" SIGIS="data" SIGNAME="c_addsub_as_invert_and_delay_S">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="system_ila_2" PORT="probe55"/>
-            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="inport_valid_i"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="S" RIGHT="0" SIGIS="data"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -4850,10 +4920,10 @@
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="cons_HIGH_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="LEDShifter_0" PORT="rstn"/>
-            <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_Rst_L"/>
             <CONNECTION INSTANCE="util_vector_logic_0" PORT="Op1"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="eventFIFODataValid_V"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe1"/>
+            <CONNECTION INSTANCE="SPI_Master_With_Sing_0" PORT="i_Rst_L"/>
             <CONNECTION INSTANCE="usb_cdc_core_0" PORT="enable_i"/>
             <CONNECTION INSTANCE="usb_cdc_core_0" PORT="outport_accept_i"/>
           </CONNECTIONS>
@@ -5786,7 +5856,7 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="rd_clk" SIGIS="clk" SIGNAME="External_Ports_ulpi_clk60_i_0">
+        <PORT CLKFREQUENCY="60000000" DIR="I" NAME="rd_clk" SIGIS="clk" SIGNAME="External_Ports_ulpi_clk60_i_0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ulpi_clk60_i_0"/>
           </CONNECTIONS>
@@ -5815,20 +5885,22 @@
         </PORT>
         <PORT DIR="O" NAME="full" SIGIS="undef" SIGNAME="fifo_generator_0_full">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="AERSMFifoFull_AI"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe6"/>
+            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="AERSMFifoFull_AI"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="almost_full" SIGIS="undef" SIGNAME="fifo_generator_0_almost_full">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="AERSMFifoAlmostFull_AI"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe5"/>
+            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="AERSMFifoAlmostFull_AI"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="empty" SIGIS="undef" SIGNAME="fifo_generator_0_empty">
           <CONNECTIONS>
             <CONNECTION INSTANCE="system_ila_2" PORT="probe9"/>
-            <CONNECTION INSTANCE="c_addsub_as_invert_and_delay" PORT="A"/>
+            <CONNECTION INSTANCE="util_vector_logic_1" PORT="Op2"/>
+            <CONNECTION INSTANCE="c_addsub_as_invert_and_delay1" PORT="A"/>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="inport_valid_i"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="rd_data_count" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_0_rd_data_count">
@@ -7326,9 +7398,6 @@
         </PORT>
         <PORT CLKFREQUENCY="99989998" DIR="O" NAME="FCLK_CLK0" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="USBClock_CI"/>
-            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="LogicClk_CI"/>
-            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="ADCClk_CI"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_aclk"/>
@@ -7345,6 +7414,9 @@
             <CONNECTION INSTANCE="system_ila_0" PORT="clk"/>
             <CONNECTION INSTANCE="v_axi4s_vid_out_0" PORT="aclk"/>
             <CONNECTION INSTANCE="fifo_generator_0" PORT="wr_clk"/>
+            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="USBClock_CI"/>
+            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="LogicClk_CI"/>
+            <CONNECTION INSTANCE="testAERDVSSM_0" PORT="ADCClk_CI"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
@@ -12998,7 +13070,7 @@
         <PARAMETER NAME="C_SLOT_15_APC_MAX_WLAST_TO_AWVALID_WAITS" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_15_APC_MAX_WRITE_TO_BVALID_WAITS" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_15_APC_MAX_CONTINUOUS_RTRANSFERS_WAITS" VALUE="0"/>
-        <PARAMETER NAME="C_BRAM_CNT" VALUE="56"/>
+        <PARAMETER NAME="C_BRAM_CNT" VALUE="67"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AW_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_W_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_B_SEL_DATA" VALUE="1"/>
@@ -15319,7 +15391,7 @@
         <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_DATA_DEPTH" VALUE="32768"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="63"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="75"/>
         <PARAMETER NAME="C_XLNX_HW_PROBE_INFO" VALUE="DEFAULT"/>
         <PARAMETER NAME="Component_Name" VALUE="brd_system_ila_2_1"/>
         <PARAMETER NAME="C_PROBE70_WIDTH" VALUE="1"/>
@@ -16867,9 +16939,9 @@
             <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="utmi_txready_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe55" RIGHT="0" SIGIS="undef" SIGNAME="c_addsub_as_invert_and_delay_S">
+        <PORT DIR="I" LEFT="0" NAME="probe55" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_inport_valid_q_do">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="c_addsub_as_invert_and_delay" PORT="S"/>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="inport_valid_q_do"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="probe56" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_ep2_tx_data_valid_w_do">
@@ -16905,6 +16977,66 @@
         <PORT DIR="I" LEFT="7" NAME="probe62" RIGHT="0" SIGIS="undef" SIGNAME="ulpi_wrapper_0_utmi_data_in_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="utmi_data_in_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="probe63" RIGHT="0" SIGIS="undef" SIGNAME="ulpi_wrapper_0_utmi_data_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="utmi_data_q_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe64" RIGHT="0" SIGIS="undef" SIGNAME="ulpi_wrapper_0_ulpi_nxt_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_nxt_q_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe65" RIGHT="0" SIGIS="undef" SIGNAME="ulpi_wrapper_0_ulpi_dir_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="ulpi_dir_q_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe66" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_ep0_rx_valid_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="ep0_rx_valid_w_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="probe67" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_setup_wr_idx_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="setup_wr_idx_q_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe68" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_rx_strb_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="rx_strb_w_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="probe69" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_data_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="usbfrx_data_w_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe70" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_crc_byte_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="usbfrx_crc_byte_w_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe71" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_data_ready_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="usbfrx_data_ready_w_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe72" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_shift_en_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="usbfrx_shift_en_w_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe73" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_rx_active_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="usbfrx_rx_active_w_do"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe74" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_ep2_tx_data_last_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="ep2_tx_data_last_w_do"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -17152,6 +17284,21 @@
         <PORT DIR="O" NAME="turnaround_d" SIGIS="undef"/>
         <PORT DIR="O" NAME="tx_wr_idx_q_d" SIGIS="undef"/>
         <PORT DIR="O" NAME="tx_rd_idx_q_d" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="utmi_data_q_do" RIGHT="0" SIGIS="undef" SIGNAME="ulpi_wrapper_0_utmi_data_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe63"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ulpi_dir_q_do" SIGIS="undef" SIGNAME="ulpi_wrapper_0_ulpi_dir_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe65"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ulpi_nxt_q_do" SIGIS="undef" SIGNAME="ulpi_wrapper_0_ulpi_nxt_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe64"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="utmi_txvalid_i" SIGIS="undef" SIGNAME="usb_cdc_core_0_utmi_txvalid_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="usb_cdc_core_0" PORT="utmi_txvalid_o"/>
@@ -17182,8 +17329,8 @@
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="utmi_data_in_o" RIGHT="0" SIGIS="undef" SIGNAME="ulpi_wrapper_0_utmi_data_in_o">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="utmi_data_in_i"/>
             <CONNECTION INSTANCE="system_ila_2" PORT="probe62"/>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="utmi_data_in_i"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="utmi_data_out_i" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_utmi_data_out_o">
@@ -17277,9 +17424,9 @@
             <CONNECTION INSTANCE="ulpi_wrapper_0" PORT="utmi_linestate_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="inport_valid_i" SIGIS="undef" SIGNAME="c_addsub_as_invert_and_delay_S">
+        <PORT DIR="I" NAME="inport_valid_i" SIGIS="undef" SIGNAME="fifo_generator_0_empty">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="c_addsub_as_invert_and_delay" PORT="S"/>
+            <CONNECTION INSTANCE="fifo_generator_0" PORT="empty"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="inport_data_i" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_0_dout">
@@ -17352,9 +17499,21 @@
         <PORT DIR="O" LEFT="63" NAME="debug_counter_q_do" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="63" NAME="current_token_debug_counter_q_do" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="7" NAME="token_valid_counter_q_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="2" NAME="setup_wr_idx_q_do" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="ep0_rx_valid_w_do" SIGIS="undef"/>
-        <PORT DIR="O" NAME="rx_strb_w_do" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="2" NAME="setup_wr_idx_q_do" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_setup_wr_idx_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe67"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ep0_rx_valid_w_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_ep0_rx_valid_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe66"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rx_strb_w_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_rx_strb_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe68"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="ctrl_txvalid_q_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_ctrl_txvalid_q_do">
           <CONNECTIONS>
             <CONNECTION INSTANCE="system_ila_2" PORT="probe32"/>
@@ -17442,6 +17601,42 @@
             <CONNECTION INSTANCE="system_ila_2" PORT="probe57"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" NAME="ep2_tx_data_last_w_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_ep2_tx_data_last_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe74"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ep2_tx_data_accept_w_do" SIGIS="undef"/>
+        <PORT DIR="O" NAME="inport_valid_q_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_inport_valid_q_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe55"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="usbfrx_shift_en_w_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_shift_en_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe72"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="usbfrx_data_w_do" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_data_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe69"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="usbfrx_data_ready_w_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_data_ready_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe71"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="usbfrx_crc_byte_w_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_crc_byte_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe70"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="usbfrx_rx_active_w_do" SIGIS="undef" SIGNAME="usb_cdc_core_0_usbfrx_rx_active_w_do">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_2" PORT="probe73"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="vendorReqRecived_o" SIGIS="undef"/>
         <PORT DIR="O" LEFT="1" NAME="axi_bram_addr_o" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_axi_bram_addr_o">
           <CONNECTIONS>
@@ -17500,6 +17695,7 @@
             <CONNECTION INSTANCE="util_vector_logic_3" PORT="Op2"/>
             <CONNECTION INSTANCE="fifo_generator_0" PORT="rd_en"/>
             <CONNECTION INSTANCE="system_ila_2" PORT="probe52"/>
+            <CONNECTION INSTANCE="util_vector_logic_1" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="outport_valid_o" SIGIS="undef" SIGNAME="usb_cdc_core_0_outport_valid_o">
@@ -17548,6 +17744,34 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="testAERDVSSM_0" PORT="Reset_RI"/>
             <CONNECTION INSTANCE="USBFifoToDVSSPI_0" PORT="rst_i"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE FULLNAME="/util_vector_logic_1" HWVERSION="2.0" INSTANCE="util_vector_logic_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="and"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="brd_util_vector_logic_1_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_andgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="usb_cdc_core_0_inport_accept_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="usb_cdc_core_0" PORT="inport_accept_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_0_empty">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fifo_generator_0" PORT="empty"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="c_addsub_as_invert_and_delay" PORT="A"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

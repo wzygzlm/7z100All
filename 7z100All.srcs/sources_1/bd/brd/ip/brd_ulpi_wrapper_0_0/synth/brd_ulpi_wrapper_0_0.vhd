@@ -79,6 +79,9 @@ ENTITY brd_ulpi_wrapper_0_0 IS
     turnaround_d : OUT STD_LOGIC;
     tx_wr_idx_q_d : OUT STD_LOGIC;
     tx_rd_idx_q_d : OUT STD_LOGIC;
+    utmi_data_q_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    ulpi_dir_q_do : OUT STD_LOGIC;
+    ulpi_nxt_q_do : OUT STD_LOGIC;
     utmi_txvalid_i : IN STD_LOGIC;
     utmi_txready_o : OUT STD_LOGIC;
     utmi_rxvalid_o : OUT STD_LOGIC;
@@ -124,6 +127,9 @@ ARCHITECTURE brd_ulpi_wrapper_0_0_arch OF brd_ulpi_wrapper_0_0 IS
       turnaround_d : OUT STD_LOGIC;
       tx_wr_idx_q_d : OUT STD_LOGIC;
       tx_rd_idx_q_d : OUT STD_LOGIC;
+      utmi_data_q_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      ulpi_dir_q_do : OUT STD_LOGIC;
+      ulpi_nxt_q_do : OUT STD_LOGIC;
       utmi_txvalid_i : IN STD_LOGIC;
       utmi_txready_o : OUT STD_LOGIC;
       utmi_rxvalid_o : OUT STD_LOGIC;
@@ -172,6 +178,9 @@ BEGIN
       turnaround_d => turnaround_d,
       tx_wr_idx_q_d => tx_wr_idx_q_d,
       tx_rd_idx_q_d => tx_rd_idx_q_d,
+      utmi_data_q_do => utmi_data_q_do,
+      ulpi_dir_q_do => ulpi_dir_q_do,
+      ulpi_nxt_q_do => ulpi_nxt_q_do,
       utmi_txvalid_i => utmi_txvalid_i,
       utmi_txready_o => utmi_txready_o,
       utmi_rxvalid_o => utmi_rxvalid_o,

@@ -313,12 +313,6 @@
           </spirit:wire>
         </spirit:port>
         <spirit:port>
-          <spirit:name>ulpi_clk60_i_0</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
           <spirit:name>ulpi_dir_i_0</spirit:name>
           <spirit:wire>
             <spirit:direction>in</spirit:direction>
@@ -346,6 +340,12 @@
             <spirit:direction>out</spirit:direction>
           </spirit:wire>
         </spirit:port>
+        <spirit:port>
+          <spirit:name>ulpi_clk60_i_0</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
       </spirit:ports>
     </spirit:model>
   </spirit:component>
@@ -362,42 +362,6 @@
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_LEDShifter_0_0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:referenceName">LEDShifter</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
-        <spirit:instanceName>testAERDVSSM_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="module_ref" spirit:name="testAERDVSSM" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_testAERDVSSM_0_0</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">testAERDVSSM</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
-        <spirit:instanceName>ulpi_wrapper_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="module_ref" spirit:name="ulpi_wrapper" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_ulpi_wrapper_0_0</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">ulpi_wrapper</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
-        <spirit:instanceName>SPI_Master_With_Sing_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="module_ref" spirit:name="SPI_Master_With_Single_CS" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_SPI_Master_With_Sing_0_2</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="CLKS_PER_HALF_BIT">10</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="MAX_BYTES_PER_CS">6</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="CS_INACTIVE_CLKS">1</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">SPI_Master_With_Single_CS</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
@@ -1076,6 +1040,19 @@
         <spirit:componentRef spirit:library="ip" spirit:name="system_ila" spirit:vendor="xilinx.com" spirit:version="1.1"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_system_ila_2_1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE75_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE74_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE73_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE72_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE71_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE70_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE69_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE68_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE67_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE66_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE65_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE64_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE63_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE62_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE61_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE60_TYPE">0</spirit:configurableElementValue>
@@ -1140,7 +1117,7 @@
           <spirit:configurableElementValue spirit:referenceId="C_PROBE1_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE0_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_DATA_DEPTH">32768</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="C_NUM_OF_PROBES">63</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_NUM_OF_PROBES">75</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_MON_TYPE">NATIVE</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
@@ -1346,6 +1323,17 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
+        <spirit:instanceName>testAERDVSSM_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="testAERDVSSM" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_testAERDVSSM_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">testAERDVSSM</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
         <spirit:instanceName>USBFifoToDVSSPI_0</spirit:instanceName>
         <spirit:componentRef spirit:library="module_ref" spirit:name="USBFifoToDVSSPI" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
@@ -1354,6 +1342,56 @@
           <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>SPI_Master_With_Sing_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="SPI_Master_With_Single_CS" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_SPI_Master_With_Sing_0_2</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CLKS_PER_HALF_BIT">10</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="MAX_BYTES_PER_CS">6</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CS_INACTIVE_CLKS">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">SPI_Master_With_Single_CS</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>ulpi_wrapper_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="ulpi_wrapper" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_ulpi_wrapper_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">ulpi_wrapper</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>c_addsub_as_invert_and_delay1</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="c_addsub" spirit:vendor="xilinx.com" spirit:version="12.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_c_addsub_as_invert_and_delay_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Implementation">Fabric</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="A_Type">Unsigned</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="B_Type">Unsigned</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="A_Width">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="B_Width">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Out_Width">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Latency">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="B_Constant">true</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="B_Value">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CE">false</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>util_vector_logic_1</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="util_vector_logic" spirit:vendor="xilinx.com" spirit:version="2.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_util_vector_logic_1_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SIZE">1</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
@@ -1479,8 +1517,8 @@
       <spirit:adHocConnection>
         <spirit:name>DVSAERData_AI_0_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="DVSAERData_AI_0"/>
-        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="DVSAERData_AI"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe2"/>
+        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="DVSAERData_AI"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -1489,8 +1527,8 @@
       <spirit:adHocConnection>
         <spirit:name>DVSAERReq_ABI_0_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="DVSAERReq_ABI_0"/>
-        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="DVSAERReq_ABI"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe3"/>
+        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="DVSAERReq_ABI"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -1579,9 +1617,6 @@
       <spirit:adHocConnection>
         <spirit:name>processing_system7_0_FCLK_CLK0</spirit:name>
         <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="FCLK_CLK0"/>
-        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="USBClock_CI"/>
-        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="LogicClk_CI"/>
-        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="ADCClk_CI"/>
         <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="axi_gpio_0" spirit:portRef="s_axi_aclk"/>
@@ -1598,6 +1633,9 @@
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="clk"/>
         <spirit:internalPortReference spirit:componentRef="v_axi4s_vid_out_0" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_0" spirit:portRef="wr_clk"/>
+        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="USBClock_CI"/>
+        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="LogicClk_CI"/>
+        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="ADCClk_CI"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1735,10 +1773,10 @@
         <spirit:name>xlconstant_1_dout</spirit:name>
         <spirit:internalPortReference spirit:componentRef="cons_HIGH" spirit:portRef="dout"/>
         <spirit:internalPortReference spirit:componentRef="LEDShifter_0" spirit:portRef="rstn"/>
-        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_Rst_L"/>
         <spirit:internalPortReference spirit:componentRef="util_vector_logic_0" spirit:portRef="Op1"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="eventFIFODataValid_V"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe1"/>
+        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_Rst_L"/>
         <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="enable_i"/>
         <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="outport_accept_i"/>
       </spirit:adHocConnection>
@@ -1791,8 +1829,8 @@
       <spirit:adHocConnection>
         <spirit:name>USBFifoToDVSSPI_0_outputData_o</spirit:name>
         <spirit:internalPortReference spirit:componentRef="USBFifoToDVSSPI_0" spirit:portRef="outputData_o"/>
-        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_TX_Byte"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe6"/>
+        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_TX_Byte"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -1801,8 +1839,8 @@
       <spirit:adHocConnection>
         <spirit:name>USBFifoToDVSSPI_0_outputDataValid_o</spirit:name>
         <spirit:internalPortReference spirit:componentRef="USBFifoToDVSSPI_0" spirit:portRef="outputDataValid_o"/>
-        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_TX_DV"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe7"/>
+        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_TX_DV"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -1843,21 +1881,10 @@
         <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_TX_Count"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>ulpi_clk60_i_0_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="ulpi_clk60_i_0"/>
-        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_clk60_i"/>
-        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_Clk"/>
-        <spirit:internalPortReference spirit:componentRef="fifo_generator_0" spirit:portRef="rd_clk"/>
-        <spirit:internalPortReference spirit:componentRef="c_addsub_as_invert_and_delay" spirit:portRef="CLK"/>
-        <spirit:internalPortReference spirit:componentRef="USBFifoToDVSSPI_0" spirit:portRef="clk_i"/>
-        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="clk_i"/>
-        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="clk"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
         <spirit:name>ulpi_dir_i_0_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="ulpi_dir_i_0"/>
-        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_dir_i"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe16"/>
+        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_dir_i"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -1866,8 +1893,8 @@
       <spirit:adHocConnection>
         <spirit:name>ulpi_nxt_i_0_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="ulpi_nxt_i_0"/>
-        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_nxt_i"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe17"/>
+        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_nxt_i"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -1901,8 +1928,8 @@
       <spirit:adHocConnection>
         <spirit:name>ulpi_wrapper_0_utmi_data_in_o</spirit:name>
         <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="utmi_data_in_o"/>
-        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="utmi_data_in_i"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe62"/>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="utmi_data_in_i"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -2322,8 +2349,8 @@
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_0_almost_full</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_0" spirit:portRef="almost_full"/>
-        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="AERSMFifoAlmostFull_AI"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe5"/>
+        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="AERSMFifoAlmostFull_AI"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -2332,8 +2359,8 @@
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_0_full</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_0" spirit:portRef="full"/>
-        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="AERSMFifoFull_AI"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe6"/>
+        <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="AERSMFifoFull_AI"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -2375,7 +2402,9 @@
         <spirit:name>fifo_generator_0_empty</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_0" spirit:portRef="empty"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe9"/>
-        <spirit:internalPortReference spirit:componentRef="c_addsub_as_invert_and_delay" spirit:portRef="A"/>
+        <spirit:internalPortReference spirit:componentRef="util_vector_logic_1" spirit:portRef="Op2"/>
+        <spirit:internalPortReference spirit:componentRef="c_addsub_as_invert_and_delay1" spirit:portRef="A"/>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="inport_valid_i"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -2421,6 +2450,7 @@
         <spirit:internalPortReference spirit:componentRef="util_vector_logic_3" spirit:portRef="Op2"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_0" spirit:portRef="rd_en"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe52"/>
+        <spirit:internalPortReference spirit:componentRef="util_vector_logic_1" spirit:portRef="Op1"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -2430,16 +2460,6 @@
         <spirit:name>sie_tx_state_q_o</spirit:name>
         <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="sie_tx_state_q_o"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe53"/>
-        <bd:hdl_attributes>
-          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
-          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
-        </bd:hdl_attributes>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>c_addsub_as_invert_and_delay_S</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="c_addsub_as_invert_and_delay" spirit:portRef="S"/>
-        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe55"/>
-        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="inport_valid_i"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
@@ -2514,6 +2534,136 @@
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
         </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>ulpi_nxt_q_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_nxt_q_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe64"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>ulpi_dir_q_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_dir_q_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe65"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>utmi_data_q_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="utmi_data_q_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe63"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>ep0_rx_valid_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="ep0_rx_valid_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe66"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>setup_wr_idx_q_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="setup_wr_idx_q_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe67"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>rx_strb_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="rx_strb_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe68"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>usbfrx_data_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="usbfrx_data_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe69"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>usbfrx_crc_byte_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="usbfrx_crc_byte_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe70"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>usbfrx_data_ready_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="usbfrx_data_ready_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe71"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>usbfrx_shift_en_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="usbfrx_shift_en_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe72"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>usbfrx_rx_active_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="usbfrx_rx_active_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe73"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>ulpi_clk60_i_0_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="ulpi_clk60_i_0"/>
+        <spirit:internalPortReference spirit:componentRef="ulpi_wrapper_0" spirit:portRef="ulpi_clk60_i"/>
+        <spirit:internalPortReference spirit:componentRef="c_addsub_as_invert_and_delay" spirit:portRef="CLK"/>
+        <spirit:internalPortReference spirit:componentRef="USBFifoToDVSSPI_0" spirit:portRef="clk_i"/>
+        <spirit:internalPortReference spirit:componentRef="SPI_Master_With_Sing_0" spirit:portRef="i_Clk"/>
+        <spirit:internalPortReference spirit:componentRef="fifo_generator_0" spirit:portRef="rd_clk"/>
+        <spirit:internalPortReference spirit:componentRef="c_addsub_as_invert_and_delay1" spirit:portRef="CLK"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="clk"/>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="clk_i"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>ep2_tx_data_last_w_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="ep2_tx_data_last_w_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe74"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>util_vector_logic_1_Res</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="util_vector_logic_1" spirit:portRef="Res"/>
+        <spirit:internalPortReference spirit:componentRef="c_addsub_as_invert_and_delay" spirit:portRef="A"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>usb_cdc_core_0_inport_valid_q_do</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="usb_cdc_core_0" spirit:portRef="inport_valid_q_do"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_2" spirit:portRef="probe55"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>

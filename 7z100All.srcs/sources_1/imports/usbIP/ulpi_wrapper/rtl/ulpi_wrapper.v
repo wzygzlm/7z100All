@@ -66,6 +66,9 @@ module ulpi_wrapper
     output            turnaround_d,
     output            tx_wr_idx_q_d,
     output            tx_rd_idx_q_d,
+    output [7:0]      utmi_data_q_do,
+    output            ulpi_dir_q_do,
+    output            ulpi_nxt_q_do,
 
     // UTMI Interface (SIE)
     input             utmi_txvalid_i,
@@ -194,6 +197,19 @@ else
 
 wire turnaround_w = ulpi_dir_q ^ ulpi_dir_i;
 
+reg [7:0] ulpi_data_out_i_q;
+reg ulpi_nxt_q;
+always @ (posedge ulpi_clk60_i or posedge ulpi_rst_i)
+if (ulpi_rst_i)
+begin
+    ulpi_data_out_i_q <= 8'b0;
+    ulpi_nxt_q <= 0;
+end
+else
+begin
+    ulpi_data_out_i_q <= ulpi_data_out_i;
+    ulpi_nxt_q <= ulpi_nxt_i;
+end
 //-----------------------------------------------------------------
 // Rx - Tx delay
 //-----------------------------------------------------------------
@@ -304,6 +320,8 @@ else
 begin
     ulpi_stp_q          <= 1'b0;
     utmi_rxvalid_q      <= 1'b0;
+    
+    utmi_data_q         <= 8'h55;
     
 //    ulpi_data_wr_q      <= ulpi_dir_i;
     
@@ -509,7 +527,7 @@ assign ulpi_stp_o           = ulpi_stp_q;
 
 // UTMI Interface
 assign utmi_linestate_o     = utmi_linestate_q;
-assign utmi_data_in_o       = utmi_data_q;
+assign utmi_data_in_o       = ulpi_data_out_i_q;
 assign utmi_rxerror_o       = utmi_rxerror_q;
 assign utmi_rxactive_o      = utmi_rxactive_q;
 assign utmi_rxvalid_o       = utmi_rxvalid_q;
@@ -536,4 +554,8 @@ assign turnaround_d         = turnaround_w;
 assign tx_delay_q_d         = tx_delay_q;
 assign tx_wr_idx_q_d        = tx_wr_idx_q;
 assign tx_rd_idx_q_d        = tx_wr_idx_q;
+
+assign utmi_data_q_do       = utmi_data_q; 
+assign ulpi_dir_q_do        = ulpi_dir_q;
+assign ulpi_nxt_q_do        = ulpi_nxt_q;
 endmodule

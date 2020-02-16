@@ -71,12 +71,24 @@ entity bd_1384 is
     probe60 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe61 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe63 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe64 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe65 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe66 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe67 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe68 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe69 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe70 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe71 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe72 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe73 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe74 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_1384 : entity is "bd_1384,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_1384,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of bd_1384 : entity is "bd_1384,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_1384,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_1384 : entity is "brd_system_ila_2_1.hwdef";
 end bd_1384;
@@ -147,7 +159,19 @@ architecture STRUCTURE of bd_1384 is
     probe59 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe60 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe61 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe63 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe64 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe65 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe66 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe67 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe68 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe69 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe70 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe71 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe72 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe73 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe74 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component bd_1384_ila_lib_0;
   signal clk_1 : STD_LOGIC;
@@ -210,7 +234,19 @@ architecture STRUCTURE of bd_1384 is
   signal probe60_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal probe61_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal probe62_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal probe63_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal probe64_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe65_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe66_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe67_1 : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal probe68_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe69_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal probe6_1 : STD_LOGIC_VECTOR ( 47 downto 0 );
+  signal probe70_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe71_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe72_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe73_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal probe74_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe7_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe8_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal probe9_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -279,7 +315,19 @@ begin
   probe60_1(7 downto 0) <= probe60(7 downto 0);
   probe61_1(15 downto 0) <= probe61(15 downto 0);
   probe62_1(7 downto 0) <= probe62(7 downto 0);
+  probe63_1(7 downto 0) <= probe63(7 downto 0);
+  probe64_1(0) <= probe64(0);
+  probe65_1(0) <= probe65(0);
+  probe66_1(0) <= probe66(0);
+  probe67_1(2 downto 0) <= probe67(2 downto 0);
+  probe68_1(0) <= probe68(0);
+  probe69_1(7 downto 0) <= probe69(7 downto 0);
   probe6_1(47 downto 0) <= probe6(47 downto 0);
+  probe70_1(0) <= probe70(0);
+  probe71_1(0) <= probe71(0);
+  probe72_1(0) <= probe72(0);
+  probe73_1(0) <= probe73(0);
+  probe74_1(0) <= probe74(0);
   probe7_1(0) <= probe7(0);
   probe8_1(7 downto 0) <= probe8(7 downto 0);
   probe9_1(0) <= probe9(0);
@@ -346,7 +394,19 @@ ila_lib: component bd_1384_ila_lib_0
       probe60(7 downto 0) => probe60_1(7 downto 0),
       probe61(15 downto 0) => probe61_1(15 downto 0),
       probe62(7 downto 0) => probe62_1(7 downto 0),
+      probe63(7 downto 0) => probe63_1(7 downto 0),
+      probe64(0) => probe64_1(0),
+      probe65(0) => probe65_1(0),
+      probe66(0) => probe66_1(0),
+      probe67(2 downto 0) => probe67_1(2 downto 0),
+      probe68(0) => probe68_1(0),
+      probe69(7 downto 0) => probe69_1(7 downto 0),
       probe7(0) => probe7_1(0),
+      probe70(0) => probe70_1(0),
+      probe71(0) => probe71_1(0),
+      probe72(0) => probe72_1(0),
+      probe73(0) => probe73_1(0),
+      probe74(0) => probe74_1(0),
       probe8(7 downto 0) => probe8_1(7 downto 0),
       probe9(0) => probe9_1(0)
     );

@@ -17,17 +17,17 @@
 ############################################################################
 # Clock constraints                                                        #
 ############################################################################
-create_clock -name clk_fpga_0 -period "10.001" [get_pins "PS7_i/FCLKCLK[0]"]
-set_input_jitter clk_fpga_0 0.30003
+create_clock -name clk_fpga_2 -period "16.876" [get_pins "PS7_i/FCLKCLK[2]"]
+set_input_jitter clk_fpga_2 0.50628
 #The clocks are asynchronous, user should constrain them appropriately.#
 create_clock -name clk_fpga_3 -period "8.125" [get_pins "PS7_i/FCLKCLK[3]"]
 set_input_jitter clk_fpga_3 0.24375
 #The clocks are asynchronous, user should constrain them appropriately.#
-create_clock -name clk_fpga_2 -period "16.876" [get_pins "PS7_i/FCLKCLK[2]"]
-set_input_jitter clk_fpga_2 0.50628
-#The clocks are asynchronous, user should constrain them appropriately.#
 create_clock -name clk_fpga_1 -period "25.002" [get_pins "PS7_i/FCLKCLK[1]"]
 set_input_jitter clk_fpga_1 0.75006
+#The clocks are asynchronous, user should constrain them appropriately.#
+create_clock -name clk_fpga_0 -period "10.001" [get_pins "PS7_i/FCLKCLK[0]"]
+set_input_jitter clk_fpga_0 0.30003
 #The clocks are asynchronous, user should constrain them appropriately.#
 
 

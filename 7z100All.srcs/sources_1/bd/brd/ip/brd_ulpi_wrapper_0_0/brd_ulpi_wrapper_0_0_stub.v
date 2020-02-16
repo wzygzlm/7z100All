@@ -1,8 +1,8 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Fri Jan 17 12:27:35 2020
-// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+// Date        : Sat Feb 15 10:04:38 2020
+// Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_ulpi_wrapper_0_0/brd_ulpi_wrapper_0_0_stub.v
 // Design      : brd_ulpi_wrapper_0_0
@@ -19,10 +19,11 @@ module brd_ulpi_wrapper_0_0(ulpi_clk60_i, ulpi_rst_i, ulpi_data_io,
   termselect_o, opmode_o, mode_complete_o, otg_complete_o, utmi_tx_ready_o, 
   tx_delay_complete_o, utmi_tx_accept_o, ulpi_data_out_i_d, ulpi_data_in_o_d, 
   ulpi_data_dir_d, ulpi_reg_read_flag_d, turnaround_d, tx_wr_idx_q_d, tx_rd_idx_q_d, 
-  utmi_txvalid_i, utmi_txready_o, utmi_rxvalid_o, utmi_rxactive_o, utmi_rxerror_o, 
-  utmi_data_in_o, utmi_data_out_i, utmi_xcvrselect_i, utmi_termselect_i, utmi_op_mode_i, 
-  utmi_dppulldown_i, utmi_dmpulldown_i, utmi_linestate_o)
-/* synthesis syn_black_box black_box_pad_pin="ulpi_clk60_i,ulpi_rst_i,ulpi_data_io[7:0],ulpi_dir_i,ulpi_nxt_i,ulpi_stp_o,mode_update_o,otg_update_o,state_o[1:0],xcvrselect_o[1:0],termselect_o,opmode_o[1:0],mode_complete_o,otg_complete_o,utmi_tx_ready_o,tx_delay_complete_o,utmi_tx_accept_o,ulpi_data_out_i_d[7:0],ulpi_data_in_o_d[7:0],ulpi_data_dir_d,ulpi_reg_read_flag_d,turnaround_d,tx_wr_idx_q_d,tx_rd_idx_q_d,utmi_txvalid_i,utmi_txready_o,utmi_rxvalid_o,utmi_rxactive_o,utmi_rxerror_o,utmi_data_in_o[7:0],utmi_data_out_i[7:0],utmi_xcvrselect_i[1:0],utmi_termselect_i,utmi_op_mode_i[1:0],utmi_dppulldown_i,utmi_dmpulldown_i,utmi_linestate_o[1:0]" */;
+  utmi_data_q_do, ulpi_dir_q_do, ulpi_nxt_q_do, utmi_txvalid_i, utmi_txready_o, 
+  utmi_rxvalid_o, utmi_rxactive_o, utmi_rxerror_o, utmi_data_in_o, utmi_data_out_i, 
+  utmi_xcvrselect_i, utmi_termselect_i, utmi_op_mode_i, utmi_dppulldown_i, 
+  utmi_dmpulldown_i, utmi_linestate_o)
+/* synthesis syn_black_box black_box_pad_pin="ulpi_clk60_i,ulpi_rst_i,ulpi_data_io[7:0],ulpi_dir_i,ulpi_nxt_i,ulpi_stp_o,mode_update_o,otg_update_o,state_o[1:0],xcvrselect_o[1:0],termselect_o,opmode_o[1:0],mode_complete_o,otg_complete_o,utmi_tx_ready_o,tx_delay_complete_o,utmi_tx_accept_o,ulpi_data_out_i_d[7:0],ulpi_data_in_o_d[7:0],ulpi_data_dir_d,ulpi_reg_read_flag_d,turnaround_d,tx_wr_idx_q_d,tx_rd_idx_q_d,utmi_data_q_do[7:0],ulpi_dir_q_do,ulpi_nxt_q_do,utmi_txvalid_i,utmi_txready_o,utmi_rxvalid_o,utmi_rxactive_o,utmi_rxerror_o,utmi_data_in_o[7:0],utmi_data_out_i[7:0],utmi_xcvrselect_i[1:0],utmi_termselect_i,utmi_op_mode_i[1:0],utmi_dppulldown_i,utmi_dmpulldown_i,utmi_linestate_o[1:0]" */;
   input ulpi_clk60_i;
   input ulpi_rst_i;
   inout [7:0]ulpi_data_io;
@@ -47,6 +48,9 @@ module brd_ulpi_wrapper_0_0(ulpi_clk60_i, ulpi_rst_i, ulpi_data_io,
   output turnaround_d;
   output tx_wr_idx_q_d;
   output tx_rd_idx_q_d;
+  output [7:0]utmi_data_q_do;
+  output ulpi_dir_q_do;
+  output ulpi_nxt_q_do;
   input utmi_txvalid_i;
   output utmi_txready_o;
   output utmi_rxvalid_o;

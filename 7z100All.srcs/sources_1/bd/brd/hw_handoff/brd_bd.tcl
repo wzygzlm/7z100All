@@ -278,6 +278,21 @@ proc create_root_design { parentCell } {
    CONFIG.Out_Width {1} \
  ] $c_addsub_as_invert_and_delay
 
+  # Create instance: c_addsub_as_invert_and_delay1, and set properties
+  set c_addsub_as_invert_and_delay1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 c_addsub_as_invert_and_delay1 ]
+  set_property -dict [ list \
+   CONFIG.A_Type {Unsigned} \
+   CONFIG.A_Width {1} \
+   CONFIG.B_Constant {true} \
+   CONFIG.B_Type {Unsigned} \
+   CONFIG.B_Value {1} \
+   CONFIG.B_Width {1} \
+   CONFIG.CE {false} \
+   CONFIG.Implementation {Fabric} \
+   CONFIG.Latency {1} \
+   CONFIG.Out_Width {1} \
+ ] $c_addsub_as_invert_and_delay1
+
   # Create instance: concat_swap_event_data, and set properties
   set concat_swap_event_data [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 concat_swap_event_data ]
   set_property -dict [ list \
@@ -1160,10 +1175,10 @@ proc create_root_design { parentCell } {
   # Create instance: system_ila_2, and set properties
   set system_ila_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_2 ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {56} \
+   CONFIG.C_BRAM_CNT {67} \
    CONFIG.C_DATA_DEPTH {32768} \
    CONFIG.C_MON_TYPE {NATIVE} \
-   CONFIG.C_NUM_OF_PROBES {63} \
+   CONFIG.C_NUM_OF_PROBES {75} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE10_TYPE {0} \
    CONFIG.C_PROBE11_TYPE {0} \
@@ -1223,7 +1238,20 @@ proc create_root_design { parentCell } {
    CONFIG.C_PROBE60_TYPE {0} \
    CONFIG.C_PROBE61_TYPE {0} \
    CONFIG.C_PROBE62_TYPE {0} \
+   CONFIG.C_PROBE63_TYPE {0} \
+   CONFIG.C_PROBE64_TYPE {0} \
+   CONFIG.C_PROBE65_TYPE {0} \
+   CONFIG.C_PROBE66_TYPE {0} \
+   CONFIG.C_PROBE67_TYPE {0} \
+   CONFIG.C_PROBE68_TYPE {0} \
+   CONFIG.C_PROBE69_TYPE {0} \
    CONFIG.C_PROBE6_TYPE {0} \
+   CONFIG.C_PROBE70_TYPE {0} \
+   CONFIG.C_PROBE71_TYPE {0} \
+   CONFIG.C_PROBE72_TYPE {0} \
+   CONFIG.C_PROBE73_TYPE {0} \
+   CONFIG.C_PROBE74_TYPE {0} \
+   CONFIG.C_PROBE75_TYPE {0} \
    CONFIG.C_PROBE7_TYPE {0} \
    CONFIG.C_PROBE8_TYPE {0} \
    CONFIG.C_PROBE9_TYPE {0} \
@@ -1240,10 +1268,6 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  set_property -dict [ list \
-   CONFIG.POLARITY {ACTIVE_HIGH} \
- ] [get_bd_pins /testAERDVSSM_0/Reset_RI]
-
   # Create instance: ulpi_wrapper_0, and set properties
   set block_name ulpi_wrapper
   set block_cell_name ulpi_wrapper_0
@@ -1273,6 +1297,12 @@ proc create_root_design { parentCell } {
    CONFIG.C_SIZE {1} \
    CONFIG.LOGO_FILE {data/sym_notgate.png} \
  ] $util_vector_logic_0
+
+  # Create instance: util_vector_logic_1, and set properties
+  set util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_SIZE {1} \
+ ] $util_vector_logic_1
 
   # Create instance: util_vector_logic_2, and set properties
   set util_vector_logic_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_2 ]
@@ -1451,10 +1481,6 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets bmRequestType_w_do]
-  connect_bd_net -net c_addsub_as_invert_and_delay_S [get_bd_pins c_addsub_as_invert_and_delay/S] [get_bd_pins system_ila_2/probe55] [get_bd_pins usb_cdc_core_0/inport_valid_i]
-  set_property -dict [ list \
-HDL_ATTRIBUTE.DEBUG {true} \
- ] [get_bd_nets c_addsub_as_invert_and_delay_S]
   connect_bd_net -net c_counter_binary_0_Q [get_bd_pins USBFifoToDVSSPI_0/dvs_resp_addr_i] [get_bd_pins system_ila_2/probe11] [get_bd_pins usb_cdc_core_0/axi_bram_addr_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1492,6 +1518,14 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets dvs_resp_data_o]
+  connect_bd_net -net ep0_rx_valid_w_do [get_bd_pins system_ila_2/probe66] [get_bd_pins usb_cdc_core_0/ep0_rx_valid_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets ep0_rx_valid_w_do]
+  connect_bd_net -net ep2_tx_data_last_w_do [get_bd_pins system_ila_2/probe74] [get_bd_pins usb_cdc_core_0/ep2_tx_data_last_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets ep2_tx_data_last_w_do]
   connect_bd_net -net ep2_tx_data_valid_w_do [get_bd_pins system_ila_2/probe56] [get_bd_pins usb_cdc_core_0/ep2_tx_data_valid_w_do]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1508,7 +1542,7 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets fifo_generator_0_dout]
-  connect_bd_net -net fifo_generator_0_empty [get_bd_pins c_addsub_as_invert_and_delay/A] [get_bd_pins fifo_generator_0/empty] [get_bd_pins system_ila_2/probe9]
+  connect_bd_net -net fifo_generator_0_empty [get_bd_pins c_addsub_as_invert_and_delay1/A] [get_bd_pins fifo_generator_0/empty] [get_bd_pins system_ila_2/probe9] [get_bd_pins usb_cdc_core_0/inport_valid_i] [get_bd_pins util_vector_logic_1/Op2]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets fifo_generator_0_empty]
@@ -1550,6 +1584,10 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets rxDataComplete_o]
+  connect_bd_net -net rx_strb_w_do [get_bd_pins system_ila_2/probe68] [get_bd_pins usb_cdc_core_0/rx_strb_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets rx_strb_w_do]
   connect_bd_net -net setupPktReceived_q_do [get_bd_pins USBFifoToDVSSPI_0/setupPktReceived_q_do] [get_bd_pins system_ila_2/probe1]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1562,6 +1600,10 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets setup_valid_q_do]
+  connect_bd_net -net setup_wr_idx_q_do [get_bd_pins system_ila_2/probe67] [get_bd_pins usb_cdc_core_0/setup_wr_idx_q_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets setup_wr_idx_q_do]
   connect_bd_net -net sie_tx_state_q_o [get_bd_pins system_ila_2/probe53] [get_bd_pins usb_cdc_core_0/sie_tx_state_q_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1617,7 +1659,7 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets tx_sent_data_counter_o]
-  connect_bd_net -net ulpi_clk60_i_0_1 [get_bd_ports ulpi_clk60_i_0] [get_bd_pins SPI_Master_With_Sing_0/i_Clk] [get_bd_pins USBFifoToDVSSPI_0/clk_i] [get_bd_pins c_addsub_as_invert_and_delay/CLK] [get_bd_pins fifo_generator_0/rd_clk] [get_bd_pins system_ila_2/clk] [get_bd_pins ulpi_wrapper_0/ulpi_clk60_i] [get_bd_pins usb_cdc_core_0/clk_i]
+  connect_bd_net -net ulpi_clk60_i_0_1 [get_bd_ports ulpi_clk60_i_0] [get_bd_pins SPI_Master_With_Sing_0/i_Clk] [get_bd_pins USBFifoToDVSSPI_0/clk_i] [get_bd_pins c_addsub_as_invert_and_delay/CLK] [get_bd_pins c_addsub_as_invert_and_delay1/CLK] [get_bd_pins fifo_generator_0/rd_clk] [get_bd_pins system_ila_2/clk] [get_bd_pins ulpi_wrapper_0/ulpi_clk60_i] [get_bd_pins usb_cdc_core_0/clk_i]
   connect_bd_net -net ulpi_data_in_o_d [get_bd_pins system_ila_2/probe34] [get_bd_pins ulpi_wrapper_0/ulpi_data_in_o_d]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1630,10 +1672,18 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets ulpi_dir_i_0_1]
+  connect_bd_net -net ulpi_dir_q_do [get_bd_pins system_ila_2/probe65] [get_bd_pins ulpi_wrapper_0/ulpi_dir_q_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets ulpi_dir_q_do]
   connect_bd_net -net ulpi_nxt_i_0_1 [get_bd_ports ulpi_nxt_i_0] [get_bd_pins system_ila_2/probe17] [get_bd_pins ulpi_wrapper_0/ulpi_nxt_i]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets ulpi_nxt_i_0_1]
+  connect_bd_net -net ulpi_nxt_q_do [get_bd_pins system_ila_2/probe64] [get_bd_pins ulpi_wrapper_0/ulpi_nxt_q_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets ulpi_nxt_q_do]
   connect_bd_net -net ulpi_wrapper_0_ulpi_stp_o [get_bd_ports ulpi_stp_o_0] [get_bd_pins system_ila_2/probe18] [get_bd_pins ulpi_wrapper_0/ulpi_stp_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1664,10 +1714,11 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets usb_cdc_core_0_ep0_rx_setup_w_do]
-  connect_bd_net -net usb_cdc_core_0_inport_accept_o1 [get_bd_pins fifo_generator_0/rd_en] [get_bd_pins system_ila_2/probe52] [get_bd_pins usb_cdc_core_0/inport_accept_o] [get_bd_pins util_vector_logic_3/Op2]
+  connect_bd_net -net usb_cdc_core_0_inport_accept_o1 [get_bd_pins fifo_generator_0/rd_en] [get_bd_pins system_ila_2/probe52] [get_bd_pins usb_cdc_core_0/inport_accept_o] [get_bd_pins util_vector_logic_1/Op1] [get_bd_pins util_vector_logic_3/Op2]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets usb_cdc_core_0_inport_accept_o1]
+  connect_bd_net -net usb_cdc_core_0_inport_valid_q_do [get_bd_pins system_ila_2/probe55] [get_bd_pins usb_cdc_core_0/inport_valid_q_do]
   connect_bd_net -net usb_cdc_core_0_outport_data_o [get_bd_pins USBFifoToDVSSPI_0/inputData_i] [get_bd_pins system_ila_2/probe12] [get_bd_pins usb_cdc_core_0/outport_data_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1719,8 +1770,33 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets usbf_tx_valid_q_do]
+  connect_bd_net -net usbfrx_crc_byte_w_do [get_bd_pins system_ila_2/probe70] [get_bd_pins usb_cdc_core_0/usbfrx_crc_byte_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets usbfrx_crc_byte_w_do]
+  connect_bd_net -net usbfrx_data_ready_w_do [get_bd_pins system_ila_2/probe71] [get_bd_pins usb_cdc_core_0/usbfrx_data_ready_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets usbfrx_data_ready_w_do]
+  connect_bd_net -net usbfrx_data_w_do [get_bd_pins system_ila_2/probe69] [get_bd_pins usb_cdc_core_0/usbfrx_data_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets usbfrx_data_w_do]
+  connect_bd_net -net usbfrx_rx_active_w_do [get_bd_pins system_ila_2/probe73] [get_bd_pins usb_cdc_core_0/usbfrx_rx_active_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets usbfrx_rx_active_w_do]
+  connect_bd_net -net usbfrx_shift_en_w_do [get_bd_pins system_ila_2/probe72] [get_bd_pins usb_cdc_core_0/usbfrx_shift_en_w_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets usbfrx_shift_en_w_do]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins USBFifoToDVSSPI_0/rst_i] [get_bd_pins testAERDVSSM_0/Reset_RI] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins c_addsub_as_invert_and_delay/A] [get_bd_pins util_vector_logic_1/Res]
   connect_bd_net -net util_vector_logic_2_Res [get_bd_pins util_vector_logic_2/Res] [get_bd_pins util_vector_logic_3/Op1]
+  connect_bd_net -net utmi_data_q_do [get_bd_pins system_ila_2/probe63] [get_bd_pins ulpi_wrapper_0/utmi_data_q_do]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets utmi_data_q_do]
   connect_bd_net -net v_axi4s_vid_out_0_vid_data [get_bd_ports vid_data] [get_bd_pins v_axi4s_vid_out_0/vid_data]
   connect_bd_net -net v_axi4s_vid_out_0_vid_hsync [get_bd_ports vid_hsync] [get_bd_pins v_axi4s_vid_out_0/vid_hsync]
   connect_bd_net -net v_axi4s_vid_out_0_vid_vsync [get_bd_ports vid_vsync] [get_bd_pins v_axi4s_vid_out_0/vid_vsync]

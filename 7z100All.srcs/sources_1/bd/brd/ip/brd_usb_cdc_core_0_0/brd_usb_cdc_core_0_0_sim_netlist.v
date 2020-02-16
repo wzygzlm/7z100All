@@ -1,8 +1,8 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Fri Jan 17 12:53:20 2020
-// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+// Date        : Sun Feb 16 23:09:36 2020
+// Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_usb_cdc_core_0_0/brd_usb_cdc_core_0_0_sim_netlist.v
 // Design      : brd_usb_cdc_core_0_0
@@ -72,6 +72,14 @@ module brd_usb_cdc_core_0_0
     status_stage_w_do,
     ep2_tx_data_valid_w_do,
     ep2_tx_data_w_do,
+    ep2_tx_data_last_w_do,
+    ep2_tx_data_accept_w_do,
+    inport_valid_q_do,
+    usbfrx_shift_en_w_do,
+    usbfrx_data_w_do,
+    usbfrx_data_ready_w_do,
+    usbfrx_crc_byte_w_do,
+    usbfrx_rx_active_w_do,
     vendorReqRecived_o,
     axi_bram_addr_o,
     axi_bram_w_data_o,
@@ -146,6 +154,14 @@ module brd_usb_cdc_core_0_0
   output status_stage_w_do;
   output ep2_tx_data_valid_w_do;
   output [7:0]ep2_tx_data_w_do;
+  output ep2_tx_data_last_w_do;
+  output ep2_tx_data_accept_w_do;
+  output inport_valid_q_do;
+  output usbfrx_shift_en_w_do;
+  output [7:0]usbfrx_data_w_do;
+  output usbfrx_data_ready_w_do;
+  output usbfrx_crc_byte_w_do;
+  output usbfrx_rx_active_w_do;
   output vendorReqRecived_o;
   output [1:0]axi_bram_addr_o;
   output [7:0]axi_bram_w_data_o;
@@ -187,11 +203,14 @@ module brd_usb_cdc_core_0_0
   wire enable_i;
   wire ep0_rx_setup_w_do;
   wire ep0_rx_valid_w_do;
+  wire ep2_tx_data_accept_w_do;
+  wire ep2_tx_data_last_w_do;
   wire ep2_tx_data_valid_w_do;
   wire [7:0]ep2_tx_data_w_do;
   wire inport_accept_o;
   wire [7:0]inport_data_i;
   wire inport_valid_i;
+  wire inport_valid_q_do;
   wire outport_accept_i;
   wire [7:0]outport_data_o;
   wire outport_valid_o;
@@ -224,6 +243,11 @@ module brd_usb_cdc_core_0_0
   wire [2:0]usbf_state_q_do;
   wire [7:0]\^usbf_tx_pid_q_do ;
   wire usbf_tx_valid_q_do;
+  wire usbfrx_crc_byte_w_do;
+  wire usbfrx_data_ready_w_do;
+  wire [7:0]usbfrx_data_w_do;
+  wire usbfrx_rx_active_w_do;
+  wire usbfrx_shift_en_w_do;
   wire [7:0]utmi_data_in_i;
   wire [7:0]utmi_data_out_o;
   wire [1:0]utmi_linestate_i;
@@ -270,11 +294,12 @@ module brd_usb_cdc_core_0_0
        (.G(\<const0> ));
   brd_usb_cdc_core_0_0_usb_cdc_core U0
        (.E(inport_accept_o),
-        .Q(bmRequestType_w_do),
+        .Q(usbfrx_data_ready_w_do),
         .axi_bram_addr_o(axi_bram_addr_o),
         .axi_bram_r_data_i(axi_bram_r_data_i),
         .axi_bram_w_data_o(axi_bram_w_data_o),
         .\bRequest_w_do[7] (bRequest_w_do),
+        .\bmRequestType_w_do[7] (bmRequestType_w_do),
         .clk_i(clk_i),
         .ctrl_ack_r_do(ctrl_ack_r_do),
         .ctrl_host_ack_i(ctrl_host_ack_i),
@@ -292,10 +317,13 @@ module brd_usb_cdc_core_0_0
         .enable_i(enable_i),
         .ep0_rx_setup_w_do(ep0_rx_setup_w_do),
         .ep0_rx_valid_w_do(ep0_rx_valid_w_do),
+        .ep2_tx_data_accept_w_do(ep2_tx_data_accept_w_do),
+        .ep2_tx_data_last_w_do(ep2_tx_data_last_w_do),
         .ep2_tx_data_valid_w_do(ep2_tx_data_valid_w_do),
         .ep2_tx_data_w_do(ep2_tx_data_w_do),
         .inport_data_i(inport_data_i),
         .inport_valid_i(inport_valid_i),
+        .inport_valid_q_do(inport_valid_q_do),
         .outport_accept_i(outport_accept_i),
         .outport_data_o(outport_data_o),
         .outport_valid_o(outport_valid_o),
@@ -335,6 +363,17 @@ module brd_usb_cdc_core_0_0
         .\usbf_state_q_do[2] (usbf_state_q_do[2]),
         .usbf_tx_pid_q_do({\^usbf_tx_pid_q_do [7:6],\^usbf_tx_pid_q_do [4:0]}),
         .usbf_tx_valid_q_do(usbf_tx_valid_q_do),
+        .usbfrx_crc_byte_w_do(usbfrx_crc_byte_w_do),
+        .\usbfrx_data_w_do[0] (usbfrx_data_w_do[0]),
+        .\usbfrx_data_w_do[1] (usbfrx_data_w_do[1]),
+        .\usbfrx_data_w_do[2] (usbfrx_data_w_do[2]),
+        .\usbfrx_data_w_do[3] (usbfrx_data_w_do[3]),
+        .\usbfrx_data_w_do[4] (usbfrx_data_w_do[4]),
+        .\usbfrx_data_w_do[5] (usbfrx_data_w_do[5]),
+        .\usbfrx_data_w_do[6] (usbfrx_data_w_do[6]),
+        .\usbfrx_data_w_do[7] (usbfrx_data_w_do[7]),
+        .usbfrx_rx_active_w_do(usbfrx_rx_active_w_do),
+        .usbfrx_shift_en_w_do(usbfrx_shift_en_w_do),
         .utmi_data_in_i(utmi_data_in_i),
         .utmi_data_out_o(utmi_data_out_o),
         .utmi_linestate_i(utmi_linestate_i),
@@ -352,7 +391,17 @@ endmodule
 
 (* ORIG_REF_NAME = "usb_cdc_core" *) 
 module brd_usb_cdc_core_0_0_usb_cdc_core
-   (\usbf_state_q_do[0] ,
+   (usbfrx_shift_en_w_do,
+    \usbfrx_data_w_do[7] ,
+    \usbfrx_data_w_do[6] ,
+    \usbfrx_data_w_do[5] ,
+    \usbfrx_data_w_do[4] ,
+    \usbfrx_data_w_do[3] ,
+    \usbfrx_data_w_do[2] ,
+    \usbfrx_data_w_do[1] ,
+    \usbfrx_data_w_do[0] ,
+    usbfrx_rx_active_w_do,
+    \usbf_state_q_do[0] ,
     usbf_ep_data_bit_r_do,
     ep2_tx_data_valid_w_do,
     \token_ep_w_do[1] ,
@@ -361,16 +410,18 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     \token_ep_w_do[2] ,
     \token_ep_w_do[3] ,
     ctrl_txstall_q_do,
+    setup_resp_valid_delay_q_do,
+    usb_reset_w_do,
+    Q,
+    usbfrx_crc_byte_w_do,
     data_complete_o_do,
     \usbf_state_q_do[1] ,
     setup_valid_q_do,
-    Q,
-    setup_resp_valid_delay_q_do,
-    \bRequest_w_do[7] ,
-    \wValue_w_do[7] ,
-    usb_reset_w_do,
+    \bmRequestType_w_do[7] ,
     \desc_addr_q_do[6] ,
     \wValue_w_do[15] ,
+    \wValue_w_do[7] ,
+    \bRequest_w_do[7] ,
     setup_valid_conter_q_o,
     state_r_do,
     \token_valid_cnt_q_do[25] ,
@@ -392,28 +443,31 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     current_token_debug_counter_q_do,
     debug_counter_q_do,
     ctrl_txdata_q_do,
+    inport_valid_q_do,
     E,
     ep2_tx_data_w_do,
     reg_dev_addr_i_do,
     usb_reset_counter_q_do,
     token_valid_counter_q_do,
-    ctrl_sending_r_do,
     utmi_data_out_o,
-    utmi_txvalid_o,
     sie_tx_state_q_o,
+    utmi_txvalid_o,
+    ep2_tx_data_accept_w_do,
+    ep2_tx_data_last_w_do,
     usbf_new_data_bit_r_do,
     status_stage_w_do,
     ep0_rx_valid_w_do,
     setup_frame_q_do,
-    ctrl_ack_r_do,
     ctrl_send_accept_w_do,
+    ctrl_sending_r_do,
+    ctrl_ack_r_do,
+    ctrl_stall_r_do,
     outport_valid_o,
     rx_last_w_do,
     setup_token_valid_intr_o,
     axi_bram_addr_o,
     readAXIBRAM_r_do,
     vendorReqRecived_o,
-    ctrl_stall_r_do,
     utmi_termselect_o,
     utmi_op_mode_o,
     utmi_xcvrselect_o,
@@ -423,14 +477,24 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     utmi_data_in_i,
     utmi_rxactive_i,
     outport_accept_i,
+    utmi_txready_i,
     utmi_linestate_i,
     utmi_rxvalid_i,
-    inport_valid_i,
+    ctrl_host_ack_i,
     inport_data_i,
-    utmi_txready_i,
     axi_bram_r_data_i,
     enable_i,
-    ctrl_host_ack_i);
+    inport_valid_i);
+  output usbfrx_shift_en_w_do;
+  output \usbfrx_data_w_do[7] ;
+  output \usbfrx_data_w_do[6] ;
+  output \usbfrx_data_w_do[5] ;
+  output \usbfrx_data_w_do[4] ;
+  output \usbfrx_data_w_do[3] ;
+  output \usbfrx_data_w_do[2] ;
+  output \usbfrx_data_w_do[1] ;
+  output \usbfrx_data_w_do[0] ;
+  output usbfrx_rx_active_w_do;
   output \usbf_state_q_do[0] ;
   output usbf_ep_data_bit_r_do;
   output ep2_tx_data_valid_w_do;
@@ -440,16 +504,18 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   output \token_ep_w_do[2] ;
   output \token_ep_w_do[3] ;
   output ctrl_txstall_q_do;
+  output setup_resp_valid_delay_q_do;
+  output usb_reset_w_do;
+  output [0:0]Q;
+  output [0:0]usbfrx_crc_byte_w_do;
   output data_complete_o_do;
   output \usbf_state_q_do[1] ;
   output setup_valid_q_do;
-  output [7:0]Q;
-  output setup_resp_valid_delay_q_do;
-  output [7:0]\bRequest_w_do[7] ;
-  output [7:0]\wValue_w_do[7] ;
-  output usb_reset_w_do;
+  output [7:0]\bmRequestType_w_do[7] ;
   output [6:0]\desc_addr_q_do[6] ;
   output [7:0]\wValue_w_do[15] ;
+  output [7:0]\wValue_w_do[7] ;
+  output [7:0]\bRequest_w_do[7] ;
   output [15:0]setup_valid_conter_q_o;
   output [2:0]state_r_do;
   output [25:0]\token_valid_cnt_q_do[25] ;
@@ -471,28 +537,31 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   output [63:0]current_token_debug_counter_q_do;
   output [63:0]debug_counter_q_do;
   output [7:0]ctrl_txdata_q_do;
+  output inport_valid_q_do;
   output [0:0]E;
   output [7:0]ep2_tx_data_w_do;
   output [6:0]reg_dev_addr_i_do;
   output [7:0]usb_reset_counter_q_do;
   output [7:0]token_valid_counter_q_do;
-  output ctrl_sending_r_do;
   output [7:0]utmi_data_out_o;
-  output utmi_txvalid_o;
   output [2:0]sie_tx_state_q_o;
+  output utmi_txvalid_o;
+  output ep2_tx_data_accept_w_do;
+  output ep2_tx_data_last_w_do;
   output usbf_new_data_bit_r_do;
   output status_stage_w_do;
   output ep0_rx_valid_w_do;
   output setup_frame_q_do;
-  output ctrl_ack_r_do;
   output ctrl_send_accept_w_do;
+  output ctrl_sending_r_do;
+  output ctrl_ack_r_do;
+  output ctrl_stall_r_do;
   output outport_valid_o;
   output rx_last_w_do;
   output setup_token_valid_intr_o;
   output [1:0]axi_bram_addr_o;
   output readAXIBRAM_r_do;
   output vendorReqRecived_o;
-  output ctrl_stall_r_do;
   output utmi_termselect_o;
   output [0:0]utmi_op_mode_o;
   output [0:0]utmi_xcvrselect_o;
@@ -502,14 +571,14 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   input [7:0]utmi_data_in_i;
   input utmi_rxactive_i;
   input outport_accept_i;
+  input utmi_txready_i;
   input [1:0]utmi_linestate_i;
   input utmi_rxvalid_i;
-  input inport_valid_i;
+  input ctrl_host_ack_i;
   input [7:0]inport_data_i;
-  input utmi_txready_i;
   input [7:0]axi_bram_r_data_i;
   input enable_i;
-  input ctrl_host_ack_i;
+  input inport_valid_i;
 
   wire [0:0]E;
   wire \FSM_sequential_state_q[1]_i_3__1_n_0 ;
@@ -521,13 +590,13 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \FSM_sequential_state_q[2]_i_14_n_0 ;
   wire \FSM_sequential_state_q[2]_i_2__1_n_0 ;
   wire \FSM_sequential_state_q[2]_i_3__1_n_0 ;
-  wire \FSM_sequential_state_q[2]_i_4__0_n_0 ;
-  wire \FSM_sequential_state_q[2]_i_5__0_n_0 ;
+  wire \FSM_sequential_state_q[2]_i_4__1_n_0 ;
+  wire \FSM_sequential_state_q[2]_i_5_n_0 ;
   wire \FSM_sequential_state_q[2]_i_6__0_n_0 ;
-  wire \FSM_sequential_state_q[2]_i_7__0_n_0 ;
+  wire \FSM_sequential_state_q[2]_i_7_n_0 ;
   wire \FSM_sequential_state_q[2]_i_8_n_0 ;
   wire \FSM_sequential_state_q[2]_i_9_n_0 ;
-  wire [7:0]Q;
+  wire [0:0]Q;
   wire [1:0]axi_bram_addr_o;
   wire [1:0]axi_bram_addr_q_reg;
   wire [7:0]axi_bram_r_data_i;
@@ -549,6 +618,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \axi_bram_w_data_o[7]_INST_0_i_1_n_0 ;
   wire \axi_bram_w_data_o[7]_INST_0_i_2_n_0 ;
   wire [7:0]\bRequest_w_do[7] ;
+  wire [7:0]\bmRequestType_w_do[7] ;
   wire chirp_count_q;
   wire \chirp_count_q[0]_i_1_n_0 ;
   wire \chirp_count_q[1]_i_1_n_0 ;
@@ -574,16 +644,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire ctrl_ack_r_do;
   wire ctrl_ack_r_do_INST_0_i_10_n_0;
   wire ctrl_ack_r_do_INST_0_i_11_n_0;
-  wire ctrl_ack_r_do_INST_0_i_12_n_0;
-  wire ctrl_ack_r_do_INST_0_i_13_n_0;
-  wire ctrl_ack_r_do_INST_0_i_14_n_0;
-  wire ctrl_ack_r_do_INST_0_i_15_n_0;
-  wire ctrl_ack_r_do_INST_0_i_16_n_0;
-  wire ctrl_ack_r_do_INST_0_i_17_n_0;
-  wire ctrl_ack_r_do_INST_0_i_18_n_0;
-  wire ctrl_ack_r_do_INST_0_i_19_n_0;
   wire ctrl_ack_r_do_INST_0_i_1_n_0;
-  wire ctrl_ack_r_do_INST_0_i_20_n_0;
   wire ctrl_ack_r_do_INST_0_i_2_n_0;
   wire ctrl_ack_r_do_INST_0_i_3_n_0;
   wire ctrl_ack_r_do_INST_0_i_4_n_0;
@@ -596,7 +657,6 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire ctrl_send_accept_w_do;
   wire [5:0]ctrl_send_idx_q;
   wire [15:6]ctrl_send_idx_q__0;
-  wire ctrl_sending_q;
   wire ctrl_sending_q_reg_n_0;
   wire \ctrl_sending_r1_inferred__0/i__carry__0_n_2 ;
   wire \ctrl_sending_r1_inferred__0/i__carry__0_n_3 ;
@@ -620,10 +680,17 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire ctrl_sending_r2_carry_n_2;
   wire ctrl_sending_r2_carry_n_3;
   wire ctrl_sending_r_do;
-  wire ctrl_sending_r_do_INST_0_i_2_n_0;
-  wire ctrl_sending_r_do_INST_0_i_3_n_0;
-  wire ctrl_sending_r_do_INST_0_i_4_n_0;
   wire ctrl_stall_r_do;
+  wire ctrl_stall_r_do_INST_0_i_10_n_0;
+  wire ctrl_stall_r_do_INST_0_i_1_n_0;
+  wire ctrl_stall_r_do_INST_0_i_2_n_0;
+  wire ctrl_stall_r_do_INST_0_i_3_n_0;
+  wire ctrl_stall_r_do_INST_0_i_4_n_0;
+  wire ctrl_stall_r_do_INST_0_i_5_n_0;
+  wire ctrl_stall_r_do_INST_0_i_6_n_0;
+  wire ctrl_stall_r_do_INST_0_i_7_n_0;
+  wire ctrl_stall_r_do_INST_0_i_8_n_0;
+  wire ctrl_stall_r_do_INST_0_i_9_n_0;
   wire \ctrl_txdata_q[0]_i_2_n_0 ;
   wire \ctrl_txdata_q[0]_i_3_n_0 ;
   wire \ctrl_txdata_q[0]_i_4_n_0 ;
@@ -631,9 +698,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \ctrl_txdata_q[0]_i_6_n_0 ;
   wire \ctrl_txdata_q[0]_i_7_n_0 ;
   wire \ctrl_txdata_q[0]_i_8_n_0 ;
-  wire \ctrl_txdata_q[0]_i_9_n_0 ;
   wire \ctrl_txdata_q[1]_i_10_n_0 ;
-  wire \ctrl_txdata_q[1]_i_11_n_0 ;
   wire \ctrl_txdata_q[1]_i_12_n_0 ;
   wire \ctrl_txdata_q[1]_i_13_n_0 ;
   wire \ctrl_txdata_q[1]_i_14_n_0 ;
@@ -641,6 +706,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \ctrl_txdata_q[1]_i_3_n_0 ;
   wire \ctrl_txdata_q[1]_i_4_n_0 ;
   wire \ctrl_txdata_q[1]_i_5_n_0 ;
+  wire \ctrl_txdata_q[1]_i_6_n_0 ;
   wire \ctrl_txdata_q[1]_i_7_n_0 ;
   wire \ctrl_txdata_q[1]_i_8_n_0 ;
   wire \ctrl_txdata_q[1]_i_9_n_0 ;
@@ -672,7 +738,6 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \ctrl_txdata_q[6]_i_12_n_0 ;
   wire \ctrl_txdata_q[6]_i_13_n_0 ;
   wire \ctrl_txdata_q[6]_i_14_n_0 ;
-  wire \ctrl_txdata_q[6]_i_15_n_0 ;
   wire \ctrl_txdata_q[6]_i_2_n_0 ;
   wire \ctrl_txdata_q[6]_i_3_n_0 ;
   wire \ctrl_txdata_q[6]_i_4_n_0 ;
@@ -686,7 +751,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \ctrl_txdata_q[7]_i_5_n_0 ;
   wire \ctrl_txdata_q[7]_i_6_n_0 ;
   wire [7:0]ctrl_txdata_q_do;
-  wire \ctrl_txdata_q_reg[1]_i_6_n_0 ;
+  wire \ctrl_txdata_q_reg[1]_i_11_n_0 ;
   wire \ctrl_txdata_q_reg[3]_i_3_n_0 ;
   wire \ctrl_txdata_q_reg[5]_i_3_n_0 ;
   wire ctrl_txlast_q_i_2_n_0;
@@ -695,7 +760,13 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire ctrl_txstall_q_do;
   wire ctrl_txstrb_q_reg_n_0;
   wire ctrl_txvalid_q_do;
-  wire ctrl_txvalid_q_i_5_n_0;
+  wire ctrl_txvalid_q_i_10_n_0;
+  wire ctrl_txvalid_q_i_11_n_0;
+  wire ctrl_txvalid_q_i_12_n_0;
+  wire ctrl_txvalid_q_i_3_n_0;
+  wire ctrl_txvalid_q_i_6_n_0;
+  wire ctrl_txvalid_q_i_7_n_0;
+  wire ctrl_txvalid_q_i_9_n_0;
   wire [6:0]current_addr_i_do;
   wire [63:0]current_token_debug_counter_q_do;
   wire data_complete_o_do;
@@ -835,27 +906,23 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \delayCnt_q[3]_i_1_n_0 ;
   wire \delayCnt_q[4]_i_1_n_0 ;
   wire [7:7]desc_addr_q;
-  wire \desc_addr_q[0]_i_3_n_0 ;
   wire \desc_addr_q[1]_i_2_n_0 ;
-  wire \desc_addr_q[1]_i_3_n_0 ;
   wire \desc_addr_q[2]_i_2_n_0 ;
   wire \desc_addr_q[3]_i_2_n_0 ;
+  wire \desc_addr_q[3]_i_3_n_0 ;
   wire \desc_addr_q[3]_i_4_n_0 ;
+  wire \desc_addr_q[3]_i_5_n_0 ;
+  wire \desc_addr_q[3]_i_6_n_0 ;
+  wire \desc_addr_q[4]_i_2_n_0 ;
   wire \desc_addr_q[4]_i_3_n_0 ;
   wire \desc_addr_q[4]_i_4_n_0 ;
+  wire \desc_addr_q[4]_i_5_n_0 ;
   wire \desc_addr_q[5]_i_2_n_0 ;
   wire \desc_addr_q[5]_i_3_n_0 ;
   wire \desc_addr_q[5]_i_4_n_0 ;
-  wire \desc_addr_q[6]_i_10_n_0 ;
-  wire \desc_addr_q[6]_i_11_n_0 ;
-  wire \desc_addr_q[6]_i_12_n_0 ;
-  wire \desc_addr_q[6]_i_13_n_0 ;
-  wire \desc_addr_q[6]_i_14_n_0 ;
-  wire \desc_addr_q[6]_i_15_n_0 ;
-  wire \desc_addr_q[6]_i_3_n_0 ;
   wire \desc_addr_q[6]_i_4_n_0 ;
   wire \desc_addr_q[6]_i_6_n_0 ;
-  wire \desc_addr_q[6]_i_7_n_0 ;
+  wire \desc_addr_q[6]_i_8_n_0 ;
   wire \desc_addr_q[6]_i_9_n_0 ;
   wire \desc_addr_q[7]_i_2_n_0 ;
   wire \desc_addr_q[7]_i_3_n_0 ;
@@ -866,6 +933,8 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire enable_i;
   wire ep0_rx_setup_w_do;
   wire ep0_rx_valid_w_do;
+  wire ep2_tx_data_accept_w_do;
+  wire ep2_tx_data_last_w_do;
   wire ep2_tx_data_valid_w_do;
   wire [7:0]ep2_tx_data_w_do;
   wire i__carry__0_i_1_n_0;
@@ -876,6 +945,8 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire i__carry_i_4_n_0;
   wire [7:0]inport_data_i;
   wire inport_valid_i;
+  wire inport_valid_q_do;
+  wire inport_valid_q_q_i_1_n_0;
   wire [1:0]last_linestate_q;
   wire [2:0]next_state_r__0;
   wire outport_accept_i;
@@ -900,7 +971,6 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire setup_resp_valid_delay_q_i_4_n_0;
   wire setup_resp_valid_delay_q_i_5_n_0;
   wire setup_resp_valid_delay_q_i_6_n_0;
-  wire setup_resp_valid_delay_q_i_7_n_0;
   wire setup_token_valid_intr_o;
   wire [15:0]setup_valid_conter_q_o;
   wire setup_valid_q;
@@ -1006,8 +1076,10 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire [7:0]token_valid_counter_q_do;
   wire token_valid_w_do;
   wire [15:0]tx_sent_data_counter_o;
-  wire u_core_n_115;
-  wire u_core_n_116;
+  wire u_core_n_112;
+  wire u_core_n_113;
+  wire u_core_n_131;
+  wire u_core_n_132;
   wire u_core_n_133;
   wire u_core_n_134;
   wire u_core_n_135;
@@ -1018,20 +1090,20 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire u_core_n_140;
   wire u_core_n_141;
   wire u_core_n_142;
-  wire u_core_n_163;
-  wire u_core_n_164;
-  wire u_core_n_165;
-  wire u_core_n_166;
-  wire u_core_n_167;
-  wire u_core_n_168;
-  wire u_core_n_169;
-  wire u_core_n_170;
-  wire u_core_n_171;
-  wire u_core_n_172;
-  wire u_core_n_173;
-  wire u_core_n_174;
-  wire u_core_n_175;
-  wire u_core_n_176;
+  wire u_core_n_143;
+  wire u_core_n_144;
+  wire u_core_n_145;
+  wire u_core_n_146;
+  wire u_core_n_147;
+  wire u_core_n_148;
+  wire u_core_n_149;
+  wire u_core_n_150;
+  wire u_core_n_151;
+  wire u_core_n_152;
+  wire u_core_n_153;
+  wire u_core_n_154;
+  wire u_core_n_155;
+  wire u_core_n_156;
   wire u_core_n_177;
   wire u_core_n_178;
   wire u_core_n_179;
@@ -1049,20 +1121,22 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire u_core_n_191;
   wire u_core_n_192;
   wire u_core_n_193;
-  wire u_core_n_22;
-  wire u_core_n_29;
-  wire u_core_n_31;
-  wire u_core_n_32;
-  wire u_core_n_33;
-  wire u_core_n_34;
-  wire u_core_n_35;
-  wire u_core_n_36;
-  wire u_core_n_37;
+  wire u_core_n_194;
+  wire u_core_n_195;
+  wire u_core_n_196;
+  wire u_core_n_197;
+  wire u_core_n_198;
+  wire u_core_n_199;
+  wire u_core_n_200;
+  wire u_core_n_201;
+  wire u_core_n_202;
+  wire u_core_n_203;
+  wire u_core_n_204;
+  wire u_core_n_205;
+  wire u_core_n_206;
+  wire u_core_n_207;
   wire u_core_n_38;
   wire u_core_n_39;
-  wire u_core_n_40;
-  wire u_core_n_41;
-  wire u_core_n_42;
   wire u_core_n_43;
   wire u_core_n_44;
   wire u_core_n_45;
@@ -1071,23 +1145,20 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire u_core_n_48;
   wire u_core_n_49;
   wire u_core_n_50;
-  wire u_core_n_51;
-  wire u_core_n_52;
   wire u_core_n_53;
-  wire u_core_n_54;
+  wire u_core_n_55;
+  wire u_core_n_56;
   wire u_core_n_57;
-  wire u_core_n_59;
-  wire u_core_n_60;
-  wire u_core_n_61;
-  wire u_core_n_63;
+  wire u_core_n_58;
+  wire u_core_n_70;
+  wire u_core_n_86;
+  wire u_core_n_87;
   wire u_core_n_88;
   wire u_core_n_89;
   wire u_core_n_90;
   wire u_core_n_91;
   wire u_core_n_92;
   wire u_core_n_93;
-  wire u_core_n_94;
-  wire u_core_n_95;
   wire \usb_reset_counter_q[7]_i_2_n_0 ;
   wire [7:0]usb_reset_counter_q_do;
   wire usb_reset_w_do;
@@ -1126,6 +1197,17 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire \usbf_state_q_do[2] ;
   wire [6:0]usbf_tx_pid_q_do;
   wire usbf_tx_valid_q_do;
+  wire [0:0]usbfrx_crc_byte_w_do;
+  wire \usbfrx_data_w_do[0] ;
+  wire \usbfrx_data_w_do[1] ;
+  wire \usbfrx_data_w_do[2] ;
+  wire \usbfrx_data_w_do[3] ;
+  wire \usbfrx_data_w_do[4] ;
+  wire \usbfrx_data_w_do[5] ;
+  wire \usbfrx_data_w_do[6] ;
+  wire \usbfrx_data_w_do[7] ;
+  wire usbfrx_rx_active_w_do;
+  wire usbfrx_shift_en_w_do;
   wire [7:0]utmi_data_in_i;
   wire [7:0]utmi_data_out_o;
   wire [1:0]utmi_linestate_i;
@@ -1152,23 +1234,23 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   wire [3:2]NLW_usb_rst_time_q0_carry__3_CO_UNCONNECTED;
   wire [3:3]NLW_usb_rst_time_q0_carry__3_O_UNCONNECTED;
 
-  (* SOFT_HLUTNM = "soft_lutpair97" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     \FSM_sequential_state_q[1]_i_3__1 
-       (.I0(\chirp_count_q_reg_n_0_[5] ),
-        .I1(\chirp_count_q_reg_n_0_[6] ),
-        .I2(\chirp_count_q_reg_n_0_[4] ),
+       (.I0(\chirp_count_q_reg_n_0_[4] ),
+        .I1(\chirp_count_q_reg_n_0_[5] ),
+        .I2(\chirp_count_q_reg_n_0_[6] ),
         .I3(\FSM_sequential_state_q[1]_i_4__1_n_0 ),
         .O(\FSM_sequential_state_q[1]_i_3__1_n_0 ));
   LUT5 #(
-    .INIT(32'hFFFFFFE0)) 
+    .INIT(32'hFFFEEEEE)) 
     \FSM_sequential_state_q[1]_i_4__1 
-       (.I0(\chirp_count_q_reg_n_0_[0] ),
-        .I1(\chirp_count_q_reg_n_0_[1] ),
-        .I2(\chirp_count_q_reg_n_0_[2] ),
-        .I3(\chirp_count_q_reg_n_0_[7] ),
-        .I4(\chirp_count_q_reg_n_0_[3] ),
+       (.I0(\chirp_count_q_reg_n_0_[7] ),
+        .I1(\chirp_count_q_reg_n_0_[3] ),
+        .I2(\chirp_count_q_reg_n_0_[0] ),
+        .I3(\chirp_count_q_reg_n_0_[1] ),
+        .I4(\chirp_count_q_reg_n_0_[2] ),
         .O(\FSM_sequential_state_q[1]_i_4__1_n_0 ));
   LUT2 #(
     .INIT(4'h1)) 
@@ -1176,7 +1258,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
        (.I0(\usb_rst_time_do[19] [14]),
         .I1(\usb_rst_time_do[19] [7]),
         .O(\FSM_sequential_state_q[2]_i_10_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
   LUT5 #(
     .INIT(32'hFE00AA00)) 
     \FSM_sequential_state_q[2]_i_11 
@@ -1216,7 +1298,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I1(state_q[0]),
         .I2(\FSM_sequential_state_q[2]_i_3__1_n_0 ),
         .I3(state_q[2]),
-        .I4(\FSM_sequential_state_q[2]_i_4__0_n_0 ),
+        .I4(\FSM_sequential_state_q[2]_i_4__1_n_0 ),
         .I5(state_q[1]),
         .O(next_state_r__0[2]));
   LUT6 #(
@@ -1224,10 +1306,10 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     \FSM_sequential_state_q[2]_i_2__1 
        (.I0(\usb_rst_time_do[19] [18]),
         .I1(\usb_rst_time_do[19] [19]),
-        .I2(\FSM_sequential_state_q[2]_i_5__0_n_0 ),
+        .I2(\FSM_sequential_state_q[2]_i_5_n_0 ),
         .I3(\usb_rst_time_do[19] [15]),
         .I4(\FSM_sequential_state_q[2]_i_6__0_n_0 ),
-        .I5(\FSM_sequential_state_q[2]_i_7__0_n_0 ),
+        .I5(\FSM_sequential_state_q[2]_i_7_n_0 ),
         .O(\FSM_sequential_state_q[2]_i_2__1_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAA8AAAAAAAA)) 
@@ -1241,21 +1323,21 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .O(\FSM_sequential_state_q[2]_i_3__1_n_0 ));
   LUT6 #(
     .INIT(64'h00000008AAAAAAAA)) 
-    \FSM_sequential_state_q[2]_i_4__0 
+    \FSM_sequential_state_q[2]_i_4__1 
        (.I0(\FSM_sequential_state_q[2]_i_9_n_0 ),
         .I1(\FSM_sequential_state_q[2]_i_10_n_0 ),
         .I2(\usb_rst_time_do[19] [6]),
         .I3(\usb_rst_time_do[19] [5]),
         .I4(\usb_rst_time_do[19] [16]),
         .I5(\FSM_sequential_state_q[2]_i_11_n_0 ),
-        .O(\FSM_sequential_state_q[2]_i_4__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+        .O(\FSM_sequential_state_q[2]_i_4__1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair93" *) 
   LUT2 #(
     .INIT(4'hE)) 
-    \FSM_sequential_state_q[2]_i_5__0 
+    \FSM_sequential_state_q[2]_i_5 
        (.I0(\usb_rst_time_do[19] [16]),
         .I1(\usb_rst_time_do[19] [17]),
-        .O(\FSM_sequential_state_q[2]_i_5__0_n_0 ));
+        .O(\FSM_sequential_state_q[2]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'h0000030001000300)) 
     \FSM_sequential_state_q[2]_i_6__0 
@@ -1268,25 +1350,25 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .O(\FSM_sequential_state_q[2]_i_6__0_n_0 ));
   LUT6 #(
     .INIT(64'hFFFEFEFEAAAAAAAA)) 
-    \FSM_sequential_state_q[2]_i_7__0 
+    \FSM_sequential_state_q[2]_i_7 
        (.I0(\usb_rst_time_do[19] [14]),
         .I1(\usb_rst_time_do[19] [12]),
         .I2(\usb_rst_time_do[19] [10]),
         .I3(\usb_rst_time_do[19] [8]),
         .I4(\usb_rst_time_do[19] [9]),
         .I5(\FSM_sequential_state_q[2]_i_12_n_0 ),
-        .O(\FSM_sequential_state_q[2]_i_7__0_n_0 ));
+        .O(\FSM_sequential_state_q[2]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'hBBBFFFFFFFFFFFFF)) 
+    .INIT(64'hFFFFFFFF57FFFFFF)) 
     \FSM_sequential_state_q[2]_i_8 
-       (.I0(\FSM_sequential_state_q[2]_i_13_n_0 ),
-        .I1(\usb_rst_time_do[19] [13]),
-        .I2(\usb_rst_time_do[19] [12]),
-        .I3(\usb_rst_time_do[19] [11]),
-        .I4(\usb_rst_time_do[19] [14]),
-        .I5(\usb_rst_time_do[19] [15]),
+       (.I0(\usb_rst_time_do[19] [13]),
+        .I1(\usb_rst_time_do[19] [12]),
+        .I2(\usb_rst_time_do[19] [11]),
+        .I3(\usb_rst_time_do[19] [14]),
+        .I4(\usb_rst_time_do[19] [15]),
+        .I5(\FSM_sequential_state_q[2]_i_13_n_0 ),
         .O(\FSM_sequential_state_q[2]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \FSM_sequential_state_q[2]_i_9 
@@ -1322,31 +1404,31 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     \axi_bram_addr_o[0]_INST_0 
        (.I0(axi_bram_addr_q_reg[0]),
         .I1(\readAXIBRAM_q_reg_n_0_[0] ),
-        .I2(Q[5]),
-        .I3(Q[6]),
+        .I2(\bmRequestType_w_do[7] [5]),
+        .I3(\bmRequestType_w_do[7] [6]),
         .I4(setup_resp_valid_delay_q_do),
-        .I5(Q[7]),
+        .I5(\bmRequestType_w_do[7] [7]),
         .O(axi_bram_addr_o[0]));
   LUT6 #(
     .INIT(64'h8A00888880008888)) 
     \axi_bram_addr_o[1]_INST_0 
        (.I0(axi_bram_addr_q_reg[1]),
         .I1(\readAXIBRAM_q_reg_n_0_[0] ),
-        .I2(Q[5]),
-        .I3(Q[6]),
+        .I2(\bmRequestType_w_do[7] [5]),
+        .I3(\bmRequestType_w_do[7] [6]),
         .I4(setup_resp_valid_delay_q_do),
-        .I5(Q[7]),
+        .I5(\bmRequestType_w_do[7] [7]),
         .O(axi_bram_addr_o[1]));
   FDRE \axi_bram_addr_q_reg[0] 
        (.C(clk_i),
         .CE(1'b1),
-        .D(u_core_n_63),
+        .D(u_core_n_58),
         .Q(axi_bram_addr_q_reg[0]),
         .R(1'b0));
   FDRE \axi_bram_addr_q_reg[1] 
        (.C(clk_i),
         .CE(1'b1),
-        .D(u_core_n_61),
+        .D(u_core_n_57),
         .Q(axi_bram_addr_q_reg[1]),
         .R(1'b0));
   MUXF7 \axi_bram_w_data_o[0]_INST_0 
@@ -1362,7 +1444,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [0]),
         .I4(delayCnt_q[0]),
-        .I5(Q[0]),
+        .I5(\bmRequestType_w_do[7] [0]),
         .O(\axi_bram_w_data_o[0]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1387,7 +1469,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [1]),
         .I4(delayCnt_q[0]),
-        .I5(Q[1]),
+        .I5(\bmRequestType_w_do[7] [1]),
         .O(\axi_bram_w_data_o[1]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1412,7 +1494,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [2]),
         .I4(delayCnt_q[0]),
-        .I5(Q[2]),
+        .I5(\bmRequestType_w_do[7] [2]),
         .O(\axi_bram_w_data_o[2]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1437,7 +1519,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [3]),
         .I4(delayCnt_q[0]),
-        .I5(Q[3]),
+        .I5(\bmRequestType_w_do[7] [3]),
         .O(\axi_bram_w_data_o[3]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1462,7 +1544,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [4]),
         .I4(delayCnt_q[0]),
-        .I5(Q[4]),
+        .I5(\bmRequestType_w_do[7] [4]),
         .O(\axi_bram_w_data_o[4]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1487,7 +1569,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [5]),
         .I4(delayCnt_q[0]),
-        .I5(Q[5]),
+        .I5(\bmRequestType_w_do[7] [5]),
         .O(\axi_bram_w_data_o[5]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1512,7 +1594,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [6]),
         .I4(delayCnt_q[0]),
-        .I5(Q[6]),
+        .I5(\bmRequestType_w_do[7] [6]),
         .O(\axi_bram_w_data_o[6]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1537,7 +1619,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(\bRequest_w_do[7] [7]),
         .I4(delayCnt_q[0]),
-        .I5(Q[7]),
+        .I5(\bmRequestType_w_do[7] [7]),
         .O(\axi_bram_w_data_o[7]_INST_0_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
@@ -1583,12 +1665,12 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I1(\chirp_count_q_reg_n_0_[1] ),
         .I2(\chirp_count_q_reg_n_0_[0] ),
         .I3(\chirp_count_q_reg_n_0_[3] ),
-        .I4(u_core_n_22),
+        .I4(u_core_n_70),
         .O(\chirp_count_q[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h1555555540000000)) 
     \chirp_count_q[4]_i_1 
-       (.I0(u_core_n_22),
+       (.I0(u_core_n_70),
         .I1(\chirp_count_q_reg_n_0_[3] ),
         .I2(\chirp_count_q_reg_n_0_[0] ),
         .I3(\chirp_count_q_reg_n_0_[1] ),
@@ -1650,7 +1732,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(last_linestate_q[0]),
         .I3(utmi_linestate_i[0]),
         .O(\chirp_count_q[7]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair97" *) 
+  (* SOFT_HLUTNM = "soft_lutpair99" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \chirp_count_q[7]_i_4 
@@ -1720,9 +1802,9 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     ctrl_ack_r_do_INST_0
        (.I0(ctrl_ack_r_do_INST_0_i_1_n_0),
         .I1(ctrl_ack_r_do_INST_0_i_2_n_0),
-        .I2(ctrl_ack_r_do_INST_0_i_3_n_0),
-        .I3(ctrl_ack_r_do_INST_0_i_4_n_0),
-        .I4(ctrl_ack_r_do_INST_0_i_5_n_0),
+        .I2(ctrl_stall_r_do_INST_0_i_1_n_0),
+        .I3(ctrl_ack_r_do_INST_0_i_3_n_0),
+        .I4(ctrl_ack_r_do_INST_0_i_4_n_0),
         .O(ctrl_ack_r_do));
   LUT4 #(
     .INIT(16'hAABF)) 
@@ -1730,283 +1812,197 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
        (.I0(\bRequest_w_do[7] [1]),
         .I1(\bRequest_w_do[7] [2]),
         .I2(\bRequest_w_do[7] [3]),
-        .I3(ctrl_ack_r_do_INST_0_i_6_n_0),
+        .I3(ctrl_stall_r_do_INST_0_i_7_n_0),
         .O(ctrl_ack_r_do_INST_0_i_1_n_0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    ctrl_ack_r_do_INST_0_i_10
-       (.I0(ctrl_ack_r_do_INST_0_i_17_n_0),
-        .I1(ctrl_ack_r_do_INST_0_i_18_n_0),
-        .I2(ctrl_ack_r_do_INST_0_i_19_n_0),
-        .I3(wIndex_w[6]),
-        .I4(wIndex_w[10]),
-        .I5(wIndex_w[9]),
-        .O(ctrl_ack_r_do_INST_0_i_10_n_0));
-  LUT5 #(
-    .INIT(32'h00000008)) 
-    ctrl_ack_r_do_INST_0_i_11
-       (.I0(\bRequest_w_do[7] [0]),
-        .I1(\bRequest_w_do[7] [5]),
-        .I2(\bRequest_w_do[7] [2]),
-        .I3(\bRequest_w_do[7] [3]),
-        .I4(ctrl_ack_r_do_INST_0_i_20_n_0),
-        .O(ctrl_ack_r_do_INST_0_i_11_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    ctrl_ack_r_do_INST_0_i_12
-       (.I0(\wValue_w_do[15] [6]),
-        .I1(\wValue_w_do[15] [7]),
-        .I2(\wValue_w_do[15] [4]),
-        .I3(\wValue_w_do[15] [5]),
-        .I4(\wValue_w_do[15] [2]),
-        .I5(\wValue_w_do[15] [3]),
-        .O(ctrl_ack_r_do_INST_0_i_12_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ctrl_ack_r_do_INST_0_i_13
-       (.I0(wLength[7]),
-        .I1(wLength[1]),
-        .I2(wLength[11]),
-        .I3(wLength[6]),
-        .O(ctrl_ack_r_do_INST_0_i_13_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair99" *) 
-  LUT4 #(
-    .INIT(16'hFFFD)) 
-    ctrl_ack_r_do_INST_0_i_14
-       (.I0(setup_resp_valid_delay_q_do),
-        .I1(wLength[14]),
-        .I2(wLength[10]),
-        .I3(wLength[8]),
-        .O(ctrl_ack_r_do_INST_0_i_14_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair98" *) 
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ctrl_ack_r_do_INST_0_i_15
-       (.I0(wLength[5]),
-        .I1(wLength[4]),
-        .I2(wLength[12]),
-        .I3(Q[7]),
-        .O(ctrl_ack_r_do_INST_0_i_15_n_0));
-  LUT6 #(
     .INIT(64'h0000000000000001)) 
-    ctrl_ack_r_do_INST_0_i_16
+    ctrl_ack_r_do_INST_0_i_10
        (.I0(wLength[15]),
         .I1(wLength[0]),
         .I2(wLength[9]),
         .I3(wLength[13]),
         .I4(wLength[2]),
         .I5(wLength[3]),
-        .O(ctrl_ack_r_do_INST_0_i_16_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    ctrl_ack_r_do_INST_0_i_17
-       (.I0(wIndex_w[11]),
-        .I1(wIndex_w[8]),
-        .I2(wIndex_w[7]),
-        .I3(wIndex_w[15]),
-        .I4(wIndex_w[2]),
-        .I5(wIndex_w[14]),
-        .O(ctrl_ack_r_do_INST_0_i_17_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair91" *) 
+        .O(ctrl_ack_r_do_INST_0_i_10_n_0));
   LUT4 #(
     .INIT(16'hFFFE)) 
-    ctrl_ack_r_do_INST_0_i_18
-       (.I0(wIndex_w[12]),
-        .I1(wIndex_w[3]),
-        .I2(\wValue_w_do[7] [0]),
-        .I3(wIndex_w[4]),
-        .O(ctrl_ack_r_do_INST_0_i_18_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ctrl_ack_r_do_INST_0_i_19
-       (.I0(wIndex_w[13]),
-        .I1(wIndex_w[1]),
-        .I2(wIndex_w[5]),
-        .I3(wIndex_w[0]),
-        .O(ctrl_ack_r_do_INST_0_i_19_n_0));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFEAFF)) 
-    ctrl_ack_r_do_INST_0_i_2
-       (.I0(ctrl_ack_r_do_INST_0_i_7_n_0),
-        .I1(\bRequest_w_do[7] [1]),
-        .I2(\bRequest_w_do[7] [2]),
-        .I3(\bRequest_w_do[7] [0]),
-        .I4(Q[5]),
-        .I5(ctrl_ack_r_do_INST_0_i_8_n_0),
-        .O(ctrl_ack_r_do_INST_0_i_2_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    ctrl_ack_r_do_INST_0_i_20
+    ctrl_ack_r_do_INST_0_i_11
        (.I0(\bRequest_w_do[7] [7]),
         .I1(\bRequest_w_do[7] [6]),
         .I2(\bRequest_w_do[7] [4]),
         .I3(\bRequest_w_do[7] [1]),
-        .O(ctrl_ack_r_do_INST_0_i_20_n_0));
-  LUT4 #(
-    .INIT(16'hD000)) 
-    ctrl_ack_r_do_INST_0_i_3
-       (.I0(ctrl_ack_r_do_INST_0_i_9_n_0),
-        .I1(ctrl_ack_r_do_INST_0_i_10_n_0),
-        .I2(\bRequest_w_do[7] [1]),
-        .I3(\bRequest_w_do[7] [3]),
-        .O(ctrl_ack_r_do_INST_0_i_3_n_0));
+        .O(ctrl_ack_r_do_INST_0_i_11_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFEAFF)) 
+    ctrl_ack_r_do_INST_0_i_2
+       (.I0(ctrl_ack_r_do_INST_0_i_5_n_0),
+        .I1(\bRequest_w_do[7] [1]),
+        .I2(\bRequest_w_do[7] [2]),
+        .I3(\bRequest_w_do[7] [0]),
+        .I4(\bmRequestType_w_do[7] [5]),
+        .I5(ctrl_stall_r_do_INST_0_i_6_n_0),
+        .O(ctrl_ack_r_do_INST_0_i_2_n_0));
   LUT6 #(
     .INIT(64'h00002A2A00FF2A2A)) 
-    ctrl_ack_r_do_INST_0_i_4
-       (.I0(Q[6]),
-        .I1(Q[7]),
+    ctrl_ack_r_do_INST_0_i_3
+       (.I0(\bmRequestType_w_do[7] [6]),
+        .I1(\bmRequestType_w_do[7] [7]),
         .I2(setup_resp_valid_delay_q_do),
-        .I3(ctrl_ack_r_do_INST_0_i_7_n_0),
-        .I4(Q[5]),
-        .I5(ctrl_ack_r_do_INST_0_i_11_n_0),
-        .O(ctrl_ack_r_do_INST_0_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair88" *) 
-  LUT4 #(
-    .INIT(16'hC8FF)) 
-    ctrl_ack_r_do_INST_0_i_5
-       (.I0(Q[7]),
-        .I1(Q[6]),
-        .I2(Q[5]),
-        .I3(setup_resp_valid_delay_q_do),
-        .O(ctrl_ack_r_do_INST_0_i_5_n_0));
-  LUT6 #(
-    .INIT(64'hAAAAAAAAAAA8AAAA)) 
-    ctrl_ack_r_do_INST_0_i_6
-       (.I0(\bRequest_w_do[7] [3]),
-        .I1(\wValue_w_do[15] [1]),
-        .I2(\wValue_w_do[15] [0]),
-        .I3(\wValue_w_do[7] [1]),
-        .I4(\desc_addr_q[3]_i_2_n_0 ),
-        .I5(ctrl_ack_r_do_INST_0_i_12_n_0),
-        .O(ctrl_ack_r_do_INST_0_i_6_n_0));
-  LUT4 #(
-    .INIT(16'hFEFF)) 
-    ctrl_ack_r_do_INST_0_i_7
-       (.I0(ctrl_ack_r_do_INST_0_i_13_n_0),
-        .I1(ctrl_ack_r_do_INST_0_i_14_n_0),
-        .I2(ctrl_ack_r_do_INST_0_i_15_n_0),
-        .I3(ctrl_ack_r_do_INST_0_i_16_n_0),
-        .O(ctrl_ack_r_do_INST_0_i_7_n_0));
+        .I3(ctrl_ack_r_do_INST_0_i_5_n_0),
+        .I4(\bmRequestType_w_do[7] [5]),
+        .I5(ctrl_ack_r_do_INST_0_i_6_n_0),
+        .O(ctrl_ack_r_do_INST_0_i_3_n_0));
   (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT4 #(
-    .INIT(16'hFFFE)) 
-    ctrl_ack_r_do_INST_0_i_8
-       (.I0(\bRequest_w_do[7] [7]),
-        .I1(\bRequest_w_do[7] [6]),
-        .I2(\bRequest_w_do[7] [4]),
-        .I3(\bRequest_w_do[7] [5]),
-        .O(ctrl_ack_r_do_INST_0_i_8_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair77" *) 
+    .INIT(16'hC8FF)) 
+    ctrl_ack_r_do_INST_0_i_4
+       (.I0(\bmRequestType_w_do[7] [7]),
+        .I1(\bmRequestType_w_do[7] [6]),
+        .I2(\bmRequestType_w_do[7] [5]),
+        .I3(setup_resp_valid_delay_q_do),
+        .O(ctrl_ack_r_do_INST_0_i_4_n_0));
+  LUT4 #(
+    .INIT(16'hFEFF)) 
+    ctrl_ack_r_do_INST_0_i_5
+       (.I0(ctrl_ack_r_do_INST_0_i_7_n_0),
+        .I1(ctrl_ack_r_do_INST_0_i_8_n_0),
+        .I2(ctrl_ack_r_do_INST_0_i_9_n_0),
+        .I3(ctrl_ack_r_do_INST_0_i_10_n_0),
+        .O(ctrl_ack_r_do_INST_0_i_5_n_0));
   LUT5 #(
-    .INIT(32'h00000004)) 
+    .INIT(32'h00000008)) 
+    ctrl_ack_r_do_INST_0_i_6
+       (.I0(\bRequest_w_do[7] [0]),
+        .I1(\bRequest_w_do[7] [5]),
+        .I2(\bRequest_w_do[7] [2]),
+        .I3(\bRequest_w_do[7] [3]),
+        .I4(ctrl_ack_r_do_INST_0_i_11_n_0),
+        .O(ctrl_ack_r_do_INST_0_i_6_n_0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    ctrl_ack_r_do_INST_0_i_7
+       (.I0(wLength[7]),
+        .I1(wLength[1]),
+        .I2(wLength[11]),
+        .I3(wLength[6]),
+        .O(ctrl_ack_r_do_INST_0_i_7_n_0));
+  LUT4 #(
+    .INIT(16'hFFFD)) 
+    ctrl_ack_r_do_INST_0_i_8
+       (.I0(setup_resp_valid_delay_q_do),
+        .I1(wLength[14]),
+        .I2(wLength[10]),
+        .I3(wLength[8]),
+        .O(ctrl_ack_r_do_INST_0_i_8_n_0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
     ctrl_ack_r_do_INST_0_i_9
-       (.I0(ctrl_ack_r_do_INST_0_i_12_n_0),
-        .I1(\desc_addr_q[3]_i_2_n_0 ),
-        .I2(\wValue_w_do[7] [1]),
-        .I3(\wValue_w_do[15] [0]),
-        .I4(\wValue_w_do[15] [1]),
+       (.I0(wLength[5]),
+        .I1(wLength[4]),
+        .I2(wLength[12]),
+        .I3(\bmRequestType_w_do[7] [7]),
         .O(ctrl_ack_r_do_INST_0_i_9_n_0));
   FDCE \ctrl_send_idx_q_reg[0] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_54),
+        .D(u_core_n_156),
         .Q(ctrl_send_idx_q[0]));
   FDCE \ctrl_send_idx_q_reg[10] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_44),
+        .D(u_core_n_146),
         .Q(ctrl_send_idx_q__0[10]));
   FDCE \ctrl_send_idx_q_reg[11] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_43),
+        .D(u_core_n_145),
         .Q(ctrl_send_idx_q__0[11]));
   FDCE \ctrl_send_idx_q_reg[12] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_42),
+        .D(u_core_n_144),
         .Q(ctrl_send_idx_q__0[12]));
   FDCE \ctrl_send_idx_q_reg[13] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_41),
+        .D(u_core_n_143),
         .Q(ctrl_send_idx_q__0[13]));
   FDCE \ctrl_send_idx_q_reg[14] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_40),
+        .D(u_core_n_142),
         .Q(ctrl_send_idx_q__0[14]));
   FDCE \ctrl_send_idx_q_reg[15] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_39),
+        .D(u_core_n_141),
         .Q(ctrl_send_idx_q__0[15]));
   FDCE \ctrl_send_idx_q_reg[1] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_53),
+        .D(u_core_n_155),
         .Q(ctrl_send_idx_q[1]));
   FDCE \ctrl_send_idx_q_reg[2] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_52),
+        .D(u_core_n_154),
         .Q(ctrl_send_idx_q[2]));
   FDCE \ctrl_send_idx_q_reg[3] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_51),
+        .D(u_core_n_153),
         .Q(ctrl_send_idx_q[3]));
   FDCE \ctrl_send_idx_q_reg[4] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_50),
+        .D(u_core_n_152),
         .Q(ctrl_send_idx_q[4]));
   FDCE \ctrl_send_idx_q_reg[5] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_49),
+        .D(u_core_n_151),
         .Q(ctrl_send_idx_q[5]));
   FDCE \ctrl_send_idx_q_reg[6] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_48),
+        .D(u_core_n_150),
         .Q(ctrl_send_idx_q__0[6]));
   FDCE \ctrl_send_idx_q_reg[7] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_47),
+        .D(u_core_n_149),
         .Q(ctrl_send_idx_q__0[7]));
   FDCE \ctrl_send_idx_q_reg[8] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_46),
+        .D(u_core_n_148),
         .Q(ctrl_send_idx_q__0[8]));
   FDCE \ctrl_send_idx_q_reg[9] 
        (.C(clk_i),
-        .CE(u_core_n_115),
+        .CE(u_core_n_112),
         .CLR(rst_i),
-        .D(u_core_n_45),
+        .D(u_core_n_147),
         .Q(ctrl_send_idx_q__0[9]));
   FDCE ctrl_sending_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(ctrl_sending_q),
+        .D(u_core_n_39),
         .Q(ctrl_sending_q_reg_n_0));
   CARRY4 \ctrl_sending_r1_inferred__0/i__carry 
        (.CI(1'b0),
@@ -2050,228 +2046,285 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({NLW_ctrl_sending_r2_carry__2_O_UNCONNECTED[3],ctrl_sending_r2[15:13]}),
         .S({1'b0,ctrl_send_idx_q__0[15:13]}));
-  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  LUT6 #(
+    .INIT(64'h8282828082828282)) 
+    ctrl_stall_r_do_INST_0
+       (.I0(setup_resp_valid_delay_q_do),
+        .I1(\bmRequestType_w_do[7] [5]),
+        .I2(\bmRequestType_w_do[7] [6]),
+        .I3(ctrl_stall_r_do_INST_0_i_1_n_0),
+        .I4(ctrl_stall_r_do_INST_0_i_2_n_0),
+        .I5(ctrl_stall_r_do_INST_0_i_3_n_0),
+        .O(ctrl_stall_r_do));
+  LUT4 #(
+    .INIT(16'hD000)) 
+    ctrl_stall_r_do_INST_0_i_1
+       (.I0(ctrl_stall_r_do_INST_0_i_4_n_0),
+        .I1(ctrl_stall_r_do_INST_0_i_5_n_0),
+        .I2(\bRequest_w_do[7] [1]),
+        .I3(\bRequest_w_do[7] [3]),
+        .O(ctrl_stall_r_do_INST_0_i_1_n_0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    ctrl_stall_r_do_INST_0_i_10
+       (.I0(wIndex_w[1]),
+        .I1(wIndex_w[0]),
+        .I2(wIndex_w[15]),
+        .I3(wIndex_w[13]),
+        .O(ctrl_stall_r_do_INST_0_i_10_n_0));
   LUT5 #(
-    .INIT(32'h00FFFF02)) 
-    ctrl_sending_r_do_INST_0_i_2
-       (.I0(ctrl_sending_r_do_INST_0_i_3_n_0),
-        .I1(ctrl_sending_r_do_INST_0_i_4_n_0),
-        .I2(ctrl_ack_r_do_INST_0_i_3_n_0),
-        .I3(Q[6]),
-        .I4(Q[5]),
-        .O(ctrl_sending_r_do_INST_0_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair92" *) 
+    .INIT(32'hFFF4F8F4)) 
+    ctrl_stall_r_do_INST_0_i_2
+       (.I0(\bRequest_w_do[7] [0]),
+        .I1(\bRequest_w_do[7] [1]),
+        .I2(ctrl_stall_r_do_INST_0_i_6_n_0),
+        .I3(\bRequest_w_do[7] [2]),
+        .I4(\bRequest_w_do[7] [3]),
+        .O(ctrl_stall_r_do_INST_0_i_2_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
   LUT4 #(
     .INIT(16'hABFB)) 
-    ctrl_sending_r_do_INST_0_i_3
+    ctrl_stall_r_do_INST_0_i_3
        (.I0(\bRequest_w_do[7] [1]),
         .I1(\bRequest_w_do[7] [2]),
         .I2(\bRequest_w_do[7] [0]),
-        .I3(ctrl_ack_r_do_INST_0_i_6_n_0),
-        .O(ctrl_sending_r_do_INST_0_i_3_n_0));
+        .I3(ctrl_stall_r_do_INST_0_i_7_n_0),
+        .O(ctrl_stall_r_do_INST_0_i_3_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
   LUT5 #(
-    .INIT(32'hFFF4F8F4)) 
-    ctrl_sending_r_do_INST_0_i_4
-       (.I0(\bRequest_w_do[7] [0]),
-        .I1(\bRequest_w_do[7] [1]),
-        .I2(ctrl_ack_r_do_INST_0_i_8_n_0),
-        .I3(\bRequest_w_do[7] [2]),
-        .I4(\bRequest_w_do[7] [3]),
-        .O(ctrl_sending_r_do_INST_0_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair99" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    ctrl_stall_r_do_INST_0
-       (.I0(setup_resp_valid_delay_q_do),
-        .I1(ctrl_sending_r_do_INST_0_i_2_n_0),
-        .O(ctrl_stall_r_do));
+    .INIT(32'h00000004)) 
+    ctrl_stall_r_do_INST_0_i_4
+       (.I0(\desc_addr_q[4]_i_5_n_0 ),
+        .I1(\desc_addr_q[4]_i_3_n_0 ),
+        .I2(\wValue_w_do[7] [1]),
+        .I3(\wValue_w_do[15] [0]),
+        .I4(\wValue_w_do[15] [1]),
+        .O(ctrl_stall_r_do_INST_0_i_4_n_0));
   LUT6 #(
-    .INIT(64'h0000010001000100)) 
-    \ctrl_txdata_q[0]_i_2 
-       (.I0(\ctrl_txdata_q[0]_i_5_n_0 ),
-        .I1(\desc_addr_q_do[6] [3]),
-        .I2(\desc_addr_q_do[6] [6]),
-        .I3(desc_addr_q),
-        .I4(\desc_addr_q_do[6] [0]),
-        .I5(\desc_addr_q_do[6] [4]),
-        .O(\ctrl_txdata_q[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair82" *) 
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    ctrl_stall_r_do_INST_0_i_5
+       (.I0(ctrl_stall_r_do_INST_0_i_8_n_0),
+        .I1(ctrl_stall_r_do_INST_0_i_9_n_0),
+        .I2(ctrl_stall_r_do_INST_0_i_10_n_0),
+        .I3(wIndex_w[5]),
+        .I4(\wValue_w_do[7] [0]),
+        .I5(wIndex_w[10]),
+        .O(ctrl_stall_r_do_INST_0_i_5_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
   LUT4 #(
-    .INIT(16'h317F)) 
-    \ctrl_txdata_q[0]_i_3 
-       (.I0(\desc_addr_q_do[6] [2]),
-        .I1(\desc_addr_q_do[6] [1]),
-        .I2(\desc_addr_q_do[6] [4]),
-        .I3(\desc_addr_q_do[6] [0]),
-        .O(\ctrl_txdata_q[0]_i_3_n_0 ));
+    .INIT(16'hFFFE)) 
+    ctrl_stall_r_do_INST_0_i_6
+       (.I0(\bRequest_w_do[7] [7]),
+        .I1(\bRequest_w_do[7] [6]),
+        .I2(\bRequest_w_do[7] [4]),
+        .I3(\bRequest_w_do[7] [5]),
+        .O(ctrl_stall_r_do_INST_0_i_6_n_0));
   LUT6 #(
-    .INIT(64'h0101010101010155)) 
-    \ctrl_txdata_q[0]_i_4 
+    .INIT(64'hAAAAAAAAAAA8AAAA)) 
+    ctrl_stall_r_do_INST_0_i_7
+       (.I0(\bRequest_w_do[7] [3]),
+        .I1(\wValue_w_do[15] [1]),
+        .I2(\wValue_w_do[15] [0]),
+        .I3(\wValue_w_do[7] [1]),
+        .I4(\desc_addr_q[4]_i_3_n_0 ),
+        .I5(\desc_addr_q[4]_i_5_n_0 ),
+        .O(ctrl_stall_r_do_INST_0_i_7_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    ctrl_stall_r_do_INST_0_i_8
+       (.I0(wIndex_w[11]),
+        .I1(wIndex_w[8]),
+        .I2(wIndex_w[2]),
+        .I3(wIndex_w[7]),
+        .I4(wIndex_w[3]),
+        .I5(wIndex_w[14]),
+        .O(ctrl_stall_r_do_INST_0_i_8_n_0));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    ctrl_stall_r_do_INST_0_i_9
+       (.I0(wIndex_w[9]),
+        .I1(wIndex_w[6]),
+        .I2(wIndex_w[12]),
+        .I3(wIndex_w[4]),
+        .O(ctrl_stall_r_do_INST_0_i_9_n_0));
+  LUT6 #(
+    .INIT(64'h0880008000800000)) 
+    \ctrl_txdata_q[0]_i_2 
+       (.I0(\ctrl_txdata_q[1]_i_10_n_0 ),
+        .I1(\ctrl_txdata_q[0]_i_4_n_0 ),
+        .I2(\desc_addr_q_do[6] [0]),
+        .I3(\desc_addr_q_do[6] [4]),
+        .I4(\desc_addr_q_do[6] [1]),
+        .I5(\desc_addr_q_do[6] [2]),
+        .O(\ctrl_txdata_q[0]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0004000400045555)) 
+    \ctrl_txdata_q[0]_i_3 
        (.I0(desc_addr_q),
-        .I1(\desc_addr_q_do[6] [1]),
+        .I1(\ctrl_txdata_q[0]_i_5_n_0 ),
         .I2(\ctrl_txdata_q[0]_i_6_n_0 ),
         .I3(\ctrl_txdata_q[0]_i_7_n_0 ),
-        .I4(\ctrl_txdata_q[0]_i_8_n_0 ),
-        .I5(\ctrl_txdata_q[0]_i_9_n_0 ),
-        .O(\ctrl_txdata_q[0]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair89" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    \ctrl_txdata_q[0]_i_5 
-       (.I0(\desc_addr_q_do[6] [1]),
+        .I4(\desc_addr_q_do[6] [1]),
+        .I5(\ctrl_txdata_q[0]_i_8_n_0 ),
+        .O(\ctrl_txdata_q[0]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
+  LUT3 #(
+    .INIT(8'h2A)) 
+    \ctrl_txdata_q[0]_i_4 
+       (.I0(desc_addr_q),
         .I1(\desc_addr_q_do[6] [5]),
-        .O(\ctrl_txdata_q[0]_i_5_n_0 ));
+        .I2(\desc_addr_q_do[6] [1]),
+        .O(\ctrl_txdata_q[0]_i_4_n_0 ));
   LUT6 #(
-    .INIT(64'hF3F3FBEABFB0EADF)) 
-    \ctrl_txdata_q[0]_i_6 
-       (.I0(\desc_addr_q_do[6] [2]),
-        .I1(\desc_addr_q_do[6] [3]),
-        .I2(\desc_addr_q_do[6] [4]),
-        .I3(\desc_addr_q_do[6] [6]),
-        .I4(\desc_addr_q_do[6] [5]),
-        .I5(\desc_addr_q_do[6] [0]),
-        .O(\ctrl_txdata_q[0]_i_6_n_0 ));
-  LUT6 #(
-    .INIT(64'hAA8082008A008228)) 
-    \ctrl_txdata_q[0]_i_7 
+    .INIT(64'h557F7DFF75FF7DD7)) 
+    \ctrl_txdata_q[0]_i_5 
        (.I0(\desc_addr_q_do[6] [2]),
         .I1(\desc_addr_q_do[6] [6]),
         .I2(\desc_addr_q_do[6] [4]),
         .I3(\desc_addr_q_do[6] [3]),
         .I4(\desc_addr_q_do[6] [5]),
         .I5(\desc_addr_q_do[6] [0]),
-        .O(\ctrl_txdata_q[0]_i_7_n_0 ));
+        .O(\ctrl_txdata_q[0]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'h0123014159EF3D6F)) 
-    \ctrl_txdata_q[0]_i_8 
+    .INIT(64'h0108005D4D7ABF5F)) 
+    \ctrl_txdata_q[0]_i_6 
        (.I0(\desc_addr_q_do[6] [6]),
-        .I1(\desc_addr_q_do[6] [3]),
-        .I2(\desc_addr_q_do[6] [4]),
-        .I3(\desc_addr_q_do[6] [0]),
-        .I4(\desc_addr_q_do[6] [5]),
+        .I1(\desc_addr_q_do[6] [5]),
+        .I2(\desc_addr_q_do[6] [0]),
+        .I3(\desc_addr_q_do[6] [3]),
+        .I4(\desc_addr_q_do[6] [4]),
         .I5(\desc_addr_q_do[6] [2]),
-        .O(\ctrl_txdata_q[0]_i_8_n_0 ));
+        .O(\ctrl_txdata_q[0]_i_6_n_0 ));
   LUT6 #(
     .INIT(64'h1155555545555555)) 
-    \ctrl_txdata_q[0]_i_9 
+    \ctrl_txdata_q[0]_i_7 
        (.I0(\desc_addr_q_do[6] [1]),
         .I1(\desc_addr_q_do[6] [3]),
         .I2(\desc_addr_q_do[6] [2]),
         .I3(\desc_addr_q_do[6] [5]),
         .I4(\desc_addr_q_do[6] [0]),
         .I5(\desc_addr_q_do[6] [4]),
-        .O(\ctrl_txdata_q[0]_i_9_n_0 ));
+        .O(\ctrl_txdata_q[0]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'h0044300C00043004)) 
-    \ctrl_txdata_q[1]_i_10 
-       (.I0(\desc_addr_q_do[6] [6]),
-        .I1(\desc_addr_q_do[6] [3]),
-        .I2(\desc_addr_q_do[6] [4]),
-        .I3(\desc_addr_q_do[6] [1]),
-        .I4(\desc_addr_q_do[6] [5]),
-        .I5(\ctrl_txdata_q[6]_i_12_n_0 ),
-        .O(\ctrl_txdata_q[1]_i_10_n_0 ));
-  LUT6 #(
-    .INIT(64'hFBFFFFFFBFDFBFD7)) 
-    \ctrl_txdata_q[1]_i_11 
-       (.I0(desc_addr_q),
-        .I1(\desc_addr_q_do[6] [4]),
-        .I2(\desc_addr_q_do[6] [1]),
-        .I3(\desc_addr_q_do[6] [5]),
-        .I4(\desc_addr_q_do[6] [6]),
-        .I5(\desc_addr_q_do[6] [3]),
-        .O(\ctrl_txdata_q[1]_i_11_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair87" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
-    \ctrl_txdata_q[1]_i_12 
-       (.I0(\desc_addr_q_do[6] [3]),
-        .I1(\desc_addr_q_do[6] [1]),
-        .O(\ctrl_txdata_q[1]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair102" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \ctrl_txdata_q[1]_i_13 
-       (.I0(\desc_addr_q_do[6] [6]),
-        .I1(\desc_addr_q_do[6] [4]),
-        .O(\ctrl_txdata_q[1]_i_13_n_0 ));
-  LUT6 #(
-    .INIT(64'h55AFFAAFAFFF2555)) 
-    \ctrl_txdata_q[1]_i_14 
-       (.I0(\desc_addr_q_do[6] [1]),
-        .I1(\ctrl_txdata_q[6]_i_12_n_0 ),
-        .I2(\desc_addr_q_do[6] [4]),
-        .I3(\desc_addr_q_do[6] [6]),
-        .I4(\desc_addr_q_do[6] [3]),
-        .I5(\desc_addr_q_do[6] [5]),
-        .O(\ctrl_txdata_q[1]_i_14_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000FFFFF3E2F3E2)) 
-    \ctrl_txdata_q[1]_i_2 
-       (.I0(\ctrl_txdata_q[1]_i_3_n_0 ),
-        .I1(\ctrl_txdata_q[1]_i_4_n_0 ),
-        .I2(\ctrl_txdata_q[1]_i_5_n_0 ),
-        .I3(\ctrl_txdata_q_reg[1]_i_6_n_0 ),
-        .I4(\ctrl_txdata_q[1]_i_7_n_0 ),
-        .I5(\ctrl_txdata_q[1]_i_8_n_0 ),
-        .O(\ctrl_txdata_q[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair83" *) 
-  LUT5 #(
-    .INIT(32'h00400304)) 
-    \ctrl_txdata_q[1]_i_3 
-       (.I0(\desc_addr_q_do[6] [5]),
-        .I1(\desc_addr_q_do[6] [3]),
-        .I2(\desc_addr_q_do[6] [1]),
+    .INIT(64'hFF73BB41FEFBEDE9)) 
+    \ctrl_txdata_q[0]_i_8 
+       (.I0(\desc_addr_q_do[6] [0]),
+        .I1(\desc_addr_q_do[6] [5]),
+        .I2(\desc_addr_q_do[6] [6]),
         .I3(\desc_addr_q_do[6] [4]),
-        .I4(\desc_addr_q_do[6] [6]),
-        .O(\ctrl_txdata_q[1]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair96" *) 
+        .I4(\desc_addr_q_do[6] [2]),
+        .I5(\desc_addr_q_do[6] [3]),
+        .O(\ctrl_txdata_q[0]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair91" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \ctrl_txdata_q[1]_i_10 
+       (.I0(\desc_addr_q_do[6] [3]),
+        .I1(\desc_addr_q_do[6] [6]),
+        .O(\ctrl_txdata_q[1]_i_10_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT4 #(
     .INIT(16'hAA2A)) 
-    \ctrl_txdata_q[1]_i_4 
+    \ctrl_txdata_q[1]_i_12 
        (.I0(desc_addr_q),
         .I1(\desc_addr_q_do[6] [1]),
         .I2(\desc_addr_q_do[6] [2]),
         .I3(\desc_addr_q_do[6] [6]),
-        .O(\ctrl_txdata_q[1]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair80" *) 
+        .O(\ctrl_txdata_q[1]_i_12_n_0 ));
   LUT5 #(
-    .INIT(32'h00000200)) 
-    \ctrl_txdata_q[1]_i_5 
-       (.I0(\desc_addr_q_do[6] [2]),
-        .I1(\desc_addr_q_do[6] [3]),
-        .I2(\desc_addr_q_do[6] [6]),
-        .I3(\desc_addr_q_do[6] [5]),
-        .I4(\desc_addr_q_do[6] [4]),
-        .O(\ctrl_txdata_q[1]_i_5_n_0 ));
+    .INIT(32'hD5F52EEE)) 
+    \ctrl_txdata_q[1]_i_13 
+       (.I0(\desc_addr_q_do[6] [3]),
+        .I1(\desc_addr_q_do[6] [6]),
+        .I2(\desc_addr_q_do[6] [5]),
+        .I3(\desc_addr_q_do[6] [4]),
+        .I4(\desc_addr_q_do[6] [1]),
+        .O(\ctrl_txdata_q[1]_i_13_n_0 ));
   LUT6 #(
-    .INIT(64'hBFBBBFBBBFBB8088)) 
-    \ctrl_txdata_q[1]_i_7 
-       (.I0(\ctrl_txdata_q[1]_i_11_n_0 ),
-        .I1(\desc_addr_q_do[6] [2]),
-        .I2(\ctrl_txdata_q[1]_i_12_n_0 ),
-        .I3(\ctrl_txdata_q[1]_i_13_n_0 ),
-        .I4(desc_addr_q),
-        .I5(\ctrl_txdata_q[1]_i_14_n_0 ),
-        .O(\ctrl_txdata_q[1]_i_7_n_0 ));
+    .INIT(64'hFFFDCFFFF7F0CFFF)) 
+    \ctrl_txdata_q[1]_i_14 
+       (.I0(\ctrl_txdata_q[6]_i_5_n_0 ),
+        .I1(\desc_addr_q_do[6] [5]),
+        .I2(\desc_addr_q_do[6] [1]),
+        .I3(\desc_addr_q_do[6] [4]),
+        .I4(\desc_addr_q_do[6] [3]),
+        .I5(\desc_addr_q_do[6] [6]),
+        .O(\ctrl_txdata_q[1]_i_14_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  LUT4 #(
+    .INIT(16'h110F)) 
+    \ctrl_txdata_q[1]_i_2 
+       (.I0(desc_addr_q),
+        .I1(\ctrl_txdata_q[1]_i_5_n_0 ),
+        .I2(\ctrl_txdata_q[1]_i_6_n_0 ),
+        .I3(\ctrl_txdata_q[1]_i_7_n_0 ),
+        .O(\ctrl_txdata_q[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAAABEAAAAAABA)) 
-    \ctrl_txdata_q[1]_i_8 
+    .INIT(64'h5555554155555545)) 
+    \ctrl_txdata_q[1]_i_3 
        (.I0(\desc_addr_q_do[6] [0]),
         .I1(\desc_addr_q_do[6] [1]),
         .I2(\desc_addr_q_do[6] [4]),
         .I3(\desc_addr_q_do[6] [3]),
         .I4(\desc_addr_q_do[6] [2]),
         .I5(\desc_addr_q_do[6] [6]),
-        .O(\ctrl_txdata_q[1]_i_8_n_0 ));
+        .O(\ctrl_txdata_q[1]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hC000C000AAAAFFFF)) 
+    \ctrl_txdata_q[1]_i_4 
+       (.I0(\ctrl_txdata_q[1]_i_8_n_0 ),
+        .I1(\ctrl_txdata_q[1]_i_9_n_0 ),
+        .I2(\ctrl_txdata_q[1]_i_10_n_0 ),
+        .I3(\desc_addr_q_do[6] [2]),
+        .I4(\ctrl_txdata_q_reg[1]_i_11_n_0 ),
+        .I5(\ctrl_txdata_q[1]_i_12_n_0 ),
+        .O(\ctrl_txdata_q[1]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'h77AA77DDCE55CCFF)) 
+    \ctrl_txdata_q[1]_i_5 
+       (.I0(\desc_addr_q_do[6] [6]),
+        .I1(\desc_addr_q_do[6] [3]),
+        .I2(\ctrl_txdata_q[6]_i_5_n_0 ),
+        .I3(\desc_addr_q_do[6] [1]),
+        .I4(\desc_addr_q_do[6] [4]),
+        .I5(\desc_addr_q_do[6] [5]),
+        .O(\ctrl_txdata_q[1]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'hFBFFFFFFBFBFDFD7)) 
+    \ctrl_txdata_q[1]_i_6 
+       (.I0(desc_addr_q),
+        .I1(\desc_addr_q_do[6] [4]),
+        .I2(\desc_addr_q_do[6] [1]),
+        .I3(\desc_addr_q_do[6] [6]),
+        .I4(\desc_addr_q_do[6] [5]),
+        .I5(\desc_addr_q_do[6] [3]),
+        .O(\ctrl_txdata_q[1]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair91" *) 
   LUT5 #(
-    .INIT(32'h2A0AD111)) 
-    \ctrl_txdata_q[1]_i_9 
+    .INIT(32'h0040FFFF)) 
+    \ctrl_txdata_q[1]_i_7 
        (.I0(\desc_addr_q_do[6] [3]),
-        .I1(\desc_addr_q_do[6] [6]),
-        .I2(\desc_addr_q_do[6] [5]),
+        .I1(\desc_addr_q_do[6] [1]),
+        .I2(\desc_addr_q_do[6] [6]),
         .I3(\desc_addr_q_do[6] [4]),
-        .I4(\desc_addr_q_do[6] [1]),
+        .I4(\desc_addr_q_do[6] [2]),
+        .O(\ctrl_txdata_q[1]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair89" *) 
+  LUT5 #(
+    .INIT(32'h00400304)) 
+    \ctrl_txdata_q[1]_i_8 
+       (.I0(\desc_addr_q_do[6] [5]),
+        .I1(\desc_addr_q_do[6] [3]),
+        .I2(\desc_addr_q_do[6] [1]),
+        .I3(\desc_addr_q_do[6] [4]),
+        .I4(\desc_addr_q_do[6] [6]),
+        .O(\ctrl_txdata_q[1]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair110" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \ctrl_txdata_q[1]_i_9 
+       (.I0(\desc_addr_q_do[6] [5]),
+        .I1(\desc_addr_q_do[6] [4]),
         .O(\ctrl_txdata_q[1]_i_9_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFF45454540)) 
@@ -2324,14 +2377,14 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I5(\desc_addr_q_do[6] [1]),
         .O(\ctrl_txdata_q[2]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000002000)) 
+    .INIT(64'h5D00000000000000)) 
     \ctrl_txdata_q[2]_i_7 
-       (.I0(\ctrl_txdata_q[2]_i_9_n_0 ),
-        .I1(\desc_addr_q_do[6] [5]),
-        .I2(desc_addr_q),
-        .I3(\desc_addr_q_do[6] [0]),
-        .I4(\desc_addr_q_do[6] [3]),
-        .I5(\desc_addr_q_do[6] [6]),
+       (.I0(\desc_addr_q_do[6] [4]),
+        .I1(\desc_addr_q_do[6] [2]),
+        .I2(\desc_addr_q_do[6] [1]),
+        .I3(\ctrl_txdata_q[2]_i_9_n_0 ),
+        .I4(\desc_addr_q_do[6] [0]),
+        .I5(\ctrl_txdata_q[1]_i_10_n_0 ),
         .O(\ctrl_txdata_q[2]_i_7_n_0 ));
   LUT6 #(
     .INIT(64'hFFFB8FFBFFFFFFFF)) 
@@ -2343,13 +2396,12 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I4(\desc_addr_q_do[6] [4]),
         .I5(\desc_addr_q_do[6] [1]),
         .O(\ctrl_txdata_q[2]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair106" *) 
-  LUT3 #(
-    .INIT(8'h4F)) 
+  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \ctrl_txdata_q[2]_i_9 
-       (.I0(\desc_addr_q_do[6] [1]),
-        .I1(\desc_addr_q_do[6] [2]),
-        .I2(\desc_addr_q_do[6] [4]),
+       (.I0(desc_addr_q),
+        .I1(\desc_addr_q_do[6] [5]),
         .O(\ctrl_txdata_q[2]_i_9_n_0 ));
   LUT6 #(
     .INIT(64'h0000000080000542)) 
@@ -2361,7 +2413,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I4(\desc_addr_q_do[6] [2]),
         .I5(\ctrl_txdata_q[3]_i_4_n_0 ),
         .O(\ctrl_txdata_q[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair108" *) 
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \ctrl_txdata_q[3]_i_4 
@@ -2390,16 +2442,16 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I5(\desc_addr_q_do[6] [5]),
         .O(\ctrl_txdata_q[3]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hFEEE5FF7FEEE5EF7)) 
+    .INIT(64'hFFF86F7FFFF86F7B)) 
     \ctrl_txdata_q[3]_i_7 
-       (.I0(\desc_addr_q_do[6] [6]),
-        .I1(\desc_addr_q_do[6] [5]),
-        .I2(\desc_addr_q_do[6] [4]),
-        .I3(\desc_addr_q_do[6] [1]),
+       (.I0(\desc_addr_q_do[6] [4]),
+        .I1(\desc_addr_q_do[6] [1]),
+        .I2(\desc_addr_q_do[6] [6]),
+        .I3(\desc_addr_q_do[6] [5]),
         .I4(desc_addr_q),
-        .I5(\ctrl_txdata_q[6]_i_12_n_0 ),
+        .I5(\ctrl_txdata_q[6]_i_5_n_0 ),
         .O(\ctrl_txdata_q[3]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair110" *) 
+  (* SOFT_HLUTNM = "soft_lutpair109" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \ctrl_txdata_q[3]_i_8 
@@ -2417,16 +2469,16 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I5(\ctrl_txdata_q[4]_i_5_n_0 ),
         .O(\ctrl_txdata_q[4]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFEDFFFEDFBF)) 
+    .INIT(64'hFFFFFFFEEFFFF9DF)) 
     \ctrl_txdata_q[4]_i_3 
-       (.I0(\desc_addr_q_do[6] [1]),
+       (.I0(\desc_addr_q_do[6] [6]),
         .I1(desc_addr_q),
-        .I2(\desc_addr_q_do[6] [5]),
-        .I3(\desc_addr_q_do[6] [2]),
-        .I4(\desc_addr_q_do[6] [3]),
-        .I5(\desc_addr_q_do[6] [6]),
+        .I2(\desc_addr_q_do[6] [1]),
+        .I3(\desc_addr_q_do[6] [5]),
+        .I4(\desc_addr_q_do[6] [2]),
+        .I5(\desc_addr_q_do[6] [3]),
         .O(\ctrl_txdata_q[4]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair81" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT4 #(
     .INIT(16'hFE5E)) 
     \ctrl_txdata_q[4]_i_4 
@@ -2445,7 +2497,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I4(desc_addr_q),
         .I5(\desc_addr_q_do[6] [5]),
         .O(\ctrl_txdata_q[4]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair87" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT5 #(
     .INIT(32'h00808208)) 
     \ctrl_txdata_q[5]_i_2 
@@ -2455,7 +2507,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I3(\desc_addr_q_do[6] [5]),
         .I4(\desc_addr_q_do[6] [4]),
         .O(\ctrl_txdata_q[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair96" *) 
+  (* SOFT_HLUTNM = "soft_lutpair98" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \ctrl_txdata_q[5]_i_4 
@@ -2494,120 +2546,112 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I5(\desc_addr_q_do[6] [2]),
         .O(\ctrl_txdata_q[5]_i_7_n_0 ));
   LUT6 #(
-    .INIT(64'h7F007F007F7F7F00)) 
-    \ctrl_txdata_q[6]_i_10 
-       (.I0(\desc_addr_q_do[6] [2]),
-        .I1(\ctrl_txdata_q[6]_i_12_n_0 ),
-        .I2(\ctrl_txdata_q[6]_i_13_n_0 ),
-        .I3(\ctrl_txdata_q[6]_i_14_n_0 ),
-        .I4(\desc_addr_q_do[6] [4]),
-        .I5(\desc_addr_q_do[6] [3]),
-        .O(\ctrl_txdata_q[6]_i_10_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair110" *) 
-  LUT2 #(
-    .INIT(4'h1)) 
-    \ctrl_txdata_q[6]_i_11 
-       (.I0(\desc_addr_q_do[6] [3]),
-        .I1(\desc_addr_q_do[6] [6]),
-        .O(\ctrl_txdata_q[6]_i_11_n_0 ));
-  LUT3 #(
-    .INIT(8'h01)) 
-    \ctrl_txdata_q[6]_i_12 
-       (.I0(state_q[0]),
-        .I1(state_q[2]),
-        .I2(state_q[1]),
-        .O(\ctrl_txdata_q[6]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair80" *) 
-  LUT4 #(
-    .INIT(16'h0001)) 
-    \ctrl_txdata_q[6]_i_13 
-       (.I0(\desc_addr_q_do[6] [5]),
-        .I1(\desc_addr_q_do[6] [3]),
-        .I2(\desc_addr_q_do[6] [6]),
-        .I3(\desc_addr_q_do[6] [4]),
-        .O(\ctrl_txdata_q[6]_i_13_n_0 ));
-  LUT6 #(
-    .INIT(64'hFEFEF0FFF0FFFEFF)) 
-    \ctrl_txdata_q[6]_i_14 
-       (.I0(\desc_addr_q_do[6] [2]),
-        .I1(\ctrl_txdata_q[6]_i_15_n_0 ),
-        .I2(desc_addr_q),
-        .I3(\desc_addr_q_do[6] [6]),
-        .I4(\desc_addr_q_do[6] [4]),
-        .I5(\desc_addr_q_do[6] [5]),
-        .O(\ctrl_txdata_q[6]_i_14_n_0 ));
-  LUT4 #(
-    .INIT(16'h0100)) 
-    \ctrl_txdata_q[6]_i_15 
-       (.I0(state_q[1]),
-        .I1(state_q[2]),
-        .I2(state_q[0]),
-        .I3(\desc_addr_q_do[6] [3]),
-        .O(\ctrl_txdata_q[6]_i_15_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAAAAEAAAAAAAAAA)) 
-    \ctrl_txdata_q[6]_i_2 
-       (.I0(\ctrl_txdata_q[6]_i_4_n_0 ),
-        .I1(\ctrl_txdata_q[6]_i_5_n_0 ),
-        .I2(\desc_addr_q_do[6] [3]),
-        .I3(\desc_addr_q_do[6] [6]),
-        .I4(desc_addr_q),
-        .I5(\ctrl_txdata_q[6]_i_6_n_0 ),
-        .O(\ctrl_txdata_q[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAEAAAEAFFFFAAEA)) 
-    \ctrl_txdata_q[6]_i_3 
-       (.I0(\ctrl_txdata_q[6]_i_7_n_0 ),
-        .I1(\ctrl_txdata_q[6]_i_8_n_0 ),
-        .I2(\ctrl_txdata_q[6]_i_9_n_0 ),
-        .I3(desc_addr_q),
-        .I4(\desc_addr_q_do[6] [1]),
-        .I5(\ctrl_txdata_q[6]_i_10_n_0 ),
-        .O(\ctrl_txdata_q[6]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000008420000)) 
-    \ctrl_txdata_q[6]_i_4 
-       (.I0(\desc_addr_q_do[6] [5]),
-        .I1(\desc_addr_q_do[6] [2]),
-        .I2(\desc_addr_q_do[6] [4]),
-        .I3(desc_addr_q),
-        .I4(\ctrl_txdata_q[6]_i_11_n_0 ),
-        .I5(\desc_addr_q_do[6] [1]),
-        .O(\ctrl_txdata_q[6]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair106" *) 
-  LUT3 #(
-    .INIT(8'h02)) 
-    \ctrl_txdata_q[6]_i_5 
-       (.I0(\desc_addr_q_do[6] [4]),
-        .I1(\desc_addr_q_do[6] [5]),
-        .I2(\desc_addr_q_do[6] [2]),
-        .O(\ctrl_txdata_q[6]_i_5_n_0 ));
-  LUT4 #(
-    .INIT(16'hAAA8)) 
-    \ctrl_txdata_q[6]_i_6 
-       (.I0(\desc_addr_q_do[6] [1]),
-        .I1(state_q[1]),
-        .I2(state_q[2]),
-        .I3(state_q[0]),
-        .O(\ctrl_txdata_q[6]_i_6_n_0 ));
-  LUT6 #(
     .INIT(64'h000060CC01010000)) 
-    \ctrl_txdata_q[6]_i_7 
+    \ctrl_txdata_q[6]_i_10 
        (.I0(\desc_addr_q_do[6] [4]),
         .I1(\desc_addr_q_do[6] [5]),
         .I2(\desc_addr_q_do[6] [3]),
         .I3(\desc_addr_q_do[6] [2]),
         .I4(desc_addr_q),
         .I5(\desc_addr_q_do[6] [6]),
-        .O(\ctrl_txdata_q[6]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair104" *) 
-  LUT3 #(
-    .INIT(8'h40)) 
-    \ctrl_txdata_q[6]_i_8 
-       (.I0(\desc_addr_q_do[6] [1]),
+        .O(\ctrl_txdata_q[6]_i_10_n_0 ));
+  LUT6 #(
+    .INIT(64'h00AEAEAEAEAEAEAE)) 
+    \ctrl_txdata_q[6]_i_11 
+       (.I0(\ctrl_txdata_q[6]_i_12_n_0 ),
+        .I1(\desc_addr_q_do[6] [4]),
+        .I2(\desc_addr_q_do[6] [3]),
+        .I3(\ctrl_txdata_q[6]_i_5_n_0 ),
+        .I4(\ctrl_txdata_q[6]_i_13_n_0 ),
+        .I5(\desc_addr_q_do[6] [2]),
+        .O(\ctrl_txdata_q[6]_i_11_n_0 ));
+  LUT6 #(
+    .INIT(64'hFEFEF0FFF0FFFEFF)) 
+    \ctrl_txdata_q[6]_i_12 
+       (.I0(\desc_addr_q_do[6] [2]),
+        .I1(\ctrl_txdata_q[6]_i_14_n_0 ),
+        .I2(desc_addr_q),
+        .I3(\desc_addr_q_do[6] [6]),
+        .I4(\desc_addr_q_do[6] [4]),
+        .I5(\desc_addr_q_do[6] [5]),
+        .O(\ctrl_txdata_q[6]_i_12_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
+  LUT4 #(
+    .INIT(16'h0001)) 
+    \ctrl_txdata_q[6]_i_13 
+       (.I0(\desc_addr_q_do[6] [6]),
+        .I1(\desc_addr_q_do[6] [3]),
+        .I2(\desc_addr_q_do[6] [5]),
+        .I3(\desc_addr_q_do[6] [4]),
+        .O(\ctrl_txdata_q[6]_i_13_n_0 ));
+  LUT4 #(
+    .INIT(16'h0100)) 
+    \ctrl_txdata_q[6]_i_14 
+       (.I0(state_q[1]),
+        .I1(state_q[2]),
+        .I2(state_q[0]),
+        .I3(\desc_addr_q_do[6] [3]),
+        .O(\ctrl_txdata_q[6]_i_14_n_0 ));
+  LUT6 #(
+    .INIT(64'h010001000000FFFF)) 
+    \ctrl_txdata_q[6]_i_2 
+       (.I0(\ctrl_txdata_q[6]_i_4_n_0 ),
+        .I1(desc_addr_q),
+        .I2(\ctrl_txdata_q[6]_i_5_n_0 ),
+        .I3(\ctrl_txdata_q[6]_i_6_n_0 ),
+        .I4(\ctrl_txdata_q[6]_i_7_n_0 ),
+        .I5(\desc_addr_q_do[6] [1]),
+        .O(\ctrl_txdata_q[6]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFF00FF08FFFFFF08)) 
+    \ctrl_txdata_q[6]_i_3 
+       (.I0(\ctrl_txdata_q[6]_i_8_n_0 ),
+        .I1(\ctrl_txdata_q[6]_i_9_n_0 ),
+        .I2(desc_addr_q),
+        .I3(\ctrl_txdata_q[6]_i_10_n_0 ),
+        .I4(\desc_addr_q_do[6] [1]),
+        .I5(\ctrl_txdata_q[6]_i_11_n_0 ),
+        .O(\ctrl_txdata_q[6]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair111" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \ctrl_txdata_q[6]_i_4 
+       (.I0(\desc_addr_q_do[6] [3]),
         .I1(\desc_addr_q_do[6] [6]),
+        .O(\ctrl_txdata_q[6]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'h01)) 
+    \ctrl_txdata_q[6]_i_5 
+       (.I0(state_q[0]),
+        .I1(state_q[2]),
+        .I2(state_q[1]),
+        .O(\ctrl_txdata_q[6]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
+  LUT3 #(
+    .INIT(8'h02)) 
+    \ctrl_txdata_q[6]_i_6 
+       (.I0(\desc_addr_q_do[6] [4]),
+        .I1(\desc_addr_q_do[6] [5]),
         .I2(\desc_addr_q_do[6] [2]),
+        .O(\ctrl_txdata_q[6]_i_6_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFF7BD)) 
+    \ctrl_txdata_q[6]_i_7 
+       (.I0(\desc_addr_q_do[6] [5]),
+        .I1(\desc_addr_q_do[6] [2]),
+        .I2(\desc_addr_q_do[6] [4]),
+        .I3(desc_addr_q),
+        .I4(\desc_addr_q_do[6] [6]),
+        .I5(\desc_addr_q_do[6] [3]),
+        .O(\ctrl_txdata_q[6]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair111" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \ctrl_txdata_q[6]_i_8 
+       (.I0(\desc_addr_q_do[6] [2]),
+        .I1(\desc_addr_q_do[6] [6]),
         .O(\ctrl_txdata_q[6]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair110" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \ctrl_txdata_q[6]_i_9 
@@ -2624,7 +2668,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I4(\ctrl_txdata_q[7]_i_5_n_0 ),
         .I5(\ctrl_txdata_q[7]_i_6_n_0 ),
         .O(\ctrl_txdata_q[7]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair83" *) 
+  (* SOFT_HLUTNM = "soft_lutpair89" *) 
   LUT5 #(
     .INIT(32'h00043400)) 
     \ctrl_txdata_q[7]_i_4 
@@ -2634,7 +2678,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I3(\desc_addr_q_do[6] [3]),
         .I4(\desc_addr_q_do[6] [6]),
         .O(\ctrl_txdata_q[7]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair89" *) 
+  (* SOFT_HLUTNM = "soft_lutpair90" *) 
   LUT5 #(
     .INIT(32'hFFFFEEFE)) 
     \ctrl_txdata_q[7]_i_5 
@@ -2644,7 +2688,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I3(\desc_addr_q_do[6] [5]),
         .I4(\desc_addr_q_do[6] [3]),
         .O(\ctrl_txdata_q[7]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair102" *) 
+  (* SOFT_HLUTNM = "soft_lutpair100" *) 
   LUT3 #(
     .INIT(8'hE7)) 
     \ctrl_txdata_q[7]_i_6 
@@ -2654,32 +2698,32 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .O(\ctrl_txdata_q[7]_i_6_n_0 ));
   FDCE \ctrl_txdata_q_reg[0] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_141),
+        .D(u_core_n_139),
         .Q(ctrl_txdata_q_do[0]));
   FDCE \ctrl_txdata_q_reg[1] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_140),
+        .D(u_core_n_138),
         .Q(ctrl_txdata_q_do[1]));
-  MUXF7 \ctrl_txdata_q_reg[1]_i_6 
-       (.I0(\ctrl_txdata_q[1]_i_9_n_0 ),
-        .I1(\ctrl_txdata_q[1]_i_10_n_0 ),
-        .O(\ctrl_txdata_q_reg[1]_i_6_n_0 ),
+  MUXF7 \ctrl_txdata_q_reg[1]_i_11 
+       (.I0(\ctrl_txdata_q[1]_i_13_n_0 ),
+        .I1(\ctrl_txdata_q[1]_i_14_n_0 ),
+        .O(\ctrl_txdata_q_reg[1]_i_11_n_0 ),
         .S(\desc_addr_q_do[6] [2]));
   FDCE \ctrl_txdata_q_reg[2] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_139),
+        .D(u_core_n_137),
         .Q(ctrl_txdata_q_do[2]));
   FDCE \ctrl_txdata_q_reg[3] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_138),
+        .D(u_core_n_136),
         .Q(ctrl_txdata_q_do[3]));
   MUXF7 \ctrl_txdata_q_reg[3]_i_3 
        (.I0(\ctrl_txdata_q[3]_i_5_n_0 ),
@@ -2688,15 +2732,15 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .S(\desc_addr_q_do[6] [3]));
   FDCE \ctrl_txdata_q_reg[4] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_137),
+        .D(u_core_n_135),
         .Q(ctrl_txdata_q_do[4]));
   FDCE \ctrl_txdata_q_reg[5] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_136),
+        .D(u_core_n_134),
         .Q(ctrl_txdata_q_do[5]));
   MUXF7 \ctrl_txdata_q_reg[5]_i_3 
        (.I0(\ctrl_txdata_q[5]_i_6_n_0 ),
@@ -2705,68 +2749,122 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .S(\ctrl_txdata_q[5]_i_5_n_0 ));
   FDCE \ctrl_txdata_q_reg[6] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_135),
+        .D(u_core_n_133),
         .Q(ctrl_txdata_q_do[6]));
   FDCE \ctrl_txdata_q_reg[7] 
        (.C(clk_i),
-        .CE(u_core_n_116),
+        .CE(u_core_n_113),
         .CLR(rst_i),
-        .D(u_core_n_134),
+        .D(u_core_n_132),
         .Q(ctrl_txdata_q_do[7]));
   LUT6 #(
-    .INIT(64'h5555555540000000)) 
+    .INIT(64'h4544444444444444)) 
     ctrl_txlast_q_i_2
        (.I0(setup_resp_valid_delay_q_do),
-        .I1(ctrl_txlast_q_i_3_n_0),
-        .I2(ctrl_send_idx_q[0]),
+        .I1(\ctrl_sending_r1_inferred__0/i__carry__0_n_2 ),
+        .I2(ctrl_txlast_q_i_3_n_0),
         .I3(ctrl_send_idx_q[1]),
         .I4(ctrl_send_idx_q[2]),
-        .I5(\ctrl_sending_r1_inferred__0/i__carry__0_n_2 ),
+        .I5(ctrl_send_idx_q[0]),
         .O(ctrl_txlast_q_i_2_n_0));
   LUT6 #(
-    .INIT(64'hFFFEFEFEFEFEFEFE)) 
+    .INIT(64'h0001010101010101)) 
     ctrl_txlast_q_i_3
        (.I0(state_q[1]),
         .I1(state_q[2]),
         .I2(state_q[0]),
-        .I3(ctrl_send_idx_q[3]),
-        .I4(ctrl_send_idx_q[5]),
-        .I5(ctrl_send_idx_q[4]),
+        .I3(ctrl_send_idx_q[5]),
+        .I4(ctrl_send_idx_q[4]),
+        .I5(ctrl_send_idx_q[3]),
         .O(ctrl_txlast_q_i_3_n_0));
   FDCE ctrl_txlast_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_193),
+        .D(u_core_n_207),
         .Q(ctrl_txlast_q_reg_n_0));
   FDCE ctrl_txstall_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_191),
+        .D(u_core_n_205),
         .Q(ctrl_txstall_q_do));
   FDCE ctrl_txstrb_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_192),
+        .D(u_core_n_206),
         .Q(ctrl_txstrb_q_reg_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair95" *) 
+  LUT6 #(
+    .INIT(64'hAAA8AAAAAAAAAAAA)) 
+    ctrl_txvalid_q_i_10
+       (.I0(\bmRequestType_w_do[7] [5]),
+        .I1(ctrl_ack_r_do_INST_0_i_11_n_0),
+        .I2(\bRequest_w_do[7] [3]),
+        .I3(\bRequest_w_do[7] [2]),
+        .I4(\bRequest_w_do[7] [5]),
+        .I5(\bRequest_w_do[7] [0]),
+        .O(ctrl_txvalid_q_i_10_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
+  LUT4 #(
+    .INIT(16'h0070)) 
+    ctrl_txvalid_q_i_11
+       (.I0(setup_resp_valid_delay_q_do),
+        .I1(\bmRequestType_w_do[7] [7]),
+        .I2(\bmRequestType_w_do[7] [6]),
+        .I3(\bmRequestType_w_do[7] [5]),
+        .O(ctrl_txvalid_q_i_11_n_0));
+  LUT5 #(
+    .INIT(32'hFFEFEFEF)) 
+    ctrl_txvalid_q_i_12
+       (.I0(ctrl_stall_r_do_INST_0_i_6_n_0),
+        .I1(\bmRequestType_w_do[7] [5]),
+        .I2(\bRequest_w_do[7] [0]),
+        .I3(\bRequest_w_do[7] [2]),
+        .I4(\bRequest_w_do[7] [1]),
+        .O(ctrl_txvalid_q_i_12_n_0));
+  LUT2 #(
+    .INIT(4'h1)) 
+    ctrl_txvalid_q_i_3
+       (.I0(ctrl_ack_r_do),
+        .I1(ctrl_stall_r_do),
+        .O(ctrl_txvalid_q_i_3_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair97" *) 
   LUT4 #(
     .INIT(16'hC888)) 
-    ctrl_txvalid_q_i_5
-       (.I0(Q[5]),
-        .I1(Q[6]),
-        .I2(Q[7]),
+    ctrl_txvalid_q_i_6
+       (.I0(\bmRequestType_w_do[7] [5]),
+        .I1(\bmRequestType_w_do[7] [6]),
+        .I2(\bmRequestType_w_do[7] [7]),
         .I3(setup_resp_valid_delay_q_do),
-        .O(ctrl_txvalid_q_i_5_n_0));
+        .O(ctrl_txvalid_q_i_6_n_0));
+  LUT6 #(
+    .INIT(64'hCCCCEEEFCCCCEEEE)) 
+    ctrl_txvalid_q_i_7
+       (.I0(ctrl_txvalid_q_i_10_n_0),
+        .I1(ctrl_txvalid_q_i_11_n_0),
+        .I2(ctrl_stall_r_do_INST_0_i_1_n_0),
+        .I3(ctrl_txvalid_q_i_12_n_0),
+        .I4(ctrl_ack_r_do_INST_0_i_5_n_0),
+        .I5(ctrl_ack_r_do_INST_0_i_1_n_0),
+        .O(ctrl_txvalid_q_i_7_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair92" *) 
+  LUT5 #(
+    .INIT(32'h00FFFF02)) 
+    ctrl_txvalid_q_i_9
+       (.I0(ctrl_stall_r_do_INST_0_i_3_n_0),
+        .I1(ctrl_stall_r_do_INST_0_i_2_n_0),
+        .I2(ctrl_stall_r_do_INST_0_i_1_n_0),
+        .I3(\bmRequestType_w_do[7] [6]),
+        .I4(\bmRequestType_w_do[7] [5]),
+        .O(ctrl_txvalid_q_i_9_n_0));
   FDCE ctrl_txvalid_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_189),
+        .D(u_core_n_203),
         .Q(ctrl_txvalid_q_do));
   FDCE \current_token_debug_counter_q_reg[0] 
        (.C(token_valid_w_do),
@@ -3653,14 +3751,14 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .CLR(rst_i),
         .D(\debug_counter_q_reg[11]_i_1_n_6 ),
         .Q(debug_counter_q_do[9]));
-  (* SOFT_HLUTNM = "soft_lutpair101" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \delayCnt_q[0]_i_1 
        (.I0(setup_valid_q_do),
         .I1(delayCnt_q[0]),
         .O(\delayCnt_q[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair101" *) 
+  (* SOFT_HLUTNM = "soft_lutpair103" *) 
   LUT3 #(
     .INIT(8'h06)) 
     \delayCnt_q[1]_i_1 
@@ -3668,7 +3766,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I1(delayCnt_q[0]),
         .I2(setup_valid_q_do),
         .O(\delayCnt_q[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair85" *) 
+  (* SOFT_HLUTNM = "soft_lutpair82" *) 
   LUT4 #(
     .INIT(16'h1540)) 
     \delayCnt_q[2]_i_1 
@@ -3677,7 +3775,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(delayCnt_q[1]),
         .I3(delayCnt_q[2]),
         .O(\delayCnt_q[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair85" *) 
+  (* SOFT_HLUTNM = "soft_lutpair82" *) 
   LUT5 #(
     .INIT(32'h15554000)) 
     \delayCnt_q[3]_i_1 
@@ -3727,78 +3825,109 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .D(1'b0),
         .PRE(rst_i),
         .Q(delayCnt_q[4]));
-  (* SOFT_HLUTNM = "soft_lutpair93" *) 
-  LUT4 #(
-    .INIT(16'hEFFF)) 
-    \desc_addr_q[0]_i_3 
-       (.I0(Q[6]),
-        .I1(Q[5]),
-        .I2(\wValue_w_do[15] [1]),
-        .I3(\wValue_w_do[15] [0]),
-        .O(\desc_addr_q[0]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h1055555555555555)) 
+    .INIT(64'h4044444455555555)) 
     \desc_addr_q[1]_i_2 
        (.I0(\desc_addr_q[7]_i_2_n_0 ),
-        .I1(\desc_addr_q[1]_i_3_n_0 ),
-        .I2(\wValue_w_do[15] [0]),
-        .I3(\device_addr_q[6]_i_4_n_0 ),
-        .I4(\wValue_w_do[15] [1]),
-        .I5(\desc_addr_q[3]_i_4_n_0 ),
-        .O(\desc_addr_q[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair103" *) 
-  LUT3 #(
-    .INIT(8'h08)) 
-    \desc_addr_q[1]_i_3 
-       (.I0(\desc_addr_q[3]_i_2_n_0 ),
-        .I1(\wValue_w_do[7] [1]),
+        .I1(\wValue_w_do[15] [0]),
         .I2(\wValue_w_do[7] [0]),
-        .O(\desc_addr_q[1]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair103" *) 
+        .I3(\wValue_w_do[7] [1]),
+        .I4(\desc_addr_q[4]_i_3_n_0 ),
+        .I5(\desc_addr_q[4]_i_4_n_0 ),
+        .O(\desc_addr_q[1]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair108" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \desc_addr_q[2]_i_2 
        (.I0(\wValue_w_do[7] [0]),
         .I1(\wValue_w_do[7] [1]),
         .O(\desc_addr_q[2]_i_2_n_0 ));
+  LUT4 #(
+    .INIT(16'h0080)) 
+    \desc_addr_q[3]_i_2 
+       (.I0(\wValue_w_do[15] [0]),
+        .I1(\wValue_w_do[15] [1]),
+        .I2(\desc_addr_q[4]_i_3_n_0 ),
+        .I3(\desc_addr_q[3]_i_5_n_0 ),
+        .O(\desc_addr_q[3]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFEFFFFFFFFFF)) 
+    \desc_addr_q[3]_i_3 
+       (.I0(\desc_addr_q[3]_i_6_n_0 ),
+        .I1(\bmRequestType_w_do[7] [5]),
+        .I2(\bmRequestType_w_do[7] [6]),
+        .I3(setup_resp_valid_delay_q_do),
+        .I4(\wValue_w_do[7] [1]),
+        .I5(\wValue_w_do[7] [0]),
+        .O(\desc_addr_q[3]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair102" *) 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \desc_addr_q[3]_i_4 
+       (.I0(\desc_addr_q_do[6] [0]),
+        .I1(\desc_addr_q_do[6] [2]),
+        .I2(\desc_addr_q_do[6] [1]),
+        .O(\desc_addr_q[3]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair95" *) 
+  LUT4 #(
+    .INIT(16'hFBFF)) 
+    \desc_addr_q[3]_i_5 
+       (.I0(\bRequest_w_do[7] [0]),
+        .I1(\bRequest_w_do[7] [1]),
+        .I2(\desc_addr_q[4]_i_5_n_0 ),
+        .I3(\bRequest_w_do[7] [2]),
+        .O(\desc_addr_q[3]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair86" *) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    \desc_addr_q[3]_i_6 
+       (.I0(\bRequest_w_do[7] [3]),
+        .I1(\bRequest_w_do[7] [5]),
+        .I2(\bRequest_w_do[7] [4]),
+        .I3(\bRequest_w_do[7] [6]),
+        .I4(\bRequest_w_do[7] [7]),
+        .O(\desc_addr_q[3]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair85" *) 
+  LUT5 #(
+    .INIT(32'h95555555)) 
+    \desc_addr_q[4]_i_2 
+       (.I0(\desc_addr_q_do[6] [4]),
+        .I1(\desc_addr_q_do[6] [3]),
+        .I2(\desc_addr_q_do[6] [0]),
+        .I3(\desc_addr_q_do[6] [2]),
+        .I4(\desc_addr_q_do[6] [1]),
+        .O(\desc_addr_q[4]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
-    \desc_addr_q[3]_i_2 
+    \desc_addr_q[4]_i_3 
        (.I0(\wValue_w_do[7] [7]),
         .I1(\wValue_w_do[7] [6]),
         .I2(\wValue_w_do[7] [4]),
         .I3(\wValue_w_do[7] [5]),
         .I4(\wValue_w_do[7] [2]),
         .I5(\wValue_w_do[7] [3]),
-        .O(\desc_addr_q[3]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \desc_addr_q[3]_i_4 
-       (.I0(\bRequest_w_do[7] [7]),
-        .I1(\bRequest_w_do[7] [6]),
-        .I2(\bRequest_w_do[7] [4]),
-        .I3(\bRequest_w_do[7] [5]),
-        .I4(\bRequest_w_do[7] [3]),
-        .I5(\desc_addr_q[4]_i_4_n_0 ),
-        .O(\desc_addr_q[3]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair104" *) 
-  LUT3 #(
-    .INIT(8'h80)) 
-    \desc_addr_q[4]_i_3 
-       (.I0(\desc_addr_q_do[6] [0]),
-        .I1(\desc_addr_q_do[6] [2]),
-        .I2(\desc_addr_q_do[6] [1]),
         .O(\desc_addr_q[4]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair92" *) 
-  LUT4 #(
-    .INIT(16'hFBFF)) 
+  LUT6 #(
+    .INIT(64'h0020000000000000)) 
     \desc_addr_q[4]_i_4 
-       (.I0(\bRequest_w_do[7] [0]),
-        .I1(\bRequest_w_do[7] [1]),
-        .I2(ctrl_ack_r_do_INST_0_i_12_n_0),
-        .I3(\bRequest_w_do[7] [2]),
+       (.I0(\bRequest_w_do[7] [2]),
+        .I1(\desc_addr_q[4]_i_5_n_0 ),
+        .I2(\bRequest_w_do[7] [1]),
+        .I3(\bRequest_w_do[7] [0]),
+        .I4(\device_addr_q[6]_i_3_n_0 ),
+        .I5(\wValue_w_do[15] [1]),
         .O(\desc_addr_q[4]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair82" *) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \desc_addr_q[4]_i_5 
+       (.I0(\wValue_w_do[15] [6]),
+        .I1(\wValue_w_do[15] [7]),
+        .I2(\wValue_w_do[15] [4]),
+        .I3(\wValue_w_do[15] [5]),
+        .I4(\wValue_w_do[15] [2]),
+        .I5(\wValue_w_do[15] [3]),
+        .O(\desc_addr_q[4]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair85" *) 
   LUT5 #(
     .INIT(32'h80000000)) 
     \desc_addr_q[5]_i_2 
@@ -3815,121 +3944,55 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I1(\desc_addr_q[5]_i_4_n_0 ),
         .I2(\wValue_w_do[7] [0]),
         .I3(\wValue_w_do[7] [1]),
-        .I4(\desc_addr_q[3]_i_2_n_0 ),
-        .I5(\desc_addr_q[6]_i_10_n_0 ),
+        .I4(\desc_addr_q[4]_i_3_n_0 ),
+        .I5(\desc_addr_q[6]_i_8_n_0 ),
         .O(\desc_addr_q[5]_i_3_n_0 ));
   LUT3 #(
     .INIT(8'hFB)) 
     \desc_addr_q[5]_i_4 
-       (.I0(ctrl_ack_r_do_INST_0_i_12_n_0),
+       (.I0(\desc_addr_q[4]_i_5_n_0 ),
         .I1(\bRequest_w_do[7] [1]),
         .I2(\bRequest_w_do[7] [0]),
         .O(\desc_addr_q[5]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h0008000000000000)) 
-    \desc_addr_q[6]_i_10 
-       (.I0(\desc_addr_q[6]_i_15_n_0 ),
-        .I1(\bRequest_w_do[7] [2]),
-        .I2(Q[6]),
-        .I3(Q[5]),
-        .I4(\wValue_w_do[15] [1]),
-        .I5(\wValue_w_do[15] [0]),
-        .O(\desc_addr_q[6]_i_10_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair77" *) 
-  LUT2 #(
-    .INIT(4'h2)) 
-    \desc_addr_q[6]_i_11 
-       (.I0(\desc_addr_q[3]_i_2_n_0 ),
-        .I1(ctrl_ack_r_do_INST_0_i_12_n_0),
-        .O(\desc_addr_q[6]_i_11_n_0 ));
-  LUT6 #(
-    .INIT(64'hAAA8AAAAAAAAAAAA)) 
-    \desc_addr_q[6]_i_12 
-       (.I0(Q[5]),
-        .I1(ctrl_ack_r_do_INST_0_i_20_n_0),
-        .I2(\bRequest_w_do[7] [3]),
-        .I3(\bRequest_w_do[7] [2]),
-        .I4(\bRequest_w_do[7] [5]),
-        .I5(\bRequest_w_do[7] [0]),
-        .O(\desc_addr_q[6]_i_12_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair95" *) 
-  LUT4 #(
-    .INIT(16'h0070)) 
-    \desc_addr_q[6]_i_13 
-       (.I0(setup_resp_valid_delay_q_do),
-        .I1(Q[7]),
-        .I2(Q[6]),
-        .I3(Q[5]),
-        .O(\desc_addr_q[6]_i_13_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFEFEFEF)) 
-    \desc_addr_q[6]_i_14 
-       (.I0(ctrl_ack_r_do_INST_0_i_8_n_0),
-        .I1(Q[5]),
-        .I2(\bRequest_w_do[7] [0]),
-        .I3(\bRequest_w_do[7] [2]),
-        .I4(\bRequest_w_do[7] [1]),
-        .O(\desc_addr_q[6]_i_14_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair84" *) 
-  LUT5 #(
-    .INIT(32'h00000001)) 
-    \desc_addr_q[6]_i_15 
-       (.I0(\bRequest_w_do[7] [3]),
-        .I1(\bRequest_w_do[7] [5]),
-        .I2(\bRequest_w_do[7] [4]),
-        .I3(\bRequest_w_do[7] [6]),
-        .I4(\bRequest_w_do[7] [7]),
-        .O(\desc_addr_q[6]_i_15_n_0 ));
-  LUT6 #(
-    .INIT(64'hC8FF0000FFFFFFFF)) 
-    \desc_addr_q[6]_i_3 
-       (.I0(Q[7]),
-        .I1(Q[6]),
-        .I2(Q[5]),
-        .I3(\desc_addr_q[6]_i_9_n_0 ),
-        .I4(ctrl_sending_r_do_INST_0_i_2_n_0),
-        .I5(setup_resp_valid_delay_q_do),
-        .O(\desc_addr_q[6]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair98" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    \desc_addr_q[6]_i_4 
-       (.I0(Q[7]),
-        .I1(setup_resp_valid_delay_q_do),
-        .O(\desc_addr_q[6]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair81" *) 
+  (* SOFT_HLUTNM = "soft_lutpair88" *) 
   LUT5 #(
     .INIT(32'h80000000)) 
-    \desc_addr_q[6]_i_6 
+    \desc_addr_q[6]_i_4 
        (.I0(\desc_addr_q_do[6] [1]),
         .I1(\desc_addr_q_do[6] [2]),
         .I2(\desc_addr_q_do[6] [3]),
         .I3(\desc_addr_q_do[6] [5]),
         .I4(\desc_addr_q_do[6] [4]),
-        .O(\desc_addr_q[6]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair91" *) 
+        .O(\desc_addr_q[6]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair108" *) 
   LUT2 #(
     .INIT(4'h8)) 
-    \desc_addr_q[6]_i_7 
+    \desc_addr_q[6]_i_6 
        (.I0(\wValue_w_do[7] [0]),
         .I1(\wValue_w_do[7] [1]),
-        .O(\desc_addr_q[6]_i_7_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCCCEEEFCCCCEEEE)) 
+        .O(\desc_addr_q[6]_i_6_n_0 ));
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \desc_addr_q[6]_i_8 
+       (.I0(\device_addr_q[6]_i_3_n_0 ),
+        .I1(\bRequest_w_do[7] [2]),
+        .I2(\wValue_w_do[15] [0]),
+        .I3(\wValue_w_do[15] [1]),
+        .O(\desc_addr_q[6]_i_8_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair81" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \desc_addr_q[6]_i_9 
-       (.I0(\desc_addr_q[6]_i_12_n_0 ),
-        .I1(\desc_addr_q[6]_i_13_n_0 ),
-        .I2(ctrl_ack_r_do_INST_0_i_3_n_0),
-        .I3(\desc_addr_q[6]_i_14_n_0 ),
-        .I4(ctrl_ack_r_do_INST_0_i_7_n_0),
-        .I5(ctrl_ack_r_do_INST_0_i_1_n_0),
+       (.I0(\desc_addr_q[4]_i_3_n_0 ),
+        .I1(\desc_addr_q[4]_i_5_n_0 ),
         .O(\desc_addr_q[6]_i_9_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair104" *) 
   LUT3 #(
     .INIT(8'hA8)) 
     \desc_addr_q[7]_i_2 
-       (.I0(ctrl_ack_r_do_INST_0_i_11_n_0),
-        .I1(Q[6]),
-        .I2(Q[5]),
+       (.I0(ctrl_ack_r_do_INST_0_i_6_n_0),
+        .I1(\bmRequestType_w_do[7] [6]),
+        .I2(\bmRequestType_w_do[7] [5]),
         .O(\desc_addr_q[7]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
@@ -3941,7 +4004,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I4(\desc_addr_q_do[6] [1]),
         .I5(\desc_addr_q[7]_i_4_n_0 ),
         .O(\desc_addr_q[7]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair108" *) 
+  (* SOFT_HLUTNM = "soft_lutpair109" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \desc_addr_q[7]_i_4 
@@ -3950,110 +4013,110 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .O(\desc_addr_q[7]_i_4_n_0 ));
   FDCE \desc_addr_q_reg[0] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_38),
+        .D(u_core_n_50),
         .Q(\desc_addr_q_do[6] [0]));
   FDCE \desc_addr_q_reg[1] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_37),
+        .D(u_core_n_49),
         .Q(\desc_addr_q_do[6] [1]));
   FDCE \desc_addr_q_reg[2] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_36),
+        .D(u_core_n_48),
         .Q(\desc_addr_q_do[6] [2]));
   FDCE \desc_addr_q_reg[3] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_35),
+        .D(u_core_n_47),
         .Q(\desc_addr_q_do[6] [3]));
   FDCE \desc_addr_q_reg[4] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_34),
+        .D(u_core_n_46),
         .Q(\desc_addr_q_do[6] [4]));
   FDCE \desc_addr_q_reg[5] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_33),
+        .D(u_core_n_45),
         .Q(\desc_addr_q_do[6] [5]));
   FDCE \desc_addr_q_reg[6] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_32),
+        .D(u_core_n_44),
         .Q(\desc_addr_q_do[6] [6]));
   FDCE \desc_addr_q_reg[7] 
        (.C(clk_i),
-        .CE(u_core_n_29),
+        .CE(u_core_n_38),
         .CLR(rst_i),
-        .D(u_core_n_31),
+        .D(u_core_n_43),
         .Q(desc_addr_q));
   LUT6 #(
-    .INIT(64'h0000000100000000)) 
+    .INIT(64'h0000000000000002)) 
     \device_addr_q[6]_i_3 
-       (.I0(\bRequest_w_do[7] [7]),
-        .I1(\bRequest_w_do[7] [6]),
-        .I2(\bRequest_w_do[7] [4]),
-        .I3(\bRequest_w_do[7] [5]),
-        .I4(\bRequest_w_do[7] [3]),
-        .I5(\device_addr_q[6]_i_4_n_0 ),
+       (.I0(\device_addr_q[6]_i_4_n_0 ),
+        .I1(\bRequest_w_do[7] [7]),
+        .I2(\bRequest_w_do[7] [6]),
+        .I3(\bRequest_w_do[7] [4]),
+        .I4(\bRequest_w_do[7] [5]),
+        .I5(\bRequest_w_do[7] [3]),
         .O(\device_addr_q[6]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  (* SOFT_HLUTNM = "soft_lutpair92" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \device_addr_q[6]_i_4 
-       (.I0(Q[5]),
-        .I1(Q[6]),
+       (.I0(\bmRequestType_w_do[7] [5]),
+        .I1(\bmRequestType_w_do[7] [6]),
         .O(\device_addr_q[6]_i_4_n_0 ));
   FDCE \device_addr_q_reg[0] 
        (.C(clk_i),
-        .CE(u_core_n_142),
+        .CE(u_core_n_140),
         .CLR(rst_i),
-        .D(u_core_n_170),
+        .D(u_core_n_184),
         .Q(reg_dev_addr_i_do[0]));
   FDCE \device_addr_q_reg[1] 
        (.C(clk_i),
-        .CE(u_core_n_142),
+        .CE(u_core_n_140),
         .CLR(rst_i),
-        .D(u_core_n_169),
+        .D(u_core_n_183),
         .Q(reg_dev_addr_i_do[1]));
   FDCE \device_addr_q_reg[2] 
        (.C(clk_i),
-        .CE(u_core_n_142),
+        .CE(u_core_n_140),
         .CLR(rst_i),
-        .D(u_core_n_168),
+        .D(u_core_n_182),
         .Q(reg_dev_addr_i_do[2]));
   FDCE \device_addr_q_reg[3] 
        (.C(clk_i),
-        .CE(u_core_n_142),
+        .CE(u_core_n_140),
         .CLR(rst_i),
-        .D(u_core_n_167),
+        .D(u_core_n_181),
         .Q(reg_dev_addr_i_do[3]));
   FDCE \device_addr_q_reg[4] 
        (.C(clk_i),
-        .CE(u_core_n_142),
+        .CE(u_core_n_140),
         .CLR(rst_i),
-        .D(u_core_n_166),
+        .D(u_core_n_180),
         .Q(reg_dev_addr_i_do[4]));
   FDCE \device_addr_q_reg[5] 
        (.C(clk_i),
-        .CE(u_core_n_142),
+        .CE(u_core_n_140),
         .CLR(rst_i),
-        .D(u_core_n_165),
+        .D(u_core_n_179),
         .Q(reg_dev_addr_i_do[5]));
   FDCE \device_addr_q_reg[6] 
        (.C(clk_i),
-        .CE(u_core_n_142),
+        .CE(u_core_n_140),
         .CLR(rst_i),
-        .D(u_core_n_164),
+        .D(u_core_n_178),
         .Q(reg_dev_addr_i_do[6]));
   LUT2 #(
     .INIT(4'h9)) 
@@ -4064,10 +4127,10 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     i__carry__0_i_2
-       (.I0(ctrl_sending_r2[13]),
-        .I1(wLength[13]),
-        .I2(ctrl_sending_r2[12]),
-        .I3(wLength[12]),
+       (.I0(ctrl_sending_r2[12]),
+        .I1(wLength[12]),
+        .I2(ctrl_sending_r2[13]),
+        .I3(wLength[13]),
         .I4(wLength[14]),
         .I5(ctrl_sending_r2[14]),
         .O(i__carry__0_i_2_n_0));
@@ -4084,32 +4147,32 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     i__carry_i_2
-       (.I0(ctrl_sending_r2[8]),
-        .I1(wLength[8]),
+       (.I0(ctrl_sending_r2[7]),
+        .I1(wLength[7]),
         .I2(ctrl_sending_r2[6]),
         .I3(wLength[6]),
-        .I4(wLength[7]),
-        .I5(ctrl_sending_r2[7]),
+        .I4(wLength[8]),
+        .I5(ctrl_sending_r2[8]),
         .O(i__carry_i_2_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     i__carry_i_3
-       (.I0(ctrl_sending_r2[3]),
-        .I1(wLength[3]),
-        .I2(ctrl_sending_r2[4]),
-        .I3(wLength[4]),
-        .I4(wLength[5]),
-        .I5(ctrl_sending_r2[5]),
+       (.I0(ctrl_sending_r2[5]),
+        .I1(wLength[5]),
+        .I2(ctrl_sending_r2[3]),
+        .I3(wLength[3]),
+        .I4(wLength[4]),
+        .I5(ctrl_sending_r2[4]),
         .O(i__carry_i_3_n_0));
   LUT6 #(
-    .INIT(64'h6006000000006006)) 
+    .INIT(64'h0990000000000990)) 
     i__carry_i_4
-       (.I0(wLength[0]),
-        .I1(ctrl_send_idx_q[0]),
-        .I2(ctrl_sending_r2[2]),
-        .I3(wLength[2]),
-        .I4(ctrl_sending_r2[1]),
-        .I5(wLength[1]),
+       (.I0(ctrl_sending_r2[1]),
+        .I1(wLength[1]),
+        .I2(ctrl_send_idx_q[0]),
+        .I3(wLength[0]),
+        .I4(wLength[2]),
+        .I5(ctrl_sending_r2[2]),
         .O(i__carry_i_4_n_0));
   FDCE \inport_data_q_reg[0] 
        (.C(clk_i),
@@ -4159,11 +4222,22 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .CLR(rst_i),
         .D(inport_data_i[7]),
         .Q(ep2_tx_data_w_do[7]));
+  LUT1 #(
+    .INIT(2'h1)) 
+    inport_valid_q_q_i_1
+       (.I0(inport_valid_i),
+        .O(inport_valid_q_q_i_1_n_0));
+  FDCE inport_valid_q_q_reg
+       (.C(clk_i),
+        .CE(E),
+        .CLR(rst_i),
+        .D(inport_valid_q_q_i_1_n_0),
+        .Q(inport_valid_q_do));
   FDCE inport_valid_q_reg
        (.C(clk_i),
         .CE(E),
         .CLR(rst_i),
-        .D(inport_valid_i),
+        .D(inport_valid_q_do),
         .Q(ep2_tx_data_valid_w_do));
   FDCE \last_linestate_q_reg[0] 
        (.C(clk_i),
@@ -4180,471 +4254,463 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   FDRE \readAXIBRAM_q_reg[0] 
        (.C(clk_i),
         .CE(1'b1),
-        .D(u_core_n_190),
+        .D(u_core_n_204),
         .Q(\readAXIBRAM_q_reg_n_0_[0] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair88" *) 
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT5 #(
     .INIT(32'hF3B30080)) 
     readAXIBRAM_r_do_INST_0
-       (.I0(Q[7]),
+       (.I0(\bmRequestType_w_do[7] [7]),
         .I1(setup_resp_valid_delay_q_do),
-        .I2(Q[6]),
-        .I3(Q[5]),
+        .I2(\bmRequestType_w_do[7] [6]),
+        .I3(\bmRequestType_w_do[7] [5]),
         .I4(\readAXIBRAM_q_reg_n_0_[0] ),
         .O(readAXIBRAM_r_do));
   FDCE setup_frame_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_187),
+        .D(u_core_n_201),
         .Q(setup_frame_q_do));
   FDCE \setup_packet_q_reg[0][0] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
-        .Q(Q[0]));
+        .Q(\bmRequestType_w_do[7] [0]));
   FDCE \setup_packet_q_reg[0][1] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
-        .Q(Q[1]));
+        .Q(\bmRequestType_w_do[7] [1]));
   FDCE \setup_packet_q_reg[0][2] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
-        .Q(Q[2]));
+        .Q(\bmRequestType_w_do[7] [2]));
   FDCE \setup_packet_q_reg[0][3] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
-        .Q(Q[3]));
+        .Q(\bmRequestType_w_do[7] [3]));
   FDCE \setup_packet_q_reg[0][4] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
-        .Q(Q[4]));
+        .Q(\bmRequestType_w_do[7] [4]));
   FDCE \setup_packet_q_reg[0][5] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
-        .Q(Q[5]));
+        .Q(\bmRequestType_w_do[7] [5]));
   FDCE \setup_packet_q_reg[0][6] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
-        .Q(Q[6]));
+        .Q(\bmRequestType_w_do[7] [6]));
   FDCE \setup_packet_q_reg[0][7] 
        (.C(clk_i),
-        .CE(u_core_n_88),
+        .CE(u_core_n_86),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
-        .Q(Q[7]));
+        .Q(\bmRequestType_w_do[7] [7]));
   FDCE \setup_packet_q_reg[1][0] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
         .Q(\bRequest_w_do[7] [0]));
   FDCE \setup_packet_q_reg[1][1] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
         .Q(\bRequest_w_do[7] [1]));
   FDCE \setup_packet_q_reg[1][2] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
         .Q(\bRequest_w_do[7] [2]));
   FDCE \setup_packet_q_reg[1][3] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
         .Q(\bRequest_w_do[7] [3]));
   FDCE \setup_packet_q_reg[1][4] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
         .Q(\bRequest_w_do[7] [4]));
   FDCE \setup_packet_q_reg[1][5] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
         .Q(\bRequest_w_do[7] [5]));
   FDCE \setup_packet_q_reg[1][6] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
         .Q(\bRequest_w_do[7] [6]));
   FDCE \setup_packet_q_reg[1][7] 
        (.C(clk_i),
-        .CE(u_core_n_89),
+        .CE(u_core_n_87),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
         .Q(\bRequest_w_do[7] [7]));
   FDCE \setup_packet_q_reg[2][0] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
         .Q(\wValue_w_do[7] [0]));
   FDCE \setup_packet_q_reg[2][1] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
         .Q(\wValue_w_do[7] [1]));
   FDCE \setup_packet_q_reg[2][2] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
         .Q(\wValue_w_do[7] [2]));
   FDCE \setup_packet_q_reg[2][3] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
         .Q(\wValue_w_do[7] [3]));
   FDCE \setup_packet_q_reg[2][4] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
         .Q(\wValue_w_do[7] [4]));
   FDCE \setup_packet_q_reg[2][5] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
         .Q(\wValue_w_do[7] [5]));
   FDCE \setup_packet_q_reg[2][6] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
         .Q(\wValue_w_do[7] [6]));
   FDCE \setup_packet_q_reg[2][7] 
        (.C(clk_i),
-        .CE(u_core_n_92),
+        .CE(u_core_n_90),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
         .Q(\wValue_w_do[7] [7]));
   FDCE \setup_packet_q_reg[3][0] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
         .Q(\wValue_w_do[15] [0]));
   FDCE \setup_packet_q_reg[3][1] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
         .Q(\wValue_w_do[15] [1]));
   FDCE \setup_packet_q_reg[3][2] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
         .Q(\wValue_w_do[15] [2]));
   FDCE \setup_packet_q_reg[3][3] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
         .Q(\wValue_w_do[15] [3]));
   FDCE \setup_packet_q_reg[3][4] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
         .Q(\wValue_w_do[15] [4]));
   FDCE \setup_packet_q_reg[3][5] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
         .Q(\wValue_w_do[15] [5]));
   FDCE \setup_packet_q_reg[3][6] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
         .Q(\wValue_w_do[15] [6]));
   FDCE \setup_packet_q_reg[3][7] 
        (.C(clk_i),
-        .CE(u_core_n_93),
+        .CE(u_core_n_91),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
         .Q(\wValue_w_do[15] [7]));
   FDCE \setup_packet_q_reg[4][0] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
         .Q(wIndex_w[0]));
   FDCE \setup_packet_q_reg[4][1] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
         .Q(wIndex_w[1]));
   FDCE \setup_packet_q_reg[4][2] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
         .Q(wIndex_w[2]));
   FDCE \setup_packet_q_reg[4][3] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
         .Q(wIndex_w[3]));
   FDCE \setup_packet_q_reg[4][4] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
         .Q(wIndex_w[4]));
   FDCE \setup_packet_q_reg[4][5] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
         .Q(wIndex_w[5]));
   FDCE \setup_packet_q_reg[4][6] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
         .Q(wIndex_w[6]));
   FDCE \setup_packet_q_reg[4][7] 
        (.C(clk_i),
-        .CE(u_core_n_94),
+        .CE(u_core_n_92),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
         .Q(wIndex_w[7]));
   FDCE \setup_packet_q_reg[5][0] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
         .Q(wIndex_w[8]));
   FDCE \setup_packet_q_reg[5][1] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
         .Q(wIndex_w[9]));
   FDCE \setup_packet_q_reg[5][2] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
         .Q(wIndex_w[10]));
   FDCE \setup_packet_q_reg[5][3] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
         .Q(wIndex_w[11]));
   FDCE \setup_packet_q_reg[5][4] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
         .Q(wIndex_w[12]));
   FDCE \setup_packet_q_reg[5][5] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
         .Q(wIndex_w[13]));
   FDCE \setup_packet_q_reg[5][6] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
         .Q(wIndex_w[14]));
   FDCE \setup_packet_q_reg[5][7] 
        (.C(clk_i),
-        .CE(u_core_n_95),
+        .CE(u_core_n_93),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
         .Q(wIndex_w[15]));
   FDCE \setup_packet_q_reg[6][0] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
         .Q(wLength[0]));
   FDCE \setup_packet_q_reg[6][1] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
         .Q(wLength[1]));
   FDCE \setup_packet_q_reg[6][2] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
         .Q(wLength[2]));
   FDCE \setup_packet_q_reg[6][3] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
         .Q(wLength[3]));
   FDCE \setup_packet_q_reg[6][4] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
         .Q(wLength[4]));
   FDCE \setup_packet_q_reg[6][5] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
         .Q(wLength[5]));
   FDCE \setup_packet_q_reg[6][6] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
         .Q(wLength[6]));
   FDCE \setup_packet_q_reg[6][7] 
        (.C(clk_i),
-        .CE(u_core_n_90),
+        .CE(u_core_n_88),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
         .Q(wLength[7]));
   FDCE \setup_packet_q_reg[7][0] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[0]),
         .Q(wLength[8]));
   FDCE \setup_packet_q_reg[7][1] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[1]),
         .Q(wLength[9]));
   FDCE \setup_packet_q_reg[7][2] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[2]),
         .Q(wLength[10]));
   FDCE \setup_packet_q_reg[7][3] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[3]),
         .Q(wLength[11]));
   FDCE \setup_packet_q_reg[7][4] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[4]),
         .Q(wLength[12]));
   FDCE \setup_packet_q_reg[7][5] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[5]),
         .Q(wLength[13]));
   FDCE \setup_packet_q_reg[7][6] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[6]),
         .Q(wLength[14]));
   FDCE \setup_packet_q_reg[7][7] 
        (.C(clk_i),
-        .CE(u_core_n_91),
+        .CE(u_core_n_89),
         .CLR(rst_i),
         .D(setup_packet_q[7]),
         .Q(wLength[15]));
-  LUT6 #(
-    .INIT(64'hFFFFFFFB00000400)) 
+  LUT4 #(
+    .INIT(16'hFB08)) 
     setup_resp_valid_delay_q_i_1
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
-        .I3(\token_valid_cnt_q_do[25] [0]),
-        .I4(setup_valid_q_do),
-        .I5(setup_resp_valid_delay_q_do),
+       (.I0(\token_valid_cnt_q_do[25] [0]),
+        .I1(setup_resp_valid_delay_q_i_2_n_0),
+        .I2(setup_valid_q_do),
+        .I3(setup_resp_valid_delay_q_do),
         .O(setup_resp_valid_delay_q_i_1_n_0));
   LUT5 #(
-    .INIT(32'hFFFFFFFE)) 
+    .INIT(32'h00000001)) 
     setup_resp_valid_delay_q_i_2
-       (.I0(\token_valid_cnt_q_do[25] [10]),
-        .I1(\token_valid_cnt_q_do[25] [9]),
-        .I2(\token_valid_cnt_q_do[25] [12]),
-        .I3(\token_valid_cnt_q_do[25] [11]),
-        .I4(setup_resp_valid_delay_q_i_5_n_0),
+       (.I0(setup_resp_valid_delay_q_i_3_n_0),
+        .I1(\token_valid_cnt_q_do[25] [8]),
+        .I2(\token_valid_cnt_q_do[25] [9]),
+        .I3(\token_valid_cnt_q_do[25] [10]),
+        .I4(setup_resp_valid_delay_q_i_4_n_0),
         .O(setup_resp_valid_delay_q_i_2_n_0));
   LUT5 #(
-    .INIT(32'h00000001)) 
+    .INIT(32'hFFFFFFFE)) 
     setup_resp_valid_delay_q_i_3
-       (.I0(setup_resp_valid_delay_q_i_6_n_0),
-        .I1(\token_valid_cnt_q_do[25] [8]),
-        .I2(\token_valid_cnt_q_do[25] [7]),
-        .I3(\token_valid_cnt_q_do[25] [6]),
-        .I4(\token_valid_cnt_q_do[25] [5]),
+       (.I0(\token_valid_cnt_q[25]_i_5_n_0 ),
+        .I1(\token_valid_cnt_q_do[25] [15]),
+        .I2(\token_valid_cnt_q_do[25] [13]),
+        .I3(\token_valid_cnt_q_do[25] [24]),
+        .I4(\token_valid_cnt_q_do[25] [12]),
         .O(setup_resp_valid_delay_q_i_3_n_0));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
     setup_resp_valid_delay_q_i_4
-       (.I0(\token_valid_cnt_q_do[25] [25]),
-        .I1(setup_resp_valid_delay_q_i_7_n_0),
-        .I2(\token_valid_cnt_q_do[25] [17]),
-        .I3(\token_valid_cnt_q_do[25] [18]),
-        .I4(\token_valid_cnt_q_do[25] [19]),
-        .I5(\token_valid_cnt_q_do[25] [20]),
+       (.I0(setup_resp_valid_delay_q_i_5_n_0),
+        .I1(setup_resp_valid_delay_q_i_6_n_0),
+        .I2(\token_valid_cnt_q_do[25] [5]),
+        .I3(\token_valid_cnt_q_do[25] [17]),
+        .I4(\token_valid_cnt_q_do[25] [11]),
+        .I5(\token_valid_cnt_q_do[25] [18]),
         .O(setup_resp_valid_delay_q_i_4_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
     setup_resp_valid_delay_q_i_5
-       (.I0(\token_valid_cnt_q_do[25] [13]),
-        .I1(\token_valid_cnt_q_do[25] [14]),
-        .I2(\token_valid_cnt_q_do[25] [15]),
+       (.I0(\token_valid_cnt_q_do[25] [14]),
+        .I1(\token_valid_cnt_q_do[25] [25]),
+        .I2(\token_valid_cnt_q_do[25] [21]),
         .I3(\token_valid_cnt_q_do[25] [16]),
+        .I4(\token_valid_cnt_q_do[25] [23]),
+        .I5(\token_valid_cnt_q_do[25] [22]),
         .O(setup_resp_valid_delay_q_i_5_n_0));
   LUT4 #(
     .INIT(16'hFFFE)) 
     setup_resp_valid_delay_q_i_6
-       (.I0(\token_valid_cnt_q_do[25] [1]),
-        .I1(\token_valid_cnt_q_do[25] [4]),
-        .I2(\token_valid_cnt_q_do[25] [2]),
-        .I3(\token_valid_cnt_q_do[25] [3]),
+       (.I0(\token_valid_cnt_q_do[25] [19]),
+        .I1(\token_valid_cnt_q_do[25] [20]),
+        .I2(\token_valid_cnt_q_do[25] [6]),
+        .I3(\token_valid_cnt_q_do[25] [7]),
         .O(setup_resp_valid_delay_q_i_6_n_0));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    setup_resp_valid_delay_q_i_7
-       (.I0(\token_valid_cnt_q_do[25] [21]),
-        .I1(\token_valid_cnt_q_do[25] [22]),
-        .I2(\token_valid_cnt_q_do[25] [23]),
-        .I3(\token_valid_cnt_q_do[25] [24]),
-        .O(setup_resp_valid_delay_q_i_7_n_0));
   FDCE setup_resp_valid_delay_q_reg
        (.C(clk_i),
         .CE(1'b1),
@@ -4662,99 +4728,99 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .O(setup_token_valid_intr_o));
   FDCE \setup_valid_conter_q_reg[0] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_174),
+        .D(u_core_n_188),
         .Q(setup_valid_conter_q_o[0]));
   FDCE \setup_valid_conter_q_reg[10] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_180),
+        .D(u_core_n_194),
         .Q(setup_valid_conter_q_o[10]));
   FDCE \setup_valid_conter_q_reg[11] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_179),
+        .D(u_core_n_193),
         .Q(setup_valid_conter_q_o[11]));
   FDCE \setup_valid_conter_q_reg[12] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_186),
+        .D(u_core_n_200),
         .Q(setup_valid_conter_q_o[12]));
   FDCE \setup_valid_conter_q_reg[13] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_185),
+        .D(u_core_n_199),
         .Q(setup_valid_conter_q_o[13]));
   FDCE \setup_valid_conter_q_reg[14] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_184),
+        .D(u_core_n_198),
         .Q(setup_valid_conter_q_o[14]));
   FDCE \setup_valid_conter_q_reg[15] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_183),
+        .D(u_core_n_197),
         .Q(setup_valid_conter_q_o[15]));
   FDCE \setup_valid_conter_q_reg[1] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_173),
+        .D(u_core_n_187),
         .Q(setup_valid_conter_q_o[1]));
   FDCE \setup_valid_conter_q_reg[2] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_172),
+        .D(u_core_n_186),
         .Q(setup_valid_conter_q_o[2]));
   FDCE \setup_valid_conter_q_reg[3] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_171),
+        .D(u_core_n_185),
         .Q(setup_valid_conter_q_o[3]));
   FDCE \setup_valid_conter_q_reg[4] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_178),
+        .D(u_core_n_192),
         .Q(setup_valid_conter_q_o[4]));
   FDCE \setup_valid_conter_q_reg[5] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_177),
+        .D(u_core_n_191),
         .Q(setup_valid_conter_q_o[5]));
   FDCE \setup_valid_conter_q_reg[6] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_176),
+        .D(u_core_n_190),
         .Q(setup_valid_conter_q_o[6]));
   FDCE \setup_valid_conter_q_reg[7] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_175),
+        .D(u_core_n_189),
         .Q(setup_valid_conter_q_o[7]));
   FDCE \setup_valid_conter_q_reg[8] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_182),
+        .D(u_core_n_196),
         .Q(setup_valid_conter_q_o[8]));
   FDCE \setup_valid_conter_q_reg[9] 
        (.C(clk_i),
-        .CE(u_core_n_133),
+        .CE(u_core_n_131),
         .CLR(rst_i),
-        .D(u_core_n_181),
+        .D(u_core_n_195),
         .Q(setup_valid_conter_q_o[9]));
   FDCE setup_valid_q_reg
        (.C(clk_i),
@@ -4766,19 +4832,19 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_60),
+        .D(u_core_n_56),
         .Q(\setup_wr_idx_q_do[0] ));
   FDCE \setup_wr_idx_q_reg[1] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_59),
+        .D(u_core_n_55),
         .Q(\setup_wr_idx_q_do[1] ));
   FDCE \setup_wr_idx_q_reg[2] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_57),
+        .D(u_core_n_53),
         .Q(\setup_wr_idx_q_do[2] ));
   LUT3 #(
     .INIT(8'h45)) 
@@ -4797,7 +4863,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_core_n_188),
+        .D(u_core_n_202),
         .Q(status_ready_q_reg_n_0));
   CARRY4 token_valid_cnt_q0_carry
        (.CI(1'b0),
@@ -4974,325 +5040,324 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
        (.I0(\token_valid_cnt_q_do[25] [1]),
         .O(token_valid_cnt_q0_carry_i_4_n_0));
   LUT6 #(
-    .INIT(64'hFFFFFFFF00FBFBFB)) 
+    .INIT(64'hFF00FF00FFA2FFFF)) 
     \token_valid_cnt_q[0]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
-        .I3(\token_valid_cnt_q[25]_i_3_n_0 ),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
+        .I3(setup_valid_q_do),
         .I4(\token_valid_cnt_q_do[25] [0]),
-        .I5(setup_valid_q_do),
+        .I5(setup_resp_valid_delay_q_i_2_n_0),
         .O(\token_valid_cnt_q[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[10]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[10]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[10]),
         .O(\token_valid_cnt_q[10]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[11]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[11]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[11]),
         .O(\token_valid_cnt_q[11]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[12]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[12]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[12]),
         .O(\token_valid_cnt_q[12]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[13]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[13]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[13]),
         .O(\token_valid_cnt_q[13]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[14]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[14]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[14]),
         .O(\token_valid_cnt_q[14]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[15]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[15]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[15]),
         .O(\token_valid_cnt_q[15]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[16]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[16]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[16]),
         .O(\token_valid_cnt_q[16]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[17]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[17]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[17]),
         .O(\token_valid_cnt_q[17]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[18]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[18]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[18]),
         .O(\token_valid_cnt_q[18]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[19]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[19]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[19]),
         .O(\token_valid_cnt_q[19]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[1]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[1]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[1]),
         .O(\token_valid_cnt_q[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[20]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[20]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[20]),
         .O(\token_valid_cnt_q[20]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[21]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[21]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[21]),
         .O(\token_valid_cnt_q[21]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[22]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[22]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[22]),
         .O(\token_valid_cnt_q[22]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[23]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[23]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[23]),
         .O(\token_valid_cnt_q[23]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[24]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[24]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[24]),
         .O(\token_valid_cnt_q[24]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFFFB)) 
+  LUT3 #(
+    .INIT(8'hEF)) 
     \token_valid_cnt_q[25]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
-        .I3(\token_valid_cnt_q_do[25] [0]),
-        .I4(setup_valid_q_do),
+       (.I0(\token_valid_cnt_q_do[25] [0]),
+        .I1(setup_valid_q_do),
+        .I2(setup_resp_valid_delay_q_i_2_n_0),
         .O(\token_valid_cnt_q[25]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[25]_i_2 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
-        .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[25]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
-        .O(\token_valid_cnt_q[25]_i_2_n_0 ));
-  LUT3 #(
-    .INIT(8'h5D)) 
-    \token_valid_cnt_q[25]_i_3 
        (.I0(ctrl_host_ack_i),
-        .I1(\token_valid_cnt_q[25]_i_4_n_0 ),
-        .I2(\token_valid_cnt_q[25]_i_5_n_0 ),
-        .O(\token_valid_cnt_q[25]_i_3_n_0 ));
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
+        .I3(setup_valid_q_do),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[25]),
+        .O(\token_valid_cnt_q[25]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'h20000000)) 
-    \token_valid_cnt_q[25]_i_4 
-       (.I0(setup_resp_valid_delay_q_i_6_n_0),
+    \token_valid_cnt_q[25]_i_3 
+       (.I0(\token_valid_cnt_q[25]_i_5_n_0 ),
         .I1(\token_valid_cnt_q[25]_i_6_n_0 ),
-        .I2(\token_valid_cnt_q_do[25] [5]),
-        .I3(\token_valid_cnt_q_do[25] [7]),
-        .I4(\token_valid_cnt_q_do[25] [23]),
-        .O(\token_valid_cnt_q[25]_i_4_n_0 ));
+        .I2(\token_valid_cnt_q_do[25] [12]),
+        .I3(\token_valid_cnt_q_do[25] [19]),
+        .I4(\token_valid_cnt_q_do[25] [13]),
+        .O(\token_valid_cnt_q[25]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'hEFFFFFFFFFFFFFFF)) 
-    \token_valid_cnt_q[25]_i_5 
+    \token_valid_cnt_q[25]_i_4 
        (.I0(\token_valid_cnt_q[25]_i_7_n_0 ),
         .I1(\token_valid_cnt_q[25]_i_8_n_0 ),
-        .I2(\token_valid_cnt_q_do[25] [12]),
-        .I3(\token_valid_cnt_q_do[25] [25]),
-        .I4(\token_valid_cnt_q_do[25] [14]),
-        .I5(\token_valid_cnt_q_do[25] [17]),
+        .I2(\token_valid_cnt_q_do[25] [5]),
+        .I3(\token_valid_cnt_q_do[25] [22]),
+        .I4(\token_valid_cnt_q_do[25] [9]),
+        .I5(\token_valid_cnt_q_do[25] [24]),
+        .O(\token_valid_cnt_q[25]_i_4_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \token_valid_cnt_q[25]_i_5 
+       (.I0(\token_valid_cnt_q_do[25] [1]),
+        .I1(\token_valid_cnt_q_do[25] [4]),
+        .I2(\token_valid_cnt_q_do[25] [2]),
+        .I3(\token_valid_cnt_q_do[25] [3]),
         .O(\token_valid_cnt_q[25]_i_5_n_0 ));
   LUT4 #(
     .INIT(16'h7FFF)) 
     \token_valid_cnt_q[25]_i_6 
-       (.I0(\token_valid_cnt_q_do[25] [8]),
-        .I1(\token_valid_cnt_q_do[25] [24]),
-        .I2(\token_valid_cnt_q_do[25] [6]),
-        .I3(\token_valid_cnt_q_do[25] [20]),
+       (.I0(\token_valid_cnt_q_do[25] [14]),
+        .I1(\token_valid_cnt_q_do[25] [25]),
+        .I2(\token_valid_cnt_q_do[25] [11]),
+        .I3(\token_valid_cnt_q_do[25] [21]),
         .O(\token_valid_cnt_q[25]_i_6_n_0 ));
   LUT6 #(
     .INIT(64'h7FFFFFFFFFFFFFFF)) 
     \token_valid_cnt_q[25]_i_7 
-       (.I0(\token_valid_cnt_q_do[25] [16]),
-        .I1(\token_valid_cnt_q_do[25] [21]),
-        .I2(\token_valid_cnt_q_do[25] [13]),
-        .I3(\token_valid_cnt_q_do[25] [11]),
-        .I4(\token_valid_cnt_q_do[25] [19]),
-        .I5(\token_valid_cnt_q_do[25] [18]),
+       (.I0(\token_valid_cnt_q_do[25] [17]),
+        .I1(\token_valid_cnt_q_do[25] [18]),
+        .I2(\token_valid_cnt_q_do[25] [8]),
+        .I3(\token_valid_cnt_q_do[25] [6]),
+        .I4(\token_valid_cnt_q_do[25] [10]),
+        .I5(\token_valid_cnt_q_do[25] [7]),
         .O(\token_valid_cnt_q[25]_i_7_n_0 ));
   LUT4 #(
     .INIT(16'h7FFF)) 
     \token_valid_cnt_q[25]_i_8 
-       (.I0(\token_valid_cnt_q_do[25] [9]),
-        .I1(\token_valid_cnt_q_do[25] [15]),
-        .I2(\token_valid_cnt_q_do[25] [10]),
-        .I3(\token_valid_cnt_q_do[25] [22]),
+       (.I0(\token_valid_cnt_q_do[25] [20]),
+        .I1(\token_valid_cnt_q_do[25] [23]),
+        .I2(\token_valid_cnt_q_do[25] [15]),
+        .I3(\token_valid_cnt_q_do[25] [16]),
         .O(\token_valid_cnt_q[25]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[2]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[2]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[2]),
         .O(\token_valid_cnt_q[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[3]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[3]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[3]),
         .O(\token_valid_cnt_q[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[4]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[4]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[4]),
         .O(\token_valid_cnt_q[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[5]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[5]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[5]),
         .O(\token_valid_cnt_q[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[6]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[6]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[6]),
         .O(\token_valid_cnt_q[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[7]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[7]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[7]),
         .O(\token_valid_cnt_q[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[8]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[8]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[8]),
         .O(\token_valid_cnt_q[8]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFF00FF00FF00)) 
+    .INIT(64'hFF00FF5DFF00FF00)) 
     \token_valid_cnt_q[9]_i_1 
-       (.I0(setup_resp_valid_delay_q_i_2_n_0),
-        .I1(setup_resp_valid_delay_q_i_3_n_0),
-        .I2(setup_resp_valid_delay_q_i_4_n_0),
+       (.I0(ctrl_host_ack_i),
+        .I1(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I2(\token_valid_cnt_q[25]_i_4_n_0 ),
         .I3(setup_valid_q_do),
-        .I4(token_valid_cnt_q0[9]),
-        .I5(\token_valid_cnt_q[25]_i_3_n_0 ),
+        .I4(setup_resp_valid_delay_q_i_2_n_0),
+        .I5(token_valid_cnt_q0[9]),
         .O(\token_valid_cnt_q[9]_i_1_n_0 ));
   FDCE \token_valid_cnt_q_reg[0] 
        (.C(clk_i),
@@ -5455,14 +5520,14 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     \token_valid_counter_q[0]_i_1 
        (.I0(token_valid_counter_q_do[0]),
         .O(p_0_in__0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair107" *) 
+  (* SOFT_HLUTNM = "soft_lutpair106" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \token_valid_counter_q[1]_i_1 
        (.I0(token_valid_counter_q_do[0]),
         .I1(token_valid_counter_q_do[1]),
         .O(p_0_in__0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair107" *) 
+  (* SOFT_HLUTNM = "soft_lutpair106" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \token_valid_counter_q[2]_i_1 
@@ -5470,7 +5535,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I1(token_valid_counter_q_do[1]),
         .I2(token_valid_counter_q_do[0]),
         .O(p_0_in__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair86" *) 
+  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \token_valid_counter_q[3]_i_1 
@@ -5479,7 +5544,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(token_valid_counter_q_do[1]),
         .I3(token_valid_counter_q_do[2]),
         .O(p_0_in__0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair86" *) 
+  (* SOFT_HLUTNM = "soft_lutpair87" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
     \token_valid_counter_q[4]_i_1 
@@ -5575,72 +5640,78 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
   brd_usb_cdc_core_0_0_usbf_device_core u_core
        (.CLK(usb_reset_w_do),
         .CO(\ctrl_sending_r1_inferred__0/i__carry__0_n_2 ),
-        .D({u_core_n_31,u_core_n_32,u_core_n_33,u_core_n_34,u_core_n_35,u_core_n_36,u_core_n_37,u_core_n_38}),
-        .E(u_core_n_29),
+        .D({\usbfrx_data_w_do[7] ,\usbfrx_data_w_do[6] ,\usbfrx_data_w_do[5] ,\usbfrx_data_w_do[4] ,\usbfrx_data_w_do[3] ,\usbfrx_data_w_do[2] ,\usbfrx_data_w_do[1] ,\usbfrx_data_w_do[0] }),
+        .E(usbfrx_shift_en_w_do),
         .\FSM_sequential_state_q_reg[1] (next_state_r__0[1:0]),
         .\FSM_sequential_state_q_reg[1]_0 (\usb_rst_time_q[19]_i_4_n_0 ),
-        .\FSM_sequential_state_q_reg[2] (u_core_n_22),
-        .O({u_core_n_171,u_core_n_172,u_core_n_173,u_core_n_174}),
+        .O({u_core_n_185,u_core_n_186,u_core_n_187,u_core_n_188}),
         .Q(tx_sent_data_counter_o),
         .axi_bram_addr_q_reg(axi_bram_addr_q_reg),
-        .axi_bram_addr_q_reg_0_sp_1(u_core_n_63),
-        .axi_bram_addr_q_reg_1_sp_1(u_core_n_61),
+        .axi_bram_addr_q_reg_0_sp_1(u_core_n_58),
+        .axi_bram_addr_q_reg_1_sp_1(u_core_n_57),
         .axi_bram_r_data_i(axi_bram_r_data_i),
-        .\chirp_count_q_reg[5] (\FSM_sequential_state_q[1]_i_3__1_n_0 ),
+        .\chirp_count_q_reg[3] (u_core_n_70),
+        .\chirp_count_q_reg[4] (\FSM_sequential_state_q[1]_i_3__1_n_0 ),
         .clk_i(clk_i),
         .ctrl_ack_r_do(ctrl_ack_r_do),
         .ctrl_send_accept_w_do(ctrl_send_accept_w_do),
-        .\ctrl_send_idx_q_reg[0] (u_core_n_115),
+        .\ctrl_send_idx_q_reg[0] (u_core_n_112),
         .\ctrl_send_idx_q_reg[0]_0 (ctrl_send_idx_q[0]),
-        .\ctrl_send_idx_q_reg[15] ({u_core_n_39,u_core_n_40,u_core_n_41,u_core_n_42,u_core_n_43,u_core_n_44,u_core_n_45,u_core_n_46,u_core_n_47,u_core_n_48,u_core_n_49,u_core_n_50,u_core_n_51,u_core_n_52,u_core_n_53,u_core_n_54}),
-        .ctrl_sending_q(ctrl_sending_q),
-        .ctrl_sending_q_reg(ctrl_sending_q_reg_n_0),
+        .\ctrl_send_idx_q_reg[15] ({u_core_n_141,u_core_n_142,u_core_n_143,u_core_n_144,u_core_n_145,u_core_n_146,u_core_n_147,u_core_n_148,u_core_n_149,u_core_n_150,u_core_n_151,u_core_n_152,u_core_n_153,u_core_n_154,u_core_n_155,u_core_n_156}),
+        .ctrl_sending_q_reg(u_core_n_39),
+        .ctrl_sending_q_reg_0(ctrl_sending_q_reg_n_0),
         .ctrl_sending_r2(ctrl_sending_r2),
         .ctrl_sending_r_do(ctrl_sending_r_do),
         .ctrl_txdata_q_do(ctrl_txdata_q_do),
-        .\ctrl_txdata_q_reg[0] (u_core_n_116),
-        .\ctrl_txdata_q_reg[7] ({u_core_n_134,u_core_n_135,u_core_n_136,u_core_n_137,u_core_n_138,u_core_n_139,u_core_n_140,u_core_n_141}),
-        .ctrl_txlast_q_reg(u_core_n_193),
+        .\ctrl_txdata_q_reg[0] (u_core_n_113),
+        .\ctrl_txdata_q_reg[7] ({u_core_n_132,u_core_n_133,u_core_n_134,u_core_n_135,u_core_n_136,u_core_n_137,u_core_n_138,u_core_n_139}),
+        .ctrl_txlast_q_reg(u_core_n_207),
         .ctrl_txlast_q_reg_0(ctrl_txlast_q_reg_n_0),
-        .ctrl_txstall_q_reg(u_core_n_191),
+        .ctrl_txstall_q_reg(u_core_n_205),
         .ctrl_txstall_q_reg_0(ctrl_txstall_q_do),
-        .ctrl_txstrb_q_reg(u_core_n_192),
+        .ctrl_txstrb_q_reg(u_core_n_206),
         .ctrl_txstrb_q_reg_0(ctrl_txstrb_q_reg_n_0),
-        .ctrl_txvalid_q_reg(u_core_n_189),
+        .ctrl_txvalid_q_reg(u_core_n_203),
         .ctrl_txvalid_q_reg_0(ctrl_txvalid_q_do),
         .current_addr_i_do(current_addr_i_do),
         .data_complete_o_do(data_complete_o_do),
-        .\desc_addr_q_reg[0] (\ctrl_txdata_q[7]_i_3_n_0 ),
-        .\desc_addr_q_reg[0]_0 (\desc_addr_q[4]_i_3_n_0 ),
+        .\desc_addr_q_reg[0] (\desc_addr_q[3]_i_4_n_0 ),
+        .\desc_addr_q_reg[0]_0 (\ctrl_txdata_q[7]_i_3_n_0 ),
+        .\desc_addr_q_reg[0]_1 (\ctrl_txdata_q[1]_i_3_n_0 ),
+        .\desc_addr_q_reg[0]_2 (\ctrl_txdata_q[0]_i_2_n_0 ),
         .\desc_addr_q_reg[1] (\desc_addr_q[5]_i_2_n_0 ),
-        .\desc_addr_q_reg[1]_0 (\desc_addr_q[6]_i_6_n_0 ),
-        .\desc_addr_q_reg[2] (\ctrl_txdata_q[0]_i_3_n_0 ),
-        .\desc_addr_q_reg[3] (\ctrl_txdata_q[6]_i_2_n_0 ),
-        .\desc_addr_q_reg[3]_0 (\ctrl_txdata_q[5]_i_2_n_0 ),
-        .\desc_addr_q_reg[3]_1 (\ctrl_txdata_q_reg[5]_i_3_n_0 ),
-        .\desc_addr_q_reg[3]_2 (\ctrl_txdata_q_reg[3]_i_3_n_0 ),
-        .\desc_addr_q_reg[3]_3 (\ctrl_txdata_q[0]_i_2_n_0 ),
-        .\desc_addr_q_reg[3]_4 (\desc_addr_q[7]_i_3_n_0 ),
+        .\desc_addr_q_reg[1]_0 (\desc_addr_q[6]_i_4_n_0 ),
+        .\desc_addr_q_reg[2] (\ctrl_txdata_q[1]_i_4_n_0 ),
+        .\desc_addr_q_reg[3] (\ctrl_txdata_q[5]_i_2_n_0 ),
+        .\desc_addr_q_reg[3]_0 (\ctrl_txdata_q_reg[5]_i_3_n_0 ),
+        .\desc_addr_q_reg[3]_1 (\ctrl_txdata_q_reg[3]_i_3_n_0 ),
+        .\desc_addr_q_reg[3]_2 (\desc_addr_q[7]_i_3_n_0 ),
         .\desc_addr_q_reg[4] (\ctrl_txdata_q[4]_i_2_n_0 ),
+        .\desc_addr_q_reg[4]_0 (\desc_addr_q[4]_i_2_n_0 ),
         .\desc_addr_q_reg[5] (\ctrl_txdata_q[3]_i_2_n_0 ),
-        .\desc_addr_q_reg[5]_0 (\ctrl_txdata_q[1]_i_2_n_0 ),
-        .\desc_addr_q_reg[7] ({desc_addr_q,\desc_addr_q_do[6] }),
-        .\desc_addr_q_reg[7]_0 (\ctrl_txdata_q[6]_i_3_n_0 ),
-        .\desc_addr_q_reg[7]_1 (\ctrl_txdata_q[2]_i_2_n_0 ),
-        .\desc_addr_q_reg[7]_2 (\ctrl_txdata_q[0]_i_4_n_0 ),
-        .\device_addr_q_reg[0] (u_core_n_142),
-        .\device_addr_q_reg[6] ({u_core_n_164,u_core_n_165,u_core_n_166,u_core_n_167,u_core_n_168,u_core_n_169,u_core_n_170}),
+        .\desc_addr_q_reg[7] (u_core_n_38),
+        .\desc_addr_q_reg[7]_0 ({u_core_n_43,u_core_n_44,u_core_n_45,u_core_n_46,u_core_n_47,u_core_n_48,u_core_n_49,u_core_n_50}),
+        .\desc_addr_q_reg[7]_1 ({desc_addr_q,\desc_addr_q_do[6] [6:5],\desc_addr_q_do[6] [3:0]}),
+        .\desc_addr_q_reg[7]_2 (\ctrl_txdata_q[6]_i_2_n_0 ),
+        .\desc_addr_q_reg[7]_3 (\ctrl_txdata_q[6]_i_3_n_0 ),
+        .\desc_addr_q_reg[7]_4 (\ctrl_txdata_q[2]_i_2_n_0 ),
+        .\desc_addr_q_reg[7]_5 (\ctrl_txdata_q[1]_i_2_n_0 ),
+        .\desc_addr_q_reg[7]_6 (\ctrl_txdata_q[0]_i_3_n_0 ),
+        .\device_addr_q_reg[0] (u_core_n_140),
+        .\device_addr_q_reg[6] ({u_core_n_178,u_core_n_179,u_core_n_180,u_core_n_181,u_core_n_182,u_core_n_183,u_core_n_184}),
         .ep0_rx_setup_w_do(ep0_rx_setup_w_do),
         .ep0_rx_valid_w_do(ep0_rx_valid_w_do),
-        .ep2_tx_data_valid_w_do(ep2_tx_data_valid_w_do),
+        .ep2_tx_data_accept_w_do(ep2_tx_data_accept_w_do),
+        .ep2_tx_data_last_w_do(ep2_tx_data_last_w_do),
         .ep2_tx_data_w_do(ep2_tx_data_w_do),
         .inport_accept_o(E),
-        .inport_valid_i(inport_valid_i),
+        .inport_valid_q_do(inport_valid_q_do),
+        .inport_valid_q_reg(ep2_tx_data_valid_w_do),
         .out(state_q),
         .outport_accept_i(outport_accept_i),
         .outport_data_o(outport_data_o),
         .outport_valid_o(outport_valid_o),
-        .\readAXIBRAM_q_reg[0] (u_core_n_190),
+        .\readAXIBRAM_q_reg[0] (u_core_n_204),
         .\readAXIBRAM_q_reg[0]_0 (\readAXIBRAM_q_reg_n_0_[0] ),
         .reg_dev_addr_i_do(reg_dev_addr_i_do),
         .rst_i(rst_i),
@@ -5648,56 +5719,55 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .rx_out_do(rx_out_do),
         .rx_strb_w_do(rx_strb_w_do),
         .setup_frame_q_do(setup_frame_q_do),
-        .setup_frame_q_reg(u_core_n_187),
-        .\setup_packet_q_reg[0][0] (u_core_n_88),
-        .\setup_packet_q_reg[0][5] (ctrl_txvalid_q_i_5_n_0),
-        .\setup_packet_q_reg[0][5]_0 (\desc_addr_q[6]_i_9_n_0 ),
-        .\setup_packet_q_reg[0][5]_1 (\device_addr_q[6]_i_4_n_0 ),
-        .\setup_packet_q_reg[0][6] (ctrl_sending_r_do_INST_0_i_2_n_0),
+        .setup_frame_q_reg(u_core_n_201),
+        .\setup_packet_q_reg[0][0] (u_core_n_86),
+        .\setup_packet_q_reg[0][5] (\desc_addr_q[3]_i_3_n_0 ),
+        .\setup_packet_q_reg[0][5]_0 (ctrl_txvalid_q_i_6_n_0),
+        .\setup_packet_q_reg[0][5]_1 (ctrl_txvalid_q_i_7_n_0),
+        .\setup_packet_q_reg[0][6] (ctrl_txvalid_q_i_9_n_0),
         .\setup_packet_q_reg[0][6]_0 (\desc_addr_q[7]_i_2_n_0 ),
-        .\setup_packet_q_reg[0][6]_1 (\desc_addr_q[0]_i_3_n_0 ),
-        .\setup_packet_q_reg[0][7] (\desc_addr_q[6]_i_3_n_0 ),
-        .\setup_packet_q_reg[0][7]_0 (\desc_addr_q[6]_i_4_n_0 ),
-        .\setup_packet_q_reg[0][7]_1 (Q[7:6]),
-        .\setup_packet_q_reg[0][7]_2 (readAXIBRAM_r_do),
-        .\setup_packet_q_reg[1][0] (u_core_n_89),
-        .\setup_packet_q_reg[1][0]_0 (\desc_addr_q[4]_i_4_n_0 ),
-        .\setup_packet_q_reg[1][2] (\bRequest_w_do[7] [2:0]),
-        .\setup_packet_q_reg[1][2]_0 (\desc_addr_q[6]_i_10_n_0 ),
+        .\setup_packet_q_reg[0][7] (\bmRequestType_w_do[7] [7:6]),
+        .\setup_packet_q_reg[0][7]_0 (readAXIBRAM_r_do),
+        .\setup_packet_q_reg[1][0] (u_core_n_87),
+        .\setup_packet_q_reg[1][2] (\desc_addr_q[4]_i_4_n_0 ),
+        .\setup_packet_q_reg[1][2]_0 (\desc_addr_q[6]_i_8_n_0 ),
+        .\setup_packet_q_reg[1][2]_1 (\bRequest_w_do[7] [2:0]),
         .\setup_packet_q_reg[1][7] (\device_addr_q[6]_i_3_n_0 ),
-        .\setup_packet_q_reg[1][7]_0 (\desc_addr_q[3]_i_4_n_0 ),
-        .\setup_packet_q_reg[2][0] (u_core_n_92),
+        .\setup_packet_q_reg[2][0] (u_core_n_90),
         .\setup_packet_q_reg[2][0]_0 (\desc_addr_q[5]_i_3_n_0 ),
         .\setup_packet_q_reg[2][0]_1 (\desc_addr_q[2]_i_2_n_0 ),
-        .\setup_packet_q_reg[2][0]_2 (\desc_addr_q[6]_i_7_n_0 ),
+        .\setup_packet_q_reg[2][0]_2 (\desc_addr_q[6]_i_6_n_0 ),
         .\setup_packet_q_reg[2][6] (\wValue_w_do[7] [6:0]),
-        .\setup_packet_q_reg[2][7] (\desc_addr_q[6]_i_11_n_0 ),
-        .\setup_packet_q_reg[2][7]_0 (\desc_addr_q[3]_i_2_n_0 ),
-        .\setup_packet_q_reg[3][0] (u_core_n_93),
-        .\setup_packet_q_reg[3][0]_0 (\desc_addr_q[1]_i_2_n_0 ),
-        .\setup_packet_q_reg[3][1] (\wValue_w_do[15] [1:0]),
-        .\setup_packet_q_reg[4][0] (u_core_n_94),
-        .\setup_packet_q_reg[5][0] (u_core_n_95),
+        .\setup_packet_q_reg[2][7] (\desc_addr_q[4]_i_3_n_0 ),
+        .\setup_packet_q_reg[2][7]_0 (\desc_addr_q[6]_i_9_n_0 ),
+        .\setup_packet_q_reg[3][0] (u_core_n_91),
+        .\setup_packet_q_reg[3][0]_0 (\desc_addr_q[3]_i_2_n_0 ),
+        .\setup_packet_q_reg[3][0]_1 (\desc_addr_q[1]_i_2_n_0 ),
+        .\setup_packet_q_reg[3][0]_2 (\wValue_w_do[15] [0]),
+        .\setup_packet_q_reg[4][0] (u_core_n_92),
+        .\setup_packet_q_reg[5][0] (u_core_n_93),
         .\setup_packet_q_reg[5][7] (setup_packet_q),
-        .\setup_packet_q_reg[6][0] (u_core_n_90),
-        .\setup_packet_q_reg[7][0] (u_core_n_91),
+        .\setup_packet_q_reg[6][0] (u_core_n_88),
+        .\setup_packet_q_reg[7][0] (u_core_n_89),
         .setup_resp_valid_delay_q_reg(setup_resp_valid_delay_q_do),
-        .setup_resp_valid_delay_q_reg_0(ctrl_txlast_q_i_2_n_0),
+        .setup_resp_valid_delay_q_reg_0(ctrl_txvalid_q_i_3_n_0),
+        .setup_resp_valid_delay_q_reg_1(ctrl_stall_r_do),
+        .setup_resp_valid_delay_q_reg_2(ctrl_txlast_q_i_2_n_0),
         .setup_valid_conter_q_o(setup_valid_conter_q_o),
-        .\setup_valid_conter_q_reg[0] (u_core_n_133),
-        .\setup_valid_conter_q_reg[11] ({u_core_n_179,u_core_n_180,u_core_n_181,u_core_n_182}),
-        .\setup_valid_conter_q_reg[15] ({u_core_n_183,u_core_n_184,u_core_n_185,u_core_n_186}),
-        .\setup_valid_conter_q_reg[7] ({u_core_n_175,u_core_n_176,u_core_n_177,u_core_n_178}),
+        .\setup_valid_conter_q_reg[0] (u_core_n_131),
+        .\setup_valid_conter_q_reg[11] ({u_core_n_193,u_core_n_194,u_core_n_195,u_core_n_196}),
+        .\setup_valid_conter_q_reg[15] ({u_core_n_197,u_core_n_198,u_core_n_199,u_core_n_200}),
+        .\setup_valid_conter_q_reg[7] ({u_core_n_189,u_core_n_190,u_core_n_191,u_core_n_192}),
         .setup_valid_q(setup_valid_q),
         .setup_valid_q_reg(setup_valid_q_do),
-        .\setup_wr_idx_q_reg[0] (u_core_n_60),
+        .\setup_wr_idx_q_reg[0] (u_core_n_56),
         .\setup_wr_idx_q_reg[0]_0 (\setup_wr_idx_q_do[0] ),
-        .\setup_wr_idx_q_reg[1] (u_core_n_59),
+        .\setup_wr_idx_q_reg[1] (u_core_n_55),
         .\setup_wr_idx_q_reg[1]_0 (\setup_wr_idx_q_do[1] ),
-        .\setup_wr_idx_q_reg[2] (u_core_n_57),
+        .\setup_wr_idx_q_reg[2] (u_core_n_53),
         .\setup_wr_idx_q_reg[2]_0 (\setup_wr_idx_q_do[2] ),
         .sie_tx_state_q_o(sie_tx_state_q_o),
-        .status_ready_q_reg(u_core_n_188),
+        .status_ready_q_reg(u_core_n_202),
         .status_ready_q_reg_0(status_ready_q_reg_n_0),
         .status_stage_w_do(status_stage_w_do),
         .token_dev_w_do(token_dev_w_do),
@@ -5707,14 +5777,14 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .\token_ep_w_do[3] (\token_ep_w_do[3] ),
         .token_valid_w_do(token_valid_w_do),
         .usb_rst_time_q0(usb_rst_time_q0),
-        .\usb_rst_time_q_reg[0] (u_core_n_163),
+        .\usb_rst_time_q_reg[0] (u_core_n_177),
         .\usb_rst_time_q_reg[0]_0 (\usb_rst_time_do[19] [0]),
         .\usb_rst_time_q_reg[17] (\FSM_sequential_state_q[2]_i_3__1_n_0 ),
         .\usb_rst_time_q_reg[18] (\FSM_sequential_state_q[2]_i_2__1_n_0 ),
         .\usb_rst_time_q_reg[18]_0 (\usb_rst_time_q[19]_i_7_n_0 ),
         .\usb_rst_time_q_reg[19] (p_1_in),
         .\usb_rst_time_q_reg[4] (\usb_rst_time_q[19]_i_6_n_0 ),
-        .\usb_rst_time_q_reg[6] (\FSM_sequential_state_q[2]_i_4__0_n_0 ),
+        .\usb_rst_time_q_reg[6] (\FSM_sequential_state_q[2]_i_4__1_n_0 ),
         .\usb_rst_time_q_reg[9] (\usb_rst_time_q[19]_i_5_n_0 ),
         .usbf_ep_data_bit_r_do(usbf_ep_data_bit_r_do),
         .usbf_new_data_bit_r_do(usbf_new_data_bit_r_do),
@@ -5723,6 +5793,9 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .\usbf_state_q_do[2] (\usbf_state_q_do[2] ),
         .usbf_tx_pid_q_do(usbf_tx_pid_q_do),
         .usbf_tx_valid_q_do(usbf_tx_valid_q_do),
+        .usbfrx_crc_byte_w_do(usbfrx_crc_byte_w_do),
+        .usbfrx_data_ready_w_do(Q),
+        .usbfrx_rx_active_w_do(usbfrx_rx_active_w_do),
         .utmi_data_in_i(utmi_data_in_i),
         .utmi_data_out_o(utmi_data_out_o),
         .utmi_linestate_i(utmi_linestate_i),
@@ -5735,14 +5808,14 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
     \usb_reset_counter_q[0]_i_1 
        (.I0(usb_reset_counter_q_do[0]),
         .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair100" *) 
+  (* SOFT_HLUTNM = "soft_lutpair107" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \usb_reset_counter_q[1]_i_1 
        (.I0(usb_reset_counter_q_do[0]),
         .I1(usb_reset_counter_q_do[1]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair100" *) 
+  (* SOFT_HLUTNM = "soft_lutpair107" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \usb_reset_counter_q[2]_i_1 
@@ -5750,7 +5823,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I1(usb_reset_counter_q_do[1]),
         .I2(usb_reset_counter_q_do[0]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair78" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \usb_reset_counter_q[3]_i_1 
@@ -5759,7 +5832,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I2(usb_reset_counter_q_do[1]),
         .I3(usb_reset_counter_q_do[2]),
         .O(p_0_in[3]));
-  (* SOFT_HLUTNM = "soft_lutpair78" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
     \usb_reset_counter_q[4]_i_1 
@@ -5779,14 +5852,14 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I4(usb_reset_counter_q_do[2]),
         .I5(usb_reset_counter_q_do[4]),
         .O(p_0_in[5]));
-  (* SOFT_HLUTNM = "soft_lutpair109" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \usb_reset_counter_q[6]_i_1 
        (.I0(usb_reset_counter_q_do[6]),
         .I1(\usb_reset_counter_q[7]_i_2_n_0 ),
         .O(p_0_in[6]));
-  (* SOFT_HLUTNM = "soft_lutpair109" *) 
+  (* SOFT_HLUTNM = "soft_lutpair101" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \usb_reset_counter_q[7]_i_1 
@@ -5956,7 +6029,7 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I4(\usb_rst_time_do[19] [16]),
         .I5(\usb_rst_time_do[19] [17]),
         .O(\usb_rst_time_q[19]_i_8_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair94" *) 
+  (* SOFT_HLUTNM = "soft_lutpair96" *) 
   LUT4 #(
     .INIT(16'h7FFF)) 
     \usb_rst_time_q[19]_i_9 
@@ -5967,121 +6040,121 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .O(\usb_rst_time_q[19]_i_9_n_0 ));
   FDCE \usb_rst_time_q_reg[0] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[0]),
         .Q(\usb_rst_time_do[19] [0]));
   FDCE \usb_rst_time_q_reg[10] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[10]),
         .Q(\usb_rst_time_do[19] [10]));
   FDCE \usb_rst_time_q_reg[11] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[11]),
         .Q(\usb_rst_time_do[19] [11]));
   FDCE \usb_rst_time_q_reg[12] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[12]),
         .Q(\usb_rst_time_do[19] [12]));
   FDCE \usb_rst_time_q_reg[13] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[13]),
         .Q(\usb_rst_time_do[19] [13]));
   FDCE \usb_rst_time_q_reg[14] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[14]),
         .Q(\usb_rst_time_do[19] [14]));
   FDCE \usb_rst_time_q_reg[15] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[15]),
         .Q(\usb_rst_time_do[19] [15]));
   FDCE \usb_rst_time_q_reg[16] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[16]),
         .Q(\usb_rst_time_do[19] [16]));
   FDCE \usb_rst_time_q_reg[17] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[17]),
         .Q(\usb_rst_time_do[19] [17]));
   FDCE \usb_rst_time_q_reg[18] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[18]),
         .Q(\usb_rst_time_do[19] [18]));
   FDCE \usb_rst_time_q_reg[19] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[19]),
         .Q(\usb_rst_time_do[19] [19]));
   FDCE \usb_rst_time_q_reg[1] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[1]),
         .Q(\usb_rst_time_do[19] [1]));
   FDCE \usb_rst_time_q_reg[2] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[2]),
         .Q(\usb_rst_time_do[19] [2]));
   FDCE \usb_rst_time_q_reg[3] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[3]),
         .Q(\usb_rst_time_do[19] [3]));
   FDCE \usb_rst_time_q_reg[4] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[4]),
         .Q(\usb_rst_time_do[19] [4]));
   FDCE \usb_rst_time_q_reg[5] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[5]),
         .Q(\usb_rst_time_do[19] [5]));
   FDCE \usb_rst_time_q_reg[6] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[6]),
         .Q(\usb_rst_time_do[19] [6]));
   FDCE \usb_rst_time_q_reg[7] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[7]),
         .Q(\usb_rst_time_do[19] [7]));
   FDCE \usb_rst_time_q_reg[8] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[8]),
         .Q(\usb_rst_time_do[19] [8]));
   FDCE \usb_rst_time_q_reg[9] 
        (.C(clk_i),
-        .CE(u_core_n_163),
+        .CE(u_core_n_177),
         .CLR(rst_i),
         .D(p_1_in[9]),
         .Q(\usb_rst_time_do[19] [9]));
@@ -6113,50 +6186,56 @@ module brd_usb_cdc_core_0_0_usb_cdc_core
         .I1(state_q[1]),
         .I2(state_q[2]),
         .O(utmi_xcvrselect_o));
-  (* SOFT_HLUTNM = "soft_lutpair93" *) 
+  (* SOFT_HLUTNM = "soft_lutpair104" *) 
   LUT3 #(
     .INIT(8'h08)) 
     vendorReqRecived_o_INST_0
        (.I0(setup_resp_valid_delay_q_do),
-        .I1(Q[6]),
-        .I2(Q[5]),
+        .I1(\bmRequestType_w_do[7] [6]),
+        .I2(\bmRequestType_w_do[7] [5]),
         .O(vendorReqRecived_o));
 endmodule
 
 (* ORIG_REF_NAME = "usbf_device_core" *) 
 module brd_usb_cdc_core_0_0_usbf_device_core
-   (token_valid_w_do,
+   (E,
+    D,
+    usbfrx_rx_active_w_do,
+    token_valid_w_do,
     data_complete_o_do,
     rx_strb_w_do,
     usbf_tx_valid_q_do,
     rx_out_do,
     Q,
     CLK,
-    \FSM_sequential_state_q_reg[2] ,
     \usbf_state_q_do[0] ,
     usbf_ep_data_bit_r_do,
     \token_ep_w_do[1] ,
     \token_ep_w_do[0] ,
     \token_ep_w_do[2] ,
     \token_ep_w_do[3] ,
-    E,
+    \desc_addr_q_reg[7] ,
+    ctrl_sending_q_reg,
+    usbfrx_data_ready_w_do,
+    usbfrx_crc_byte_w_do,
     \usbf_state_q_do[1] ,
-    D,
-    \ctrl_send_idx_q_reg[15] ,
+    \desc_addr_q_reg[7]_0 ,
     \FSM_sequential_state_q_reg[1] ,
     \setup_wr_idx_q_reg[2] ,
     ep0_rx_setup_w_do,
     \setup_wr_idx_q_reg[1] ,
     \setup_wr_idx_q_reg[0] ,
     axi_bram_addr_q_reg_1_sp_1,
-    ctrl_sending_r_do,
     axi_bram_addr_q_reg_0_sp_1,
     utmi_data_out_o,
-    utmi_txvalid_o,
     sie_tx_state_q_o,
+    \chirp_count_q_reg[3] ,
+    utmi_txvalid_o,
     \usbf_state_q_do[2] ,
     usbf_tx_pid_q_do,
     inport_accept_o,
+    ep2_tx_data_accept_w_do,
+    ep2_tx_data_last_w_do,
     usbf_new_data_bit_r_do,
     status_stage_w_do,
     ep0_rx_valid_w_do,
@@ -6171,10 +6250,10 @@ module brd_usb_cdc_core_0_0_usbf_device_core
     setup_valid_q,
     \setup_packet_q_reg[5][7] ,
     outport_data_o,
-    ctrl_sending_q,
     ctrl_send_accept_w_do,
     \ctrl_send_idx_q_reg[0] ,
     \ctrl_txdata_q_reg[0] ,
+    ctrl_sending_r_do,
     outport_valid_o,
     current_addr_i_do,
     token_dev_w_do,
@@ -6182,6 +6261,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
     \setup_valid_conter_q_reg[0] ,
     \ctrl_txdata_q_reg[7] ,
     \device_addr_q_reg[0] ,
+    \ctrl_send_idx_q_reg[15] ,
     \usb_rst_time_q_reg[19] ,
     \usb_rst_time_q_reg[0] ,
     \device_addr_q_reg[6] ,
@@ -6200,20 +6280,19 @@ module brd_usb_cdc_core_0_0_usbf_device_core
     rst_i,
     utmi_data_in_i,
     utmi_rxactive_i,
-    ep2_tx_data_valid_w_do,
+    inport_valid_q_reg,
     ctrl_txvalid_q_reg_0,
     ctrl_txstall_q_reg_0,
     outport_accept_i,
-    ctrl_sending_q_reg,
-    \setup_packet_q_reg[0][7] ,
-    \setup_packet_q_reg[0][7]_0 ,
-    out,
-    \desc_addr_q_reg[7] ,
     setup_resp_valid_delay_q_reg,
+    out,
+    utmi_txready_i,
     \setup_packet_q_reg[3][0]_0 ,
-    \setup_packet_q_reg[0][7]_1 ,
-    \ctrl_send_idx_q_reg[0]_0 ,
-    status_ready_q_reg_0,
+    \setup_packet_q_reg[0][5] ,
+    \desc_addr_q_reg[0] ,
+    \desc_addr_q_reg[7]_1 ,
+    \setup_packet_q_reg[3][0]_1 ,
+    \setup_packet_q_reg[0][7] ,
     setup_valid_conter_q_o,
     utmi_linestate_i,
     utmi_rxvalid_i,
@@ -6226,62 +6305,67 @@ module brd_usb_cdc_core_0_0_usbf_device_core
     axi_bram_addr_q_reg,
     ep2_tx_data_w_do,
     ctrl_txdata_q_do,
-    utmi_txready_i,
+    ctrl_txstrb_q_reg_0,
     ctrl_txlast_q_reg_0,
     setup_frame_q_do,
-    ctrl_ack_r_do,
-    \setup_packet_q_reg[0][6] ,
-    CO,
-    \setup_packet_q_reg[0][5] ,
     \setup_packet_q_reg[0][5]_0 ,
-    ctrl_txstrb_q_reg_0,
+    \setup_packet_q_reg[0][5]_1 ,
+    \setup_packet_q_reg[0][6] ,
+    ctrl_sending_q_reg_0,
+    status_ready_q_reg_0,
+    setup_resp_valid_delay_q_reg_0,
+    ctrl_ack_r_do,
+    setup_resp_valid_delay_q_reg_1,
+    CO,
     reg_dev_addr_i_do,
-    inport_valid_i,
+    inport_valid_q_do,
     setup_valid_q_reg,
-    \desc_addr_q_reg[0] ,
-    \setup_packet_q_reg[0][7]_2 ,
+    \desc_addr_q_reg[0]_0 ,
+    \setup_packet_q_reg[0][7]_0 ,
     axi_bram_r_data_i,
+    \desc_addr_q_reg[7]_2 ,
+    \desc_addr_q_reg[7]_3 ,
     \desc_addr_q_reg[3] ,
-    \desc_addr_q_reg[7]_0 ,
     \desc_addr_q_reg[3]_0 ,
-    \desc_addr_q_reg[3]_1 ,
     \desc_addr_q_reg[4] ,
     \desc_addr_q_reg[5] ,
-    \desc_addr_q_reg[3]_2 ,
-    \desc_addr_q_reg[7]_1 ,
-    \desc_addr_q_reg[5]_0 ,
-    \desc_addr_q_reg[3]_3 ,
+    \desc_addr_q_reg[3]_1 ,
+    \desc_addr_q_reg[7]_4 ,
+    \desc_addr_q_reg[7]_5 ,
+    \desc_addr_q_reg[0]_1 ,
     \desc_addr_q_reg[2] ,
-    \desc_addr_q_reg[7]_2 ,
+    \desc_addr_q_reg[0]_2 ,
+    \desc_addr_q_reg[7]_6 ,
+    \desc_addr_q_reg[4]_0 ,
+    \setup_packet_q_reg[2][7] ,
+    \setup_packet_q_reg[3][0]_2 ,
     \setup_packet_q_reg[1][2] ,
-    \setup_packet_q_reg[1][7] ,
-    \desc_addr_q_reg[0]_0 ,
     \desc_addr_q_reg[1] ,
     \setup_packet_q_reg[2][0]_0 ,
     \setup_packet_q_reg[2][0]_1 ,
     \desc_addr_q_reg[1]_0 ,
     \setup_packet_q_reg[2][0]_2 ,
     \setup_packet_q_reg[1][2]_0 ,
-    \setup_packet_q_reg[2][7] ,
+    \setup_packet_q_reg[1][2]_1 ,
     \setup_packet_q_reg[2][7]_0 ,
-    \setup_packet_q_reg[1][7]_0 ,
     \setup_packet_q_reg[0][6]_0 ,
-    \desc_addr_q_reg[3]_4 ,
-    \setup_packet_q_reg[0][6]_1 ,
-    \setup_packet_q_reg[1][0]_0 ,
-    \setup_packet_q_reg[3][1] ,
-    \setup_packet_q_reg[0][5]_1 ,
-    \setup_packet_q_reg[2][6] ,
+    \desc_addr_q_reg[3]_2 ,
+    \setup_packet_q_reg[1][7] ,
+    \ctrl_send_idx_q_reg[0]_0 ,
     ctrl_sending_r2,
     \FSM_sequential_state_q_reg[1]_0 ,
     \usb_rst_time_q_reg[0]_0 ,
     usb_rst_time_q0,
     \usb_rst_time_q_reg[9] ,
     \usb_rst_time_q_reg[4] ,
-    \chirp_count_q_reg[5] ,
+    \chirp_count_q_reg[4] ,
     \usb_rst_time_q_reg[6] ,
+    \setup_packet_q_reg[2][6] ,
     \readAXIBRAM_q_reg[0]_0 ,
-    setup_resp_valid_delay_q_reg_0);
+    setup_resp_valid_delay_q_reg_2);
+  output [0:0]E;
+  output [7:0]D;
+  output usbfrx_rx_active_w_do;
   output token_valid_w_do;
   output data_complete_o_do;
   output rx_strb_w_do;
@@ -6289,31 +6373,34 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   output rx_out_do;
   output [15:0]Q;
   output CLK;
-  output \FSM_sequential_state_q_reg[2] ;
   output \usbf_state_q_do[0] ;
   output usbf_ep_data_bit_r_do;
   output \token_ep_w_do[1] ;
   output \token_ep_w_do[0] ;
   output \token_ep_w_do[2] ;
   output \token_ep_w_do[3] ;
-  output [0:0]E;
+  output [0:0]\desc_addr_q_reg[7] ;
+  output ctrl_sending_q_reg;
+  output [0:0]usbfrx_data_ready_w_do;
+  output [0:0]usbfrx_crc_byte_w_do;
   output \usbf_state_q_do[1] ;
-  output [7:0]D;
-  output [15:0]\ctrl_send_idx_q_reg[15] ;
+  output [7:0]\desc_addr_q_reg[7]_0 ;
   output [1:0]\FSM_sequential_state_q_reg[1] ;
   output \setup_wr_idx_q_reg[2] ;
   output ep0_rx_setup_w_do;
   output \setup_wr_idx_q_reg[1] ;
   output \setup_wr_idx_q_reg[0] ;
   output axi_bram_addr_q_reg_1_sp_1;
-  output ctrl_sending_r_do;
   output axi_bram_addr_q_reg_0_sp_1;
   output [7:0]utmi_data_out_o;
-  output utmi_txvalid_o;
   output [2:0]sie_tx_state_q_o;
+  output \chirp_count_q_reg[3] ;
+  output utmi_txvalid_o;
   output \usbf_state_q_do[2] ;
   output [6:0]usbf_tx_pid_q_do;
   output [0:0]inport_accept_o;
+  output ep2_tx_data_accept_w_do;
+  output ep2_tx_data_last_w_do;
   output usbf_new_data_bit_r_do;
   output status_stage_w_do;
   output ep0_rx_valid_w_do;
@@ -6328,10 +6415,10 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   output setup_valid_q;
   output [7:0]\setup_packet_q_reg[5][7] ;
   output [7:0]outport_data_o;
-  output ctrl_sending_q;
   output ctrl_send_accept_w_do;
   output [0:0]\ctrl_send_idx_q_reg[0] ;
   output [0:0]\ctrl_txdata_q_reg[0] ;
+  output ctrl_sending_r_do;
   output outport_valid_o;
   output [6:0]current_addr_i_do;
   output [6:0]token_dev_w_do;
@@ -6339,6 +6426,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   output \setup_valid_conter_q_reg[0] ;
   output [7:0]\ctrl_txdata_q_reg[7] ;
   output [0:0]\device_addr_q_reg[0] ;
+  output [15:0]\ctrl_send_idx_q_reg[15] ;
   output [19:0]\usb_rst_time_q_reg[19] ;
   output [0:0]\usb_rst_time_q_reg[0] ;
   output [6:0]\device_addr_q_reg[6] ;
@@ -6357,20 +6445,19 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   input rst_i;
   input [7:0]utmi_data_in_i;
   input utmi_rxactive_i;
-  input ep2_tx_data_valid_w_do;
+  input inport_valid_q_reg;
   input ctrl_txvalid_q_reg_0;
   input ctrl_txstall_q_reg_0;
   input outport_accept_i;
-  input ctrl_sending_q_reg;
-  input \setup_packet_q_reg[0][7] ;
-  input \setup_packet_q_reg[0][7]_0 ;
-  input [2:0]out;
-  input [7:0]\desc_addr_q_reg[7] ;
   input setup_resp_valid_delay_q_reg;
+  input [2:0]out;
+  input utmi_txready_i;
   input \setup_packet_q_reg[3][0]_0 ;
-  input [1:0]\setup_packet_q_reg[0][7]_1 ;
-  input [0:0]\ctrl_send_idx_q_reg[0]_0 ;
-  input status_ready_q_reg_0;
+  input \setup_packet_q_reg[0][5] ;
+  input \desc_addr_q_reg[0] ;
+  input [6:0]\desc_addr_q_reg[7]_1 ;
+  input \setup_packet_q_reg[3][0]_1 ;
+  input [1:0]\setup_packet_q_reg[0][7] ;
   input [15:0]setup_valid_conter_q_o;
   input [1:0]utmi_linestate_i;
   input utmi_rxvalid_i;
@@ -6383,62 +6470,64 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   input [1:0]axi_bram_addr_q_reg;
   input [7:0]ep2_tx_data_w_do;
   input [7:0]ctrl_txdata_q_do;
-  input utmi_txready_i;
+  input ctrl_txstrb_q_reg_0;
   input ctrl_txlast_q_reg_0;
   input setup_frame_q_do;
-  input ctrl_ack_r_do;
-  input \setup_packet_q_reg[0][6] ;
-  input [0:0]CO;
-  input \setup_packet_q_reg[0][5] ;
   input \setup_packet_q_reg[0][5]_0 ;
-  input ctrl_txstrb_q_reg_0;
+  input \setup_packet_q_reg[0][5]_1 ;
+  input \setup_packet_q_reg[0][6] ;
+  input ctrl_sending_q_reg_0;
+  input status_ready_q_reg_0;
+  input setup_resp_valid_delay_q_reg_0;
+  input ctrl_ack_r_do;
+  input setup_resp_valid_delay_q_reg_1;
+  input [0:0]CO;
   input [6:0]reg_dev_addr_i_do;
-  input inport_valid_i;
+  input inport_valid_q_do;
   input setup_valid_q_reg;
-  input \desc_addr_q_reg[0] ;
-  input \setup_packet_q_reg[0][7]_2 ;
+  input \desc_addr_q_reg[0]_0 ;
+  input \setup_packet_q_reg[0][7]_0 ;
   input [7:0]axi_bram_r_data_i;
+  input \desc_addr_q_reg[7]_2 ;
+  input \desc_addr_q_reg[7]_3 ;
   input \desc_addr_q_reg[3] ;
-  input \desc_addr_q_reg[7]_0 ;
   input \desc_addr_q_reg[3]_0 ;
-  input \desc_addr_q_reg[3]_1 ;
   input \desc_addr_q_reg[4] ;
   input \desc_addr_q_reg[5] ;
-  input \desc_addr_q_reg[3]_2 ;
-  input \desc_addr_q_reg[7]_1 ;
-  input \desc_addr_q_reg[5]_0 ;
-  input \desc_addr_q_reg[3]_3 ;
+  input \desc_addr_q_reg[3]_1 ;
+  input \desc_addr_q_reg[7]_4 ;
+  input \desc_addr_q_reg[7]_5 ;
+  input \desc_addr_q_reg[0]_1 ;
   input \desc_addr_q_reg[2] ;
-  input \desc_addr_q_reg[7]_2 ;
-  input [2:0]\setup_packet_q_reg[1][2] ;
-  input \setup_packet_q_reg[1][7] ;
-  input \desc_addr_q_reg[0]_0 ;
+  input \desc_addr_q_reg[0]_2 ;
+  input \desc_addr_q_reg[7]_6 ;
+  input \desc_addr_q_reg[4]_0 ;
+  input \setup_packet_q_reg[2][7] ;
+  input [0:0]\setup_packet_q_reg[3][0]_2 ;
+  input \setup_packet_q_reg[1][2] ;
   input \desc_addr_q_reg[1] ;
   input \setup_packet_q_reg[2][0]_0 ;
   input \setup_packet_q_reg[2][0]_1 ;
   input \desc_addr_q_reg[1]_0 ;
   input \setup_packet_q_reg[2][0]_2 ;
   input \setup_packet_q_reg[1][2]_0 ;
-  input \setup_packet_q_reg[2][7] ;
+  input [2:0]\setup_packet_q_reg[1][2]_1 ;
   input \setup_packet_q_reg[2][7]_0 ;
-  input \setup_packet_q_reg[1][7]_0 ;
   input \setup_packet_q_reg[0][6]_0 ;
-  input \desc_addr_q_reg[3]_4 ;
-  input \setup_packet_q_reg[0][6]_1 ;
-  input \setup_packet_q_reg[1][0]_0 ;
-  input [1:0]\setup_packet_q_reg[3][1] ;
-  input \setup_packet_q_reg[0][5]_1 ;
-  input [6:0]\setup_packet_q_reg[2][6] ;
+  input \desc_addr_q_reg[3]_2 ;
+  input \setup_packet_q_reg[1][7] ;
+  input [0:0]\ctrl_send_idx_q_reg[0]_0 ;
   input [14:0]ctrl_sending_r2;
   input \FSM_sequential_state_q_reg[1]_0 ;
   input [0:0]\usb_rst_time_q_reg[0]_0 ;
   input [18:0]usb_rst_time_q0;
   input \usb_rst_time_q_reg[9] ;
   input \usb_rst_time_q_reg[4] ;
-  input \chirp_count_q_reg[5] ;
+  input \chirp_count_q_reg[4] ;
   input \usb_rst_time_q_reg[6] ;
+  input [6:0]\setup_packet_q_reg[2][6] ;
   input \readAXIBRAM_q_reg[0]_0 ;
-  input setup_resp_valid_delay_q_reg_0;
+  input setup_resp_valid_delay_q_reg_2;
 
   wire CLK;
   wire [0:0]CO;
@@ -6448,7 +6537,6 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \FSM_sequential_state_q[1]_i_2__1_n_0 ;
   wire [1:0]\FSM_sequential_state_q_reg[1] ;
   wire \FSM_sequential_state_q_reg[1]_0 ;
-  wire \FSM_sequential_state_q_reg[2] ;
   wire [3:0]O;
   wire [15:0]Q;
   wire addr_update_pending_q_i_2_n_0;
@@ -6460,15 +6548,16 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire axi_bram_addr_q_reg_0_sn_1;
   wire axi_bram_addr_q_reg_1_sn_1;
   wire [7:0]axi_bram_r_data_i;
-  wire \chirp_count_q_reg[5] ;
+  wire \chirp_count_q_reg[3] ;
+  wire \chirp_count_q_reg[4] ;
   wire clk_i;
   wire ctrl_ack_r_do;
   wire ctrl_send_accept_w_do;
   wire [0:0]\ctrl_send_idx_q_reg[0] ;
   wire [0:0]\ctrl_send_idx_q_reg[0]_0 ;
   wire [15:0]\ctrl_send_idx_q_reg[15] ;
-  wire ctrl_sending_q;
   wire ctrl_sending_q_reg;
+  wire ctrl_sending_q_reg_0;
   wire [14:0]ctrl_sending_r2;
   wire ctrl_sending_r_do;
   wire [7:0]ctrl_txdata_q_do;
@@ -6480,7 +6569,8 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire ctrl_txstall_q_reg_0;
   wire ctrl_txstrb_q_reg;
   wire ctrl_txstrb_q_reg_0;
-  wire ctrl_txvalid_q_i_4_n_0;
+  wire ctrl_txvalid_q_i_5_n_0;
+  wire ctrl_txvalid_q_i_8_n_0;
   wire ctrl_txvalid_q_reg;
   wire ctrl_txvalid_q_reg_0;
   wire [6:0]current_addr_i_do;
@@ -6492,14 +6582,14 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \current_addr_q[5]_i_1_n_0 ;
   wire \current_addr_q[6]_i_2_n_0 ;
   wire data_complete_o_do;
+  wire data_pid_q4_out;
   wire \desc_addr_q[0]_i_2_n_0 ;
-  wire \desc_addr_q[3]_i_3_n_0 ;
-  wire \desc_addr_q[3]_i_5_n_0 ;
-  wire \desc_addr_q[4]_i_2_n_0 ;
   wire \desc_addr_q[6]_i_5_n_0 ;
-  wire \desc_addr_q[6]_i_8_n_0 ;
+  wire \desc_addr_q[6]_i_7_n_0 ;
   wire \desc_addr_q_reg[0] ;
   wire \desc_addr_q_reg[0]_0 ;
+  wire \desc_addr_q_reg[0]_1 ;
+  wire \desc_addr_q_reg[0]_2 ;
   wire \desc_addr_q_reg[1] ;
   wire \desc_addr_q_reg[1]_0 ;
   wire \desc_addr_q_reg[2] ;
@@ -6507,15 +6597,17 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \desc_addr_q_reg[3]_0 ;
   wire \desc_addr_q_reg[3]_1 ;
   wire \desc_addr_q_reg[3]_2 ;
-  wire \desc_addr_q_reg[3]_3 ;
-  wire \desc_addr_q_reg[3]_4 ;
   wire \desc_addr_q_reg[4] ;
+  wire \desc_addr_q_reg[4]_0 ;
   wire \desc_addr_q_reg[5] ;
-  wire \desc_addr_q_reg[5]_0 ;
-  wire [7:0]\desc_addr_q_reg[7] ;
-  wire \desc_addr_q_reg[7]_0 ;
-  wire \desc_addr_q_reg[7]_1 ;
+  wire [0:0]\desc_addr_q_reg[7] ;
+  wire [7:0]\desc_addr_q_reg[7]_0 ;
+  wire [6:0]\desc_addr_q_reg[7]_1 ;
   wire \desc_addr_q_reg[7]_2 ;
+  wire \desc_addr_q_reg[7]_3 ;
+  wire \desc_addr_q_reg[7]_4 ;
+  wire \desc_addr_q_reg[7]_5 ;
+  wire \desc_addr_q_reg[7]_6 ;
   wire [0:0]\device_addr_q_reg[0] ;
   wire [6:0]\device_addr_q_reg[6] ;
   wire ep0_data_bit_q_reg_n_0;
@@ -6527,11 +6619,13 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire ep0_rx_valid_w_do;
   wire ep1_data_bit_q_reg_n_0;
   wire ep2_data_bit_q_reg_n_0;
-  wire ep2_tx_data_valid_w_do;
+  wire ep2_tx_data_accept_w_do;
+  wire ep2_tx_data_last_w_do;
   wire [7:0]ep2_tx_data_w_do;
   wire ep3_data_bit_q_reg_n_0;
   wire [0:0]inport_accept_o;
-  wire inport_valid_i;
+  wire inport_valid_q_do;
+  wire inport_valid_q_reg;
   wire next_state_r1;
   wire [2:0]out;
   wire outport_accept_i;
@@ -6602,17 +6696,13 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \setup_packet_q_reg[0][5]_1 ;
   wire \setup_packet_q_reg[0][6] ;
   wire \setup_packet_q_reg[0][6]_0 ;
-  wire \setup_packet_q_reg[0][6]_1 ;
-  wire \setup_packet_q_reg[0][7] ;
+  wire [1:0]\setup_packet_q_reg[0][7] ;
   wire \setup_packet_q_reg[0][7]_0 ;
-  wire [1:0]\setup_packet_q_reg[0][7]_1 ;
-  wire \setup_packet_q_reg[0][7]_2 ;
   wire [0:0]\setup_packet_q_reg[1][0] ;
-  wire \setup_packet_q_reg[1][0]_0 ;
-  wire [2:0]\setup_packet_q_reg[1][2] ;
+  wire \setup_packet_q_reg[1][2] ;
   wire \setup_packet_q_reg[1][2]_0 ;
+  wire [2:0]\setup_packet_q_reg[1][2]_1 ;
   wire \setup_packet_q_reg[1][7] ;
-  wire \setup_packet_q_reg[1][7]_0 ;
   wire [0:0]\setup_packet_q_reg[2][0] ;
   wire \setup_packet_q_reg[2][0]_0 ;
   wire \setup_packet_q_reg[2][0]_1 ;
@@ -6622,7 +6712,8 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \setup_packet_q_reg[2][7]_0 ;
   wire [0:0]\setup_packet_q_reg[3][0] ;
   wire \setup_packet_q_reg[3][0]_0 ;
-  wire [1:0]\setup_packet_q_reg[3][1] ;
+  wire \setup_packet_q_reg[3][0]_1 ;
+  wire [0:0]\setup_packet_q_reg[3][0]_2 ;
   wire [0:0]\setup_packet_q_reg[4][0] ;
   wire [0:0]\setup_packet_q_reg[5][0] ;
   wire [7:0]\setup_packet_q_reg[5][7] ;
@@ -6630,6 +6721,8 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire [0:0]\setup_packet_q_reg[7][0] ;
   wire setup_resp_valid_delay_q_reg;
   wire setup_resp_valid_delay_q_reg_0;
+  wire setup_resp_valid_delay_q_reg_1;
+  wire setup_resp_valid_delay_q_reg_2;
   wire \setup_valid_conter_q[11]_i_2_n_0 ;
   wire \setup_valid_conter_q[11]_i_3_n_0 ;
   wire \setup_valid_conter_q[11]_i_4_n_0 ;
@@ -6679,7 +6772,8 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \state_q[0]_i_3_n_0 ;
   wire \state_q[0]_i_5_n_0 ;
   wire \state_q[1]_i_3_n_0 ;
-  wire \state_q[1]_i_5_n_0 ;
+  wire \state_q[1]_i_4_n_0 ;
+  wire \state_q[1]_i_6_n_0 ;
   wire status_ready_q_reg;
   wire status_ready_q_reg_0;
   wire status_stage_w_do;
@@ -6690,48 +6784,47 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \token_ep_w_do[3] ;
   wire token_valid_w_do;
   wire tx_valid_r;
-  wire u_sie_rx_n_10;
-  wire u_sie_rx_n_11;
-  wire u_sie_rx_n_12;
-  wire u_sie_rx_n_13;
+  wire u_sie_rx_n_100;
+  wire u_sie_rx_n_101;
+  wire u_sie_rx_n_102;
+  wire u_sie_rx_n_108;
+  wire u_sie_rx_n_109;
+  wire u_sie_rx_n_110;
   wire u_sie_rx_n_14;
-  wire u_sie_rx_n_15;
-  wire u_sie_rx_n_17;
+  wire u_sie_rx_n_19;
+  wire u_sie_rx_n_20;
+  wire u_sie_rx_n_21;
+  wire u_sie_rx_n_22;
+  wire u_sie_rx_n_23;
+  wire u_sie_rx_n_24;
   wire u_sie_rx_n_25;
-  wire u_sie_rx_n_26;
-  wire u_sie_rx_n_27;
   wire u_sie_rx_n_28;
-  wire u_sie_rx_n_29;
-  wire u_sie_rx_n_30;
-  wire u_sie_rx_n_31;
-  wire u_sie_rx_n_32;
-  wire u_sie_rx_n_33;
-  wire u_sie_rx_n_4;
-  wire u_sie_rx_n_70;
-  wire u_sie_rx_n_73;
-  wire u_sie_rx_n_83;
+  wire u_sie_rx_n_37;
+  wire u_sie_rx_n_38;
+  wire u_sie_rx_n_39;
+  wire u_sie_rx_n_40;
+  wire u_sie_rx_n_41;
+  wire u_sie_rx_n_42;
+  wire u_sie_rx_n_43;
+  wire u_sie_rx_n_44;
+  wire u_sie_rx_n_45;
+  wire u_sie_rx_n_48;
   wire u_sie_rx_n_84;
-  wire u_sie_rx_n_85;
-  wire u_sie_rx_n_86;
   wire u_sie_rx_n_87;
-  wire u_sie_rx_n_88;
-  wire u_sie_rx_n_89;
-  wire u_sie_rx_n_9;
-  wire u_sie_rx_n_95;
-  wire u_sie_rx_n_96;
   wire u_sie_rx_n_97;
+  wire u_sie_rx_n_98;
+  wire u_sie_rx_n_99;
   wire u_sie_tx_n_16;
-  wire u_sie_tx_n_26;
+  wire u_sie_tx_n_25;
   wire u_sie_tx_n_31;
   wire u_sie_tx_n_32;
-  wire u_sie_tx_n_34;
-  wire u_sie_tx_n_35;
   wire u_sie_tx_n_36;
   wire u_sie_tx_n_37;
   wire u_sie_tx_n_38;
   wire u_sie_tx_n_39;
   wire u_sie_tx_n_40;
   wire u_sie_tx_n_41;
+  wire u_sie_tx_n_42;
   wire [18:0]usb_rst_time_q0;
   wire \usb_rst_time_q[19]_i_3_n_0 ;
   wire [0:0]\usb_rst_time_q_reg[0] ;
@@ -6752,6 +6845,9 @@ module brd_usb_cdc_core_0_0_usbf_device_core
   wire \usbf_state_q_do[2] ;
   wire [6:0]usbf_tx_pid_q_do;
   wire usbf_tx_valid_q_do;
+  wire [0:0]usbfrx_crc_byte_w_do;
+  wire [0:0]usbfrx_data_ready_w_do;
+  wire usbfrx_rx_active_w_do;
   wire [7:0]utmi_data_in_i;
   wire [7:0]utmi_data_out_o;
   wire [1:0]utmi_linestate_i;
@@ -6781,7 +6877,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
        (.I0(CLK),
         .I1(out[2]),
         .I2(\usb_rst_time_q_reg[18]_0 ),
-        .I3(\chirp_count_q_reg[5] ),
+        .I3(\chirp_count_q_reg[4] ),
         .I4(out[1]),
         .I5(out[0]),
         .O(\FSM_sequential_state_q[0]_i_2__1_n_0 ));
@@ -6803,7 +6899,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(\usb_rst_time_q_reg[18]_0 ),
         .I3(CLK),
         .I4(out[1]),
-        .I5(\chirp_count_q_reg[5] ),
+        .I5(\chirp_count_q_reg[4] ),
         .O(\FSM_sequential_state_q[1]_i_2__1_n_0 ));
   LUT6 #(
     .INIT(64'hEFFEFFFFFFFFEFFE)) 
@@ -6825,7 +6921,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I4(reg_dev_addr_i_do[6]),
         .I5(current_addr_i_do[6]),
         .O(addr_update_pending_q_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT4 #(
     .INIT(16'h6FF6)) 
     addr_update_pending_q_i_4
@@ -6838,16 +6934,16 @@ module brd_usb_cdc_core_0_0_usbf_device_core
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_85),
+        .D(u_sie_rx_n_98),
         .Q(addr_update_pending_q_reg_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \axi_bram_addr_q[1]_i_2 
        (.I0(CLK),
         .I1(rst_i),
         .O(\axi_bram_addr_q[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     \ctrl_send_idx_q[0]_i_1 
@@ -6856,7 +6952,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [0]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[10]_i_1 
@@ -6865,7 +6961,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [10]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[11]_i_1 
@@ -6874,7 +6970,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [11]));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[12]_i_1 
@@ -6883,7 +6979,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [12]));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[13]_i_1 
@@ -6892,7 +6988,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [13]));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[14]_i_1 
@@ -6901,7 +6997,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [14]));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[15]_i_2 
@@ -6910,7 +7006,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [15]));
-  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[1]_i_1 
@@ -6919,7 +7015,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [1]));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[2]_i_1 
@@ -6928,7 +7024,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [2]));
-  (* SOFT_HLUTNM = "soft_lutpair47" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[3]_i_1 
@@ -6937,7 +7033,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [3]));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[4]_i_1 
@@ -6946,7 +7042,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [4]));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[5]_i_1 
@@ -6955,7 +7051,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [5]));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[6]_i_1 
@@ -6964,7 +7060,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [6]));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[7]_i_1 
@@ -6973,7 +7069,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [7]));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[8]_i_1 
@@ -6982,7 +7078,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [8]));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT4 #(
     .INIT(16'h0002)) 
     \ctrl_send_idx_q[9]_i_1 
@@ -6991,31 +7087,31 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(setup_resp_valid_delay_q_reg),
         .I3(status_ready_q_reg_0),
         .O(\ctrl_send_idx_q_reg[15] [9]));
-  LUT6 #(
-    .INIT(64'h00000000FFF200F2)) 
+  LUT5 #(
+    .INIT(32'h0000FE0E)) 
     \ctrl_txdata_q[0]_i_1 
-       (.I0(\desc_addr_q_reg[3]_3 ),
-        .I1(\desc_addr_q_reg[2] ),
-        .I2(\desc_addr_q_reg[7]_2 ),
-        .I3(\setup_packet_q_reg[0][7]_2 ),
-        .I4(axi_bram_r_data_i[0]),
-        .I5(CLK),
+       (.I0(\desc_addr_q_reg[0]_2 ),
+        .I1(\desc_addr_q_reg[7]_6 ),
+        .I2(\setup_packet_q_reg[0][7]_0 ),
+        .I3(axi_bram_r_data_i[0]),
+        .I4(CLK),
         .O(\ctrl_txdata_q_reg[7] [0]));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
-  LUT4 #(
-    .INIT(16'h00E2)) 
+  LUT6 #(
+    .INIT(64'h00000000FFE200E2)) 
     \ctrl_txdata_q[1]_i_1 
-       (.I0(\desc_addr_q_reg[5]_0 ),
-        .I1(\setup_packet_q_reg[0][7]_2 ),
-        .I2(axi_bram_r_data_i[1]),
-        .I3(CLK),
+       (.I0(\desc_addr_q_reg[7]_5 ),
+        .I1(\desc_addr_q_reg[0]_1 ),
+        .I2(\desc_addr_q_reg[2] ),
+        .I3(\setup_packet_q_reg[0][7]_0 ),
+        .I4(axi_bram_r_data_i[1]),
+        .I5(CLK),
         .O(\ctrl_txdata_q_reg[7] [1]));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT4 #(
     .INIT(16'h00E2)) 
     \ctrl_txdata_q[2]_i_1 
-       (.I0(\desc_addr_q_reg[7]_1 ),
-        .I1(\setup_packet_q_reg[0][7]_2 ),
+       (.I0(\desc_addr_q_reg[7]_4 ),
+        .I1(\setup_packet_q_reg[0][7]_0 ),
         .I2(axi_bram_r_data_i[2]),
         .I3(CLK),
         .O(\ctrl_txdata_q_reg[7] [2]));
@@ -7023,110 +7119,117 @@ module brd_usb_cdc_core_0_0_usbf_device_core
     .INIT(64'h00000000FFAE00AE)) 
     \ctrl_txdata_q[3]_i_1 
        (.I0(\desc_addr_q_reg[5] ),
-        .I1(\desc_addr_q_reg[7] [0]),
-        .I2(\desc_addr_q_reg[3]_2 ),
-        .I3(\setup_packet_q_reg[0][7]_2 ),
+        .I1(\desc_addr_q_reg[7]_1 [0]),
+        .I2(\desc_addr_q_reg[3]_1 ),
+        .I3(\setup_packet_q_reg[0][7]_0 ),
         .I4(axi_bram_r_data_i[3]),
         .I5(CLK),
         .O(\ctrl_txdata_q_reg[7] [3]));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT4 #(
     .INIT(16'h00E2)) 
     \ctrl_txdata_q[4]_i_1 
        (.I0(\desc_addr_q_reg[4] ),
-        .I1(\setup_packet_q_reg[0][7]_2 ),
+        .I1(\setup_packet_q_reg[0][7]_0 ),
         .I2(axi_bram_r_data_i[4]),
         .I3(CLK),
         .O(\ctrl_txdata_q_reg[7] [4]));
   LUT6 #(
     .INIT(64'h00000000FFAE00AE)) 
     \ctrl_txdata_q[5]_i_1 
-       (.I0(\desc_addr_q_reg[3]_0 ),
-        .I1(\desc_addr_q_reg[7] [0]),
-        .I2(\desc_addr_q_reg[3]_1 ),
-        .I3(\setup_packet_q_reg[0][7]_2 ),
+       (.I0(\desc_addr_q_reg[3] ),
+        .I1(\desc_addr_q_reg[7]_1 [0]),
+        .I2(\desc_addr_q_reg[3]_0 ),
+        .I3(\setup_packet_q_reg[0][7]_0 ),
         .I4(axi_bram_r_data_i[5]),
         .I5(CLK),
         .O(\ctrl_txdata_q_reg[7] [5]));
   LUT6 #(
     .INIT(64'h00000000FFE200E2)) 
     \ctrl_txdata_q[6]_i_1 
-       (.I0(\desc_addr_q_reg[3] ),
-        .I1(\desc_addr_q_reg[7] [0]),
-        .I2(\desc_addr_q_reg[7]_0 ),
-        .I3(\setup_packet_q_reg[0][7]_2 ),
+       (.I0(\desc_addr_q_reg[7]_2 ),
+        .I1(\desc_addr_q_reg[7]_1 [0]),
+        .I2(\desc_addr_q_reg[7]_3 ),
+        .I3(\setup_packet_q_reg[0][7]_0 ),
         .I4(axi_bram_r_data_i[6]),
         .I5(CLK),
         .O(\ctrl_txdata_q_reg[7] [6]));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT4 #(
     .INIT(16'h00E2)) 
     \ctrl_txdata_q[7]_i_2 
-       (.I0(\desc_addr_q_reg[0] ),
-        .I1(\setup_packet_q_reg[0][7]_2 ),
+       (.I0(\desc_addr_q_reg[0]_0 ),
+        .I1(\setup_packet_q_reg[0][7]_0 ),
         .I2(axi_bram_r_data_i[7]),
         .I3(CLK),
         .O(\ctrl_txdata_q_reg[7] [7]));
   (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT4 #(
-    .INIT(16'h0232)) 
+    .INIT(16'h3202)) 
     ctrl_txstall_q_i_1
        (.I0(ctrl_txstall_q_reg_0),
         .I1(CLK),
         .I2(setup_resp_valid_delay_q_reg),
-        .I3(\setup_packet_q_reg[0][6] ),
+        .I3(setup_resp_valid_delay_q_reg_1),
         .O(ctrl_txstall_q_reg));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT3 #(
     .INIT(8'hFE)) 
-    ctrl_txvalid_q_i_4
+    ctrl_txvalid_q_i_5
        (.I0(status_ready_q_reg_0),
         .I1(setup_resp_valid_delay_q_reg),
         .I2(CLK),
-        .O(ctrl_txvalid_q_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+        .O(ctrl_txvalid_q_i_5_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    ctrl_txvalid_q_i_8
+       (.I0(CLK),
+        .I1(setup_resp_valid_delay_q_reg),
+        .O(ctrl_txvalid_q_i_8_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \current_addr_q[0]_i_1 
        (.I0(reg_dev_addr_i_do[0]),
         .I1(usb_rst_w),
         .O(\current_addr_q[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \current_addr_q[1]_i_1 
        (.I0(reg_dev_addr_i_do[1]),
         .I1(usb_rst_w),
         .O(\current_addr_q[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \current_addr_q[2]_i_1 
        (.I0(reg_dev_addr_i_do[2]),
         .I1(usb_rst_w),
         .O(\current_addr_q[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair44" *) 
+  (* SOFT_HLUTNM = "soft_lutpair45" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \current_addr_q[3]_i_1 
        (.I0(reg_dev_addr_i_do[3]),
         .I1(usb_rst_w),
         .O(\current_addr_q[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \current_addr_q[4]_i_1 
        (.I0(reg_dev_addr_i_do[4]),
         .I1(usb_rst_w),
         .O(\current_addr_q[4]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \current_addr_q[5]_i_1 
        (.I0(reg_dev_addr_i_do[5]),
         .I1(usb_rst_w),
         .O(\current_addr_q[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \current_addr_q[6]_i_2 
@@ -7135,153 +7238,126 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .O(\current_addr_q[6]_i_2_n_0 ));
   FDCE \current_addr_q_reg[0] 
        (.C(clk_i),
-        .CE(u_sie_rx_n_70),
+        .CE(u_sie_rx_n_84),
         .CLR(rst_i),
         .D(\current_addr_q[0]_i_1_n_0 ),
         .Q(current_addr_i_do[0]));
   FDCE \current_addr_q_reg[1] 
        (.C(clk_i),
-        .CE(u_sie_rx_n_70),
+        .CE(u_sie_rx_n_84),
         .CLR(rst_i),
         .D(\current_addr_q[1]_i_1_n_0 ),
         .Q(current_addr_i_do[1]));
   FDCE \current_addr_q_reg[2] 
        (.C(clk_i),
-        .CE(u_sie_rx_n_70),
+        .CE(u_sie_rx_n_84),
         .CLR(rst_i),
         .D(\current_addr_q[2]_i_1_n_0 ),
         .Q(current_addr_i_do[2]));
   FDCE \current_addr_q_reg[3] 
        (.C(clk_i),
-        .CE(u_sie_rx_n_70),
+        .CE(u_sie_rx_n_84),
         .CLR(rst_i),
         .D(\current_addr_q[3]_i_1_n_0 ),
         .Q(current_addr_i_do[3]));
   FDCE \current_addr_q_reg[4] 
        (.C(clk_i),
-        .CE(u_sie_rx_n_70),
+        .CE(u_sie_rx_n_84),
         .CLR(rst_i),
         .D(\current_addr_q[4]_i_1_n_0 ),
         .Q(current_addr_i_do[4]));
   FDCE \current_addr_q_reg[5] 
        (.C(clk_i),
-        .CE(u_sie_rx_n_70),
+        .CE(u_sie_rx_n_84),
         .CLR(rst_i),
         .D(\current_addr_q[5]_i_1_n_0 ),
         .Q(current_addr_i_do[5]));
   FDCE \current_addr_q_reg[6] 
        (.C(clk_i),
-        .CE(u_sie_rx_n_70),
+        .CE(u_sie_rx_n_84),
         .CLR(rst_i),
         .D(\current_addr_q[6]_i_2_n_0 ),
         .Q(current_addr_i_do[6]));
-  (* SOFT_HLUTNM = "soft_lutpair42" *) 
+  (* SOFT_HLUTNM = "soft_lutpair44" *) 
   LUT4 #(
     .INIT(16'hAAAB)) 
     \desc_addr_q[0]_i_1 
        (.I0(\desc_addr_q[0]_i_2_n_0 ),
-        .I1(\desc_addr_q_reg[7] [0]),
+        .I1(\desc_addr_q_reg[7]_1 [0]),
         .I2(CLK),
         .I3(setup_resp_valid_delay_q_reg),
-        .O(D[0]));
+        .O(\desc_addr_q_reg[7]_0 [0]));
   LUT6 #(
-    .INIT(64'h1111111100001000)) 
+    .INIT(64'h0404040404000000)) 
     \desc_addr_q[0]_i_2 
-       (.I0(\desc_addr_q[3]_i_5_n_0 ),
-        .I1(\setup_packet_q_reg[0][7]_1 [0]),
-        .I2(\setup_packet_q_reg[1][7]_0 ),
-        .I3(\setup_packet_q_reg[2][7]_0 ),
-        .I4(\setup_packet_q_reg[0][6]_1 ),
+       (.I0(CLK),
+        .I1(setup_resp_valid_delay_q_reg),
+        .I2(\setup_packet_q_reg[0][7] [0]),
+        .I3(\setup_packet_q_reg[1][7] ),
+        .I4(\setup_packet_q_reg[3][0]_0 ),
         .I5(\setup_packet_q_reg[0][6]_0 ),
         .O(\desc_addr_q[0]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0014001400145514)) 
     \desc_addr_q[1]_i_1 
        (.I0(CLK),
-        .I1(\desc_addr_q_reg[7] [1]),
-        .I2(\desc_addr_q_reg[7] [0]),
+        .I1(\desc_addr_q_reg[7]_1 [1]),
+        .I2(\desc_addr_q_reg[7]_1 [0]),
         .I3(setup_resp_valid_delay_q_reg),
-        .I4(\setup_packet_q_reg[3][0]_0 ),
-        .I5(\setup_packet_q_reg[0][7]_1 [0]),
-        .O(D[1]));
+        .I4(\setup_packet_q_reg[3][0]_1 ),
+        .I5(\setup_packet_q_reg[0][7] [0]),
+        .O(\desc_addr_q_reg[7]_0 [1]));
   LUT6 #(
     .INIT(64'h6A00FFFF6A006A00)) 
     \desc_addr_q[2]_i_1 
-       (.I0(\desc_addr_q_reg[7] [2]),
-        .I1(\desc_addr_q_reg[7] [1]),
-        .I2(\desc_addr_q_reg[7] [0]),
+       (.I0(\desc_addr_q_reg[7]_1 [2]),
+        .I1(\desc_addr_q_reg[7]_1 [1]),
+        .I2(\desc_addr_q_reg[7]_1 [0]),
         .I3(\desc_addr_q[6]_i_5_n_0 ),
         .I4(\setup_packet_q_reg[2][0]_1 ),
-        .I5(\desc_addr_q[6]_i_8_n_0 ),
-        .O(D[2]));
+        .I5(\desc_addr_q[6]_i_7_n_0 ),
+        .O(\desc_addr_q_reg[7]_0 [2]));
   LUT6 #(
-    .INIT(64'h80FFFF8080808080)) 
+    .INIT(64'h0404045504550404)) 
     \desc_addr_q[3]_i_1 
-       (.I0(\setup_packet_q_reg[2][7]_0 ),
-        .I1(\desc_addr_q[3]_i_3_n_0 ),
-        .I2(\setup_packet_q_reg[1][7]_0 ),
-        .I3(\desc_addr_q_reg[0]_0 ),
-        .I4(\desc_addr_q_reg[7] [3]),
-        .I5(\desc_addr_q[6]_i_5_n_0 ),
-        .O(D[3]));
-  LUT6 #(
-    .INIT(64'h0000008000000000)) 
-    \desc_addr_q[3]_i_3 
-       (.I0(\setup_packet_q_reg[0][5]_1 ),
-        .I1(\setup_packet_q_reg[3][1] [0]),
-        .I2(\setup_packet_q_reg[2][6] [0]),
-        .I3(\setup_packet_q_reg[2][6] [1]),
-        .I4(\desc_addr_q[3]_i_5_n_0 ),
-        .I5(\setup_packet_q_reg[3][1] [1]),
-        .O(\desc_addr_q[3]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
-  LUT2 #(
-    .INIT(4'hB)) 
-    \desc_addr_q[3]_i_5 
        (.I0(CLK),
-        .I1(setup_resp_valid_delay_q_reg),
-        .O(\desc_addr_q[3]_i_5_n_0 ));
+        .I1(\setup_packet_q_reg[3][0]_0 ),
+        .I2(\setup_packet_q_reg[0][5] ),
+        .I3(setup_resp_valid_delay_q_reg),
+        .I4(\desc_addr_q_reg[0] ),
+        .I5(\desc_addr_q_reg[7]_1 [3]),
+        .O(\desc_addr_q_reg[7]_0 [3]));
   LUT6 #(
-    .INIT(64'h4FF4FF4444444444)) 
+    .INIT(64'h0D010D0D01010101)) 
     \desc_addr_q[4]_i_1 
-       (.I0(\desc_addr_q[4]_i_2_n_0 ),
-        .I1(\setup_packet_q_reg[1][7] ),
-        .I2(\desc_addr_q_reg[7] [3]),
-        .I3(\desc_addr_q_reg[7] [4]),
-        .I4(\desc_addr_q_reg[0]_0 ),
-        .I5(\desc_addr_q[6]_i_5_n_0 ),
-        .O(D[4]));
-  LUT6 #(
-    .INIT(64'hFBFFFBFFFFFFFBFF)) 
-    \desc_addr_q[4]_i_2 
-       (.I0(\setup_packet_q_reg[1][0]_0 ),
+       (.I0(\desc_addr_q_reg[4]_0 ),
         .I1(setup_resp_valid_delay_q_reg),
         .I2(CLK),
-        .I3(\setup_packet_q_reg[3][1] [1]),
-        .I4(\setup_packet_q_reg[3][1] [0]),
-        .I5(\setup_packet_q_reg[2][7]_0 ),
-        .O(\desc_addr_q[4]_i_2_n_0 ));
+        .I3(\setup_packet_q_reg[2][7] ),
+        .I4(\setup_packet_q_reg[3][0]_2 ),
+        .I5(\setup_packet_q_reg[1][2] ),
+        .O(\desc_addr_q_reg[7]_0 [4]));
   LUT6 #(
     .INIT(64'h00000000000F6666)) 
     \desc_addr_q[5]_i_1 
-       (.I0(\desc_addr_q_reg[7] [5]),
+       (.I0(\desc_addr_q_reg[7]_1 [4]),
         .I1(\desc_addr_q_reg[1] ),
         .I2(\setup_packet_q_reg[2][0]_0 ),
-        .I3(\setup_packet_q_reg[0][7]_1 [0]),
+        .I3(\setup_packet_q_reg[0][7] [0]),
         .I4(setup_resp_valid_delay_q_reg),
         .I5(CLK),
-        .O(D[5]));
+        .O(\desc_addr_q_reg[7]_0 [5]));
   LUT6 #(
     .INIT(64'h6A00FFFF6A006A00)) 
     \desc_addr_q[6]_i_2 
-       (.I0(\desc_addr_q_reg[7] [6]),
-        .I1(\desc_addr_q_reg[7] [0]),
+       (.I0(\desc_addr_q_reg[7]_1 [5]),
+        .I1(\desc_addr_q_reg[7]_1 [0]),
         .I2(\desc_addr_q_reg[1]_0 ),
         .I3(\desc_addr_q[6]_i_5_n_0 ),
         .I4(\setup_packet_q_reg[2][0]_2 ),
-        .I5(\desc_addr_q[6]_i_8_n_0 ),
-        .O(D[6]));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+        .I5(\desc_addr_q[6]_i_7_n_0 ),
+        .O(\desc_addr_q_reg[7]_0 [6]));
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \desc_addr_q[6]_i_5 
@@ -7290,59 +7366,60 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .O(\desc_addr_q[6]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'h0000080000000000)) 
-    \desc_addr_q[6]_i_8 
+    \desc_addr_q[6]_i_7 
        (.I0(\setup_packet_q_reg[1][2]_0 ),
         .I1(setup_resp_valid_delay_q_reg),
         .I2(CLK),
-        .I3(\setup_packet_q_reg[1][2] [1]),
-        .I4(\setup_packet_q_reg[1][2] [0]),
-        .I5(\setup_packet_q_reg[2][7] ),
-        .O(\desc_addr_q[6]_i_8_n_0 ));
+        .I3(\setup_packet_q_reg[1][2]_1 [1]),
+        .I4(\setup_packet_q_reg[1][2]_1 [0]),
+        .I5(\setup_packet_q_reg[2][7]_0 ),
+        .O(\desc_addr_q[6]_i_7_n_0 ));
   LUT6 #(
     .INIT(64'hE0FFFFE0E0E0E0E0)) 
     \desc_addr_q[7]_i_1 
        (.I0(\setup_packet_q_reg[0][6]_0 ),
         .I1(\setup_packet_q_reg[2][0]_2 ),
         .I2(\desc_addr_q[0]_i_2_n_0 ),
-        .I3(\desc_addr_q_reg[3]_4 ),
-        .I4(\desc_addr_q_reg[7] [7]),
+        .I3(\desc_addr_q_reg[3]_2 ),
+        .I4(\desc_addr_q_reg[7]_1 [6]),
         .I5(\desc_addr_q[6]_i_5_n_0 ),
-        .O(D[7]));
+        .O(\desc_addr_q_reg[7]_0 [7]));
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \device_addr_q[0]_i_1 
        (.I0(\setup_packet_q_reg[2][6] [0]),
         .I1(CLK),
         .O(\device_addr_q_reg[6] [0]));
-  (* SOFT_HLUTNM = "soft_lutpair76" *) 
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \device_addr_q[1]_i_1 
        (.I0(\setup_packet_q_reg[2][6] [1]),
         .I1(CLK),
         .O(\device_addr_q_reg[6] [1]));
-  (* SOFT_HLUTNM = "soft_lutpair76" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \device_addr_q[2]_i_1 
        (.I0(\setup_packet_q_reg[2][6] [2]),
         .I1(CLK),
         .O(\device_addr_q_reg[6] [2]));
-  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \device_addr_q[3]_i_1 
        (.I0(\setup_packet_q_reg[2][6] [3]),
         .I1(CLK),
         .O(\device_addr_q_reg[6] [3]));
-  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \device_addr_q[4]_i_1 
        (.I0(\setup_packet_q_reg[2][6] [4]),
         .I1(CLK),
         .O(\device_addr_q_reg[6] [4]));
-  (* SOFT_HLUTNM = "soft_lutpair46" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \device_addr_q[5]_i_1 
@@ -7353,13 +7430,13 @@ module brd_usb_cdc_core_0_0_usbf_device_core
     .INIT(64'hAAAAEAAAAAAAAAAA)) 
     \device_addr_q[6]_i_1 
        (.I0(CLK),
-        .I1(\setup_packet_q_reg[1][2] [0]),
-        .I2(\setup_packet_q_reg[1][2] [2]),
+        .I1(\setup_packet_q_reg[1][2]_1 [0]),
+        .I2(\setup_packet_q_reg[1][2]_1 [2]),
         .I3(setup_resp_valid_delay_q_reg),
-        .I4(\setup_packet_q_reg[1][2] [1]),
+        .I4(\setup_packet_q_reg[1][2]_1 [1]),
         .I5(\setup_packet_q_reg[1][7] ),
         .O(\device_addr_q_reg[0] ));
-  (* SOFT_HLUTNM = "soft_lutpair43" *) 
+  (* SOFT_HLUTNM = "soft_lutpair46" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \device_addr_q[6]_i_2 
@@ -7370,7 +7447,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_89),
+        .D(u_sie_rx_n_102),
         .Q(ep0_data_bit_q_reg_n_0));
   FDCE ep0_dir_in_q_reg
        (.C(clk_i),
@@ -7388,25 +7465,25 @@ module brd_usb_cdc_core_0_0_usbf_device_core
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_88),
+        .D(u_sie_rx_n_101),
         .Q(ep1_data_bit_q_reg_n_0));
   FDCE ep2_data_bit_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_87),
+        .D(u_sie_rx_n_100),
         .Q(ep2_data_bit_q_reg_n_0));
   FDCE ep3_data_bit_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_86),
+        .D(u_sie_rx_n_99),
         .Q(ep3_data_bit_q_reg_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair37" *) 
+  (* SOFT_HLUTNM = "soft_lutpair39" *) 
   LUT5 #(
     .INIT(32'hFFEF0020)) 
     \readAXIBRAM_q[0]_i_1 
-       (.I0(\setup_packet_q_reg[0][7]_2 ),
+       (.I0(\setup_packet_q_reg[0][7]_0 ),
         .I1(rst_i),
         .I2(setup_resp_valid_delay_q_reg),
         .I3(CLK),
@@ -7418,11 +7495,11 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .CLR(rst_i),
         .D(usb_rst_w),
         .Q(CLK));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT4 #(
     .INIT(16'h0200)) 
     rx_enable_q_i_1
-       (.I0(u_sie_rx_n_17),
+       (.I0(u_sie_rx_n_28),
         .I1(\usbf_state_q_do[2] ),
         .I2(\usbf_state_q_do[1] ),
         .I3(\usbf_state_q_do[0] ),
@@ -7449,7 +7526,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_84),
+        .D(u_sie_rx_n_97),
         .Q(rx_space_q));
   CARRY4 se0_cnt_q0_carry
        (.CI(1'b0),
@@ -7479,7 +7556,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O({NLW_se0_cnt_q0_carry__2_O_UNCONNECTED[3:2],se0_cnt_q0[14:13]}),
         .S({1'b0,1'b0,usb_rst_w,\se0_cnt_q_reg_n_0_[13] }));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
     .INIT(8'h01)) 
     \se0_cnt_q[0]_i_1 
@@ -7487,7 +7564,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[10]_i_1 
@@ -7495,7 +7572,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[10]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[11]_i_1 
@@ -7503,7 +7580,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[12]_i_1 
@@ -7525,7 +7602,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[0]),
         .I2(usb_rst_w),
         .O(\se0_cnt_q[14]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[14]_i_2 
@@ -7533,7 +7610,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[14]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[1]_i_1 
@@ -7541,7 +7618,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[2]_i_1 
@@ -7557,7 +7634,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[4]_i_1 
@@ -7573,7 +7650,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[6]_i_1 
@@ -7581,7 +7658,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[7]_i_1 
@@ -7589,7 +7666,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(utmi_linestate_i[1]),
         .I2(utmi_linestate_i[0]),
         .O(\se0_cnt_q[7]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \se0_cnt_q[8]_i_1 
@@ -7719,7 +7796,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
        (.I0(setup_valid_conter_q_o[8]),
         .I1(CLK),
         .O(\setup_valid_conter_q[11]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \setup_valid_conter_q[15]_i_1 
@@ -7831,14 +7908,14 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .DI({1'b0,1'b0,1'b0,1'b0}),
         .O(\setup_valid_conter_q_reg[7] ),
         .S({\setup_valid_conter_q[7]_i_2_n_0 ,\setup_valid_conter_q[7]_i_3_n_0 ,\setup_valid_conter_q[7]_i_4_n_0 ,\setup_valid_conter_q[7]_i_5_n_0 }));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \state_q[0]_i_3 
        (.I0(\usbf_state_q_do[2] ),
         .I1(\usbf_state_q_do[1] ),
         .O(\state_q[0]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair45" *) 
+  (* SOFT_HLUTNM = "soft_lutpair42" *) 
   LUT3 #(
     .INIT(8'hFD)) 
     \state_q[0]_i_5 
@@ -7856,71 +7933,79 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I4(\usbf_state_q_do[1] ),
         .I5(\usbf_state_q_do[0] ),
         .O(\state_q[1]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \state_q[1]_i_4 
+       (.I0(\usbf_state_q_do[0] ),
+        .I1(\usbf_state_q_do[1] ),
+        .O(\state_q[1]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT2 #(
     .INIT(4'hE)) 
-    \state_q[1]_i_5 
+    \state_q[1]_i_6 
        (.I0(\usbf_state_q_do[1] ),
         .I1(\usbf_state_q_do[0] ),
-        .O(\state_q[1]_i_5_n_0 ));
+        .O(\state_q[1]_i_6_n_0 ));
   FDCE \state_q_reg[0] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_97),
+        .D(u_sie_rx_n_110),
         .Q(\usbf_state_q_do[0] ));
   FDCE \state_q_reg[1] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_96),
+        .D(u_sie_rx_n_109),
         .Q(\usbf_state_q_do[1] ));
   FDCE \state_q_reg[2] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_95),
+        .D(u_sie_rx_n_108),
         .Q(\usbf_state_q_do[2] ));
   FDCE \tx_pid_q_reg[0] 
        (.C(clk_i),
         .CE(next_state_r1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_15),
+        .D(u_sie_rx_n_25),
         .Q(usbf_tx_pid_q_do[0]));
   FDCE \tx_pid_q_reg[1] 
        (.C(clk_i),
         .CE(next_state_r1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_14),
+        .D(u_sie_rx_n_24),
         .Q(usbf_tx_pid_q_do[1]));
   FDCE \tx_pid_q_reg[2] 
        (.C(clk_i),
         .CE(next_state_r1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_13),
+        .D(u_sie_rx_n_23),
         .Q(usbf_tx_pid_q_do[2]));
   FDCE \tx_pid_q_reg[3] 
        (.C(clk_i),
         .CE(next_state_r1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_12),
+        .D(u_sie_rx_n_22),
         .Q(usbf_tx_pid_q_do[3]));
   FDCE \tx_pid_q_reg[4] 
        (.C(clk_i),
         .CE(next_state_r1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_11),
+        .D(u_sie_rx_n_21),
         .Q(usbf_tx_pid_q_do[4]));
   FDCE \tx_pid_q_reg[6] 
        (.C(clk_i),
         .CE(next_state_r1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_10),
+        .D(u_sie_rx_n_20),
         .Q(usbf_tx_pid_q_do[5]));
   FDCE \tx_pid_q_reg[7] 
        (.C(clk_i),
         .CE(next_state_r1),
         .CLR(rst_i),
-        .D(u_sie_rx_n_9),
+        .D(u_sie_rx_n_19),
         .Q(usbf_tx_pid_q_do[6]));
   FDCE tx_valid_q_reg
        (.C(clk_i),
@@ -7930,41 +8015,41 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .Q(usbf_tx_valid_q_do));
   brd_usb_cdc_core_0_0_usbf_sie_rx u_sie_rx
        (.CO(CO),
-        .D({u_sie_rx_n_9,u_sie_rx_n_10,u_sie_rx_n_11,u_sie_rx_n_12,u_sie_rx_n_13,u_sie_rx_n_14,u_sie_rx_n_15}),
-        .E(E),
-        .\FSM_sequential_state_q_reg[0]_0 (u_sie_rx_n_33),
-        .\FSM_sequential_state_q_reg[0]_1 (u_sie_tx_n_26),
-        .\FSM_sequential_state_q_reg[0]_2 (\FSM_sequential_state_q_reg[2] ),
-        .\FSM_sequential_state_q_reg[1]_0 (u_sie_tx_n_32),
-        .\FSM_sequential_state_q_reg[1]_1 (\state_q[1]_i_3_n_0 ),
+        .D({u_sie_rx_n_19,u_sie_rx_n_20,u_sie_rx_n_21,u_sie_rx_n_22,u_sie_rx_n_23,u_sie_rx_n_24,u_sie_rx_n_25}),
+        .E(u_sie_rx_n_84),
+        .\FSM_sequential_state_q_reg[0]_0 (u_sie_rx_n_48),
+        .\FSM_sequential_state_q_reg[0]_1 (u_sie_tx_n_25),
+        .\FSM_sequential_state_q_reg[0]_2 (\chirp_count_q_reg[3] ),
+        .\FSM_sequential_state_q_reg[1]_0 (u_sie_tx_n_37),
+        .\FSM_sequential_state_q_reg[1]_1 (u_sie_tx_n_38),
+        .\FSM_sequential_state_q_reg[1]_2 (u_sie_tx_n_39),
+        .\FSM_sequential_state_q_reg[1]_3 (u_sie_tx_n_40),
+        .\FSM_sequential_state_q_reg[1]_4 (u_sie_tx_n_41),
+        .\FSM_sequential_state_q_reg[1]_5 (u_sie_tx_n_42),
+        .\FSM_sequential_state_q_reg[1]_6 (u_sie_tx_n_36),
+        .\FSM_sequential_state_q_reg[1]_7 (\state_q[1]_i_3_n_0 ),
+        .\FSM_sequential_state_q_reg[2]_0 (u_sie_tx_n_32),
         .Q(usb_rst_w),
-        .addr_update_pending_q_reg(u_sie_rx_n_85),
+        .addr_update_pending_q_reg(u_sie_rx_n_98),
         .addr_update_pending_q_reg_0(addr_update_pending_q_reg_n_0),
         .axi_bram_addr_q_reg(axi_bram_addr_q_reg),
         .axi_bram_addr_q_reg_0_sp_1(axi_bram_addr_q_reg_0_sn_1),
         .axi_bram_addr_q_reg_1_sp_1(axi_bram_addr_q_reg_1_sn_1),
         .clk_i(clk_i),
-        .\crc_sum_q_reg[0]_0 (u_sie_rx_n_4),
-        .\crc_sum_q_reg[10]_0 (u_sie_rx_n_26),
-        .\crc_sum_q_reg[10]_1 (u_sie_rx_n_31),
-        .\crc_sum_q_reg[10]_2 (u_sie_tx_n_35),
-        .\crc_sum_q_reg[11]_0 (u_sie_rx_n_27),
-        .\crc_sum_q_reg[11]_1 (u_sie_tx_n_36),
-        .\crc_sum_q_reg[12]_0 (u_sie_tx_n_40),
-        .\crc_sum_q_reg[13]_0 (u_sie_rx_n_28),
-        .\crc_sum_q_reg[14]_0 (u_sie_tx_n_37),
-        .\crc_sum_q_reg[15]_0 (u_sie_rx_n_32),
-        .\crc_sum_q_reg[15]_1 (u_sie_tx_n_41),
-        .\crc_sum_q_reg[6]_0 (u_sie_rx_n_30),
-        .\crc_sum_q_reg[8]_0 (u_sie_rx_n_25),
-        .\crc_sum_q_reg[8]_1 (u_sie_rx_n_29),
-        .\crc_sum_q_reg[8]_2 (u_sie_tx_n_39),
-        .\crc_sum_q_reg[9]_0 (u_sie_tx_n_38),
+        .\crc_sum_q_reg[0]_0 (u_sie_rx_n_14),
+        .\crc_sum_q_reg[10]_0 (u_sie_rx_n_38),
+        .\crc_sum_q_reg[10]_1 (u_sie_rx_n_43),
+        .\crc_sum_q_reg[11]_0 (u_sie_rx_n_39),
+        .\crc_sum_q_reg[13]_0 (u_sie_rx_n_40),
+        .\crc_sum_q_reg[15]_0 (u_sie_rx_n_44),
+        .\crc_sum_q_reg[6]_0 (u_sie_rx_n_42),
+        .\crc_sum_q_reg[8]_0 (u_sie_rx_n_37),
+        .\crc_sum_q_reg[8]_1 (u_sie_rx_n_41),
         .ctrl_ack_r_do(ctrl_ack_r_do),
         .ctrl_send_accept_w_do(ctrl_send_accept_w_do),
         .\ctrl_send_idx_q_reg[0] (\ctrl_send_idx_q_reg[0] ),
-        .ctrl_sending_q(ctrl_sending_q),
         .ctrl_sending_q_reg(ctrl_sending_q_reg),
+        .ctrl_sending_q_reg_0(ctrl_sending_q_reg_0),
         .ctrl_sending_r_do(ctrl_sending_r_do),
         .ctrl_txdata_q_do(ctrl_txdata_q_do),
         .\ctrl_txdata_q_reg[0] (\ctrl_txdata_q_reg[0] ),
@@ -7976,11 +8061,12 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .ctrl_txvalid_q_reg(ctrl_txvalid_q_reg),
         .ctrl_txvalid_q_reg_0(ctrl_txvalid_q_reg_0),
         .current_addr_i_do(current_addr_i_do),
-        .\current_addr_q_reg[0] (u_sie_rx_n_70),
-        .\current_addr_q_reg[0]_0 (addr_update_pending_q_i_2_n_0),
+        .\current_addr_q_reg[0] (addr_update_pending_q_i_2_n_0),
         .data_complete_o_do(data_complete_o_do),
-        .data_zlp_q_reg_0(u_sie_rx_n_83),
-        .ep0_data_bit_q_reg(u_sie_rx_n_89),
+        .data_pid_q4_out(data_pid_q4_out),
+        .data_zlp_q_reg_0(u_sie_rx_n_45),
+        .\desc_addr_q_reg[7] (\desc_addr_q_reg[7] ),
+        .ep0_data_bit_q_reg(u_sie_rx_n_102),
         .ep0_data_bit_q_reg_0(ep0_data_bit_q_reg_n_0),
         .ep0_dir_in_q(ep0_dir_in_q),
         .ep0_dir_in_q_reg(ep0_dir_in_q_reg_n_0),
@@ -7988,23 +8074,24 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .ep0_dir_out_q_reg(ep0_dir_out_q_reg_n_0),
         .ep0_rx_setup_w_do(ep0_rx_setup_w_do),
         .ep0_rx_valid_w_do(ep0_rx_valid_w_do),
-        .ep1_data_bit_q_reg(u_sie_rx_n_88),
+        .ep1_data_bit_q_reg(u_sie_rx_n_101),
         .ep1_data_bit_q_reg_0(ep1_data_bit_q_reg_n_0),
-        .ep2_data_bit_q_reg(u_sie_rx_n_87),
+        .ep2_data_bit_q_reg(u_sie_rx_n_100),
         .ep2_data_bit_q_reg_0(ep2_data_bit_q_reg_n_0),
-        .ep2_tx_data_valid_w_do(ep2_tx_data_valid_w_do),
+        .ep2_tx_data_accept_w_do(ep2_tx_data_accept_w_do),
+        .ep2_tx_data_last_w_do(ep2_tx_data_last_w_do),
         .ep2_tx_data_w_do(ep2_tx_data_w_do),
-        .ep3_data_bit_q_reg(u_sie_rx_n_86),
+        .ep3_data_bit_q_reg(u_sie_rx_n_99),
         .ep3_data_bit_q_reg_0(ep3_data_bit_q_reg_n_0),
         .inport_accept_o(inport_accept_o),
+        .inport_valid_q_reg(inport_valid_q_reg),
         .out(out),
         .outport_accept_i(outport_accept_i),
         .outport_data_o(outport_data_o),
         .outport_valid_o(outport_valid_o),
-        .rst_event_q_reg(\desc_addr_q[6]_i_5_n_0 ),
+        .rst_event_q_reg(CLK),
         .rst_event_q_reg_0(\axi_bram_addr_q[1]_i_2_n_0 ),
-        .rst_event_q_reg_1(CLK),
-        .rst_event_q_reg_2(\desc_addr_q[3]_i_5_n_0 ),
+        .rst_event_q_reg_1(ctrl_txvalid_q_i_8_n_0),
         .rst_i(rst_i),
         .rx_enable_q_reg(rx_enable_q_reg_n_0),
         .rx_last_w_do(rx_last_w_do),
@@ -8012,18 +8099,16 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .rx_setup_q(rx_setup_q),
         .rx_setup_q_reg(rx_setup_q_reg_n_0),
         .rx_space_q(rx_space_q),
-        .rx_space_q_reg(u_sie_rx_n_84),
+        .rx_space_q_reg(u_sie_rx_n_97),
         .rx_strb_w_do(rx_strb_w_do),
         .\se0_cnt_q_reg[14] (u_sie_tx_n_16),
         .setup_frame_q_do(setup_frame_q_do),
         .setup_frame_q_reg(setup_frame_q_reg),
         .\setup_packet_q_reg[0][0] (\setup_packet_q_reg[0][0] ),
-        .\setup_packet_q_reg[0][5] (\setup_packet_q_reg[0][5] ),
-        .\setup_packet_q_reg[0][5]_0 (\setup_packet_q_reg[0][5]_0 ),
+        .\setup_packet_q_reg[0][5] (\setup_packet_q_reg[0][5]_0 ),
+        .\setup_packet_q_reg[0][5]_0 (\setup_packet_q_reg[0][5]_1 ),
         .\setup_packet_q_reg[0][6] (\setup_packet_q_reg[0][6] ),
-        .\setup_packet_q_reg[0][7] (\setup_packet_q_reg[0][7] ),
-        .\setup_packet_q_reg[0][7]_0 (\setup_packet_q_reg[0][7]_0 ),
-        .\setup_packet_q_reg[0][7]_1 (\setup_packet_q_reg[0][7]_1 [1]),
+        .\setup_packet_q_reg[0][7] (\setup_packet_q_reg[0][7] [1]),
         .\setup_packet_q_reg[1][0] (\setup_packet_q_reg[1][0] ),
         .\setup_packet_q_reg[2][0] (\setup_packet_q_reg[2][0] ),
         .\setup_packet_q_reg[3][0] (\setup_packet_q_reg[3][0] ),
@@ -8034,6 +8119,8 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .\setup_packet_q_reg[7][0] (\setup_packet_q_reg[7][0] ),
         .setup_resp_valid_delay_q_reg(setup_resp_valid_delay_q_reg),
         .setup_resp_valid_delay_q_reg_0(setup_resp_valid_delay_q_reg_0),
+        .setup_resp_valid_delay_q_reg_1(setup_resp_valid_delay_q_reg_1),
+        .setup_resp_valid_delay_q_reg_2(setup_resp_valid_delay_q_reg_2),
         .setup_valid_q(setup_valid_q),
         .\setup_wr_idx_q_reg[0] (\setup_wr_idx_q_reg[0] ),
         .\setup_wr_idx_q_reg[0]_0 (\setup_wr_idx_q_reg[0]_0 ),
@@ -8041,63 +8128,75 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .\setup_wr_idx_q_reg[1]_0 (\setup_wr_idx_q_reg[1]_0 ),
         .\setup_wr_idx_q_reg[2] (\setup_wr_idx_q_reg[2] ),
         .\setup_wr_idx_q_reg[2]_0 (\setup_wr_idx_q_reg[2]_0 ),
-        .\state_q_reg[0] (u_sie_rx_n_97),
+        .\state_q_reg[0] (u_sie_rx_n_110),
         .\state_q_reg[0]_0 (\usbf_state_q_do[0] ),
         .\state_q_reg[0]_1 (\state_q[0]_i_5_n_0 ),
-        .\state_q_reg[0]_2 (u_sie_tx_n_31),
-        .\state_q_reg[1] (u_sie_rx_n_96),
+        .\state_q_reg[0]_2 (\state_q[1]_i_4_n_0 ),
+        .\state_q_reg[0]_3 (u_sie_tx_n_31),
+        .\state_q_reg[1] (u_sie_rx_n_109),
         .\state_q_reg[1]_0 (\usbf_state_q_do[1] ),
-        .\state_q_reg[1]_1 (\state_q[1]_i_5_n_0 ),
-        .\state_q_reg[2] (u_sie_rx_n_73),
-        .\state_q_reg[2]_0 (u_sie_rx_n_95),
+        .\state_q_reg[1]_1 (\state_q[1]_i_6_n_0 ),
+        .\state_q_reg[2] (u_sie_rx_n_87),
+        .\state_q_reg[2]_0 (u_sie_rx_n_108),
         .\state_q_reg[2]_1 (usbf_new_data_bit_r_do_INST_0_i_4_n_0),
         .\state_q_reg[2]_2 (\usbf_state_q_do[2] ),
         .\state_q_reg[2]_3 (\state_q[0]_i_3_n_0 ),
         .status_ready_q_reg(status_ready_q_reg),
-        .status_ready_q_reg_0(status_ready_q_reg_0),
-        .status_ready_q_reg_1(ctrl_txvalid_q_i_4_n_0),
+        .status_ready_q_reg_0(ctrl_txvalid_q_i_5_n_0),
+        .status_ready_q_reg_1(status_ready_q_reg_0),
         .status_stage_w_do(status_stage_w_do),
         .token_dev_w_do(token_dev_w_do),
-        .\token_ep_q_reg[0]_0 (u_sie_rx_n_17),
+        .\token_ep_q_reg[0]_0 (u_sie_rx_n_28),
         .\token_ep_w_do[0] (\token_ep_w_do[0] ),
         .\token_ep_w_do[1] (\token_ep_w_do[1] ),
         .\token_ep_w_do[2] (\token_ep_w_do[2] ),
         .\token_ep_w_do[3] (\token_ep_w_do[3] ),
         .token_valid_w_do(token_valid_w_do),
-        .\tx_sent_data_counter_q_reg[1] (u_sie_tx_n_34),
         .tx_valid_r(tx_valid_r),
         .usbf_ep_data_bit_r_do(usbf_ep_data_bit_r_do),
         .usbf_new_data_bit_r_do(usbf_new_data_bit_r_do),
+        .usbfrx_crc_byte_w_do(usbfrx_crc_byte_w_do),
+        .usbfrx_data_ready_w_do(usbfrx_data_ready_w_do),
+        .\usbfrx_data_w_do[0] (D[0]),
+        .\usbfrx_data_w_do[1] (D[1]),
+        .\usbfrx_data_w_do[2] (D[2]),
+        .\usbfrx_data_w_do[3] (D[3]),
+        .\usbfrx_data_w_do[4] (D[4]),
+        .\usbfrx_data_w_do[5] (D[5]),
+        .\usbfrx_data_w_do[6] (D[6]),
+        .\usbfrx_data_w_do[7] (D[7]),
+        .usbfrx_rx_active_w_do(usbfrx_rx_active_w_do),
+        .usbfrx_shift_en_w_do(E),
         .utmi_data_in_i(utmi_data_in_i),
         .utmi_rxactive_i(utmi_rxactive_i),
         .utmi_rxvalid_i(utmi_rxvalid_i));
   brd_usb_cdc_core_0_0_usbf_sie_tx u_sie_tx
        (.E(next_state_r1),
-        .\FSM_sequential_state_q_reg[0]_0 (u_sie_tx_n_34),
         .\FSM_sequential_state_q_reg[1]_0 (u_sie_tx_n_16),
-        .\FSM_sequential_state_q_reg[2]_0 (\FSM_sequential_state_q_reg[2] ),
         .Q(Q),
+        .\chirp_count_q_reg[3] (\chirp_count_q_reg[3] ),
         .clk_i(clk_i),
-        .\crc_sum_q_reg[10]_0 (u_sie_tx_n_36),
-        .\crc_sum_q_reg[10]_1 (u_sie_tx_n_40),
-        .\crc_sum_q_reg[13]_0 (u_sie_tx_n_37),
-        .\crc_sum_q_reg[15]_0 (u_sie_tx_n_41),
-        .\crc_sum_q_reg[6]_0 (u_sie_tx_n_39),
-        .\crc_sum_q_reg[8]_0 (u_sie_tx_n_26),
-        .\crc_sum_q_reg[8]_1 (u_sie_tx_n_35),
-        .\crc_sum_q_reg[8]_2 (u_sie_tx_n_38),
-        .ctrl_txlast_q_reg(u_sie_rx_n_33),
-        .ctrl_txvalid_q_reg(u_sie_rx_n_83),
-        .\inport_data_q_reg[0] (u_sie_rx_n_30),
-        .\inport_data_q_reg[1] (u_sie_rx_n_29),
-        .\inport_data_q_reg[2] (u_sie_rx_n_25),
-        .\inport_data_q_reg[3] (u_sie_rx_n_26),
-        .\inport_data_q_reg[4] (u_sie_rx_n_31),
-        .\inport_data_q_reg[6] (u_sie_rx_n_28),
-        .\inport_data_q_reg[7] (u_sie_rx_n_32),
-        .inport_valid_i(inport_valid_i),
+        .\crc_sum_q_reg[10]_0 (u_sie_tx_n_38),
+        .\crc_sum_q_reg[10]_1 (u_sie_tx_n_42),
+        .\crc_sum_q_reg[13]_0 (u_sie_tx_n_39),
+        .\crc_sum_q_reg[15]_0 (u_sie_tx_n_36),
+        .\crc_sum_q_reg[6]_0 (u_sie_tx_n_41),
+        .\crc_sum_q_reg[8]_0 (u_sie_tx_n_25),
+        .\crc_sum_q_reg[8]_1 (u_sie_tx_n_37),
+        .\crc_sum_q_reg[8]_2 (u_sie_tx_n_40),
+        .data_pid_q4_out(data_pid_q4_out),
+        .ep2_tx_data_last_w_do(ep2_tx_data_last_w_do),
+        .\inport_data_q_reg[0] (u_sie_rx_n_42),
+        .\inport_data_q_reg[1] (u_sie_rx_n_41),
+        .\inport_data_q_reg[2] (u_sie_rx_n_37),
+        .\inport_data_q_reg[3] (u_sie_rx_n_38),
+        .\inport_data_q_reg[4] (u_sie_rx_n_43),
+        .\inport_data_q_reg[6] (u_sie_rx_n_40),
+        .\inport_data_q_reg[7] (u_sie_rx_n_44),
+        .inport_valid_q_do(inport_valid_q_do),
         .inport_valid_q_reg(u_sie_tx_n_32),
-        .inport_valid_q_reg_0(u_sie_rx_n_4),
+        .inport_valid_q_reg_0(u_sie_rx_n_14),
+        .inport_valid_q_reg_1(u_sie_rx_n_45),
         .out(out),
         .rst_i(rst_i),
         .\se0_cnt_q_reg[14] (usb_rst_w),
@@ -8105,17 +8204,18 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .\state_q_reg[0] (\usbf_state_q_do[0] ),
         .\state_q_reg[1] (\usbf_state_q_do[1] ),
         .\state_q_reg[2] (u_sie_tx_n_31),
-        .\state_q_reg[2]_0 (u_sie_rx_n_73),
+        .\state_q_reg[2]_0 (u_sie_rx_n_87),
         .\state_q_reg[2]_1 (\usbf_state_q_do[2] ),
-        .\token_ep_q_reg[1] (u_sie_rx_n_27),
-        .\token_ep_q_reg[2] (\token_ep_w_do[2] ),
+        .\token_ep_q_reg[1] (u_sie_rx_n_39),
+        .\token_ep_q_reg[2] (u_sie_rx_n_48),
+        .\token_ep_q_reg[2]_0 (\token_ep_w_do[2] ),
         .\token_ep_q_reg[3] (\token_ep_w_do[3] ),
         .tx_valid_q_reg(usbf_tx_valid_q_do),
         .usbf_tx_pid_q_do(usbf_tx_pid_q_do),
         .utmi_data_out_o(utmi_data_out_o),
         .utmi_txready_i(utmi_txready_i),
         .utmi_txvalid_o(utmi_txvalid_o));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \usb_rst_time_q[0]_i_1 
@@ -8123,7 +8223,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(\FSM_sequential_state_q_reg[1]_0 ),
         .I2(\usb_rst_time_q_reg[0]_0 ),
         .O(\usb_rst_time_q_reg[19] [0]));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[10]_i_1 
@@ -8131,7 +8231,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[9]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [10]));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[11]_i_1 
@@ -8139,7 +8239,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[10]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [11]));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[12]_i_1 
@@ -8147,7 +8247,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[11]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [12]));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[13]_i_1 
@@ -8155,7 +8255,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[12]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [13]));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[14]_i_1 
@@ -8163,7 +8263,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[13]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [14]));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[15]_i_1 
@@ -8171,7 +8271,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[14]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [15]));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[16]_i_1 
@@ -8179,7 +8279,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[15]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [16]));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[17]_i_1 
@@ -8194,7 +8294,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[17]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [18]));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair47" *) 
   LUT4 #(
     .INIT(16'hFFDF)) 
     \usb_rst_time_q[19]_i_1 
@@ -8203,7 +8303,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I2(\usb_rst_time_q_reg[9] ),
         .I3(\usb_rst_time_q_reg[4] ),
         .O(\usb_rst_time_q_reg[0] ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[19]_i_2 
@@ -8220,7 +8320,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I3(out[2]),
         .I4(out[0]),
         .O(\usb_rst_time_q[19]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[1]_i_1 
@@ -8244,7 +8344,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[2]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [3]));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[4]_i_1 
@@ -8252,7 +8352,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[3]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [4]));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[5]_i_1 
@@ -8260,7 +8360,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[4]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [5]));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[6]_i_1 
@@ -8268,7 +8368,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[5]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [6]));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[7]_i_1 
@@ -8276,7 +8376,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[6]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [7]));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[8]_i_1 
@@ -8284,7 +8384,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[7]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [8]));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \usb_rst_time_q[9]_i_1 
@@ -8292,7 +8392,7 @@ module brd_usb_cdc_core_0_0_usbf_device_core
         .I1(usb_rst_time_q0[8]),
         .I2(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\usb_rst_time_q_reg[19] [9]));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT2 #(
     .INIT(4'hE)) 
     usbf_new_data_bit_r_do_INST_0_i_4
@@ -8303,7 +8403,17 @@ endmodule
 
 (* ORIG_REF_NAME = "usbf_sie_rx" *) 
 module brd_usb_cdc_core_0_0_usbf_sie_rx
-   (token_valid_w_do,
+   (usbfrx_shift_en_w_do,
+    \usbfrx_data_w_do[7] ,
+    \usbfrx_data_w_do[6] ,
+    \usbfrx_data_w_do[5] ,
+    \usbfrx_data_w_do[4] ,
+    \usbfrx_data_w_do[3] ,
+    \usbfrx_data_w_do[2] ,
+    \usbfrx_data_w_do[1] ,
+    \usbfrx_data_w_do[0] ,
+    usbfrx_rx_active_w_do,
+    token_valid_w_do,
     data_complete_o_do,
     rx_strb_w_do,
     usbf_ep_data_bit_r_do,
@@ -8313,14 +8423,16 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \token_ep_w_do[2] ,
     \token_ep_w_do[3] ,
     D,
-    E,
+    \desc_addr_q_reg[7] ,
+    ctrl_sending_q_reg,
     \token_ep_q_reg[0]_0 ,
+    usbfrx_data_ready_w_do,
+    usbfrx_crc_byte_w_do,
     \setup_wr_idx_q_reg[2] ,
     ep0_rx_setup_w_do,
     \setup_wr_idx_q_reg[1] ,
     \setup_wr_idx_q_reg[0] ,
     axi_bram_addr_q_reg_1_sp_1,
-    ctrl_sending_r_do,
     axi_bram_addr_q_reg_0_sp_1,
     \crc_sum_q_reg[8]_0 ,
     \crc_sum_q_reg[10]_0 ,
@@ -8330,8 +8442,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \crc_sum_q_reg[6]_0 ,
     \crc_sum_q_reg[10]_1 ,
     \crc_sum_q_reg[15]_0 ,
-    \FSM_sequential_state_q_reg[0]_0 ,
+    data_zlp_q_reg_0,
     inport_accept_o,
+    ep2_tx_data_accept_w_do,
+    \FSM_sequential_state_q_reg[0]_0 ,
     usbf_new_data_bit_r_do,
     status_stage_w_do,
     ep0_rx_valid_w_do,
@@ -8349,18 +8463,17 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     ep0_dir_out_q,
     ep0_dir_in_q,
     rx_setup_q,
-    ctrl_sending_q,
     ctrl_send_accept_w_do,
     \ctrl_send_idx_q_reg[0] ,
     \ctrl_txdata_q_reg[0] ,
-    \current_addr_q_reg[0] ,
+    ctrl_sending_r_do,
+    E,
     outport_valid_o,
     rx_out_q,
     \state_q_reg[2] ,
     token_dev_w_do,
     rx_last_w_do,
     tx_valid_r,
-    data_zlp_q_reg_0,
     rx_space_q_reg,
     addr_update_pending_q_reg,
     ep3_data_bit_q_reg,
@@ -8382,13 +8495,11 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \state_q_reg[0]_0 ,
     \se0_cnt_q_reg[14] ,
     \state_q_reg[0]_1 ,
-    ep2_tx_data_valid_w_do,
+    inport_valid_q_reg,
     ctrl_txvalid_q_reg_0,
     ctrl_txstall_q_reg,
     outport_accept_i,
-    ctrl_sending_q_reg,
-    \setup_packet_q_reg[0][7] ,
-    \setup_packet_q_reg[0][7]_0 ,
+    setup_resp_valid_delay_q_reg,
     rst_event_q_reg,
     Q,
     out,
@@ -8398,30 +8509,31 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \setup_wr_idx_q_reg[1]_0 ,
     \setup_wr_idx_q_reg[2]_0 ,
     axi_bram_addr_q_reg,
-    setup_resp_valid_delay_q_reg,
     rst_event_q_reg_0,
-    rst_event_q_reg_1,
     ep2_tx_data_w_do,
     ctrl_txdata_q_do,
     \FSM_sequential_state_q_reg[0]_1 ,
-    \crc_sum_q_reg[10]_2 ,
-    \crc_sum_q_reg[11]_1 ,
-    \crc_sum_q_reg[14]_0 ,
-    \crc_sum_q_reg[9]_0 ,
-    \crc_sum_q_reg[8]_2 ,
-    \crc_sum_q_reg[12]_0 ,
-    \crc_sum_q_reg[15]_1 ,
-    ctrl_txlast_q_reg_0,
-    \tx_sent_data_counter_q_reg[1] ,
     \FSM_sequential_state_q_reg[1]_0 ,
+    \FSM_sequential_state_q_reg[1]_1 ,
+    \FSM_sequential_state_q_reg[1]_2 ,
+    \FSM_sequential_state_q_reg[1]_3 ,
+    \FSM_sequential_state_q_reg[1]_4 ,
+    \FSM_sequential_state_q_reg[1]_5 ,
+    \FSM_sequential_state_q_reg[1]_6 ,
+    data_pid_q4_out,
+    ctrl_txstrb_q_reg_0,
+    \FSM_sequential_state_q_reg[2]_0 ,
+    ep2_tx_data_last_w_do,
+    ctrl_txlast_q_reg_0,
     rx_space_q,
     \state_q_reg[2]_1 ,
     ep2_data_bit_q_reg_0,
     ep3_data_bit_q_reg_0,
-    \FSM_sequential_state_q_reg[1]_1 ,
+    \FSM_sequential_state_q_reg[1]_7 ,
+    \state_q_reg[2]_2 ,
+    \state_q_reg[0]_2 ,
     \FSM_sequential_state_q_reg[0]_2 ,
     \state_q_reg[1]_1 ,
-    \state_q_reg[2]_2 ,
     ep1_data_bit_q_reg_0,
     ep0_data_bit_q_reg_0,
     ep0_dir_out_q_reg,
@@ -8429,22 +8541,34 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     setup_frame_q_do,
     rx_setup_q_reg,
     ep0_dir_in_q_reg,
-    \setup_packet_q_reg[0][7]_1 ,
-    ctrl_ack_r_do,
-    \setup_packet_q_reg[0][6] ,
-    CO,
     status_ready_q_reg_0,
-    status_ready_q_reg_1,
     \setup_packet_q_reg[0][5] ,
     \setup_packet_q_reg[0][5]_0 ,
-    rst_event_q_reg_2,
-    addr_update_pending_q_reg_0,
-    ctrl_txstrb_q_reg_0,
-    current_addr_i_do,
-    \current_addr_q_reg[0]_0 ,
+    rst_event_q_reg_1,
+    \setup_packet_q_reg[0][6] ,
+    ctrl_sending_q_reg_0,
+    status_ready_q_reg_1,
     setup_resp_valid_delay_q_reg_0,
-    \state_q_reg[0]_2 ,
+    ctrl_ack_r_do,
+    \setup_packet_q_reg[0][7] ,
+    setup_resp_valid_delay_q_reg_1,
+    CO,
+    addr_update_pending_q_reg_0,
+    current_addr_i_do,
+    \current_addr_q_reg[0] ,
+    setup_resp_valid_delay_q_reg_2,
+    \state_q_reg[0]_3 ,
     \state_q_reg[2]_3 );
+  output usbfrx_shift_en_w_do;
+  output \usbfrx_data_w_do[7] ;
+  output \usbfrx_data_w_do[6] ;
+  output \usbfrx_data_w_do[5] ;
+  output \usbfrx_data_w_do[4] ;
+  output \usbfrx_data_w_do[3] ;
+  output \usbfrx_data_w_do[2] ;
+  output \usbfrx_data_w_do[1] ;
+  output \usbfrx_data_w_do[0] ;
+  output usbfrx_rx_active_w_do;
   output token_valid_w_do;
   output data_complete_o_do;
   output rx_strb_w_do;
@@ -8455,14 +8579,16 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   output \token_ep_w_do[2] ;
   output \token_ep_w_do[3] ;
   output [6:0]D;
-  output [0:0]E;
+  output [0:0]\desc_addr_q_reg[7] ;
+  output ctrl_sending_q_reg;
   output \token_ep_q_reg[0]_0 ;
+  output [0:0]usbfrx_data_ready_w_do;
+  output [0:0]usbfrx_crc_byte_w_do;
   output \setup_wr_idx_q_reg[2] ;
   output ep0_rx_setup_w_do;
   output \setup_wr_idx_q_reg[1] ;
   output \setup_wr_idx_q_reg[0] ;
   output axi_bram_addr_q_reg_1_sp_1;
-  output ctrl_sending_r_do;
   output axi_bram_addr_q_reg_0_sp_1;
   output \crc_sum_q_reg[8]_0 ;
   output \crc_sum_q_reg[10]_0 ;
@@ -8472,8 +8598,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   output \crc_sum_q_reg[6]_0 ;
   output \crc_sum_q_reg[10]_1 ;
   output \crc_sum_q_reg[15]_0 ;
-  output \FSM_sequential_state_q_reg[0]_0 ;
+  output data_zlp_q_reg_0;
   output [0:0]inport_accept_o;
+  output ep2_tx_data_accept_w_do;
+  output \FSM_sequential_state_q_reg[0]_0 ;
   output usbf_new_data_bit_r_do;
   output status_stage_w_do;
   output ep0_rx_valid_w_do;
@@ -8491,18 +8619,17 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   output ep0_dir_out_q;
   output ep0_dir_in_q;
   output rx_setup_q;
-  output ctrl_sending_q;
   output ctrl_send_accept_w_do;
   output [0:0]\ctrl_send_idx_q_reg[0] ;
   output [0:0]\ctrl_txdata_q_reg[0] ;
-  output [0:0]\current_addr_q_reg[0] ;
+  output ctrl_sending_r_do;
+  output [0:0]E;
   output outport_valid_o;
   output rx_out_q;
   output \state_q_reg[2] ;
   output [6:0]token_dev_w_do;
   output rx_last_w_do;
   output tx_valid_r;
-  output data_zlp_q_reg_0;
   output rx_space_q_reg;
   output addr_update_pending_q_reg;
   output ep3_data_bit_q_reg;
@@ -8524,13 +8651,11 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   input \state_q_reg[0]_0 ;
   input \se0_cnt_q_reg[14] ;
   input \state_q_reg[0]_1 ;
-  input ep2_tx_data_valid_w_do;
+  input inport_valid_q_reg;
   input ctrl_txvalid_q_reg_0;
   input ctrl_txstall_q_reg;
   input outport_accept_i;
-  input ctrl_sending_q_reg;
-  input \setup_packet_q_reg[0][7] ;
-  input \setup_packet_q_reg[0][7]_0 ;
+  input setup_resp_valid_delay_q_reg;
   input rst_event_q_reg;
   input [0:0]Q;
   input [2:0]out;
@@ -8540,30 +8665,31 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   input \setup_wr_idx_q_reg[1]_0 ;
   input \setup_wr_idx_q_reg[2]_0 ;
   input [1:0]axi_bram_addr_q_reg;
-  input setup_resp_valid_delay_q_reg;
   input rst_event_q_reg_0;
-  input rst_event_q_reg_1;
   input [7:0]ep2_tx_data_w_do;
   input [7:0]ctrl_txdata_q_do;
   input \FSM_sequential_state_q_reg[0]_1 ;
-  input \crc_sum_q_reg[10]_2 ;
-  input \crc_sum_q_reg[11]_1 ;
-  input \crc_sum_q_reg[14]_0 ;
-  input \crc_sum_q_reg[9]_0 ;
-  input \crc_sum_q_reg[8]_2 ;
-  input \crc_sum_q_reg[12]_0 ;
-  input \crc_sum_q_reg[15]_1 ;
-  input ctrl_txlast_q_reg_0;
-  input \tx_sent_data_counter_q_reg[1] ;
   input \FSM_sequential_state_q_reg[1]_0 ;
+  input \FSM_sequential_state_q_reg[1]_1 ;
+  input \FSM_sequential_state_q_reg[1]_2 ;
+  input \FSM_sequential_state_q_reg[1]_3 ;
+  input \FSM_sequential_state_q_reg[1]_4 ;
+  input \FSM_sequential_state_q_reg[1]_5 ;
+  input \FSM_sequential_state_q_reg[1]_6 ;
+  input data_pid_q4_out;
+  input ctrl_txstrb_q_reg_0;
+  input \FSM_sequential_state_q_reg[2]_0 ;
+  input ep2_tx_data_last_w_do;
+  input ctrl_txlast_q_reg_0;
   input rx_space_q;
   input \state_q_reg[2]_1 ;
   input ep2_data_bit_q_reg_0;
   input ep3_data_bit_q_reg_0;
-  input \FSM_sequential_state_q_reg[1]_1 ;
+  input \FSM_sequential_state_q_reg[1]_7 ;
+  input \state_q_reg[2]_2 ;
+  input \state_q_reg[0]_2 ;
   input \FSM_sequential_state_q_reg[0]_2 ;
   input \state_q_reg[1]_1 ;
-  input \state_q_reg[2]_2 ;
   input ep1_data_bit_q_reg_0;
   input ep0_data_bit_q_reg_0;
   input ep0_dir_out_q_reg;
@@ -8571,21 +8697,23 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   input setup_frame_q_do;
   input rx_setup_q_reg;
   input ep0_dir_in_q_reg;
-  input [0:0]\setup_packet_q_reg[0][7]_1 ;
-  input ctrl_ack_r_do;
-  input \setup_packet_q_reg[0][6] ;
-  input [0:0]CO;
   input status_ready_q_reg_0;
-  input status_ready_q_reg_1;
   input \setup_packet_q_reg[0][5] ;
   input \setup_packet_q_reg[0][5]_0 ;
-  input rst_event_q_reg_2;
-  input addr_update_pending_q_reg_0;
-  input ctrl_txstrb_q_reg_0;
-  input [6:0]current_addr_i_do;
-  input \current_addr_q_reg[0]_0 ;
+  input rst_event_q_reg_1;
+  input \setup_packet_q_reg[0][6] ;
+  input ctrl_sending_q_reg_0;
+  input status_ready_q_reg_1;
   input setup_resp_valid_delay_q_reg_0;
-  input \state_q_reg[0]_2 ;
+  input ctrl_ack_r_do;
+  input [0:0]\setup_packet_q_reg[0][7] ;
+  input setup_resp_valid_delay_q_reg_1;
+  input [0:0]CO;
+  input addr_update_pending_q_reg_0;
+  input [6:0]current_addr_i_do;
+  input \current_addr_q_reg[0] ;
+  input setup_resp_valid_delay_q_reg_2;
+  input \state_q_reg[0]_3 ;
   input \state_q_reg[2]_3 ;
 
   wire [0:0]CO;
@@ -8601,17 +8729,15 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \FSM_sequential_state_q[1]_i_3__0_n_0 ;
   wire \FSM_sequential_state_q[1]_i_4__0_n_0 ;
   wire \FSM_sequential_state_q[1]_i_5__0_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_6__0_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_7__0_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_8__0_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_9_n_0 ;
+  wire \FSM_sequential_state_q[1]_i_6_n_0 ;
+  wire \FSM_sequential_state_q[1]_i_7_n_0 ;
+  wire \FSM_sequential_state_q[1]_i_8_n_0 ;
   wire \FSM_sequential_state_q[2]_i_1_n_0 ;
   wire \FSM_sequential_state_q[2]_i_2__0_n_0 ;
   wire \FSM_sequential_state_q[2]_i_3__0_n_0 ;
   wire \FSM_sequential_state_q[2]_i_4_n_0 ;
-  wire \FSM_sequential_state_q[2]_i_5__1_n_0 ;
+  wire \FSM_sequential_state_q[2]_i_5__0_n_0 ;
   wire \FSM_sequential_state_q[2]_i_6_n_0 ;
-  wire \FSM_sequential_state_q[2]_i_7_n_0 ;
   wire \FSM_sequential_state_q[3]_i_1_n_0 ;
   wire \FSM_sequential_state_q[3]_i_2_n_0 ;
   wire \FSM_sequential_state_q_reg[0]_0 ;
@@ -8619,6 +8745,13 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \FSM_sequential_state_q_reg[0]_2 ;
   wire \FSM_sequential_state_q_reg[1]_0 ;
   wire \FSM_sequential_state_q_reg[1]_1 ;
+  wire \FSM_sequential_state_q_reg[1]_2 ;
+  wire \FSM_sequential_state_q_reg[1]_3 ;
+  wire \FSM_sequential_state_q_reg[1]_4 ;
+  wire \FSM_sequential_state_q_reg[1]_5 ;
+  wire \FSM_sequential_state_q_reg[1]_6 ;
+  wire \FSM_sequential_state_q_reg[1]_7 ;
+  wire \FSM_sequential_state_q_reg[2]_0 ;
   wire [0:0]Q;
   wire addr_update_pending_q_reg;
   wire addr_update_pending_q_reg_0;
@@ -8660,19 +8793,12 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \crc_sum_q_reg[0]_0 ;
   wire \crc_sum_q_reg[10]_0 ;
   wire \crc_sum_q_reg[10]_1 ;
-  wire \crc_sum_q_reg[10]_2 ;
   wire \crc_sum_q_reg[11]_0 ;
-  wire \crc_sum_q_reg[11]_1 ;
-  wire \crc_sum_q_reg[12]_0 ;
   wire \crc_sum_q_reg[13]_0 ;
-  wire \crc_sum_q_reg[14]_0 ;
   wire \crc_sum_q_reg[15]_0 ;
-  wire \crc_sum_q_reg[15]_1 ;
   wire \crc_sum_q_reg[6]_0 ;
   wire \crc_sum_q_reg[8]_0 ;
   wire \crc_sum_q_reg[8]_1 ;
-  wire \crc_sum_q_reg[8]_2 ;
-  wire \crc_sum_q_reg[9]_0 ;
   wire \crc_sum_q_reg_n_0_[0] ;
   wire \crc_sum_q_reg_n_0_[10] ;
   wire \crc_sum_q_reg_n_0_[11] ;
@@ -8691,12 +8817,12 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \crc_sum_q_reg_n_0_[9] ;
   wire ctrl_ack_r_do;
   wire ctrl_send_accept_w_do;
-  wire ctrl_send_accept_w_do_INST_0_i_1_n_0;
   wire [0:0]\ctrl_send_idx_q_reg[0] ;
-  wire ctrl_sending_q;
   wire ctrl_sending_q_reg;
+  wire ctrl_sending_q_reg_0;
   wire ctrl_sending_r_do;
   wire ctrl_sending_r_do_INST_0_i_1_n_0;
+  wire ctrl_sending_r_do_INST_0_i_2_n_0;
   wire [7:0]ctrl_txdata_q_do;
   wire [0:0]\ctrl_txdata_q_reg[0] ;
   wire ctrl_txlast_q_reg;
@@ -8706,13 +8832,12 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire ctrl_txstrb_q_reg;
   wire ctrl_txstrb_q_reg_0;
   wire ctrl_txvalid_q_i_2_n_0;
-  wire ctrl_txvalid_q_i_3_n_0;
+  wire ctrl_txvalid_q_i_4_n_0;
   wire ctrl_txvalid_q_reg;
   wire ctrl_txvalid_q_reg_0;
   wire [6:0]current_addr_i_do;
   wire \current_addr_q[6]_i_3_n_0 ;
-  wire [0:0]\current_addr_q_reg[0] ;
-  wire \current_addr_q_reg[0]_0 ;
+  wire \current_addr_q_reg[0] ;
   wire \data_buffer_q_reg[10]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ;
   wire \data_buffer_q_reg[11]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ;
   wire \data_buffer_q_reg[12]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ;
@@ -8740,17 +8865,11 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire data_buffer_q_reg_gate__5_n_0;
   wire data_buffer_q_reg_gate__6_n_0;
   wire data_buffer_q_reg_gate_n_0;
-  wire \data_buffer_q_reg_n_0_[3] ;
-  wire \data_buffer_q_reg_n_0_[4] ;
-  wire \data_buffer_q_reg_n_0_[5] ;
-  wire \data_buffer_q_reg_n_0_[6] ;
   wire data_complete_o_do;
+  wire [1:1]data_crc_q;
   wire \data_crc_q[1]_i_1_n_0 ;
-  wire \data_crc_q_reg_n_0_[0] ;
-  wire \data_crc_q_reg_n_0_[1] ;
-  wire data_ready_w;
+  wire data_pid_q4_out;
   wire \data_valid_q[0]_i_1_n_0 ;
-  wire \data_valid_q[3]_i_1_n_0 ;
   wire \data_valid_q_reg_n_0_[1] ;
   wire \data_valid_q_reg_n_0_[2] ;
   wire \data_valid_q_reg_n_0_[3] ;
@@ -8761,6 +8880,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire data_zlp_q_i_4_n_0;
   wire data_zlp_q_i_5_n_0;
   wire data_zlp_q_reg_0;
+  wire \desc_addr_q[6]_i_3_n_0 ;
+  wire [0:0]\desc_addr_q_reg[7] ;
   wire ep0_data_bit_q_reg;
   wire ep0_data_bit_q_reg_0;
   wire ep0_dir_in_q;
@@ -8776,7 +8897,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire ep1_data_bit_q_reg_0;
   wire ep2_data_bit_q_reg;
   wire ep2_data_bit_q_reg_0;
-  wire ep2_tx_data_valid_w_do;
+  wire ep2_tx_data_accept_w_do;
+  wire ep2_tx_data_last_w_do;
   wire [7:0]ep2_tx_data_w_do;
   wire ep3_data_bit_q_reg;
   wire ep3_data_bit_q_reg_0;
@@ -8784,21 +8906,18 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire handshake_valid_q_i_2_n_0;
   wire handshake_valid_q_i_3_n_0;
   wire [0:0]inport_accept_o;
+  wire inport_valid_q_reg;
   wire input_ready_w;
   wire last_q;
+  wire last_q_i_1_n_0;
   wire [2:0]out;
   wire outport_accept_i;
   wire [7:0]outport_data_o;
   wire outport_valid_o;
-  wire [3:1]p_1_in;
-  wire p_2_in;
-  wire [0:0]p_3_in;
   wire rst_event_q_reg;
   wire rst_event_q_reg_0;
   wire rst_event_q_reg_1;
-  wire rst_event_q_reg_2;
   wire rst_i;
-  wire [0:0]rx_active_q;
   wire \rx_active_q_reg[1]_U0_u_core_u_sie_rx_rx_active_q_reg_c_3_n_0 ;
   wire \rx_active_q_reg[2]_srl2_U0_u_core_u_sie_rx_rx_active_q_reg_c_2_n_0 ;
   wire rx_active_q_reg_c_2_n_0;
@@ -8823,9 +8942,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \setup_packet_q_reg[0][5] ;
   wire \setup_packet_q_reg[0][5]_0 ;
   wire \setup_packet_q_reg[0][6] ;
-  wire \setup_packet_q_reg[0][7] ;
-  wire \setup_packet_q_reg[0][7]_0 ;
-  wire [0:0]\setup_packet_q_reg[0][7]_1 ;
+  wire [0:0]\setup_packet_q_reg[0][7] ;
   wire [0:0]\setup_packet_q_reg[1][0] ;
   wire [0:0]\setup_packet_q_reg[2][0] ;
   wire [0:0]\setup_packet_q_reg[3][0] ;
@@ -8836,6 +8953,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire [0:0]\setup_packet_q_reg[7][0] ;
   wire setup_resp_valid_delay_q_reg;
   wire setup_resp_valid_delay_q_reg_0;
+  wire setup_resp_valid_delay_q_reg_1;
+  wire setup_resp_valid_delay_q_reg_2;
   wire setup_valid_q;
   wire setup_valid_q_i_2_n_0;
   wire \setup_wr_idx_q_reg[0] ;
@@ -8849,9 +8968,9 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \state_q[0]_i_2_n_0 ;
   wire \state_q[0]_i_4_n_0 ;
   wire \state_q[1]_i_2_n_0 ;
-  wire \state_q[1]_i_4_n_0 ;
-  wire \state_q[1]_i_6_n_0 ;
+  wire \state_q[1]_i_5_n_0 ;
   wire \state_q[1]_i_7_n_0 ;
+  wire \state_q[1]_i_8_n_0 ;
   wire \state_q[2]_i_12_n_0 ;
   wire \state_q[2]_i_13_n_0 ;
   wire \state_q[2]_i_14_n_0 ;
@@ -8865,6 +8984,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \state_q_reg[0]_0 ;
   wire \state_q_reg[0]_1 ;
   wire \state_q_reg[0]_2 ;
+  wire \state_q_reg[0]_3 ;
   wire \state_q_reg[1] ;
   wire \state_q_reg[1]_0 ;
   wire \state_q_reg[1]_1 ;
@@ -8922,12 +9042,11 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire token_valid_q_i_3_n_0;
   wire token_valid_q_i_4_n_0;
   wire token_valid_w_do;
-  wire \tx_pid_q[0]_i_2_n_0 ;
-  wire \tx_pid_q[0]_i_3_n_0 ;
   wire \tx_pid_q[3]_i_2_n_0 ;
   wire \tx_pid_q[3]_i_3_n_0 ;
   wire \tx_pid_q[3]_i_4_n_0 ;
   wire \tx_pid_q[3]_i_5_n_0 ;
+  wire \tx_pid_q[3]_i_6_n_0 ;
   wire \tx_pid_q[4]_i_2_n_0 ;
   wire \tx_pid_q[4]_i_3_n_0 ;
   wire \tx_pid_q[7]_i_2_n_0 ;
@@ -8935,7 +9054,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire \tx_pid_q[7]_i_4_n_0 ;
   wire \tx_pid_q[7]_i_5_n_0 ;
   wire \tx_pid_q[7]_i_6_n_0 ;
-  wire \tx_sent_data_counter_q_reg[1] ;
+  wire \tx_pid_q[7]_i_7_n_0 ;
+  wire \tx_pid_q[7]_i_8_n_0 ;
   wire tx_valid_r;
   wire usbf_ep_data_bit_r_do;
   wire usbf_ep_data_bit_r_do_INST_0_i_10_n_0;
@@ -8963,6 +9083,18 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   wire usbf_new_data_bit_r_do_INST_0_i_7_n_0;
   wire usbf_new_data_bit_r_do_INST_0_i_8_n_0;
   wire usbf_new_data_bit_r_do_INST_0_i_9_n_0;
+  wire [0:0]usbfrx_crc_byte_w_do;
+  wire [0:0]usbfrx_data_ready_w_do;
+  wire \usbfrx_data_w_do[0] ;
+  wire \usbfrx_data_w_do[1] ;
+  wire \usbfrx_data_w_do[2] ;
+  wire \usbfrx_data_w_do[3] ;
+  wire \usbfrx_data_w_do[4] ;
+  wire \usbfrx_data_w_do[5] ;
+  wire \usbfrx_data_w_do[6] ;
+  wire \usbfrx_data_w_do[7] ;
+  wire usbfrx_rx_active_w_do;
+  wire usbfrx_shift_en_w_do;
   wire [7:0]utmi_data_in_i;
   wire utmi_rxactive_i;
   wire utmi_rxvalid_i;
@@ -8982,11 +9114,11 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I5(\token_ep_q_reg[0]_0 ),
         .O(\FSM_sequential_state_q[0]_i_1__0_n_0 ));
   LUT5 #(
-    .INIT(32'h00440064)) 
+    .INIT(32'h000C002C)) 
     \FSM_sequential_state_q[0]_i_2__0 
-       (.I0(state_q[0]),
-        .I1(data_ready_w),
-        .I2(rx_active_q),
+       (.I0(usbfrx_rx_active_w_do),
+        .I1(usbfrx_data_ready_w_do),
+        .I2(state_q[0]),
         .I3(state_q[1]),
         .I4(state_q[2]),
         .O(\FSM_sequential_state_q[0]_i_2__0_n_0 ));
@@ -8996,37 +9128,37 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
        (.I0(\FSM_sequential_state_q[0]_i_5_n_0 ),
         .I1(state_q[2]),
         .I2(state_q[1]),
-        .I3(data_ready_w),
+        .I3(usbfrx_data_ready_w_do),
         .I4(state_q[0]),
         .I5(state_q[3]),
         .O(\FSM_sequential_state_q[0]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h1011000000010405)) 
+    .INIT(64'h0045000000011101)) 
     \FSM_sequential_state_q[0]_i_4__0 
-       (.I0(rx_active_q),
-        .I1(state_q[3]),
-        .I2(state_q[1]),
-        .I3(data_ready_w),
+       (.I0(usbfrx_rx_active_w_do),
+        .I1(state_q[1]),
+        .I2(usbfrx_data_ready_w_do),
+        .I3(state_q[3]),
         .I4(state_q[2]),
         .I5(state_q[0]),
         .O(\FSM_sequential_state_q[0]_i_4__0_n_0 ));
   LUT6 #(
     .INIT(64'h00405A0000400000)) 
     \FSM_sequential_state_q[0]_i_5 
-       (.I0(\data_buffer_q_reg_n_0_[4] ),
-        .I1(\FSM_sequential_state_q[1]_i_8__0_n_0 ),
-        .I2(p_1_in[1]),
-        .I3(p_1_in[2]),
-        .I4(\data_buffer_q_reg_n_0_[5] ),
+       (.I0(\usbfrx_data_w_do[4] ),
+        .I1(\FSM_sequential_state_q[1]_i_8_n_0 ),
+        .I2(\usbfrx_data_w_do[0] ),
+        .I3(\usbfrx_data_w_do[1] ),
+        .I4(\usbfrx_data_w_do[5] ),
         .I5(handshake_valid_q_i_2_n_0),
         .O(\FSM_sequential_state_q[0]_i_5_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFBBB0000)) 
     \FSM_sequential_state_q[1]_i_1 
        (.I0(state_q[1]),
-        .I1(rx_active_q),
+        .I1(usbfrx_rx_active_w_do),
         .I2(state_q[2]),
-        .I3(data_ready_w),
+        .I3(usbfrx_data_ready_w_do),
         .I4(\FSM_sequential_state_q[1]_i_2__0_n_0 ),
         .I5(\FSM_sequential_state_q[1]_i_3__0_n_0 ),
         .O(\FSM_sequential_state_q[1]_i_1_n_0 ));
@@ -9035,107 +9167,100 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \FSM_sequential_state_q[1]_i_2__0 
        (.I0(state_q[3]),
         .I1(state_q[2]),
-        .I2(data_ready_w),
+        .I2(usbfrx_data_ready_w_do),
         .I3(state_q[1]),
         .I4(state_q[0]),
         .I5(\FSM_sequential_state_q[1]_i_4__0_n_0 ),
         .O(\FSM_sequential_state_q[1]_i_2__0_n_0 ));
   LUT6 #(
-    .INIT(64'hAABFAAAAFFFFFFFF)) 
+    .INIT(64'hFFFDFFFCFFFDFFFF)) 
+    \FSM_sequential_state_q[1]_i_3 
+       (.I0(ep2_tx_data_last_w_do),
+        .I1(\token_ep_w_do[2] ),
+        .I2(\token_ep_w_do[3] ),
+        .I3(\token_ep_w_do[0] ),
+        .I4(\token_ep_w_do[1] ),
+        .I5(ctrl_txlast_q_reg_0),
+        .O(\FSM_sequential_state_q_reg[0]_0 ));
+  LUT6 #(
+    .INIT(64'hAEAEAAEEFFFFFFFF)) 
     \FSM_sequential_state_q[1]_i_3__0 
        (.I0(\FSM_sequential_state_q[1]_i_5__0_n_0 ),
-        .I1(data_ready_w),
+        .I1(\FSM_sequential_state_q[1]_i_6_n_0 ),
         .I2(state_q[2]),
-        .I3(state_q[3]),
-        .I4(\FSM_sequential_state_q[1]_i_6__0_n_0 ),
+        .I3(usbfrx_rx_active_w_do),
+        .I4(usbfrx_data_ready_w_do),
         .I5(\token_ep_q_reg[0]_0 ),
         .O(\FSM_sequential_state_q[1]_i_3__0_n_0 ));
   LUT6 #(
     .INIT(64'hFFCFCDFFFFFFFFFF)) 
     \FSM_sequential_state_q[1]_i_4__0 
        (.I0(handshake_valid_q_i_2_n_0),
-        .I1(\FSM_sequential_state_q[1]_i_7__0_n_0 ),
-        .I2(\FSM_sequential_state_q[1]_i_8__0_n_0 ),
-        .I3(p_1_in[1]),
-        .I4(\data_buffer_q_reg_n_0_[4] ),
-        .I5(\FSM_sequential_state_q[1]_i_9_n_0 ),
+        .I1(\FSM_sequential_state_q[1]_i_7_n_0 ),
+        .I2(\FSM_sequential_state_q[1]_i_8_n_0 ),
+        .I3(\usbfrx_data_w_do[0] ),
+        .I4(\usbfrx_data_w_do[4] ),
+        .I5(valid_q_i_2_n_0),
         .O(\FSM_sequential_state_q[1]_i_4__0_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFCFDFFFFFFFD)) 
-    \FSM_sequential_state_q[1]_i_5 
-       (.I0(ctrl_txlast_q_reg_0),
-        .I1(\token_ep_w_do[2] ),
-        .I2(\token_ep_w_do[3] ),
-        .I3(\token_ep_w_do[1] ),
-        .I4(\token_ep_w_do[0] ),
-        .I5(\tx_sent_data_counter_q_reg[1] ),
-        .O(\FSM_sequential_state_q_reg[0]_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAAA02A0A2AA)) 
     \FSM_sequential_state_q[1]_i_5__0 
        (.I0(state_q[1]),
-        .I1(\data_crc_q_reg_n_0_[0] ),
+        .I1(usbfrx_crc_byte_w_do),
         .I2(state_q[0]),
         .I3(state_q[2]),
-        .I4(data_ready_w),
+        .I4(usbfrx_data_ready_w_do),
         .I5(state_q[3]),
         .O(\FSM_sequential_state_q[1]_i_5__0_n_0 ));
-  LUT3 #(
-    .INIT(8'h8A)) 
-    \FSM_sequential_state_q[1]_i_6__0 
-       (.I0(state_q[0]),
-        .I1(data_ready_w),
-        .I2(rx_active_q),
-        .O(\FSM_sequential_state_q[1]_i_6__0_n_0 ));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \FSM_sequential_state_q[1]_i_7__0 
-       (.I0(p_1_in[2]),
-        .I1(\data_buffer_q_reg_n_0_[5] ),
-        .O(\FSM_sequential_state_q[1]_i_7__0_n_0 ));
-  LUT4 #(
-    .INIT(16'h0040)) 
-    \FSM_sequential_state_q[1]_i_8__0 
-       (.I0(\data_buffer_q_reg_n_0_[6] ),
-        .I1(p_3_in),
-        .I2(p_1_in[3]),
-        .I3(\data_buffer_q_reg_n_0_[3] ),
-        .O(\FSM_sequential_state_q[1]_i_8__0_n_0 ));
   LUT2 #(
     .INIT(4'h2)) 
-    \FSM_sequential_state_q[1]_i_9 
-       (.I0(state_q[1]),
-        .I1(state_q[0]),
-        .O(\FSM_sequential_state_q[1]_i_9_n_0 ));
+    \FSM_sequential_state_q[1]_i_6 
+       (.I0(state_q[0]),
+        .I1(state_q[3]),
+        .O(\FSM_sequential_state_q[1]_i_6_n_0 ));
+  LUT2 #(
+    .INIT(4'hB)) 
+    \FSM_sequential_state_q[1]_i_7 
+       (.I0(\usbfrx_data_w_do[1] ),
+        .I1(\usbfrx_data_w_do[5] ),
+        .O(\FSM_sequential_state_q[1]_i_7_n_0 ));
+  LUT4 #(
+    .INIT(16'h0040)) 
+    \FSM_sequential_state_q[1]_i_8 
+       (.I0(\usbfrx_data_w_do[3] ),
+        .I1(\usbfrx_data_w_do[2] ),
+        .I2(\usbfrx_data_w_do[7] ),
+        .I3(\usbfrx_data_w_do[6] ),
+        .O(\FSM_sequential_state_q[1]_i_8_n_0 ));
   LUT6 #(
-    .INIT(64'h000E0E000E0E0E0E)) 
+    .INIT(64'h000E0E0E0E0E000E)) 
     \FSM_sequential_state_q[2]_i_1 
        (.I0(\FSM_sequential_state_q[2]_i_2__0_n_0 ),
         .I1(\FSM_sequential_state_q[2]_i_3__0_n_0 ),
         .I2(\FSM_sequential_state_q[2]_i_4_n_0 ),
-        .I3(state_q[0]),
-        .I4(state_q[1]),
-        .I5(\FSM_sequential_state_q[2]_i_5__1_n_0 ),
+        .I3(\FSM_sequential_state_q[2]_i_5__0_n_0 ),
+        .I4(state_q[0]),
+        .I5(state_q[1]),
         .O(\FSM_sequential_state_q[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAA8AA88888888)) 
+    .INIT(64'hFF00F100FF00FB00)) 
     \FSM_sequential_state_q[2]_i_2__0 
-       (.I0(state_q[2]),
-        .I1(state_q[3]),
+       (.I0(state_q[1]),
+        .I1(usbfrx_data_ready_w_do),
         .I2(state_q[0]),
-        .I3(data_ready_w),
-        .I4(state_q[1]),
-        .I5(\FSM_sequential_state_q[2]_i_6_n_0 ),
+        .I3(state_q[2]),
+        .I4(state_q[3]),
+        .I5(usbfrx_crc_byte_w_do),
         .O(\FSM_sequential_state_q[2]_i_2__0_n_0 ));
   LUT6 #(
     .INIT(64'hAAA28AAAAAAAAAAA)) 
     \FSM_sequential_state_q[2]_i_3__0 
        (.I0(\token_pid_q[7]_i_3_n_0 ),
-        .I1(p_1_in[2]),
-        .I2(\data_buffer_q_reg_n_0_[5] ),
-        .I3(p_1_in[1]),
-        .I4(\data_buffer_q_reg_n_0_[4] ),
-        .I5(\FSM_sequential_state_q[2]_i_7_n_0 ),
+        .I1(\usbfrx_data_w_do[1] ),
+        .I2(\usbfrx_data_w_do[5] ),
+        .I3(\usbfrx_data_w_do[0] ),
+        .I4(\usbfrx_data_w_do[4] ),
+        .I5(\FSM_sequential_state_q[2]_i_6_n_0 ),
         .O(\FSM_sequential_state_q[2]_i_3__0_n_0 ));
   LUT6 #(
     .INIT(64'h55555555555D5555)) 
@@ -9143,54 +9268,47 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
        (.I0(\token_ep_q_reg[0]_0 ),
         .I1(state_q[0]),
         .I2(state_q[3]),
-        .I3(rx_active_q),
+        .I3(usbfrx_rx_active_w_do),
         .I4(state_q[2]),
-        .I5(data_ready_w),
+        .I5(usbfrx_data_ready_w_do),
         .O(\FSM_sequential_state_q[2]_i_4_n_0 ));
   LUT4 #(
     .INIT(16'h0155)) 
-    \FSM_sequential_state_q[2]_i_5__1 
-       (.I0(rx_active_q),
+    \FSM_sequential_state_q[2]_i_5__0 
+       (.I0(usbfrx_rx_active_w_do),
         .I1(state_q[1]),
         .I2(state_q[2]),
         .I3(state_q[3]),
-        .O(\FSM_sequential_state_q[2]_i_5__1_n_0 ));
-  LUT6 #(
-    .INIT(64'hA2A2A2A2FFFFFFAF)) 
-    \FSM_sequential_state_q[2]_i_6 
-       (.I0(state_q[2]),
-        .I1(\data_crc_q_reg_n_0_[0] ),
-        .I2(state_q[0]),
-        .I3(data_ready_w),
-        .I4(rx_active_q),
-        .I5(state_q[1]),
-        .O(\FSM_sequential_state_q[2]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+        .O(\FSM_sequential_state_q[2]_i_5__0_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT5 #(
     .INIT(32'h06600040)) 
-    \FSM_sequential_state_q[2]_i_7 
-       (.I0(\data_buffer_q_reg_n_0_[3] ),
-        .I1(p_3_in),
-        .I2(p_1_in[3]),
-        .I3(\data_buffer_q_reg_n_0_[6] ),
-        .I4(p_1_in[2]),
-        .O(\FSM_sequential_state_q[2]_i_7_n_0 ));
+    \FSM_sequential_state_q[2]_i_6 
+       (.I0(\usbfrx_data_w_do[3] ),
+        .I1(\usbfrx_data_w_do[7] ),
+        .I2(\usbfrx_data_w_do[2] ),
+        .I3(\usbfrx_data_w_do[6] ),
+        .I4(\usbfrx_data_w_do[1] ),
+        .O(\FSM_sequential_state_q[2]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'hCC80C080CC88CC88)) 
+    .INIT(64'h00000000FFFF0080)) 
     \FSM_sequential_state_q[3]_i_1 
-       (.I0(p_2_in),
-        .I1(\token_ep_q_reg[0]_0 ),
-        .I2(rx_active_q),
-        .I3(state_q[3]),
-        .I4(state_q[2]),
+       (.I0(usbfrx_crc_byte_w_do),
+        .I1(state_q[2]),
+        .I2(state_q[1]),
+        .I3(state_q[0]),
+        .I4(state_q[3]),
         .I5(\FSM_sequential_state_q[3]_i_2_n_0 ),
         .O(\FSM_sequential_state_q[3]_i_1_n_0 ));
-  LUT3 #(
-    .INIT(8'hC5)) 
+  LUT6 #(
+    .INIT(64'h000100C5FFFFFFFF)) 
     \FSM_sequential_state_q[3]_i_2 
        (.I0(state_q[1]),
         .I1(state_q[2]),
         .I2(state_q[0]),
+        .I3(usbfrx_rx_active_w_do),
+        .I4(state_q[3]),
+        .I5(\token_ep_q_reg[0]_0 ),
         .O(\FSM_sequential_state_q[3]_i_2_n_0 ));
   (* FSM_ENCODED_STATES = "STATE_RX_SOF2:0000,STATE_RX_TOKEN_COMPLETE:0011,STATE_RX_TOKEN3:0100,STATE_RX_TOKEN2:0101,STATE_RX_IDLE:0010,STATE_RX_DATA_COMPLETE:1000,STATE_RX_DATA:0110,STATE_RX_IGNORED:0111,STATE_RX_SOF3:0001" *) 
   (* KEEP = "yes" *) 
@@ -9224,30 +9342,30 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .CLR(rst_i),
         .D(\FSM_sequential_state_q[3]_i_1_n_0 ),
         .Q(state_q[3]));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT3 #(
     .INIT(8'h32)) 
     addr_update_pending_q_i_1
-       (.I0(\current_addr_q_reg[0]_0 ),
+       (.I0(\current_addr_q_reg[0] ),
         .I1(\current_addr_q[6]_i_3_n_0 ),
         .I2(addr_update_pending_q_reg_0),
         .O(addr_update_pending_q_reg));
   LUT6 #(
-    .INIT(64'hFFFFFF0D00000002)) 
+    .INIT(64'hFFFFFF0E00000001)) 
     \axi_bram_addr_q[0]_i_1 
-       (.I0(ctrl_sending_r_do),
-        .I1(ctrl_send_accept_w_do_INST_0_i_1_n_0),
+       (.I0(\desc_addr_q[6]_i_3_n_0 ),
+        .I1(ctrl_sending_r_do_INST_0_i_1_n_0),
         .I2(setup_resp_valid_delay_q_reg),
         .I3(rst_i),
-        .I4(rst_event_q_reg_1),
+        .I4(rst_event_q_reg),
         .I5(axi_bram_addr_q_reg[0]),
         .O(axi_bram_addr_q_reg_0_sn_1));
   LUT6 #(
-    .INIT(64'hFFFF00F700000008)) 
+    .INIT(64'hFFFF00FD00000002)) 
     \axi_bram_addr_q[1]_i_1 
        (.I0(axi_bram_addr_q_reg[0]),
-        .I1(ctrl_sending_r_do),
-        .I2(ctrl_send_accept_w_do_INST_0_i_1_n_0),
+        .I1(\desc_addr_q[6]_i_3_n_0 ),
+        .I2(ctrl_sending_r_do_INST_0_i_1_n_0),
         .I3(setup_resp_valid_delay_q_reg),
         .I4(rst_event_q_reg_0),
         .I5(axi_bram_addr_q_reg[1]),
@@ -9267,31 +9385,32 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(\crc_sum_q_reg_n_0_[15] ),
         .I2(\crc_sum_q_reg_n_0_[9] ),
         .I3(\crc_sum_q_reg_n_0_[13] ),
-        .I4(\crc_sum_q_reg_n_0_[11] ),
+        .I4(\crc_sum_q_reg_n_0_[14] ),
         .I5(crc_err_q_i_4_n_0),
         .O(crc_err_q_i_2_n_0));
   LUT4 #(
-    .INIT(16'hFFFE)) 
+    .INIT(16'hFFEF)) 
     crc_err_q_i_3
        (.I0(\crc_sum_q_reg_n_0_[2] ),
-        .I1(\crc_sum_q_reg_n_0_[8] ),
-        .I2(\crc_sum_q_reg_n_0_[14] ),
-        .I3(\crc_sum_q_reg_n_0_[7] ),
+        .I1(\crc_sum_q_reg_n_0_[7] ),
+        .I2(\crc_sum_q_reg_n_0_[12] ),
+        .I3(\crc_sum_q_reg_n_0_[10] ),
         .O(crc_err_q_i_3_n_0));
   LUT5 #(
-    .INIT(32'h00000004)) 
+    .INIT(32'h00000010)) 
     crc_err_q_i_4
-       (.I0(\crc_sum_q_reg_n_0_[10] ),
-        .I1(\crc_sum_q_reg_n_0_[12] ),
-        .I2(\crc_sum_q_reg_n_0_[4] ),
-        .I3(\crc_sum_q_reg_n_0_[3] ),
+       (.I0(\crc_sum_q_reg_n_0_[11] ),
+        .I1(\crc_sum_q_reg_n_0_[8] ),
+        .I2(\crc_sum_q_reg_n_0_[0] ),
+        .I3(\crc_sum_q_reg_n_0_[1] ),
         .I4(crc_err_q_i_5_n_0),
         .O(crc_err_q_i_4_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT4 #(
-    .INIT(16'hFFFD)) 
+    .INIT(16'hFFFE)) 
     crc_err_q_i_5
-       (.I0(\crc_sum_q_reg_n_0_[0] ),
-        .I1(\crc_sum_q_reg_n_0_[1] ),
+       (.I0(\crc_sum_q_reg_n_0_[3] ),
+        .I1(\crc_sum_q_reg_n_0_[4] ),
         .I2(\crc_sum_q_reg_n_0_[5] ),
         .I3(\crc_sum_q_reg_n_0_[6] ),
         .O(crc_err_q_i_5_n_0));
@@ -9315,8 +9434,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     .INIT(32'hBEEBEBBE)) 
     \crc_sum_q[10]_i_1__0 
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
-        .I1(\data_buffer_q_reg_n_0_[3] ),
-        .I2(\data_buffer_q_reg_n_0_[4] ),
+        .I1(\usbfrx_data_w_do[3] ),
+        .I2(\usbfrx_data_w_do[4] ),
         .I3(\crc_sum_q_reg_n_0_[4] ),
         .I4(\crc_sum_q_reg_n_0_[3] ),
         .O(\crc_sum_q[10]_i_1__0_n_0 ));
@@ -9324,18 +9443,18 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     .INIT(32'hBEEBEBBE)) 
     \crc_sum_q[11]_i_1__0 
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
-        .I1(\data_buffer_q_reg_n_0_[4] ),
+        .I1(\usbfrx_data_w_do[4] ),
         .I2(\crc_sum_q_reg_n_0_[4] ),
-        .I3(\data_buffer_q_reg_n_0_[5] ),
+        .I3(\usbfrx_data_w_do[5] ),
         .I4(\crc_sum_q_reg_n_0_[5] ),
         .O(\crc_sum_q[11]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT5 #(
     .INIT(32'hBEEBEBBE)) 
     \crc_sum_q[12]_i_1 
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
-        .I1(\data_buffer_q_reg_n_0_[6] ),
-        .I2(\data_buffer_q_reg_n_0_[5] ),
+        .I1(\usbfrx_data_w_do[6] ),
+        .I2(\usbfrx_data_w_do[5] ),
         .I3(\crc_sum_q_reg_n_0_[6] ),
         .I4(\crc_sum_q_reg_n_0_[5] ),
         .O(\crc_sum_q[12]_i_1_n_0 ));
@@ -9343,9 +9462,9 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     .INIT(32'hBEEBEBBE)) 
     \crc_sum_q[13]_i_1__0 
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
-        .I1(\data_buffer_q_reg_n_0_[6] ),
+        .I1(\usbfrx_data_w_do[6] ),
         .I2(\crc_sum_q_reg_n_0_[6] ),
-        .I3(p_3_in),
+        .I3(\usbfrx_data_w_do[7] ),
         .I4(\crc_sum_q_reg_n_0_[7] ),
         .O(\crc_sum_q[13]_i_1__0_n_0 ));
   LUT6 #(
@@ -9369,14 +9488,13 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h6996966996696996)) 
     \crc_sum_q[14]_i_3 
-       (.I0(\data_buffer_q_reg_n_0_[6] ),
-        .I1(\data_buffer_q_reg_n_0_[5] ),
-        .I2(p_1_in[3]),
-        .I3(\data_buffer_q_reg_n_0_[3] ),
+       (.I0(\usbfrx_data_w_do[6] ),
+        .I1(\usbfrx_data_w_do[5] ),
+        .I2(\usbfrx_data_w_do[2] ),
+        .I3(\usbfrx_data_w_do[3] ),
         .I4(\crc_sum_q[14]_i_6_n_0 ),
-        .I5(p_1_in[2]),
+        .I5(\usbfrx_data_w_do[1] ),
         .O(\crc_sum_q[14]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT3 #(
     .INIT(8'h96)) 
     \crc_sum_q[14]_i_4 
@@ -9384,24 +9502,24 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(\crc_sum_q_reg_n_0_[3] ),
         .I2(\crc_sum_q_reg_n_0_[4] ),
         .O(\crc_sum_q[14]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  (* SOFT_HLUTNM = "soft_lutpair22" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \crc_sum_q[14]_i_5 
        (.I0(\crc_sum_q_reg_n_0_[6] ),
         .I1(\crc_sum_q_reg_n_0_[5] ),
         .O(\crc_sum_q[14]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \crc_sum_q[14]_i_6 
-       (.I0(p_1_in[1]),
-        .I1(\data_buffer_q_reg_n_0_[4] ),
+       (.I0(\usbfrx_data_w_do[0] ),
+        .I1(\usbfrx_data_w_do[4] ),
         .O(\crc_sum_q[14]_i_6_n_0 ));
   LUT5 #(
     .INIT(32'hAAAAABAA)) 
     \crc_sum_q[15]_i_1 
-       (.I0(data_ready_w),
+       (.I0(usbfrx_data_ready_w_do),
         .I1(state_q[2]),
         .I2(state_q[3]),
         .I3(state_q[1]),
@@ -9424,9 +9542,9 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\crc_sum_q_reg_n_0_[2] ),
         .I3(\crc_sum_q_reg_n_0_[0] ),
         .I4(\crc_sum_q[14]_i_3_n_0 ),
-        .I5(p_3_in),
+        .I5(\usbfrx_data_w_do[7] ),
         .O(\crc_sum_q[15]_i_3__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair22" *) 
+  (* SOFT_HLUTNM = "soft_lutpair23" *) 
   LUT5 #(
     .INIT(32'h96696996)) 
     \crc_sum_q[15]_i_4__0 
@@ -9481,12 +9599,12 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(state_q[1]),
         .I4(state_q[0]),
         .O(\crc_sum_q[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair25" *) 
+  (* SOFT_HLUTNM = "soft_lutpair26" *) 
   LUT4 #(
     .INIT(16'hEBBE)) 
     \crc_sum_q[6]_i_1 
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
-        .I1(p_1_in[1]),
+        .I1(\usbfrx_data_w_do[0] ),
         .I2(\crc_sum_q_reg_n_0_[14] ),
         .I3(\crc_sum_q_reg_n_0_[0] ),
         .O(\crc_sum_q[6]_i_1_n_0 ));
@@ -9495,8 +9613,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \crc_sum_q[7]_i_1__0 
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
         .I1(\crc_sum_q_reg_n_0_[15] ),
-        .I2(p_1_in[1]),
-        .I3(p_1_in[2]),
+        .I2(\usbfrx_data_w_do[0] ),
+        .I3(\usbfrx_data_w_do[1] ),
         .I4(\crc_sum_q_reg_n_0_[0] ),
         .I5(\crc_sum_q_reg_n_0_[1] ),
         .O(\crc_sum_q[7]_i_1__0_n_0 ));
@@ -9504,9 +9622,9 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     .INIT(32'hBEEBEBBE)) 
     \crc_sum_q[8]_i_1__0 
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
-        .I1(p_1_in[3]),
+        .I1(\usbfrx_data_w_do[2] ),
         .I2(\crc_sum_q_reg_n_0_[2] ),
-        .I3(p_1_in[2]),
+        .I3(\usbfrx_data_w_do[1] ),
         .I4(\crc_sum_q_reg_n_0_[1] ),
         .O(\crc_sum_q[8]_i_1__0_n_0 ));
   LUT5 #(
@@ -9515,8 +9633,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
        (.I0(\crc_sum_q[14]_i_2_n_0 ),
         .I1(\crc_sum_q_reg_n_0_[2] ),
         .I2(\crc_sum_q_reg_n_0_[3] ),
-        .I3(p_1_in[3]),
-        .I4(\data_buffer_q_reg_n_0_[3] ),
+        .I3(\usbfrx_data_w_do[2] ),
+        .I4(\usbfrx_data_w_do[3] ),
         .O(\crc_sum_q[9]_i_1_n_0 ));
   FDPE \crc_sum_q_reg[0] 
        (.C(clk_i),
@@ -9614,181 +9732,179 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .D(\crc_sum_q[9]_i_1_n_0 ),
         .PRE(rst_i),
         .Q(\crc_sum_q_reg_n_0_[9] ));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
-  LUT1 #(
-    .INIT(2'h1)) 
-    ctrl_send_accept_w_do_INST_0
-       (.I0(ctrl_send_accept_w_do_INST_0_i_1_n_0),
-        .O(ctrl_send_accept_w_do));
   LUT6 #(
-    .INIT(64'hAAAAAAAAAAAAAAA8)) 
-    ctrl_send_accept_w_do_INST_0_i_1
-       (.I0(ctrl_txvalid_q_reg_0),
-        .I1(\FSM_sequential_state_q_reg[1]_0 ),
-        .I2(\token_ep_w_do[2] ),
-        .I3(\token_ep_w_do[3] ),
-        .I4(\token_ep_w_do[0] ),
-        .I5(\token_ep_w_do[1] ),
-        .O(ctrl_send_accept_w_do_INST_0_i_1_n_0));
+    .INIT(64'h00000001FFFFFFFF)) 
+    ctrl_send_accept_w_do_INST_0
+       (.I0(\token_ep_w_do[1] ),
+        .I1(\token_ep_w_do[0] ),
+        .I2(\token_ep_w_do[3] ),
+        .I3(\token_ep_w_do[2] ),
+        .I4(\FSM_sequential_state_q_reg[2]_0 ),
+        .I5(ctrl_txvalid_q_reg_0),
+        .O(ctrl_send_accept_w_do));
   LUT6 #(
     .INIT(64'hFFFFFFAEAAAAFFAE)) 
     \ctrl_send_idx_q[15]_i_1 
-       (.I0(rst_event_q_reg_1),
-        .I1(ctrl_sending_q_reg),
-        .I2(ctrl_send_accept_w_do_INST_0_i_1_n_0),
-        .I3(status_ready_q_reg_0),
+       (.I0(rst_event_q_reg),
+        .I1(ctrl_sending_q_reg_0),
+        .I2(\desc_addr_q[6]_i_3_n_0 ),
+        .I3(status_ready_q_reg_1),
         .I4(setup_resp_valid_delay_q_reg),
-        .I5(\setup_packet_q_reg[0][7] ),
+        .I5(setup_resp_valid_delay_q_reg_0),
         .O(\ctrl_send_idx_q_reg[0] ));
-  LUT6 #(
-    .INIT(64'h000000008F80FF80)) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
     ctrl_sending_q_i_1
-       (.I0(setup_resp_valid_delay_q_reg),
-        .I1(\setup_packet_q_reg[0][7]_1 ),
-        .I2(\setup_packet_q_reg[0][7] ),
-        .I3(ctrl_sending_q_reg),
-        .I4(ctrl_sending_r_do_INST_0_i_1_n_0),
-        .I5(rst_event_q_reg_1),
-        .O(ctrl_sending_q));
-  LUT6 #(
-    .INIT(64'hCFCCC4C4C4CCC4C4)) 
+       (.I0(rst_event_q_reg),
+        .I1(ctrl_sending_r_do_INST_0_i_1_n_0),
+        .O(ctrl_sending_q_reg));
+  LUT1 #(
+    .INIT(2'h1)) 
     ctrl_sending_r_do_INST_0
        (.I0(ctrl_sending_r_do_INST_0_i_1_n_0),
-        .I1(ctrl_sending_q_reg),
-        .I2(ctrl_ack_r_do),
-        .I3(\setup_packet_q_reg[0][6] ),
-        .I4(setup_resp_valid_delay_q_reg),
-        .I5(\setup_packet_q_reg[0][7]_1 ),
         .O(ctrl_sending_r_do));
-  (* SOFT_HLUTNM = "soft_lutpair26" *) 
-  LUT4 #(
-    .INIT(16'hFFF2)) 
+  LUT6 #(
+    .INIT(64'h22222222002A2A2A)) 
     ctrl_sending_r_do_INST_0_i_1
-       (.I0(CO),
-        .I1(ctrl_send_accept_w_do_INST_0_i_1_n_0),
-        .I2(status_ready_q_reg_0),
-        .I3(setup_resp_valid_delay_q_reg),
+       (.I0(ctrl_sending_r_do_INST_0_i_2_n_0),
+        .I1(ctrl_sending_q_reg_0),
+        .I2(ctrl_ack_r_do),
+        .I3(\setup_packet_q_reg[0][7] ),
+        .I4(setup_resp_valid_delay_q_reg),
+        .I5(setup_resp_valid_delay_q_reg_1),
         .O(ctrl_sending_r_do_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'hFFF4FFFF)) 
+    ctrl_sending_r_do_INST_0_i_2
+       (.I0(\desc_addr_q[6]_i_3_n_0 ),
+        .I1(CO),
+        .I2(setup_resp_valid_delay_q_reg),
+        .I3(status_ready_q_reg_1),
+        .I4(ctrl_sending_q_reg_0),
+        .O(ctrl_sending_r_do_INST_0_i_2_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'hAAAAAAAE)) 
     \ctrl_txdata_q[7]_i_1 
-       (.I0(rst_event_q_reg_1),
-        .I1(ctrl_sending_q_reg),
-        .I2(ctrl_send_accept_w_do_INST_0_i_1_n_0),
+       (.I0(rst_event_q_reg),
+        .I1(ctrl_sending_q_reg_0),
+        .I2(\desc_addr_q[6]_i_3_n_0 ),
         .I3(setup_resp_valid_delay_q_reg),
-        .I4(status_ready_q_reg_0),
+        .I4(status_ready_q_reg_1),
         .O(\ctrl_txdata_q_reg[0] ));
   LUT5 #(
     .INIT(32'h4F554055)) 
     ctrl_txlast_q_i_1
-       (.I0(rst_event_q_reg_1),
-        .I1(setup_resp_valid_delay_q_reg_0),
+       (.I0(rst_event_q_reg),
+        .I1(setup_resp_valid_delay_q_reg_2),
         .I2(\ctrl_txdata_q_reg[0] ),
-        .I3(\setup_packet_q_reg[0][7] ),
+        .I3(setup_resp_valid_delay_q_reg_0),
         .I4(ctrl_txlast_q_reg_0),
         .O(ctrl_txlast_q_reg));
   LUT6 #(
     .INIT(64'h00FF003000100030)) 
     ctrl_txstrb_q_i_1
-       (.I0(status_ready_q_reg_0),
+       (.I0(status_ready_q_reg_1),
         .I1(setup_resp_valid_delay_q_reg),
         .I2(ctrl_txstrb_q_i_2_n_0),
-        .I3(rst_event_q_reg_1),
-        .I4(\setup_packet_q_reg[0][7] ),
+        .I3(rst_event_q_reg),
+        .I4(setup_resp_valid_delay_q_reg_0),
         .I5(ctrl_txstrb_q_reg_0),
         .O(ctrl_txstrb_q_reg));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT2 #(
     .INIT(4'h2)) 
     ctrl_txstrb_q_i_2
-       (.I0(ctrl_sending_q_reg),
-        .I1(ctrl_send_accept_w_do_INST_0_i_1_n_0),
+       (.I0(ctrl_sending_q_reg_0),
+        .I1(\desc_addr_q[6]_i_3_n_0 ),
         .O(ctrl_txstrb_q_i_2_n_0));
   LUT5 #(
     .INIT(32'h45FF4500)) 
     ctrl_txvalid_q_i_1
-       (.I0(rst_event_q_reg_1),
+       (.I0(rst_event_q_reg),
         .I1(ctrl_txvalid_q_i_2_n_0),
-        .I2(\setup_packet_q_reg[0][7] ),
-        .I3(ctrl_txvalid_q_i_3_n_0),
+        .I2(setup_resp_valid_delay_q_reg_0),
+        .I3(ctrl_txvalid_q_i_4_n_0),
         .I4(ctrl_txvalid_q_reg_0),
         .O(ctrl_txvalid_q_reg));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h0100)) 
     ctrl_txvalid_q_i_2
-       (.I0(status_ready_q_reg_0),
+       (.I0(status_ready_q_reg_1),
         .I1(setup_resp_valid_delay_q_reg),
-        .I2(ctrl_send_accept_w_do_INST_0_i_1_n_0),
-        .I3(ctrl_sending_q_reg),
+        .I2(\desc_addr_q[6]_i_3_n_0 ),
+        .I3(ctrl_sending_q_reg_0),
         .O(ctrl_txvalid_q_i_2_n_0));
   LUT6 #(
     .INIT(64'hDDDD0D00DDDDDDDD)) 
-    ctrl_txvalid_q_i_3
-       (.I0(ctrl_send_accept_w_do_INST_0_i_1_n_0),
-        .I1(status_ready_q_reg_1),
+    ctrl_txvalid_q_i_4
+       (.I0(\desc_addr_q[6]_i_3_n_0 ),
+        .I1(status_ready_q_reg_0),
         .I2(\setup_packet_q_reg[0][5] ),
         .I3(\setup_packet_q_reg[0][5]_0 ),
-        .I4(rst_event_q_reg_2),
+        .I4(rst_event_q_reg_1),
         .I5(\setup_packet_q_reg[0][6] ),
-        .O(ctrl_txvalid_q_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair28" *) 
+        .O(ctrl_txvalid_q_i_4_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair30" *) 
   LUT3 #(
     .INIT(8'hA8)) 
     \current_addr_q[6]_i_1 
        (.I0(\current_addr_q[6]_i_3_n_0 ),
         .I1(addr_update_pending_q_reg_0),
         .I2(Q),
-        .O(\current_addr_q_reg[0] ));
+        .O(E));
   LUT6 #(
     .INIT(64'hAAAAAAAAAEAAAAAA)) 
     \current_addr_q[6]_i_3 
        (.I0(Q),
-        .I1(ctrl_txvalid_q_reg_0),
+        .I1(ctrl_txlast_q_reg_0),
         .I2(ctrl_txstrb_q_reg_0),
-        .I3(ctrl_txlast_q_reg_0),
+        .I3(ctrl_txvalid_q_reg_0),
         .I4(status_stage_w_do_INST_0_i_2_n_0),
-        .I5(\FSM_sequential_state_q_reg[1]_0 ),
+        .I5(\FSM_sequential_state_q_reg[2]_0 ),
         .O(\current_addr_q[6]_i_3_n_0 ));
   FDCE \data_buffer_q_reg[0] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate__6_n_0),
-        .Q(p_1_in[1]));
+        .Q(\usbfrx_data_w_do[0] ));
   FDRE \data_buffer_q_reg[10]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[18]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[10]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
   FDRE \data_buffer_q_reg[11]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[19]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[11]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
   FDRE \data_buffer_q_reg[12]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[20]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[12]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
   FDRE \data_buffer_q_reg[13]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[21]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[13]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
   FDRE \data_buffer_q_reg[14]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[22]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[14]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
   FDRE \data_buffer_q_reg[15]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[23]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[15]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
@@ -9799,7 +9915,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[0]),
         .Q(\data_buffer_q_reg[16]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
@@ -9810,7 +9926,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[1]),
         .Q(\data_buffer_q_reg[17]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
@@ -9821,7 +9937,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[2]),
         .Q(\data_buffer_q_reg[18]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
@@ -9832,16 +9948,16 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[3]),
         .Q(\data_buffer_q_reg[19]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
   FDCE \data_buffer_q_reg[1] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate__5_n_0),
-        .Q(p_1_in[2]));
+        .Q(\usbfrx_data_w_do[1] ));
   (* srl_bus_name = "\U0/u_core/u_sie_rx/data_buffer_q_reg " *) 
   (* srl_name = "\U0/u_core/u_sie_rx/data_buffer_q_reg[20]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0 " *) 
   SRL16E \data_buffer_q_reg[20]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0 
@@ -9849,7 +9965,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[4]),
         .Q(\data_buffer_q_reg[20]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
@@ -9860,7 +9976,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[5]),
         .Q(\data_buffer_q_reg[21]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
@@ -9871,7 +9987,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[6]),
         .Q(\data_buffer_q_reg[22]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
@@ -9882,126 +9998,126 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .A1(1'b0),
         .A2(1'b0),
         .A3(1'b0),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLK(clk_i),
         .D(utmi_data_in_i[7]),
         .Q(\data_buffer_q_reg[23]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ));
   FDCE \data_buffer_q_reg[2] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate__4_n_0),
-        .Q(p_1_in[3]));
+        .Q(\usbfrx_data_w_do[2] ));
   FDCE \data_buffer_q_reg[3] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate__3_n_0),
-        .Q(\data_buffer_q_reg_n_0_[3] ));
+        .Q(\usbfrx_data_w_do[3] ));
   FDCE \data_buffer_q_reg[4] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate__2_n_0),
-        .Q(\data_buffer_q_reg_n_0_[4] ));
+        .Q(\usbfrx_data_w_do[4] ));
   FDCE \data_buffer_q_reg[5] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate__1_n_0),
-        .Q(\data_buffer_q_reg_n_0_[5] ));
+        .Q(\usbfrx_data_w_do[5] ));
   FDCE \data_buffer_q_reg[6] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate__0_n_0),
-        .Q(\data_buffer_q_reg_n_0_[6] ));
+        .Q(\usbfrx_data_w_do[6] ));
   FDCE \data_buffer_q_reg[7] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_gate_n_0),
-        .Q(p_3_in));
+        .Q(\usbfrx_data_w_do[7] ));
   FDRE \data_buffer_q_reg[8]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[16]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[8]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
   FDRE \data_buffer_q_reg[9]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .D(\data_buffer_q_reg[17]_srl2_U0_u_core_u_sie_rx_data_buffer_q_reg_c_0_n_0 ),
         .Q(\data_buffer_q_reg[9]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .R(1'b0));
   FDCE data_buffer_q_reg_c
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(1'b1),
         .Q(data_buffer_q_reg_c_n_0));
   FDCE data_buffer_q_reg_c_0
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_c_n_0),
         .Q(data_buffer_q_reg_c_0_n_0));
   FDCE data_buffer_q_reg_c_1
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(data_buffer_q_reg_c_0_n_0),
         .Q(data_buffer_q_reg_c_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate
        (.I0(\data_buffer_q_reg[15]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .I1(data_buffer_q_reg_c_1_n_0),
         .O(data_buffer_q_reg_gate_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate__0
        (.I0(\data_buffer_q_reg[14]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .I1(data_buffer_q_reg_c_1_n_0),
         .O(data_buffer_q_reg_gate__0_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate__1
        (.I0(\data_buffer_q_reg[13]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .I1(data_buffer_q_reg_c_1_n_0),
         .O(data_buffer_q_reg_gate__1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate__2
        (.I0(\data_buffer_q_reg[12]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .I1(data_buffer_q_reg_c_1_n_0),
         .O(data_buffer_q_reg_gate__2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair34" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate__3
        (.I0(\data_buffer_q_reg[11]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .I1(data_buffer_q_reg_c_1_n_0),
         .O(data_buffer_q_reg_gate__3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate__4
        (.I0(\data_buffer_q_reg[10]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .I1(data_buffer_q_reg_c_1_n_0),
         .O(data_buffer_q_reg_gate__4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate__5
        (.I0(\data_buffer_q_reg[9]_U0_u_core_u_sie_rx_data_buffer_q_reg_c_1_n_0 ),
         .I1(data_buffer_q_reg_c_1_n_0),
         .O(data_buffer_q_reg_gate__5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
     .INIT(4'h8)) 
     data_buffer_q_reg_gate__6
@@ -10011,7 +10127,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT5 #(
     .INIT(32'h00000100)) 
     data_complete_q_i_1
-       (.I0(rx_active_q),
+       (.I0(usbfrx_rx_active_w_do),
         .I1(state_q[0]),
         .I2(state_q[2]),
         .I3(state_q[3]),
@@ -10023,7 +10139,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .CLR(rst_i),
         .D(crc_err_q0),
         .Q(data_complete_o_do));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \data_crc_q[1]_i_1 
@@ -10031,63 +10147,63 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .O(\data_crc_q[1]_i_1_n_0 ));
   FDCE \data_crc_q_reg[0] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
-        .D(\data_crc_q_reg_n_0_[1] ),
-        .Q(\data_crc_q_reg_n_0_[0] ));
+        .D(data_crc_q),
+        .Q(usbfrx_crc_byte_w_do));
   FDCE \data_crc_q_reg[1] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(\data_crc_q[1]_i_1_n_0 ),
-        .Q(\data_crc_q_reg_n_0_[1] ));
+        .Q(data_crc_q));
   FDCE \data_q_reg[0] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(p_1_in[1]),
+        .D(\usbfrx_data_w_do[0] ),
         .Q(outport_data_o[0]));
   FDCE \data_q_reg[1] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(p_1_in[2]),
+        .D(\usbfrx_data_w_do[1] ),
         .Q(outport_data_o[1]));
   FDCE \data_q_reg[2] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(p_1_in[3]),
+        .D(\usbfrx_data_w_do[2] ),
         .Q(outport_data_o[2]));
   FDCE \data_q_reg[3] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(\data_buffer_q_reg_n_0_[3] ),
+        .D(\usbfrx_data_w_do[3] ),
         .Q(outport_data_o[3]));
   FDCE \data_q_reg[4] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(\data_buffer_q_reg_n_0_[4] ),
+        .D(\usbfrx_data_w_do[4] ),
         .Q(outport_data_o[4]));
   FDCE \data_q_reg[5] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(\data_buffer_q_reg_n_0_[5] ),
+        .D(\usbfrx_data_w_do[5] ),
         .Q(outport_data_o[5]));
   FDCE \data_q_reg[6] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(\data_buffer_q_reg_n_0_[6] ),
+        .D(\usbfrx_data_w_do[6] ),
         .Q(outport_data_o[6]));
   FDCE \data_q_reg[7] 
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(p_3_in),
+        .D(\usbfrx_data_w_do[7] ),
         .Q(outport_data_o[7]));
   LUT3 #(
     .INIT(8'hD0)) 
@@ -10096,16 +10212,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(utmi_rxvalid_i),
         .I2(\data_valid_q_reg_n_0_[1] ),
         .O(\data_valid_q[0]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'hB)) 
-    \data_valid_q[3]_i_1 
-       (.I0(utmi_rxvalid_i),
-        .I1(utmi_rxactive_i),
-        .O(\data_valid_q[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair33" *) 
+  (* SOFT_HLUTNM = "soft_lutpair35" *) 
   LUT2 #(
     .INIT(4'h8)) 
-    \data_valid_q[3]_i_2 
+    \data_valid_q[3]_i_1 
        (.I0(utmi_rxvalid_i),
         .I1(utmi_rxactive_i),
         .O(shift_en_w0));
@@ -10114,22 +10224,22 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .CE(1'b1),
         .CLR(rst_i),
         .D(\data_valid_q[0]_i_1_n_0 ),
-        .Q(data_ready_w));
+        .Q(usbfrx_data_ready_w_do));
   FDCE \data_valid_q_reg[1] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(\data_valid_q_reg_n_0_[2] ),
         .Q(\data_valid_q_reg_n_0_[1] ));
   FDCE \data_valid_q_reg[2] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(\data_valid_q_reg_n_0_[3] ),
         .Q(\data_valid_q_reg_n_0_[2] ));
   FDCE \data_valid_q_reg[3] 
        (.C(clk_i),
-        .CE(\data_valid_q[3]_i_1_n_0 ),
+        .CE(usbfrx_shift_en_w_do),
         .CLR(rst_i),
         .D(shift_en_w0),
         .Q(\data_valid_q_reg_n_0_[3] ));
@@ -10140,14 +10250,15 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(data_zlp_q0),
         .I2(data_zlp_q),
         .O(data_zlp_q_i_1_n_0));
-  LUT5 #(
-    .INIT(32'h00000008)) 
+  LUT6 #(
+    .INIT(64'h00000000AA20AA2A)) 
     data_zlp_q_i_2
-       (.I0(usbf_ep_data_bit_r_do_INST_0_i_1_n_0),
-        .I1(ctrl_txvalid_q_reg_0),
-        .I2(ctrl_txstrb_q_reg_0),
+       (.I0(data_pid_q4_out),
+        .I1(inport_valid_q_reg),
+        .I2(\token_ep_w_do[1] ),
         .I3(\token_ep_w_do[0] ),
-        .I4(\token_ep_w_do[1] ),
+        .I4(ctrl_txstrb_q_reg_0),
+        .I5(\crc_sum_q_reg[0]_0 ),
         .O(data_zlp_q_reg_0));
   LUT5 #(
     .INIT(32'h00010000)) 
@@ -10166,24 +10277,24 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(state_q[0]),
         .I3(state_q[1]),
         .I4(state_q[2]),
-        .I5(data_ready_w),
+        .I5(usbfrx_data_ready_w_do),
         .O(data_zlp_q_i_3_n_0));
   (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT2 #(
     .INIT(4'h2)) 
     data_zlp_q_i_4
-       (.I0(p_1_in[1]),
-        .I1(\data_buffer_q_reg_n_0_[4] ),
+       (.I0(\usbfrx_data_w_do[0] ),
+        .I1(\usbfrx_data_w_do[4] ),
         .O(data_zlp_q_i_4_n_0));
   LUT6 #(
     .INIT(64'hFFFFFDDFFDDFFFFF)) 
     data_zlp_q_i_5
-       (.I0(p_1_in[2]),
-        .I1(\data_buffer_q_reg_n_0_[5] ),
-        .I2(\data_buffer_q_reg_n_0_[6] ),
-        .I3(p_1_in[3]),
-        .I4(p_3_in),
-        .I5(\data_buffer_q_reg_n_0_[3] ),
+       (.I0(\usbfrx_data_w_do[1] ),
+        .I1(\usbfrx_data_w_do[5] ),
+        .I2(\usbfrx_data_w_do[6] ),
+        .I3(\usbfrx_data_w_do[2] ),
+        .I4(\usbfrx_data_w_do[7] ),
+        .I5(\usbfrx_data_w_do[3] ),
         .O(data_zlp_q_i_5_n_0));
   FDCE data_zlp_q_reg
        (.C(clk_i),
@@ -10191,16 +10302,25 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .CLR(rst_i),
         .D(data_zlp_q_i_1_n_0),
         .Q(data_zlp_q));
-  LUT6 #(
-    .INIT(64'h55501050FFFFFFFF)) 
+  (* SOFT_HLUTNM = "soft_lutpair29" *) 
+  LUT4 #(
+    .INIT(16'hFFF1)) 
     \desc_addr_q[6]_i_1 
-       (.I0(ctrl_send_accept_w_do_INST_0_i_1_n_0),
-        .I1(ctrl_sending_r_do_INST_0_i_1_n_0),
-        .I2(ctrl_sending_q_reg),
-        .I3(\setup_packet_q_reg[0][7] ),
-        .I4(\setup_packet_q_reg[0][7]_0 ),
-        .I5(rst_event_q_reg),
-        .O(E));
+       (.I0(ctrl_sending_r_do_INST_0_i_1_n_0),
+        .I1(\desc_addr_q[6]_i_3_n_0 ),
+        .I2(setup_resp_valid_delay_q_reg),
+        .I3(rst_event_q_reg),
+        .O(\desc_addr_q_reg[7] ));
+  LUT6 #(
+    .INIT(64'hAAAAAAAAAAAAAAA8)) 
+    \desc_addr_q[6]_i_3 
+       (.I0(ctrl_txvalid_q_reg_0),
+        .I1(\FSM_sequential_state_q_reg[2]_0 ),
+        .I2(\token_ep_w_do[2] ),
+        .I3(\token_ep_w_do[3] ),
+        .I4(\token_ep_w_do[0] ),
+        .I5(\token_ep_w_do[1] ),
+        .O(\desc_addr_q[6]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'h3333333200000002)) 
     ep0_data_bit_q_i_1
@@ -10230,7 +10350,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(status_stage_w_do_INST_0_i_5_n_0),
         .I5(ep0_dir_in_q_i_3_n_0),
         .O(ep0_dir_in_q_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT5 #(
     .INIT(32'h00000020)) 
     ep0_dir_in_q_i_3
@@ -10259,7 +10379,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(ep0_dir_out_q_reg),
         .I5(status_stage_w_do_INST_0_i_3_n_0),
         .O(ep0_dir_out_q_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT5 #(
     .INIT(32'h00000002)) 
     ep0_rx_setup_w_do_INST_0
@@ -10299,6 +10419,16 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(\token_ep_w_do[2] ),
         .I5(ep2_data_bit_q_reg_0),
         .O(ep2_data_bit_q_reg));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT5 #(
+    .INIT(32'h00000004)) 
+    ep2_tx_data_accept_w_do_INST_0
+       (.I0(\token_ep_w_do[0] ),
+        .I1(\token_ep_w_do[1] ),
+        .I2(\token_ep_w_do[3] ),
+        .I3(\token_ep_w_do[2] ),
+        .I4(\FSM_sequential_state_q_reg[2]_0 ),
+        .O(ep2_tx_data_accept_w_do));
   LUT6 #(
     .INIT(64'h2333333320000000)) 
     ep3_data_bit_q_i_1
@@ -10317,23 +10447,23 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(handshake_valid_q_i_3_n_0),
         .I3(\token_pid_q[7]_i_3_n_0 ),
         .O(handshake_valid_q1_out));
-  (* SOFT_HLUTNM = "soft_lutpair16" *) 
+  (* SOFT_HLUTNM = "soft_lutpair20" *) 
   LUT4 #(
     .INIT(16'h0660)) 
     handshake_valid_q_i_2
-       (.I0(\data_buffer_q_reg_n_0_[3] ),
-        .I1(p_3_in),
-        .I2(p_1_in[3]),
-        .I3(\data_buffer_q_reg_n_0_[6] ),
+       (.I0(\usbfrx_data_w_do[3] ),
+        .I1(\usbfrx_data_w_do[7] ),
+        .I2(\usbfrx_data_w_do[2] ),
+        .I3(\usbfrx_data_w_do[6] ),
         .O(handshake_valid_q_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair27" *) 
+  (* SOFT_HLUTNM = "soft_lutpair25" *) 
   LUT4 #(
     .INIT(16'hFFDF)) 
     handshake_valid_q_i_3
-       (.I0(\data_buffer_q_reg_n_0_[4] ),
-        .I1(p_1_in[1]),
-        .I2(p_1_in[2]),
-        .I3(\data_buffer_q_reg_n_0_[5] ),
+       (.I0(\usbfrx_data_w_do[4] ),
+        .I1(\usbfrx_data_w_do[0] ),
+        .I2(\usbfrx_data_w_do[1] ),
+        .I3(\usbfrx_data_w_do[5] ),
         .O(handshake_valid_q_i_3_n_0));
   FDCE handshake_valid_q_reg
        (.C(clk_i),
@@ -10342,29 +10472,29 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .D(handshake_valid_q1_out),
         .Q(rx_handshake_w));
   LUT6 #(
-    .INIT(64'h5555555555555755)) 
+    .INIT(64'h00000100FFFFFFFF)) 
     inport_accept_o_INST_0
-       (.I0(ep2_tx_data_valid_w_do),
+       (.I0(\FSM_sequential_state_q_reg[2]_0 ),
         .I1(\token_ep_w_do[2] ),
         .I2(\token_ep_w_do[3] ),
         .I3(\token_ep_w_do[1] ),
         .I4(\token_ep_w_do[0] ),
-        .I5(\FSM_sequential_state_q_reg[1]_0 ),
+        .I5(inport_valid_q_reg),
         .O(inport_accept_o));
   LUT5 #(
-    .INIT(32'h00004000)) 
+    .INIT(32'h10000000)) 
     last_q_i_1
        (.I0(state_q[3]),
-        .I1(state_q[2]),
+        .I1(state_q[0]),
         .I2(state_q[1]),
-        .I3(\data_crc_q_reg_n_0_[0] ),
-        .I4(state_q[0]),
-        .O(p_2_in));
+        .I3(state_q[2]),
+        .I4(usbfrx_crc_byte_w_do),
+        .O(last_q_i_1_n_0));
   FDCE last_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
-        .D(p_2_in),
+        .D(last_q_i_1_n_0),
         .Q(last_q));
   LUT6 #(
     .INIT(64'h0000000000400000)) 
@@ -10373,8 +10503,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(state_q[2]),
         .I2(state_q[1]),
         .I3(state_q[0]),
-        .I4(data_ready_w),
-        .I5(\data_crc_q_reg_n_0_[0] ),
+        .I4(usbfrx_data_ready_w_do),
+        .I5(usbfrx_crc_byte_w_do),
         .O(input_ready_w));
   FDCE mask_q_reg
        (.C(clk_i),
@@ -10397,7 +10527,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .CE(1'b1),
         .CLR(rst_i),
         .D(rx_active_q_reg_gate_n_0),
-        .Q(rx_active_q));
+        .Q(usbfrx_rx_active_w_do));
   FDRE \rx_active_q_reg[1]_U0_u_core_u_sie_rx_rx_active_q_reg_c_3 
        (.C(clk_i),
         .CE(1'b1),
@@ -10439,14 +10569,14 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
        (.I0(\rx_active_q_reg[1]_U0_u_core_u_sie_rx_rx_active_q_reg_c_3_n_0 ),
         .I1(rx_active_q_reg_c_3_n_0),
         .O(rx_active_q_reg_gate_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT2 #(
     .INIT(4'hE)) 
     rx_last_w_do_INST_0
        (.I0(last_q),
-        .I1(\data_crc_q_reg_n_0_[0] ),
+        .I1(usbfrx_crc_byte_w_do),
         .O(rx_last_w_do));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
     .INIT(32'h00000020)) 
     rx_out_q_i_1
@@ -10456,7 +10586,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(token_pid_w[3]),
         .I4(status_stage_w_do_INST_0_i_5_n_0),
         .O(rx_out_q));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h00FB0000)) 
     rx_setup_q_i_1
@@ -10475,7 +10605,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\state_q_reg[2]_2 ),
         .I4(rx_space_q),
         .O(rx_space_q_reg));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT5 #(
     .INIT(32'h01000101)) 
     rx_space_q_i_2
@@ -10485,12 +10615,12 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(outport_accept_i),
         .I4(\token_ep_w_do[0] ),
         .O(rx_space_q_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT5 #(
     .INIT(32'hABFFAAAA)) 
     setup_frame_q_i_1
        (.I0(ep0_rx_setup_w_do),
-        .I1(\data_crc_q_reg_n_0_[0] ),
+        .I1(usbfrx_crc_byte_w_do),
         .I2(last_q),
         .I3(setup_valid_q_i_2_n_0),
         .I4(setup_frame_q_do),
@@ -10565,7 +10695,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(\token_ep_w_do[1] ),
         .I5(rx_setup_q_reg),
         .O(\setup_packet_q_reg[5][7] [6]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT5 #(
     .INIT(32'hAAABAAAA)) 
     \setup_packet_q[0][7]_i_1 
@@ -10585,7 +10715,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(\token_ep_w_do[1] ),
         .I5(rx_setup_q_reg),
         .O(\setup_packet_q_reg[5][7] [7]));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT5 #(
     .INIT(32'hAABAAAAA)) 
     \setup_packet_q[1][7]_i_1 
@@ -10595,7 +10725,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\setup_wr_idx_q_reg[2]_0 ),
         .I4(setup_valid_q_i_2_n_0),
         .O(\setup_packet_q_reg[1][0] ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT5 #(
     .INIT(32'hABAAAAAA)) 
     \setup_packet_q[2][7]_i_1 
@@ -10605,7 +10735,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\setup_wr_idx_q_reg[1]_0 ),
         .I4(setup_valid_q_i_2_n_0),
         .O(\setup_packet_q_reg[2][0] ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT5 #(
     .INIT(32'hAEAAAAAA)) 
     \setup_packet_q[3][7]_i_1 
@@ -10615,7 +10745,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\setup_wr_idx_q_reg[1]_0 ),
         .I4(setup_valid_q_i_2_n_0),
         .O(\setup_packet_q_reg[3][0] ));
-  (* SOFT_HLUTNM = "soft_lutpair14" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT5 #(
     .INIT(32'hABAAAAAA)) 
     \setup_packet_q[4][7]_i_1 
@@ -10625,7 +10755,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\setup_wr_idx_q_reg[2]_0 ),
         .I4(setup_valid_q_i_2_n_0),
         .O(\setup_packet_q_reg[4][0] ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT5 #(
     .INIT(32'hBAAAAAAA)) 
     \setup_packet_q[5][7]_i_1 
@@ -10635,7 +10765,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\setup_wr_idx_q_reg[0]_0 ),
         .I4(setup_valid_q_i_2_n_0),
         .O(\setup_packet_q_reg[5][0] ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT5 #(
     .INIT(32'hAEAAAAAA)) 
     \setup_packet_q[6][7]_i_1 
@@ -10645,7 +10775,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\setup_wr_idx_q_reg[2]_0 ),
         .I4(setup_valid_q_i_2_n_0),
         .O(\setup_packet_q_reg[6][0] ));
-  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT5 #(
     .INIT(32'hEAAAAAAA)) 
     \setup_packet_q[7][7]_i_1 
@@ -10655,11 +10785,11 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\setup_wr_idx_q_reg[1]_0 ),
         .I4(setup_valid_q_i_2_n_0),
         .O(\setup_packet_q_reg[7][0] ));
-  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT5 #(
     .INIT(32'h0000E000)) 
     setup_valid_q_i_1
-       (.I0(\data_crc_q_reg_n_0_[0] ),
+       (.I0(usbfrx_crc_byte_w_do),
         .I1(last_q),
         .I2(setup_valid_q_i_2_n_0),
         .I3(setup_frame_q_do),
@@ -10682,7 +10812,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(setup_valid_q_i_2_n_0),
         .I2(\setup_wr_idx_q_reg[0]_0 ),
         .O(\setup_wr_idx_q_reg[0] ));
-  (* SOFT_HLUTNM = "soft_lutpair15" *) 
+  (* SOFT_HLUTNM = "soft_lutpair17" *) 
   LUT4 #(
     .INIT(16'h1320)) 
     \setup_wr_idx_q[1]_i_1 
@@ -10691,7 +10821,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(setup_valid_q_i_2_n_0),
         .I3(\setup_wr_idx_q_reg[1]_0 ),
         .O(\setup_wr_idx_q_reg[1] ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT5 #(
     .INIT(32'h070F0800)) 
     \setup_wr_idx_q[2]_i_1 
@@ -10709,7 +10839,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\tx_pid_q[7]_i_2_n_0 ),
         .I3(\state_q[2]_i_4_n_0 ),
         .I4(\state_q_reg[2]_3 ),
-        .I5(\state_q_reg[0]_2 ),
+        .I5(\state_q_reg[0]_3 ),
         .O(\state_q_reg[0] ));
   LUT6 #(
     .INIT(64'h4444444455544454)) 
@@ -10729,7 +10859,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\state_q_reg[1]_0 ),
         .I3(\FSM_sequential_state_q_reg[0]_2 ),
         .I4(token_valid_w_do),
-        .I5(\tx_pid_q[0]_i_2_n_0 ),
+        .I5(\tx_pid_q[7]_i_6_n_0 ),
         .O(\state_q[0]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAAAFFFF00A2)) 
@@ -10739,46 +10869,46 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\state_q[2]_i_4_n_0 ),
         .I3(\state_q_reg[2]_2 ),
         .I4(\state_q_reg[1]_0 ),
-        .I5(\state_q_reg[0]_2 ),
+        .I5(\state_q_reg[0]_3 ),
         .O(\state_q_reg[1] ));
   LUT6 #(
-    .INIT(64'hBBBBAABABBBBBBBB)) 
+    .INIT(64'hABAAABABAAAAAAAA)) 
     \state_q[1]_i_2 
-       (.I0(\FSM_sequential_state_q_reg[1]_1 ),
-        .I1(\state_q[1]_i_4_n_0 ),
-        .I2(\FSM_sequential_state_q_reg[0]_2 ),
-        .I3(token_valid_w_do),
-        .I4(\state_q_reg[1]_1 ),
-        .I5(\state_q[1]_i_6_n_0 ),
+       (.I0(\FSM_sequential_state_q_reg[1]_7 ),
+        .I1(\se0_cnt_q_reg[14] ),
+        .I2(\state_q_reg[2]_2 ),
+        .I3(\state_q_reg[0]_2 ),
+        .I4(crc_err_q_reg_n_0),
+        .I5(\state_q[1]_i_5_n_0 ),
         .O(\state_q[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hF2FFF2F2F2F2F2F2)) 
-    \state_q[1]_i_4 
-       (.I0(Q),
-        .I1(\FSM_sequential_state_q_reg[0]_2 ),
-        .I2(\state_q_reg[2]_2 ),
-        .I3(\state_q_reg[0]_0 ),
-        .I4(\state_q_reg[1]_0 ),
-        .I5(crc_err_q_reg_n_0),
-        .O(\state_q[1]_i_4_n_0 ));
+    .INIT(64'hCFEECFEECFEECCEE)) 
+    \state_q[1]_i_5 
+       (.I0(\FSM_sequential_state_q_reg[0]_2 ),
+        .I1(\state_q_reg[1]_1 ),
+        .I2(\state_q[1]_i_7_n_0 ),
+        .I3(token_valid_w_do),
+        .I4(\state_q[1]_i_8_n_0 ),
+        .I5(\tx_pid_q[4]_i_3_n_0 ),
+        .O(\state_q[1]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'hDF555555DF555757)) 
-    \state_q[1]_i_6 
-       (.I0(token_valid_w_do),
-        .I1(\state_q[1]_i_7_n_0 ),
-        .I2(\tx_pid_q[3]_i_2_n_0 ),
-        .I3(rx_space_q_i_2_n_0),
-        .I4(\tx_pid_q[0]_i_2_n_0 ),
-        .I5(\crc_sum_q_reg[0]_0 ),
-        .O(\state_q[1]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
-  LUT3 #(
-    .INIT(8'hEB)) 
+    .INIT(64'h8880808888888888)) 
     \state_q[1]_i_7 
-       (.I0(status_stage_w_do_INST_0_i_5_n_0),
-        .I1(token_pid_w[7]),
-        .I2(token_pid_w[3]),
+       (.I0(rx_space_q_i_2_n_0),
+        .I1(\tx_pid_q[7]_i_6_n_0 ),
+        .I2(status_stage_w_do_INST_0_i_5_n_0),
+        .I3(token_pid_w[7]),
+        .I4(token_pid_w[3]),
+        .I5(\tx_pid_q[3]_i_2_n_0 ),
         .O(\state_q[1]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT3 #(
+    .INIT(8'hFB)) 
+    \state_q[1]_i_8 
+       (.I0(status_stage_w_do_INST_0_i_5_n_0),
+        .I1(token_pid_w[3]),
+        .I2(token_pid_w[7]),
+        .O(\state_q[1]_i_8_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAAAFF00FFA2)) 
     \state_q[2]_i_1 
@@ -10787,7 +10917,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\state_q[2]_i_4_n_0 ),
         .I3(\state_q_reg[2]_2 ),
         .I4(\state_q_reg[1]_0 ),
-        .I5(\state_q_reg[0]_2 ),
+        .I5(\state_q_reg[0]_3 ),
         .O(\state_q_reg[2]_0 ));
   LUT6 #(
     .INIT(64'hBAAABABABAAABAAA)) 
@@ -10819,14 +10949,14 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(token_valid_w_do),
         .I5(usbf_new_data_bit_r_do_INST_0_i_13_n_0),
         .O(\state_q[2]_i_13_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair23" *) 
+  (* SOFT_HLUTNM = "soft_lutpair27" *) 
   LUT4 #(
     .INIT(16'h8880)) 
     \state_q[2]_i_14 
        (.I0(\state_q_reg[0]_0 ),
         .I1(rx_data_valid_w),
         .I2(last_q),
-        .I3(\data_crc_q_reg_n_0_[0] ),
+        .I3(usbfrx_crc_byte_w_do),
         .O(\state_q[2]_i_14_n_0 ));
   LUT6 #(
     .INIT(64'h9F009F1F90009010)) 
@@ -10862,7 +10992,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     .INIT(64'h0000003A00FF003A)) 
     \state_q[2]_i_6 
        (.I0(\FSM_sequential_state_q_reg[0]_2 ),
-        .I1(\tx_pid_q[0]_i_2_n_0 ),
+        .I1(\tx_pid_q[7]_i_6_n_0 ),
         .I2(token_valid_w_do),
         .I3(\state_q_reg[0]_0 ),
         .I4(\state_q_reg[1]_0 ),
@@ -10871,7 +11001,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT2 #(
     .INIT(4'h1)) 
     \state_q[2]_i_7 
-       (.I0(\data_crc_q_reg_n_0_[0] ),
+       (.I0(usbfrx_crc_byte_w_do),
         .I1(last_q),
         .O(\state_q[2]_i_7_n_0 ));
   LUT5 #(
@@ -10889,7 +11019,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
        (.I0(rx_setup_q_reg),
         .I1(ep0_rx_setup_w_do),
         .I2(status_ready_q_i_2_n_0),
-        .I3(status_ready_q_reg_0),
+        .I3(status_ready_q_reg_1),
         .O(status_ready_q_reg));
   LUT6 #(
     .INIT(64'h0000000080808000)) 
@@ -10897,7 +11027,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
        (.I0(rx_data_valid_w),
         .I1(rx_enable_q_reg),
         .I2(status_stage_w_do_INST_0_i_2_n_0),
-        .I3(\data_crc_q_reg_n_0_[0] ),
+        .I3(usbfrx_crc_byte_w_do),
         .I4(last_q),
         .I5(rx_strb_w_do),
         .O(status_ready_q_i_2_n_0));
@@ -10920,7 +11050,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(token_valid_w_do),
         .I5(\state_q_reg[1]_0 ),
         .O(status_stage_w_do_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h0001)) 
     status_stage_w_do_INST_0_i_2
@@ -10959,7 +11089,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(token_pid_w[4]),
         .I5(token_pid_w[0]),
         .O(status_stage_w_do_INST_0_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT4 #(
     .INIT(16'hFFDF)) 
     status_stage_w_do_INST_0_i_6
@@ -10968,14 +11098,14 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(token_pid_w[2]),
         .I3(token_pid_w[6]),
         .O(status_stage_w_do_INST_0_i_6_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
   LUT2 #(
     .INIT(4'hB)) 
     status_stage_w_do_INST_0_i_7
        (.I0(token_pid_w[4]),
         .I1(token_pid_w[0]),
         .O(status_stage_w_do_INST_0_i_7_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'hFFEF)) 
     status_stage_w_do_INST_0_i_8
@@ -10987,7 +11117,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_dev_q[0]_i_1 
-       (.I0(p_1_in[1]),
+       (.I0(\usbfrx_data_w_do[0] ),
         .I1(\token_dev_q[6]_i_4_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -10997,7 +11127,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_dev_q[1]_i_1 
-       (.I0(p_1_in[2]),
+       (.I0(\usbfrx_data_w_do[1] ),
         .I1(\token_dev_q[6]_i_4_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11007,7 +11137,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_dev_q[2]_i_1 
-       (.I0(p_1_in[3]),
+       (.I0(\usbfrx_data_w_do[2] ),
         .I1(\token_dev_q[6]_i_4_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11017,7 +11147,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_dev_q[3]_i_1 
-       (.I0(\data_buffer_q_reg_n_0_[3] ),
+       (.I0(\usbfrx_data_w_do[3] ),
         .I1(\token_dev_q[6]_i_4_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11027,7 +11157,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_dev_q[4]_i_1 
-       (.I0(\data_buffer_q_reg_n_0_[4] ),
+       (.I0(\usbfrx_data_w_do[4] ),
         .I1(\token_dev_q[6]_i_4_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11037,7 +11167,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_dev_q[5]_i_1 
-       (.I0(\data_buffer_q_reg_n_0_[5] ),
+       (.I0(\usbfrx_data_w_do[5] ),
         .I1(\token_dev_q[6]_i_4_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11050,21 +11180,21 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
        (.I0(state_q[0]),
         .I1(state_q[3]),
         .I2(state_q[1]),
-        .I3(data_ready_w),
+        .I3(usbfrx_data_ready_w_do),
         .I4(state_q[2]),
         .I5(\token_ep_q_reg[0]_0 ),
         .O(\token_dev_q[6]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_dev_q[6]_i_2 
-       (.I0(\data_buffer_q_reg_n_0_[6] ),
+       (.I0(\usbfrx_data_w_do[6] ),
         .I1(\token_dev_q[6]_i_4_n_0 ),
         .I2(Q),
         .I3(out[1]),
         .I4(out[2]),
         .I5(out[0]),
         .O(\token_dev_q[6]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h5545)) 
     \token_dev_q[6]_i_3 
@@ -11077,7 +11207,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     .INIT(32'h00080000)) 
     \token_dev_q[6]_i_4 
        (.I0(state_q[2]),
-        .I1(data_ready_w),
+        .I1(usbfrx_data_ready_w_do),
         .I2(state_q[1]),
         .I3(state_q[3]),
         .I4(state_q[0]),
@@ -11127,7 +11257,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT5 #(
     .INIT(32'hFFAC00A0)) 
     \token_ep_q[0]_i_1 
-       (.I0(p_3_in),
+       (.I0(\usbfrx_data_w_do[7] ),
         .I1(\token_ep_q_reg[0]_0 ),
         .I2(\token_dev_q[6]_i_4_n_0 ),
         .I3(\token_ep_q[3]_i_2_n_0 ),
@@ -11136,7 +11266,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT5 #(
     .INIT(32'hFFAC00A0)) 
     \token_ep_q[1]_i_1 
-       (.I0(p_1_in[1]),
+       (.I0(\usbfrx_data_w_do[0] ),
         .I1(\token_ep_q_reg[0]_0 ),
         .I2(\token_ep_q[3]_i_2_n_0 ),
         .I3(\token_dev_q[6]_i_4_n_0 ),
@@ -11145,7 +11275,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT5 #(
     .INIT(32'hFFAC00A0)) 
     \token_ep_q[2]_i_1 
-       (.I0(p_1_in[2]),
+       (.I0(\usbfrx_data_w_do[1] ),
         .I1(\token_ep_q_reg[0]_0 ),
         .I2(\token_ep_q[3]_i_2_n_0 ),
         .I3(\token_dev_q[6]_i_4_n_0 ),
@@ -11154,7 +11284,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT5 #(
     .INIT(32'hFFAC00A0)) 
     \token_ep_q[3]_i_1 
-       (.I0(p_1_in[3]),
+       (.I0(\usbfrx_data_w_do[2] ),
         .I1(\token_ep_q_reg[0]_0 ),
         .I2(\token_ep_q[3]_i_2_n_0 ),
         .I3(\token_dev_q[6]_i_4_n_0 ),
@@ -11164,7 +11294,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     .INIT(32'h00000008)) 
     \token_ep_q[3]_i_2 
        (.I0(state_q[2]),
-        .I1(data_ready_w),
+        .I1(usbfrx_data_ready_w_do),
         .I2(state_q[1]),
         .I3(state_q[3]),
         .I4(state_q[0]),
@@ -11196,7 +11326,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[0]_i_1 
-       (.I0(p_1_in[1]),
+       (.I0(\usbfrx_data_w_do[0] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11206,7 +11336,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[1]_i_1 
-       (.I0(p_1_in[2]),
+       (.I0(\usbfrx_data_w_do[1] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11216,7 +11346,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[2]_i_1 
-       (.I0(p_1_in[3]),
+       (.I0(\usbfrx_data_w_do[2] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11226,7 +11356,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[3]_i_1 
-       (.I0(\data_buffer_q_reg_n_0_[3] ),
+       (.I0(\usbfrx_data_w_do[3] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11236,7 +11366,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[4]_i_1 
-       (.I0(\data_buffer_q_reg_n_0_[4] ),
+       (.I0(\usbfrx_data_w_do[4] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11246,7 +11376,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[5]_i_1 
-       (.I0(\data_buffer_q_reg_n_0_[5] ),
+       (.I0(\usbfrx_data_w_do[5] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11256,7 +11386,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[6]_i_1 
-       (.I0(\data_buffer_q_reg_n_0_[6] ),
+       (.I0(\usbfrx_data_w_do[6] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11268,7 +11398,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \token_pid_q[7]_i_1 
        (.I0(state_q[1]),
         .I1(state_q[2]),
-        .I2(data_ready_w),
+        .I2(usbfrx_data_ready_w_do),
         .I3(state_q[0]),
         .I4(state_q[3]),
         .I5(\token_ep_q_reg[0]_0 ),
@@ -11276,7 +11406,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
   LUT6 #(
     .INIT(64'h8B8B8B8B8B888B8B)) 
     \token_pid_q[7]_i_2 
-       (.I0(p_3_in),
+       (.I0(\usbfrx_data_w_do[7] ),
         .I1(\token_pid_q[7]_i_3_n_0 ),
         .I2(Q),
         .I3(out[1]),
@@ -11288,7 +11418,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     \token_pid_q[7]_i_3 
        (.I0(state_q[3]),
         .I1(state_q[0]),
-        .I2(data_ready_w),
+        .I2(usbfrx_data_ready_w_do),
         .I3(state_q[2]),
         .I4(state_q[1]),
         .O(\token_pid_q[7]_i_3_n_0 ));
@@ -11354,28 +11484,28 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
     token_valid_q_i_2
        (.I0(token_valid_q_i_3_n_0),
         .I1(token_valid_q_i_4_n_0),
-        .I2(current_addr_i_do[2]),
-        .I3(token_dev_w_do[2]),
-        .I4(current_addr_i_do[0]),
-        .I5(token_dev_w_do[0]),
+        .I2(current_addr_i_do[0]),
+        .I3(token_dev_w_do[0]),
+        .I4(current_addr_i_do[1]),
+        .I5(token_dev_w_do[1]),
         .O(token_valid_q_i_2_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     token_valid_q_i_3
        (.I0(token_dev_w_do[3]),
         .I1(current_addr_i_do[3]),
-        .I2(token_dev_w_do[5]),
-        .I3(current_addr_i_do[5]),
-        .I4(current_addr_i_do[6]),
-        .I5(token_dev_w_do[6]),
+        .I2(token_dev_w_do[6]),
+        .I3(current_addr_i_do[6]),
+        .I4(current_addr_i_do[4]),
+        .I5(token_dev_w_do[4]),
         .O(token_valid_q_i_3_n_0));
   LUT4 #(
     .INIT(16'h6FF6)) 
     token_valid_q_i_4
-       (.I0(current_addr_i_do[4]),
-        .I1(token_dev_w_do[4]),
-        .I2(current_addr_i_do[1]),
-        .I3(token_dev_w_do[1]),
+       (.I0(current_addr_i_do[2]),
+        .I1(token_dev_w_do[2]),
+        .I2(current_addr_i_do[5]),
+        .I3(token_dev_w_do[5]),
         .O(token_valid_q_i_4_n_0));
   FDCE token_valid_q_reg
        (.C(clk_i),
@@ -11383,36 +11513,12 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .CLR(rst_i),
         .D(token_valid_q0),
         .Q(token_valid_w_do));
-  LUT6 #(
-    .INIT(64'h0000000000000100)) 
+  LUT2 #(
+    .INIT(4'h2)) 
     \tx_pid_q[0]_i_1 
-       (.I0(\tx_pid_q[0]_i_2_n_0 ),
-        .I1(\state_q_reg[0]_0 ),
-        .I2(\state_q_reg[2]_2 ),
-        .I3(token_valid_w_do),
-        .I4(\state_q_reg[1]_0 ),
-        .I5(\tx_pid_q[4]_i_2_n_0 ),
+       (.I0(\tx_pid_q[3]_i_5_n_0 ),
+        .I1(\tx_pid_q[4]_i_2_n_0 ),
         .O(D[0]));
-  (* SOFT_HLUTNM = "soft_lutpair18" *) 
-  LUT5 #(
-    .INIT(32'hFFFFFDBF)) 
-    \tx_pid_q[0]_i_2 
-       (.I0(token_pid_w[2]),
-        .I1(token_pid_w[3]),
-        .I2(token_pid_w[0]),
-        .I3(token_pid_w[4]),
-        .I4(\tx_pid_q[0]_i_3_n_0 ),
-        .O(\tx_pid_q[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
-  LUT5 #(
-    .INIT(32'hFFBFFBFF)) 
-    \tx_pid_q[0]_i_3 
-       (.I0(token_pid_w[1]),
-        .I1(token_pid_w[5]),
-        .I2(token_pid_w[7]),
-        .I3(token_pid_w[6]),
-        .I4(token_pid_w[4]),
-        .O(\tx_pid_q[0]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFF00000020)) 
     \tx_pid_q[1]_i_1 
@@ -11443,7 +11549,6 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(\tx_pid_q[3]_i_4_n_0 ),
         .I5(\tx_pid_q[3]_i_5_n_0 ),
         .O(D[3]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h00000002)) 
     \tx_pid_q[3]_i_2 
@@ -11463,16 +11568,16 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(data_complete_o_do),
         .O(\tx_pid_q[3]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h0000AAAA0000000C)) 
+    .INIT(64'h0000AA000000AA0C)) 
     \tx_pid_q[3]_i_4 
        (.I0(rx_space_q_i_2_n_0),
         .I1(usbf_new_data_bit_r_do_INST_0_i_3_n_0),
         .I2(usbf_new_data_bit_r_do_INST_0_i_2_n_0),
-        .I3(\crc_sum_q_reg[0]_0 ),
+        .I3(\tx_pid_q[3]_i_6_n_0 ),
         .I4(\tx_pid_q[3]_i_2_n_0 ),
-        .I5(\tx_pid_q[4]_i_3_n_0 ),
+        .I5(\crc_sum_q_reg[0]_0 ),
         .O(\tx_pid_q[3]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT5 #(
     .INIT(32'h00000004)) 
     \tx_pid_q[3]_i_5 
@@ -11480,9 +11585,17 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(token_valid_w_do),
         .I2(\state_q_reg[2]_2 ),
         .I3(\state_q_reg[0]_0 ),
-        .I4(\tx_pid_q[0]_i_2_n_0 ),
+        .I4(\tx_pid_q[7]_i_6_n_0 ),
         .O(\tx_pid_q[3]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT5 #(
+    .INIT(32'h00040000)) 
+    \tx_pid_q[3]_i_6 
+       (.I0(status_stage_w_do_INST_0_i_6_n_0),
+        .I1(token_pid_w[4]),
+        .I2(token_pid_w[0]),
+        .I3(token_pid_w[3]),
+        .I4(token_pid_w[7]),
+        .O(\tx_pid_q[3]_i_6_n_0 ));
   LUT5 #(
     .INIT(32'h88A88888)) 
     \tx_pid_q[4]_i_1 
@@ -11493,23 +11606,24 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(\state_q_reg[1]_0 ),
         .O(D[4]));
   LUT6 #(
-    .INIT(64'hFFFFFFFFAAAAAAAE)) 
+    .INIT(64'hFFFFFFFF00000200)) 
     \tx_pid_q[4]_i_2 
-       (.I0(\crc_sum_q_reg[0]_0 ),
-        .I1(ctrl_txstall_q_reg),
-        .I2(usbf_ep_data_bit_r_do_INST_0_i_9_n_0),
-        .I3(\token_ep_w_do[3] ),
-        .I4(\token_ep_w_do[2] ),
+       (.I0(token_pid_w[7]),
+        .I1(token_pid_w[3]),
+        .I2(token_pid_w[0]),
+        .I3(token_pid_w[4]),
+        .I4(status_stage_w_do_INST_0_i_6_n_0),
         .I5(\tx_pid_q[4]_i_3_n_0 ),
         .O(\tx_pid_q[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h00040000)) 
+  LUT6 #(
+    .INIT(64'hFF3FFFFFFF3FFF5F)) 
     \tx_pid_q[4]_i_3 
-       (.I0(status_stage_w_do_INST_0_i_6_n_0),
-        .I1(token_pid_w[4]),
-        .I2(token_pid_w[0]),
-        .I3(token_pid_w[3]),
-        .I4(token_pid_w[7]),
+       (.I0(ctrl_txvalid_q_reg_0),
+        .I1(inport_valid_q_reg),
+        .I2(usbf_ep_data_bit_r_do_INST_0_i_1_n_0),
+        .I3(\token_ep_w_do[0] ),
+        .I4(\token_ep_w_do[1] ),
+        .I5(ctrl_txstall_q_reg),
         .O(\tx_pid_q[4]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'hAAAAAAA8AAAAAAAA)) 
@@ -11541,6 +11655,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(usbf_new_data_bit_r_do_INST_0_i_3_n_0),
         .I5(usbf_new_data_bit_r_do_INST_0_i_11_n_0),
         .O(\tx_pid_q[7]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'hFF8FFFFF)) 
     \tx_pid_q[7]_i_3 
@@ -11557,8 +11672,8 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(usbf_new_data_bit_r_do_INST_0_i_2_n_0),
         .I2(usbf_new_data_bit_r_do_INST_0_i_3_n_0),
         .I3(\tx_pid_q[7]_i_5_n_0 ),
-        .I4(\tx_pid_q[0]_i_2_n_0 ),
-        .I5(\tx_pid_q[7]_i_6_n_0 ),
+        .I4(\tx_pid_q[7]_i_6_n_0 ),
+        .I5(\tx_pid_q[7]_i_7_n_0 ),
         .O(\tx_pid_q[7]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'h3000101000000000)) 
@@ -11568,15 +11683,35 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(usbf_ep_data_bit_r_do_INST_0_i_1_n_0),
         .I3(outport_accept_i),
         .I4(\token_ep_w_do[0] ),
-        .I5(\tx_pid_q[4]_i_3_n_0 ),
+        .I5(\tx_pid_q[3]_i_6_n_0 ),
         .O(\tx_pid_q[7]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  (* SOFT_HLUTNM = "soft_lutpair19" *) 
+  LUT5 #(
+    .INIT(32'hFFFFFDBF)) 
+    \tx_pid_q[7]_i_6 
+       (.I0(token_pid_w[2]),
+        .I1(token_pid_w[3]),
+        .I2(token_pid_w[0]),
+        .I3(token_pid_w[4]),
+        .I4(\tx_pid_q[7]_i_8_n_0 ),
+        .O(\tx_pid_q[7]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair24" *) 
   LUT2 #(
     .INIT(4'hB)) 
-    \tx_pid_q[7]_i_6 
+    \tx_pid_q[7]_i_7 
        (.I0(\state_q_reg[1]_0 ),
         .I1(token_valid_w_do),
-        .O(\tx_pid_q[7]_i_6_n_0 ));
+        .O(\tx_pid_q[7]_i_7_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
+  LUT5 #(
+    .INIT(32'hFFBFFBFF)) 
+    \tx_pid_q[7]_i_8 
+       (.I0(token_pid_w[1]),
+        .I1(token_pid_w[5]),
+        .I2(token_pid_w[7]),
+        .I3(token_pid_w[6]),
+        .I4(token_pid_w[4]),
+        .O(\tx_pid_q[7]_i_8_n_0 ));
   LUT4 #(
     .INIT(16'hEAAA)) 
     tx_valid_q_i_2
@@ -11595,13 +11730,14 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(usbf_ep_data_bit_r_do_INST_0_i_5_n_0),
         .I5(usbf_ep_data_bit_r_do_INST_0_i_6_n_0),
         .O(usbf_ep_data_bit_r_do));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT2 #(
     .INIT(4'h1)) 
     usbf_ep_data_bit_r_do_INST_0_i_1
        (.I0(\token_ep_w_do[3] ),
         .I1(\token_ep_w_do[2] ),
         .O(usbf_ep_data_bit_r_do_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT2 #(
     .INIT(4'h8)) 
     usbf_ep_data_bit_r_do_INST_0_i_10
@@ -11619,11 +11755,11 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I5(usbf_ep_data_bit_r_do_INST_0_i_8_n_0),
         .O(usbf_ep_data_bit_r_do_INST_0_i_2_n_0));
   LUT6 #(
-    .INIT(64'h0F0F0F0F00000008)) 
+    .INIT(64'h5555555500000040)) 
     usbf_ep_data_bit_r_do_INST_0_i_3
-       (.I0(usbf_ep_data_bit_r_do_INST_0_i_7_n_0),
-        .I1(usbf_ep_data_bit_r_do_INST_0_i_1_n_0),
-        .I2(usbf_ep_data_bit_r_do_INST_0_i_9_n_0),
+       (.I0(usbf_ep_data_bit_r_do_INST_0_i_9_n_0),
+        .I1(usbf_ep_data_bit_r_do_INST_0_i_7_n_0),
+        .I2(status_stage_w_do_INST_0_i_2_n_0),
         .I3(status_stage_w_do_INST_0_i_3_n_0),
         .I4(status_stage_w_do_INST_0_i_4_n_0),
         .I5(ep0_data_bit_q_reg_0),
@@ -11638,7 +11774,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(status_stage_w_do_INST_0_i_1_n_0),
         .I5(ep0_dir_out_q_reg),
         .O(usbf_ep_data_bit_r_do_INST_0_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'hB)) 
     usbf_ep_data_bit_r_do_INST_0_i_5
@@ -11665,14 +11801,14 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(status_stage_w_do_INST_0_i_8_n_0),
         .I5(status_stage_w_do_INST_0_i_2_n_0),
         .O(usbf_ep_data_bit_r_do_INST_0_i_7_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT2 #(
     .INIT(4'hB)) 
     usbf_ep_data_bit_r_do_INST_0_i_8
        (.I0(\token_ep_w_do[1] ),
         .I1(\token_ep_w_do[0] ),
         .O(usbf_ep_data_bit_r_do_INST_0_i_8_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT2 #(
     .INIT(4'hE)) 
     usbf_ep_data_bit_r_do_INST_0_i_9
@@ -11699,7 +11835,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(\state_q_reg[1]_0 ),
         .I5(usbf_new_data_bit_r_do_INST_0_i_9_n_0),
         .O(usbf_new_data_bit_r_do_INST_0_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'hDF)) 
     usbf_new_data_bit_r_do_INST_0_i_10
@@ -11707,7 +11843,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I1(crc_err_q_reg_n_0),
         .I2(\state_q_reg[1]_0 ),
         .O(usbf_new_data_bit_r_do_INST_0_i_10_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT5 #(
     .INIT(32'h00000400)) 
     usbf_new_data_bit_r_do_INST_0_i_11
@@ -11717,14 +11853,14 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(token_pid_w[0]),
         .I4(usbf_new_data_bit_r_do_INST_0_i_15_n_0),
         .O(usbf_new_data_bit_r_do_INST_0_i_11_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair17" *) 
+  (* SOFT_HLUTNM = "soft_lutpair18" *) 
   LUT2 #(
     .INIT(4'hB)) 
     usbf_new_data_bit_r_do_INST_0_i_12
        (.I0(token_pid_w[3]),
         .I1(token_pid_w[7]),
         .O(usbf_new_data_bit_r_do_INST_0_i_12_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair20" *) 
+  (* SOFT_HLUTNM = "soft_lutpair21" *) 
   LUT2 #(
     .INIT(4'hB)) 
     usbf_new_data_bit_r_do_INST_0_i_13
@@ -11741,7 +11877,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(token_pid_w[2]),
         .I5(token_pid_w[6]),
         .O(usbf_new_data_bit_r_do_INST_0_i_14_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair24" *) 
+  (* SOFT_HLUTNM = "soft_lutpair28" *) 
   LUT4 #(
     .INIT(16'hFFDF)) 
     usbf_new_data_bit_r_do_INST_0_i_15
@@ -11750,7 +11886,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(token_pid_w[1]),
         .I3(token_pid_w[5]),
         .O(usbf_new_data_bit_r_do_INST_0_i_15_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT5 #(
     .INIT(32'h00FA00FC)) 
     usbf_new_data_bit_r_do_INST_0_i_2
@@ -11760,6 +11896,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I3(\token_ep_w_do[1] ),
         .I4(\token_ep_w_do[0] ),
         .O(usbf_new_data_bit_r_do_INST_0_i_2_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
   LUT5 #(
     .INIT(32'h03FF05FF)) 
     usbf_new_data_bit_r_do_INST_0_i_3
@@ -11819,6 +11956,12 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I4(token_pid_w[0]),
         .I5(usbf_new_data_bit_r_do_INST_0_i_14_n_0),
         .O(usbf_new_data_bit_r_do_INST_0_i_9_n_0));
+  LUT2 #(
+    .INIT(4'hB)) 
+    usbfrx_shift_en_w_do_INST_0
+       (.I0(utmi_rxvalid_i),
+        .I1(utmi_rxactive_i),
+        .O(usbfrx_shift_en_w_do));
   LUT6 #(
     .INIT(64'hFFFFFFFF0B080000)) 
     \utmi_data_out_o[0]_INST_0_i_1 
@@ -11827,7 +11970,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txdata_q_do[0]),
         .I4(\FSM_sequential_state_q_reg[0]_1 ),
-        .I5(\crc_sum_q_reg[8]_2 ),
+        .I5(\FSM_sequential_state_q_reg[1]_4 ),
         .O(\crc_sum_q_reg[6]_0 ));
   LUT6 #(
     .INIT(64'h00000000F4F7FFFF)) 
@@ -11837,7 +11980,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txdata_q_do[1]),
         .I4(\FSM_sequential_state_q_reg[0]_1 ),
-        .I5(\crc_sum_q_reg[9]_0 ),
+        .I5(\FSM_sequential_state_q_reg[1]_3 ),
         .O(\crc_sum_q_reg[8]_1 ));
   LUT6 #(
     .INIT(64'h00000000F4F7FFFF)) 
@@ -11847,7 +11990,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txdata_q_do[2]),
         .I4(\FSM_sequential_state_q_reg[0]_1 ),
-        .I5(\crc_sum_q_reg[10]_2 ),
+        .I5(\FSM_sequential_state_q_reg[1]_0 ),
         .O(\crc_sum_q_reg[8]_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFF0B080000)) 
@@ -11857,7 +12000,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txdata_q_do[3]),
         .I4(\FSM_sequential_state_q_reg[0]_1 ),
-        .I5(\crc_sum_q_reg[11]_1 ),
+        .I5(\FSM_sequential_state_q_reg[1]_1 ),
         .O(\crc_sum_q_reg[10]_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFF0B080000)) 
@@ -11867,9 +12010,9 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txdata_q_do[4]),
         .I4(\FSM_sequential_state_q_reg[0]_1 ),
-        .I5(\crc_sum_q_reg[12]_0 ),
+        .I5(\FSM_sequential_state_q_reg[1]_5 ),
         .O(\crc_sum_q_reg[10]_1 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'hF5FDF7FF)) 
     \utmi_data_out_o[5]_INST_0_i_2 
@@ -11887,7 +12030,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txdata_q_do[6]),
         .I4(\FSM_sequential_state_q_reg[0]_1 ),
-        .I5(\crc_sum_q_reg[14]_0 ),
+        .I5(\FSM_sequential_state_q_reg[1]_2 ),
         .O(\crc_sum_q_reg[13]_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFF0B080000)) 
@@ -11897,33 +12040,33 @@ module brd_usb_cdc_core_0_0_usbf_sie_rx
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txdata_q_do[7]),
         .I4(\FSM_sequential_state_q_reg[0]_1 ),
-        .I5(\crc_sum_q_reg[15]_1 ),
+        .I5(\FSM_sequential_state_q_reg[1]_6 ),
         .O(\crc_sum_q_reg[15]_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFF4F7)) 
     utmi_txvalid_o_INST_0_i_1
-       (.I0(ep2_tx_data_valid_w_do),
+       (.I0(inport_valid_q_reg),
         .I1(\token_ep_w_do[1] ),
         .I2(\token_ep_w_do[0] ),
         .I3(ctrl_txvalid_q_reg_0),
         .I4(\token_ep_w_do[2] ),
         .I5(\token_ep_w_do[3] ),
         .O(\crc_sum_q_reg[0]_0 ));
-  LUT5 #(
-    .INIT(32'h00C80008)) 
+  LUT6 #(
+    .INIT(64'hBAAAAAAAAAAAAAAA)) 
     valid_q_i_1__0
-       (.I0(data_ready_w),
-        .I1(valid_q_i_2_n_0),
-        .I2(\data_crc_q_reg_n_0_[0] ),
-        .I3(state_q[0]),
-        .I4(data_zlp_q),
+       (.I0(input_ready_w),
+        .I1(state_q[3]),
+        .I2(valid_q_i_2_n_0),
+        .I3(state_q[2]),
+        .I4(usbfrx_crc_byte_w_do),
+        .I5(data_zlp_q),
         .O(valid_q0));
-  LUT3 #(
-    .INIT(8'h08)) 
+  LUT2 #(
+    .INIT(4'h2)) 
     valid_q_i_2
        (.I0(state_q[1]),
-        .I1(state_q[2]),
-        .I2(state_q[3]),
+        .I1(state_q[0]),
         .O(valid_q_i_2_n_0));
   FDCE valid_q_reg
        (.C(clk_i),
@@ -11937,26 +12080,27 @@ endmodule
 module brd_usb_cdc_core_0_0_usbf_sie_tx
    (Q,
     \FSM_sequential_state_q_reg[1]_0 ,
-    \FSM_sequential_state_q_reg[2]_0 ,
     utmi_data_out_o,
     \crc_sum_q_reg[8]_0 ,
-    utmi_txvalid_o,
     sie_tx_state_q_o,
+    \chirp_count_q_reg[3] ,
+    utmi_txvalid_o,
     \state_q_reg[2] ,
     inport_valid_q_reg,
     E,
-    \FSM_sequential_state_q_reg[0]_0 ,
+    data_pid_q4_out,
+    ep2_tx_data_last_w_do,
+    \crc_sum_q_reg[15]_0 ,
     \crc_sum_q_reg[8]_1 ,
     \crc_sum_q_reg[10]_0 ,
     \crc_sum_q_reg[13]_0 ,
     \crc_sum_q_reg[8]_2 ,
     \crc_sum_q_reg[6]_0 ,
     \crc_sum_q_reg[10]_1 ,
-    \crc_sum_q_reg[15]_0 ,
     clk_i,
     rst_i,
-    ctrl_txlast_q_reg,
-    \se0_cnt_q_reg[14] ,
+    \token_ep_q_reg[2] ,
+    utmi_txready_i,
     \inport_data_q_reg[2] ,
     \inport_data_q_reg[3] ,
     \token_ep_q_reg[1] ,
@@ -11965,41 +12109,42 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
     \inport_data_q_reg[0] ,
     \inport_data_q_reg[4] ,
     \inport_data_q_reg[7] ,
-    \token_ep_q_reg[2] ,
+    \token_ep_q_reg[2]_0 ,
     \token_ep_q_reg[3] ,
-    utmi_txready_i,
     \state_q_reg[0] ,
     \state_q_reg[1] ,
     \state_q_reg[2]_0 ,
     \state_q_reg[2]_1 ,
     inport_valid_q_reg_0,
     tx_valid_q_reg,
+    \se0_cnt_q_reg[14] ,
     usbf_tx_pid_q_do,
     out,
-    inport_valid_i,
-    ctrl_txvalid_q_reg);
+    inport_valid_q_do,
+    inport_valid_q_reg_1);
   output [15:0]Q;
   output \FSM_sequential_state_q_reg[1]_0 ;
-  output \FSM_sequential_state_q_reg[2]_0 ;
   output [7:0]utmi_data_out_o;
   output \crc_sum_q_reg[8]_0 ;
-  output utmi_txvalid_o;
   output [2:0]sie_tx_state_q_o;
+  output \chirp_count_q_reg[3] ;
+  output utmi_txvalid_o;
   output \state_q_reg[2] ;
   output inport_valid_q_reg;
   output [0:0]E;
-  output \FSM_sequential_state_q_reg[0]_0 ;
+  output data_pid_q4_out;
+  output ep2_tx_data_last_w_do;
+  output \crc_sum_q_reg[15]_0 ;
   output \crc_sum_q_reg[8]_1 ;
   output \crc_sum_q_reg[10]_0 ;
   output \crc_sum_q_reg[13]_0 ;
   output \crc_sum_q_reg[8]_2 ;
   output \crc_sum_q_reg[6]_0 ;
   output \crc_sum_q_reg[10]_1 ;
-  output \crc_sum_q_reg[15]_0 ;
   input clk_i;
   input rst_i;
-  input ctrl_txlast_q_reg;
-  input [0:0]\se0_cnt_q_reg[14] ;
+  input \token_ep_q_reg[2] ;
+  input utmi_txready_i;
   input \inport_data_q_reg[2] ;
   input \inport_data_q_reg[3] ;
   input \token_ep_q_reg[1] ;
@@ -12008,40 +12153,35 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
   input \inport_data_q_reg[0] ;
   input \inport_data_q_reg[4] ;
   input \inport_data_q_reg[7] ;
-  input \token_ep_q_reg[2] ;
+  input \token_ep_q_reg[2]_0 ;
   input \token_ep_q_reg[3] ;
-  input utmi_txready_i;
   input \state_q_reg[0] ;
   input \state_q_reg[1] ;
   input \state_q_reg[2]_0 ;
   input \state_q_reg[2]_1 ;
   input inport_valid_q_reg_0;
   input tx_valid_q_reg;
+  input [0:0]\se0_cnt_q_reg[14] ;
   input [6:0]usbf_tx_pid_q_do;
   input [2:0]out;
-  input inport_valid_i;
-  input ctrl_txvalid_q_reg;
+  input inport_valid_q_do;
+  input inport_valid_q_reg_1;
 
   wire [0:0]E;
   wire \FSM_sequential_state_q[0]_i_1_n_0 ;
   wire \FSM_sequential_state_q[0]_i_2_n_0 ;
   wire \FSM_sequential_state_q[0]_i_3__0_n_0 ;
   wire \FSM_sequential_state_q[0]_i_4_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_10_n_0 ;
   wire \FSM_sequential_state_q[1]_i_1__0_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_3_n_0 ;
+  wire \FSM_sequential_state_q[1]_i_2_n_0 ;
   wire \FSM_sequential_state_q[1]_i_4_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_6_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_8_n_0 ;
-  wire \FSM_sequential_state_q[1]_i_9__0_n_0 ;
+  wire \FSM_sequential_state_q[1]_i_5_n_0 ;
   wire \FSM_sequential_state_q[2]_i_1__0_n_0 ;
   wire \FSM_sequential_state_q[2]_i_3_n_0 ;
-  wire \FSM_sequential_state_q[2]_i_4__1_n_0 ;
-  wire \FSM_sequential_state_q[2]_i_5_n_0 ;
-  wire \FSM_sequential_state_q_reg[0]_0 ;
+  wire \FSM_sequential_state_q[2]_i_4__0_n_0 ;
   wire \FSM_sequential_state_q_reg[1]_0 ;
-  wire \FSM_sequential_state_q_reg[2]_0 ;
   wire [15:0]Q;
+  wire \chirp_count_q_reg[3] ;
   wire clk_i;
   wire [15:0]crc_sum_q;
   wire \crc_sum_q[0]_i_2_n_0 ;
@@ -12070,20 +12210,22 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
   wire \crc_sum_q_reg_n_0_[5] ;
   wire \crc_sum_q_reg_n_0_[6] ;
   wire \crc_sum_q_reg_n_0_[7] ;
-  wire ctrl_txlast_q_reg;
-  wire ctrl_txvalid_q_reg;
   wire data_pid_q4_out;
   wire data_pid_q_i_1_n_0;
   wire data_pid_q_i_3_n_0;
   wire data_pid_q_i_4_n_0;
   wire data_pid_q_i_5_n_0;
   wire data_pid_q_i_6_n_0;
-  wire data_pid_q_i_7_n_0;
   wire data_pid_q_reg_n_0;
   wire [7:0]data_q;
   wire \data_q[7]_i_1_n_0 ;
   wire data_zlp_q_i_1__0_n_0;
+  wire data_zlp_q_i_3__0_n_0;
   wire data_zlp_q_reg_n_0;
+  wire ep2_tx_data_last_w_do;
+  wire ep2_tx_data_last_w_do_INST_0_i_1_n_0;
+  wire ep2_tx_data_last_w_do_INST_0_i_2_n_0;
+  wire ep2_tx_data_last_w_do_INST_0_i_3_n_0;
   wire [15:1]in29;
   wire \inport_data_q_reg[0] ;
   wire \inport_data_q_reg[1] ;
@@ -12092,9 +12234,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
   wire \inport_data_q_reg[4] ;
   wire \inport_data_q_reg[6] ;
   wire \inport_data_q_reg[7] ;
-  wire inport_valid_i;
+  wire inport_valid_q_do;
   wire inport_valid_q_reg;
   wire inport_valid_q_reg_0;
+  wire inport_valid_q_reg_1;
   wire [2:0]out;
   wire [7:0]p_0_in;
   wire [7:0]p_1_in;
@@ -12111,6 +12254,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
   wire \state_q_reg[2]_1 ;
   wire \token_ep_q_reg[1] ;
   wire \token_ep_q_reg[2] ;
+  wire \token_ep_q_reg[2]_0 ;
   wire \token_ep_q_reg[3] ;
   wire [15:0]tx_sent_data_counter_q;
   wire \tx_sent_data_counter_q0_inferred__0/i__carry__0_n_0 ;
@@ -12140,24 +12284,24 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
   wire [3:3]\NLW_tx_sent_data_counter_q0_inferred__0/i__carry__2_O_UNCONNECTED ;
 
   LUT6 #(
-    .INIT(64'h00000000EEEEAAEA)) 
+    .INIT(64'h00000000EAEEEAEA)) 
     \FSM_sequential_state_q[0]_i_1 
        (.I0(\FSM_sequential_state_q[0]_i_2_n_0 ),
         .I1(\FSM_sequential_state_q[0]_i_3__0_n_0 ),
-        .I2(state_q[2]),
-        .I3(ctrl_txlast_q_reg),
-        .I4(state_q[1]),
+        .I2(state_q[1]),
+        .I3(\token_ep_q_reg[2] ),
+        .I4(state_q[2]),
         .I5(\FSM_sequential_state_q[0]_i_4_n_0 ),
         .O(\FSM_sequential_state_q[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hCC00CCCC00F088F0)) 
+    .INIT(64'hAAFA44EE00004444)) 
     \FSM_sequential_state_q[0]_i_2 
-       (.I0(utmi_txvalid_o),
-        .I1(state_q[0]),
-        .I2(\FSM_sequential_state_q_reg[2]_0 ),
-        .I3(state_q[2]),
-        .I4(utmi_txready_i),
-        .I5(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(\chirp_count_q_reg[3] ),
+        .I2(utmi_txvalid_o),
+        .I3(utmi_txready_i),
+        .I4(state_q[2]),
+        .I5(state_q[0]),
         .O(\FSM_sequential_state_q[0]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h2)) 
@@ -12166,56 +12310,39 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I1(state_q[0]),
         .O(\FSM_sequential_state_q[0]_i_3__0_n_0 ));
   LUT6 #(
-    .INIT(64'hAAAAAAAABAAAAAAA)) 
+    .INIT(64'hAABAAAAAAAAAAAAA)) 
     \FSM_sequential_state_q[0]_i_4 
        (.I0(\FSM_sequential_state_q_reg[1]_0 ),
         .I1(data_zlp_q_reg_n_0),
         .I2(data_pid_q_reg_n_0),
-        .I3(state_q[1]),
-        .I4(utmi_txready_i),
-        .I5(state_q[2]),
+        .I3(state_q[2]),
+        .I4(state_q[1]),
+        .I5(utmi_txready_i),
         .O(\FSM_sequential_state_q[0]_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
-    \FSM_sequential_state_q[1]_i_10 
-       (.I0(Q[14]),
-        .I1(Q[9]),
-        .I2(Q[15]),
-        .I3(Q[10]),
-        .O(\FSM_sequential_state_q[1]_i_10_n_0 ));
   LUT6 #(
-    .INIT(64'h4545454544454545)) 
+    .INIT(64'h4444444455554555)) 
     \FSM_sequential_state_q[1]_i_1__0 
        (.I0(\FSM_sequential_state_q_reg[1]_0 ),
-        .I1(\FSM_sequential_state_q[1]_i_3_n_0 ),
-        .I2(\FSM_sequential_state_q[1]_i_4_n_0 ),
-        .I3(ctrl_txlast_q_reg),
-        .I4(state_q[2]),
-        .I5(state_q[1]),
+        .I1(\FSM_sequential_state_q[1]_i_2_n_0 ),
+        .I2(\token_ep_q_reg[2] ),
+        .I3(state_q[2]),
+        .I4(state_q[1]),
+        .I5(\FSM_sequential_state_q[1]_i_4_n_0 ),
         .O(\FSM_sequential_state_q[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
-  LUT4 #(
-    .INIT(16'hAA8A)) 
-    \FSM_sequential_state_q[1]_i_2 
-       (.I0(\se0_cnt_q_reg[14] ),
-        .I1(out[1]),
-        .I2(out[2]),
-        .I3(out[0]),
-        .O(\FSM_sequential_state_q_reg[1]_0 ));
   LUT6 #(
     .INIT(64'h2020A82000008A8A)) 
-    \FSM_sequential_state_q[1]_i_3 
+    \FSM_sequential_state_q[1]_i_2 
        (.I0(state_q[1]),
         .I1(state_q[2]),
-        .I2(\FSM_sequential_state_q_reg[2]_0 ),
+        .I2(\chirp_count_q_reg[3] ),
         .I3(utmi_txvalid_o),
         .I4(utmi_txready_i),
         .I5(state_q[0]),
-        .O(\FSM_sequential_state_q[1]_i_3_n_0 ));
+        .O(\FSM_sequential_state_q[1]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0F0F0F0FC1F1CDCD)) 
     \FSM_sequential_state_q[1]_i_4 
-       (.I0(\FSM_sequential_state_q[1]_i_6_n_0 ),
+       (.I0(\FSM_sequential_state_q[1]_i_5_n_0 ),
         .I1(state_q[2]),
         .I2(state_q[1]),
         .I3(data_zlp_q_reg_n_0),
@@ -12224,84 +12351,48 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .O(\FSM_sequential_state_q[1]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hFBFBFB00)) 
-    \FSM_sequential_state_q[1]_i_6 
+    \FSM_sequential_state_q[1]_i_5 
        (.I0(out[1]),
         .I1(out[2]),
         .I2(out[0]),
         .I3(state_q[1]),
         .I4(tx_valid_q_reg),
-        .O(\FSM_sequential_state_q[1]_i_6_n_0 ));
+        .O(\FSM_sequential_state_q[1]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFF55555540)) 
-    \FSM_sequential_state_q[1]_i_7 
-       (.I0(\FSM_sequential_state_q[1]_i_8_n_0 ),
-        .I1(Q[1]),
-        .I2(Q[0]),
-        .I3(Q[3]),
-        .I4(Q[2]),
-        .I5(\FSM_sequential_state_q[1]_i_9__0_n_0 ),
-        .O(\FSM_sequential_state_q_reg[0]_0 ));
-  LUT5 #(
-    .INIT(32'h7FFFFFFF)) 
-    \FSM_sequential_state_q[1]_i_8 
-       (.I0(Q[8]),
-        .I1(Q[5]),
-        .I2(Q[4]),
-        .I3(Q[6]),
-        .I4(Q[7]),
-        .O(\FSM_sequential_state_q[1]_i_8_n_0 ));
-  LUT5 #(
-    .INIT(32'hFFFFFEFF)) 
-    \FSM_sequential_state_q[1]_i_9__0 
-       (.I0(Q[12]),
-        .I1(Q[13]),
-        .I2(Q[11]),
-        .I3(inport_valid_i),
-        .I4(\FSM_sequential_state_q[1]_i_10_n_0 ),
-        .O(\FSM_sequential_state_q[1]_i_9__0_n_0 ));
-  LUT6 #(
-    .INIT(64'hB000B0B0BBBBBBBB)) 
+    .INIT(64'h4444444444555545)) 
     \FSM_sequential_state_q[2]_i_1__0 
-       (.I0(\FSM_sequential_state_q_reg[2]_0 ),
-        .I1(\se0_cnt_q_reg[14] ),
-        .I2(\FSM_sequential_state_q[2]_i_3_n_0 ),
-        .I3(state_q[1]),
-        .I4(\FSM_sequential_state_q[2]_i_4__1_n_0 ),
-        .I5(\FSM_sequential_state_q[2]_i_5_n_0 ),
-        .O(\FSM_sequential_state_q[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair36" *) 
-  LUT3 #(
-    .INIT(8'h04)) 
-    \FSM_sequential_state_q[2]_i_2 
-       (.I0(out[0]),
-        .I1(out[2]),
-        .I2(out[1]),
-        .O(\FSM_sequential_state_q_reg[2]_0 ));
-  LUT4 #(
-    .INIT(16'hAA8A)) 
-    \FSM_sequential_state_q[2]_i_3 
-       (.I0(state_q[2]),
-        .I1(ctrl_txlast_q_reg),
-        .I2(utmi_txready_i),
-        .I3(state_q[0]),
-        .O(\FSM_sequential_state_q[2]_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'hA0E0)) 
-    \FSM_sequential_state_q[2]_i_4__1 
-       (.I0(utmi_txready_i),
-        .I1(state_q[2]),
-        .I2(state_q[0]),
-        .I3(valid_q_reg_n_0),
-        .O(\FSM_sequential_state_q[2]_i_4__1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF3F3FBF)) 
-    \FSM_sequential_state_q[2]_i_5 
-       (.I0(data_zlp_q_reg_n_0),
-        .I1(utmi_txready_i),
-        .I2(state_q[1]),
+       (.I0(\FSM_sequential_state_q_reg[1]_0 ),
+        .I1(\FSM_sequential_state_q[2]_i_3_n_0 ),
+        .I2(data_zlp_q_reg_n_0),
         .I3(state_q[2]),
         .I4(state_q[0]),
-        .O(\FSM_sequential_state_q[2]_i_5_n_0 ));
+        .I5(\FSM_sequential_state_q[2]_i_4__0_n_0 ),
+        .O(\FSM_sequential_state_q[2]_i_1__0_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  LUT4 #(
+    .INIT(16'hAA8A)) 
+    \FSM_sequential_state_q[2]_i_2 
+       (.I0(\se0_cnt_q_reg[14] ),
+        .I1(out[1]),
+        .I2(out[2]),
+        .I3(out[0]),
+        .O(\FSM_sequential_state_q_reg[1]_0 ));
+  LUT6 #(
+    .INIT(64'hC088CCCCC088C0CC)) 
+    \FSM_sequential_state_q[2]_i_3 
+       (.I0(\token_ep_q_reg[2] ),
+        .I1(state_q[2]),
+        .I2(state_q[1]),
+        .I3(state_q[0]),
+        .I4(utmi_txready_i),
+        .I5(utmi_txvalid_o),
+        .O(\FSM_sequential_state_q[2]_i_3_n_0 ));
+  LUT2 #(
+    .INIT(4'h7)) 
+    \FSM_sequential_state_q[2]_i_4__0 
+       (.I0(utmi_txready_i),
+        .I1(state_q[1]),
+        .O(\FSM_sequential_state_q[2]_i_4__0_n_0 ));
   (* FSM_ENCODED_STATES = "STATE_TX_CHIRP:001,STATE_TX_PID:010,STATE_TX_DATA:100,STATE_TX_CRC1:011,STATE_TX_CRC2:110,STATE_TX_DONE:101,STATE_TX_IDLE:000" *) 
   (* KEEP = "yes" *) 
   FDCE \FSM_sequential_state_q_reg[0] 
@@ -12326,8 +12417,16 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .CLR(rst_i),
         .D(\FSM_sequential_state_q[2]_i_1__0_n_0 ),
         .Q(state_q[2]));
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
+  LUT3 #(
+    .INIT(8'h04)) 
+    \chirp_count_q[4]_i_2 
+       (.I0(out[0]),
+        .I1(out[2]),
+        .I2(out[1]),
+        .O(\chirp_count_q_reg[3] ));
   LUT4 #(
-    .INIT(16'h7DD7)) 
+    .INIT(16'hD77D)) 
     \crc_sum_q[0]_i_1__0 
        (.I0(state_q[2]),
         .I1(\crc_sum_q[15]_i_6_n_0 ),
@@ -12337,32 +12436,32 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
   LUT6 #(
     .INIT(64'h9669699669969669)) 
     \crc_sum_q[0]_i_2 
-       (.I0(utmi_data_out_o[7]),
-        .I1(\crc_sum_q_reg_n_0_[7] ),
-        .I2(\crc_sum_q_reg_n_0_[2] ),
-        .I3(\crc_sum_q_reg_n_0_[0] ),
-        .I4(\crc_sum_q_reg_n_0_[5] ),
-        .I5(\crc_sum_q_reg_n_0_[6] ),
+       (.I0(\crc_sum_q_reg_n_0_[7] ),
+        .I1(\crc_sum_q_reg_n_0_[2] ),
+        .I2(\crc_sum_q_reg_n_0_[0] ),
+        .I3(\crc_sum_q_reg_n_0_[5] ),
+        .I4(\crc_sum_q_reg_n_0_[6] ),
+        .I5(utmi_data_out_o[7]),
         .O(\crc_sum_q[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT5 #(
     .INIT(32'hBEEBEBBE)) 
     \crc_sum_q[10]_i_1 
        (.I0(\crc_sum_q[15]_i_3_n_0 ),
-        .I1(utmi_data_out_o[4]),
-        .I2(\crc_sum_q_reg_n_0_[4] ),
+        .I1(utmi_data_out_o[3]),
+        .I2(utmi_data_out_o[4]),
         .I3(\crc_sum_q_reg_n_0_[3] ),
-        .I4(utmi_data_out_o[3]),
+        .I4(\crc_sum_q_reg_n_0_[4] ),
         .O(crc_sum_q[10]));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT5 #(
     .INIT(32'hEBBEBEEB)) 
     \crc_sum_q[11]_i_1 
        (.I0(\crc_sum_q[15]_i_3_n_0 ),
-        .I1(\crc_sum_q_reg_n_0_[5] ),
-        .I2(\utmi_data_out_o[5]_INST_0_i_1_n_0 ),
-        .I3(\crc_sum_q_reg_n_0_[4] ),
-        .I4(utmi_data_out_o[4]),
+        .I1(\crc_sum_q_reg_n_0_[4] ),
+        .I2(utmi_data_out_o[4]),
+        .I3(\crc_sum_q_reg_n_0_[5] ),
+        .I4(\utmi_data_out_o[5]_INST_0_i_1_n_0 ),
         .O(crc_sum_q[11]));
   LUT4 #(
     .INIT(16'h7DD7)) 
@@ -12388,7 +12487,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I4(utmi_data_out_o[7]),
         .O(crc_sum_q[13]));
   LUT6 #(
-    .INIT(64'hEBBEBEEBBEEBEBBE)) 
+    .INIT(64'hBEEBEBBEEBBEBEEB)) 
     \crc_sum_q[14]_i_1 
        (.I0(\crc_sum_q[15]_i_3_n_0 ),
         .I1(\crc_sum_q_reg_n_0_[2] ),
@@ -12407,13 +12506,13 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I4(inport_valid_q_reg_0),
         .O(crc_sum_q_1));
   LUT6 #(
-    .INIT(64'hEBBEBEEBBEEBEBBE)) 
+    .INIT(64'hBEEBEBBEEBBEBEEB)) 
     \crc_sum_q[15]_i_2 
        (.I0(\crc_sum_q[15]_i_3_n_0 ),
-        .I1(utmi_data_out_o[7]),
-        .I2(\crc_sum_q_reg_n_0_[7] ),
-        .I3(\crc_sum_q[15]_i_4_n_0 ),
-        .I4(\crc_sum_q[15]_i_5_n_0 ),
+        .I1(\crc_sum_q_reg_n_0_[7] ),
+        .I2(\crc_sum_q[15]_i_4_n_0 ),
+        .I3(\crc_sum_q[15]_i_5_n_0 ),
+        .I4(utmi_data_out_o[7]),
         .I5(\crc_sum_q[15]_i_6_n_0 ),
         .O(crc_sum_q[15]));
   LUT3 #(
@@ -12436,7 +12535,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I1(\crc_sum_q_reg_n_0_[6] ),
         .O(\crc_sum_q[15]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'h9669699669969669)) 
+    .INIT(64'h6996966996696996)) 
     \crc_sum_q[15]_i_6 
        (.I0(\crc_sum_q[15]_i_7_n_0 ),
         .I1(\crc_sum_q_reg_n_0_[1] ),
@@ -12445,7 +12544,7 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I4(\crc_sum_q[9]_i_2_n_0 ),
         .I5(\crc_sum_q[12]_i_2_n_0 ),
         .O(\crc_sum_q[15]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair35" *) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \crc_sum_q[15]_i_7 
@@ -12624,67 +12723,69 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .D(crc_sum_q[9]),
         .PRE(rst_i),
         .Q(p_0_in[1]));
-  LUT3 #(
-    .INIT(8'hB8)) 
+  LUT5 #(
+    .INIT(32'hFFFF9FDF)) 
+    ctrl_send_accept_w_do_INST_0_i_1
+       (.I0(state_q[2]),
+        .I1(state_q[1]),
+        .I2(utmi_txready_i),
+        .I3(data_zlp_q_reg_n_0),
+        .I4(state_q[0]),
+        .O(inport_valid_q_reg));
+  LUT5 #(
+    .INIT(32'hBABB8A88)) 
     data_pid_q_i_1
        (.I0(data_pid_q4_out),
         .I1(data_pid_q_i_3_n_0),
-        .I2(data_pid_q_reg_n_0),
+        .I2(data_pid_q_i_4_n_0),
+        .I3(data_pid_q_i_5_n_0),
+        .I4(data_pid_q_reg_n_0),
         .O(data_pid_q_i_1_n_0));
-  LUT6 #(
-    .INIT(64'h0000400040000000)) 
-    data_pid_q_i_2
-       (.I0(\se0_cnt_q_reg[14] ),
-        .I1(tx_valid_q_reg),
-        .I2(\crc_sum_q[15]_i_3_n_0 ),
-        .I3(data_pid_q_i_4_n_0),
-        .I4(usbf_tx_pid_q_do[6]),
-        .I5(usbf_tx_pid_q_do[3]),
-        .O(data_pid_q4_out));
-  LUT6 #(
-    .INIT(64'hBABABBBABBBBBBBB)) 
-    data_pid_q_i_3
-       (.I0(data_pid_q_i_5_n_0),
-        .I1(data_pid_q_i_6_n_0),
-        .I2(data_pid_q_i_7_n_0),
-        .I3(\FSM_sequential_state_q[0]_i_3__0_n_0 ),
-        .I4(ctrl_txlast_q_reg),
-        .I5(state_q[2]),
-        .O(data_pid_q_i_3_n_0));
   LUT5 #(
-    .INIT(32'h00600000)) 
-    data_pid_q_i_4
-       (.I0(usbf_tx_pid_q_do[2]),
-        .I1(usbf_tx_pid_q_do[5]),
-        .I2(usbf_tx_pid_q_do[1]),
-        .I3(usbf_tx_pid_q_do[4]),
-        .I4(usbf_tx_pid_q_do[0]),
-        .O(data_pid_q_i_4_n_0));
+    .INIT(32'h00000800)) 
+    data_pid_q_i_2
+       (.I0(\crc_sum_q[15]_i_3_n_0 ),
+        .I1(tx_valid_q_reg),
+        .I2(\se0_cnt_q_reg[14] ),
+        .I3(usbf_tx_pid_q_do[0]),
+        .I4(data_pid_q_i_6_n_0),
+        .O(data_pid_q4_out));
   LUT5 #(
     .INIT(32'hAAABAAAA)) 
-    data_pid_q_i_5
+    data_pid_q_i_3
        (.I0(\se0_cnt_q_reg[14] ),
         .I1(state_q[0]),
         .I2(state_q[1]),
         .I3(state_q[2]),
         .I4(tx_valid_q_reg),
+        .O(data_pid_q_i_3_n_0));
+  LUT3 #(
+    .INIT(8'h40)) 
+    data_pid_q_i_4
+       (.I0(state_q[1]),
+        .I1(state_q[2]),
+        .I2(\token_ep_q_reg[2] ),
+        .O(data_pid_q_i_4_n_0));
+  LUT6 #(
+    .INIT(64'h0014100000041000)) 
+    data_pid_q_i_5
+       (.I0(\FSM_sequential_state_q_reg[1]_0 ),
+        .I1(state_q[2]),
+        .I2(state_q[1]),
+        .I3(state_q[0]),
+        .I4(utmi_txready_i),
+        .I5(data_zlp_q_reg_n_0),
         .O(data_pid_q_i_5_n_0));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFF009BFF)) 
+    .INIT(64'hFFFFFFFFF99FFFFF)) 
     data_pid_q_i_6
-       (.I0(utmi_txready_i),
-        .I1(state_q[0]),
-        .I2(data_zlp_q_reg_n_0),
-        .I3(state_q[1]),
-        .I4(state_q[2]),
-        .I5(\FSM_sequential_state_q_reg[1]_0 ),
+       (.I0(usbf_tx_pid_q_do[3]),
+        .I1(usbf_tx_pid_q_do[6]),
+        .I2(usbf_tx_pid_q_do[2]),
+        .I3(usbf_tx_pid_q_do[5]),
+        .I4(usbf_tx_pid_q_do[1]),
+        .I5(usbf_tx_pid_q_do[4]),
         .O(data_pid_q_i_6_n_0));
-  LUT2 #(
-    .INIT(4'h8)) 
-    data_pid_q_i_7
-       (.I0(utmi_txready_i),
-        .I1(state_q[1]),
-        .O(data_pid_q_i_7_n_0));
   FDCE data_pid_q_reg
        (.C(clk_i),
         .CE(1'b1),
@@ -12813,36 +12914,70 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .CLR(rst_i),
         .D(p_1_in[7]),
         .Q(data_q[7]));
-  LUT5 #(
-    .INIT(32'h08FF0800)) 
+  LUT6 #(
+    .INIT(64'h30AA33BB00AA0088)) 
     data_zlp_q_i_1__0
-       (.I0(ctrl_txvalid_q_reg),
-        .I1(data_pid_q4_out),
-        .I2(ctrl_txlast_q_reg),
-        .I3(data_pid_q_i_3_n_0),
-        .I4(data_zlp_q_reg_n_0),
+       (.I0(inport_valid_q_reg_1),
+        .I1(data_pid_q_i_3_n_0),
+        .I2(data_zlp_q_i_3__0_n_0),
+        .I3(\token_ep_q_reg[2] ),
+        .I4(data_pid_q_i_5_n_0),
+        .I5(data_zlp_q_reg_n_0),
         .O(data_zlp_q_i_1__0_n_0));
+  LUT2 #(
+    .INIT(4'h2)) 
+    data_zlp_q_i_3__0
+       (.I0(state_q[2]),
+        .I1(state_q[1]),
+        .O(data_zlp_q_i_3__0_n_0));
   FDCE data_zlp_q_reg
        (.C(clk_i),
         .CE(1'b1),
         .CLR(rst_i),
         .D(data_zlp_q_i_1__0_n_0),
         .Q(data_zlp_q_reg_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF55555540)) 
+    ep2_tx_data_last_w_do_INST_0
+       (.I0(ep2_tx_data_last_w_do_INST_0_i_1_n_0),
+        .I1(Q[1]),
+        .I2(Q[0]),
+        .I3(Q[3]),
+        .I4(Q[2]),
+        .I5(ep2_tx_data_last_w_do_INST_0_i_2_n_0),
+        .O(ep2_tx_data_last_w_do));
   LUT5 #(
-    .INIT(32'hFFFFB7BF)) 
-    inport_accept_o_INST_0_i_1
-       (.I0(state_q[1]),
-        .I1(utmi_txready_i),
-        .I2(state_q[2]),
-        .I3(data_zlp_q_reg_n_0),
-        .I4(state_q[0]),
-        .O(inport_valid_q_reg));
+    .INIT(32'h7FFFFFFF)) 
+    ep2_tx_data_last_w_do_INST_0_i_1
+       (.I0(Q[6]),
+        .I1(Q[4]),
+        .I2(Q[5]),
+        .I3(Q[7]),
+        .I4(Q[8]),
+        .O(ep2_tx_data_last_w_do_INST_0_i_1_n_0));
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
+    ep2_tx_data_last_w_do_INST_0_i_2
+       (.I0(Q[11]),
+        .I1(Q[15]),
+        .I2(Q[9]),
+        .I3(Q[10]),
+        .I4(ep2_tx_data_last_w_do_INST_0_i_3_n_0),
+        .O(ep2_tx_data_last_w_do_INST_0_i_2_n_0));
+  LUT4 #(
+    .INIT(16'hFFEF)) 
+    ep2_tx_data_last_w_do_INST_0_i_3
+       (.I0(Q[13]),
+        .I1(Q[12]),
+        .I2(inport_valid_q_do),
+        .I3(Q[14]),
+        .O(ep2_tx_data_last_w_do_INST_0_i_3_n_0));
   LUT3 #(
-    .INIT(8'h38)) 
+    .INIT(8'h4A)) 
     \sie_tx_state_q_o[0]_INST_0 
-       (.I0(state_q[0]),
-        .I1(state_q[2]),
-        .I2(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(state_q[0]),
+        .I2(state_q[2]),
         .O(sie_tx_state_q_o[0]));
   LUT3 #(
     .INIT(8'h34)) 
@@ -12874,18 +13009,18 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
        (.I0(\state_q[2]_i_9_n_0 ),
         .I1(\state_q_reg[0] ),
         .I2(\state_q_reg[1] ),
-        .I3(ctrl_txlast_q_reg),
+        .I3(\token_ep_q_reg[2] ),
         .I4(\state_q[2]_i_10_n_0 ),
         .I5(\state_q_reg[2]_0 ),
         .O(\state_q_reg[2] ));
   LUT5 #(
-    .INIT(32'hF3773333)) 
+    .INIT(32'hBB333F33)) 
     \state_q[2]_i_9 
-       (.I0(\crc_sum_q[15]_i_3_n_0 ),
+       (.I0(\chirp_count_q_reg[3] ),
         .I1(\state_q_reg[2]_1 ),
-        .I2(\FSM_sequential_state_q_reg[2]_0 ),
-        .I3(\state_q_reg[0] ),
-        .I4(\state_q_reg[1] ),
+        .I2(\crc_sum_q[15]_i_3_n_0 ),
+        .I3(\state_q_reg[1] ),
+        .I4(\state_q_reg[0] ),
         .O(\state_q[2]_i_9_n_0 ));
   CARRY4 \tx_sent_data_counter_q0_inferred__0/i__carry 
        (.CI(1'b0),
@@ -13134,10 +13269,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I5(state_q[1]),
         .O(utmi_data_out_o[0]));
   LUT5 #(
-    .INIT(32'hFF4F0F4F)) 
+    .INIT(32'hFF2F0F2F)) 
     \utmi_data_out_o[0]_INST_0_i_2 
-       (.I0(p_0_in[0]),
-        .I1(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(p_0_in[0]),
         .I2(state_q[2]),
         .I3(state_q[0]),
         .I4(data_q[0]),
@@ -13153,10 +13288,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I5(state_q[1]),
         .O(utmi_data_out_o[1]));
   LUT5 #(
-    .INIT(32'hFF4F0F4F)) 
+    .INIT(32'hFF2F0F2F)) 
     \utmi_data_out_o[1]_INST_0_i_2 
-       (.I0(p_0_in[1]),
-        .I1(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(p_0_in[1]),
         .I2(state_q[2]),
         .I3(state_q[0]),
         .I4(data_q[1]),
@@ -13172,10 +13307,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I5(state_q[1]),
         .O(utmi_data_out_o[2]));
   LUT5 #(
-    .INIT(32'hFF4F0F4F)) 
+    .INIT(32'hFF2F0F2F)) 
     \utmi_data_out_o[2]_INST_0_i_2 
-       (.I0(p_0_in[2]),
-        .I1(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(p_0_in[2]),
         .I2(state_q[2]),
         .I3(state_q[0]),
         .I4(data_q[2]),
@@ -13191,10 +13326,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I5(state_q[1]),
         .O(utmi_data_out_o[3]));
   LUT5 #(
-    .INIT(32'hFF4F0F4F)) 
+    .INIT(32'hFF2F0F2F)) 
     \utmi_data_out_o[3]_INST_0_i_2 
-       (.I0(p_0_in[3]),
-        .I1(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(p_0_in[3]),
         .I2(state_q[2]),
         .I3(state_q[0]),
         .I4(data_q[3]),
@@ -13210,15 +13345,15 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I5(state_q[1]),
         .O(utmi_data_out_o[4]));
   LUT5 #(
-    .INIT(32'hFF4F0F4F)) 
+    .INIT(32'hFF2F0F2F)) 
     \utmi_data_out_o[4]_INST_0_i_2 
-       (.I0(p_0_in[4]),
-        .I1(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(p_0_in[4]),
         .I2(state_q[2]),
         .I3(state_q[0]),
         .I4(data_q[4]),
         .O(\crc_sum_q_reg[10]_1 ));
-  (* SOFT_HLUTNM = "soft_lutpair34" *) 
+  (* SOFT_HLUTNM = "soft_lutpair37" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \utmi_data_out_o[5]_INST_0 
@@ -13245,10 +13380,10 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
         .I5(state_q[1]),
         .O(utmi_data_out_o[6]));
   LUT5 #(
-    .INIT(32'hFF4F0F4F)) 
+    .INIT(32'hFF2F0F2F)) 
     \utmi_data_out_o[6]_INST_0_i_2 
-       (.I0(p_0_in[6]),
-        .I1(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(p_0_in[6]),
         .I2(state_q[2]),
         .I3(state_q[0]),
         .I4(data_q[6]),
@@ -13268,14 +13403,14 @@ module brd_usb_cdc_core_0_0_usbf_sie_tx
     \utmi_data_out_o[7]_INST_0_i_2 
        (.I0(state_q[0]),
         .I1(state_q[1]),
-        .I2(\token_ep_q_reg[2] ),
+        .I2(\token_ep_q_reg[2]_0 ),
         .I3(\token_ep_q_reg[3] ),
         .O(\crc_sum_q_reg[8]_0 ));
   LUT5 #(
-    .INIT(32'hFF4F0F4F)) 
+    .INIT(32'hFF2F0F2F)) 
     \utmi_data_out_o[7]_INST_0_i_3 
-       (.I0(p_0_in[7]),
-        .I1(state_q[1]),
+       (.I0(state_q[1]),
+        .I1(p_0_in[7]),
         .I2(state_q[2]),
         .I3(state_q[0]),
         .I4(data_q[7]),

@@ -47,6 +47,12 @@ module usbf_sie_rx
     // Debug
     ,output [ 15:0]  token_valid_cnt_q_do
     
+    ,output          usbfrx_shift_en_w_do
+    ,output [ 7:0]   usbfrx_data_w_do
+    ,output          usbfrx_data_ready_w_do
+    ,output          usbfrx_crc_byte_w_do
+    ,output          usbfrx_rx_active_w_do
+        
     // Outputs
     ,output [  7:0]  pid_o
     ,output          frame_valid_o
@@ -513,5 +519,11 @@ assign data_last_o  = last_q | crc_byte_w;
 
 // Debug
 assign token_valid_cnt_q_do = token_valid_cnt_q;
+
+assign usbfrx_shift_en_w_do = shift_en_w;
+assign usbfrx_data_w_do       = data_w;
+assign usbfrx_data_ready_w_do = data_ready_w;
+assign usbfrx_crc_byte_w_do   = crc_byte_w;
+assign usbfrx_rx_active_w_do  = rx_active_w;
 
 endmodule
