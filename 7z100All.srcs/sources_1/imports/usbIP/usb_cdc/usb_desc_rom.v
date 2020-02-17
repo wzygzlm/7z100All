@@ -107,7 +107,7 @@ begin
     8'd57: desc_rom_r = 8'h82;
     8'd58: desc_rom_r = 8'h02;
     8'd59: desc_rom_r = hs_i ? 8'h00 : 8'h40;
-    8'd60: desc_rom_r = hs_i ? 8'h02 : 8'h00;
+    8'd60: desc_rom_r = hs_i ? 8'h04 : 8'h00;
     8'd61: desc_rom_r = 8'h00;
     8'd62: desc_rom_r = 8'h09;
     8'd63: desc_rom_r = 8'h04;
@@ -123,14 +123,14 @@ begin
     8'd73: desc_rom_r = 8'h01;
     8'd74: desc_rom_r = 8'h02;
     8'd75: desc_rom_r = hs_i ? 8'h00 : 8'h40;
-    8'd76: desc_rom_r = hs_i ? 8'h02 : 8'h00;
+    8'd76: desc_rom_r = hs_i ? 8'h04 : 8'h00;
     8'd77: desc_rom_r = 8'h00;
     8'd78: desc_rom_r = 8'h07;
     8'd79: desc_rom_r = 8'h05;
     8'd80: desc_rom_r = 8'h83;
     8'd81: desc_rom_r = 8'h02;
     8'd82: desc_rom_r = hs_i ? 8'h00 : 8'h40;
-    8'd83: desc_rom_r = hs_i ? 8'h02 : 8'h00;
+    8'd83: desc_rom_r = hs_i ? 8'h04 : 8'h00;
     8'd84: desc_rom_r = 8'h00;
     8'd85: desc_rom_r = 8'h04;
     8'd86: desc_rom_r = 8'h03;

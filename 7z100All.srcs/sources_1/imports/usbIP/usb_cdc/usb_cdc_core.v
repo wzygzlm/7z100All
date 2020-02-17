@@ -1325,10 +1325,10 @@ begin
 end
 else 
 begin
-    inport_last_q <= (!inport_valid_i ) || (tx_sent_data_counter_o >= 499);
+    inport_last_q <= (!inport_valid_i ) || (tx_sent_data_counter_o >= 1023);
 end
 //wire      inport_last_w  = inport_last_q;
-wire      inport_last_w  = (!inport_valid_q_q ) || (tx_sent_data_counter_o >= 499);
+wire      inport_last_w  = (!inport_valid_q_q ) || (tx_sent_data_counter_o >= 1023);
 
 //wire      inport_last_w  = !inport_valid_i;
 
