@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="35">
   <CompositeFile CompositeFileTopName="brd" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1581949749"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1581949749"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1581949749"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1581949749"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1582213114"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1582213114"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1582213114"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1582213114"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\brd_LEDShifter_0_0\brd_LEDShifter_0_0.xci" Type="IP">
         <Instance HierarchyPath="LEDShifter_0"/>
@@ -311,38 +311,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\brd_c_addsub_0_0\brd_c_addsub_0_0.xci" Type="IP">
-        <Instance HierarchyPath="c_addsub_as_invert_and_delay"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_xlslice_6_0\brd_xlslice_6_0.xci" Type="IP">
-        <Instance HierarchyPath="slice_swap_event_data_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_xlslice_6_1\brd_xlslice_6_1.xci" Type="IP">
-        <Instance HierarchyPath="slice_swap_event_data_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_xlconcat_1_0\brd_xlconcat_1_0.xci" Type="IP">
-        <Instance HierarchyPath="concat_swap_event_data"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="synth\brd.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -363,6 +331,30 @@
       </File>
       <File Name="ip\brd_util_vector_logic_1_0\brd_util_vector_logic_1_0.xci" Type="IP">
         <Instance HierarchyPath="util_vector_logic_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\brd_RawStreamToFIFO_0_0\brd_RawStreamToFIFO_0_0.xci" Type="IP">
+        <Instance HierarchyPath="RawStreamToFIFO_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\brd_xlconstant_1_1\brd_xlconstant_1_1.xci" Type="IP">
+        <Instance HierarchyPath="xlcons_valid_high"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\brd_xlconstant_1_2\brd_xlconstant_1_2.xci" Type="IP">
+        <Instance HierarchyPath="xlcons_data_0x5a5a"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

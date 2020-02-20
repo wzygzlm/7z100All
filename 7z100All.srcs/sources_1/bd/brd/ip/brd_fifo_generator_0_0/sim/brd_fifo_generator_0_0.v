@@ -54,7 +54,6 @@
 
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module brd_fifo_generator_0_0 (
-  rst,
   wr_clk,
   rd_clk,
   din,
@@ -65,12 +64,9 @@ module brd_fifo_generator_0_0 (
   almost_full,
   empty,
   rd_data_count,
-  wr_data_count,
-  wr_rst_busy,
-  rd_rst_busy
+  wr_data_count
 );
 
-input wire rst;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME write_clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 write_clk CLK" *)
 input wire wr_clk;
@@ -93,8 +89,6 @@ output wire almost_full;
 output wire empty;
 output wire [15 : 0] rd_data_count;
 output wire [14 : 0] wr_data_count;
-output wire wr_rst_busy;
-output wire rd_rst_busy;
 
   fifo_generator_v13_2_2 #(
     .C_COMMON_CLOCK(0),
@@ -107,7 +101,7 @@ output wire rd_rst_busy;
     .C_DOUT_WIDTH(8),
     .C_ENABLE_RLOCS(0),
     .C_FAMILY("zynq"),
-    .C_FULL_FLAGS_RST_VAL(1),
+    .C_FULL_FLAGS_RST_VAL(0),
     .C_HAS_ALMOST_EMPTY(0),
     .C_HAS_ALMOST_FULL(1),
     .C_HAS_BACKUP(0),
@@ -117,7 +111,7 @@ output wire rd_rst_busy;
     .C_HAS_OVERFLOW(0),
     .C_HAS_RD_DATA_COUNT(1),
     .C_HAS_RD_RST(0),
-    .C_HAS_RST(1),
+    .C_HAS_RST(0),
     .C_HAS_SRST(0),
     .C_HAS_UNDERFLOW(0),
     .C_HAS_VALID(0),
@@ -144,7 +138,7 @@ output wire rd_rst_busy;
     .C_RD_FREQ(1),
     .C_RD_PNTR_WIDTH(16),
     .C_UNDERFLOW_LOW(0),
-    .C_USE_DOUT_RST(1),
+    .C_USE_DOUT_RST(0),
     .C_USE_ECC(0),
     .C_USE_EMBEDDED_REG(0),
     .C_USE_PIPELINE_REG(0),
@@ -160,7 +154,7 @@ output wire rd_rst_busy;
     .C_WR_RESPONSE_LATENCY(1),
     .C_MSGON_VAL(1),
     .C_ENABLE_RST_SYNC(1),
-    .C_EN_SAFETY_CKT(1),
+    .C_EN_SAFETY_CKT(0),
     .C_ERROR_INJECTION_TYPE(0),
     .C_SYNCHRONIZER_STAGE(2),
     .C_INTERFACE_TYPE(0),
@@ -303,7 +297,7 @@ output wire rd_rst_busy;
     .backup(1'D0),
     .backup_marker(1'D0),
     .clk(1'D0),
-    .rst(rst),
+    .rst(1'D0),
     .srst(1'D0),
     .wr_clk(wr_clk),
     .wr_rst(1'D0),
@@ -338,8 +332,8 @@ output wire rd_rst_busy;
     .prog_empty(),
     .sbiterr(),
     .dbiterr(),
-    .wr_rst_busy(wr_rst_busy),
-    .rd_rst_busy(rd_rst_busy),
+    .wr_rst_busy(),
+    .rd_rst_busy(),
     .m_aclk(1'D0),
     .s_aclk(1'D0),
     .s_aresetn(1'D0),

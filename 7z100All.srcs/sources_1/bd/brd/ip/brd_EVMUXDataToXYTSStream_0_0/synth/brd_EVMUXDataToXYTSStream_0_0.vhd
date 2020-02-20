@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVMUXDataToXYTSStream:1.0
--- IP Revision: 1911050953
+-- IP Revision: 2002181632
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -84,6 +84,9 @@ ENTITY brd_EVMUXDataToXYTSStream_0_0 IS
     ap_done : OUT STD_LOGIC;
     ap_idle : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
+    rawDataStreamOut_V_V_TVALID : OUT STD_LOGIC;
+    rawDataStreamOut_V_V_TREADY : IN STD_LOGIC;
+    rawDataStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     tsStreamOut_V_V_TVALID : OUT STD_LOGIC;
     tsStreamOut_V_V_TREADY : IN STD_LOGIC;
     tsStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -145,6 +148,9 @@ ARCHITECTURE brd_EVMUXDataToXYTSStream_0_0_arch OF brd_EVMUXDataToXYTSStream_0_0
       ap_done : OUT STD_LOGIC;
       ap_idle : OUT STD_LOGIC;
       ap_ready : OUT STD_LOGIC;
+      rawDataStreamOut_V_V_TVALID : OUT STD_LOGIC;
+      rawDataStreamOut_V_V_TREADY : IN STD_LOGIC;
+      rawDataStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       tsStreamOut_V_V_TVALID : OUT STD_LOGIC;
       tsStreamOut_V_V_TREADY : IN STD_LOGIC;
       tsStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -172,7 +178,7 @@ ARCHITECTURE brd_EVMUXDataToXYTSStream_0_0_arch OF brd_EVMUXDataToXYTSStream_0_0
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_EVMUXDataToXYTSStream_0_0_arch : ARCHITECTURE IS "brd_EVMUXDataToXYTSStream_0_0,EVMUXDataToXYTSStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVMUXDataToXYTSStream_0_0_arch: ARCHITECTURE IS "brd_EVMUXDataToXYTSStream_0_0,EVMUXDataToXYTSStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVMUXDataToXYTSStream,x_ipVersion=1.0,x_ipCoreRevision=1911050953,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVMUXDataToXYTSStream_0_0_arch: ARCHITECTURE IS "brd_EVMUXDataToXYTSStream_0_0,EVMUXDataToXYTSStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVMUXDataToXYTSStream,x_ipVersion=1.0,x_ipCoreRevision=2002181632,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF tsWrapRegReg_V: SIGNAL IS "XIL_INTERFACENAME tsWrapRegReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}" & 
@@ -223,6 +229,11 @@ ARCHITECTURE brd_EVMUXDataToXYTSStream_0_0_arch OF brd_EVMUXDataToXYTSStream_0_0
 "ency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 64}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, " & 
 "CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF tsStreamOut_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 tsStreamOut_V_V TVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF rawDataStreamOut_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 rawDataStreamOut_V_V TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF rawDataStreamOut_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 rawDataStreamOut_V_V TREADY";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF rawDataStreamOut_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME rawDataStreamOut_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0," & 
+" HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_INFO OF rawDataStreamOut_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 rawDataStreamOut_V_V TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF ap_ready: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl ready";
   ATTRIBUTE X_INTERFACE_INFO OF ap_idle: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl idle";
   ATTRIBUTE X_INTERFACE_INFO OF ap_done: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl done";
@@ -232,8 +243,8 @@ ARCHITECTURE brd_EVMUXDataToXYTSStream_0_0_arch OF brd_EVMUXDataToXYTSStream_0_0
   ATTRIBUTE X_INTERFACE_INFO OF ap_start: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl start";
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_rst_n: SIGNAL IS "XIL_INTERFACENAME ap_rst_n, POLARITY ACTIVE_LOW, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {RST {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF ap_rst_n: SIGNAL IS "xilinx.com:signal:reset:1.0 ap_rst_n RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF s_axi_config:tsStreamOut_V_V:yStreamOut_V_V:xStreamOut_V_V:polStreamOut_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximu" & 
-"m {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF s_axi_config:rawDataStreamOut_V_V:tsStreamOut_V_V:yStreamOut_V_V:xStreamOut_V_V:polStreamOut_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format l" & 
+"ong minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF ap_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ap_clk CLK";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RVALID";
@@ -290,6 +301,9 @@ BEGIN
       ap_done => ap_done,
       ap_idle => ap_idle,
       ap_ready => ap_ready,
+      rawDataStreamOut_V_V_TVALID => rawDataStreamOut_V_V_TVALID,
+      rawDataStreamOut_V_V_TREADY => rawDataStreamOut_V_V_TREADY,
+      rawDataStreamOut_V_V_TDATA => rawDataStreamOut_V_V_TDATA,
       tsStreamOut_V_V_TVALID => tsStreamOut_V_V_TVALID,
       tsStreamOut_V_V_TREADY => tsStreamOut_V_V_TREADY,
       tsStreamOut_V_V_TDATA => tsStreamOut_V_V_TDATA,
