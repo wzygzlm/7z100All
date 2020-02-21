@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:RawStreamToFIFO:1.0
--- IP Revision: 2002192010
+-- IP Revision: 2002211349
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:RawStreamToFIFO:1.0
--- IP Revision: 2002192010
+-- IP Revision: 2002211349
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -98,7 +98,7 @@ ARCHITECTURE brd_RawStreamToFIFO_0_0_arch OF brd_RawStreamToFIFO_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_RawStreamToFIFO_0_0_arch : ARCHITECTURE IS "brd_RawStreamToFIFO_0_0,RawStreamToFIFO,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_RawStreamToFIFO_0_0_arch: ARCHITECTURE IS "brd_RawStreamToFIFO_0_0,RawStreamToFIFO,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=RawStreamToFIFO,x_ipVersion=1.0,x_ipCoreRevision=2002192010,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_RawStreamToFIFO_0_0_arch: ARCHITECTURE IS "brd_RawStreamToFIFO_0_0,RawStreamToFIFO,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=RawStreamToFIFO,x_ipVersion=1.0,x_ipCoreRevision=2002211349,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF skippedData_V: SIGNAL IS "XIL_INTERFACENAME skippedData_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}" & 
