@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Feb 21 13:53:56 2020
+-- Date        : Fri Feb 21 13:53:54 2020
 -- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_RawStreamToFIFO_0_0/brd_RawStreamToFIFO_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top brd_RawStreamToFIFO_0_0 -prefix
+--               brd_RawStreamToFIFO_0_0_ brd_RawStreamToFIFO_0_0_sim_netlist.vhdl
 -- Design      : brd_RawStreamToFIFO_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -31,8 +31,6 @@ entity brd_RawStreamToFIFO_0_0_RawStreamToFIFO is
     skippedData_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
     skippedData_V_ap_vld : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_RawStreamToFIFO_0_0_RawStreamToFIFO : entity is "RawStreamToFIFO";
 end brd_RawStreamToFIFO_0_0_RawStreamToFIFO;
 
 architecture STRUCTURE of brd_RawStreamToFIFO_0_0_RawStreamToFIFO is

@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Fri Feb 21 13:57:14 2020
+// Date        : Tue Feb 25 17:15:30 2020
 // Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top brd_system_ila_0_1 -prefix
-//               brd_system_ila_0_1_ brd_system_ila_0_1_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_system_ila_0_1/brd_system_ila_0_1_stub.v
 // Design      : brd_system_ila_0_1
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z100ffg900-1
@@ -15,9 +15,14 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "bd_d325,Vivado 2018.1" *)
 module brd_system_ila_0_1(clk, probe0, probe1, probe2, probe3, probe4, probe5, 
-  probe6, probe7, probe8, probe9, probe10, probe11, probe12, probe13, probe14, probe15, 
-  SLOT_0_AXIS_tdata, SLOT_0_AXIS_tlast, SLOT_0_AXIS_tvalid, SLOT_0_AXIS_tready, resetn)
-/* synthesis syn_black_box black_box_pad_pin="clk,probe0[15:0],probe1[0:0],probe2[10:0],probe3[0:0],probe4[0:0],probe5[0:0],probe6[7:0],probe7[15:0],probe8[14:0],probe9[0:0],probe10[0:0],probe11[0:0],probe12[0:0],probe13[0:0],probe14[0:0],probe15[15:0],SLOT_0_AXIS_tdata[15:0],SLOT_0_AXIS_tlast,SLOT_0_AXIS_tvalid,SLOT_0_AXIS_tready,resetn" */;
+  probe6, probe7, probe8, probe9, probe10, probe11, probe12, probe13, probe14, probe15, probe16, probe17, 
+  probe18, probe19, probe20, probe21, probe22, probe23, probe24, probe25, probe26, probe27, probe28, 
+  SLOT_0_AXIS_tdata, SLOT_0_AXIS_tlast, SLOT_0_AXIS_tvalid, SLOT_0_AXIS_tready, 
+  SLOT_1_AXIS_tdata, SLOT_1_AXIS_tlast, SLOT_1_AXIS_tvalid, SLOT_1_AXIS_tready, 
+  SLOT_2_AXIS_tdata, SLOT_2_AXIS_tlast, SLOT_2_AXIS_tvalid, SLOT_2_AXIS_tready, 
+  SLOT_3_AXIS_tdata, SLOT_3_AXIS_tlast, SLOT_3_AXIS_tvalid, SLOT_3_AXIS_tready, 
+  SLOT_4_AXIS_tdata, SLOT_4_AXIS_tlast, SLOT_4_AXIS_tvalid, SLOT_4_AXIS_tready, resetn)
+/* synthesis syn_black_box black_box_pad_pin="clk,probe0[15:0],probe1[0:0],probe2[10:0],probe3[0:0],probe4[0:0],probe5[0:0],probe6[7:0],probe7[15:0],probe8[14:0],probe9[0:0],probe10[0:0],probe11[0:0],probe12[0:0],probe13[0:0],probe14[0:0],probe15[15:0],probe16[31:0],probe17[0:0],probe18[63:0],probe19[15:0],probe20[63:0],probe21[0:0],probe22[15:0],probe23[0:0],probe24[0:0],probe25[0:0],probe26[0:0],probe27[0:0],probe28[0:0],SLOT_0_AXIS_tdata[15:0],SLOT_0_AXIS_tlast,SLOT_0_AXIS_tvalid,SLOT_0_AXIS_tready,SLOT_1_AXIS_tdata[15:0],SLOT_1_AXIS_tlast,SLOT_1_AXIS_tvalid,SLOT_1_AXIS_tready,SLOT_2_AXIS_tdata[15:0],SLOT_2_AXIS_tlast,SLOT_2_AXIS_tvalid,SLOT_2_AXIS_tready,SLOT_3_AXIS_tdata[15:0],SLOT_3_AXIS_tlast,SLOT_3_AXIS_tvalid,SLOT_3_AXIS_tready,SLOT_4_AXIS_tdata[63:0],SLOT_4_AXIS_tlast,SLOT_4_AXIS_tvalid,SLOT_4_AXIS_tready,resetn" */;
   input clk;
   input [15:0]probe0;
   input [0:0]probe1;
@@ -35,9 +40,38 @@ module brd_system_ila_0_1(clk, probe0, probe1, probe2, probe3, probe4, probe5,
   input [0:0]probe13;
   input [0:0]probe14;
   input [15:0]probe15;
+  input [31:0]probe16;
+  input [0:0]probe17;
+  input [63:0]probe18;
+  input [15:0]probe19;
+  input [63:0]probe20;
+  input [0:0]probe21;
+  input [15:0]probe22;
+  input [0:0]probe23;
+  input [0:0]probe24;
+  input [0:0]probe25;
+  input [0:0]probe26;
+  input [0:0]probe27;
+  input [0:0]probe28;
   input [15:0]SLOT_0_AXIS_tdata;
   input SLOT_0_AXIS_tlast;
   input SLOT_0_AXIS_tvalid;
   input SLOT_0_AXIS_tready;
+  input [15:0]SLOT_1_AXIS_tdata;
+  input SLOT_1_AXIS_tlast;
+  input SLOT_1_AXIS_tvalid;
+  input SLOT_1_AXIS_tready;
+  input [15:0]SLOT_2_AXIS_tdata;
+  input SLOT_2_AXIS_tlast;
+  input SLOT_2_AXIS_tvalid;
+  input SLOT_2_AXIS_tready;
+  input [15:0]SLOT_3_AXIS_tdata;
+  input SLOT_3_AXIS_tlast;
+  input SLOT_3_AXIS_tvalid;
+  input SLOT_3_AXIS_tready;
+  input [63:0]SLOT_4_AXIS_tdata;
+  input SLOT_4_AXIS_tlast;
+  input SLOT_4_AXIS_tvalid;
+  input SLOT_4_AXIS_tready;
   input resetn;
 endmodule

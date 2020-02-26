@@ -2,11 +2,19 @@
 <Root MajorVersion="0" MinorVersion="35">
   <CompositeFile CompositeFileTopName="bd_1384" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1582294854"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1582294854"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1582294854"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1582294854"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1582732073"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1582732073"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1582732073"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1582732073"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="ip\ip_0\bd_1384_ila_lib_0.xci" Type="IP">
+        <Instance HierarchyPath="ila_lib"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="synth\bd_1384.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -15,14 +23,6 @@
       <File Name="sim\bd_1384.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\ip_0\bd_1384_ila_lib_0.xci" Type="IP">
-        <Instance HierarchyPath="ila_lib"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="bd_1384_ooc.xdc" Type="XDC">

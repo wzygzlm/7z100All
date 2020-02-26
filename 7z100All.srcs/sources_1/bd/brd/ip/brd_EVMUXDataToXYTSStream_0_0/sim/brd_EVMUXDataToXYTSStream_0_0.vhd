@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVMUXDataToXYTSStream:1.0
--- IP Revision: 2002181632
+-- IP Revision: 2002261558
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

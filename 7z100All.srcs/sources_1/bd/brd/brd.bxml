@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="35">
   <CompositeFile CompositeFileTopName="brd" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1582294860"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1582294860"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1582294860"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1582294860"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1582732081"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1582732081"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1582732081"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1582732081"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\brd_LEDShifter_0_0\brd_LEDShifter_0_0.xci" Type="IP">
         <Instance HierarchyPath="LEDShifter_0"/>
@@ -311,16 +311,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="synth\brd.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-      </File>
-      <File Name="sim\brd.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\brd_c_addsub_as_invert_and_delay_0\brd_c_addsub_as_invert_and_delay_0.xci" Type="IP">
         <Instance HierarchyPath="c_addsub_as_invert_and_delay1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -355,6 +345,32 @@
       </File>
       <File Name="ip\brd_xlconstant_1_2\brd_xlconstant_1_2.xci" Type="IP">
         <Instance HierarchyPath="xlcons_data_0x5a5a"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="synth\brd.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+      </File>
+      <File Name="sim\brd.vhd" Type="VHDL">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\brd_XYTSStreamToRawStream_0_0\brd_XYTSStreamToRawStream_0_0.xci" Type="IP">
+        <Instance HierarchyPath="XYTSStreamToRawStream_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\brd_axis_data_fifo_0_0\brd_axis_data_fifo_0_0.xci" Type="IP">
+        <Instance HierarchyPath="axis_data_fifo_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
