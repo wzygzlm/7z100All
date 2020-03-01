@@ -1,8 +1,8 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Feb 21 13:53:54 2020
--- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+-- Date        : Thu Feb 27 18:51:27 2020
+-- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top brd_RawStreamToFIFO_0_0 -prefix
 --               brd_RawStreamToFIFO_0_0_ brd_RawStreamToFIFO_0_0_sim_netlist.vhdl
 -- Design      : brd_RawStreamToFIFO_0_0
@@ -29,16 +29,20 @@ entity brd_RawStreamToFIFO_0_0_RawStreamToFIFO is
     fifoIFOutData_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
     fifoIFOutData_V_ap_vld : out STD_LOGIC;
     skippedData_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    skippedData_V_ap_vld : out STD_LOGIC
+    skippedData_V_ap_vld : out STD_LOGIC;
+    nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
+    nonMonTSDiffFlgReg_V_ap_vld : out STD_LOGIC
   );
 end brd_RawStreamToFIFO_0_0_RawStreamToFIFO;
 
 architecture STRUCTURE of brd_RawStreamToFIFO_0_0_RawStreamToFIFO is
+  signal \<const0>\ : STD_LOGIC;
   signal ap_enable_reg_pp0_iter1 : STD_LOGIC;
   signal ap_enable_reg_pp0_iter1_i_1_n_0 : STD_LOGIC;
   signal ap_rst_n_inv : STD_LOGIC;
-  signal fifoIFInFull_n_V_rea_reg_100 : STD_LOGIC;
-  signal \fifoIFInFull_n_V_rea_reg_100[0]_i_1_n_0\ : STD_LOGIC;
+  signal fifoIFInFull_n_V_rea_reg_174 : STD_LOGIC;
+  signal \fifoIFInFull_n_V_rea_reg_174[0]_i_1_n_0\ : STD_LOGIC;
+  signal \^nonmontsdiffflgreg_v_ap_vld\ : STD_LOGIC;
   signal \^skippeddata_v\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal streamIn_V_V_0_load_B : STD_LOGIC;
   signal streamIn_V_V_0_payload_A : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -53,11 +57,11 @@ architecture STRUCTURE of brd_RawStreamToFIFO_0_0_RawStreamToFIFO is
   signal \streamIn_V_V_0_state_reg_n_0_[0]\ : STD_LOGIC;
   signal \^streamin_v_v_tready\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of ap_done_INST_0 : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of ap_enable_reg_pp0_iter1_i_1 : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of ap_ready_INST_0 : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \fifoIFInFull_n_V_rea_reg_100[0]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of fifoIFOutData_V_ap_vld_INST_0 : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \fifoIFInFull_n_V_rea_reg_174[0]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of fifoIFOutData_V_ap_vld_INST_0 : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of nonMonTSDiffFlgReg_V_ap_vld_INST_0 : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \skippedData_V[0]_INST_0\ : label is "soft_lutpair8";
   attribute SOFT_HLUTNM of \skippedData_V[10]_INST_0\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \skippedData_V[11]_INST_0\ : label is "soft_lutpair7";
@@ -74,23 +78,21 @@ architecture STRUCTURE of brd_RawStreamToFIFO_0_0_RawStreamToFIFO is
   attribute SOFT_HLUTNM of \skippedData_V[7]_INST_0\ : label is "soft_lutpair12";
   attribute SOFT_HLUTNM of \skippedData_V[8]_INST_0\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \skippedData_V[9]_INST_0\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of skippedData_V_ap_vld_INST_0 : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of skippedData_V_ap_vld_INST_0 : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of streamIn_V_V_0_sel_rd_i_1 : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of streamIn_V_V_0_sel_wr_i_1 : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \streamIn_V_V_0_state[0]_i_1\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \streamIn_V_V_0_state[1]_i_2\ : label is "soft_lutpair1";
 begin
+  ap_done <= \^nonmontsdiffflgreg_v_ap_vld\;
   fifoIFOutData_V(15 downto 0) <= \^skippeddata_v\(15 downto 0);
+  nonMonTSDiffFlgReg_V(0) <= \<const0>\;
+  nonMonTSDiffFlgReg_V_ap_vld <= \^nonmontsdiffflgreg_v_ap_vld\;
   skippedData_V(15 downto 0) <= \^skippeddata_v\(15 downto 0);
   streamIn_V_V_TREADY <= \^streamin_v_v_tready\;
-ap_done_INST_0: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => \streamIn_V_V_0_state_reg_n_0_[0]\,
-      I1 => ap_enable_reg_pp0_iter1,
-      O => ap_done
+GND: unisim.vcomponents.GND
+     port map (
+      G => \<const0>\
     );
 ap_enable_reg_pp0_iter1_i_1: unisim.vcomponents.LUT3
     generic map(
@@ -132,7 +134,7 @@ ap_ready_INST_0: unisim.vcomponents.LUT3
       I2 => ap_enable_reg_pp0_iter1,
       O => ap_ready
     );
-\fifoIFInFull_n_V_rea_reg_100[0]_i_1\: unisim.vcomponents.LUT4
+\fifoIFInFull_n_V_rea_reg_174[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"BA8A"
     )
@@ -140,15 +142,15 @@ ap_ready_INST_0: unisim.vcomponents.LUT3
       I0 => fifoIFInFull_n_V(0),
       I1 => \streamIn_V_V_0_state_reg_n_0_[0]\,
       I2 => ap_enable_reg_pp0_iter1,
-      I3 => fifoIFInFull_n_V_rea_reg_100,
-      O => \fifoIFInFull_n_V_rea_reg_100[0]_i_1_n_0\
+      I3 => fifoIFInFull_n_V_rea_reg_174,
+      O => \fifoIFInFull_n_V_rea_reg_174[0]_i_1_n_0\
     );
-\fifoIFInFull_n_V_rea_reg_100_reg[0]\: unisim.vcomponents.FDRE
+\fifoIFInFull_n_V_rea_reg_174_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => '1',
-      D => \fifoIFInFull_n_V_rea_reg_100[0]_i_1_n_0\,
-      Q => fifoIFInFull_n_V_rea_reg_100,
+      D => \fifoIFInFull_n_V_rea_reg_174[0]_i_1_n_0\,
+      Q => fifoIFInFull_n_V_rea_reg_174,
       R => '0'
     );
 fifoIFOutData_V_ap_vld_INST_0: unisim.vcomponents.LUT3
@@ -158,8 +160,17 @@ fifoIFOutData_V_ap_vld_INST_0: unisim.vcomponents.LUT3
         port map (
       I0 => ap_enable_reg_pp0_iter1,
       I1 => \streamIn_V_V_0_state_reg_n_0_[0]\,
-      I2 => fifoIFInFull_n_V_rea_reg_100,
+      I2 => fifoIFInFull_n_V_rea_reg_174,
       O => fifoIFOutData_V_ap_vld
+    );
+nonMonTSDiffFlgReg_V_ap_vld_INST_0: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => \streamIn_V_V_0_state_reg_n_0_[0]\,
+      I1 => ap_enable_reg_pp0_iter1,
+      O => \^nonmontsdiffflgreg_v_ap_vld\
     );
 \skippedData_V[0]_INST_0\: unisim.vcomponents.LUT3
     generic map(
@@ -323,12 +334,12 @@ fifoIFOutData_V_ap_vld_INST_0: unisim.vcomponents.LUT3
     );
 skippedData_V_ap_vld_INST_0: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"08"
+      INIT => X"40"
     )
         port map (
-      I0 => ap_enable_reg_pp0_iter1,
-      I1 => \streamIn_V_V_0_state_reg_n_0_[0]\,
-      I2 => fifoIFInFull_n_V_rea_reg_100,
+      I0 => fifoIFInFull_n_V_rea_reg_174,
+      I1 => ap_enable_reg_pp0_iter1,
+      I2 => \streamIn_V_V_0_state_reg_n_0_[0]\,
       O => skippedData_V_ap_vld
     );
 \streamIn_V_V_0_payload_A[15]_i_1\: unisim.vcomponents.LUT3
@@ -651,14 +662,14 @@ streamIn_V_V_0_sel_wr_reg: unisim.vcomponents.FDRE
     );
 \streamIn_V_V_0_state[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8AAA8080"
+      INIT => X"A820A8A0"
     )
         port map (
       I0 => ap_rst_n,
-      I1 => streamIn_V_V_TVALID,
-      I2 => \^streamin_v_v_tready\,
-      I3 => ap_enable_reg_pp0_iter1,
-      I4 => \streamIn_V_V_0_state_reg_n_0_[0]\,
+      I1 => \^streamin_v_v_tready\,
+      I2 => \streamIn_V_V_0_state_reg_n_0_[0]\,
+      I3 => streamIn_V_V_TVALID,
+      I4 => ap_enable_reg_pp0_iter1,
       O => \streamIn_V_V_0_state[0]_i_1_n_0\
     );
 \streamIn_V_V_0_state[1]_i_1\: unisim.vcomponents.LUT1
@@ -711,6 +722,7 @@ entity brd_RawStreamToFIFO_0_0 is
   port (
     fifoIFOutData_V_ap_vld : out STD_LOGIC;
     skippedData_V_ap_vld : out STD_LOGIC;
+    nonMonTSDiffFlgReg_V_ap_vld : out STD_LOGIC;
     ap_clk : in STD_LOGIC;
     ap_rst_n : in STD_LOGIC;
     ap_start : in STD_LOGIC;
@@ -722,7 +734,8 @@ entity brd_RawStreamToFIFO_0_0 is
     streamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
     fifoIFInFull_n_V : in STD_LOGIC_VECTOR ( 0 to 0 );
     fifoIFOutData_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    skippedData_V : out STD_LOGIC_VECTOR ( 15 downto 0 )
+    skippedData_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of brd_RawStreamToFIFO_0_0 : entity is true;
@@ -748,11 +761,13 @@ architecture STRUCTURE of brd_RawStreamToFIFO_0_0 is
   attribute x_interface_parameter of ap_start : signal is "XIL_INTERFACENAME ap_ctrl, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {start {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} done {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} idle {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} ready {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
   attribute x_interface_info of streamIn_V_V_TREADY : signal is "xilinx.com:interface:axis:1.0 streamIn_V_V TREADY";
   attribute x_interface_info of streamIn_V_V_TVALID : signal is "xilinx.com:interface:axis:1.0 streamIn_V_V TVALID";
-  attribute x_interface_parameter of streamIn_V_V_TVALID : signal is "XIL_INTERFACENAME streamIn_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  attribute x_interface_parameter of streamIn_V_V_TVALID : signal is "XIL_INTERFACENAME streamIn_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   attribute x_interface_info of fifoIFInFull_n_V : signal is "xilinx.com:signal:data:1.0 fifoIFInFull_n_V DATA";
   attribute x_interface_parameter of fifoIFInFull_n_V : signal is "XIL_INTERFACENAME fifoIFInFull_n_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}";
   attribute x_interface_info of fifoIFOutData_V : signal is "xilinx.com:signal:data:1.0 fifoIFOutData_V DATA";
   attribute x_interface_parameter of fifoIFOutData_V : signal is "XIL_INTERFACENAME fifoIFOutData_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}";
+  attribute x_interface_info of nonMonTSDiffFlgReg_V : signal is "xilinx.com:signal:data:1.0 nonMonTSDiffFlgReg_V DATA";
+  attribute x_interface_parameter of nonMonTSDiffFlgReg_V : signal is "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}";
   attribute x_interface_info of skippedData_V : signal is "xilinx.com:signal:data:1.0 skippedData_V DATA";
   attribute x_interface_parameter of skippedData_V : signal is "XIL_INTERFACENAME skippedData_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}";
   attribute x_interface_info of streamIn_V_V_TDATA : signal is "xilinx.com:interface:axis:1.0 streamIn_V_V TDATA";
@@ -768,6 +783,8 @@ U0: entity work.brd_RawStreamToFIFO_0_0_RawStreamToFIFO
       fifoIFInFull_n_V(0) => fifoIFInFull_n_V(0),
       fifoIFOutData_V(15 downto 0) => fifoIFOutData_V(15 downto 0),
       fifoIFOutData_V_ap_vld => fifoIFOutData_V_ap_vld,
+      nonMonTSDiffFlgReg_V(0) => nonMonTSDiffFlgReg_V(0),
+      nonMonTSDiffFlgReg_V_ap_vld => nonMonTSDiffFlgReg_V_ap_vld,
       skippedData_V(15 downto 0) => skippedData_V(15 downto 0),
       skippedData_V_ap_vld => skippedData_V_ap_vld,
       streamIn_V_V_TDATA(15 downto 0) => streamIn_V_V_TDATA(15 downto 0),

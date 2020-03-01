@@ -42,48 +42,49 @@ entity bd_1384_wrapper is
     probe34 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe35 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe36 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe37 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe38 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe37 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe38 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe39 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe4 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe41 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe40 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe44 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe44 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe45 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe47 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe48 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe50 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe52 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe53 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe52 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe53 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe54 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe55 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe56 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe57 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe58 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe59 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe56 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe57 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe58 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe59 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 47 downto 0 );
-    probe60 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe61 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe60 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe61 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe63 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe63 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe64 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe65 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe66 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe67 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe68 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe69 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe66 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe67 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe68 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe69 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe70 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe71 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe72 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe73 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe74 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe75 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
@@ -130,44 +131,45 @@ architecture STRUCTURE of bd_1384_wrapper is
     probe34 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe35 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe36 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe37 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe38 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe37 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe38 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe39 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe41 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe40 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe44 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe44 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe45 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe47 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe48 : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe50 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe52 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe53 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe52 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe53 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe54 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe55 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe56 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe57 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe58 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe59 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe60 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe61 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe56 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe57 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe58 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe59 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe60 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe61 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe62 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe63 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe63 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe64 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe65 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe66 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe67 : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    probe68 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe69 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe66 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe67 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe68 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe69 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe70 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe71 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe72 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe73 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe74 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe74 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe75 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component bd_1384;
 begin
@@ -205,48 +207,49 @@ bd_1384_i: component bd_1384
       probe34(7 downto 0) => probe34(7 downto 0),
       probe35(0) => probe35(0),
       probe36(0) => probe36(0),
-      probe37(0) => probe37(0),
-      probe38(7 downto 0) => probe38(7 downto 0),
+      probe37(7 downto 0) => probe37(7 downto 0),
+      probe38(0) => probe38(0),
       probe39(0) => probe39(0),
       probe4(7 downto 0) => probe4(7 downto 0),
-      probe40(0) => probe40(0),
-      probe41(7 downto 0) => probe41(7 downto 0),
+      probe40(7 downto 0) => probe40(7 downto 0),
+      probe41(0) => probe41(0),
       probe42(0) => probe42(0),
-      probe43(0) => probe43(0),
-      probe44(2 downto 0) => probe44(2 downto 0),
+      probe43(2 downto 0) => probe43(2 downto 0),
+      probe44(0) => probe44(0),
       probe45(0) => probe45(0),
       probe46(0) => probe46(0),
-      probe47(0) => probe47(0),
-      probe48(1 downto 0) => probe48(1 downto 0),
-      probe49(0) => probe49(0),
+      probe47(1 downto 0) => probe47(1 downto 0),
+      probe48(0) => probe48(0),
+      probe49(13 downto 0) => probe49(13 downto 0),
       probe5(0) => probe5(0),
-      probe50(15 downto 0) => probe50(15 downto 0),
+      probe50(0) => probe50(0),
       probe51(0) => probe51(0),
-      probe52(0) => probe52(0),
-      probe53(2 downto 0) => probe53(2 downto 0),
+      probe52(2 downto 0) => probe52(2 downto 0),
+      probe53(0) => probe53(0),
       probe54(0) => probe54(0),
       probe55(0) => probe55(0),
-      probe56(0) => probe56(0),
-      probe57(7 downto 0) => probe57(7 downto 0),
-      probe58(2 downto 0) => probe58(2 downto 0),
-      probe59(31 downto 0) => probe59(31 downto 0),
+      probe56(7 downto 0) => probe56(7 downto 0),
+      probe57(2 downto 0) => probe57(2 downto 0),
+      probe58(31 downto 0) => probe58(31 downto 0),
+      probe59(7 downto 0) => probe59(7 downto 0),
       probe6(47 downto 0) => probe6(47 downto 0),
-      probe60(7 downto 0) => probe60(7 downto 0),
-      probe61(15 downto 0) => probe61(15 downto 0),
+      probe60(15 downto 0) => probe60(15 downto 0),
+      probe61(7 downto 0) => probe61(7 downto 0),
       probe62(7 downto 0) => probe62(7 downto 0),
-      probe63(7 downto 0) => probe63(7 downto 0),
+      probe63(0) => probe63(0),
       probe64(0) => probe64(0),
       probe65(0) => probe65(0),
-      probe66(0) => probe66(0),
-      probe67(2 downto 0) => probe67(2 downto 0),
-      probe68(0) => probe68(0),
-      probe69(7 downto 0) => probe69(7 downto 0),
+      probe66(2 downto 0) => probe66(2 downto 0),
+      probe67(0) => probe67(0),
+      probe68(7 downto 0) => probe68(7 downto 0),
+      probe69(0) => probe69(0),
       probe7(0) => probe7(0),
       probe70(0) => probe70(0),
       probe71(0) => probe71(0),
       probe72(0) => probe72(0),
       probe73(0) => probe73(0),
       probe74(0) => probe74(0),
+      probe75(15 downto 0) => probe75(15 downto 0),
       probe8(7 downto 0) => probe8(7 downto 0),
       probe9(0) => probe9(0)
     );

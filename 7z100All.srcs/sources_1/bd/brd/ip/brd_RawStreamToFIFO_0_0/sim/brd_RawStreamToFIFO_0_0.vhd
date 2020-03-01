@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:RawStreamToFIFO:1.0
--- IP Revision: 2002241141
+-- IP Revision: 2002271337
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -57,6 +57,7 @@ ENTITY brd_RawStreamToFIFO_0_0 IS
   PORT (
     fifoIFOutData_V_ap_vld : OUT STD_LOGIC;
     skippedData_V_ap_vld : OUT STD_LOGIC;
+    nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     ap_start : IN STD_LOGIC;
@@ -68,7 +69,8 @@ ENTITY brd_RawStreamToFIFO_0_0 IS
     streamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     fifoIFInFull_n_V : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     fifoIFOutData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+    skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
   );
 END brd_RawStreamToFIFO_0_0;
 
@@ -79,6 +81,7 @@ ARCHITECTURE brd_RawStreamToFIFO_0_0_arch OF brd_RawStreamToFIFO_0_0 IS
     PORT (
       fifoIFOutData_V_ap_vld : OUT STD_LOGIC;
       skippedData_V_ap_vld : OUT STD_LOGIC;
+      nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
       ap_clk : IN STD_LOGIC;
       ap_rst_n : IN STD_LOGIC;
       ap_start : IN STD_LOGIC;
@@ -90,11 +93,15 @@ ARCHITECTURE brd_RawStreamToFIFO_0_0_arch OF brd_RawStreamToFIFO_0_0 IS
       streamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       fifoIFInFull_n_V : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       fifoIFOutData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+      skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
     );
   END COMPONENT RawStreamToFIFO;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF nonMonTSDiffFlgReg_V: SIGNAL IS "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maxim" & 
+"um {}} value false}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF nonMonTSDiffFlgReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 nonMonTSDiffFlgReg_V DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF skippedData_V: SIGNAL IS "XIL_INTERFACENAME skippedData_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}}" & 
 " value false}}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF skippedData_V: SIGNAL IS "xilinx.com:signal:data:1.0 skippedData_V DATA";
@@ -127,6 +134,7 @@ BEGIN
     PORT MAP (
       fifoIFOutData_V_ap_vld => fifoIFOutData_V_ap_vld,
       skippedData_V_ap_vld => skippedData_V_ap_vld,
+      nonMonTSDiffFlgReg_V_ap_vld => nonMonTSDiffFlgReg_V_ap_vld,
       ap_clk => ap_clk,
       ap_rst_n => ap_rst_n,
       ap_start => ap_start,
@@ -138,6 +146,7 @@ BEGIN
       streamIn_V_V_TDATA => streamIn_V_V_TDATA,
       fifoIFInFull_n_V => fifoIFInFull_n_V,
       fifoIFOutData_V => fifoIFOutData_V,
-      skippedData_V => skippedData_V
+      skippedData_V => skippedData_V,
+      nonMonTSDiffFlgReg_V => nonMonTSDiffFlgReg_V
     );
 END brd_RawStreamToFIFO_0_0_arch;

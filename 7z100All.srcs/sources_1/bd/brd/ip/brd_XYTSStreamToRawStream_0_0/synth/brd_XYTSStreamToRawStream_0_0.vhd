@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:XYTSStreamToRawStream:1.0
--- IP Revision: 2002261645
+-- IP Revision: 2003011043
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -61,6 +61,7 @@ ENTITY brd_XYTSStreamToRawStream_0_0 IS
     glLastYReg_V_ap_vld : OUT STD_LOGIC;
     tsDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
     yDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
+    nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     ap_start : IN STD_LOGIC;
@@ -87,7 +88,8 @@ ENTITY brd_XYTSStreamToRawStream_0_0 IS
     yReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     glLastYReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     tsDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-    yDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+    yDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+    nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
   );
 END brd_XYTSStreamToRawStream_0_0;
 
@@ -102,6 +104,7 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
       glLastYReg_V_ap_vld : OUT STD_LOGIC;
       tsDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
       yDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
+      nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
       ap_clk : IN STD_LOGIC;
       ap_rst_n : IN STD_LOGIC;
       ap_start : IN STD_LOGIC;
@@ -128,7 +131,8 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
       yReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       glLastYReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       tsDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-      yDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+      yDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+      nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
     );
   END COMPONENT XYTSStreamToRawStream;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -136,9 +140,12 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_XYTSStreamToRawStream_0_0_arch : ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_XYTSStreamToRawStream_0_0_arch: ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=XYTSStreamToRawStream,x_ipVersion=1.0,x_ipCoreRevision=2002261645,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_XYTSStreamToRawStream_0_0_arch: ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=XYTSStreamToRawStream,x_ipVersion=1.0,x_ipCoreRevision=2003011043,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF nonMonTSDiffFlgReg_V: SIGNAL IS "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maxim" & 
+"um {}} value false}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF nonMonTSDiffFlgReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 nonMonTSDiffFlgReg_V DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF yDiffFlgReg_V: SIGNAL IS "XIL_INTERFACENAME yDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} " & 
 "value false}}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF yDiffFlgReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 yDiffFlgReg_V DATA";
@@ -208,6 +215,7 @@ BEGIN
       glLastYReg_V_ap_vld => glLastYReg_V_ap_vld,
       tsDiffFlgReg_V_ap_vld => tsDiffFlgReg_V_ap_vld,
       yDiffFlgReg_V_ap_vld => yDiffFlgReg_V_ap_vld,
+      nonMonTSDiffFlgReg_V_ap_vld => nonMonTSDiffFlgReg_V_ap_vld,
       ap_clk => ap_clk,
       ap_rst_n => ap_rst_n,
       ap_start => ap_start,
@@ -234,6 +242,7 @@ BEGIN
       yReg_V => yReg_V,
       glLastYReg_V => glLastYReg_V,
       tsDiffFlgReg_V => tsDiffFlgReg_V,
-      yDiffFlgReg_V => yDiffFlgReg_V
+      yDiffFlgReg_V => yDiffFlgReg_V,
+      nonMonTSDiffFlgReg_V => nonMonTSDiffFlgReg_V
     );
 END brd_XYTSStreamToRawStream_0_0_arch;

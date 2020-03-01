@@ -1,8 +1,8 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Fri Feb 21 13:53:54 2020
-// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+// Date        : Thu Feb 27 18:51:27 2020
+// Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top brd_RawStreamToFIFO_0_0 -prefix
 //               brd_RawStreamToFIFO_0_0_ brd_RawStreamToFIFO_0_0_sim_netlist.v
 // Design      : brd_RawStreamToFIFO_0_0
@@ -26,7 +26,9 @@ module brd_RawStreamToFIFO_0_0_RawStreamToFIFO
     fifoIFOutData_V,
     fifoIFOutData_V_ap_vld,
     skippedData_V,
-    skippedData_V_ap_vld);
+    skippedData_V_ap_vld,
+    nonMonTSDiffFlgReg_V,
+    nonMonTSDiffFlgReg_V_ap_vld);
   input ap_clk;
   input ap_rst_n;
   input ap_start;
@@ -41,9 +43,11 @@ module brd_RawStreamToFIFO_0_0_RawStreamToFIFO
   output fifoIFOutData_V_ap_vld;
   output [15:0]skippedData_V;
   output skippedData_V_ap_vld;
+  output [0:0]nonMonTSDiffFlgReg_V;
+  output nonMonTSDiffFlgReg_V_ap_vld;
 
+  wire \<const0> ;
   wire ap_clk;
-  wire ap_done;
   wire ap_enable_reg_pp0_iter1;
   wire ap_enable_reg_pp0_iter1_i_1_n_0;
   wire ap_idle;
@@ -52,9 +56,10 @@ module brd_RawStreamToFIFO_0_0_RawStreamToFIFO
   wire ap_rst_n_inv;
   wire ap_start;
   wire [0:0]fifoIFInFull_n_V;
-  wire fifoIFInFull_n_V_rea_reg_100;
-  wire \fifoIFInFull_n_V_rea_reg_100[0]_i_1_n_0 ;
+  wire fifoIFInFull_n_V_rea_reg_174;
+  wire \fifoIFInFull_n_V_rea_reg_174[0]_i_1_n_0 ;
   wire fifoIFOutData_V_ap_vld;
+  wire nonMonTSDiffFlgReg_V_ap_vld;
   wire [15:0]skippedData_V;
   wire skippedData_V_ap_vld;
   wire streamIn_V_V_0_load_B;
@@ -72,14 +77,11 @@ module brd_RawStreamToFIFO_0_0_RawStreamToFIFO
   wire streamIn_V_V_TREADY;
   wire streamIn_V_V_TVALID;
 
+  assign ap_done = nonMonTSDiffFlgReg_V_ap_vld;
   assign fifoIFOutData_V[15:0] = skippedData_V;
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
-    ap_done_INST_0
-       (.I0(\streamIn_V_V_0_state_reg_n_0_[0] ),
-        .I1(ap_enable_reg_pp0_iter1),
-        .O(ap_done));
+  assign nonMonTSDiffFlgReg_V[0] = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'hBA)) 
@@ -113,26 +115,33 @@ module brd_RawStreamToFIFO_0_0_RawStreamToFIFO
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'hBA8A)) 
-    \fifoIFInFull_n_V_rea_reg_100[0]_i_1 
+    \fifoIFInFull_n_V_rea_reg_174[0]_i_1 
        (.I0(fifoIFInFull_n_V),
         .I1(\streamIn_V_V_0_state_reg_n_0_[0] ),
         .I2(ap_enable_reg_pp0_iter1),
-        .I3(fifoIFInFull_n_V_rea_reg_100),
-        .O(\fifoIFInFull_n_V_rea_reg_100[0]_i_1_n_0 ));
-  FDRE \fifoIFInFull_n_V_rea_reg_100_reg[0] 
+        .I3(fifoIFInFull_n_V_rea_reg_174),
+        .O(\fifoIFInFull_n_V_rea_reg_174[0]_i_1_n_0 ));
+  FDRE \fifoIFInFull_n_V_rea_reg_174_reg[0] 
        (.C(ap_clk),
         .CE(1'b1),
-        .D(\fifoIFInFull_n_V_rea_reg_100[0]_i_1_n_0 ),
-        .Q(fifoIFInFull_n_V_rea_reg_100),
+        .D(\fifoIFInFull_n_V_rea_reg_174[0]_i_1_n_0 ),
+        .Q(fifoIFInFull_n_V_rea_reg_174),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'h80)) 
     fifoIFOutData_V_ap_vld_INST_0
        (.I0(ap_enable_reg_pp0_iter1),
         .I1(\streamIn_V_V_0_state_reg_n_0_[0] ),
-        .I2(fifoIFInFull_n_V_rea_reg_100),
+        .I2(fifoIFInFull_n_V_rea_reg_174),
         .O(fifoIFOutData_V_ap_vld));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    nonMonTSDiffFlgReg_V_ap_vld_INST_0
+       (.I0(\streamIn_V_V_0_state_reg_n_0_[0] ),
+        .I1(ap_enable_reg_pp0_iter1),
+        .O(nonMonTSDiffFlgReg_V_ap_vld));
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT3 #(
     .INIT(8'hAC)) 
@@ -261,13 +270,13 @@ module brd_RawStreamToFIFO_0_0_RawStreamToFIFO
         .I1(streamIn_V_V_0_payload_A[1]),
         .I2(streamIn_V_V_0_sel),
         .O(skippedData_V[9]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'h40)) 
     skippedData_V_ap_vld_INST_0
-       (.I0(ap_enable_reg_pp0_iter1),
-        .I1(\streamIn_V_V_0_state_reg_n_0_[0] ),
-        .I2(fifoIFInFull_n_V_rea_reg_100),
+       (.I0(fifoIFInFull_n_V_rea_reg_174),
+        .I1(ap_enable_reg_pp0_iter1),
+        .I2(\streamIn_V_V_0_state_reg_n_0_[0] ),
         .O(skippedData_V_ap_vld));
   LUT3 #(
     .INIT(8'h0D)) 
@@ -509,13 +518,13 @@ module brd_RawStreamToFIFO_0_0_RawStreamToFIFO
         .R(ap_rst_n_inv));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h8AAA8080)) 
+    .INIT(32'hA820A8A0)) 
     \streamIn_V_V_0_state[0]_i_1 
        (.I0(ap_rst_n),
-        .I1(streamIn_V_V_TVALID),
-        .I2(streamIn_V_V_TREADY),
-        .I3(ap_enable_reg_pp0_iter1),
-        .I4(\streamIn_V_V_0_state_reg_n_0_[0] ),
+        .I1(streamIn_V_V_TREADY),
+        .I2(\streamIn_V_V_0_state_reg_n_0_[0] ),
+        .I3(streamIn_V_V_TVALID),
+        .I4(ap_enable_reg_pp0_iter1),
         .O(\streamIn_V_V_0_state[0]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
@@ -554,6 +563,7 @@ endmodule
 module brd_RawStreamToFIFO_0_0
    (fifoIFOutData_V_ap_vld,
     skippedData_V_ap_vld,
+    nonMonTSDiffFlgReg_V_ap_vld,
     ap_clk,
     ap_rst_n,
     ap_start,
@@ -565,21 +575,24 @@ module brd_RawStreamToFIFO_0_0
     streamIn_V_V_TDATA,
     fifoIFInFull_n_V,
     fifoIFOutData_V,
-    skippedData_V);
+    skippedData_V,
+    nonMonTSDiffFlgReg_V);
   output fifoIFOutData_V_ap_vld;
   output skippedData_V_ap_vld;
+  output nonMonTSDiffFlgReg_V_ap_vld;
   (* x_interface_info = "xilinx.com:signal:clock:1.0 ap_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF streamIn_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *) input ap_clk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 ap_rst_n RST" *) (* x_interface_parameter = "XIL_INTERFACENAME ap_rst_n, POLARITY ACTIVE_LOW, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {RST {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}" *) input ap_rst_n;
   (* x_interface_info = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl start" *) (* x_interface_parameter = "XIL_INTERFACENAME ap_ctrl, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {start {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} done {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} idle {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} ready {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}" *) input ap_start;
   (* x_interface_info = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl done" *) output ap_done;
   (* x_interface_info = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl idle" *) output ap_idle;
   (* x_interface_info = "xilinx.com:interface:acc_handshake:1.0 ap_ctrl ready" *) output ap_ready;
-  (* x_interface_info = "xilinx.com:interface:axis:1.0 streamIn_V_V TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME streamIn_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *) input streamIn_V_V_TVALID;
+  (* x_interface_info = "xilinx.com:interface:axis:1.0 streamIn_V_V TVALID" *) (* x_interface_parameter = "XIL_INTERFACENAME streamIn_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *) input streamIn_V_V_TVALID;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 streamIn_V_V TREADY" *) output streamIn_V_V_TREADY;
   (* x_interface_info = "xilinx.com:interface:axis:1.0 streamIn_V_V TDATA" *) input [15:0]streamIn_V_V_TDATA;
   (* x_interface_info = "xilinx.com:signal:data:1.0 fifoIFInFull_n_V DATA" *) (* x_interface_parameter = "XIL_INTERFACENAME fifoIFInFull_n_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}" *) input [0:0]fifoIFInFull_n_V;
   (* x_interface_info = "xilinx.com:signal:data:1.0 fifoIFOutData_V DATA" *) (* x_interface_parameter = "XIL_INTERFACENAME fifoIFOutData_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}" *) output [15:0]fifoIFOutData_V;
   (* x_interface_info = "xilinx.com:signal:data:1.0 skippedData_V DATA" *) (* x_interface_parameter = "XIL_INTERFACENAME skippedData_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}" *) output [15:0]skippedData_V;
+  (* x_interface_info = "xilinx.com:signal:data:1.0 nonMonTSDiffFlgReg_V DATA" *) (* x_interface_parameter = "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}" *) output [0:0]nonMonTSDiffFlgReg_V;
 
   wire ap_clk;
   wire ap_done;
@@ -590,6 +603,8 @@ module brd_RawStreamToFIFO_0_0
   wire [0:0]fifoIFInFull_n_V;
   wire [15:0]fifoIFOutData_V;
   wire fifoIFOutData_V_ap_vld;
+  wire [0:0]nonMonTSDiffFlgReg_V;
+  wire nonMonTSDiffFlgReg_V_ap_vld;
   wire [15:0]skippedData_V;
   wire skippedData_V_ap_vld;
   wire [15:0]streamIn_V_V_TDATA;
@@ -606,6 +621,8 @@ module brd_RawStreamToFIFO_0_0
         .fifoIFInFull_n_V(fifoIFInFull_n_V),
         .fifoIFOutData_V(fifoIFOutData_V),
         .fifoIFOutData_V_ap_vld(fifoIFOutData_V_ap_vld),
+        .nonMonTSDiffFlgReg_V(nonMonTSDiffFlgReg_V),
+        .nonMonTSDiffFlgReg_V_ap_vld(nonMonTSDiffFlgReg_V_ap_vld),
         .skippedData_V(skippedData_V),
         .skippedData_V_ap_vld(skippedData_V_ap_vld),
         .streamIn_V_V_TDATA(streamIn_V_V_TDATA),
