@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar  1 18:57:28 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar  3 13:55:37 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="bd_d325" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -2071,7 +2071,7 @@
         <PARAMETER NAME="C_SLOT_0_AXI_ID_WIDTH" VALUE="64"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ARUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_RUSER_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_SLOT_0_AXI_AWUSER_WIDTH" VALUE="64"/>
+        <PARAMETER NAME="C_SLOT_0_AXI_AWUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_WUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_BUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_WIDTH" VALUE="16"/>
@@ -2111,9 +2111,9 @@
         <PARAMETER NAME="C_PROBE34_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE35_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE36_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE37_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_PROBE38_WIDTH" VALUE="64"/>
-        <PARAMETER NAME="C_PROBE39_WIDTH" VALUE="64"/>
+        <PARAMETER NAME="C_PROBE37_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE38_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE39_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE40_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE41_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE42_WIDTH" VALUE="1"/>
@@ -5360,17 +5360,17 @@
             <CONNECTION INSTANCE="External_Ports" PORT="probe36"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe37" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe37">
+        <PORT DIR="I" LEFT="0" NAME="probe37" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe37">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="probe37"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="probe38" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe38">
+        <PORT DIR="I" LEFT="0" NAME="probe38" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe38">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="probe38"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="probe39" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe39">
+        <PORT DIR="I" LEFT="0" NAME="probe39" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe39">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="probe39"/>
           </CONNECTIONS>

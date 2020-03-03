@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="35">
   <CompositeFile CompositeFileTopName="brd" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1583085459"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1583085459"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1583085459"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1583085459"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1583240139"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1583240139"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1583240139"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1583240139"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\brd_LEDShifter_0_0\brd_LEDShifter_0_0.xci" Type="IP">
         <Instance HierarchyPath="LEDShifter_0"/>
@@ -361,54 +361,6 @@
       </File>
       <File Name="ip\brd_axis_data_fifo_0_0\brd_axis_data_fifo_0_0.xci" Type="IP">
         <Instance HierarchyPath="axis_data_fifo_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_checkEvUSBStream_0_1\brd_checkEvUSBStream_0_1.xci" Type="IP">
-        <Instance HierarchyPath="checkEvUSBStream_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_convertToStream_0_1\brd_convertToStream_0_1.xci" Type="IP">
-        <Instance HierarchyPath="convertToStream_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_axis_data_fifo_1_2\brd_axis_data_fifo_1_2.xci" Type="IP">
-        <Instance HierarchyPath="axis_data_fifo_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_system_ila_1_0\brd_system_ila_1_0.xci" Type="IP">
-        <Instance HierarchyPath="system_ila_1"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_MyDFFSynchronizer_0_0\brd_MyDFFSynchronizer_0_0.xci" Type="IP">
-        <Instance HierarchyPath="MyDFFSynchronizer_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\brd_MyDFFSynchronizer_0_1\brd_MyDFFSynchronizer_0_1.xci" Type="IP">
-        <Instance HierarchyPath="MyDFFSynchronizer_1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

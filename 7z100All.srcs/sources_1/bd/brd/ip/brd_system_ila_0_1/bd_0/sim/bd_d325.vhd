@@ -75,7 +75,7 @@ entity bd_d325 is
     resetn : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_d325 : entity is "brd_system_ila_0_1.hwdef";
 end bd_d325;
@@ -121,9 +121,9 @@ architecture STRUCTURE of bd_d325 is
     probe34 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe35 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe36 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe37 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe38 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe39 : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    probe37 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe38 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe39 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe40 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe41 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -450,9 +450,9 @@ ila_lib: component bd_d325_ila_lib_0
       probe34(0) => probe34_1(0),
       probe35(0) => probe35_1(0),
       probe36(0) => probe36_1(0),
-      probe37(15 downto 0) => probe37_1(15 downto 0),
-      probe38(63 downto 0) => probe38_1(63 downto 0),
-      probe39(63 downto 0) => probe39_1(63 downto 0),
+      probe37(0) => probe37_1(0),
+      probe38(0) => probe38_1(0),
+      probe39(0) => probe39_1(0),
       probe4(0) => probe4_1(0),
       probe40(15 downto 0) => probe40_1(15 downto 0),
       probe41(15 downto 0) => net_slot_0_axis_tdata(15 downto 0),
