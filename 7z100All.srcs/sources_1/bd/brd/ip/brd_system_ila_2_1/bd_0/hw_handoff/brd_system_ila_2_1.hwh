@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar  3 13:55:29 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar  4 20:13:25 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="bd_1384" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -487,7 +487,7 @@
         <PARAMETER NAME="C_PROBE46_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE47_WIDTH" VALUE="2"/>
         <PARAMETER NAME="C_PROBE48_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE49_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_PROBE49_WIDTH" VALUE="14"/>
         <PARAMETER NAME="C_PROBE50_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE51_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE52_WIDTH" VALUE="3"/>
@@ -3784,7 +3784,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="probe48"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="probe49" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe49">
+        <PORT DIR="I" LEFT="13" NAME="probe49" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe49">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="probe49"/>
           </CONNECTIONS>

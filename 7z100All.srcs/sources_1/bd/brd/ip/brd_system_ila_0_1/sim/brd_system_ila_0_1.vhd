@@ -69,34 +69,20 @@ ENTITY brd_system_ila_0_1 IS
     probe10 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe11 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe12 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe13 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe14 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    probe15 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    probe13 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    probe14 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe15 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     probe16 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe17 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-    probe18 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    probe19 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-    probe20 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe17 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe18 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe19 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe20 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     probe21 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     probe22 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe23 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe23 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     probe24 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe25 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe25 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     probe26 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe27 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe28 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe29 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe30 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe31 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe32 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe33 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe34 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe35 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe36 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe37 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-    probe38 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-    probe39 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-    probe40 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     SLOT_0_AXIS_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     SLOT_0_AXIS_tlast : IN STD_LOGIC;
     SLOT_0_AXIS_tvalid : IN STD_LOGIC;
@@ -113,10 +99,6 @@ ENTITY brd_system_ila_0_1 IS
     SLOT_3_AXIS_tlast : IN STD_LOGIC;
     SLOT_3_AXIS_tvalid : IN STD_LOGIC;
     SLOT_3_AXIS_tready : IN STD_LOGIC;
-    SLOT_4_AXIS_tdata : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-    SLOT_4_AXIS_tlast : IN STD_LOGIC;
-    SLOT_4_AXIS_tvalid : IN STD_LOGIC;
-    SLOT_4_AXIS_tready : IN STD_LOGIC;
     resetn : IN STD_LOGIC
   );
 END brd_system_ila_0_1;
@@ -140,34 +122,20 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
       probe10 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe11 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe12 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe13 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe14 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-      probe15 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      probe13 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      probe14 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe15 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
       probe16 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe17 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-      probe18 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-      probe19 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-      probe20 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe17 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe18 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe19 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe20 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       probe21 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       probe22 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe23 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe23 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       probe24 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe25 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe25 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
       probe26 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe27 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe28 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe29 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe30 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe31 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe32 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe33 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe34 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe35 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe36 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe37 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
-      probe38 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-      probe39 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-      probe40 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       SLOT_0_AXIS_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       SLOT_0_AXIS_tlast : IN STD_LOGIC;
       SLOT_0_AXIS_tvalid : IN STD_LOGIC;
@@ -184,10 +152,6 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
       SLOT_3_AXIS_tlast : IN STD_LOGIC;
       SLOT_3_AXIS_tvalid : IN STD_LOGIC;
       SLOT_3_AXIS_tready : IN STD_LOGIC;
-      SLOT_4_AXIS_tdata : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
-      SLOT_4_AXIS_tlast : IN STD_LOGIC;
-      SLOT_4_AXIS_tvalid : IN STD_LOGIC;
-      SLOT_4_AXIS_tready : IN STD_LOGIC;
       resetn : IN STD_LOGIC
     );
   END COMPONENT bd_d325;
@@ -195,13 +159,6 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF resetn: SIGNAL IS "XIL_INTERFACENAME RST.resetn, POLARITY ACTIVE_LOW";
   ATTRIBUTE X_INTERFACE_INFO OF resetn: SIGNAL IS "xilinx.com:signal:reset:1.0 RST.resetn RST";
-  ATTRIBUTE X_INTERFACE_INFO OF SLOT_4_AXIS_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TREADY";
-  ATTRIBUTE X_INTERFACE_INFO OF SLOT_4_AXIS_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TVALID";
-  ATTRIBUTE X_INTERFACE_INFO OF SLOT_4_AXIS_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TLAST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF SLOT_4_AXIS_tdata: SIGNAL IS "XIL_INTERFACENAME SLOT_4_AXIS, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffs" & 
-"et {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} " & 
-"maximum {}} value false}}}} TDATA_WIDTH 64}";
-  ATTRIBUTE X_INTERFACE_INFO OF SLOT_4_AXIS_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF SLOT_3_AXIS_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_3_AXIS TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF SLOT_3_AXIS_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_3_AXIS TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF SLOT_3_AXIS_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_3_AXIS TLAST";
@@ -230,7 +187,7 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
 "et {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} " & 
 "maximum {}} value false}}}} TDATA_WIDTH 16}";
   ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXIS_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_0_AXIS TDATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME CLK.clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF SLOT_0_AXIS:SLOT_1_AXIS:SLOT_2_AXIS:SLOT_3_AXIS:SLOT_4_AXIS, ASSOCIATED_RESET resetn";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME CLK.clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF SLOT_0_AXIS:SLOT_1_AXIS:SLOT_2_AXIS:SLOT_3_AXIS, ASSOCIATED_RESET resetn";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 CLK.clk CLK";
 BEGIN
   U0 : bd_d325
@@ -263,20 +220,6 @@ BEGIN
       probe24 => probe24,
       probe25 => probe25,
       probe26 => probe26,
-      probe27 => probe27,
-      probe28 => probe28,
-      probe29 => probe29,
-      probe30 => probe30,
-      probe31 => probe31,
-      probe32 => probe32,
-      probe33 => probe33,
-      probe34 => probe34,
-      probe35 => probe35,
-      probe36 => probe36,
-      probe37 => probe37,
-      probe38 => probe38,
-      probe39 => probe39,
-      probe40 => probe40,
       SLOT_0_AXIS_tdata => SLOT_0_AXIS_tdata,
       SLOT_0_AXIS_tlast => SLOT_0_AXIS_tlast,
       SLOT_0_AXIS_tvalid => SLOT_0_AXIS_tvalid,
@@ -293,10 +236,6 @@ BEGIN
       SLOT_3_AXIS_tlast => SLOT_3_AXIS_tlast,
       SLOT_3_AXIS_tvalid => SLOT_3_AXIS_tvalid,
       SLOT_3_AXIS_tready => SLOT_3_AXIS_tready,
-      SLOT_4_AXIS_tdata => SLOT_4_AXIS_tdata,
-      SLOT_4_AXIS_tlast => SLOT_4_AXIS_tlast,
-      SLOT_4_AXIS_tvalid => SLOT_4_AXIS_tvalid,
-      SLOT_4_AXIS_tready => SLOT_4_AXIS_tready,
       resetn => resetn
     );
 END brd_system_ila_0_1_arch;

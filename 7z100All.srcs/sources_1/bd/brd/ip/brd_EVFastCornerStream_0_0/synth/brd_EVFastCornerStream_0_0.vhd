@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVFastCornerStream:1.0
--- IP Revision: 2002251645
+-- IP Revision: 2003042011
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -174,7 +174,7 @@ ARCHITECTURE brd_EVFastCornerStream_0_0_arch OF brd_EVFastCornerStream_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_EVFastCornerStream_0_0_arch : ARCHITECTURE IS "brd_EVFastCornerStream_0_0,EVFastCornerStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVFastCornerStream_0_0_arch: ARCHITECTURE IS "brd_EVFastCornerStream_0_0,EVFastCornerStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVFastCornerStream,x_ipVersion=1.0,x_ipCoreRevision=2002251645,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVFastCornerStream_0_0_arch: ARCHITECTURE IS "brd_EVFastCornerStream_0_0,EVFastCornerStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVFastCornerStream,x_ipVersion=1.0,x_ipCoreRevision=2003042011,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF pixelDataStream_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 pixelDataStream_V_V TDATA";

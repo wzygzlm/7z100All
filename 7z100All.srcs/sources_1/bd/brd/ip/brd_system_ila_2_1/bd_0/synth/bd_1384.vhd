@@ -147,7 +147,7 @@ architecture STRUCTURE of bd_1384 is
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe52 : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -253,7 +253,6 @@ architecture STRUCTURE of bd_1384 is
   signal probe7_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe8_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal probe9_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_ila_lib_probe49_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 14 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -383,7 +382,6 @@ ila_lib: component bd_1384_ila_lib_0
       probe46(0) => probe46_1(0),
       probe47(1 downto 0) => probe47_1(1 downto 0),
       probe48(0) => probe48_1(0),
-      probe49(15 downto 14) => NLW_ila_lib_probe49_UNCONNECTED(15 downto 14),
       probe49(13 downto 0) => probe49_1(13 downto 0),
       probe5(0) => probe5_1(0),
       probe50(0) => probe50_1(0),
