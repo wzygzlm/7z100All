@@ -26,6 +26,10 @@ entity bd_d325_wrapper is
     SLOT_3_AXIS_tlast : in STD_LOGIC;
     SLOT_3_AXIS_tready : in STD_LOGIC;
     SLOT_3_AXIS_tvalid : in STD_LOGIC;
+    SLOT_4_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    SLOT_4_AXIS_tlast : in STD_LOGIC;
+    SLOT_4_AXIS_tready : in STD_LOGIC;
+    SLOT_4_AXIS_tvalid : in STD_LOGIC;
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -105,7 +109,11 @@ architecture STRUCTURE of bd_d325_wrapper is
     SLOT_3_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
     SLOT_3_AXIS_tlast : in STD_LOGIC;
     SLOT_3_AXIS_tready : in STD_LOGIC;
-    SLOT_3_AXIS_tvalid : in STD_LOGIC
+    SLOT_3_AXIS_tvalid : in STD_LOGIC;
+    SLOT_4_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    SLOT_4_AXIS_tlast : in STD_LOGIC;
+    SLOT_4_AXIS_tready : in STD_LOGIC;
+    SLOT_4_AXIS_tvalid : in STD_LOGIC
   );
   end component bd_d325;
 begin
@@ -127,6 +135,10 @@ bd_d325_i: component bd_d325
       SLOT_3_AXIS_tlast => SLOT_3_AXIS_tlast,
       SLOT_3_AXIS_tready => SLOT_3_AXIS_tready,
       SLOT_3_AXIS_tvalid => SLOT_3_AXIS_tvalid,
+      SLOT_4_AXIS_tdata(15 downto 0) => SLOT_4_AXIS_tdata(15 downto 0),
+      SLOT_4_AXIS_tlast => SLOT_4_AXIS_tlast,
+      SLOT_4_AXIS_tready => SLOT_4_AXIS_tready,
+      SLOT_4_AXIS_tvalid => SLOT_4_AXIS_tvalid,
       clk => clk,
       probe0(15 downto 0) => probe0(15 downto 0),
       probe1(0) => probe1(0),

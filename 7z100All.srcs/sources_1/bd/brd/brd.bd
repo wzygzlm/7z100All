@@ -1071,7 +1071,7 @@
           <spirit:configurableElementValue spirit:referenceId="C_PROBE0_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_DATA_DEPTH">16384</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_NUM_OF_PROBES">27</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="C_NUM_MONITOR_SLOTS">4</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_NUM_MONITOR_SLOTS">5</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_SLOT_0_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_SLOT_1_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_SLOT_2_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
@@ -1453,13 +1453,6 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>XYTSStreamToRawStream_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="hls" spirit:name="XYTSStreamToRawStream" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_XYTSStreamToRawStream_0_0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>EVMUXDataToXYTSStream_0</spirit:instanceName>
         <spirit:componentRef spirit:library="hls" spirit:name="EVMUXDataToXYTSStream" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
@@ -1471,6 +1464,13 @@
         <spirit:componentRef spirit:library="hls" spirit:name="EVFastCornerStream" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_EVFastCornerStream_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>XYTSStreamToRawStream_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="hls" spirit:name="XYTSStreamToRawStream" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_XYTSStreamToRawStream_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -1601,6 +1601,20 @@
         <spirit:activeInterface spirit:busRef="polStreamOut_V_V" spirit:componentRef="EVFastCornerStream_0"/>
         <spirit:activeInterface spirit:busRef="polStreamIn_V_V" spirit:componentRef="XYTSStreamToRawStream_0"/>
       </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>EVFastCornerStream_0_custDataStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="custDataStreamOut_V_V" spirit:componentRef="EVFastCornerStream_0"/>
+        <spirit:activeInterface spirit:busRef="custDataStreamIn_V_V" spirit:componentRef="XYTSStreamToRawStream_0"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
+      </spirit:interconnection>
+      <spirit:monitorInterconnection>
+        <spirit:name>EVFastCornerStream_0_custDataStreamOut_V_V</spirit:name>
+        <spirit:monitoredActiveInterface spirit:busRef="custDataStreamOut_V_V" spirit:componentRef="EVFastCornerStream_0"/>
+        <spirit:monitorInterface spirit:busRef="SLOT_4_AXIS" spirit:componentRef="system_ila_0"/>
+      </spirit:monitorInterconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
       <spirit:adHocConnection>
@@ -1679,9 +1693,9 @@
         <spirit:internalPortReference spirit:componentRef="eventStreamToConstEn_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="SPI0_SS_I"/>
         <spirit:internalPortReference spirit:componentRef="RawStreamToFIFO_0" spirit:portRef="ap_start"/>
-        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_start"/>
+        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_start"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_0_peripheral_aresetn</spirit:name>
@@ -1693,7 +1707,6 @@
         <spirit:internalPortReference spirit:componentRef="axis_data_fifo_0" spirit:portRef="s_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="resetn"/>
         <spirit:internalPortReference spirit:componentRef="RawStreamToFIFO_0" spirit:portRef="ap_rst_n"/>
-        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ARESETN"/>
@@ -1702,6 +1715,7 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_rst_n"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_1_peripheral_aresetn</spirit:name>
@@ -1731,7 +1745,6 @@
         <spirit:internalPortReference spirit:componentRef="testAERDVSSM_0" spirit:portRef="ADCClk_CI"/>
         <spirit:internalPortReference spirit:componentRef="axis_data_fifo_0" spirit:portRef="s_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="RawStreamToFIFO_0" spirit:portRef="ap_clk"/>
-        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
@@ -1741,6 +1754,7 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_clk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>processing_system7_0_FCLK_CLK1</spirit:name>

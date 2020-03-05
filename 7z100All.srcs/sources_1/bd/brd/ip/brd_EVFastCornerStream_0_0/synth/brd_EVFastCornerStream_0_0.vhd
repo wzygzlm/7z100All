@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVFastCornerStream:1.0
--- IP Revision: 2003042011
+-- IP Revision: 2003051143
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -102,9 +102,9 @@ ENTITY brd_EVFastCornerStream_0_0 IS
     polStreamOut_V_V_TVALID : OUT STD_LOGIC;
     polStreamOut_V_V_TREADY : IN STD_LOGIC;
     polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-    pixelDataStream_V_V_TVALID : OUT STD_LOGIC;
-    pixelDataStream_V_V_TREADY : IN STD_LOGIC;
-    pixelDataStream_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    custDataStreamOut_V_V_TVALID : OUT STD_LOGIC;
+    custDataStreamOut_V_V_TREADY : IN STD_LOGIC;
+    custDataStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END brd_EVFastCornerStream_0_0;
 
@@ -164,9 +164,9 @@ ARCHITECTURE brd_EVFastCornerStream_0_0_arch OF brd_EVFastCornerStream_0_0 IS
       polStreamOut_V_V_TVALID : OUT STD_LOGIC;
       polStreamOut_V_V_TREADY : IN STD_LOGIC;
       polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-      pixelDataStream_V_V_TVALID : OUT STD_LOGIC;
-      pixelDataStream_V_V_TREADY : IN STD_LOGIC;
-      pixelDataStream_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+      custDataStreamOut_V_V_TVALID : OUT STD_LOGIC;
+      custDataStreamOut_V_V_TREADY : IN STD_LOGIC;
+      custDataStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
     );
   END COMPONENT EVFastCornerStream;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -174,15 +174,14 @@ ARCHITECTURE brd_EVFastCornerStream_0_0_arch OF brd_EVFastCornerStream_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_EVFastCornerStream_0_0_arch : ARCHITECTURE IS "brd_EVFastCornerStream_0_0,EVFastCornerStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVFastCornerStream_0_0_arch: ARCHITECTURE IS "brd_EVFastCornerStream_0_0,EVFastCornerStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVFastCornerStream,x_ipVersion=1.0,x_ipCoreRevision=2003042011,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVFastCornerStream_0_0_arch: ARCHITECTURE IS "brd_EVFastCornerStream_0_0,EVFastCornerStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVFastCornerStream,x_ipVersion=1.0,x_ipCoreRevision=2003051143,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF pixelDataStream_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 pixelDataStream_V_V TDATA";
-  ATTRIBUTE X_INTERFACE_INFO OF pixelDataStream_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 pixelDataStream_V_V TREADY";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF pixelDataStream_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME pixelDataStream_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate de" & 
-"pendency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 8} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000" & 
-", CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
-  ATTRIBUTE X_INTERFACE_INFO OF pixelDataStream_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 pixelDataStream_V_V TVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF custDataStreamOut_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamOut_V_V TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF custDataStreamOut_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamOut_V_V TREADY";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF custDataStreamOut_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME custDataStreamOut_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0" & 
+", HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_INFO OF custDataStreamOut_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamOut_V_V TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamOut_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamOut_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamOut_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamOut_V_V TREADY";
   ATTRIBUTE X_INTERFACE_PARAMETER OF polStreamOut_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME polStreamOut_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate depen" & 
@@ -236,8 +235,8 @@ ARCHITECTURE brd_EVFastCornerStream_0_0_arch OF brd_EVFastCornerStream_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF ap_start: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl start";
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_rst_n: SIGNAL IS "XIL_INTERFACENAME ap_rst_n, POLARITY ACTIVE_LOW, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {RST {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF ap_rst_n: SIGNAL IS "xilinx.com:signal:reset:1.0 ap_rst_n RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF s_axi_config:xStreamIn_V_V:yStreamIn_V_V:tsStreamIn_V_V:polStreamIn_V_V:xStreamOut_V_V:yStreamOut_V_V:tsStreamOut_V_V:polStreamOut_V_V:pixelDataStream_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffs" & 
-"et {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF s_axi_config:xStreamIn_V_V:yStreamIn_V_V:tsStreamIn_V_V:polStreamIn_V_V:xStreamOut_V_V:yStreamOut_V_V:tsStreamOut_V_V:polStreamOut_V_V:custDataStreamOut_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitof" & 
+"fset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF ap_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ap_clk CLK";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RVALID";
@@ -312,8 +311,8 @@ BEGIN
       polStreamOut_V_V_TVALID => polStreamOut_V_V_TVALID,
       polStreamOut_V_V_TREADY => polStreamOut_V_V_TREADY,
       polStreamOut_V_V_TDATA => polStreamOut_V_V_TDATA,
-      pixelDataStream_V_V_TVALID => pixelDataStream_V_V_TVALID,
-      pixelDataStream_V_V_TREADY => pixelDataStream_V_V_TREADY,
-      pixelDataStream_V_V_TDATA => pixelDataStream_V_V_TDATA
+      custDataStreamOut_V_V_TVALID => custDataStreamOut_V_V_TVALID,
+      custDataStreamOut_V_V_TREADY => custDataStreamOut_V_V_TREADY,
+      custDataStreamOut_V_V_TDATA => custDataStreamOut_V_V_TDATA
     );
 END brd_EVFastCornerStream_0_0_arch;

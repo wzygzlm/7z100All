@@ -73,7 +73,7 @@
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_MAJOR_VERSION">2018</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_MINOR_VERSION">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_NUM_MONITOR_SLOTS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_NUM_OF_PROBES">43</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_NUM_OF_PROBES">47</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SLOT_0_AXI_PROTOCOL">AXI4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TIME_TAG_WIDTH">32</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TRIGIN_EN">0</spirit:configurableElementValue>
@@ -102,7 +102,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_INPUT_PIPE_STAGES">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_MONITOR_TYPE">Native</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_NUM_MONITOR_SLOTS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_NUM_OF_PROBES">43</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_NUM_OF_PROBES">47</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE0_MU_CNT">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE0_TYPE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE0_WIDTH">16</spirit:configurableElementValue>
@@ -1308,7 +1308,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE439_WIDTH">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE43_MU_CNT">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE43_TYPE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE43_WIDTH">1</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE43_WIDTH">16</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE440_MU_CNT">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE440_TYPE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_PROBE440_WIDTH">1</spirit:configurableElementValue>
@@ -3347,6 +3347,14 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE41_WIDTH" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE42_TYPE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE42_WIDTH" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE43_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE43_WIDTH" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE44_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE44_WIDTH" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE45_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE45_WIDTH" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE46_TYPE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE46_WIDTH" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE4_MU_CNT" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE4_TYPE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_PROBE4_WIDTH" xilinx:valueSource="user"/>

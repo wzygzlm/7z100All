@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:XYTSStreamToRawStream:1.0
--- IP Revision: 2003011043
+-- IP Revision: 2003051204
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -83,6 +83,9 @@ ENTITY brd_XYTSStreamToRawStream_0_0 IS
     polStreamIn_V_V_TVALID : IN STD_LOGIC;
     polStreamIn_V_V_TREADY : OUT STD_LOGIC;
     polStreamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    custDataStreamIn_V_V_TVALID : IN STD_LOGIC;
+    custDataStreamIn_V_V_TREADY : OUT STD_LOGIC;
+    custDataStreamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     tsReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     glLastTSReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     yReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -126,6 +129,9 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
       polStreamIn_V_V_TVALID : IN STD_LOGIC;
       polStreamIn_V_V_TREADY : OUT STD_LOGIC;
       polStreamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      custDataStreamIn_V_V_TVALID : IN STD_LOGIC;
+      custDataStreamIn_V_V_TREADY : OUT STD_LOGIC;
+      custDataStreamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       tsReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       glLastTSReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       yReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -140,7 +146,7 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_XYTSStreamToRawStream_0_0_arch : ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_XYTSStreamToRawStream_0_0_arch: ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=XYTSStreamToRawStream,x_ipVersion=1.0,x_ipCoreRevision=2003011043,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_XYTSStreamToRawStream_0_0_arch: ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=XYTSStreamToRawStream,x_ipVersion=1.0,x_ipCoreRevision=2003051204,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF nonMonTSDiffFlgReg_V: SIGNAL IS "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maxim" & 
@@ -164,6 +170,11 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
   ATTRIBUTE X_INTERFACE_PARAMETER OF tsReg_V: SIGNAL IS "XIL_INTERFACENAME tsReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value" & 
 " false}}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF tsReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 tsReg_V DATA";
+  ATTRIBUTE X_INTERFACE_INFO OF custDataStreamIn_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamIn_V_V TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF custDataStreamIn_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamIn_V_V TREADY";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF custDataStreamIn_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME custDataStreamIn_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0," & 
+" HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_INFO OF custDataStreamIn_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamIn_V_V TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn_V_V TREADY";
   ATTRIBUTE X_INTERFACE_PARAMETER OF polStreamIn_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME polStreamIn_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate depend" & 
@@ -203,8 +214,8 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
   ATTRIBUTE X_INTERFACE_INFO OF ap_start: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl start";
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_rst_n: SIGNAL IS "XIL_INTERFACENAME ap_rst_n, POLARITY ACTIVE_LOW, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {RST {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF ap_rst_n: SIGNAL IS "xilinx.com:signal:reset:1.0 ap_rst_n RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF streamOut_V_V:xStreamIn_V_V:yStreamIn_V_V:tsStreamIn_V_V:polStreamIn_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {" & 
-"}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF streamOut_V_V:xStreamIn_V_V:yStreamIn_V_V:tsStreamIn_V_V:polStreamIn_V_V:custDataStreamIn_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long" & 
+" minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF ap_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ap_clk CLK";
 BEGIN
   U0 : XYTSStreamToRawStream
@@ -237,6 +248,9 @@ BEGIN
       polStreamIn_V_V_TVALID => polStreamIn_V_V_TVALID,
       polStreamIn_V_V_TREADY => polStreamIn_V_V_TREADY,
       polStreamIn_V_V_TDATA => polStreamIn_V_V_TDATA,
+      custDataStreamIn_V_V_TVALID => custDataStreamIn_V_V_TVALID,
+      custDataStreamIn_V_V_TREADY => custDataStreamIn_V_V_TREADY,
+      custDataStreamIn_V_V_TDATA => custDataStreamIn_V_V_TDATA,
       tsReg_V => tsReg_V,
       glLastTSReg_V => glLastTSReg_V,
       yReg_V => yReg_V,

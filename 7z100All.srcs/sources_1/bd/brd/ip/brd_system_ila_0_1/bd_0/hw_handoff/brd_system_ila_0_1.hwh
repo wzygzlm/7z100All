@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar  4 20:13:34 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar  5 12:07:08 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="bd_d325" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -166,6 +166,10 @@
     <PORT DIR="I" NAME="SLOT_3_AXIS_tlast" SIGIS="undef"/>
     <PORT DIR="I" NAME="SLOT_3_AXIS_tready" SIGIS="undef"/>
     <PORT DIR="I" NAME="SLOT_3_AXIS_tvalid" SIGIS="undef"/>
+    <PORT DIR="I" LEFT="15" NAME="SLOT_4_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="I" NAME="SLOT_4_AXIS_tlast" SIGIS="undef"/>
+    <PORT DIR="I" NAME="SLOT_4_AXIS_tready" SIGIS="undef"/>
+    <PORT DIR="I" NAME="SLOT_4_AXIS_tvalid" SIGIS="undef"/>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -249,6 +253,26 @@
         <PORTMAP LOGICAL="TVALID" PHYSICAL="SLOT_3_AXIS_tvalid"/>
       </PORTMAPS>
     </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="g_inst_slot_4_axis" NAME="SLOT_4_AXIS" TYPE="TARGET">
+      <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+      <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+      <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+      <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+      <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+      <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+      <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+      <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+      <PARAMETER NAME="PHASE" VALUE="0.000"/>
+      <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+      <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
+      <PORTMAPS>
+        <PORTMAP LOGICAL="TDATA" PHYSICAL="SLOT_4_AXIS_tdata"/>
+        <PORTMAP LOGICAL="TLAST" PHYSICAL="SLOT_4_AXIS_tlast"/>
+        <PORTMAP LOGICAL="TREADY" PHYSICAL="SLOT_4_AXIS_tready"/>
+        <PORTMAP LOGICAL="TVALID" PHYSICAL="SLOT_4_AXIS_tvalid"/>
+      </PORTMAPS>
+    </BUSINTERFACE>
   </EXTERNALINTERFACES>
 
   <MODULES>
@@ -299,7 +323,7 @@
         <PARAMETER NAME="C_MUX_3_HAS_WSTRB" VALUE="1"/>
         <PARAMETER NAME="C_MUX_3_HAS_TSTRB" VALUE="1"/>
         <PARAMETER NAME="C_MUX_3_HAS_TKEEP" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="4"/>
+        <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="5"/>
         <PARAMETER NAME="C_SLOT_0_TXN_CNTR_EN" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_1_TXN_CNTR_EN" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_2_TXN_CNTR_EN" VALUE="1"/>
@@ -401,8 +425,8 @@
         <PARAMETER NAME="C_SLOT_4_HAS_REGION" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_4_HAS_BURST" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_4_HAS_WSTRB" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_4_HAS_TSTRB" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_4_HAS_TKEEP" VALUE="1"/>
+        <PARAMETER NAME="C_SLOT_4_HAS_TSTRB" VALUE="0"/>
+        <PARAMETER NAME="C_SLOT_4_HAS_TKEEP" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_5_HAS_BRESP" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_5_HAS_RRESP" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_5_HAS_LOCK" VALUE="1"/>
@@ -744,7 +768,7 @@
         <PARAMETER NAME="C_SLOT_1_MON_MODE" VALUE="FT"/>
         <PARAMETER NAME="C_SLOT_2_MON_MODE" VALUE="FT"/>
         <PARAMETER NAME="C_SLOT_3_MON_MODE" VALUE="FT"/>
-        <PARAMETER NAME="C_SLOT_4_MON_MODE" VALUE="RT"/>
+        <PARAMETER NAME="C_SLOT_4_MON_MODE" VALUE="FT"/>
         <PARAMETER NAME="C_SLOT_5_MON_MODE" VALUE="RT"/>
         <PARAMETER NAME="C_SLOT_6_MON_MODE" VALUE="RT"/>
         <PARAMETER NAME="C_SLOT_7_MON_MODE" VALUE="RT"/>
@@ -1504,11 +1528,11 @@
         <PARAMETER NAME="C_SLOT_4_AXI_ADDR_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_SLOT_4_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_SLOT_4_AXI_ID_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_4_AXI_PROTOCOL" VALUE="AXI4"/>
-        <PARAMETER NAME="C_SLOT_4_AXIS_TDATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_SLOT_4_AXIS_TID_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_4_AXIS_TDEST_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_4_AXIS_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_SLOT_4_AXI_PROTOCOL" VALUE="AXI4S"/>
+        <PARAMETER NAME="C_SLOT_4_AXIS_TDATA_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_SLOT_4_AXIS_TID_WIDTH" VALUE="0"/>
+        <PARAMETER NAME="C_SLOT_4_AXIS_TDEST_WIDTH" VALUE="0"/>
+        <PARAMETER NAME="C_SLOT_4_AXIS_TUSER_WIDTH" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_5_AXI_ADDR_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_SLOT_5_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_SLOT_5_AXI_ID_WIDTH" VALUE="1"/>
@@ -1628,6 +1652,10 @@
         <PORT DIR="I" NAME="slot_3_axis_tready" SIGIS="undef"/>
         <PORT DIR="I" LEFT="15" NAME="slot_3_axis_tdata" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" NAME="slot_3_axis_tlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="slot_4_axis_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="slot_4_axis_tready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="15" NAME="slot_4_axis_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="slot_4_axis_tlast" SIGIS="undef"/>
         <PORT DIR="O" NAME="m_slot_0_axis_tvalid" SIGIS="undef" SIGNAME="g_inst_m_slot_0_axis_tvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_lib" PORT="probe28"/>
@@ -1706,6 +1734,26 @@
         <PORT DIR="O" NAME="m_slot_3_axis_tlast" SIGIS="undef" SIGNAME="g_inst_m_slot_3_axis_tlast">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_lib" PORT="probe42"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="m_slot_4_axis_tvalid" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_lib" PORT="probe44"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="m_slot_4_axis_tready" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_lib" PORT="probe45"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="m_slot_4_axis_tdata" RIGHT="0" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_lib" PORT="probe43"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="m_slot_4_axis_tlast" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tlast">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_lib" PORT="probe46"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1790,6 +1838,26 @@
             <PORTMAP LOGICAL="TVALID" PHYSICAL="slot_3_axis_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="g_inst_slot_4_axis" NAME="slot_4_axis" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="slot_4_axis_tdata"/>
+            <PORTMAP LOGICAL="TLAST" PHYSICAL="slot_4_axis_tlast"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="slot_4_axis_tready"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="slot_4_axis_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="m_slot_0_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
@@ -1870,6 +1938,26 @@
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m_slot_3_axis_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="m_slot_4_axis" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="m_slot_4_axis_tdata"/>
+            <PORTMAP LOGICAL="TLAST" PHYSICAL="m_slot_4_axis_tlast"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="m_slot_4_axis_tready"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="m_slot_4_axis_tvalid"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
     <MODULE FULLNAME="/ila_lib" HWVERSION="6.2" INSTANCE="ila_lib" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ila" VLNV="xilinx.com:ip:ila:6.2">
@@ -1892,7 +1980,7 @@
         <PARAMETER NAME="C_SLOT_0_AXI_PROTOCOL" VALUE="AXI4"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="43"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="47"/>
         <PARAMETER NAME="C_DATA_DEPTH" VALUE="16384"/>
         <PARAMETER NAME="C_MAJOR_VERSION" VALUE="2018"/>
         <PARAMETER NAME="C_MINOR_VERSION" VALUE="1"/>
@@ -1914,7 +2002,7 @@
         <PARAMETER NAME="C_SLOT_0_AXI_ARUSER_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_SLOT_0_AXI_RUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AWUSER_WIDTH" VALUE="16"/>
-        <PARAMETER NAME="C_SLOT_0_AXI_WUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_SLOT_0_AXI_WUSER_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_SLOT_0_AXI_BUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="1"/>
@@ -1959,7 +2047,7 @@
         <PARAMETER NAME="C_PROBE40_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE41_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE42_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE43_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE43_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_PROBE44_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE45_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE46_WIDTH" VALUE="1"/>
@@ -5230,6 +5318,26 @@
         <PORT DIR="I" LEFT="0" NAME="probe42" RIGHT="0" SIGIS="undef" SIGNAME="g_inst_m_slot_3_axis_tlast">
           <CONNECTIONS>
             <CONNECTION INSTANCE="g_inst" PORT="m_slot_3_axis_tlast"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="probe43" RIGHT="0" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="g_inst" PORT="m_slot_4_axis_tdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe44" RIGHT="0" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="g_inst" PORT="m_slot_4_axis_tvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe45" RIGHT="0" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="g_inst" PORT="m_slot_4_axis_tready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe46" RIGHT="0" SIGIS="undef" SIGNAME="g_inst_m_slot_4_axis_tlast">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="g_inst" PORT="m_slot_4_axis_tlast"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

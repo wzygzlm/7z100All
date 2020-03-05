@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar  4 20:13:35 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar  5 12:07:09 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="brd" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -475,7 +475,7 @@
         <PARAMETER NAME="clk_period" VALUE="10"/>
         <PARAMETER NAME="machine" VALUE="64"/>
         <PARAMETER NAME="combinational" VALUE="0"/>
-        <PARAMETER NAME="latency" VALUE="15"/>
+        <PARAMETER NAME="latency" VALUE="14"/>
         <PARAMETER NAME="II" VALUE="x"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_S_AXI_CONFIG_BASEADDR" VALUE="0x43C10000"/>
@@ -689,9 +689,21 @@
             <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="polStreamIn_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="pixelDataStream_V_V_TVALID" SIGIS="undef"/>
-        <PORT DIR="I" NAME="pixelDataStream_V_V_TREADY" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="7" NAME="pixelDataStream_V_V_TDATA" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="custDataStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="EVFastCornerStream_0_custDataStreamOut_V_V_TVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="custDataStreamIn_V_V_TVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="custDataStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="EVFastCornerStream_0_custDataStreamOut_V_V_TREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="custDataStreamIn_V_V_TREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="custDataStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="EVFastCornerStream_0_custDataStreamOut_V_V_TDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="custDataStreamIn_V_V_TDATA"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="ps7_0_axi_periph_M03_AXI" DATAWIDTH="32" NAME="s_axi_config" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -907,10 +919,10 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="polStreamOut_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="pixelDataStream_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="1"/>
+        <BUSINTERFACE BUSNAME="EVFastCornerStream_0_custDataStreamOut_V_V" NAME="custDataStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
-          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 8} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
           <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
@@ -921,9 +933,9 @@
           <PARAMETER NAME="PHASE" VALUE="0.000"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
           <PORTMAPS>
-            <PORTMAP LOGICAL="TVALID" PHYSICAL="pixelDataStream_V_V_TVALID"/>
-            <PORTMAP LOGICAL="TREADY" PHYSICAL="pixelDataStream_V_V_TREADY"/>
-            <PORTMAP LOGICAL="TDATA" PHYSICAL="pixelDataStream_V_V_TDATA"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="custDataStreamOut_V_V_TVALID"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="custDataStreamOut_V_V_TREADY"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="custDataStreamOut_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -1884,6 +1896,21 @@
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="polStreamOut_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="custDataStreamIn_V_V_TVALID" SIGIS="undef" SIGNAME="EVFastCornerStream_0_custDataStreamOut_V_V_TVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="custDataStreamOut_V_V_TVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="custDataStreamIn_V_V_TREADY" SIGIS="undef" SIGNAME="EVFastCornerStream_0_custDataStreamOut_V_V_TREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="custDataStreamOut_V_V_TREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="custDataStreamIn_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="EVFastCornerStream_0_custDataStreamOut_V_V_TDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="custDataStreamOut_V_V_TDATA"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="63" NAME="tsReg_V" RIGHT="0" SIGIS="data" SIGNAME="XYTSStreamToRawStream_0_tsReg_V">
           <CONNECTIONS>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe15"/>
@@ -2003,6 +2030,25 @@
             <PORTMAP LOGICAL="TVALID" PHYSICAL="polStreamIn_V_V_TVALID"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="polStreamIn_V_V_TREADY"/>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="polStreamIn_V_V_TDATA"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="EVFastCornerStream_0_custDataStreamOut_V_V" NAME="custDataStreamIn_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="custDataStreamIn_V_V_TVALID"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="custDataStreamIn_V_V_TREADY"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="custDataStreamIn_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -5275,9 +5321,9 @@
             <CONNECTION INSTANCE="eventStreamToConstEn_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="processing_system7_0" PORT="SPI0_SS_I"/>
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_start"/>
-            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="ap_start"/>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_start"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6276,7 +6322,6 @@
             <CONNECTION INSTANCE="axis_data_fifo_0" PORT="s_axis_aresetn"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="resetn"/>
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_rst_n"/>
-            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
@@ -6285,6 +6330,7 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ARESETN"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_rst_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7712,7 +7758,6 @@
             <CONNECTION INSTANCE="testAERDVSSM_0" PORT="ADCClk_CI"/>
             <CONNECTION INSTANCE="axis_data_fifo_0" PORT="s_axis_aclk"/>
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
@@ -7722,6 +7767,7 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ACLK"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="39995998" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
@@ -9420,7 +9466,7 @@
         <PARAMETER NAME="C_SLOT_15_APC_MAX_WLAST_TO_AWVALID_WAITS" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_15_APC_MAX_WRITE_TO_BVALID_WAITS" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_15_APC_MAX_CONTINUOUS_RTRANSFERS_WAITS" VALUE="0"/>
-        <PARAMETER NAME="C_BRAM_CNT" VALUE="32"/>
+        <PARAMETER NAME="C_BRAM_CNT" VALUE="46"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AW_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_W_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_B_SEL_DATA" VALUE="1"/>
@@ -12779,7 +12825,7 @@
         <PARAMETER NAME="EN_BRAM_DRC" VALUE="TRUE"/>
         <PARAMETER NAME="ALL_PROBE_SAME_MU" VALUE="TRUE"/>
         <PARAMETER NAME="ALL_PROBE_SAME_MU_CNT" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="4"/>
+        <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="5"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ARUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_RUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AWUSER_WIDTH" VALUE="1"/>
@@ -13171,6 +13217,10 @@
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="15" NAME="SLOT_4_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_4_AXIS_tlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_4_AXIS_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_4_AXIS_tready" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="axis_data_fifo_0_M_AXIS" NAME="SLOT_0_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
@@ -13251,6 +13301,26 @@
             <PORTMAP LOGICAL="TLAST" PHYSICAL="SLOT_3_AXIS_tlast"/>
             <PORTMAP LOGICAL="TVALID" PHYSICAL="SLOT_3_AXIS_tvalid"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="SLOT_3_AXIS_tready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="EVFastCornerStream_0_custDataStreamOut_V_V" NAME="SLOT_4_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="SLOT_4_AXIS_tdata"/>
+            <PORTMAP LOGICAL="TLAST" PHYSICAL="SLOT_4_AXIS_tlast"/>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="SLOT_4_AXIS_tvalid"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="SLOT_4_AXIS_tready"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>

@@ -1132,10 +1132,10 @@ proc create_root_design { parentCell } {
   # Create instance: system_ila_0, and set properties
   set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {32} \
+   CONFIG.C_BRAM_CNT {46} \
    CONFIG.C_DATA_DEPTH {16384} \
    CONFIG.C_MON_TYPE {MIX} \
-   CONFIG.C_NUM_MONITOR_SLOTS {4} \
+   CONFIG.C_NUM_MONITOR_SLOTS {5} \
    CONFIG.C_NUM_OF_PROBES {27} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE10_TYPE {0} \
@@ -1472,6 +1472,11 @@ proc create_root_design { parentCell } {
  ] $xlslice_5
 
   # Create interface connections
+  connect_bd_intf_net -intf_net EVFastCornerStream_0_custDataStreamOut_V_V [get_bd_intf_pins EVFastCornerStream_0/custDataStreamOut_V_V] [get_bd_intf_pins XYTSStreamToRawStream_0/custDataStreamIn_V_V]
+connect_bd_intf_net -intf_net [get_bd_intf_nets EVFastCornerStream_0_custDataStreamOut_V_V] [get_bd_intf_pins XYTSStreamToRawStream_0/custDataStreamIn_V_V] [get_bd_intf_pins system_ila_0/SLOT_4_AXIS]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_intf_nets EVFastCornerStream_0_custDataStreamOut_V_V]
   connect_bd_intf_net -intf_net EVFastCornerStream_0_polStreamOut_V_V [get_bd_intf_pins EVFastCornerStream_0/polStreamOut_V_V] [get_bd_intf_pins XYTSStreamToRawStream_0/polStreamIn_V_V]
   connect_bd_intf_net -intf_net EVFastCornerStream_0_tsStreamOut_V_V [get_bd_intf_pins EVFastCornerStream_0/tsStreamOut_V_V] [get_bd_intf_pins XYTSStreamToRawStream_0/tsStreamIn_V_V]
   connect_bd_intf_net -intf_net EVFastCornerStream_0_xStreamOut_V_V [get_bd_intf_pins EVFastCornerStream_0/xStreamOut_V_V] [get_bd_intf_pins XYTSStreamToRawStream_0/xStreamIn_V_V]

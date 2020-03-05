@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Sun Mar  1 10:54:48 2020
-// Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top brd_XYTSStreamToRawStream_0_0 -prefix
-//               brd_XYTSStreamToRawStream_0_0_ brd_XYTSStreamToRawStream_0_0_stub.v
+// Date        : Thu Mar  5 12:09:52 2020
+// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode synth_stub
+//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_XYTSStreamToRawStream_0_0/brd_XYTSStreamToRawStream_0_0_stub.v
 // Design      : brd_XYTSStreamToRawStream_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z100ffg900-1
@@ -21,9 +21,10 @@ module brd_XYTSStreamToRawStream_0_0(tsReg_V_ap_vld, glLastTSReg_V_ap_vld,
   xStreamIn_V_V_TREADY, xStreamIn_V_V_TDATA, yStreamIn_V_V_TVALID, yStreamIn_V_V_TREADY, 
   yStreamIn_V_V_TDATA, tsStreamIn_V_V_TVALID, tsStreamIn_V_V_TREADY, 
   tsStreamIn_V_V_TDATA, polStreamIn_V_V_TVALID, polStreamIn_V_V_TREADY, 
-  polStreamIn_V_V_TDATA, tsReg_V, glLastTSReg_V, yReg_V, glLastYReg_V, tsDiffFlgReg_V, 
+  polStreamIn_V_V_TDATA, custDataStreamIn_V_V_TVALID, custDataStreamIn_V_V_TREADY, 
+  custDataStreamIn_V_V_TDATA, tsReg_V, glLastTSReg_V, yReg_V, glLastYReg_V, tsDiffFlgReg_V, 
   yDiffFlgReg_V, nonMonTSDiffFlgReg_V)
-/* synthesis syn_black_box black_box_pad_pin="tsReg_V_ap_vld,glLastTSReg_V_ap_vld,yReg_V_ap_vld,glLastYReg_V_ap_vld,tsDiffFlgReg_V_ap_vld,yDiffFlgReg_V_ap_vld,nonMonTSDiffFlgReg_V_ap_vld,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,streamOut_V_V_TVALID,streamOut_V_V_TREADY,streamOut_V_V_TDATA[15:0],xStreamIn_V_V_TVALID,xStreamIn_V_V_TREADY,xStreamIn_V_V_TDATA[15:0],yStreamIn_V_V_TVALID,yStreamIn_V_V_TREADY,yStreamIn_V_V_TDATA[15:0],tsStreamIn_V_V_TVALID,tsStreamIn_V_V_TREADY,tsStreamIn_V_V_TDATA[63:0],polStreamIn_V_V_TVALID,polStreamIn_V_V_TREADY,polStreamIn_V_V_TDATA[7:0],tsReg_V[63:0],glLastTSReg_V[63:0],yReg_V[15:0],glLastYReg_V[15:0],tsDiffFlgReg_V[0:0],yDiffFlgReg_V[0:0],nonMonTSDiffFlgReg_V[0:0]" */;
+/* synthesis syn_black_box black_box_pad_pin="tsReg_V_ap_vld,glLastTSReg_V_ap_vld,yReg_V_ap_vld,glLastYReg_V_ap_vld,tsDiffFlgReg_V_ap_vld,yDiffFlgReg_V_ap_vld,nonMonTSDiffFlgReg_V_ap_vld,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,streamOut_V_V_TVALID,streamOut_V_V_TREADY,streamOut_V_V_TDATA[15:0],xStreamIn_V_V_TVALID,xStreamIn_V_V_TREADY,xStreamIn_V_V_TDATA[15:0],yStreamIn_V_V_TVALID,yStreamIn_V_V_TREADY,yStreamIn_V_V_TDATA[15:0],tsStreamIn_V_V_TVALID,tsStreamIn_V_V_TREADY,tsStreamIn_V_V_TDATA[63:0],polStreamIn_V_V_TVALID,polStreamIn_V_V_TREADY,polStreamIn_V_V_TDATA[7:0],custDataStreamIn_V_V_TVALID,custDataStreamIn_V_V_TREADY,custDataStreamIn_V_V_TDATA[15:0],tsReg_V[63:0],glLastTSReg_V[63:0],yReg_V[15:0],glLastYReg_V[15:0],tsDiffFlgReg_V[0:0],yDiffFlgReg_V[0:0],nonMonTSDiffFlgReg_V[0:0]" */;
   output tsReg_V_ap_vld;
   output glLastTSReg_V_ap_vld;
   output yReg_V_ap_vld;
@@ -52,6 +53,9 @@ module brd_XYTSStreamToRawStream_0_0(tsReg_V_ap_vld, glLastTSReg_V_ap_vld,
   input polStreamIn_V_V_TVALID;
   output polStreamIn_V_V_TREADY;
   input [7:0]polStreamIn_V_V_TDATA;
+  input custDataStreamIn_V_V_TVALID;
+  output custDataStreamIn_V_V_TREADY;
+  input [15:0]custDataStreamIn_V_V_TDATA;
   output [63:0]tsReg_V;
   output [63:0]glLastTSReg_V;
   output [15:0]yReg_V;

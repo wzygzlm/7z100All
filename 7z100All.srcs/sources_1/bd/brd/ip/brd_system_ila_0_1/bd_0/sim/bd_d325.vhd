@@ -26,6 +26,10 @@ entity bd_d325 is
     SLOT_3_AXIS_tlast : in STD_LOGIC;
     SLOT_3_AXIS_tready : in STD_LOGIC;
     SLOT_3_AXIS_tvalid : in STD_LOGIC;
+    SLOT_4_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    SLOT_4_AXIS_tlast : in STD_LOGIC;
+    SLOT_4_AXIS_tready : in STD_LOGIC;
+    SLOT_4_AXIS_tvalid : in STD_LOGIC;
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -57,7 +61,7 @@ entity bd_d325 is
     resetn : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_d325 : entity is "brd_system_ila_0_1.hwdef";
 end bd_d325;
@@ -108,7 +112,11 @@ architecture STRUCTURE of bd_d325 is
     probe39 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe42 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe44 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe45 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe46 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component bd_d325_ila_lib_0;
   component bd_d325_g_inst_0 is
@@ -131,6 +139,10 @@ architecture STRUCTURE of bd_d325 is
     slot_3_axis_tready : in STD_LOGIC;
     slot_3_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
     slot_3_axis_tlast : in STD_LOGIC;
+    slot_4_axis_tvalid : in STD_LOGIC;
+    slot_4_axis_tready : in STD_LOGIC;
+    slot_4_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    slot_4_axis_tlast : in STD_LOGIC;
     m_slot_0_axis_tvalid : out STD_LOGIC;
     m_slot_0_axis_tready : out STD_LOGIC;
     m_slot_0_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -146,7 +158,11 @@ architecture STRUCTURE of bd_d325 is
     m_slot_3_axis_tvalid : out STD_LOGIC;
     m_slot_3_axis_tready : out STD_LOGIC;
     m_slot_3_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_slot_3_axis_tlast : out STD_LOGIC
+    m_slot_3_axis_tlast : out STD_LOGIC;
+    m_slot_4_axis_tvalid : out STD_LOGIC;
+    m_slot_4_axis_tready : out STD_LOGIC;
+    m_slot_4_axis_tdata : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_slot_4_axis_tlast : out STD_LOGIC
   );
   end component bd_d325_g_inst_0;
   signal Conn1_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -161,6 +177,10 @@ architecture STRUCTURE of bd_d325 is
   signal Conn3_TLAST : STD_LOGIC;
   signal Conn3_TREADY : STD_LOGIC;
   signal Conn3_TVALID : STD_LOGIC;
+  signal Conn4_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal Conn4_TLAST : STD_LOGIC;
+  signal Conn4_TREADY : STD_LOGIC;
+  signal Conn4_TVALID : STD_LOGIC;
   signal Conn_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal Conn_TLAST : STD_LOGIC;
   signal Conn_TREADY : STD_LOGIC;
@@ -182,6 +202,10 @@ architecture STRUCTURE of bd_d325 is
   signal net_slot_3_axis_tlast : STD_LOGIC;
   signal net_slot_3_axis_tready : STD_LOGIC;
   signal net_slot_3_axis_tvalid : STD_LOGIC;
+  signal net_slot_4_axis_tdata : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal net_slot_4_axis_tlast : STD_LOGIC;
+  signal net_slot_4_axis_tready : STD_LOGIC;
+  signal net_slot_4_axis_tvalid : STD_LOGIC;
   signal probe0_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal probe10_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe11_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -223,9 +247,12 @@ architecture STRUCTURE of bd_d325 is
   attribute X_INTERFACE_INFO of SLOT_3_AXIS_tlast : signal is "xilinx.com:interface:axis:1.0 SLOT_3_AXIS TLAST";
   attribute X_INTERFACE_INFO of SLOT_3_AXIS_tready : signal is "xilinx.com:interface:axis:1.0 SLOT_3_AXIS TREADY";
   attribute X_INTERFACE_INFO of SLOT_3_AXIS_tvalid : signal is "xilinx.com:interface:axis:1.0 SLOT_3_AXIS TVALID";
+  attribute X_INTERFACE_INFO of SLOT_4_AXIS_tlast : signal is "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TLAST";
+  attribute X_INTERFACE_INFO of SLOT_4_AXIS_tready : signal is "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TREADY";
+  attribute X_INTERFACE_INFO of SLOT_4_AXIS_tvalid : signal is "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TVALID";
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_BUSIF SLOT_0_AXIS:SLOT_1_AXIS:SLOT_2_AXIS:SLOT_3_AXIS, ASSOCIATED_RESET resetn, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 99989998, PHASE 0.000";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME CLK.CLK, ASSOCIATED_BUSIF SLOT_0_AXIS:SLOT_1_AXIS:SLOT_2_AXIS:SLOT_3_AXIS:SLOT_4_AXIS, ASSOCIATED_RESET resetn, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 99989998, PHASE 0.000";
   attribute X_INTERFACE_INFO of resetn : signal is "xilinx.com:signal:reset:1.0 RST.RESETN RST";
   attribute X_INTERFACE_PARAMETER of resetn : signal is "XIL_INTERFACENAME RST.RESETN, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of SLOT_0_AXIS_tdata : signal is "xilinx.com:interface:axis:1.0 SLOT_0_AXIS TDATA";
@@ -236,6 +263,8 @@ architecture STRUCTURE of bd_d325 is
   attribute X_INTERFACE_PARAMETER of SLOT_2_AXIS_tdata : signal is "XIL_INTERFACENAME SLOT_2_AXIS, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 99989998, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 1, HAS_TSTRB 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}, PHASE 0.000, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0";
   attribute X_INTERFACE_INFO of SLOT_3_AXIS_tdata : signal is "xilinx.com:interface:axis:1.0 SLOT_3_AXIS TDATA";
   attribute X_INTERFACE_PARAMETER of SLOT_3_AXIS_tdata : signal is "XIL_INTERFACENAME SLOT_3_AXIS, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 99989998, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 1, HAS_TSTRB 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}, PHASE 0.000, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0";
+  attribute X_INTERFACE_INFO of SLOT_4_AXIS_tdata : signal is "xilinx.com:interface:axis:1.0 SLOT_4_AXIS TDATA";
+  attribute X_INTERFACE_PARAMETER of SLOT_4_AXIS_tdata : signal is "XIL_INTERFACENAME SLOT_4_AXIS, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 99989998, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 1, HAS_TSTRB 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, PHASE 0.000, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0";
 begin
   Conn1_TDATA(15 downto 0) <= SLOT_1_AXIS_tdata(15 downto 0);
   Conn1_TLAST <= SLOT_1_AXIS_tlast;
@@ -249,6 +278,10 @@ begin
   Conn3_TLAST <= SLOT_3_AXIS_tlast;
   Conn3_TREADY <= SLOT_3_AXIS_tready;
   Conn3_TVALID <= SLOT_3_AXIS_tvalid;
+  Conn4_TDATA(15 downto 0) <= SLOT_4_AXIS_tdata(15 downto 0);
+  Conn4_TLAST <= SLOT_4_AXIS_tlast;
+  Conn4_TREADY <= SLOT_4_AXIS_tready;
+  Conn4_TVALID <= SLOT_4_AXIS_tvalid;
   Conn_TDATA(15 downto 0) <= SLOT_0_AXIS_tdata(15 downto 0);
   Conn_TLAST <= SLOT_0_AXIS_tlast;
   Conn_TREADY <= SLOT_0_AXIS_tready;
@@ -302,6 +335,10 @@ g_inst: component bd_d325_g_inst_0
       m_slot_3_axis_tlast => net_slot_3_axis_tlast,
       m_slot_3_axis_tready => net_slot_3_axis_tready,
       m_slot_3_axis_tvalid => net_slot_3_axis_tvalid,
+      m_slot_4_axis_tdata(15 downto 0) => net_slot_4_axis_tdata(15 downto 0),
+      m_slot_4_axis_tlast => net_slot_4_axis_tlast,
+      m_slot_4_axis_tready => net_slot_4_axis_tready,
+      m_slot_4_axis_tvalid => net_slot_4_axis_tvalid,
       slot_0_axis_tdata(15 downto 0) => Conn_TDATA(15 downto 0),
       slot_0_axis_tlast => Conn_TLAST,
       slot_0_axis_tready => Conn_TREADY,
@@ -317,7 +354,11 @@ g_inst: component bd_d325_g_inst_0
       slot_3_axis_tdata(15 downto 0) => Conn3_TDATA(15 downto 0),
       slot_3_axis_tlast => Conn3_TLAST,
       slot_3_axis_tready => Conn3_TREADY,
-      slot_3_axis_tvalid => Conn3_TVALID
+      slot_3_axis_tvalid => Conn3_TVALID,
+      slot_4_axis_tdata(15 downto 0) => Conn4_TDATA(15 downto 0),
+      slot_4_axis_tlast => Conn4_TLAST,
+      slot_4_axis_tready => Conn4_TREADY,
+      slot_4_axis_tvalid => Conn4_TVALID
     );
 ila_lib: component bd_d325_ila_lib_0
      port map (
@@ -360,6 +401,10 @@ ila_lib: component bd_d325_ila_lib_0
       probe40(0) => net_slot_3_axis_tvalid,
       probe41(0) => net_slot_3_axis_tready,
       probe42(0) => net_slot_3_axis_tlast,
+      probe43(15 downto 0) => net_slot_4_axis_tdata(15 downto 0),
+      probe44(0) => net_slot_4_axis_tvalid,
+      probe45(0) => net_slot_4_axis_tready,
+      probe46(0) => net_slot_4_axis_tlast,
       probe5(0) => probe5_1(0),
       probe6(7 downto 0) => probe6_1(7 downto 0),
       probe7(12 downto 0) => probe7_1(12 downto 0),
