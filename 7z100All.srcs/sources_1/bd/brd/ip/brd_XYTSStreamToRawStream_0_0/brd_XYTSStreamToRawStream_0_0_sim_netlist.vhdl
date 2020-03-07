@@ -1,8 +1,8 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Mar  6 16:08:44 2020
--- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+-- Date        : Sat Mar  7 15:12:35 2020
+-- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top brd_XYTSStreamToRawStream_0_0 -prefix
 --               brd_XYTSStreamToRawStream_0_0_ brd_XYTSStreamToRawStream_0_0_sim_netlist.vhdl
 -- Design      : brd_XYTSStreamToRawStream_0_0
@@ -3805,7 +3805,7 @@ polStreamIn_V_V_0_sel_wr_reg: unisim.vcomponents.FDRE
     );
 \streamOut_V_V_1_payload_A[10]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000CFC0AAAA"
+      INIT => X"FFFFFFFFCFC0AAAA"
     )
         port map (
       I0 => tmp_7_reg_361(10),
@@ -3831,15 +3831,15 @@ polStreamIn_V_V_0_sel_wr_reg: unisim.vcomponents.FDRE
     );
 \streamOut_V_V_1_payload_A[12]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000FEFEFF00"
+      INIT => X"0000FEFF0000FE00"
     )
         port map (
       I0 => \^tsreg_v\(12),
-      I1 => \ap_CS_fsm[3]_i_2_n_0\,
-      I2 => \streamOut_V_V_1_payload_A[15]_i_3_n_0\,
-      I3 => tmp_V_1_reg_346,
-      I4 => \streamOut_V_V_1_payload_A[12]_i_2_n_0\,
-      I5 => \streamOut_V_V_1_payload_A[12]_i_3_n_0\,
+      I1 => \streamOut_V_V_1_payload_A[15]_i_3_n_0\,
+      I2 => \ap_CS_fsm[3]_i_2_n_0\,
+      I3 => \streamOut_V_V_1_payload_A[12]_i_2_n_0\,
+      I4 => \streamOut_V_V_1_payload_A[12]_i_3_n_0\,
+      I5 => tmp_V_1_reg_346,
       O => \streamOut_V_V_1_payload_A[12]_i_1_n_0\
     );
 \streamOut_V_V_1_payload_A[12]_i_2\: unisim.vcomponents.LUT2

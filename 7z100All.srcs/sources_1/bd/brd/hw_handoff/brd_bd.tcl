@@ -1826,7 +1826,6 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets outPktReceived_q_do]
-  connect_bd_net -net polStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/polStreamIn_V_V_TREADY]
   connect_bd_net -net proc_sys_reset_0_interconnect_aresetn [get_bd_pins proc_sys_reset_0/interconnect_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins EVFastCornerStream_0/ap_rst_n] [get_bd_pins EVMUXDataToXYTSStream_0/ap_rst_n] [get_bd_pins RawStreamToFIFO_0/ap_rst_n] [get_bd_pins XYTSStreamToRawStream_0/ap_rst_n] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_pins axi_vdma_0/axi_resetn] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins dataSwitch_0/rst_n_i] [get_bd_pins eventStreamToConstEn_0/ap_rst_n] [get_bd_pins proc_sys_reset_0/peripheral_aresetn] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/M04_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins system_ila_0/resetn]
   connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins proc_sys_reset_1/peripheral_aresetn] [get_bd_pins v_axi4s_vid_out_0/aresetn] [get_bd_pins v_tc_0/resetn]
@@ -1926,7 +1925,6 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets tsReg_V]
-  connect_bd_net -net tsStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/tsStreamIn_V_V_TREADY]
   connect_bd_net -net tx_sent_data_counter_o [get_bd_pins system_ila_2/probe60] [get_bd_pins usb_cdc_core_0/tx_sent_data_counter_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -2101,7 +2099,6 @@ HDL_ATTRIBUTE.DEBUG {true} \
   connect_bd_net -net xlslice_0_Dout [get_bd_pins usb_cdc_core_0/rst_i] [get_bd_pins xlslice_0/Dout]
   connect_bd_net -net xlslice_1_Dout [get_bd_pins ulpi_wrapper_0/ulpi_rst_i] [get_bd_pins xlslice_1/Dout]
   connect_bd_net -net xlslice_5_Dout [get_bd_pins util_vector_logic_2/Op1] [get_bd_pins xlslice_5/Dout]
-  connect_bd_net -net yStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/yStreamIn_V_V_TREADY]
 
   # Create address segments
   create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces axi_vdma_0/Data_MM2S] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM

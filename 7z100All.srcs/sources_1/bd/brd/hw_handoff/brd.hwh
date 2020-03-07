@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Mar  7 13:32:16 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Mar  7 21:26:55 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="brd" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -5273,11 +5273,11 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="S" RIGHT="0" SIGIS="data" SIGNAME="c_addsub_0_S">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_0" PORT="probe33"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="xStreamIn_V_V_TVALID"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="yStreamIn_V_V_TVALID"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="tsStreamIn_V_V_TVALID"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="polStreamIn_V_V_TVALID"/>
-            <CONNECTION INSTANCE="system_ila_0" PORT="probe33"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6828,8 +6828,8 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="xStreamIn_V_V_TDATA"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe31"/>
+            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="xStreamIn_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="full" SIGIS="undef"/>
@@ -7268,8 +7268,8 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_2_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="yStreamIn_V_V_TDATA"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe34"/>
+            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="yStreamIn_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="full" SIGIS="undef"/>
@@ -7693,8 +7693,8 @@
         </PORT>
         <PORT DIR="O" LEFT="63" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_3_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="tsStreamIn_V_V_TDATA"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe35"/>
+            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="tsStreamIn_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="full" SIGIS="undef"/>
@@ -8118,8 +8118,8 @@
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_4_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="polStreamIn_V_V_TDATA"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="probe36"/>
+            <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="polStreamIn_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="full" SIGIS="undef"/>
@@ -8195,7 +8195,6 @@
             <CONNECTION INSTANCE="system_ila_0" PORT="resetn"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_rst_n"/>
-            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="dataSwitch_0" PORT="rst_n_i"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
@@ -8203,6 +8202,7 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ARESETN"/>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="ap_rst_n"/>
           </CONNECTIONS>
         </PORT>
@@ -9632,8 +9632,12 @@
             <CONNECTION INSTANCE="axis_data_fifo_0" PORT="s_axis_aclk"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="dataSwitch_0" PORT="clk_i"/>
+            <CONNECTION INSTANCE="fifo_generator_4" PORT="clk"/>
+            <CONNECTION INSTANCE="fifo_generator_3" PORT="clk"/>
+            <CONNECTION INSTANCE="fifo_generator_2" PORT="clk"/>
+            <CONNECTION INSTANCE="c_addsub_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="fifo_generator_1" PORT="clk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
@@ -9641,11 +9645,7 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ACLK"/>
-            <CONNECTION INSTANCE="fifo_generator_4" PORT="clk"/>
-            <CONNECTION INSTANCE="fifo_generator_3" PORT="clk"/>
-            <CONNECTION INSTANCE="fifo_generator_2" PORT="clk"/>
-            <CONNECTION INSTANCE="c_addsub_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="fifo_generator_1" PORT="clk"/>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="EVFastCornerStream_0" PORT="ap_clk"/>
           </CONNECTIONS>
         </PORT>
@@ -15075,31 +15075,6 @@
             <CONNECTION INSTANCE="dataSwitch_0" PORT="data_o_num2"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="SLOT_0_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_0_AXIS_tlast" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_0_AXIS_tvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_0_AXIS_tready" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="15" NAME="SLOT_1_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_1_AXIS_tlast" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_1_AXIS_tvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_1_AXIS_tready" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="15" NAME="SLOT_2_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_2_AXIS_tlast" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_2_AXIS_tvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_2_AXIS_tready" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="15" NAME="SLOT_3_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_3_AXIS_tlast" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_3_AXIS_tvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_3_AXIS_tready" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="15" NAME="SLOT_4_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_4_AXIS_tlast" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_4_AXIS_tvalid" SIGIS="undef"/>
-        <PORT DIR="I" NAME="SLOT_4_AXIS_tready" SIGIS="undef"/>
-        <PORT DIR="I" NAME="resetn" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="I" LEFT="0" NAME="probe27" RIGHT="0" SIGIS="undef" SIGNAME="EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID">
           <CONNECTIONS>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="xStreamOut_V_V_TVALID"/>
@@ -15158,6 +15133,31 @@
         <PORT DIR="I" LEFT="9" NAME="probe38" RIGHT="0" SIGIS="undef" SIGNAME="fifo_generator_1_data_count">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fifo_generator_1" PORT="data_count"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="SLOT_0_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_0_AXIS_tlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_0_AXIS_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_0_AXIS_tready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="15" NAME="SLOT_1_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_1_AXIS_tlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_1_AXIS_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_1_AXIS_tready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="15" NAME="SLOT_2_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_2_AXIS_tlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_2_AXIS_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_2_AXIS_tready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="15" NAME="SLOT_3_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_3_AXIS_tlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_3_AXIS_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_3_AXIS_tready" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="15" NAME="SLOT_4_AXIS_tdata" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_4_AXIS_tlast" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_4_AXIS_tvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="SLOT_4_AXIS_tready" SIGIS="undef"/>
+        <PORT DIR="I" NAME="resetn" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

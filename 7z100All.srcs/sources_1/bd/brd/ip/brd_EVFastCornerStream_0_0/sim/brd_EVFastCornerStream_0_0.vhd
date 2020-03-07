@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVFastCornerStream:1.0
--- IP Revision: 2003061854
+-- IP Revision: 2003072124
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

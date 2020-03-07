@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Mar  6 22:40:51 2020
+-- Date        : Fri Mar  6 22:40:39 2020
 -- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               e:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_2_1/brd_fifo_generator_2_1_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top brd_fifo_generator_2_1 -prefix
+--               brd_fifo_generator_2_1_ brd_fifo_generator_2_1_stub.vhdl
 -- Design      : brd_fifo_generator_2_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z100ffg900-1
