@@ -1,8 +1,8 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Thu Feb 27 18:51:27 2020
-// Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
+// Date        : Fri Mar  6 13:42:53 2020
+// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub -rename_top brd_RawStreamToFIFO_0_0 -prefix
 //               brd_RawStreamToFIFO_0_0_ brd_RawStreamToFIFO_0_0_stub.v
 // Design      : brd_RawStreamToFIFO_0_0
@@ -17,8 +17,8 @@
 module brd_RawStreamToFIFO_0_0(fifoIFOutData_V_ap_vld, 
   skippedData_V_ap_vld, nonMonTSDiffFlgReg_V_ap_vld, ap_clk, ap_rst_n, ap_start, ap_done, 
   ap_idle, ap_ready, streamIn_V_V_TVALID, streamIn_V_V_TREADY, streamIn_V_V_TDATA, 
-  fifoIFInFull_n_V, fifoIFOutData_V, skippedData_V, nonMonTSDiffFlgReg_V)
-/* synthesis syn_black_box black_box_pad_pin="fifoIFOutData_V_ap_vld,skippedData_V_ap_vld,nonMonTSDiffFlgReg_V_ap_vld,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,streamIn_V_V_TVALID,streamIn_V_V_TREADY,streamIn_V_V_TDATA[15:0],fifoIFInFull_n_V[0:0],fifoIFOutData_V[15:0],skippedData_V[15:0],nonMonTSDiffFlgReg_V[0:0]" */;
+  fifoIFInFull_n_V, fifoIFOutData_V, skippedData_V, nonMonTSDiffFlgReg_V, skipNumReg_V)
+/* synthesis syn_black_box black_box_pad_pin="fifoIFOutData_V_ap_vld,skippedData_V_ap_vld,nonMonTSDiffFlgReg_V_ap_vld,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,streamIn_V_V_TVALID,streamIn_V_V_TREADY,streamIn_V_V_TDATA[15:0],fifoIFInFull_n_V[0:0],fifoIFOutData_V[15:0],skippedData_V[15:0],nonMonTSDiffFlgReg_V[0:0],skipNumReg_V[63:0]" */;
   output fifoIFOutData_V_ap_vld;
   output skippedData_V_ap_vld;
   output nonMonTSDiffFlgReg_V_ap_vld;
@@ -35,4 +35,5 @@ module brd_RawStreamToFIFO_0_0(fifoIFOutData_V_ap_vld,
   output [15:0]fifoIFOutData_V;
   output [15:0]skippedData_V;
   output [0:0]nonMonTSDiffFlgReg_V;
+  output [63:0]skipNumReg_V;
 endmodule

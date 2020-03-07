@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:RawStreamToFIFO:1.0
--- IP Revision: 2002271337
+-- IP Revision: 2003061336
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -70,7 +70,8 @@ ENTITY brd_RawStreamToFIFO_0_0 IS
     fifoIFInFull_n_V : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     fifoIFOutData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-    nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+    nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+    skipNumReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
   );
 END brd_RawStreamToFIFO_0_0;
 
@@ -94,11 +95,15 @@ ARCHITECTURE brd_RawStreamToFIFO_0_0_arch OF brd_RawStreamToFIFO_0_0 IS
       fifoIFInFull_n_V : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       fifoIFOutData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+      nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+      skipNumReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
     );
   END COMPONENT RawStreamToFIFO;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF skipNumReg_V: SIGNAL IS "XIL_INTERFACENAME skipNumReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} " & 
+"value false}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF skipNumReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 skipNumReg_V DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF nonMonTSDiffFlgReg_V: SIGNAL IS "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maxim" & 
 "um {}} value false}}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF nonMonTSDiffFlgReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 nonMonTSDiffFlgReg_V DATA";
@@ -147,6 +152,7 @@ BEGIN
       fifoIFInFull_n_V => fifoIFInFull_n_V,
       fifoIFOutData_V => fifoIFOutData_V,
       skippedData_V => skippedData_V,
-      nonMonTSDiffFlgReg_V => nonMonTSDiffFlgReg_V
+      nonMonTSDiffFlgReg_V => nonMonTSDiffFlgReg_V,
+      skipNumReg_V => skipNumReg_V
     );
 END brd_RawStreamToFIFO_0_0_arch;

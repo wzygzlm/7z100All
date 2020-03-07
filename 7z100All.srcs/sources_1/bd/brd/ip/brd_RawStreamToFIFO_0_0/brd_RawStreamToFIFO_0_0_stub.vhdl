@@ -1,8 +1,8 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Thu Feb 27 18:51:27 2020
--- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
+-- Date        : Fri Mar  6 13:42:53 2020
+-- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top brd_RawStreamToFIFO_0_0 -prefix
 --               brd_RawStreamToFIFO_0_0_ brd_RawStreamToFIFO_0_0_stub.vhdl
 -- Design      : brd_RawStreamToFIFO_0_0
@@ -29,7 +29,8 @@ entity brd_RawStreamToFIFO_0_0 is
     fifoIFInFull_n_V : in STD_LOGIC_VECTOR ( 0 to 0 );
     fifoIFOutData_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
     skippedData_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 )
+    nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
+    skipNumReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
 
 end brd_RawStreamToFIFO_0_0;
@@ -38,7 +39,7 @@ architecture stub of brd_RawStreamToFIFO_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "fifoIFOutData_V_ap_vld,skippedData_V_ap_vld,nonMonTSDiffFlgReg_V_ap_vld,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,streamIn_V_V_TVALID,streamIn_V_V_TREADY,streamIn_V_V_TDATA[15:0],fifoIFInFull_n_V[0:0],fifoIFOutData_V[15:0],skippedData_V[15:0],nonMonTSDiffFlgReg_V[0:0]";
+attribute black_box_pad_pin of stub : architecture is "fifoIFOutData_V_ap_vld,skippedData_V_ap_vld,nonMonTSDiffFlgReg_V_ap_vld,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,streamIn_V_V_TVALID,streamIn_V_V_TREADY,streamIn_V_V_TDATA[15:0],fifoIFInFull_n_V[0:0],fifoIFOutData_V[15:0],skippedData_V[15:0],nonMonTSDiffFlgReg_V[0:0],skipNumReg_V[63:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "RawStreamToFIFO,Vivado 2018.1";
 begin

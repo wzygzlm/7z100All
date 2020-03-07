@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# LEDShifter, SPI_Master_With_Single_CS, USBFifoToDVSSPI, testAERDVSSM, ulpi_wrapper, usb_cdc_core
+# LEDShifter, SPI_Master_With_Single_CS, USBFifoToDVSSPI, dataSwitch, testAERDVSSM, ulpi_wrapper, usb_cdc_core
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -275,6 +275,20 @@ proc create_root_design { parentCell } {
    CONFIG.FIFO_DEPTH {16} \
  ] $axis_data_fifo_0
 
+  # Create instance: c_addsub_0, and set properties
+  set c_addsub_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 c_addsub_0 ]
+  set_property -dict [ list \
+   CONFIG.A_Type {Unsigned} \
+   CONFIG.A_Width {1} \
+   CONFIG.B_Constant {true} \
+   CONFIG.B_Type {Unsigned} \
+   CONFIG.B_Value {1} \
+   CONFIG.B_Width {1} \
+   CONFIG.CE {false} \
+   CONFIG.Latency {1} \
+   CONFIG.Out_Width {1} \
+ ] $c_addsub_0
+
   # Create instance: c_addsub_as_invert_and_delay1, and set properties
   set c_addsub_as_invert_and_delay1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 c_addsub_as_invert_and_delay1 ]
   set_property -dict [ list \
@@ -309,6 +323,17 @@ proc create_root_design { parentCell } {
    CONFIG.CONST_VAL {0} \
  ] $const_ZERO
 
+  # Create instance: dataSwitch_0, and set properties
+  set block_name dataSwitch
+  set block_cell_name dataSwitch_0
+  if { [catch {set dataSwitch_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $dataSwitch_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: eventStreamToConstEn_0, and set properties
   set eventStreamToConstEn_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:eventStreamToConstEncntFrameStream:1.0 eventStreamToConstEn_0 ]
 
@@ -337,6 +362,67 @@ proc create_root_design { parentCell } {
    CONFIG.Write_Data_Count {true} \
    CONFIG.Write_Data_Count_Width {13} \
  ] $fifo_generator_0
+
+  # Create instance: fifo_generator_1, and set properties
+  set fifo_generator_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_1 ]
+  set_property -dict [ list \
+   CONFIG.Almost_Empty_Flag {false} \
+   CONFIG.Almost_Full_Flag {true} \
+   CONFIG.Data_Count {true} \
+   CONFIG.Input_Data_Width {16} \
+   CONFIG.Output_Data_Width {16} \
+   CONFIG.Reset_Pin {false} \
+   CONFIG.Reset_Type {Asynchronous_Reset} \
+   CONFIG.Use_Dout_Reset {false} \
+ ] $fifo_generator_1
+
+  # Create instance: fifo_generator_2, and set properties
+  set fifo_generator_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_2 ]
+  set_property -dict [ list \
+   CONFIG.Almost_Empty_Flag {false} \
+   CONFIG.Almost_Full_Flag {true} \
+   CONFIG.Input_Data_Width {16} \
+   CONFIG.Output_Data_Width {16} \
+   CONFIG.Reset_Pin {false} \
+   CONFIG.Reset_Type {Asynchronous_Reset} \
+   CONFIG.Use_Dout_Reset {false} \
+ ] $fifo_generator_2
+
+  # Create instance: fifo_generator_3, and set properties
+  set fifo_generator_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_3 ]
+  set_property -dict [ list \
+   CONFIG.Almost_Empty_Flag {false} \
+   CONFIG.Almost_Full_Flag {true} \
+   CONFIG.Full_Threshold_Assert_Value {1022} \
+   CONFIG.Full_Threshold_Negate_Value {1021} \
+   CONFIG.Input_Data_Width {64} \
+   CONFIG.Output_Data_Width {64} \
+   CONFIG.Output_Depth {1024} \
+   CONFIG.Read_Data_Count_Width {10} \
+   CONFIG.Reset_Pin {false} \
+   CONFIG.Reset_Type {Asynchronous_Reset} \
+   CONFIG.Use_Dout_Reset {false} \
+   CONFIG.Use_Extra_Logic {false} \
+   CONFIG.Write_Data_Count_Width {10} \
+ ] $fifo_generator_3
+
+  # Create instance: fifo_generator_4, and set properties
+  set fifo_generator_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_4 ]
+  set_property -dict [ list \
+   CONFIG.Almost_Empty_Flag {false} \
+   CONFIG.Almost_Full_Flag {true} \
+   CONFIG.Full_Threshold_Assert_Value {1022} \
+   CONFIG.Full_Threshold_Negate_Value {1021} \
+   CONFIG.Input_Data_Width {8} \
+   CONFIG.Output_Data_Width {8} \
+   CONFIG.Output_Depth {1024} \
+   CONFIG.Read_Data_Count_Width {10} \
+   CONFIG.Reset_Pin {false} \
+   CONFIG.Reset_Type {Asynchronous_Reset} \
+   CONFIG.Use_Dout_Reset {false} \
+   CONFIG.Use_Extra_Logic {false} \
+   CONFIG.Write_Data_Count_Width {10} \
+ ] $fifo_generator_4
 
   # Create instance: proc_sys_reset_0, and set properties
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
@@ -1132,11 +1218,11 @@ proc create_root_design { parentCell } {
   # Create instance: system_ila_0, and set properties
   set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {46} \
+   CONFIG.C_BRAM_CNT {60} \
    CONFIG.C_DATA_DEPTH {16384} \
    CONFIG.C_MON_TYPE {MIX} \
    CONFIG.C_NUM_MONITOR_SLOTS {5} \
-   CONFIG.C_NUM_OF_PROBES {27} \
+   CONFIG.C_NUM_OF_PROBES {39} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE10_TYPE {0} \
    CONFIG.C_PROBE11_TYPE {0} \
@@ -1171,6 +1257,12 @@ proc create_root_design { parentCell } {
    CONFIG.C_PROBE38_TYPE {0} \
    CONFIG.C_PROBE39_TYPE {0} \
    CONFIG.C_PROBE3_TYPE {0} \
+   CONFIG.C_PROBE40_TYPE {0} \
+   CONFIG.C_PROBE41_TYPE {0} \
+   CONFIG.C_PROBE42_TYPE {0} \
+   CONFIG.C_PROBE43_TYPE {0} \
+   CONFIG.C_PROBE44_TYPE {0} \
+   CONFIG.C_PROBE45_TYPE {0} \
    CONFIG.C_PROBE4_TYPE {0} \
    CONFIG.C_PROBE5_TYPE {0} \
    CONFIG.C_PROBE6_TYPE {0} \
@@ -1523,29 +1615,24 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets DVSAERReq_ABI_0_1]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_polStreamOut_V_V_TDATA [get_bd_pins EVFastCornerStream_0/polStreamIn_V_V_TDATA] [get_bd_pins EVMUXDataToXYTSStream_0/polStreamOut_V_V_TDATA]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_polStreamOut_V_V_TVALID [get_bd_pins EVFastCornerStream_0/polStreamIn_V_V_TVALID] [get_bd_pins EVMUXDataToXYTSStream_0/polStreamOut_V_V_TVALID]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TDATA [get_bd_pins EVFastCornerStream_0/tsStreamIn_V_V_TDATA] [get_bd_pins EVMUXDataToXYTSStream_0/tsStreamOut_V_V_TDATA] [get_bd_pins system_ila_0/probe25]
-  set_property -dict [ list \
-HDL_ATTRIBUTE.DEBUG {true} \
- ] [get_bd_nets EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TDATA]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TVALID [get_bd_pins EVFastCornerStream_0/tsStreamIn_V_V_TVALID] [get_bd_pins EVMUXDataToXYTSStream_0/tsStreamOut_V_V_TVALID] [get_bd_pins system_ila_0/probe24]
-  set_property -dict [ list \
-HDL_ATTRIBUTE.DEBUG {true} \
- ] [get_bd_nets EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TVALID]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TDATA] [get_bd_pins EVMUXDataToXYTSStream_0/xStreamOut_V_V_TDATA] [get_bd_pins system_ila_0/probe21]
+  connect_bd_net -net EVFastCornerStream_0_xStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TREADY] [get_bd_pins fifo_generator_1/rd_en] [get_bd_pins fifo_generator_2/rd_en] [get_bd_pins fifo_generator_3/rd_en] [get_bd_pins fifo_generator_4/rd_en]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_polStreamOut_V_V_TDATA [get_bd_pins EVMUXDataToXYTSStream_0/polStreamOut_V_V_TDATA] [get_bd_pins fifo_generator_4/din]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_polStreamOut_V_V_TVALID [get_bd_pins EVMUXDataToXYTSStream_0/polStreamOut_V_V_TVALID] [get_bd_pins fifo_generator_4/wr_en]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TDATA [get_bd_pins EVMUXDataToXYTSStream_0/tsStreamOut_V_V_TDATA] [get_bd_pins fifo_generator_3/din]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TVALID [get_bd_pins EVMUXDataToXYTSStream_0/tsStreamOut_V_V_TVALID] [get_bd_pins fifo_generator_3/wr_en]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA [get_bd_pins EVMUXDataToXYTSStream_0/xStreamOut_V_V_TDATA] [get_bd_pins dataSwitch_0/data_i] [get_bd_pins fifo_generator_1/din] [get_bd_pins system_ila_0/probe28]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TVALID] [get_bd_pins EVMUXDataToXYTSStream_0/xStreamOut_V_V_TVALID] [get_bd_pins system_ila_0/probe26]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID [get_bd_pins EVMUXDataToXYTSStream_0/xStreamOut_V_V_TVALID] [get_bd_pins dataSwitch_0/data_vd_i] [get_bd_pins fifo_generator_1/wr_en] [get_bd_pins system_ila_0/probe27]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA [get_bd_pins EVFastCornerStream_0/yStreamIn_V_V_TDATA] [get_bd_pins EVMUXDataToXYTSStream_0/yStreamOut_V_V_TDATA] [get_bd_pins system_ila_0/probe23]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA [get_bd_pins EVMUXDataToXYTSStream_0/yStreamOut_V_V_TDATA] [get_bd_pins fifo_generator_2/din] [get_bd_pins system_ila_0/probe29]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA]
-  connect_bd_net -net EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID [get_bd_pins EVFastCornerStream_0/yStreamIn_V_V_TVALID] [get_bd_pins EVMUXDataToXYTSStream_0/yStreamOut_V_V_TVALID] [get_bd_pins system_ila_0/probe22]
+  connect_bd_net -net EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID [get_bd_pins EVMUXDataToXYTSStream_0/yStreamOut_V_V_TVALID] [get_bd_pins fifo_generator_2/wr_en] [get_bd_pins system_ila_0/probe30]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID]
@@ -1597,6 +1684,10 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets bmRequestType_w_do]
+  connect_bd_net -net c_addsub_0_S [get_bd_pins EVFastCornerStream_0/polStreamIn_V_V_TVALID] [get_bd_pins EVFastCornerStream_0/tsStreamIn_V_V_TVALID] [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TVALID] [get_bd_pins EVFastCornerStream_0/yStreamIn_V_V_TVALID] [get_bd_pins c_addsub_0/S] [get_bd_pins system_ila_0/probe33]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets c_addsub_0_S]
   connect_bd_net -net c_counter_binary_0_Q [get_bd_pins USBFifoToDVSSPI_0/dvs_resp_addr_i] [get_bd_pins system_ila_2/probe11] [get_bd_pins usb_cdc_core_0/axi_bram_addr_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1626,6 +1717,34 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets dataSPIToSendPrepared_w_do]
+  connect_bd_net -net data_count [get_bd_pins fifo_generator_1/data_count] [get_bd_pins system_ila_0/probe38]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets data_count]
+  connect_bd_net -net data_o_1 [get_bd_pins dataSwitch_0/data_o_1] [get_bd_pins system_ila_0/probe23]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets data_o_1]
+  connect_bd_net -net data_o_2 [get_bd_pins dataSwitch_0/data_o_2] [get_bd_pins system_ila_0/probe24]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets data_o_2]
+  connect_bd_net -net data_o_num1 [get_bd_pins dataSwitch_0/data_o_num1] [get_bd_pins system_ila_0/probe25]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets data_o_num1]
+  connect_bd_net -net data_o_num2 [get_bd_pins dataSwitch_0/data_o_num2] [get_bd_pins system_ila_0/probe26]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets data_o_num2]
+  connect_bd_net -net data_o_vd1 [get_bd_pins dataSwitch_0/data_o_vd1] [get_bd_pins system_ila_0/probe22]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets data_o_vd1]
+  connect_bd_net -net data_o_vd2 [get_bd_pins dataSwitch_0/data_o_vd2] [get_bd_pins system_ila_0/probe21]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets data_o_vd2]
   connect_bd_net -net dvs_resp_data_o [get_bd_pins USBFifoToDVSSPI_0/dvs_resp_data_o] [get_bd_pins system_ila_2/probe4] [get_bd_pins usb_cdc_core_0/axi_bram_r_data_i]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1659,19 +1778,43 @@ HDL_ATTRIBUTE.DEBUG {true} \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets fifo_generator_0_empty]
   connect_bd_net -net fifo_generator_0_prog_full [get_bd_pins fifo_generator_0/prog_full] [get_bd_pins testAERDVSSM_0/AERSMFifoAlmostFull_AI] [get_bd_pins testAERDVSSM_0/AERSMFifoFull_AI]
-  connect_bd_net -net nonMonTSDiffFlgReg_V [get_bd_pins XYTSStreamToRawStream_0/nonMonTSDiffFlgReg_V] [get_bd_pins system_ila_0/probe16]
+  connect_bd_net -net fifo_generator_1_almost_full [get_bd_pins dataSwitch_0/select_i] [get_bd_pins fifo_generator_1/almost_full] [get_bd_pins system_ila_0/probe37]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_1_almost_full]
+  connect_bd_net -net fifo_generator_1_dout [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TDATA] [get_bd_pins fifo_generator_1/dout] [get_bd_pins system_ila_0/probe31]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_1_dout]
+  connect_bd_net -net fifo_generator_1_empty [get_bd_pins c_addsub_0/A] [get_bd_pins fifo_generator_1/empty] [get_bd_pins system_ila_0/probe32]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_1_empty]
+  connect_bd_net -net fifo_generator_2_dout [get_bd_pins EVFastCornerStream_0/yStreamIn_V_V_TDATA] [get_bd_pins fifo_generator_2/dout] [get_bd_pins system_ila_0/probe34]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_2_dout]
+  connect_bd_net -net fifo_generator_3_dout [get_bd_pins EVFastCornerStream_0/tsStreamIn_V_V_TDATA] [get_bd_pins fifo_generator_3/dout] [get_bd_pins system_ila_0/probe35]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_3_dout]
+  connect_bd_net -net fifo_generator_4_dout [get_bd_pins EVFastCornerStream_0/polStreamIn_V_V_TDATA] [get_bd_pins fifo_generator_4/dout] [get_bd_pins system_ila_0/probe36]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_4_dout]
+  connect_bd_net -net nonMonTSDiffFlgReg_V [get_bd_pins XYTSStreamToRawStream_0/nonMonTSDiffFlgReg_V] [get_bd_pins system_ila_0/probe15]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets nonMonTSDiffFlgReg_V]
-  connect_bd_net -net nonMonTSDiffFlgReg_V_1 [get_bd_pins RawStreamToFIFO_0/nonMonTSDiffFlgReg_V] [get_bd_pins system_ila_0/probe19]
+  connect_bd_net -net nonMonTSDiffFlgReg_V_1 [get_bd_pins RawStreamToFIFO_0/nonMonTSDiffFlgReg_V] [get_bd_pins system_ila_0/probe18]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets nonMonTSDiffFlgReg_V_1]
-  connect_bd_net -net nonMonTSDiffFlgReg_V_ap_vld [get_bd_pins XYTSStreamToRawStream_0/nonMonTSDiffFlgReg_V_ap_vld] [get_bd_pins system_ila_0/probe17]
+  connect_bd_net -net nonMonTSDiffFlgReg_V_ap_vld [get_bd_pins XYTSStreamToRawStream_0/nonMonTSDiffFlgReg_V_ap_vld] [get_bd_pins system_ila_0/probe16]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets nonMonTSDiffFlgReg_V_ap_vld]
-  connect_bd_net -net nonMonTSDiffFlgReg_V_ap_vld_1 [get_bd_pins RawStreamToFIFO_0/nonMonTSDiffFlgReg_V_ap_vld] [get_bd_pins system_ila_0/probe18]
+  connect_bd_net -net nonMonTSDiffFlgReg_V_ap_vld_1 [get_bd_pins RawStreamToFIFO_0/nonMonTSDiffFlgReg_V_ap_vld] [get_bd_pins system_ila_0/probe17]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets nonMonTSDiffFlgReg_V_ap_vld_1]
@@ -1683,10 +1826,11 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets outPktReceived_q_do]
+  connect_bd_net -net polStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/polStreamIn_V_V_TREADY]
   connect_bd_net -net proc_sys_reset_0_interconnect_aresetn [get_bd_pins proc_sys_reset_0/interconnect_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins EVFastCornerStream_0/ap_rst_n] [get_bd_pins EVMUXDataToXYTSStream_0/ap_rst_n] [get_bd_pins RawStreamToFIFO_0/ap_rst_n] [get_bd_pins XYTSStreamToRawStream_0/ap_rst_n] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_pins axi_vdma_0/axi_resetn] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins eventStreamToConstEn_0/ap_rst_n] [get_bd_pins proc_sys_reset_0/peripheral_aresetn] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/M04_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins system_ila_0/resetn]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins EVFastCornerStream_0/ap_rst_n] [get_bd_pins EVMUXDataToXYTSStream_0/ap_rst_n] [get_bd_pins RawStreamToFIFO_0/ap_rst_n] [get_bd_pins XYTSStreamToRawStream_0/ap_rst_n] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_pins axi_vdma_0/axi_resetn] [get_bd_pins axis_data_fifo_0/s_axis_aresetn] [get_bd_pins dataSwitch_0/rst_n_i] [get_bd_pins eventStreamToConstEn_0/ap_rst_n] [get_bd_pins proc_sys_reset_0/peripheral_aresetn] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/M04_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins system_ila_0/resetn]
   connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins proc_sys_reset_1/peripheral_aresetn] [get_bd_pins v_axi4s_vid_out_0/aresetn] [get_bd_pins v_tc_0/resetn]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins EVFastCornerStream_0/ap_clk] [get_bd_pins EVMUXDataToXYTSStream_0/ap_clk] [get_bd_pins RawStreamToFIFO_0/ap_clk] [get_bd_pins XYTSStreamToRawStream_0/ap_clk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins axi_vdma_0/m_axi_mm2s_aclk] [get_bd_pins axi_vdma_0/m_axi_s2mm_aclk] [get_bd_pins axi_vdma_0/m_axis_mm2s_aclk] [get_bd_pins axi_vdma_0/s_axi_lite_aclk] [get_bd_pins axi_vdma_0/s_axis_s2mm_aclk] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins eventStreamToConstEn_0/ap_clk] [get_bd_pins fifo_generator_0/wr_clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/M04_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins system_ila_0/clk] [get_bd_pins testAERDVSSM_0/ADCClk_CI] [get_bd_pins testAERDVSSM_0/LogicClk_CI] [get_bd_pins testAERDVSSM_0/USBClock_CI] [get_bd_pins v_axi4s_vid_out_0/aclk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins EVFastCornerStream_0/ap_clk] [get_bd_pins EVMUXDataToXYTSStream_0/ap_clk] [get_bd_pins RawStreamToFIFO_0/ap_clk] [get_bd_pins XYTSStreamToRawStream_0/ap_clk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins axi_vdma_0/m_axi_mm2s_aclk] [get_bd_pins axi_vdma_0/m_axi_s2mm_aclk] [get_bd_pins axi_vdma_0/m_axis_mm2s_aclk] [get_bd_pins axi_vdma_0/s_axi_lite_aclk] [get_bd_pins axi_vdma_0/s_axis_s2mm_aclk] [get_bd_pins axis_data_fifo_0/s_axis_aclk] [get_bd_pins c_addsub_0/CLK] [get_bd_pins dataSwitch_0/clk_i] [get_bd_pins eventStreamToConstEn_0/ap_clk] [get_bd_pins fifo_generator_0/wr_clk] [get_bd_pins fifo_generator_1/clk] [get_bd_pins fifo_generator_2/clk] [get_bd_pins fifo_generator_3/clk] [get_bd_pins fifo_generator_4/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/M04_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins system_ila_0/clk] [get_bd_pins testAERDVSSM_0/ADCClk_CI] [get_bd_pins testAERDVSSM_0/LogicClk_CI] [get_bd_pins testAERDVSSM_0/USBClock_CI] [get_bd_pins v_axi4s_vid_out_0/aclk]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins LEDShifter_0/clk] [get_bd_pins proc_sys_reset_1/slowest_sync_clk] [get_bd_pins processing_system7_0/FCLK_CLK1] [get_bd_pins v_axi4s_vid_out_0/vid_io_out_clk] [get_bd_pins v_tc_0/clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins proc_sys_reset_1/ext_reset_in] [get_bd_pins processing_system7_0/FCLK_RESET0_N]
   connect_bd_net -net r_RX_Bit_Count_do [get_bd_pins SPI_Master_With_Sing_0/r_RX_Bit_Count_do] [get_bd_pins system_ila_2/probe22]
@@ -1730,6 +1874,10 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets sie_tx_state_q_o]
+  connect_bd_net -net skipNumReg_V [get_bd_pins RawStreamToFIFO_0/skipNumReg_V] [get_bd_pins system_ila_0/probe20]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets skipNumReg_V]
   connect_bd_net -net state_o [get_bd_pins system_ila_2/probe47] [get_bd_pins ulpi_wrapper_0/state_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1746,7 +1894,7 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets testAERDVSSM_0_AERSMOutFifoData_DO]
-  connect_bd_net -net testAERDVSSM_0_AERSMOutFifoData_DO2 [get_bd_pins EVMUXDataToXYTSStream_0/eventFIFOIn_V] [get_bd_pins system_ila_0/probe20] [get_bd_pins system_ila_2/probe75] [get_bd_pins testAERDVSSM_0/AERSMOutFifoData_DO]
+  connect_bd_net -net testAERDVSSM_0_AERSMOutFifoData_DO2 [get_bd_pins EVMUXDataToXYTSStream_0/eventFIFOIn_V] [get_bd_pins system_ila_0/probe19] [get_bd_pins system_ila_2/probe75] [get_bd_pins testAERDVSSM_0/AERSMOutFifoData_DO]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets testAERDVSSM_0_AERSMOutFifoData_DO2]
@@ -1774,14 +1922,11 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets token_valid_w_do]
-  connect_bd_net -net tsReg_V [get_bd_pins XYTSStreamToRawStream_0/tsReg_V] [get_bd_pins system_ila_0/probe15]
+  connect_bd_net -net tsReg_V [get_bd_pins XYTSStreamToRawStream_0/tsReg_V] [get_bd_pins system_ila_0/probe14]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets tsReg_V]
-  connect_bd_net -net tsReg_V_ap_vld [get_bd_pins XYTSStreamToRawStream_0/tsReg_V_ap_vld] [get_bd_pins system_ila_0/probe14]
-  set_property -dict [ list \
-HDL_ATTRIBUTE.DEBUG {true} \
- ] [get_bd_nets tsReg_V_ap_vld]
+  connect_bd_net -net tsStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/tsStreamIn_V_V_TREADY]
   connect_bd_net -net tx_sent_data_counter_o [get_bd_pins system_ila_2/probe60] [get_bd_pins usb_cdc_core_0/tx_sent_data_counter_o]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1956,6 +2101,7 @@ HDL_ATTRIBUTE.DEBUG {true} \
   connect_bd_net -net xlslice_0_Dout [get_bd_pins usb_cdc_core_0/rst_i] [get_bd_pins xlslice_0/Dout]
   connect_bd_net -net xlslice_1_Dout [get_bd_pins ulpi_wrapper_0/ulpi_rst_i] [get_bd_pins xlslice_1/Dout]
   connect_bd_net -net xlslice_5_Dout [get_bd_pins util_vector_logic_2/Op1] [get_bd_pins xlslice_5/Dout]
+  connect_bd_net -net yStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/yStreamIn_V_V_TREADY]
 
   # Create address segments
   create_bd_addr_seg -range 0x20000000 -offset 0x00000000 [get_bd_addr_spaces axi_vdma_0/Data_MM2S] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM

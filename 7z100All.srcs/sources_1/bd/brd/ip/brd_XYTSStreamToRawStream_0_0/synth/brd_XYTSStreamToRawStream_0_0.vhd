@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:XYTSStreamToRawStream:1.0
--- IP Revision: 2003051204
+-- IP Revision: 2003061753
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -146,7 +146,7 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_XYTSStreamToRawStream_0_0_arch : ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_XYTSStreamToRawStream_0_0_arch: ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=XYTSStreamToRawStream,x_ipVersion=1.0,x_ipCoreRevision=2003051204,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_XYTSStreamToRawStream_0_0_arch: ARCHITECTURE IS "brd_XYTSStreamToRawStream_0_0,XYTSStreamToRawStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=XYTSStreamToRawStream,x_ipVersion=1.0,x_ipCoreRevision=2003061753,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF nonMonTSDiffFlgReg_V: SIGNAL IS "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maxim" & 
@@ -172,8 +172,9 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
   ATTRIBUTE X_INTERFACE_INFO OF tsReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 tsReg_V DATA";
   ATTRIBUTE X_INTERFACE_INFO OF custDataStreamIn_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamIn_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF custDataStreamIn_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamIn_V_V TREADY";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF custDataStreamIn_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME custDataStreamIn_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0," & 
-" HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF custDataStreamIn_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME custDataStreamIn_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate d" & 
+"ependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 10} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0." & 
+"000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF custDataStreamIn_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 custDataStreamIn_V_V TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn_V_V TREADY";

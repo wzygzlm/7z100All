@@ -1,8 +1,8 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Thu Mar  5 12:14:25 2020
-// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+// Date        : Fri Mar  6 22:42:44 2020
+// Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_EVFastCornerStream_0_0/brd_EVFastCornerStream_0_0_stub.v
 // Design      : brd_EVFastCornerStream_0_0
@@ -18,8 +18,8 @@ module brd_EVFastCornerStream_0_0(s_axi_config_AWADDR, s_axi_config_AWVALID,
   s_axi_config_AWREADY, s_axi_config_WDATA, s_axi_config_WSTRB, s_axi_config_WVALID, 
   s_axi_config_WREADY, s_axi_config_BRESP, s_axi_config_BVALID, s_axi_config_BREADY, 
   s_axi_config_ARADDR, s_axi_config_ARVALID, s_axi_config_ARREADY, s_axi_config_RDATA, 
-  s_axi_config_RRESP, s_axi_config_RVALID, s_axi_config_RREADY, ap_clk, ap_rst_n, ap_start, 
-  ap_done, ap_ready, ap_idle, xStreamIn_V_V_TVALID, xStreamIn_V_V_TREADY, 
+  s_axi_config_RRESP, s_axi_config_RVALID, s_axi_config_RREADY, ap_clk, ap_rst_n, ap_done, 
+  ap_start, ap_ready, ap_idle, xStreamIn_V_V_TVALID, xStreamIn_V_V_TREADY, 
   xStreamIn_V_V_TDATA, yStreamIn_V_V_TVALID, yStreamIn_V_V_TREADY, yStreamIn_V_V_TDATA, 
   tsStreamIn_V_V_TVALID, tsStreamIn_V_V_TREADY, tsStreamIn_V_V_TDATA, 
   polStreamIn_V_V_TVALID, polStreamIn_V_V_TREADY, polStreamIn_V_V_TDATA, 
@@ -29,7 +29,7 @@ module brd_EVFastCornerStream_0_0(s_axi_config_AWADDR, s_axi_config_AWVALID,
   polStreamOut_V_V_TVALID, polStreamOut_V_V_TREADY, polStreamOut_V_V_TDATA, 
   custDataStreamOut_V_V_TVALID, custDataStreamOut_V_V_TREADY, 
   custDataStreamOut_V_V_TDATA)
-/* synthesis syn_black_box black_box_pad_pin="s_axi_config_AWADDR[5:0],s_axi_config_AWVALID,s_axi_config_AWREADY,s_axi_config_WDATA[31:0],s_axi_config_WSTRB[3:0],s_axi_config_WVALID,s_axi_config_WREADY,s_axi_config_BRESP[1:0],s_axi_config_BVALID,s_axi_config_BREADY,s_axi_config_ARADDR[5:0],s_axi_config_ARVALID,s_axi_config_ARREADY,s_axi_config_RDATA[31:0],s_axi_config_RRESP[1:0],s_axi_config_RVALID,s_axi_config_RREADY,ap_clk,ap_rst_n,ap_start,ap_done,ap_ready,ap_idle,xStreamIn_V_V_TVALID,xStreamIn_V_V_TREADY,xStreamIn_V_V_TDATA[15:0],yStreamIn_V_V_TVALID,yStreamIn_V_V_TREADY,yStreamIn_V_V_TDATA[15:0],tsStreamIn_V_V_TVALID,tsStreamIn_V_V_TREADY,tsStreamIn_V_V_TDATA[63:0],polStreamIn_V_V_TVALID,polStreamIn_V_V_TREADY,polStreamIn_V_V_TDATA[7:0],xStreamOut_V_V_TVALID,xStreamOut_V_V_TREADY,xStreamOut_V_V_TDATA[15:0],yStreamOut_V_V_TVALID,yStreamOut_V_V_TREADY,yStreamOut_V_V_TDATA[15:0],tsStreamOut_V_V_TVALID,tsStreamOut_V_V_TREADY,tsStreamOut_V_V_TDATA[63:0],polStreamOut_V_V_TVALID,polStreamOut_V_V_TREADY,polStreamOut_V_V_TDATA[7:0],custDataStreamOut_V_V_TVALID,custDataStreamOut_V_V_TREADY,custDataStreamOut_V_V_TDATA[15:0]" */;
+/* synthesis syn_black_box black_box_pad_pin="s_axi_config_AWADDR[5:0],s_axi_config_AWVALID,s_axi_config_AWREADY,s_axi_config_WDATA[31:0],s_axi_config_WSTRB[3:0],s_axi_config_WVALID,s_axi_config_WREADY,s_axi_config_BRESP[1:0],s_axi_config_BVALID,s_axi_config_BREADY,s_axi_config_ARADDR[5:0],s_axi_config_ARVALID,s_axi_config_ARREADY,s_axi_config_RDATA[31:0],s_axi_config_RRESP[1:0],s_axi_config_RVALID,s_axi_config_RREADY,ap_clk,ap_rst_n,ap_done,ap_start,ap_ready,ap_idle,xStreamIn_V_V_TVALID,xStreamIn_V_V_TREADY,xStreamIn_V_V_TDATA[15:0],yStreamIn_V_V_TVALID,yStreamIn_V_V_TREADY,yStreamIn_V_V_TDATA[15:0],tsStreamIn_V_V_TVALID,tsStreamIn_V_V_TREADY,tsStreamIn_V_V_TDATA[63:0],polStreamIn_V_V_TVALID,polStreamIn_V_V_TREADY,polStreamIn_V_V_TDATA[7:0],xStreamOut_V_V_TVALID,xStreamOut_V_V_TREADY,xStreamOut_V_V_TDATA[15:0],yStreamOut_V_V_TVALID,yStreamOut_V_V_TREADY,yStreamOut_V_V_TDATA[15:0],tsStreamOut_V_V_TVALID,tsStreamOut_V_V_TREADY,tsStreamOut_V_V_TDATA[63:0],polStreamOut_V_V_TVALID,polStreamOut_V_V_TREADY,polStreamOut_V_V_TDATA[7:0],custDataStreamOut_V_V_TVALID,custDataStreamOut_V_V_TREADY,custDataStreamOut_V_V_TDATA[15:0]" */;
   input [5:0]s_axi_config_AWADDR;
   input s_axi_config_AWVALID;
   output s_axi_config_AWREADY;
@@ -49,8 +49,8 @@ module brd_EVFastCornerStream_0_0(s_axi_config_AWADDR, s_axi_config_AWVALID,
   input s_axi_config_RREADY;
   input ap_clk;
   input ap_rst_n;
-  input ap_start;
   output ap_done;
+  input ap_start;
   output ap_ready;
   output ap_idle;
   input xStreamIn_V_V_TVALID;

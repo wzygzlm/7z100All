@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Tue Mar  3 19:10:34 2020
+-- Date        : Tue Mar  3 19:10:29 2020
 -- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_axis_data_fifo_0_0/brd_axis_data_fifo_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top brd_axis_data_fifo_0_0 -prefix
+--               brd_axis_data_fifo_0_0_ brd_axis_data_fifo_0_0_sim_netlist.vhdl
 -- Design      : brd_axis_data_fifo_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,8 +28,6 @@ entity brd_axis_data_fifo_0_0_xpm_cdc_async_rst is
   attribute INIT_SYNC_FF of brd_axis_data_fifo_0_0_xpm_cdc_async_rst : entity is 0;
   attribute INV_DEF_VAL : string;
   attribute INV_DEF_VAL of brd_axis_data_fifo_0_0_xpm_cdc_async_rst : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_xpm_cdc_async_rst : entity is "xpm_cdc_async_rst";
   attribute RST_ACTIVE_HIGH : integer;
   attribute RST_ACTIVE_HIGH of brd_axis_data_fifo_0_0_xpm_cdc_async_rst : entity is 1;
   attribute VERSION : integer;
@@ -94,8 +92,6 @@ entity brd_axis_data_fifo_0_0_dmem is
     count_d10_in : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \gpregsm1.curr_fwft_state_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_dmem : entity is "dmem";
 end brd_axis_data_fifo_0_0_dmem;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_dmem is
@@ -368,8 +364,6 @@ entity brd_axis_data_fifo_0_0_rd_bin_cntr is
     s_aclk : in STD_LOGIC;
     \ngwrdrst.grst.g7serrst.gnsckt_wrst.gcc_rst.sckt_wr_rst_cc_reg[1]\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_rd_bin_cntr : entity is "rd_bin_cntr";
 end brd_axis_data_fifo_0_0_rd_bin_cntr;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_rd_bin_cntr is
@@ -628,8 +622,6 @@ entity brd_axis_data_fifo_0_0_rd_fwft is
     m_axis_tready : in STD_LOGIC;
     ram_empty_fb_i_reg : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_rd_fwft : entity is "rd_fwft";
 end brd_axis_data_fifo_0_0_rd_fwft;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_rd_fwft is
@@ -875,8 +867,6 @@ entity brd_axis_data_fifo_0_0_rd_status_flags_ss is
     s_aclk : in STD_LOGIC;
     \ngwrdrst.grst.g7serrst.gnsckt_wrst.gcc_rst.sckt_wr_rst_cc_reg[1]\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_rd_status_flags_ss : entity is "rd_status_flags_ss";
 end brd_axis_data_fifo_0_0_rd_status_flags_ss;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_rd_status_flags_ss is
@@ -932,8 +922,6 @@ entity brd_axis_data_fifo_0_0_updn_cntr is
     s_aclk : in STD_LOGIC;
     \ngwrdrst.grst.g7serrst.gnsckt_wrst.gcc_rst.sckt_wr_rst_cc_reg[1]\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_updn_cntr : entity is "updn_cntr";
 end brd_axis_data_fifo_0_0_updn_cntr;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_updn_cntr is
@@ -1073,8 +1061,6 @@ entity brd_axis_data_fifo_0_0_wr_bin_cntr is
     s_aclk : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_wr_bin_cntr : entity is "wr_bin_cntr";
 end brd_axis_data_fifo_0_0_wr_bin_cntr;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_wr_bin_cntr is
@@ -1229,8 +1215,6 @@ entity brd_axis_data_fifo_0_0_wr_status_flags_ss is
     \gpregsm1.user_valid_reg\ : in STD_LOGIC;
     m_axis_tready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_wr_status_flags_ss : entity is "wr_status_flags_ss";
 end brd_axis_data_fifo_0_0_wr_status_flags_ss;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_wr_status_flags_ss is
@@ -1334,8 +1318,6 @@ entity brd_axis_data_fifo_0_0_dc_ss_fwft is
     s_aclk : in STD_LOGIC;
     \ngwrdrst.grst.g7serrst.gnsckt_wrst.gcc_rst.sckt_wr_rst_cc_reg[1]\ : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_dc_ss_fwft : entity is "dc_ss_fwft";
 end brd_axis_data_fifo_0_0_dc_ss_fwft;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_dc_ss_fwft is
@@ -1366,8 +1348,6 @@ entity brd_axis_data_fifo_0_0_memory is
     count_d10_in : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \gpregsm1.curr_fwft_state_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_memory : entity is "memory";
 end brd_axis_data_fifo_0_0_memory;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_memory is
@@ -1575,8 +1555,6 @@ entity brd_axis_data_fifo_0_0_reset_blk_ramfifo is
     m_axis_tready : in STD_LOGIC;
     \gpregsm1.curr_fwft_state_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_reset_blk_ramfifo : entity is "reset_blk_ramfifo";
 end brd_axis_data_fifo_0_0_reset_blk_ramfifo;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_reset_blk_ramfifo is
@@ -1777,8 +1755,6 @@ entity brd_axis_data_fifo_0_0_wr_logic is
     m_axis_tready : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_wr_logic : entity is "wr_logic";
 end brd_axis_data_fifo_0_0_wr_logic;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_wr_logic is
@@ -1830,8 +1806,6 @@ entity brd_axis_data_fifo_0_0_rd_logic is
     \gcc0.gc0.count_reg[3]\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     ram_full_fb_i_reg_0 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_rd_logic : entity is "rd_logic";
 end brd_axis_data_fifo_0_0_rd_logic;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_rd_logic is
@@ -1904,8 +1878,6 @@ entity brd_axis_data_fifo_0_0_fifo_generator_ramfifo is
     s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end brd_axis_data_fifo_0_0_fifo_generator_ramfifo;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_fifo_generator_ramfifo is
@@ -2001,8 +1973,6 @@ entity brd_axis_data_fifo_0_0_fifo_generator_top is
     s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_fifo_generator_top : entity is "fifo_generator_top";
 end brd_axis_data_fifo_0_0_fifo_generator_top;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_fifo_generator_top is
@@ -2036,8 +2006,6 @@ entity brd_axis_data_fifo_0_0_fifo_generator_v13_2_2_synth is
     s_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_axis_tvalid : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_fifo_generator_v13_2_2_synth : entity is "fifo_generator_v13_2_2_synth";
 end brd_axis_data_fifo_0_0_fifo_generator_v13_2_2_synth;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_fifo_generator_v13_2_2_synth is
@@ -2706,8 +2674,6 @@ entity brd_axis_data_fifo_0_0_fifo_generator_v13_2_2 is
   attribute C_WR_PNTR_WIDTH_WRCH of brd_axis_data_fifo_0_0_fifo_generator_v13_2_2 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of brd_axis_data_fifo_0_0_fifo_generator_v13_2_2 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_fifo_generator_v13_2_2 : entity is "fifo_generator_v13_2_2";
 end brd_axis_data_fifo_0_0_fifo_generator_v13_2_2;
 
 architecture STRUCTURE of brd_axis_data_fifo_0_0_fifo_generator_v13_2_2 is
@@ -3408,8 +3374,6 @@ entity brd_axis_data_fifo_0_0_axis_data_fifo_v1_1_17_axis_data_fifo is
   attribute LP_M_ACLKEN_CAN_TOGGLE of brd_axis_data_fifo_0_0_axis_data_fifo_v1_1_17_axis_data_fifo : entity is 0;
   attribute LP_S_ACLKEN_CAN_TOGGLE : integer;
   attribute LP_S_ACLKEN_CAN_TOGGLE of brd_axis_data_fifo_0_0_axis_data_fifo_v1_1_17_axis_data_fifo : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_axis_data_fifo_0_0_axis_data_fifo_v1_1_17_axis_data_fifo : entity is "axis_data_fifo_v1_1_17_axis_data_fifo";
   attribute P_APPLICATION_TYPE_AXIS : integer;
   attribute P_APPLICATION_TYPE_AXIS of brd_axis_data_fifo_0_0_axis_data_fifo_v1_1_17_axis_data_fifo : entity is 0;
   attribute P_AXIS_PAYLOAD_WIDTH : integer;
