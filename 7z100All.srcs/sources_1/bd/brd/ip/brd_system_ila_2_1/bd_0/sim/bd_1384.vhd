@@ -88,10 +88,10 @@ entity bd_1384 is
     probe8 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of bd_1384 : entity is "bd_1384,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_1384,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of bd_1384 : entity is "brd_system_ila_2_1.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of bd_1384 : entity is "bd_1384,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_1384,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of bd_1384 : entity is "brd_system_ila_2_1.hwdef";
 end bd_1384;
 
 architecture STRUCTURE of bd_1384 is
@@ -253,10 +253,10 @@ architecture STRUCTURE of bd_1384 is
   signal probe7_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe8_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal probe9_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute x_interface_info : string;
-  attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
-  attribute x_interface_parameter : string;
-  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME CLK.CLK, CLK_DOMAIN bd_1384_clk, FREQ_HZ 100000000, PHASE 0.000";
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 CLK.CLK CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME CLK.CLK, CLK_DOMAIN bd_1384_clk, FREQ_HZ 100000000, PHASE 0.000";
 begin
   clk_1 <= clk;
   probe0_1(1 downto 0) <= probe0(1 downto 0);

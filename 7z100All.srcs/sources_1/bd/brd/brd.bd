@@ -1076,7 +1076,7 @@
           <spirit:configurableElementValue spirit:referenceId="C_PROBE1_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE0_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_DATA_DEPTH">16384</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="C_NUM_OF_PROBES">39</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_NUM_OF_PROBES">40</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_NUM_MONITOR_SLOTS">5</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_SLOT_0_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_SLOT_1_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
@@ -1482,11 +1482,13 @@
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_fifo_generator_1_0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Input_Data_Width">16</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Input_Depth">2048</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Output_Data_Width">16</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Reset_Pin">false</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Almost_Full_Flag">true</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Almost_Empty_Flag">false</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Data_Count">true</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Data_Count_Width">11</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
@@ -1495,6 +1497,7 @@
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_fifo_generator_1_1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Input_Data_Width">16</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Input_Depth">2048</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Output_Data_Width">16</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Reset_Pin">false</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Almost_Full_Flag">true</spirit:configurableElementValue>
@@ -1507,6 +1510,7 @@
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_fifo_generator_2_0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Input_Data_Width">64</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Input_Depth">2048</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Output_Data_Width">64</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Reset_Pin">false</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Almost_Full_Flag">true</spirit:configurableElementValue>
@@ -1519,6 +1523,7 @@
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_fifo_generator_2_1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Input_Data_Width">8</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="Input_Depth">2048</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Output_Data_Width">8</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Reset_Pin">false</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="Almost_Full_Flag">true</spirit:configurableElementValue>
@@ -1791,14 +1796,14 @@
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="RawStreamToFIFO_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="dataSwitch_0" spirit:portRef="rst_n_i"/>
+        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M01_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_rst_n"/>
-        <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_rst_n"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_1_peripheral_aresetn</spirit:name>
@@ -1835,6 +1840,8 @@
         <spirit:internalPortReference spirit:componentRef="fifo_generator_2" spirit:portRef="clk"/>
         <spirit:internalPortReference spirit:componentRef="c_addsub_0" spirit:portRef="CLK"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_1" spirit:portRef="clk"/>
+        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1842,8 +1849,6 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_clk"/>
-        <spirit:internalPortReference spirit:componentRef="EVFastCornerStream_0" spirit:portRef="ap_clk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>processing_system7_0_FCLK_CLK1</spirit:name>
@@ -3059,6 +3064,11 @@
         <spirit:internalPortReference spirit:componentRef="fifo_generator_2" spirit:portRef="rd_en"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_3" spirit:portRef="rd_en"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_4" spirit:portRef="rd_en"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe39"/>
+        <bd:hdl_attributes>
+          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
+          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
+        </bd:hdl_attributes>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_1_dout</spirit:name>
@@ -3073,8 +3083,8 @@
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_1_empty</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_1" spirit:portRef="empty"/>
-        <spirit:internalPortReference spirit:componentRef="c_addsub_0" spirit:portRef="A"/>
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe32"/>
+        <spirit:internalPortReference spirit:componentRef="c_addsub_0" spirit:portRef="A"/>
         <bd:hdl_attributes>
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>

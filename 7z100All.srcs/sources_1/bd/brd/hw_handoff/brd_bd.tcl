@@ -369,11 +369,18 @@ proc create_root_design { parentCell } {
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
    CONFIG.Data_Count {true} \
+   CONFIG.Data_Count_Width {11} \
+   CONFIG.Full_Threshold_Assert_Value {2046} \
+   CONFIG.Full_Threshold_Negate_Value {2045} \
    CONFIG.Input_Data_Width {16} \
+   CONFIG.Input_Depth {2048} \
    CONFIG.Output_Data_Width {16} \
+   CONFIG.Output_Depth {2048} \
+   CONFIG.Read_Data_Count_Width {11} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
+   CONFIG.Write_Data_Count_Width {11} \
  ] $fifo_generator_1
 
   # Create instance: fifo_generator_2, and set properties
@@ -381,11 +388,18 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
+   CONFIG.Data_Count_Width {11} \
+   CONFIG.Full_Threshold_Assert_Value {2046} \
+   CONFIG.Full_Threshold_Negate_Value {2045} \
    CONFIG.Input_Data_Width {16} \
+   CONFIG.Input_Depth {2048} \
    CONFIG.Output_Data_Width {16} \
+   CONFIG.Output_Depth {2048} \
+   CONFIG.Read_Data_Count_Width {11} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
+   CONFIG.Write_Data_Count_Width {11} \
  ] $fifo_generator_2
 
   # Create instance: fifo_generator_3, and set properties
@@ -393,17 +407,19 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
-   CONFIG.Full_Threshold_Assert_Value {1022} \
-   CONFIG.Full_Threshold_Negate_Value {1021} \
+   CONFIG.Data_Count_Width {11} \
+   CONFIG.Full_Threshold_Assert_Value {2046} \
+   CONFIG.Full_Threshold_Negate_Value {2045} \
    CONFIG.Input_Data_Width {64} \
+   CONFIG.Input_Depth {2048} \
    CONFIG.Output_Data_Width {64} \
-   CONFIG.Output_Depth {1024} \
-   CONFIG.Read_Data_Count_Width {10} \
+   CONFIG.Output_Depth {2048} \
+   CONFIG.Read_Data_Count_Width {11} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
    CONFIG.Use_Extra_Logic {false} \
-   CONFIG.Write_Data_Count_Width {10} \
+   CONFIG.Write_Data_Count_Width {11} \
  ] $fifo_generator_3
 
   # Create instance: fifo_generator_4, and set properties
@@ -411,17 +427,19 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
-   CONFIG.Full_Threshold_Assert_Value {1022} \
-   CONFIG.Full_Threshold_Negate_Value {1021} \
+   CONFIG.Data_Count_Width {11} \
+   CONFIG.Full_Threshold_Assert_Value {2046} \
+   CONFIG.Full_Threshold_Negate_Value {2045} \
    CONFIG.Input_Data_Width {8} \
+   CONFIG.Input_Depth {2048} \
    CONFIG.Output_Data_Width {8} \
-   CONFIG.Output_Depth {1024} \
-   CONFIG.Read_Data_Count_Width {10} \
+   CONFIG.Output_Depth {2048} \
+   CONFIG.Read_Data_Count_Width {11} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
    CONFIG.Use_Extra_Logic {false} \
-   CONFIG.Write_Data_Count_Width {10} \
+   CONFIG.Write_Data_Count_Width {11} \
  ] $fifo_generator_4
 
   # Create instance: proc_sys_reset_0, and set properties
@@ -1222,7 +1240,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_DATA_DEPTH {16384} \
    CONFIG.C_MON_TYPE {MIX} \
    CONFIG.C_NUM_MONITOR_SLOTS {5} \
-   CONFIG.C_NUM_OF_PROBES {39} \
+   CONFIG.C_NUM_OF_PROBES {40} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE10_TYPE {0} \
    CONFIG.C_PROBE11_TYPE {0} \
@@ -1615,7 +1633,10 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets DVSAERReq_ABI_0_1]
-  connect_bd_net -net EVFastCornerStream_0_xStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TREADY] [get_bd_pins fifo_generator_1/rd_en] [get_bd_pins fifo_generator_2/rd_en] [get_bd_pins fifo_generator_3/rd_en] [get_bd_pins fifo_generator_4/rd_en]
+  connect_bd_net -net EVFastCornerStream_0_xStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TREADY] [get_bd_pins fifo_generator_1/rd_en] [get_bd_pins fifo_generator_2/rd_en] [get_bd_pins fifo_generator_3/rd_en] [get_bd_pins fifo_generator_4/rd_en] [get_bd_pins system_ila_0/probe39]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets EVFastCornerStream_0_xStreamIn_V_V_TREADY]
   connect_bd_net -net EVMUXDataToXYTSStream_0_polStreamOut_V_V_TDATA [get_bd_pins EVMUXDataToXYTSStream_0/polStreamOut_V_V_TDATA] [get_bd_pins fifo_generator_4/din]
   connect_bd_net -net EVMUXDataToXYTSStream_0_polStreamOut_V_V_TVALID [get_bd_pins EVMUXDataToXYTSStream_0/polStreamOut_V_V_TVALID] [get_bd_pins fifo_generator_4/wr_en]
   connect_bd_net -net EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TDATA [get_bd_pins EVMUXDataToXYTSStream_0/tsStreamOut_V_V_TDATA] [get_bd_pins fifo_generator_3/din]
