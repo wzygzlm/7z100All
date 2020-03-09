@@ -341,26 +341,26 @@ proc create_root_design { parentCell } {
   set fifo_generator_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_0 ]
   set_property -dict [ list \
    CONFIG.Almost_Full_Flag {true} \
-   CONFIG.Data_Count_Width {13} \
+   CONFIG.Data_Count_Width {14} \
    CONFIG.Enable_Safety_Circuit {false} \
    CONFIG.Fifo_Implementation {Independent_Clocks_Block_RAM} \
    CONFIG.Full_Flags_Reset_Value {0} \
-   CONFIG.Full_Threshold_Assert_Value {8101} \
-   CONFIG.Full_Threshold_Negate_Value {8100} \
+   CONFIG.Full_Threshold_Assert_Value {10001} \
+   CONFIG.Full_Threshold_Negate_Value {10000} \
    CONFIG.Input_Data_Width {16} \
-   CONFIG.Input_Depth {8192} \
+   CONFIG.Input_Depth {16384} \
    CONFIG.Output_Data_Width {8} \
-   CONFIG.Output_Depth {16384} \
+   CONFIG.Output_Depth {32768} \
    CONFIG.Programmable_Empty_Type {No_Programmable_Empty_Threshold} \
    CONFIG.Programmable_Full_Type {Single_Programmable_Full_Threshold_Constant} \
    CONFIG.Read_Data_Count {true} \
-   CONFIG.Read_Data_Count_Width {14} \
+   CONFIG.Read_Data_Count_Width {15} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
    CONFIG.Use_Embedded_Registers {false} \
    CONFIG.Write_Data_Count {true} \
-   CONFIG.Write_Data_Count_Width {13} \
+   CONFIG.Write_Data_Count_Width {14} \
  ] $fifo_generator_0
 
   # Create instance: fifo_generator_1, and set properties
@@ -369,18 +369,19 @@ proc create_root_design { parentCell } {
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
    CONFIG.Data_Count {true} \
-   CONFIG.Data_Count_Width {11} \
-   CONFIG.Full_Threshold_Assert_Value {2046} \
-   CONFIG.Full_Threshold_Negate_Value {2045} \
+   CONFIG.Data_Count_Width {10} \
+   CONFIG.Full_Threshold_Assert_Value {1001} \
+   CONFIG.Full_Threshold_Negate_Value {1000} \
    CONFIG.Input_Data_Width {16} \
-   CONFIG.Input_Depth {2048} \
+   CONFIG.Input_Depth {1024} \
    CONFIG.Output_Data_Width {16} \
-   CONFIG.Output_Depth {2048} \
-   CONFIG.Read_Data_Count_Width {11} \
+   CONFIG.Output_Depth {1024} \
+   CONFIG.Programmable_Full_Type {Single_Programmable_Full_Threshold_Constant} \
+   CONFIG.Read_Data_Count_Width {10} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
-   CONFIG.Write_Data_Count_Width {11} \
+   CONFIG.Write_Data_Count_Width {10} \
  ] $fifo_generator_1
 
   # Create instance: fifo_generator_2, and set properties
@@ -388,18 +389,18 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
-   CONFIG.Data_Count_Width {11} \
-   CONFIG.Full_Threshold_Assert_Value {2046} \
-   CONFIG.Full_Threshold_Negate_Value {2045} \
+   CONFIG.Data_Count_Width {10} \
+   CONFIG.Full_Threshold_Assert_Value {1022} \
+   CONFIG.Full_Threshold_Negate_Value {1021} \
    CONFIG.Input_Data_Width {16} \
-   CONFIG.Input_Depth {2048} \
+   CONFIG.Input_Depth {1024} \
    CONFIG.Output_Data_Width {16} \
-   CONFIG.Output_Depth {2048} \
-   CONFIG.Read_Data_Count_Width {11} \
+   CONFIG.Output_Depth {1024} \
+   CONFIG.Read_Data_Count_Width {10} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
-   CONFIG.Write_Data_Count_Width {11} \
+   CONFIG.Write_Data_Count_Width {10} \
  ] $fifo_generator_2
 
   # Create instance: fifo_generator_3, and set properties
@@ -407,19 +408,19 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
-   CONFIG.Data_Count_Width {11} \
-   CONFIG.Full_Threshold_Assert_Value {2046} \
-   CONFIG.Full_Threshold_Negate_Value {2045} \
+   CONFIG.Data_Count_Width {10} \
+   CONFIG.Full_Threshold_Assert_Value {1022} \
+   CONFIG.Full_Threshold_Negate_Value {1021} \
    CONFIG.Input_Data_Width {64} \
-   CONFIG.Input_Depth {2048} \
+   CONFIG.Input_Depth {1024} \
    CONFIG.Output_Data_Width {64} \
-   CONFIG.Output_Depth {2048} \
-   CONFIG.Read_Data_Count_Width {11} \
+   CONFIG.Output_Depth {1024} \
+   CONFIG.Read_Data_Count_Width {10} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
    CONFIG.Use_Extra_Logic {false} \
-   CONFIG.Write_Data_Count_Width {11} \
+   CONFIG.Write_Data_Count_Width {10} \
  ] $fifo_generator_3
 
   # Create instance: fifo_generator_4, and set properties
@@ -427,19 +428,19 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.Almost_Empty_Flag {false} \
    CONFIG.Almost_Full_Flag {true} \
-   CONFIG.Data_Count_Width {11} \
-   CONFIG.Full_Threshold_Assert_Value {2046} \
-   CONFIG.Full_Threshold_Negate_Value {2045} \
+   CONFIG.Data_Count_Width {10} \
+   CONFIG.Full_Threshold_Assert_Value {1022} \
+   CONFIG.Full_Threshold_Negate_Value {1021} \
    CONFIG.Input_Data_Width {8} \
-   CONFIG.Input_Depth {2048} \
+   CONFIG.Input_Depth {1024} \
    CONFIG.Output_Data_Width {8} \
-   CONFIG.Output_Depth {2048} \
-   CONFIG.Read_Data_Count_Width {11} \
+   CONFIG.Output_Depth {1024} \
+   CONFIG.Read_Data_Count_Width {10} \
    CONFIG.Reset_Pin {false} \
    CONFIG.Reset_Type {Asynchronous_Reset} \
    CONFIG.Use_Dout_Reset {false} \
    CONFIG.Use_Extra_Logic {false} \
-   CONFIG.Write_Data_Count_Width {11} \
+   CONFIG.Write_Data_Count_Width {10} \
  ] $fifo_generator_4
 
   # Create instance: proc_sys_reset_0, and set properties
@@ -1236,11 +1237,11 @@ proc create_root_design { parentCell } {
   # Create instance: system_ila_0, and set properties
   set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {60} \
+   CONFIG.C_BRAM_CNT {61.5} \
    CONFIG.C_DATA_DEPTH {16384} \
    CONFIG.C_MON_TYPE {MIX} \
    CONFIG.C_NUM_MONITOR_SLOTS {5} \
-   CONFIG.C_NUM_OF_PROBES {40} \
+   CONFIG.C_NUM_OF_PROBES {43} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE10_TYPE {0} \
    CONFIG.C_PROBE11_TYPE {0} \
@@ -1480,6 +1481,14 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_SIZE {1} \
  ] $util_vector_logic_3
+
+  # Create instance: util_vector_logic_4, and set properties
+  set util_vector_logic_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_4 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_vector_logic_4
 
   # Create instance: v_axi4s_vid_out_0, and set properties
   set v_axi4s_vid_out_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_axi4s_vid_out:4.0 v_axi4s_vid_out_0 ]
@@ -1798,7 +1807,14 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets fifo_generator_0_empty]
-  connect_bd_net -net fifo_generator_0_prog_full [get_bd_pins fifo_generator_0/prog_full] [get_bd_pins testAERDVSSM_0/AERSMFifoAlmostFull_AI] [get_bd_pins testAERDVSSM_0/AERSMFifoFull_AI]
+  connect_bd_net -net fifo_generator_0_prog_full [get_bd_pins system_ila_0/probe40] [get_bd_pins testAERDVSSM_0/AERSMFifoAlmostFull_AI] [get_bd_pins testAERDVSSM_0/AERSMFifoFull_AI] [get_bd_pins util_vector_logic_4/Res]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_0_prog_full]
+  connect_bd_net -net fifo_generator_0_prog_full1 [get_bd_pins fifo_generator_0/prog_full] [get_bd_pins system_ila_0/probe42] [get_bd_pins util_vector_logic_4/Op2]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_0_prog_full1]
   connect_bd_net -net fifo_generator_1_almost_full [get_bd_pins dataSwitch_0/select_i] [get_bd_pins fifo_generator_1/almost_full] [get_bd_pins system_ila_0/probe37]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
@@ -1811,6 +1827,10 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets fifo_generator_1_empty]
+  connect_bd_net -net fifo_generator_1_prog_full [get_bd_pins fifo_generator_1/prog_full] [get_bd_pins system_ila_0/probe41] [get_bd_pins util_vector_logic_4/Op1]
+  set_property -dict [ list \
+HDL_ATTRIBUTE.DEBUG {true} \
+ ] [get_bd_nets fifo_generator_1_prog_full]
   connect_bd_net -net fifo_generator_2_dout [get_bd_pins EVFastCornerStream_0/yStreamIn_V_V_TDATA] [get_bd_pins fifo_generator_2/dout] [get_bd_pins system_ila_0/probe34]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \

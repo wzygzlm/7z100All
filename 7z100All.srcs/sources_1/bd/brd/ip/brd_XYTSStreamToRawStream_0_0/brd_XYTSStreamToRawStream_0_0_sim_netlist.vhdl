@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Sat Mar  7 15:12:35 2020
--- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top brd_XYTSStreamToRawStream_0_0 -prefix
---               brd_XYTSStreamToRawStream_0_0_ brd_XYTSStreamToRawStream_0_0_sim_netlist.vhdl
+-- Date        : Mon Mar  9 12:02:16 2020
+-- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim
+--               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_XYTSStreamToRawStream_0_0/brd_XYTSStreamToRawStream_0_0_sim_netlist.vhdl
 -- Design      : brd_XYTSStreamToRawStream_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -55,6 +55,8 @@ entity brd_XYTSStreamToRawStream_0_0_XYTSStreamToRawStream is
     nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
     nonMonTSDiffFlgReg_V_ap_vld : out STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_XYTSStreamToRawStream_0_0_XYTSStreamToRawStream : entity is "XYTSStreamToRawStream";
 end brd_XYTSStreamToRawStream_0_0_XYTSStreamToRawStream;
 
 architecture STRUCTURE of brd_XYTSStreamToRawStream_0_0_XYTSStreamToRawStream is

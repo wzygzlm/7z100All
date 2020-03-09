@@ -55,7 +55,7 @@ entity bd_1384_wrapper is
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 14 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -143,7 +143,7 @@ architecture STRUCTURE of bd_1384_wrapper is
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 14 downto 0 );
     probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe52 : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -220,7 +220,7 @@ bd_1384_i: component bd_1384
       probe46(0) => probe46(0),
       probe47(1 downto 0) => probe47(1 downto 0),
       probe48(0) => probe48(0),
-      probe49(13 downto 0) => probe49(13 downto 0),
+      probe49(14 downto 0) => probe49(14 downto 0),
       probe5(0) => probe5(0),
       probe50(0) => probe50(0),
       probe51(0) => probe51(0),

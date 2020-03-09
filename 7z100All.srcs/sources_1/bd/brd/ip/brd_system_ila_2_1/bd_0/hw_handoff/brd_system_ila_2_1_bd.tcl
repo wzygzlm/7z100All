@@ -207,7 +207,7 @@ proc create_root_design { parentCell } {
   set probe46 [ create_bd_port -dir I -from 0 -to 0 probe46 ]
   set probe47 [ create_bd_port -dir I -from 1 -to 0 probe47 ]
   set probe48 [ create_bd_port -dir I -from 0 -to 0 probe48 ]
-  set probe49 [ create_bd_port -dir I -from 13 -to 0 probe49 ]
+  set probe49 [ create_bd_port -dir I -from 14 -to 0 probe49 ]
   set probe50 [ create_bd_port -dir I -from 0 -to 0 probe50 ]
   set probe51 [ create_bd_port -dir I -from 0 -to 0 probe51 ]
   set probe52 [ create_bd_port -dir I -from 2 -to 0 probe52 ]

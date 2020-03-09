@@ -55,7 +55,7 @@ entity bd_1384 is
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 14 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -220,7 +220,7 @@ architecture STRUCTURE of bd_1384 is
   signal probe46_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe47_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal probe48_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal probe49_1 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal probe49_1 : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal probe4_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal probe50_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe51_1 : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -302,7 +302,7 @@ begin
   probe46_1(0) <= probe46(0);
   probe47_1(1 downto 0) <= probe47(1 downto 0);
   probe48_1(0) <= probe48(0);
-  probe49_1(13 downto 0) <= probe49(13 downto 0);
+  probe49_1(14 downto 0) <= probe49(14 downto 0);
   probe4_1(7 downto 0) <= probe4(7 downto 0);
   probe50_1(0) <= probe50(0);
   probe51_1(0) <= probe51(0);

@@ -1,8 +1,8 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
---Date        : Sat Mar  7 23:38:37 2020
---Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
+--Date        : Mon Mar  9 11:44:58 2020
+--Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
 --Command     : generate_target brd.bd
 --Design      : brd
 --Purpose     : IP block netlist
@@ -1829,7 +1829,7 @@ entity brd is
     vid_vsync : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of brd : entity is "brd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=brd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=58,numReposBlks=51,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=5,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=25,da_clkrst_cnt=41,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of brd : entity is "brd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=brd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=59,numReposBlks=52,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=5,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=25,da_clkrst_cnt=41,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of brd : entity is "brd.hwdef";
 end brd;
@@ -2273,7 +2273,7 @@ architecture STRUCTURE of brd is
     probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe6 : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 12 downto 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe10 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2304,7 +2304,7 @@ architecture STRUCTURE of brd is
     probe35 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe36 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe37 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe38 : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    probe38 : in STD_LOGIC_VECTOR ( 9 downto 0 );
     probe39 : in STD_LOGIC_VECTOR ( 0 to 0 );
     SLOT_0_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
     SLOT_0_AXIS_tlast : in STD_LOGIC;
@@ -2326,7 +2326,10 @@ architecture STRUCTURE of brd is
     SLOT_4_AXIS_tlast : in STD_LOGIC;
     SLOT_4_AXIS_tvalid : in STD_LOGIC;
     SLOT_4_AXIS_tready : in STD_LOGIC;
-    resetn : in STD_LOGIC
+    resetn : in STD_LOGIC;
+    probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe42 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component brd_system_ila_0_1;
   component brd_system_ila_2_1 is
@@ -2381,7 +2384,7 @@ architecture STRUCTURE of brd is
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 14 downto 0 );
     probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe52 : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -2522,8 +2525,8 @@ architecture STRUCTURE of brd is
     full : out STD_LOGIC;
     almost_full : out STD_LOGIC;
     empty : out STD_LOGIC;
-    rd_data_count : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    wr_data_count : out STD_LOGIC_VECTOR ( 12 downto 0 );
+    rd_data_count : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    wr_data_count : out STD_LOGIC_VECTOR ( 13 downto 0 );
     prog_full : out STD_LOGIC
   );
   end component brd_fifo_generator_0_0;
@@ -2874,21 +2877,6 @@ architecture STRUCTURE of brd is
     skipNumReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
   end component brd_RawStreamToFIFO_0_0;
-  component brd_dataSwitch_0_0 is
-  port (
-    clk_i : in STD_LOGIC;
-    rst_n_i : in STD_LOGIC;
-    select_i : in STD_LOGIC;
-    data_vd_i : in STD_LOGIC;
-    data_i : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_o_1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_o_vd1 : out STD_LOGIC;
-    data_o_num1 : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    data_o_2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    data_o_vd2 : out STD_LOGIC;
-    data_o_num2 : out STD_LOGIC_VECTOR ( 63 downto 0 )
-  );
-  end component brd_dataSwitch_0_0;
   component brd_fifo_generator_1_0 is
   port (
     clk : in STD_LOGIC;
@@ -2899,7 +2887,8 @@ architecture STRUCTURE of brd is
     full : out STD_LOGIC;
     almost_full : out STD_LOGIC;
     empty : out STD_LOGIC;
-    data_count : out STD_LOGIC_VECTOR ( 10 downto 0 )
+    data_count : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    prog_full : out STD_LOGIC
   );
   end component brd_fifo_generator_1_0;
   component brd_fifo_generator_1_1 is
@@ -2987,6 +2976,28 @@ architecture STRUCTURE of brd is
     nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component brd_XYTSStreamToRawStream_0_0;
+  component brd_dataSwitch_0_0 is
+  port (
+    clk_i : in STD_LOGIC;
+    rst_n_i : in STD_LOGIC;
+    select_i : in STD_LOGIC;
+    data_vd_i : in STD_LOGIC;
+    data_i : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    data_o_1 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    data_o_vd1 : out STD_LOGIC;
+    data_o_num1 : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    data_o_2 : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    data_o_vd2 : out STD_LOGIC;
+    data_o_num2 : out STD_LOGIC_VECTOR ( 63 downto 0 )
+  );
+  end component brd_dataSwitch_0_0;
+  component brd_util_vector_logic_4_0 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_util_vector_logic_4_0;
   component brd_EVFastCornerStream_0_0 is
   port (
     s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -3267,7 +3278,7 @@ architecture STRUCTURE of brd is
   signal dataSPIToSendPrepared_w_do : STD_LOGIC;
   attribute DEBUG of dataSPIToSendPrepared_w_do : signal is "true";
   attribute MARK_DEBUG of dataSPIToSendPrepared_w_do : signal is std.standard.true;
-  signal data_count : STD_LOGIC_VECTOR ( 10 downto 0 );
+  signal data_count : STD_LOGIC_VECTOR ( 9 downto 0 );
   attribute DEBUG of data_count : signal is "true";
   attribute MARK_DEBUG of data_count : signal is std.standard.true;
   signal data_o_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -3318,7 +3329,12 @@ architecture STRUCTURE of brd is
   signal fifo_generator_0_empty : STD_LOGIC;
   attribute DEBUG of fifo_generator_0_empty : signal is "true";
   attribute MARK_DEBUG of fifo_generator_0_empty : signal is std.standard.true;
-  signal fifo_generator_0_prog_full : STD_LOGIC;
+  signal fifo_generator_0_prog_full : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute DEBUG of fifo_generator_0_prog_full : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_0_prog_full : signal is std.standard.true;
+  signal fifo_generator_0_prog_full1 : STD_LOGIC;
+  attribute DEBUG of fifo_generator_0_prog_full1 : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_0_prog_full1 : signal is std.standard.true;
   signal fifo_generator_1_almost_full : STD_LOGIC;
   attribute DEBUG of fifo_generator_1_almost_full : signal is "true";
   attribute MARK_DEBUG of fifo_generator_1_almost_full : signal is std.standard.true;
@@ -3328,6 +3344,9 @@ architecture STRUCTURE of brd is
   signal fifo_generator_1_empty : STD_LOGIC;
   attribute DEBUG of fifo_generator_1_empty : signal is "true";
   attribute MARK_DEBUG of fifo_generator_1_empty : signal is std.standard.true;
+  signal fifo_generator_1_prog_full : STD_LOGIC;
+  attribute DEBUG of fifo_generator_1_prog_full : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_1_prog_full : signal is std.standard.true;
   signal fifo_generator_2_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute DEBUG of fifo_generator_2_dout : signal is "true";
   attribute MARK_DEBUG of fifo_generator_2_dout : signal is std.standard.true;
@@ -3510,7 +3529,7 @@ architecture STRUCTURE of brd is
   signal r_TX_Bit_Count_do : STD_LOGIC_VECTOR ( 5 downto 0 );
   attribute DEBUG of r_TX_Bit_Count_do : signal is "true";
   attribute MARK_DEBUG of r_TX_Bit_Count_do : signal is std.standard.true;
-  signal rd_data_count : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal rd_data_count : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal readAXIBRAM_r_do : STD_LOGIC;
   attribute DEBUG of readAXIBRAM_r_do : signal is "true";
   attribute MARK_DEBUG of readAXIBRAM_r_do : signal is std.standard.true;
@@ -3707,7 +3726,7 @@ architecture STRUCTURE of brd is
   signal wrSetupIndex_q_do : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute DEBUG of wrSetupIndex_q_do : signal is "true";
   attribute MARK_DEBUG of wrSetupIndex_q_do : signal is std.standard.true;
-  signal wr_data_count : STD_LOGIC_VECTOR ( 12 downto 0 );
+  signal wr_data_count : STD_LOGIC_VECTOR ( 13 downto 0 );
   attribute DEBUG of wr_data_count : signal is "true";
   attribute MARK_DEBUG of wr_data_count : signal is std.standard.true;
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -4452,23 +4471,24 @@ fifo_generator_0: component brd_fifo_generator_0_0
       dout(7 downto 0) => fifo_generator_0_dout(7 downto 0),
       empty => fifo_generator_0_empty,
       full => NLW_fifo_generator_0_full_UNCONNECTED,
-      prog_full => fifo_generator_0_prog_full,
+      prog_full => fifo_generator_0_prog_full1,
       rd_clk => ulpi_clk60_i_0_1,
-      rd_data_count(13 downto 0) => rd_data_count(13 downto 0),
+      rd_data_count(14 downto 0) => rd_data_count(14 downto 0),
       rd_en => usb_cdc_core_0_inport_accept_o1,
       wr_clk => processing_system7_0_FCLK_CLK0,
-      wr_data_count(12 downto 0) => wr_data_count(12 downto 0),
+      wr_data_count(13 downto 0) => wr_data_count(13 downto 0),
       wr_en => StreamToFIFO_0_fifoDataOut_V_write
     );
 fifo_generator_1: component brd_fifo_generator_1_0
      port map (
       almost_full => fifo_generator_1_almost_full,
       clk => processing_system7_0_FCLK_CLK0,
-      data_count(10 downto 0) => data_count(10 downto 0),
+      data_count(9 downto 0) => data_count(9 downto 0),
       din(15 downto 0) => EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA(15 downto 0),
       dout(15 downto 0) => fifo_generator_1_dout(15 downto 0),
       empty => fifo_generator_1_empty,
       full => NLW_fifo_generator_1_full_UNCONNECTED,
+      prog_full => fifo_generator_1_prog_full,
       rd_en => EVFastCornerStream_0_xStreamIn_V_V_TREADY,
       wr_en => EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID
     );
@@ -4865,12 +4885,15 @@ system_ila_0: component brd_system_ila_0_1
       probe35(63 downto 0) => fifo_generator_3_dout(63 downto 0),
       probe36(7 downto 0) => fifo_generator_4_dout(7 downto 0),
       probe37(0) => fifo_generator_1_almost_full,
-      probe38(10 downto 0) => data_count(10 downto 0),
+      probe38(9 downto 0) => data_count(9 downto 0),
       probe39(0) => EVFastCornerStream_0_xStreamIn_V_V_TREADY,
       probe4(0) => testAERDVSSM_0_DVSAERAck_SBO,
+      probe40(0) => fifo_generator_0_prog_full(0),
+      probe41(0) => fifo_generator_1_prog_full,
+      probe42(0) => fifo_generator_0_prog_full1,
       probe5(0) => usb_cdc_core_0_inport_accept_o1,
       probe6(7 downto 0) => fifo_generator_0_dout(7 downto 0),
-      probe7(12 downto 0) => wr_data_count(12 downto 0),
+      probe7(13 downto 0) => wr_data_count(13 downto 0),
       probe8(0) => testAERDVSSM_0_AERSMOutFifoWrite_SO1,
       probe9(0) => util_vector_logic_1_Res(0),
       resetn => proc_sys_reset_0_peripheral_aresetn(0)
@@ -4922,7 +4945,7 @@ system_ila_2: component brd_system_ila_2_1
       probe46(0) => ulpi_wrapper_0_utmi_rxactive_o,
       probe47(1 downto 0) => state_o(1 downto 0),
       probe48(0) => usb_reset_w_do,
-      probe49(13 downto 0) => rd_data_count(13 downto 0),
+      probe49(14 downto 0) => rd_data_count(14 downto 0),
       probe5(0) => SPI_Master_With_Sing_0_o_TX_Ready,
       probe50(0) => testAERDVSSM_0_AERSMOutFifoWrite_SO1,
       probe51(0) => usb_cdc_core_0_inport_accept_o1,
@@ -4958,8 +4981,8 @@ system_ila_2: component brd_system_ila_2_1
 testAERDVSSM_0: component brd_testAERDVSSM_0_0
      port map (
       ADCClk_CI => processing_system7_0_FCLK_CLK0,
-      AERSMFifoAlmostFull_AI => fifo_generator_0_prog_full,
-      AERSMFifoFull_AI => fifo_generator_0_prog_full,
+      AERSMFifoAlmostFull_AI => fifo_generator_0_prog_full(0),
+      AERSMFifoFull_AI => fifo_generator_0_prog_full(0),
       AERSMOutFifoData_DO(15 downto 0) => testAERDVSSM_0_AERSMOutFifoData_DO2(15 downto 0),
       AERSMOutFifoWrite_SO => testAERDVSSM_0_AERSMOutFifoWrite_SO1,
       ChipBiasAddrSelect_SBO => testAERDVSSM_0_ChipBiasAddrSelect_SBO,
@@ -5139,6 +5162,12 @@ util_vector_logic_3: component brd_util_vector_logic_3_0
       Op1(0) => util_vector_logic_2_Res(0),
       Op2(0) => usb_cdc_core_0_inport_accept_o1,
       Res(0) => NLW_util_vector_logic_3_Res_UNCONNECTED(0)
+    );
+util_vector_logic_4: component brd_util_vector_logic_4_0
+     port map (
+      Op1(0) => fifo_generator_1_prog_full,
+      Op2(0) => fifo_generator_0_prog_full1,
+      Res(0) => fifo_generator_0_prog_full(0)
     );
 v_axi4s_vid_out_0: component brd_v_axi4s_vid_out_0_0
      port map (

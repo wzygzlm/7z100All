@@ -63,7 +63,7 @@ ENTITY brd_system_ila_0_1 IS
     probe4 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe6 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    probe7 : IN STD_LOGIC_VECTOR(12 DOWNTO 0);
+    probe7 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
     probe8 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe9 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe10 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
@@ -94,8 +94,11 @@ ENTITY brd_system_ila_0_1 IS
     probe35 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     probe36 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     probe37 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe38 : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+    probe38 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
     probe39 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe40 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe41 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe42 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     SLOT_0_AXIS_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     SLOT_0_AXIS_tlast : IN STD_LOGIC;
     SLOT_0_AXIS_tvalid : IN STD_LOGIC;
@@ -133,7 +136,7 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
       probe4 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe6 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      probe7 : IN STD_LOGIC_VECTOR(12 DOWNTO 0);
+      probe7 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
       probe8 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe9 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe10 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
@@ -164,8 +167,11 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
       probe35 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
       probe36 : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       probe37 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe38 : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
+      probe38 : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
       probe39 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe40 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe41 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe42 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       SLOT_0_AXIS_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       SLOT_0_AXIS_tlast : IN STD_LOGIC;
       SLOT_0_AXIS_tvalid : IN STD_LOGIC;
@@ -274,6 +280,9 @@ BEGIN
       probe37 => probe37,
       probe38 => probe38,
       probe39 => probe39,
+      probe40 => probe40,
+      probe41 => probe41,
+      probe42 => probe42,
       SLOT_0_AXIS_tdata => SLOT_0_AXIS_tdata,
       SLOT_0_AXIS_tlast => SLOT_0_AXIS_tlast,
       SLOT_0_AXIS_tvalid => SLOT_0_AXIS_tvalid,
