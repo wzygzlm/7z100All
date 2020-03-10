@@ -77,7 +77,7 @@ entity bd_d325 is
     resetn : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_d325 : entity is "brd_system_ila_0_1.hwdef";
 end bd_d325;

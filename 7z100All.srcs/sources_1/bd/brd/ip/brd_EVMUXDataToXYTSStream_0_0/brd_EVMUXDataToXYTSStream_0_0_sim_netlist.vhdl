@@ -1,8 +1,8 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Mon Mar  9 11:52:39 2020
--- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+-- Date        : Mon Mar  9 21:56:25 2020
+-- Host        : mbp-win10 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_EVMUXDataToXYTSStream_0_0/brd_EVMUXDataToXYTSStream_0_0_sim_netlist.vhdl
 -- Design      : brd_EVMUXDataToXYTSStream_0_0
@@ -13982,7 +13982,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(0),
+      D => \y_V_reg_n_0_[0]\,
       Q => xStreamOut_V_V_1_payload_A(0),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -13990,7 +13990,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(10),
+      D => \y_V_reg_n_0_[10]\,
       Q => xStreamOut_V_V_1_payload_A(10),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -13998,7 +13998,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(11),
+      D => \y_V_reg_n_0_[11]\,
       Q => xStreamOut_V_V_1_payload_A(11),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14006,7 +14006,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(1),
+      D => \y_V_reg_n_0_[1]\,
       Q => xStreamOut_V_V_1_payload_A(1),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14014,7 +14014,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(2),
+      D => \y_V_reg_n_0_[2]\,
       Q => xStreamOut_V_V_1_payload_A(2),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14022,7 +14022,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(3),
+      D => \y_V_reg_n_0_[3]\,
       Q => xStreamOut_V_V_1_payload_A(3),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14030,7 +14030,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(4),
+      D => \y_V_reg_n_0_[4]\,
       Q => xStreamOut_V_V_1_payload_A(4),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14038,7 +14038,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(5),
+      D => \y_V_reg_n_0_[5]\,
       Q => xStreamOut_V_V_1_payload_A(5),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14046,7 +14046,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(6),
+      D => \y_V_reg_n_0_[6]\,
       Q => xStreamOut_V_V_1_payload_A(6),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14054,7 +14054,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(7),
+      D => \y_V_reg_n_0_[7]\,
       Q => xStreamOut_V_V_1_payload_A(7),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14062,7 +14062,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(8),
+      D => \y_V_reg_n_0_[8]\,
       Q => xStreamOut_V_V_1_payload_A(8),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14070,7 +14070,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_A,
-      D => eventFIFOIn_V(9),
+      D => \y_V_reg_n_0_[9]\,
       Q => xStreamOut_V_V_1_payload_A(9),
       R => \xStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14099,7 +14099,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(0),
+      D => \y_V_reg_n_0_[0]\,
       Q => xStreamOut_V_V_1_payload_B(0),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14107,7 +14107,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(10),
+      D => \y_V_reg_n_0_[10]\,
       Q => xStreamOut_V_V_1_payload_B(10),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14115,7 +14115,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(11),
+      D => \y_V_reg_n_0_[11]\,
       Q => xStreamOut_V_V_1_payload_B(11),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14123,7 +14123,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(1),
+      D => \y_V_reg_n_0_[1]\,
       Q => xStreamOut_V_V_1_payload_B(1),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14131,7 +14131,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(2),
+      D => \y_V_reg_n_0_[2]\,
       Q => xStreamOut_V_V_1_payload_B(2),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14139,7 +14139,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(3),
+      D => \y_V_reg_n_0_[3]\,
       Q => xStreamOut_V_V_1_payload_B(3),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14147,7 +14147,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(4),
+      D => \y_V_reg_n_0_[4]\,
       Q => xStreamOut_V_V_1_payload_B(4),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14155,7 +14155,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(5),
+      D => \y_V_reg_n_0_[5]\,
       Q => xStreamOut_V_V_1_payload_B(5),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14163,7 +14163,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(6),
+      D => \y_V_reg_n_0_[6]\,
       Q => xStreamOut_V_V_1_payload_B(6),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14171,7 +14171,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(7),
+      D => \y_V_reg_n_0_[7]\,
       Q => xStreamOut_V_V_1_payload_B(7),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14179,7 +14179,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(8),
+      D => \y_V_reg_n_0_[8]\,
       Q => xStreamOut_V_V_1_payload_B(8),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14187,7 +14187,7 @@ tsWrapRegReg_V_ap_vld_INST_0: unisim.vcomponents.LUT6
      port map (
       C => ap_clk,
       CE => xStreamOut_V_V_1_load_B,
-      D => eventFIFOIn_V(9),
+      D => \y_V_reg_n_0_[9]\,
       Q => xStreamOut_V_V_1_payload_B(9),
       R => \xStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14592,7 +14592,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[0]\,
+      D => eventFIFOIn_V(0),
       Q => yStreamOut_V_V_1_payload_A(0),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14600,7 +14600,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[10]\,
+      D => eventFIFOIn_V(10),
       Q => yStreamOut_V_V_1_payload_A(10),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14608,7 +14608,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[11]\,
+      D => eventFIFOIn_V(11),
       Q => yStreamOut_V_V_1_payload_A(11),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14616,7 +14616,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[1]\,
+      D => eventFIFOIn_V(1),
       Q => yStreamOut_V_V_1_payload_A(1),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14624,7 +14624,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[2]\,
+      D => eventFIFOIn_V(2),
       Q => yStreamOut_V_V_1_payload_A(2),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14632,7 +14632,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[3]\,
+      D => eventFIFOIn_V(3),
       Q => yStreamOut_V_V_1_payload_A(3),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14640,7 +14640,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[4]\,
+      D => eventFIFOIn_V(4),
       Q => yStreamOut_V_V_1_payload_A(4),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14648,7 +14648,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[5]\,
+      D => eventFIFOIn_V(5),
       Q => yStreamOut_V_V_1_payload_A(5),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14656,7 +14656,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[6]\,
+      D => eventFIFOIn_V(6),
       Q => yStreamOut_V_V_1_payload_A(6),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14664,7 +14664,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[7]\,
+      D => eventFIFOIn_V(7),
       Q => yStreamOut_V_V_1_payload_A(7),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14672,7 +14672,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[8]\,
+      D => eventFIFOIn_V(8),
       Q => yStreamOut_V_V_1_payload_A(8),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14680,7 +14680,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_A,
-      D => \y_V_reg_n_0_[9]\,
+      D => eventFIFOIn_V(9),
       Q => yStreamOut_V_V_1_payload_A(9),
       R => \yStreamOut_V_V_1_payload_A[11]_i_1_n_0\
     );
@@ -14709,7 +14709,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[0]\,
+      D => eventFIFOIn_V(0),
       Q => yStreamOut_V_V_1_payload_B(0),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14717,7 +14717,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[10]\,
+      D => eventFIFOIn_V(10),
       Q => yStreamOut_V_V_1_payload_B(10),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14725,7 +14725,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[11]\,
+      D => eventFIFOIn_V(11),
       Q => yStreamOut_V_V_1_payload_B(11),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14733,7 +14733,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[1]\,
+      D => eventFIFOIn_V(1),
       Q => yStreamOut_V_V_1_payload_B(1),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14741,7 +14741,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[2]\,
+      D => eventFIFOIn_V(2),
       Q => yStreamOut_V_V_1_payload_B(2),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14749,7 +14749,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[3]\,
+      D => eventFIFOIn_V(3),
       Q => yStreamOut_V_V_1_payload_B(3),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14757,7 +14757,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[4]\,
+      D => eventFIFOIn_V(4),
       Q => yStreamOut_V_V_1_payload_B(4),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14765,7 +14765,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[5]\,
+      D => eventFIFOIn_V(5),
       Q => yStreamOut_V_V_1_payload_B(5),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14773,7 +14773,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[6]\,
+      D => eventFIFOIn_V(6),
       Q => yStreamOut_V_V_1_payload_B(6),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14781,7 +14781,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[7]\,
+      D => eventFIFOIn_V(7),
       Q => yStreamOut_V_V_1_payload_B(7),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14789,7 +14789,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[8]\,
+      D => eventFIFOIn_V(8),
       Q => yStreamOut_V_V_1_payload_B(8),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
@@ -14797,7 +14797,7 @@ xStreamOut_V_V_1_sel_wr_reg: unisim.vcomponents.FDRE
      port map (
       C => ap_clk,
       CE => yStreamOut_V_V_1_load_B,
-      D => \y_V_reg_n_0_[9]\,
+      D => eventFIFOIn_V(9),
       Q => yStreamOut_V_V_1_payload_B(9),
       R => \yStreamOut_V_V_1_payload_B[11]_i_1_n_0\
     );
