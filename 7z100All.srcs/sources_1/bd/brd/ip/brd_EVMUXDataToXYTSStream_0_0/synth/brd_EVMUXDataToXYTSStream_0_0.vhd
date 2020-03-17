@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVMUXDataToXYTSStream:1.0
--- IP Revision: 2003092148
+-- IP Revision: 2003101222
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -172,7 +172,7 @@ ARCHITECTURE brd_EVMUXDataToXYTSStream_0_0_arch OF brd_EVMUXDataToXYTSStream_0_0
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_EVMUXDataToXYTSStream_0_0_arch : ARCHITECTURE IS "brd_EVMUXDataToXYTSStream_0_0,EVMUXDataToXYTSStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVMUXDataToXYTSStream_0_0_arch: ARCHITECTURE IS "brd_EVMUXDataToXYTSStream_0_0,EVMUXDataToXYTSStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVMUXDataToXYTSStream,x_ipVersion=1.0,x_ipCoreRevision=2003092148,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVMUXDataToXYTSStream_0_0_arch: ARCHITECTURE IS "brd_EVMUXDataToXYTSStream_0_0,EVMUXDataToXYTSStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVMUXDataToXYTSStream,x_ipVersion=1.0,x_ipCoreRevision=2003101222,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF tsWrapRegReg_V: SIGNAL IS "XIL_INTERFACENAME tsWrapRegReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}" & 

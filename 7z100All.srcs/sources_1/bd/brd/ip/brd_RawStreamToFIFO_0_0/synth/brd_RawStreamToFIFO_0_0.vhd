@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:RawStreamToFIFO:1.0
--- IP Revision: 2003061336
+-- IP Revision: 2003161232
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -58,6 +58,7 @@ ENTITY brd_RawStreamToFIFO_0_0 IS
     fifoIFOutData_V_ap_vld : OUT STD_LOGIC;
     skippedData_V_ap_vld : OUT STD_LOGIC;
     nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
+    lastTsReg_V_ap_vld : OUT STD_LOGIC;
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     ap_start : IN STD_LOGIC;
@@ -71,7 +72,8 @@ ENTITY brd_RawStreamToFIFO_0_0 IS
     fifoIFOutData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-    skipNumReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
+    skipNumReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+    lastTsReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
   );
 END brd_RawStreamToFIFO_0_0;
 
@@ -83,6 +85,7 @@ ARCHITECTURE brd_RawStreamToFIFO_0_0_arch OF brd_RawStreamToFIFO_0_0 IS
       fifoIFOutData_V_ap_vld : OUT STD_LOGIC;
       skippedData_V_ap_vld : OUT STD_LOGIC;
       nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
+      lastTsReg_V_ap_vld : OUT STD_LOGIC;
       ap_clk : IN STD_LOGIC;
       ap_rst_n : IN STD_LOGIC;
       ap_start : IN STD_LOGIC;
@@ -96,7 +99,8 @@ ARCHITECTURE brd_RawStreamToFIFO_0_0_arch OF brd_RawStreamToFIFO_0_0 IS
       fifoIFOutData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       skippedData_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-      skipNumReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
+      skipNumReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+      lastTsReg_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
     );
   END COMPONENT RawStreamToFIFO;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -104,9 +108,12 @@ ARCHITECTURE brd_RawStreamToFIFO_0_0_arch OF brd_RawStreamToFIFO_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_RawStreamToFIFO_0_0_arch : ARCHITECTURE IS "brd_RawStreamToFIFO_0_0,RawStreamToFIFO,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_RawStreamToFIFO_0_0_arch: ARCHITECTURE IS "brd_RawStreamToFIFO_0_0,RawStreamToFIFO,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=RawStreamToFIFO,x_ipVersion=1.0,x_ipCoreRevision=2003061336,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_RawStreamToFIFO_0_0_arch: ARCHITECTURE IS "brd_RawStreamToFIFO_0_0,RawStreamToFIFO,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=RawStreamToFIFO,x_ipVersion=1.0,x_ipCoreRevision=2003161232,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF lastTsReg_V: SIGNAL IS "XIL_INTERFACENAME lastTsReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} v" & 
+"alue false}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF lastTsReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 lastTsReg_V DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF skipNumReg_V: SIGNAL IS "XIL_INTERFACENAME skipNumReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} " & 
 "value false}}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF skipNumReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 skipNumReg_V DATA";
@@ -146,6 +153,7 @@ BEGIN
       fifoIFOutData_V_ap_vld => fifoIFOutData_V_ap_vld,
       skippedData_V_ap_vld => skippedData_V_ap_vld,
       nonMonTSDiffFlgReg_V_ap_vld => nonMonTSDiffFlgReg_V_ap_vld,
+      lastTsReg_V_ap_vld => lastTsReg_V_ap_vld,
       ap_clk => ap_clk,
       ap_rst_n => ap_rst_n,
       ap_start => ap_start,
@@ -159,6 +167,7 @@ BEGIN
       fifoIFOutData_V => fifoIFOutData_V,
       skippedData_V => skippedData_V,
       nonMonTSDiffFlgReg_V => nonMonTSDiffFlgReg_V,
-      skipNumReg_V => skipNumReg_V
+      skipNumReg_V => skipNumReg_V,
+      lastTsReg_V => lastTsReg_V
     );
 END brd_RawStreamToFIFO_0_0_arch;

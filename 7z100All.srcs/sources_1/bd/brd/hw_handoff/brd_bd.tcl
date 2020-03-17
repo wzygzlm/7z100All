@@ -284,7 +284,7 @@ proc create_root_design { parentCell } {
    CONFIG.B_Type {Unsigned} \
    CONFIG.B_Value {1} \
    CONFIG.B_Width {1} \
-   CONFIG.CE {false} \
+   CONFIG.CE {true} \
    CONFIG.Latency {1} \
    CONFIG.Out_Width {1} \
  ] $c_addsub_0
@@ -1642,7 +1642,7 @@ HDL_ATTRIBUTE.DEBUG {true} \
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets DVSAERReq_ABI_0_1]
-  connect_bd_net -net EVFastCornerStream_0_xStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TREADY] [get_bd_pins fifo_generator_1/rd_en] [get_bd_pins fifo_generator_2/rd_en] [get_bd_pins fifo_generator_3/rd_en] [get_bd_pins fifo_generator_4/rd_en] [get_bd_pins system_ila_0/probe39]
+  connect_bd_net -net EVFastCornerStream_0_xStreamIn_V_V_TREADY [get_bd_pins EVFastCornerStream_0/xStreamIn_V_V_TREADY] [get_bd_pins c_addsub_0/CE] [get_bd_pins fifo_generator_1/rd_en] [get_bd_pins fifo_generator_2/rd_en] [get_bd_pins fifo_generator_3/rd_en] [get_bd_pins fifo_generator_4/rd_en] [get_bd_pins system_ila_0/probe39]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets EVFastCornerStream_0_xStreamIn_V_V_TREADY]

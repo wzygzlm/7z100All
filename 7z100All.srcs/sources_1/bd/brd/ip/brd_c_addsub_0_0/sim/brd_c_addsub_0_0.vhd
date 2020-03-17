@@ -60,6 +60,7 @@ ENTITY brd_c_addsub_0_0 IS
   PORT (
     A : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     CLK : IN STD_LOGIC;
+    CE : IN STD_LOGIC;
     S : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
   );
 END brd_c_addsub_0_0;
@@ -116,6 +117,8 @@ ARCHITECTURE brd_c_addsub_0_0_arch OF brd_c_addsub_0_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF S: SIGNAL IS "XIL_INTERFACENAME s_intf, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format bool minimum {} maximum" & 
 " {}} value FALSE}}}} DATA_WIDTH 1}";
   ATTRIBUTE X_INTERFACE_INFO OF S: SIGNAL IS "xilinx.com:signal:data:1.0 s_intf DATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF CE: SIGNAL IS "XIL_INTERFACENAME ce_intf, POLARITY ACTIVE_LOW";
+  ATTRIBUTE X_INTERFACE_INFO OF CE: SIGNAL IS "xilinx.com:signal:clockenable:1.0 ce_intf CE";
   ATTRIBUTE X_INTERFACE_PARAMETER OF CLK: SIGNAL IS "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF s_intf:c_out_intf:sinit_intf:sset_intf:bypass_intf:c_in_intf:add_intf:b_intf:a_intf, ASSOCIATED_RESET SCLR, ASSOCIATED_CLKEN CE, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF CLK: SIGNAL IS "xilinx.com:signal:clock:1.0 clk_intf CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF A: SIGNAL IS "XIL_INTERFACENAME a_intf, LAYERED_METADATA undef";
@@ -144,7 +147,7 @@ BEGIN
       C_HAS_C_IN => 0,
       C_HAS_C_OUT => 0,
       C_BORROW_LOW => 1,
-      C_HAS_CE => 0,
+      C_HAS_CE => 1,
       C_HAS_BYPASS => 0,
       C_HAS_SCLR => 0,
       C_HAS_SSET => 0,
@@ -156,7 +159,7 @@ BEGIN
       CLK => CLK,
       ADD => '1',
       C_IN => '0',
-      CE => '1',
+      CE => CE,
       BYPASS => '0',
       SCLR => '0',
       SSET => '0',
