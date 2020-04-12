@@ -1,8 +1,8 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Mon Mar  9 12:02:58 2020
--- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+-- Date        : Sat Apr  4 15:21:51 2020
+-- Host        : mbp-win10 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top brd_fifo_generator_0_0 -prefix
 --               brd_fifo_generator_0_0_ brd_fifo_generator_0_0_stub.vhdl
 -- Design      : brd_fifo_generator_0_0

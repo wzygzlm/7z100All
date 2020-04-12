@@ -89,7 +89,7 @@ entity bd_1384 is
     probe9 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_1384 : entity is "bd_1384,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_1384,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of bd_1384 : entity is "bd_1384,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_1384,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=1,numReposBlks=1,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_1384 : entity is "brd_system_ila_2_1.hwdef";
 end bd_1384;
@@ -147,7 +147,7 @@ architecture STRUCTURE of bd_1384 is
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe47 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     probe48 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe49 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    probe49 : in STD_LOGIC_VECTOR ( 14 downto 0 );
     probe50 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe51 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe52 : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -382,7 +382,7 @@ ila_lib: component bd_1384_ila_lib_0
       probe46(0) => probe46_1(0),
       probe47(1 downto 0) => probe47_1(1 downto 0),
       probe48(0) => probe48_1(0),
-      probe49(13 downto 0) => probe49_1(13 downto 0),
+      probe49(14 downto 0) => probe49_1(14 downto 0),
       probe5(0) => probe5_1(0),
       probe50(0) => probe50_1(0),
       probe51(0) => probe51_1(0),
