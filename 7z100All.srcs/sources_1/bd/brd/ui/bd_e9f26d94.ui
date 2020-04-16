@@ -2,305 +2,316 @@
    ExpandedHierarchyInLayout: "",
    guistr: "# # String gsaved with Nlview 6.8.5  2018-01-30 bk=1.4354 VDI=40 GEI=35 GUI=JA:1.6 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -y 4540 -defaultsOSRD
-preplace port DVSAERAck_SBO_0 -pg 1 -y 4250 -defaultsOSRD
-preplace port ChipBiasAddrSelect_SBO_0 -pg 1 -y 4170 -defaultsOSRD
-preplace port DVSAERReset_SBO_0 -pg 1 -y 4270 -defaultsOSRD
-preplace port ChipBiasDiagSelect_SO_0 -pg 1 -y 4150 -defaultsOSRD
-preplace port ChipBiasClock_CBO_0 -pg 1 -y 4190 -defaultsOSRD
-preplace port IMUInterrupt_AI_0 -pg 1 -y 4220 -defaultsOSRD
-preplace port SyncOutClock_CO_0 -pg 1 -y 4350 -defaultsOSRD
-preplace port ChipBiasEnable_SO_0 -pg 1 -y 4130 -defaultsOSRD
-preplace port ChipBiasBitIn_DO_0 -pg 1 -y 4210 -defaultsOSRD
-preplace port SyncInSignal2_AI_0 -pg 1 -y 3750 -defaultsOSRD
-preplace port DVSAERReq_ABI_0 -pg 1 -y 5270 -defaultsOSRD
-preplace port ulpi_stp_o_0 -pg 1 -y 1120 -defaultsOSRD
-preplace port ulpi_dir_i_0 -pg 1 -y 1820 -defaultsOSRD
-preplace port SyncInClock_AI_0 -pg 1 -y 4240 -defaultsOSRD
-preplace port SyncInSignal1_AI_0 -pg 1 -y 3730 -defaultsOSRD
-preplace port ulpi_clk60_i_0 -pg 1 -y 2280 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -y 4560 -defaultsOSRD
-preplace port IMUFSync_SO_0 -pg 1 -y 4330 -defaultsOSRD
-preplace port IMUClock_CZO_0 -pg 1 -y 4290 -defaultsOSRD
-preplace port vid_hsync -pg 1 -y 5090 -defaultsOSRD
-preplace port IMUData_DZIO_0 -pg 1 -y 4310 -defaultsOSRD
-preplace port ulpi_nxt_i_0 -pg 1 -y 2520 -defaultsOSRD
-preplace port SyncOutSignal_SO_0 -pg 1 -y 4370 -defaultsOSRD
-preplace port ChipBiasLatch_SBO_0 -pg 1 -y 4230 -defaultsOSRD
-preplace port SyncInSignal_AI_0 -pg 1 -y 4260 -defaultsOSRD
-preplace port vid_vsync -pg 1 -y 5110 -defaultsOSRD
-preplace portBus ulpi_data_io_0 -pg 1 -y 1100 -defaultsOSRD
-preplace portBus DVSAERData_AI_0 -pg 1 -y 4980 -defaultsOSRD
-preplace portBus led_0 -pg 1 -y 4920 -defaultsOSRD
-preplace portBus vid_data -pg 1 -y 5070 -defaultsOSRD
-preplace inst EFAST_process_data_0 -pg 1 -lvl 4 -y 4020 -defaultsOSRD
-preplace inst fifo_generator_3 -pg 1 -lvl 7 -y 3900 -defaultsOSRD
-preplace inst v_axi4s_vid_out_0 -pg 1 -lvl 9 -y 5130 -defaultsOSRD
-preplace inst LEDShifter_0 -pg 1 -lvl 9 -y 4920 -defaultsOSRD
-preplace inst fifo_generator_4 -pg 1 -lvl 7 -y 4140 -defaultsOSRD
-preplace inst c_addsub_as_invert_and_delay1 -pg 1 -lvl 5 -y 1630 -defaultsOSRD
-preplace inst xlslice_0 -pg 1 -lvl 4 -y 2280 -defaultsOSRD
-preplace inst v_tc_0 -pg 1 -lvl 8 -y 5090 -defaultsOSRD
-preplace inst axi_vdma_0 -pg 1 -lvl 7 -y 4840 -defaultsOSRD
-preplace inst xlconstant_ONE -pg 1 -lvl 7 -y 5440 -defaultsOSRD
-preplace inst xlslice_1 -pg 1 -lvl 3 -y 2580 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 2 -y 2340 -defaultsOSRD
-preplace inst xlslice_2 -pg 1 -lvl 3 -y 2820 -defaultsOSRD
-preplace inst axi_smc -pg 1 -lvl 8 -y 4570 -defaultsOSRD
-preplace inst dataSwitch_0 -pg 1 -lvl 7 -y 2770 -defaultsOSRD
-preplace inst xlslice_3 -pg 1 -lvl 3 -y 2920 -defaultsOSRD
-preplace inst c_addsub_0 -pg 1 -lvl 1 -y 3240 -defaultsOSRD
-preplace inst xlslice_4 -pg 1 -lvl 7 -y 2590 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 7 -y 4390 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 3 -y 2680 -defaultsOSRD
-preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -y 4350 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 6 -y 4340 -defaultsOSRD
-preplace inst EFAST_input_0 -pg 1 -lvl 3 -y 3980 -defaultsOSRD
-preplace inst xlcons_valid_high -pg 1 -lvl 4 -y 4310 -defaultsOSRD
-preplace inst util_vector_logic_1 -pg 1 -lvl 7 -y 3010 -defaultsOSRD
-preplace inst USBFifoToDVSSPI_0 -pg 1 -lvl 4 -y 1360 -defaultsOSRD
-preplace inst xlslice_5 -pg 1 -lvl 7 -y 5340 -defaultsOSRD
-preplace inst proc_sys_reset_1 -pg 1 -lvl 6 -y 5170 -defaultsOSRD
-preplace inst EFAST_output_0 -pg 1 -lvl 5 -y 4020 -defaultsOSRD
-preplace inst usb_cdc_core_0 -pg 1 -lvl 5 -y 730 -defaultsOSRD
-preplace inst util_vector_logic_2 -pg 1 -lvl 8 -y 5350 -defaultsOSRD
-preplace inst cons_HIGH -pg 1 -lvl 2 -y 2220 -defaultsOSRD
-preplace inst testAERDVSSM_0 -pg 1 -lvl 8 -y 4260 -defaultsOSRD
-preplace inst util_vector_logic_3 -pg 1 -lvl 9 -y 5360 -defaultsOSRD
-preplace inst util_vector_logic_4 -pg 1 -lvl 7 -y 3560 -defaultsOSRD
-preplace inst xlcons_data_0x5a5a -pg 1 -lvl 4 -y 4670 -defaultsOSRD
-preplace inst system_ila_0 -pg 1 -lvl 9 -y 3310 -defaultsOSRD
-preplace inst ps7_0_axi_periph -pg 1 -lvl 5 -y 4470 -defaultsOSRD
-preplace inst const_HIGH -pg 1 -lvl 7 -y 5100 -defaultsOSRD
-preplace inst RawStreamToFIFO_0 -pg 1 -lvl 9 -y 4000 -defaultsOSRD
-preplace inst fifo_generator_0 -pg 1 -lvl 6 -y 2690 -defaultsOSRD
-preplace inst EVMUXDataToXYTSStream_0 -pg 1 -lvl 6 -y 3510 -defaultsOSRD
-preplace inst fifo_generator_1 -pg 1 -lvl 6 -y 3000 -defaultsOSRD
-preplace inst ulpi_wrapper_0 -pg 1 -lvl 4 -y 1880 -defaultsOSRD
-preplace inst system_ila_2 -pg 1 -lvl 9 -y 1940 -defaultsOSRD
-preplace inst const_ZERO -pg 1 -lvl 7 -y 5200 -defaultsOSRD
-preplace inst EVABMOFStream_0 -pg 1 -lvl 6 -y 4000 -defaultsOSRD
-preplace inst XYTSStreamToRawStream_0 -pg 1 -lvl 7 -y 3250 -defaultsOSRD
-preplace inst fifo_generator_2 -pg 1 -lvl 8 -y 3920 -defaultsOSRD
-preplace inst axis_data_fifo_0 -pg 1 -lvl 8 -y 3710 -defaultsOSRD
-preplace inst SPI_Master_With_Sing_0 -pg 1 -lvl 3 -y 2350 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 9 -y 4660 -defaultsOSRD
-preplace inst eventStreamToConstEn_0 -pg 1 -lvl 6 -y 4670 -defaultsOSRD
-preplace inst const_VCC -pg 1 -lvl 1 -y 3810 -defaultsOSRD
-preplace netloc axi_vdma_0_M_AXI_MM2S 1 7 1 4590
-preplace netloc eventStreamToConstEn_0_frameStream 1 6 1 3610
-preplace netloc usbfrx_shift_en_w_do 1 5 4 2890J 1240 NJ 1240 NJ 1240 5400
-preplace netloc state_o 1 4 5 1880 1710 NJ 1710 NJ 1710 NJ 1710 5640J
-preplace netloc ulpi_dir_i_0_1 1 0 9 NJ 1820 NJ 1820 NJ 1820 1240 2400 2010J 1850 2940J 1580 NJ 1580 NJ 1580 5570J
-preplace netloc fifo_generator_2_dout 1 2 7 640 3720 NJ 3720 NJ 3720 2890J 3850 3830J 3780 4570 3800 5190J
-preplace netloc w_Master_Ready_do 1 3 6 1230 2390 2020J 1910 2970J 1680 NJ 1680 NJ 1680 5520J
-preplace netloc usb_cdc_core_0_ep0_rx_setup_w_do 1 3 6 1300 1540 NJ 1540 2760 1600 NJ 1600 NJ 1600 N
-preplace netloc EFAST_output_0_xStreamOut_V_V 1 5 1 N
-preplace netloc EFAST_input_0_polStreamOut_V_V 1 3 1 N
-preplace netloc data_count 1 6 3 3900 3640 4560J 3600 5180J
-preplace netloc xlcons_data_0x5a5a_dout 1 4 2 NJ 4670 3110
-preplace netloc testAERDVSSM_0_SPIMISO_DZO 1 2 7 640 2760 NJ 2760 NJ 2760 2700J 2840 3950J 2880 NJ 2880 5130
-preplace netloc testAERDVSSM_0_ChipBiasAddrSelect_SBO 1 8 2 NJ 4170 NJ
-preplace netloc util_vector_logic_0_Res 1 3 5 1140 2580 2040J 2530 NJ 2530 NJ 2530 4600
-preplace netloc processing_system7_0_FIXED_IO 1 9 1 NJ
-preplace netloc axi_vdma_0_M_AXI_S2MM 1 7 1 4650
-preplace netloc axi_smc_M00_AXI 1 8 1 5130
-preplace netloc fifo_generator_0_prog_full1 1 6 3 3930 3650 4550J 3590 5140J
-preplace netloc EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TDATA 1 6 1 3850
-preplace netloc ulpi_data_in_o_d 1 4 5 NJ 1880 NJ 1880 NJ 1880 NJ 1880 N
-preplace netloc usb_cdc_core_0_outport_valid_o 1 3 6 1310 2380 2000J 1860 2780 1550 NJ 1550 NJ 1550 5550
-preplace netloc ps7_0_axi_periph_M02_AXI 1 5 1 2970
-preplace netloc fifo_generator_3_dout 1 2 7 650 3730 1340J 3740 NJ 3740 2790J 3860 3750 3690 4580J 3610 5200J
-preplace netloc EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TVALID 1 6 1 3860
-preplace netloc EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA 1 6 3 3880 3660 4670 3520 NJ
-preplace netloc fifo_generator_0_almost_full 1 5 4 3110 2850 3940 2940 NJ 2940 5340J
-preplace netloc usbfrx_crc_byte_w_do 1 5 4 2860J 1270 NJ 1270 NJ 1270 5590
-preplace netloc fifo_generator_0_empty 1 4 5 2030 1510 2990 1510 NJ 1510 NJ 1510 5510J
-preplace netloc usb_cdc_core_0_utmi_xcvrselect_o 1 3 3 1360 2430 NJ 2430 2700
-preplace netloc testAERDVSSM_0_DVSAERAck_SBO 1 8 2 5750 4250 NJ
-preplace netloc XYTSStreamToRawStream_0_streamOut_V_V 1 7 2 4650 2840 NJ
-preplace netloc axi_vdma_0_M_AXIS_MM2S 1 7 2 4460 4950 5230J
-preplace netloc proc_sys_reset_0_interconnect_aresetn 1 1 4 NJ 4370 NJ 4370 NJ 4370 N
-preplace netloc usb_cdc_core_0_utmi_op_mode_o 1 3 3 1340 2460 NJ 2460 2720
-preplace netloc ps7_0_axi_periph_M04_AXI 1 5 1 3040
-preplace netloc fifo_generator_1_dout 1 2 7 630 3180 NJ 3180 NJ 3180 3030 3180 3920J 3450 NJ 3450 5290
-preplace netloc testAERDVSSM_0_AERSMOutFifoData_DO2 1 5 4 3100 4170 3630J 4680 NJ 4680 5670
-preplace netloc xlconstant_ONE_dout 1 7 1 4580J
-preplace netloc testAERDVSSM_0_DVSAERReset_SBO 1 8 2 NJ 4270 NJ
-preplace netloc LEDShifter_0_led 1 9 1 NJ
-preplace netloc ep2_tx_data_last_w_do 1 5 4 2930J 1220 NJ 1220 NJ 1220 5410
-preplace netloc ulpi_nxt_q_do 1 4 5 1850 2240 NJ 2240 NJ 2240 NJ 2240 5460J
-preplace netloc setup_valid_q_do 1 5 4 NJ 300 NJ 300 NJ 300 5880
-preplace netloc usb_cdc_core_0_rx_out_do 1 3 6 1330 1520 NJ 1520 2870 1570 NJ 1570 NJ 1570 5560
-preplace netloc xlconcat_0_dout 1 7 2 4460J 4690 5130
-preplace netloc v_tc_0_vtiming_out 1 8 1 5870
-preplace netloc data_o_vd1 1 7 2 4680 2790 5350J
-preplace netloc ep0_rx_valid_w_do 1 5 4 2750 550 NJ 550 NJ 550 5700J
-preplace netloc bmRequestType_w_do 1 5 4 NJ 360 NJ 360 NJ 360 5870
-preplace netloc ulpi_wrapper_0_utmi_linestate_o 1 4 1 1840
-preplace netloc SyncInSignal_AI_0_1 1 0 8 40J 4230 420J 4220 NJ 4220 NJ 4220 NJ 4220 NJ 4220 3680J 4290 4490J
-preplace netloc ps7_0_axi_periph_M03_AXI 1 5 1 3030
-preplace netloc data_o_vd2 1 7 2 4650 2820 5140J
-preplace netloc testAERDVSSM_0_SyncOutSignal_SO 1 8 2 NJ 4370 NJ
-preplace netloc fifo_generator_1_empty 1 0 9 30 3150 NJ 3150 NJ 3150 NJ 3150 NJ 3150 3060 3160 3950J 3460 4550J 3500 5270
-preplace netloc EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID 1 6 3 3890 3670 4680 3540 NJ
-preplace netloc usbfrx_data_w_do 1 5 4 2880J 1250 NJ 1250 NJ 1250 5610
-preplace netloc processing_system7_0_DDR 1 9 1 NJ
-preplace netloc rx_strb_w_do 1 5 4 NJ 560 NJ 560 NJ 560 5670
-preplace netloc usb_cdc_core_0_inport_accept_o1 1 5 4 2850 2470 NJ 2470 NJ 2470 5690
-preplace netloc xlslice_5_Dout 1 7 1 NJ
-preplace netloc c_counter_binary_0_Q 1 3 6 1350 2220 1890J 1830 2790 1530 NJ 1530 NJ 1530 5530
-preplace netloc ulpi_wrapper_0_utmi_rxerror_o 1 4 1 1830
-preplace netloc testAERDVSSM_0_ChipBiasEnable_SO 1 8 2 5130J 4160 6410J
-preplace netloc dataSPIToSendPrepared_w_do 1 4 5 2000J 1460 2800J 1440 NJ 1440 NJ 1440 5430
-preplace netloc usb_cdc_core_0_utmi_termselect_o 1 3 3 1330 2470 NJ 2470 2710
-preplace netloc SyncInSignal1_AI_0_1 1 0 8 50J 4220 400J 4230 NJ 4230 NJ 4230 NJ 4230 NJ 4230 3620J 4320 4460J
-preplace netloc testAERDVSSM_0_IMUClock_CZO 1 8 2 NJ 4290 NJ
-preplace netloc xlconstant_1_dout 1 2 7 580 2740 NJ 2740 1870 2250 NJ 2250 NJ 2250 NJ 2250 5260
-preplace netloc EFAST_process_data_0_polStreamOut_V_V 1 4 1 N
-preplace netloc tx_sent_data_counter_o 1 5 4 2880 1480 NJ 1480 NJ 1480 5160J
-preplace netloc fifo_generator_0_dout 1 4 5 2040 1870 2980 1870 NJ 1870 NJ 1870 5790
-preplace netloc EFAST_input_0_yStreamOut_V_V 1 3 1 N
-preplace netloc ps7_0_axi_periph_M00_AXI 1 5 1 3020
-preplace netloc SPI_Master_With_Sing_0_o_SPI_MOSI 1 3 5 1180J 2490 NJ 2490 NJ 2490 NJ 2490 4590
-preplace netloc usbf_tx_pid_q_do 1 5 4 3080J 1140 NJ 1140 NJ 1140 5780
-preplace netloc testAERDVSSM_0_AERSMOutFifoData_DO 1 7 2 NJ 2590 5370J
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 10 60 4970 NJ 4970 NJ 4970 NJ 4970 NJ 4970 2830 4970 NJ 4970 4610J 4960 5880J 4840 6360
-preplace netloc EVMUXDataToXYTSStream_0_polStreamOut_V_V_TDATA 1 6 1 3780
-preplace netloc StreamToFIFO_0_fifoDataOut_V_write 1 5 5 3080 4160 3660J 4670 NJ 4670 5720 4180 6380
-preplace netloc ep2_tx_data_valid_w_do 1 5 4 2970 1200 NJ 1200 NJ 1200 5130J
-preplace netloc SPI_Master_With_Sing_0_o_TX_Ready 1 3 6 1210 2540 NJ 2540 2930J 1470 NJ 1470 NJ 1470 5460
-preplace netloc SPI_Master_With_Sing_0_o_RX_Byte 1 3 6 1280 2340 1930J 1900 2960J 1520 NJ 1520 NJ 1520 5520J
-preplace netloc xlslice_1_Dout 1 3 1 1130J
-preplace netloc EVABMOFStream_0_tsStreamOut_V_V 1 6 1 3820
-preplace netloc ps7_0_axi_periph_M01_AXI 1 5 2 3040 4420 3620J
-preplace netloc EVFastCornerStream_0_xStreamIn_V_V_TREADY 1 0 9 50 3160 NJ 3160 600 3170 NJ 3170 NJ 3170 3050 3170 3870 3770 4690 3580 5210J
-preplace netloc ctrl_stall_r_do 1 5 4 NJ 640 NJ 640 NJ 640 5840
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 8 410 4200 610 3750 1140 3860 1960 3860 2700 4920 3740 4490 4660 4050 5200
-preplace netloc EVABMOFStream_0_polStreamOut_V_V 1 6 1 3760
-preplace netloc EVFastCornerStream_0_custDataStreamOut_V_V 1 6 3 3810 2900 NJ 2900 NJ
-preplace netloc c_addsub_0_S 1 1 8 NJ 3240 590 3710 NJ 3710 NJ 3710 2940J 3840 3800J 3680 4530J 3560 5250J
-preplace netloc SPI_Master_With_Sing_0_o_SPI_CS_n 1 3 5 1170J 2520 NJ 2520 NJ 2520 NJ 2520 4610
-preplace netloc usbf_ep_data_bit_r_do 1 5 4 3060J 1160 NJ 1160 NJ 1160 5750
-preplace netloc ctrl_txvalid_q_do 1 5 4 NJ 580 NJ 580 NJ 580 5860
-preplace netloc ulpi_wrapper_0_utmi_rxactive_o 1 4 5 1970 2280 NJ 2280 NJ 2280 NJ 2280 5630
-preplace netloc axi_gpio_0_ip2intc_irpt 1 6 1 3620J
-preplace netloc EVFastCornerStream_0_xStreamOut_V_V 1 6 3 3710 2890 4520J 2860 NJ
-preplace netloc EVMUXDataToXYTSStream_0_polStreamOut_V_V_TVALID 1 6 1 3790
-preplace netloc usb_reset_w_do 1 5 4 NJ 420 NJ 420 NJ 420 5810
-preplace netloc xlslice_0_Dout 1 4 1 1820J
-preplace netloc IMUInterrupt_AI_0_1 1 0 8 40J 4210 NJ 4210 640J 4200 NJ 4200 NJ 4200 NJ 4200 3690J 4280 4500J
-preplace netloc EFAST_process_data_0_isFinalCornerStream_V_V 1 4 1 N
-preplace netloc fifo_generator_1_prog_full 1 6 3 3910 3490 NJ 3490 5230J
-preplace netloc r_RX_Bit_Count_do 1 3 6 1220 2370 1900J 1770 2900J 1670 NJ 1670 NJ 1670 5450J
-preplace netloc testAERDVSSM_0_ChipBiasDiagSelect_SO 1 8 2 NJ 4150 NJ
-preplace netloc EFAST_process_data_0_tsStreamOut_V_V 1 4 1 N
-preplace netloc setup_wr_idx_q_do 1 5 4 NJ 520 NJ 520 NJ 520 5710
-preplace netloc rxDataComplete_o 1 4 5 2010 1480 2820J 1450 NJ 1450 NJ 1450 5440
-preplace netloc SyncInClock_AI_0_1 1 0 8 NJ 4240 NJ 4240 NJ 4240 1210J 4210 NJ 4210 NJ 4210 3670J 4310 NJ
-preplace netloc usb_cdc_core_0_utmi_data_out_o 1 3 3 1300 2500 NJ 2500 2740
-preplace netloc nonMonTSDiffFlgReg_V_ap_vld_1 1 8 2 5890 3860 6360
-preplace netloc usb_reset_counter_q_do 1 5 4 NJ 440 NJ 440 NJ 440 5760
-preplace netloc usbf_new_data_bit_r_do 1 5 4 3010J 1170 NJ 1170 NJ 1170 5720
-preplace netloc ulpi_wrapper_0_utmi_txready_o 1 4 5 1950 2260 NJ 2260 NJ 2260 NJ 2260 5680
-preplace netloc SyncInSignal2_AI_0_1 1 0 8 30J 4250 NJ 4250 NJ 4250 NJ 4250 NJ 4250 NJ 4250 3640J 4300 4470J
-preplace netloc skipNumReg_V 1 8 2 5880 2760 6390
-preplace netloc usbfrx_data_ready_w_do 1 5 4 2870J 1260 NJ 1260 NJ 1260 5390
-preplace netloc EFAST_process_data_0_yStreamOut_V_V 1 4 1 N
-preplace netloc axis_data_fifo_0_M_AXIS 1 8 1 5150
-preplace netloc ep2_tx_data_w_do 1 5 4 2960 1210 NJ 1210 NJ 1210 5660J
-preplace netloc r_TX_Bit_Count_do 1 3 6 1200 2420 1880J 1750 2910J 1690 NJ 1690 NJ 1690 5600J
-preplace netloc usb_cdc_core_0_outport_data_o 1 3 6 1320 2410 1940J 1810 2770 1540 NJ 1540 NJ 1540 5540
-preplace netloc USBFifoToDVSSPI_0_outputData_o 1 2 7 630 2510 NJ 2510 1810 1500 2860J 1490 NJ 1490 NJ 1490 5470
-preplace netloc Net 1 8 2 NJ 4310 NJ
-preplace netloc status_stage_w_do 1 5 4 2990 1190 NJ 1190 NJ 1190 5730J
-preplace netloc Net1 1 7 2 NJ 5200 5900
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 10 60 3880 NJ 3880 580 3760 1130 3870 1860 3870 3010 4930 3730 4460 4640 3530 5770 4480 6370
-preplace netloc EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID 1 5 4 3100 2860 3970 3480 NJ 3480 NJ
-preplace netloc data_o_1 1 7 2 4690 2780 5360J
-preplace netloc tsReg_V 1 7 2 4480 3220 NJ
-preplace netloc processing_system7_0_FCLK_CLK1 1 5 5 3110 5030 NJ 5030 4650 4970 5890 4850 6370
-preplace netloc Net2 1 7 2 4610J 5000 5130
-preplace netloc SPI_Master_With_Sing_0_o_RX_DV 1 3 6 1270 2350 1910J 1820 2920J 1660 NJ 1660 NJ 1660 5240J
-preplace netloc usb_cdc_core_0_utmi_txvalid_o 1 3 3 1290 2570 NJ 2570 2730
-preplace netloc EFAST_output_0_yStreamOut_V_V 1 5 1 N
-preplace netloc data_o_2 1 7 2 4660 2810 5310J
-preplace netloc wrOUTIndex_q_do 1 4 5 1890J 1760 NJ 1760 NJ 1760 NJ 1760 N
-preplace netloc Net3 1 4 6 1860J 1560 2680J 1290 NJ 1290 NJ 1290 5160J 1110 6410J
-preplace netloc ulpi_wrapper_0_ulpi_stp_o 1 4 6 1850J 1550 2690J 1610 NJ 1610 NJ 1610 5500 1120 NJ
-preplace netloc usb_cdc_core_0_utmi_dppulldown_o 1 3 3 1370 2450 NJ 2450 2670
-preplace netloc fifo_generator_4_dout 1 2 7 650 4260 1360J 4240 NJ 4240 NJ 4240 3970 4660 NJ 4660 5740J
-preplace netloc axis_data_count 1 8 1 5160
-preplace netloc util_vector_logic_1_Res 1 7 2 NJ 3010 5240
-preplace netloc StreamToFIFO_0_fifoDataOut_V_din 1 5 5 3070 4260 NJ 4260 4480J 4470 NJ 4470 6370
-preplace netloc ulpi_nxt_i_0_1 1 0 9 NJ 2520 410J 2500 NJ 2500 1260 2530 2030J 1840 2950J 1590 NJ 1590 NJ 1590 5580J
-preplace netloc v_axi4s_vid_out_0_vid_data 1 9 1 NJ
-preplace netloc EFAST_input_0_xStreamOut_V_V 1 3 1 N
-preplace netloc nonMonTSDiffFlgReg_V_ap_vld 1 7 2 4620 3260 NJ
-preplace netloc ctrl_sending_r_do 1 5 4 NJ 240 NJ 240 NJ 240 5890
-preplace netloc testAERDVSSM_0_ChipBiasBitIn_DO 1 8 2 NJ 4210 NJ
-preplace netloc EFAST_output_0_tsStreamOut_V_V 1 5 1 N
-preplace netloc EFAST_process_data_0_xStreamOut_V_V 1 4 1 N
-preplace netloc ulpi_clk60_i_0_1 1 0 9 NJ 2280 NJ 2280 600 1780 1150 1200 1990 1730 3000 1300 NJ 1300 NJ 1300 5240J
-preplace netloc testAERDVSSM_0_SyncOutClock_CO 1 8 2 NJ 4350 NJ
-preplace netloc proc_sys_reset_1_peripheral_aresetn 1 6 3 3960J 5040 4680 4980 5140J
-preplace netloc EFAST_input_0_tsStreamOut_V_V 1 3 1 N
-preplace netloc fifo_generator_1_almost_full 1 5 4 3090 3150 3960 3630 4570J 3620 5170J
-preplace netloc data_o_num1 1 7 2 4670 2800 5320J
-preplace netloc nonMonTSDiffFlgReg_V 1 7 2 4510 3240 NJ
-preplace netloc usbf_state_q_do 1 5 4 3070J 1150 NJ 1150 NJ 1150 5740
-preplace netloc ulpi_data_out_i_d 1 4 5 1850J 1890 NJ 1890 NJ 1890 NJ 1890 5630
-preplace netloc dvs_resp_data_o 1 4 5 2020 1470 2830J 1460 NJ 1460 NJ 1460 5450
-preplace netloc data_o_num2 1 7 2 4640 2830 5300J
-preplace netloc wrSetupIndex_q_do 1 4 5 1900J 1740 NJ 1740 NJ 1740 NJ 1740 N
-preplace netloc token_valid_w_do 1 5 4 NJ 140 NJ 140 NJ 140 5900
-preplace netloc o_RX_Count 1 3 6 1150 2560 NJ 2560 2890J 1410 NJ 1410 NJ 1410 5260J
-preplace netloc DVSAERData_AI_0_1 1 0 9 NJ 4980 NJ 4980 NJ 4980 NJ 4980 NJ 4980 NJ 4980 3890J 4270 4520 2980 NJ
-preplace netloc testAERDVSSM_0_ChipBiasLatch_SBO 1 8 2 NJ 4230 NJ
-preplace netloc v_axi4s_vid_out_0_vtg_ce 1 7 3 4690 4990 NJ 4990 6360
-preplace netloc v_axi4s_vid_out_0_vid_hsync 1 9 1 NJ
-preplace netloc usb_cdc_core_0_inport_valid_q_do 1 5 4 2920J 1230 NJ 1230 NJ 1230 5650
-preplace netloc usb_rst_time_do 1 5 4 NJ 120 NJ 120 NJ 120 5800
-preplace netloc state_r_do 1 5 4 2750 110 NJ 110 NJ 110 5820J
-preplace netloc util_vector_logic_2_Res 1 8 1 N
-preplace netloc v_axi4s_vid_out_0_vid_vsync 1 9 1 NJ
-preplace netloc EFAST_output_0_polStreamOut_V_V 1 5 1 N
-preplace netloc processing_system7_0_M_AXI_GP0 1 4 6 2050 1780 2840J 1100 NJ 1100 NJ 1100 NJ 1100 6400
-preplace netloc EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA 1 5 4 3110 3140 3980 3470 NJ 3470 5280J
-preplace netloc wr_data_count 1 6 3 3720 2950 NJ 2950 5330J
-preplace netloc setupPktReceived_q_do 1 4 5 1980J 1490 2810J 1430 NJ 1430 NJ 1430 5420
-preplace netloc testAERDVSSM_0_ChipBiasClock_CBO 1 8 2 NJ 4190 NJ
-preplace netloc const_VCC_dout 1 1 9 NJ 3810 620 3740 1210 3890 2020 3880 3050 4140 3840 4020 4530J 4040 5890 4280 6360
-preplace netloc xlcons_valid_high_dout 1 4 3 2040J 4270 3060 4190 3620
-preplace netloc ulpi_dir_q_do 1 4 5 1860 2230 NJ 2230 NJ 2230 NJ 2230 5530J
-preplace netloc sie_tx_state_q_o 1 5 4 3100 1120 NJ 1120 NJ 1120 5480J
-preplace netloc SPI_Master_With_Sing_0_o_SPI_Clk 1 3 5 1190J 2480 NJ 2480 NJ 2480 NJ 2480 4630
-preplace netloc usbf_tx_valid_q_do 1 5 4 3090J 1130 NJ 1130 NJ 1130 5770
-preplace netloc ctrl_ack_r_do 1 5 4 NJ 660 NJ 660 NJ 660 5830
-preplace netloc ctrl_txdata_q_do 1 5 4 NJ 600 NJ 600 NJ 600 5850
-preplace netloc DVSAERReq_ABI_0_1 1 0 9 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 4540 3000 NJ
-preplace netloc xlconstant_0_dout 1 2 1 NJ
-preplace netloc fifo_generator_0_prog_full 1 7 2 4510 3570 5220J
-preplace netloc testAERDVSSM_0_AERSMOutFifoWrite_SO1 1 5 4 3110 4180 3650J 4480 NJ 4480 5640
-preplace netloc outPktReceived_q_do 1 4 5 1940J 1700 NJ 1700 NJ 1700 NJ 1700 N
-preplace netloc usb_cdc_core_0_utmi_dmpulldown_o 1 3 3 1380 2440 NJ 2440 2660
-preplace netloc ulpi_wrapper_0_utmi_data_in_o 1 4 5 1920 2420 NJ 2420 NJ 2420 NJ 2420 N
-preplace netloc axi_gpio_0_gpio_io_o 1 2 5 650 2520 1160 2550 NJ 2550 2960J 2540 3700
-preplace netloc EVFastCornerStream_0_yStreamOut_V_V 1 6 3 3770 2910 NJ 2910 5660J
-preplace netloc nonMonTSDiffFlgReg_V_1 1 8 2 5900 4140 6360
-preplace netloc usbfrx_rx_active_w_do 1 5 4 2850J 1280 NJ 1280 NJ 1280 5380
-preplace netloc utmi_data_q_do 1 4 5 NJ 2000 NJ 2000 NJ 2000 NJ 2000 5600
-preplace netloc usb_cdc_core_0_data_complete_o_do 1 3 6 1340 1530 NJ 1530 2750 1560 NJ 1560 NJ 1560 5240
-preplace netloc rd_data_count 1 6 3 3620J 2460 NJ 2460 5440
-preplace netloc setup_resp_valid_delay_q_do 1 5 4 3000J 1180 NJ 1180 NJ 1180 5140
-preplace netloc ulpi_wrapper_0_utmi_rxvalid_o 1 4 5 1960 2270 NJ 2270 NJ 2270 NJ 2270 5620
-preplace netloc USBFifoToDVSSPI_0_outputDataValid_o 1 2 7 610 2200 1250J 2360 1800 1720 2880J 1500 NJ 1500 NJ 1500 5490
-preplace netloc readAXIBRAM_r_do 1 5 4 3110 1110 NJ 1110 NJ 1110 5150J
-preplace netloc testAERDVSSM_0_IMUFSync_SO 1 8 2 NJ 4330 NJ
-levelinfo -pg 1 -10 230 500 900 1590 2420 3360 4220 4910 6130 6430 -top 0 -bot 5500
+preplace port DDR -pg 1 -y 4110 -defaultsOSRD
+preplace port DVSAERAck_SBO_0 -pg 1 -y 5150 -defaultsOSRD
+preplace port ChipBiasAddrSelect_SBO_0 -pg 1 -y 5070 -defaultsOSRD
+preplace port DVSAERReset_SBO_0 -pg 1 -y 5170 -defaultsOSRD
+preplace port ChipBiasDiagSelect_SO_0 -pg 1 -y 5050 -defaultsOSRD
+preplace port ChipBiasClock_CBO_0 -pg 1 -y 5090 -defaultsOSRD
+preplace port IMUInterrupt_AI_0 -pg 1 -y 5190 -defaultsOSRD
+preplace port SyncOutClock_CO_0 -pg 1 -y 5250 -defaultsOSRD
+preplace port ChipBiasEnable_SO_0 -pg 1 -y 5030 -defaultsOSRD
+preplace port ChipBiasBitIn_DO_0 -pg 1 -y 5110 -defaultsOSRD
+preplace port SyncInSignal2_AI_0 -pg 1 -y 5270 -defaultsOSRD
+preplace port DVSAERReq_ABI_0 -pg 1 -y 4100 -defaultsOSRD
+preplace port ulpi_stp_o_0 -pg 1 -y 1000 -defaultsOSRD
+preplace port ulpi_dir_i_0 -pg 1 -y 2440 -defaultsOSRD
+preplace port SyncInClock_AI_0 -pg 1 -y 5210 -defaultsOSRD
+preplace port SyncInSignal1_AI_0 -pg 1 -y 5250 -defaultsOSRD
+preplace port ulpi_clk60_i_0 -pg 1 -y 2090 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 4130 -defaultsOSRD
+preplace port IMUFSync_SO_0 -pg 1 -y 5230 -defaultsOSRD
+preplace port IMUClock_CZO_0 -pg 1 -y 5190 -defaultsOSRD
+preplace port vid_hsync -pg 1 -y 4620 -defaultsOSRD
+preplace port IMUData_DZIO_0 -pg 1 -y 5210 -defaultsOSRD
+preplace port ulpi_nxt_i_0 -pg 1 -y 2470 -defaultsOSRD
+preplace port SyncOutSignal_SO_0 -pg 1 -y 5270 -defaultsOSRD
+preplace port ChipBiasLatch_SBO_0 -pg 1 -y 5130 -defaultsOSRD
+preplace port SyncInSignal_AI_0 -pg 1 -y 5230 -defaultsOSRD
+preplace port vid_vsync -pg 1 -y 4640 -defaultsOSRD
+preplace portBus ulpi_data_io_0 -pg 1 -y 980 -defaultsOSRD
+preplace portBus DVSAERData_AI_0 -pg 1 -y 4130 -defaultsOSRD
+preplace portBus led_0 -pg 1 -y 4870 -defaultsOSRD
+preplace portBus vid_data -pg 1 -y 4600 -defaultsOSRD
+preplace inst EFAST_process_data_0 -pg 1 -lvl 7 -y 3080 -defaultsOSRD
+preplace inst fifo_generator_3 -pg 1 -lvl 14 -y 3480 -defaultsOSRD
+preplace inst v_axi4s_vid_out_0 -pg 1 -lvl 16 -y 4660 -defaultsOSRD
+preplace inst LEDShifter_0 -pg 1 -lvl 16 -y 4870 -defaultsOSRD
+preplace inst fifo_generator_4 -pg 1 -lvl 14 -y 3700 -defaultsOSRD
+preplace inst c_addsub_as_invert_and_delay1 -pg 1 -lvl 8 -y 1540 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 7 -y 2060 -defaultsOSRD
+preplace inst v_tc_0 -pg 1 -lvl 15 -y 4700 -defaultsOSRD
+preplace inst axi_vdma_0 -pg 1 -lvl 14 -y 4130 -defaultsOSRD
+preplace inst xlconstant_ONE -pg 1 -lvl 9 -y 4800 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 6 -y 2520 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 5 -y 2150 -defaultsOSRD
+preplace inst xlslice_2 -pg 1 -lvl 6 -y 2660 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 15 -y 4100 -defaultsOSRD
+preplace inst dataSwitch_0 -pg 1 -lvl 8 -y 3440 -defaultsOSRD
+preplace inst xlslice_3 -pg 1 -lvl 6 -y 2760 -defaultsOSRD
+preplace inst c_addsub_0 -pg 1 -lvl 5 -y 3750 -defaultsOSRD
+preplace inst xlslice_4 -pg 1 -lvl 8 -y 2640 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 4 -y 4460 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 6 -y 2380 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -y 3980 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 13 -y 4360 -defaultsOSRD
+preplace inst EFAST_input_0 -pg 1 -lvl 6 -y 3040 -defaultsOSRD
+preplace inst xlcons_valid_high -pg 1 -lvl 2 -y 4290 -defaultsOSRD
+preplace inst util_vector_logic_1 -pg 1 -lvl 8 -y 3940 -defaultsOSRD
+preplace inst USBFifoToDVSSPI_0 -pg 1 -lvl 7 -y 1160 -defaultsOSRD
+preplace inst xlslice_5 -pg 1 -lvl 9 -y 4700 -defaultsOSRD
+preplace inst proc_sys_reset_1 -pg 1 -lvl 3 -y 4770 -defaultsOSRD
+preplace inst EFAST_output_0 -pg 1 -lvl 8 -y 3080 -defaultsOSRD
+preplace inst usb_cdc_core_0 -pg 1 -lvl 8 -y 730 -defaultsOSRD
+preplace inst util_vector_logic_2 -pg 1 -lvl 10 -y 4710 -defaultsOSRD
+preplace inst cons_HIGH -pg 1 -lvl 5 -y 2030 -defaultsOSRD
+preplace inst testAERDVSSM_0 -pg 1 -lvl 16 -y 5160 -defaultsOSRD
+preplace inst util_vector_logic_3 -pg 1 -lvl 11 -y 4720 -defaultsOSRD
+preplace inst eventSimulator_0 -pg 1 -lvl 8 -y 2820 -defaultsOSRD
+preplace inst eventStreamSwitch_0 -pg 1 -lvl 9 -y 2770 -defaultsOSRD
+preplace inst util_vector_logic_4 -pg 1 -lvl 15 -y 4490 -defaultsOSRD
+preplace inst xlcons_data_0x5a5a -pg 1 -lvl 2 -y 4190 -defaultsOSRD
+preplace inst system_ila_0 -pg 1 -lvl 9 -y 3570 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 12 -y 3770 -defaultsOSRD
+preplace inst const_HIGH -pg 1 -lvl 4 -y 4590 -defaultsOSRD
+preplace inst RawStreamToFIFO_0 -pg 1 -lvl 13 -y 2850 -defaultsOSRD
+preplace inst fifo_generator_0 -pg 1 -lvl 14 -y 2850 -defaultsOSRD
+preplace inst EVMUXDataToXYTSStream_0 -pg 1 -lvl 13 -y 3370 -defaultsOSRD
+preplace inst fifo_generator_1 -pg 1 -lvl 8 -y 3700 -defaultsOSRD
+preplace inst ulpi_wrapper_0 -pg 1 -lvl 7 -y 1660 -defaultsOSRD
+preplace inst system_ila_2 -pg 1 -lvl 16 -y 1820 -defaultsOSRD
+preplace inst const_ZERO -pg 1 -lvl 4 -y 4690 -defaultsOSRD
+preplace inst EVABMOFStream_0 -pg 1 -lvl 10 -y 3840 -defaultsOSRD
+preplace inst XYTSStreamToRawStream_0 -pg 1 -lvl 11 -y 3820 -defaultsOSRD
+preplace inst fifo_generator_2 -pg 1 -lvl 9 -y 2470 -defaultsOSRD
+preplace inst axis_data_fifo_0 -pg 1 -lvl 12 -y 4040 -defaultsOSRD
+preplace inst SPI_Master_With_Sing_0 -pg 1 -lvl 6 -y 2160 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 16 -y 4230 -defaultsOSRD
+preplace inst eventStreamToConstEn_0 -pg 1 -lvl 13 -y 4020 -defaultsOSRD
+preplace inst const_VCC -pg 1 -lvl 5 -y 3260 -defaultsOSRD
+preplace netloc eventSimulator_0_polStreamOut_V_V 1 8 1 N
+preplace netloc wr_data_count 1 8 7 3860 4600 NJ 4600 NJ 4600 NJ 4600 NJ 4600 NJ 4600 7060
+preplace netloc proc_sys_reset_0_interconnect_aresetn 1 1 11 NJ 4000 NJ 4000 NJ 4000 NJ 4000 NJ 4000 NJ 4000 NJ 4000 3410J 4130 4450J 3610 NJ 3610 5450
+preplace netloc ps7_0_axi_periph_M00_AXI 1 12 1 5820
+preplace netloc xlconstant_1_dout 1 5 11 1340 2460 NJ 2460 2630 2460 3440 4880 NJ 4880 NJ 4880 NJ 4880 NJ 4880 NJ 4880 NJ 4880 NJ
+preplace netloc EVABMOFStream_0_polStreamOut_V_V 1 10 1 N
+preplace netloc c_addsub_0_S 1 5 4 1370 3840 NJ 3840 2550J 3860 3750
+preplace netloc sie_tx_state_q_o 1 8 8 NJ 700 NJ 700 NJ 700 NJ 700 NJ 700 NJ 700 NJ 700 7840
+preplace netloc testAERDVSSM_0_ChipBiasDiagSelect_SO 1 16 1 NJ
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 17 40 4390 NJ 4390 590 4390 NJ 4390 NJ 4390 NJ 4390 NJ 4390 NJ 4390 NJ 4390 NJ 4390 NJ 4390 NJ 4390 5810J 4450 6620J 4400 NJ 4400 7670J 4410 8510
+preplace netloc SPI_Master_With_Sing_0_o_SPI_CS_n 1 6 10 1930J 2260 NJ 2260 NJ 2260 NJ 2260 NJ 2260 NJ 2260 NJ 2260 NJ 2260 NJ 2260 7510
+preplace netloc SPI_Master_With_Sing_0_o_TX_Ready 1 6 10 1980 2230 NJ 2230 3630J 1470 NJ 1470 NJ 1470 NJ 1470 NJ 1470 6510J 1450 NJ 1450 7510J
+preplace netloc o_RX_Count 1 6 10 1950 2290 NJ 2290 3590J 1370 NJ 1370 NJ 1370 NJ 1370 NJ 1370 NJ 1370 NJ 1370 7430J
+preplace netloc EVABMOFStream_0_pixelDataStream_V_V 1 10 1 N
+preplace netloc EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID 1 7 7 2800 3560 3390 4540 NJ 4540 NJ 4540 NJ 4540 NJ 4540 6490
+preplace netloc ep2_tx_data_valid_w_do 1 8 8 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 7750
+preplace netloc xlcons_data_0x5a5a_dout 1 2 11 NJ 4190 NJ 4190 NJ 4190 NJ 4190 NJ 4190 NJ 4190 3360J 4200 4480 3590 NJ 3590 NJ 3590 5850
+preplace netloc proc_sys_reset_1_peripheral_aresetn 1 3 13 940 4860 NJ 4860 NJ 4860 NJ 4860 NJ 4860 NJ 4860 NJ 4860 NJ 4860 5430J 4840 NJ 4840 NJ 4840 7080 4600 7460J
+preplace netloc eventStreamSwitch_0_yStreamOut_V_V 1 9 1 4470
+preplace netloc EFAST_input_0_polStreamOut_V_V 1 6 1 N
+preplace netloc usb_cdc_core_0_utmi_termselect_o 1 6 3 2110 2210 NJ 2210 3390
+preplace netloc testAERDVSSM_0_ChipBiasClock_CBO 1 16 1 NJ
+preplace netloc usb_cdc_core_0_outport_data_o 1 6 10 2100 2140 2650J 2090 3450 1530 NJ 1530 NJ 1530 NJ 1530 NJ 1530 NJ 1530 NJ 1530 7660
+preplace netloc usb_cdc_core_0_ep0_rx_setup_w_do 1 6 10 2010 2180 NJ 2180 3460 1590 NJ 1590 NJ 1590 NJ 1590 NJ 1590 NJ 1590 NJ 1590 7740
+preplace netloc usbf_ep_data_bit_r_do 1 8 8 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 7890
+preplace netloc ulpi_wrapper_0_utmi_rxvalid_o 1 7 9 2710 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 NJ
+preplace netloc testAERDVSSM_0_SyncOutSignal_SO 1 16 1 NJ
+preplace netloc testAERDVSSM_0_AERSMOutFifoWrite_SO1 1 8 9 3910 4140 4430J 3550 NJ 3550 NJ 3550 5900 3750 6560J 3820 NJ 3820 7920 3820 8560
+preplace netloc usb_cdc_core_0_utmi_txvalid_o 1 6 3 2040 2250 2790J 2190 3400
+preplace netloc axi_vdma_0_M_AXIS_MM2S 1 14 2 7090 4380 7790J
+preplace netloc processing_system7_0_FIXED_IO 1 16 1 NJ
+preplace netloc nonMonTSDiffFlgReg_V_1 1 8 6 3880 4520 NJ 4520 NJ 4520 NJ 4520 NJ 4520 6500
+preplace netloc axi_gpio_0_gpio_io_o 1 5 9 1420 2600 1960 2370 2790 2320 NJ 2320 NJ 2320 NJ 2320 NJ 2320 NJ 2320 6520
+preplace netloc EFAST_output_0_yStreamOut_V_V 1 8 1 3680
+preplace netloc bmRequestType_w_do 1 8 8 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 NJ 360 8020
+preplace netloc EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA 1 7 7 2810 3550 3400 4530 NJ 4530 NJ 4530 NJ 4530 NJ 4530 6460
+preplace netloc setup_resp_valid_delay_q_do 1 8 8 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 7940
+preplace netloc EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID 1 8 6 3850 4610 NJ 4610 NJ 4610 NJ 4610 NJ 4610 6480
+preplace netloc usb_cdc_core_0_data_complete_o_do 1 6 10 2090 2000 2580J 2110 3530 1550 NJ 1550 NJ 1550 NJ 1550 NJ 1550 NJ 1550 NJ 1550 7680
+preplace netloc axis_data_count 1 8 5 3890 4190 NJ 4190 NJ 4190 NJ 4190 5790
+preplace netloc EVMUXDataToXYTSStream_0_polStreamOut_V_V_TVALID 1 13 1 6540
+preplace netloc usb_cdc_core_0_utmi_dmpulldown_o 1 6 3 2130 2160 NJ 2160 3370
+preplace netloc w_Master_Ready_do 1 6 10 1900J 2340 NJ 2340 3660J 2310 NJ 2310 NJ 2310 NJ 2310 NJ 2310 NJ 2310 NJ 2310 7850
+preplace netloc skipNumReg_V 1 8 6 3950 4280 NJ 4280 NJ 4280 NJ 4280 NJ 4280 6450
+preplace netloc EVABMOFStream_0_xStreamOut_V_V 1 10 1 N
+preplace netloc ulpi_dir_i_0_1 1 0 16 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 NJ 2440 1920 2350 2670J 1790 3570J 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 NJ 1570 7700J
+preplace netloc usb_cdc_core_0_outport_valid_o 1 6 10 2020 2200 NJ 2200 3470 1540 NJ 1540 NJ 1540 NJ 1540 NJ 1540 NJ 1540 NJ 1540 7670
+preplace netloc xlcons_valid_high_dout 1 2 12 NJ 4290 NJ 4290 NJ 4290 NJ 4290 NJ 4290 NJ 4290 NJ 4290 NJ 4290 NJ 4290 NJ 4290 5870 3760 6440
+preplace netloc eventStreamToConstEn_0_frameStream 1 13 1 6530
+preplace netloc usb_reset_w_do 1 8 8 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 7960
+preplace netloc wrSetupIndex_q_do 1 7 9 2680 1670 NJ 1670 NJ 1670 NJ 1670 NJ 1670 NJ 1670 NJ 1670 NJ 1670 7860J
+preplace netloc xlslice_0_Dout 1 7 1 2550J
+preplace netloc ulpi_wrapper_0_utmi_linestate_o 1 7 1 2590
+preplace netloc ulpi_wrapper_0_utmi_rxerror_o 1 7 1 2580
+preplace netloc axi_vdma_0_M_AXI_S2MM 1 14 1 N
+preplace netloc usb_rst_time_do 1 8 8 3530 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 7930J
+preplace netloc USBFifoToDVSSPI_0_outputDataValid_o 1 5 11 1420 2450 NJ 2450 2570 1720 3560J 1490 NJ 1490 NJ 1490 NJ 1490 NJ 1490 6530J 1470 NJ 1470 7550
+preplace netloc usbf_state_q_do 1 8 8 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 7880
+preplace netloc testAERDVSSM_0_DVSAERAck_SBO 1 8 9 3830 4940 NJ 4940 NJ 4940 NJ 4940 NJ 4940 NJ 4940 NJ 4940 NJ 4940 8580
+preplace netloc EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TDATA 1 13 1 6570
+preplace netloc DVSAERReq_ABI_0_1 1 0 16 NJ 4100 NJ 4100 NJ 4100 NJ 4100 NJ 4100 NJ 4100 NJ 4100 NJ 4100 3790 4170 NJ 4170 NJ 4170 NJ 4170 5800J 4560 NJ 4560 NJ 4560 7430J
+preplace netloc util_vector_logic_1_Res 1 8 5 3720 2960 NJ 2960 NJ 2960 NJ 2960 5800
+preplace netloc rd_data_count 1 14 2 7060 2090 7910J
+preplace netloc usb_cdc_core_0_utmi_data_out_o 1 6 3 2050 2300 NJ 2300 3430
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 14 390J 3660 NJ 3660 NJ 3660 NJ 3660 1360 3310 2110 3220 2550 2940 3770 4150 4490 3980 4910 4020 5420 3950 5840 4460 6610 4260 7070J
+preplace netloc fifo_generator_1_empty 1 4 5 1140 3850 NJ 3850 NJ 3850 2590 3850 3740J
+preplace netloc axi_vdma_0_M_AXI_MM2S 1 14 1 N
+preplace netloc ulpi_clk60_i_0_1 1 0 16 NJ 2090 NJ 2090 NJ 2090 NJ 2090 NJ 2090 1420 1560 1910 1320 2730 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 6610 1380 NJ 1380 7420J
+preplace netloc util_vector_logic_0_Res 1 6 10 1880 2360 2760J 2350 NJ 2350 NJ 2350 NJ 2350 NJ 2350 NJ 2350 NJ 2350 NJ 2350 7490
+preplace netloc ep0_rx_valid_w_do 1 8 8 NJ 540 NJ 540 NJ 540 NJ 540 NJ 540 NJ 540 NJ 540 7790
+preplace netloc EFAST_process_data_0_xStreamOut_V_V 1 7 1 N
+preplace netloc ep2_tx_data_w_do 1 8 8 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 7730
+preplace netloc testAERDVSSM_0_AERSMOutFifoData_DO2 1 8 9 3980 4160 4460J 3560 NJ 3560 NJ 3560 5890 3740 6540J 3840 NJ 3840 8050 3840 8550
+preplace netloc rx_strb_w_do 1 8 8 NJ 560 NJ 560 NJ 560 NJ 560 NJ 560 NJ 560 NJ 560 7770
+preplace netloc ctrl_sending_r_do 1 8 8 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 NJ 240 8040
+preplace netloc SPI_Master_With_Sing_0_o_RX_Byte 1 6 10 2000 2220 NJ 2220 3640J 1500 NJ 1500 NJ 1500 NJ 1500 NJ 1500 NJ 1500 NJ 1500 7630J
+preplace netloc testAERDVSSM_0_SyncOutClock_CO 1 16 1 NJ
+preplace netloc EFAST_process_data_0_polStreamOut_V_V 1 7 1 N
+preplace netloc eventStreamSwitch_0_xStreamOut_V_V 1 9 1 4490
+preplace netloc data_o_num1 1 8 1 3600
+preplace netloc r_TX_Bit_Count_do 1 6 10 N 2190 2640J 1750 3620J 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 7810J
+preplace netloc SyncInSignal_AI_0_1 1 0 16 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ 5230 NJ
+preplace netloc data_o_num2 1 8 1 3450
+preplace netloc v_axi4s_vid_out_0_vtg_ce 1 14 3 7110 4010 NJ 4010 8530
+preplace netloc LEDShifter_0_led 1 16 1 NJ
+preplace netloc usbfrx_shift_en_w_do 1 8 8 3970 1340 NJ 1340 NJ 1340 NJ 1340 NJ 1340 NJ 1340 NJ 1340 7590J
+preplace netloc usbf_tx_valid_q_do 1 8 8 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 7910
+preplace netloc setup_valid_q_do 1 8 8 NJ 300 NJ 300 NJ 300 NJ 300 NJ 300 NJ 300 NJ 300 8030
+preplace netloc v_axi4s_vid_out_0_vid_data 1 16 1 NJ
+preplace netloc fifo_generator_4_dout 1 5 9 1420 3290 NJ 3290 NJ 3290 3810 3020 NJ 3020 NJ 3020 NJ 3020 NJ 3020 6550J
+preplace netloc const_VCC_dout 1 5 12 1340 3260 1940 3210 2560 2710 3380 2950 4410 3580 4910 3580 NJ 3580 5880 3770 6530J 3830 NJ 3830 NJ 3830 8520
+preplace netloc outPktReceived_q_do 1 7 9 2750J 1620 3520J 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 7820
+preplace netloc EFAST_output_0_xStreamOut_V_V 1 8 1 3660
+preplace netloc eventStreamSwitch_0_polStreamOut_V_V 1 9 1 4420
+preplace netloc ulpi_data_out_i_d 1 7 9 2620J 1740 NJ 1740 NJ 1740 NJ 1740 NJ 1740 NJ 1740 NJ 1740 NJ 1740 N
+preplace netloc fifo_generator_0_dout 1 7 9 2810 2930 3590 3000 NJ 3000 NJ 3000 NJ 3000 NJ 3000 6540 1480 NJ 1480 7580J
+preplace netloc v_tc_0_vtiming_out 1 15 1 7570
+preplace netloc xlconstant_ONE_dout 1 9 1 4440J
+preplace netloc StreamToFIFO_0_fifoDataOut_V_din 1 13 1 6600
+preplace netloc status_stage_w_do 1 8 8 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 7870
+preplace netloc usbf_tx_pid_q_do 1 8 8 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 7920
+preplace netloc c_counter_binary_0_Q 1 6 10 2030 2240 NJ 2240 3510 1510 NJ 1510 NJ 1510 NJ 1510 NJ 1510 NJ 1510 NJ 1510 7650
+preplace netloc usbfrx_data_w_do 1 8 8 3960 1350 NJ 1350 NJ 1350 NJ 1350 NJ 1350 NJ 1350 NJ 1350 7620J
+preplace netloc state_r_do 1 8 8 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 NJ 100 7970
+preplace netloc ulpi_nxt_q_do 1 7 9 NJ 1820 NJ 1820 NJ 1820 NJ 1820 NJ 1820 NJ 1820 NJ 1820 NJ 1820 7540
+preplace netloc EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TVALID 1 13 1 6580
+preplace netloc usb_cdc_core_0_utmi_xcvrselect_o 1 6 3 2060 2310 NJ 2310 3410
+preplace netloc XYTSStreamToRawStream_0_streamOut_V_V 1 11 1 5430
+preplace netloc ulpi_nxt_i_0_1 1 0 16 40J 2320 NJ 2320 NJ 2320 NJ 2320 NJ 2320 NJ 2320 1970 2320 2680J 1810 3610J 1580 NJ 1580 NJ 1580 NJ 1580 NJ 1580 NJ 1580 NJ 1580 7710J
+preplace netloc testAERDVSSM_0_SPIMISO_DZO 1 5 12 1410 2590 NJ 2590 2670J 2580 3660J 2590 4490J 2640 NJ 2640 NJ 2640 NJ 2640 NJ 2640 NJ 2640 NJ 2640 8570
+preplace netloc fifo_generator_2_dout 1 5 4 1400 3270 NJ 3270 NJ 3270 3780
+preplace netloc ulpi_wrapper_0_utmi_data_in_o 1 7 9 2690 2080 NJ 2080 NJ 2080 NJ 2080 NJ 2080 NJ 2080 NJ 2080 NJ 2080 7530J
+preplace netloc testAERDVSSM_0_IMUClock_CZO 1 16 1 NJ
+preplace netloc EFAST_output_0_polStreamOut_V_V 1 8 1 3710
+preplace netloc eventSimulator_0_tsStreamOut_V_V 1 8 1 3730
+preplace netloc ulpi_wrapper_0_utmi_txready_o 1 7 9 2650 1840 3650 2140 NJ 2140 NJ 2140 NJ 2140 NJ 2140 NJ 2140 NJ 2140 NJ
+preplace netloc setup_wr_idx_q_do 1 8 8 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 NJ 520 7800
+preplace netloc nonMonTSDiffFlgReg_V 1 8 4 3900 4220 NJ 4220 NJ 4220 5400
+preplace netloc nonMonTSDiffFlgReg_V_ap_vld_1 1 8 6 3870 4510 NJ 4510 NJ 4510 NJ 4510 NJ 4510 6510
+preplace netloc fifo_generator_1_dout 1 5 4 1390 3730 NJ 3730 2570 3840 3730J
+preplace netloc testAERDVSSM_0_ChipBiasAddrSelect_SBO 1 16 1 NJ
+preplace netloc usbfrx_rx_active_w_do 1 8 8 3910 1400 NJ 1400 NJ 1400 NJ 1400 NJ 1400 NJ 1400 NJ 1400 7520J
+preplace netloc ps7_0_axi_periph_M02_AXI 1 12 1 5800
+preplace netloc tsReg_V 1 8 4 3920 4180 NJ 4180 NJ 4180 5390
+preplace netloc ulpi_dir_q_do 1 7 9 NJ 1800 NJ 1800 NJ 1800 NJ 1800 NJ 1800 NJ 1800 NJ 1800 NJ 1800 7550
+preplace netloc EVFastCornerStream_0_xStreamIn_V_V_TREADY 1 4 10 1150 3830 1380 3830 NJ 3830 2720 3870 3760 2990 NJ 2990 NJ 2990 NJ 2990 NJ 2990 6560
+preplace netloc fifo_generator_0_almost_full 1 7 7 2760 3330 3820 2970 4400J 2710 NJ 2710 NJ 2710 NJ 2710 6620
+preplace netloc EFAST_input_0_xStreamOut_V_V 1 6 1 N
+preplace netloc testAERDVSSM_0_ChipBiasBitIn_DO 1 16 1 NJ
+preplace netloc Net 1 16 1 NJ
+preplace netloc ctrl_txvalid_q_do 1 8 8 NJ 580 NJ 580 NJ 580 NJ 580 NJ 580 NJ 580 NJ 580 8010
+preplace netloc fifo_generator_3_dout 1 5 9 1410 3280 NJ 3280 NJ 3280 3800 3010 NJ 3010 NJ 3010 NJ 3010 NJ 3010 6590J
+preplace netloc wrOUTIndex_q_do 1 7 9 2700 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ
+preplace netloc deltaTsReg_ap_vld 1 8 1 3550
+preplace netloc deltaTsReg 1 8 1 3470
+preplace netloc USBFifoToDVSSPI_0_outputData_o 1 5 11 1350 2580 NJ 2580 2560 1710 3550J 1480 NJ 1480 NJ 1480 NJ 1480 NJ 1480 6520J 1460 NJ 1460 7540
+preplace netloc axis_data_fifo_0_M_AXIS 1 12 1 5790
+preplace netloc eventSimulator_0_xStreamOut_V_V 1 8 1 3750
+preplace netloc rxDataComplete_o 1 7 9 2780 1680 3540J 1450 NJ 1450 NJ 1450 NJ 1450 NJ 1450 6460J 1430 NJ 1430 7470
+preplace netloc state_o 1 7 9 2670J 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 7690
+preplace netloc ps7_0_axi_periph_M01_AXI 1 12 2 5810J 4270 6440
+preplace netloc xlslice_1_Dout 1 6 1 1910J
+preplace netloc testAERDVSSM_0_IMUFSync_SO 1 16 1 NJ
+preplace netloc SPI_Master_With_Sing_0_o_RX_DV 1 6 10 1990 2120 2600J 1770 3600J 1600 NJ 1600 NJ 1600 NJ 1600 NJ 1600 NJ 1600 NJ 1600 7760J
+preplace netloc testAERDVSSM_0_DVSAERReset_SBO 1 16 1 NJ
+preplace netloc fifo_generator_0_empty 1 7 9 2800 1700 NJ 1700 NJ 1700 NJ 1700 NJ 1700 NJ 1700 6640 1490 NJ 1490 7610J
+preplace netloc EFAST_process_data_0_tsStreamOut_V_V 1 7 1 N
+preplace netloc utmi_data_q_do 1 7 9 N 1780 NJ 1780 NJ 1780 NJ 1780 NJ 1780 NJ 1780 NJ 1780 NJ 1780 7610J
+preplace netloc data_o_vd1 1 8 1 3630
+preplace netloc data_o_1 1 8 1 3650
+preplace netloc data_o_vd2 1 8 1 3620
+preplace netloc ctrl_txdata_q_do 1 8 8 NJ 600 NJ 600 NJ 600 NJ 600 NJ 600 NJ 600 NJ 600 8000
+preplace netloc testAERDVSSM_0_ChipBiasLatch_SBO 1 16 1 NJ
+preplace netloc data_o_2 1 8 1 3580
+preplace netloc EVMUXDataToXYTSStream_0_polStreamOut_V_V_TDATA 1 13 1 6530
+preplace netloc EFAST_input_0_yStreamOut_V_V 1 6 1 N
+preplace netloc SPI_Master_With_Sing_0_o_SPI_Clk 1 6 10 1940J 2270 NJ 2270 NJ 2270 NJ 2270 NJ 2270 NJ 2270 NJ 2270 NJ 2270 NJ 2270 7500
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 17 40 3750 NJ 3750 NJ 3750 NJ 3750 1130 3670 1350 3300 2050 3230 2660 3220 3670 2980 4380 3620 4890 3620 5440 3570 5860 4440 6600 4270 7100 4390 7980 4050 8510
+preplace netloc testAERDVSSM_0_ChipBiasEnable_SO 1 16 1 NJ
+preplace netloc processing_system7_0_FCLK_CLK1 1 2 15 600 4870 NJ 4870 NJ 4870 NJ 4870 NJ 4870 NJ 4870 NJ 4870 4430J 4850 NJ 4850 NJ 4850 NJ 4850 NJ 4850 7100 4790 8050 4800 8520
+preplace netloc setupPktReceived_q_do 1 7 9 2760J 1630 3500J 1420 NJ 1420 NJ 1420 NJ 1420 NJ 1420 6440J 1410 NJ 1410 7440
+preplace netloc ep2_tx_data_last_w_do 1 8 8 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 7600
+preplace netloc fifo_generator_0_prog_full 1 8 8 3960 4480 NJ 4480 NJ 4480 NJ 4480 NJ 4480 6640J 4420 NJ 4420 7440
+preplace netloc data_count 1 8 1 3410
+preplace netloc xlslice_4_Dout 1 8 1 3500
+preplace netloc v_axi4s_vid_out_0_vid_hsync 1 16 1 NJ
+preplace netloc fifo_generator_1_almost_full 1 7 2 2790 3880 NJ
+preplace netloc fifo_generator_1_prog_full 1 8 7 3380 4500 NJ 4500 NJ 4500 NJ 4500 NJ 4500 6650J 4480 NJ
+preplace netloc ctrl_stall_r_do 1 8 8 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 7990
+preplace netloc processing_system7_0_M_AXI_GP0 1 11 6 5460 2690 NJ 2690 NJ 2690 NJ 2690 NJ 2690 8540
+preplace netloc usb_cdc_core_0_inport_valid_q_do 1 8 8 3980 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 NJ 1330 7720J
+preplace netloc StreamToFIFO_0_fifoDataOut_V_write 1 8 6 3940 4120 4390J 2700 NJ 2700 NJ 2700 NJ 2700 6630
+preplace netloc SyncInClock_AI_0_1 1 0 16 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ 5210 NJ
+preplace netloc processing_system7_0_DDR 1 16 1 NJ
+preplace netloc token_valid_w_do 1 8 8 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 8050
+preplace netloc ps7_0_axi_periph_M03_AXI 1 12 1 5830
+preplace netloc usbfrx_crc_byte_w_do 1 8 8 3940 1390 NJ 1390 NJ 1390 NJ 1390 NJ 1390 NJ 1390 NJ 1390 7560J
+preplace netloc SyncInSignal2_AI_0_1 1 0 16 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ 5270 NJ
+preplace netloc axi_gpio_0_ip2intc_irpt 1 3 11 940 4530 NJ 4530 NJ 4530 NJ 4530 NJ 4530 3360J 4550 NJ 4550 NJ 4550 NJ 4550 NJ 4550 6440
+preplace netloc EVABMOFStream_0_tsStreamOut_V_V 1 10 1 N
+preplace netloc dataSPIToSendPrepared_w_do 1 7 9 2770J 1470 3490J 1440 4490J 1430 NJ 1430 NJ 1430 NJ 1430 6450J 1420 NJ 1420 7460
+preplace netloc ctrl_ack_r_do 1 8 8 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 7980
+preplace netloc DVSAERData_AI_0_1 1 0 16 NJ 4130 NJ 4130 NJ 4130 NJ 4130 NJ 4130 NJ 4130 NJ 4130 NJ 4130 3370 4270 NJ 4270 NJ 4270 NJ 4270 5790J 4570 NJ 4570 NJ 4570 7420J
+preplace netloc xlconcat_0_dout 1 4 12 NJ 4460 NJ 4460 NJ 4460 NJ 4460 NJ 4460 NJ 4460 NJ 4460 NJ 4460 5780J 4470 6630J 4410 NJ 4410 7590J
+preplace netloc SyncInSignal1_AI_0_1 1 0 16 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ 5250 NJ
+preplace netloc xlslice_5_Dout 1 9 1 NJ
+preplace netloc ulpi_data_in_o_d 1 7 9 2600J 1760 NJ 1760 NJ 1760 NJ 1760 NJ 1760 NJ 1760 NJ 1760 NJ 1760 N
+preplace netloc eventSimulator_0_yStreamOut_V_V 1 8 1 3740
+preplace netloc usb_reset_counter_q_do 1 8 8 3530 510 NJ 510 NJ 510 NJ 510 NJ 510 NJ 510 NJ 510 7900J
+preplace netloc EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA 1 8 6 3840 4590 NJ 4590 NJ 4590 NJ 4590 NJ 4590 6470
+preplace netloc EFAST_input_0_tsStreamOut_V_V 1 6 1 N
+preplace netloc EFAST_output_0_tsStreamOut_V_V 1 8 1 3700
+preplace netloc usb_cdc_core_0_inport_accept_o1 1 8 8 3690 2340 NJ 2340 4900 2340 NJ 2340 NJ 2340 6650 2100 NJ 2100 NJ
+preplace netloc usb_cdc_core_0_utmi_op_mode_o 1 6 3 2070 2330 NJ 2330 3420
+preplace netloc EFAST_process_data_0_isFinalCornerStream_V_V 1 7 1 N
+preplace netloc nonMonTSDiffFlgReg_V_ap_vld 1 8 4 3930 4210 NJ 4210 NJ 4210 5410
+preplace netloc SPI_Master_With_Sing_0_o_SPI_MOSI 1 6 10 1890J 2280 NJ 2280 NJ 2280 NJ 2280 NJ 2280 NJ 2280 NJ 2280 NJ 2280 NJ 2280 7480
+preplace netloc usb_cdc_core_0_utmi_dppulldown_o 1 6 3 2120 2150 NJ 2150 3380
+preplace netloc ulpi_wrapper_0_utmi_rxactive_o 1 7 9 2740 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 7670J
+preplace netloc v_axi4s_vid_out_0_vid_vsync 1 16 1 NJ
+preplace netloc usb_cdc_core_0_rx_out_do 1 6 10 2080 2130 2660J 2100 3440 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 NJ 1560 7690
+preplace netloc util_vector_logic_2_Res 1 10 1 N
+preplace netloc tx_sent_data_counter_o 1 8 8 3850J 1520 NJ 1520 NJ 1520 NJ 1520 NJ 1520 NJ 1520 NJ 1520 7650
+preplace netloc IMUInterrupt_AI_0_1 1 0 16 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ 5190 NJ
+preplace netloc xlconstant_0_dout 1 5 1 NJ
+preplace netloc Net1 1 4 12 NJ 4690 NJ 4690 NJ 4690 NJ 4690 3580J 4620 NJ 4620 NJ 4620 NJ 4620 NJ 4620 NJ 4620 7100J 4610 7450
+preplace netloc readAXIBRAM_r_do 1 8 8 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 7950
+preplace netloc Net2 1 4 12 NJ 4590 NJ 4590 NJ 4590 NJ 4590 3580J 4580 NJ 4580 NJ 4580 NJ 4580 NJ 4580 NJ 4580 NJ 4580 7470
+preplace netloc Net3 1 7 10 2720J 1460 3480J 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 8510J
+preplace netloc ulpi_wrapper_0_ulpi_stp_o 1 7 10 2660J 1690 NJ 1690 NJ 1690 NJ 1690 NJ 1690 NJ 1690 NJ 1690 NJ 1690 7640 1000 NJ
+preplace netloc EVABMOFStream_0_yStreamOut_V_V 1 10 1 N
+preplace netloc r_RX_Bit_Count_do 1 6 10 N 2170 2610J 1730 3580J 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 7780J
+preplace netloc dvs_resp_data_o 1 7 9 2790 1610 3520J 1460 NJ 1460 NJ 1460 NJ 1460 NJ 1460 6500J 1440 NJ 1440 7480
+preplace netloc EFAST_process_data_0_yStreamOut_V_V 1 7 1 N
+preplace netloc usbf_new_data_bit_r_do 1 8 8 NJ 800 NJ 800 NJ 800 NJ 800 NJ 800 NJ 800 NJ 800 7830
+preplace netloc axi_smc_M00_AXI 1 15 1 7770
+preplace netloc eventStreamSwitch_0_tsStreamOut_V_V 1 9 1 4440
+preplace netloc usbfrx_data_ready_w_do 1 8 8 3950 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 NJ 1360 7570J
+preplace netloc fifo_generator_0_prog_full1 1 8 7 3970 4490 NJ 4490 NJ 4490 NJ 4490 NJ 4490 NJ 4490 7080
+levelinfo -pg 1 0 220 490 770 1040 1250 1650 2340 3120 4180 4690 5150 5620 6190 6860 7270 8280 8600 -top 0 -bot 5370
 ",
 }
 {
-   da_axi4_cnt: "26",
+   da_axi4_cnt: "27",
    da_clkrst_cnt: "41",
 }
