@@ -61,7 +61,7 @@ entity bd_d325 is
     probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe44 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -71,7 +71,7 @@ entity bd_d325 is
     resetn : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of bd_d325 : entity is "bd_d325,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=bd_d325,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=2,numReposBlks=2,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=SBD,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of bd_d325 : entity is "brd_system_ila_0_1.hwdef";
 end bd_d325;
@@ -123,7 +123,7 @@ architecture STRUCTURE of bd_d325 is
     probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe44 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe45 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe46 : in STD_LOGIC_VECTOR ( 0 to 0 );
@@ -231,7 +231,7 @@ architecture STRUCTURE of bd_d325 is
   signal probe40_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe41_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe42_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal probe43_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal probe43_1 : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal probe44_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal probe4_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal probe5_1 : STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -312,7 +312,7 @@ begin
   probe40_1(0) <= probe40(0);
   probe41_1(0) <= probe41(0);
   probe42_1(0) <= probe42(0);
-  probe43_1(7 downto 0) <= probe43(7 downto 0);
+  probe43_1(63 downto 0) <= probe43(63 downto 0);
   probe44_1(15 downto 0) <= probe44(15 downto 0);
   probe4_1(0) <= probe4(0);
   probe5_1(7 downto 0) <= probe5(7 downto 0);
@@ -391,7 +391,7 @@ ila_lib: component bd_d325_ila_lib_0
       probe40(0) => probe40_1(0),
       probe41(0) => probe41_1(0),
       probe42(0) => probe42_1(0),
-      probe43(7 downto 0) => probe43_1(7 downto 0),
+      probe43(63 downto 0) => probe43_1(63 downto 0),
       probe44(15 downto 0) => probe44_1(15 downto 0),
       probe45(15 downto 0) => net_slot_0_axis_tdata(15 downto 0),
       probe46(0) => net_slot_0_axis_tvalid,

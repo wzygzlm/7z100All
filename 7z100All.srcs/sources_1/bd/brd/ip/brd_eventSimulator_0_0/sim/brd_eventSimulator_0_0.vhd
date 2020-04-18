@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventSimulator:1.0
--- IP Revision: 2004161801
+-- IP Revision: 2004162007
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,7 +55,6 @@ USE ieee.numeric_std.ALL;
 
 ENTITY brd_eventSimulator_0_0 IS
   PORT (
-    deltaTsReg_ap_vld : OUT STD_LOGIC;
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     ap_start : IN STD_LOGIC;
@@ -73,8 +72,7 @@ ENTITY brd_eventSimulator_0_0 IS
     tsStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     polStreamOut_V_V_TVALID : OUT STD_LOGIC;
     polStreamOut_V_V_TREADY : IN STD_LOGIC;
-    polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-    deltaTsReg : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END brd_eventSimulator_0_0;
 
@@ -83,7 +81,6 @@ ARCHITECTURE brd_eventSimulator_0_0_arch OF brd_eventSimulator_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF brd_eventSimulator_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT eventSimulator IS
     PORT (
-      deltaTsReg_ap_vld : OUT STD_LOGIC;
       ap_clk : IN STD_LOGIC;
       ap_rst_n : IN STD_LOGIC;
       ap_start : IN STD_LOGIC;
@@ -101,15 +98,11 @@ ARCHITECTURE brd_eventSimulator_0_0_arch OF brd_eventSimulator_0_0 IS
       tsStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       polStreamOut_V_V_TVALID : OUT STD_LOGIC;
       polStreamOut_V_V_TREADY : IN STD_LOGIC;
-      polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-      deltaTsReg : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+      polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT eventSimulator;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF deltaTsReg: SIGNAL IS "XIL_INTERFACENAME deltaTsReg, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 8} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} val" & 
-"ue false}}}}}";
-  ATTRIBUTE X_INTERFACE_INFO OF deltaTsReg: SIGNAL IS "xilinx.com:signal:data:1.0 deltaTsReg DATA";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamOut_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamOut_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamOut_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamOut_V_V TREADY";
   ATTRIBUTE X_INTERFACE_PARAMETER OF polStreamOut_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME polStreamOut_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate depen" & 
@@ -149,7 +142,6 @@ ARCHITECTURE brd_eventSimulator_0_0_arch OF brd_eventSimulator_0_0 IS
 BEGIN
   U0 : eventSimulator
     PORT MAP (
-      deltaTsReg_ap_vld => deltaTsReg_ap_vld,
       ap_clk => ap_clk,
       ap_rst_n => ap_rst_n,
       ap_start => ap_start,
@@ -167,7 +159,6 @@ BEGIN
       tsStreamOut_V_V_TDATA => tsStreamOut_V_V_TDATA,
       polStreamOut_V_V_TVALID => polStreamOut_V_V_TVALID,
       polStreamOut_V_V_TREADY => polStreamOut_V_V_TREADY,
-      polStreamOut_V_V_TDATA => polStreamOut_V_V_TDATA,
-      deltaTsReg => deltaTsReg
+      polStreamOut_V_V_TDATA => polStreamOut_V_V_TDATA
     );
 END brd_eventSimulator_0_0_arch;

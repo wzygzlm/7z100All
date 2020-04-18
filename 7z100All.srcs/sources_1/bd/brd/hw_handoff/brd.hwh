@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Apr 16 18:04:44 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Apr 18 11:30:23 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="brd" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -6093,6 +6093,7 @@
             <CONNECTION INSTANCE="EVABMOFStream_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="eventSimulator_0" PORT="ap_start"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_start"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6195,11 +6196,6 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" NAME="deltaTsReg_ap_vld" SIGIS="undef" SIGNAME="eventSimulator_0_deltaTsReg_ap_vld">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="system_ila_0" PORT="probe42"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT CLKFREQUENCY="99989998" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
@@ -6218,71 +6214,18 @@
         <PORT DIR="O" NAME="ap_done" SIGIS="undef"/>
         <PORT DIR="O" NAME="ap_idle" SIGIS="undef"/>
         <PORT DIR="O" NAME="ap_ready" SIGIS="undef"/>
-        <PORT DIR="O" NAME="xStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_xStreamOut_V_V_TVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="xStreamIn1_V_V_TVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="xStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_xStreamOut_V_V_TREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="xStreamIn1_V_V_TREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="xStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_xStreamOut_V_V_TDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="xStreamIn1_V_V_TDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="yStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_yStreamOut_V_V_TVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="yStreamIn1_V_V_TVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="yStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_yStreamOut_V_V_TREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="yStreamIn1_V_V_TREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="15" NAME="yStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_yStreamOut_V_V_TDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="yStreamIn1_V_V_TDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="tsStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_tsStreamOut_V_V_TVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="tsStreamIn1_V_V_TVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="tsStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_tsStreamOut_V_V_TREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="tsStreamIn1_V_V_TREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="63" NAME="tsStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_tsStreamOut_V_V_TDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="tsStreamIn1_V_V_TDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="polStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_polStreamOut_V_V_TVALID">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="polStreamIn1_V_V_TVALID"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="polStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_polStreamOut_V_V_TREADY">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="polStreamIn1_V_V_TREADY"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="7" NAME="polStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_polStreamOut_V_V_TDATA">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="polStreamIn1_V_V_TDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="7" NAME="deltaTsReg" RIGHT="0" SIGIS="data" SIGNAME="eventSimulator_0_deltaTsReg">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="system_ila_0" PORT="probe43"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="xStreamOut_V_V_TVALID" SIGIS="undef"/>
+        <PORT DIR="I" NAME="xStreamOut_V_V_TREADY" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="xStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="yStreamOut_V_V_TVALID" SIGIS="undef"/>
+        <PORT DIR="I" NAME="yStreamOut_V_V_TREADY" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="15" NAME="yStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="tsStreamOut_V_V_TVALID" SIGIS="undef"/>
+        <PORT DIR="I" NAME="tsStreamOut_V_V_TREADY" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="63" NAME="tsStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="polStreamOut_V_V_TVALID" SIGIS="undef"/>
+        <PORT DIR="I" NAME="polStreamOut_V_V_TREADY" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="polStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="ap_ctrl" TYPE="TARGET" VLNV="xilinx.com:interface:acc_handshake:1.0">
@@ -6294,7 +6237,7 @@
             <PORTMAP LOGICAL="ready" PHYSICAL="ap_ready"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_xStreamOut_V_V" NAME="xStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="xStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}"/>
@@ -6313,7 +6256,7 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="xStreamOut_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_yStreamOut_V_V" NAME="yStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="yStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}"/>
@@ -6332,7 +6275,7 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="yStreamOut_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_tsStreamOut_V_V" NAME="tsStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="tsStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 64}"/>
@@ -6351,7 +6294,7 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="tsStreamOut_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_polStreamOut_V_V" NAME="polStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="polStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="1"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}"/>
@@ -6527,64 +6470,64 @@
             <CONNECTION INSTANCE="EFAST_output_0" PORT="polStreamOut_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="xStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_xStreamOut_V_V_TVALID">
+        <PORT DIR="I" NAME="xStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_xStreamIn1_V_V_TVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="xStreamOut_V_V_TVALID"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="xStreamOut_V_V_TVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="xStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_xStreamOut_V_V_TREADY">
+        <PORT DIR="O" NAME="xStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_xStreamIn1_V_V_TREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="xStreamOut_V_V_TREADY"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="xStreamOut_V_V_TREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="xStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_xStreamOut_V_V_TDATA">
+        <PORT DIR="I" LEFT="15" NAME="xStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_xStreamIn1_V_V_TDATA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="xStreamOut_V_V_TDATA"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="xStreamOut_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="yStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_yStreamOut_V_V_TVALID">
+        <PORT DIR="I" NAME="yStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_yStreamIn1_V_V_TVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="yStreamOut_V_V_TVALID"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="yStreamOut_V_V_TVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="yStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_yStreamOut_V_V_TREADY">
+        <PORT DIR="O" NAME="yStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_yStreamIn1_V_V_TREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="yStreamOut_V_V_TREADY"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="yStreamOut_V_V_TREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="yStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_yStreamOut_V_V_TDATA">
+        <PORT DIR="I" LEFT="15" NAME="yStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_yStreamIn1_V_V_TDATA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="yStreamOut_V_V_TDATA"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="yStreamOut_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="tsStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_tsStreamOut_V_V_TVALID">
+        <PORT DIR="I" NAME="tsStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_tsStreamIn1_V_V_TVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="tsStreamOut_V_V_TVALID"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="tsStreamOut_V_V_TVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="tsStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_tsStreamOut_V_V_TREADY">
+        <PORT DIR="O" NAME="tsStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_tsStreamIn1_V_V_TREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="tsStreamOut_V_V_TREADY"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="tsStreamOut_V_V_TREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="tsStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_tsStreamOut_V_V_TDATA">
+        <PORT DIR="I" LEFT="63" NAME="tsStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_tsStreamIn1_V_V_TDATA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="tsStreamOut_V_V_TDATA"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="tsStreamOut_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="polStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventSimulator_0_polStreamOut_V_V_TVALID">
+        <PORT DIR="I" NAME="polStreamIn1_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_polStreamIn1_V_V_TVALID">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="polStreamOut_V_V_TVALID"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="polStreamOut_V_V_TVALID"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="polStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventSimulator_0_polStreamOut_V_V_TREADY">
+        <PORT DIR="O" NAME="polStreamIn1_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_polStreamIn1_V_V_TREADY">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="polStreamOut_V_V_TREADY"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="polStreamOut_V_V_TREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="polStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_polStreamOut_V_V_TDATA">
+        <PORT DIR="I" LEFT="7" NAME="polStreamIn1_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_polStreamIn1_V_V_TDATA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="polStreamOut_V_V_TDATA"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="polStreamOut_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6750,7 +6693,7 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="polStreamIn0_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_xStreamOut_V_V" NAME="xStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_xStreamOut_V_V" NAME="xStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}"/>
@@ -6769,7 +6712,7 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="xStreamIn1_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_yStreamOut_V_V" NAME="yStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_yStreamOut_V_V" NAME="yStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}"/>
@@ -6788,7 +6731,7 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="yStreamIn1_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_tsStreamOut_V_V" NAME="tsStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_tsStreamOut_V_V" NAME="tsStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 64}"/>
@@ -6807,7 +6750,7 @@
             <PORTMAP LOGICAL="TDATA" PHYSICAL="tsStreamIn1_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_polStreamOut_V_V" NAME="polStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_polStreamOut_V_V" NAME="polStreamIn1_V_V" TYPE="TARGET" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="1"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}"/>
@@ -7290,6 +7233,502 @@
             <PORTMAP LOGICAL="TVALID" PHYSICAL="custDataStream_V_V_TVALID"/>
             <PORTMAP LOGICAL="TREADY" PHYSICAL="custDataStream_V_V_TREADY"/>
             <PORTMAP LOGICAL="TDATA" PHYSICAL="custDataStream_V_V_TDATA"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE FULLNAME="/eventsGeneratorViaFi_0" HWVERSION="1.0" INSTANCE="eventsGeneratorViaFi_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="eventsGeneratorViaFile" VLNV="xilinx.com:hls:eventsGeneratorViaFile:1.0">
+      <DOCUMENTS/>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="read-write" INTERFACE="s_axi_config" NAME="Reg" RANGE="65536" USAGE="register">
+          <REGISTERS>
+            <REGISTER NAME="input_V_1">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of input_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="16"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="input_V">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Bit 31 to 0 Data signal of input_V"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="input_V_2">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of input_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="20"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="input_V">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Bit 63 to 32 Data signal of input_V"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="input_V_ctrl">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Control signal of input_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="24"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-write"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="input_V_ap_vld">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Control signal input_V_ap_vld"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+                <FIELD NAME="RESERVED">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Reserved.  0s on read."/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE="modify"/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="31"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="counterIn_V_1">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of counterIn_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="28"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="counterIn_V">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Bit 31 to 0 Data signal of counterIn_V"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="counterIn_V_2">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of counterIn_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="32"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="counterIn_V">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Bit 63 to 32 Data signal of counterIn_V"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="status_V">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of status_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="40"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="status_V">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Bit 31 to 0 Data signal of status_V"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE="modify"/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+            <REGISTER NAME="status_V_ctrl">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Control signal of status_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="44"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="status_V_ap_vld">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Control signal status_V_ap_vld"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE="modify"/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
+                </FIELD>
+                <FIELD NAME="RESERVED">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Reserved.  0s on read."/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="ACCESS" VALUE="read-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE="modify"/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="1"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="31"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+          </REGISTERS>
+        </ADDRESSBLOCK>
+      </ADDRESSBLOCKS>
+      <PARAMETERS>
+        <PARAMETER NAME="C_S_AXI_CONFIG_ADDR_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="C_S_AXI_CONFIG_DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="Component_Name" VALUE="brd_eventsGeneratorViaFi_0_0"/>
+        <PARAMETER NAME="clk_period" VALUE="10"/>
+        <PARAMETER NAME="machine" VALUE="64"/>
+        <PARAMETER NAME="combinational" VALUE="0"/>
+        <PARAMETER NAME="latency" VALUE="1"/>
+        <PARAMETER NAME="II" VALUE="x"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+        <PARAMETER NAME="C_S_AXI_CONFIG_BASEADDR" VALUE="0x43C10000"/>
+        <PARAMETER NAME="C_S_AXI_CONFIG_HIGHADDR" VALUE="0x43C1FFFF"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" NAME="counterOut_V_ap_vld" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_counterOut_V_ap_vld">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_0" PORT="probe42"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="s_axi_config_AWADDR" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_AWADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_AWVALID" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_AWVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_AWREADY" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_AWREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="s_axi_config_WDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="s_axi_config_WSTRB" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WSTRB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_WVALID" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_WREADY" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_config_BRESP" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_BRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_BVALID" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_BVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_BREADY" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_BREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="5" NAME="s_axi_config_ARADDR" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_ARADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_ARVALID" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_ARVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_ARREADY" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_ARREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="s_axi_config_RDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_config_RRESP" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_RVALID" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_RREADY" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_AXI_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="99989998" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ap_rst_n" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ap_start" SIGIS="undef" SIGNAME="const_VCC_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="const_VCC" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ap_done" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ap_idle" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ap_ready" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="63" NAME="counterOut_V" RIGHT="0" SIGIS="data" SIGNAME="eventsGeneratorViaFi_0_counterOut_V">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="system_ila_0" PORT="probe43"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="xStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_xStreamIn1_V_V_TVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="xStreamIn1_V_V_TVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="xStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_xStreamIn1_V_V_TREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="xStreamIn1_V_V_TREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="xStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_xStreamIn1_V_V_TDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="xStreamIn1_V_V_TDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="yStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_yStreamIn1_V_V_TVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="yStreamIn1_V_V_TVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="yStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_yStreamIn1_V_V_TREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="yStreamIn1_V_V_TREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="yStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_yStreamIn1_V_V_TDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="yStreamIn1_V_V_TDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tsStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_tsStreamIn1_V_V_TVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="tsStreamIn1_V_V_TVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="tsStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_tsStreamIn1_V_V_TREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="tsStreamIn1_V_V_TREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="63" NAME="tsStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_tsStreamIn1_V_V_TDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="tsStreamIn1_V_V_TDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="polStreamOut_V_V_TVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_polStreamIn1_V_V_TVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="polStreamIn1_V_V_TVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="polStreamOut_V_V_TREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_polStreamIn1_V_V_TREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="polStreamIn1_V_V_TREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="polStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_polStreamIn1_V_V_TDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="polStreamIn1_V_V_TDATA"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="ps7_0_axi_periph_M04_AXI" DATAWIDTH="32" NAME="s_axi_config" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="6"/>
+          <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_BURST" VALUE="0"/>
+          <PARAMETER NAME="HAS_LOCK" VALUE="0"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="0"/>
+          <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
+          <PARAMETER NAME="HAS_QOS" VALUE="0"/>
+          <PARAMETER NAME="HAS_REGION" VALUE="0"/>
+          <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
+          <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="2"/>
+          <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
+          <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="s_axi_config_AWADDR"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="s_axi_config_AWVALID"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="s_axi_config_AWREADY"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="s_axi_config_WDATA"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="s_axi_config_WSTRB"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="s_axi_config_WVALID"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="s_axi_config_WREADY"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="s_axi_config_BRESP"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="s_axi_config_BVALID"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="s_axi_config_BREADY"/>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="s_axi_config_ARADDR"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="s_axi_config_ARVALID"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="s_axi_config_ARREADY"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="s_axi_config_RDATA"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="s_axi_config_RRESP"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="s_axi_config_RVALID"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="s_axi_config_RREADY"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="ap_ctrl" TYPE="TARGET" VLNV="xilinx.com:interface:acc_handshake:1.0">
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {start {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} done {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} idle {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} ready {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="start" PHYSICAL="ap_start"/>
+            <PORTMAP LOGICAL="done" PHYSICAL="ap_done"/>
+            <PORTMAP LOGICAL="idle" PHYSICAL="ap_idle"/>
+            <PORTMAP LOGICAL="ready" PHYSICAL="ap_ready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_xStreamOut_V_V" NAME="xStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="xStreamOut_V_V_TVALID"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="xStreamOut_V_V_TREADY"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="xStreamOut_V_V_TDATA"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_yStreamOut_V_V" NAME="yStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="yStreamOut_V_V_TVALID"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="yStreamOut_V_V_TREADY"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="yStreamOut_V_V_TDATA"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_tsStreamOut_V_V" NAME="tsStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 64}"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="tsStreamOut_V_V_TVALID"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="tsStreamOut_V_V_TREADY"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="tsStreamOut_V_V_TDATA"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_polStreamOut_V_V" NAME="polStreamOut_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="1"/>
+          <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}"/>
+          <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+          <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+          <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
+          <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="TVALID" PHYSICAL="polStreamOut_V_V_TVALID"/>
+            <PORTMAP LOGICAL="TREADY" PHYSICAL="polStreamOut_V_V_TREADY"/>
+            <PORTMAP LOGICAL="TDATA" PHYSICAL="polStreamOut_V_V_TDATA"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -9532,12 +9971,14 @@
             <CONNECTION INSTANCE="EVABMOFStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="system_ila_0" PORT="resetn"/>
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="eventSimulator_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ARESETN"/>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ARESETN"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_rst_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10978,13 +11419,15 @@
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="EVABMOFStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="eventSimulator_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ACLK"/>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ACLK"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="39995998" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
@@ -11271,12 +11714,14 @@
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41200000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4120FFFF" INSTANCE="axi_gpio_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x43000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4300FFFF" INSTANCE="axi_vdma_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI_LITE"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_S_AXI_CONFIG_BASEADDR" BASEVALUE="0x43C00000" HIGHNAME="C_S_AXI_CONFIG_HIGHADDR" HIGHVALUE="0x43C0FFFF" INSTANCE="eventStreamToConstEn_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi_config"/>
+        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_S_AXI_CONFIG_BASEADDR" BASEVALUE="0x43C10000" HIGHNAME="C_S_AXI_CONFIG_HIGHADDR" HIGHVALUE="0x43C1FFFF" INSTANCE="eventsGeneratorViaFi_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi_config"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_S_AXI_CONFIG_BASEADDR" BASEVALUE="0x43C30000" HIGHNAME="C_S_AXI_CONFIG_HIGHADDR" HIGHVALUE="0x43C3FFFF" INSTANCE="EVMUXDataToXYTSStream_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi_config"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="axi_gpio_0"/>
         <PERIPHERAL INSTANCE="axi_vdma_0"/>
         <PERIPHERAL INSTANCE="eventStreamToConstEn_0"/>
+        <PERIPHERAL INSTANCE="eventsGeneratorViaFi_0"/>
         <PERIPHERAL INSTANCE="EVMUXDataToXYTSStream_0"/>
       </PERIPHERALS>
     </MODULE>
@@ -11286,7 +11731,7 @@
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="NUM_SI" VALUE="1"/>
-        <PARAMETER NAME="NUM_MI" VALUE="4"/>
+        <PARAMETER NAME="NUM_MI" VALUE="5"/>
         <PARAMETER NAME="STRATEGY" VALUE="0"/>
         <PARAMETER NAME="ENABLE_ADVANCED_OPTIONS" VALUE="0"/>
         <PARAMETER NAME="ENABLE_PROTOCOL_CHECKERS" VALUE="0"/>
@@ -11659,6 +12104,16 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="M03_ARESETN" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_ARESETN" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
@@ -12188,6 +12643,91 @@
             <CONNECTION INSTANCE="eventStreamToConstEn_0" PORT="s_axi_config_RREADY"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_AWADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_AWADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_awvalid" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_AWVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_AWVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_awready" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_AWREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_AWREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_WDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M04_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WSTRB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_WSTRB"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_wvalid" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_WVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_wready" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_WREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_WREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M04_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_BRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_BRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_bvalid" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_BVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_BVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_bready" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_BREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_BREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M04_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_ARADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_ARADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_arvalid" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_ARVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_ARVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_arready" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_ARREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_ARREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M04_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_RDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M04_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_RRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M04_AXI_rvalid" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_RVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M04_AXI_rready" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_s_axi_config_RREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_RREADY"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="processing_system7_0_M_AXI_GP0" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -12313,6 +12853,27 @@
             <PORTMAP LOGICAL="RRESP" PHYSICAL="M03_AXI_rresp"/>
             <PORTMAP LOGICAL="RVALID" PHYSICAL="M03_AXI_rvalid"/>
             <PORTMAP LOGICAL="RREADY" PHYSICAL="M03_AXI_rready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="ps7_0_axi_periph_M04_AXI" DATAWIDTH="32" NAME="M04_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="M04_AXI_awaddr"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="M04_AXI_awvalid"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="M04_AXI_awready"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="M04_AXI_wdata"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="M04_AXI_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="M04_AXI_wvalid"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="M04_AXI_wready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="M04_AXI_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="M04_AXI_bvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="M04_AXI_bready"/>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="M04_AXI_araddr"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="M04_AXI_arvalid"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="M04_AXI_arready"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="M04_AXI_rdata"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="M04_AXI_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="M04_AXI_rvalid"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="M04_AXI_rready"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -12565,7 +13126,7 @@
         <PARAMETER NAME="C_SLOT_15_APC_MAX_WLAST_TO_AWVALID_WAITS" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_15_APC_MAX_WRITE_TO_BVALID_WAITS" VALUE="0"/>
         <PARAMETER NAME="C_SLOT_15_APC_MAX_CONTINUOUS_RTRANSFERS_WAITS" VALUE="0"/>
-        <PARAMETER NAME="C_BRAM_CNT" VALUE="35"/>
+        <PARAMETER NAME="C_BRAM_CNT" VALUE="33.5"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AW_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_W_SEL_DATA" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_B_SEL_DATA" VALUE="1"/>
@@ -14885,7 +15446,7 @@
         <PARAMETER NAME="C_PROBE2_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_DATA_DEPTH" VALUE="16384"/>
+        <PARAMETER NAME="C_DATA_DEPTH" VALUE="8192"/>
         <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="45"/>
         <PARAMETER NAME="C_XLNX_HW_PROBE_INFO" VALUE="DEFAULT"/>
         <PARAMETER NAME="Component_Name" VALUE="brd_system_ila_0_1"/>
@@ -16370,14 +16931,14 @@
             <CONNECTION INSTANCE="fifo_generator_0" PORT="prog_full"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="probe42" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_deltaTsReg_ap_vld">
+        <PORT DIR="I" LEFT="0" NAME="probe42" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_counterOut_V_ap_vld">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="deltaTsReg_ap_vld"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="counterOut_V_ap_vld"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="probe43" RIGHT="0" SIGIS="undef" SIGNAME="eventSimulator_0_deltaTsReg">
+        <PORT DIR="I" LEFT="63" NAME="probe43" RIGHT="0" SIGIS="undef" SIGNAME="eventsGeneratorViaFi_0_counterOut_V">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="eventSimulator_0" PORT="deltaTsReg"/>
+            <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="counterOut_V"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="probe44" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_4_Dout">
@@ -16404,7 +16965,7 @@
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_xStreamOut_V_V" NAME="SLOT_0_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_xStreamOut_V_V" NAME="SLOT_0_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
@@ -16424,7 +16985,7 @@
             <PORTMAP LOGICAL="TREADY" PHYSICAL="SLOT_0_AXIS_tready"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_yStreamOut_V_V" NAME="SLOT_1_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_yStreamOut_V_V" NAME="SLOT_1_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
@@ -16444,7 +17005,7 @@
             <PORTMAP LOGICAL="TREADY" PHYSICAL="SLOT_1_AXIS_tready"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="eventSimulator_0_tsStreamOut_V_V" NAME="SLOT_2_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
+        <BUSINTERFACE BUSNAME="eventsGeneratorViaFi_0_tsStreamOut_V_V" NAME="SLOT_2_AXIS" TYPE="MONITOR" VLNV="xilinx.com:interface:axis:1.0">
           <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="8"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
           <PARAMETER NAME="TID_WIDTH" VALUE="0"/>

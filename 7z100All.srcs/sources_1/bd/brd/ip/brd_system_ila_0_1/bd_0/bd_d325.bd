@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x102665BA8227B8B5" bd:bdsource="SBD" bd:device="xc7z100ffg900-1" bd:isScoped="true" bd:isValidated="true" bd:synthFlowMode="None" bd:tool_version="2018.1" bd:top="bd_d325" bd:version="1.00.a">
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0xC4FEA9F6FE28F978" bd:bdsource="SBD" bd:device="xc7z100ffg900-1" bd:isScoped="true" bd:isValidated="true" bd:synthFlowMode="None" bd:tool_version="2018.1" bd:top="bd_d325" bd:version="1.00.a">
 
   <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
     <spirit:vendor>xilinx.com</spirit:vendor>
@@ -906,7 +906,7 @@
           <spirit:wire>
             <spirit:direction>in</spirit:direction>
             <spirit:vector>
-              <spirit:left>7</spirit:left>
+              <spirit:left>63</spirit:left>
               <spirit:right>0</spirit:right>
             </spirit:vector>
           </spirit:wire>
@@ -1012,7 +1012,7 @@
           <spirit:configurableElementValue spirit:referenceId="C_PROBE46_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE45_WIDTH">16</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE44_WIDTH">16</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="C_PROBE43_WIDTH">8</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE43_WIDTH">64</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE42_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE41_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE40_WIDTH">1</spirit:configurableElementValue>
@@ -1056,7 +1056,7 @@
           <spirit:configurableElementValue spirit:referenceId="C_PROBE2_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE1_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE0_WIDTH">1</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="C_DATA_DEPTH">16384</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_DATA_DEPTH">8192</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_NUM_OF_PROBES">57</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_XLNX_HW_PROBE_INFO">DEFAULT</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_TRIGOUT_EN">false</spirit:configurableElementValue>

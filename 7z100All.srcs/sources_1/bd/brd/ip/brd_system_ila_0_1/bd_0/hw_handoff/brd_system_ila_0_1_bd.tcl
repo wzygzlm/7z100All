@@ -208,7 +208,7 @@ proc create_root_design { parentCell } {
   set probe40 [ create_bd_port -dir I -from 0 -to 0 probe40 ]
   set probe41 [ create_bd_port -dir I -from 0 -to 0 probe41 ]
   set probe42 [ create_bd_port -dir I -from 0 -to 0 probe42 ]
-  set probe43 [ create_bd_port -dir I -from 7 -to 0 probe43 ]
+  set probe43 [ create_bd_port -dir I -from 63 -to 0 probe43 ]
   set probe44 [ create_bd_port -dir I -from 15 -to 0 probe44 ]
   set resetn [ create_bd_port -dir I -type rst resetn ]
 
@@ -253,7 +253,7 @@ proc create_root_design { parentCell } {
    CONFIG.ALL_PROBE_SAME_MU {TRUE} \
    CONFIG.ALL_PROBE_SAME_MU_CNT {1} \
    CONFIG.C_ADV_TRIGGER {FALSE} \
-   CONFIG.C_DATA_DEPTH {16384} \
+   CONFIG.C_DATA_DEPTH {8192} \
    CONFIG.C_EN_STRG_QUAL {0} \
    CONFIG.C_EN_TIME_TAG {0} \
    CONFIG.C_ILA_CLK_FREQ {99989998} \
@@ -373,7 +373,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_PROBE42_WIDTH {1} \
    CONFIG.C_PROBE43_MU_CNT {1} \
    CONFIG.C_PROBE43_TYPE {0} \
-   CONFIG.C_PROBE43_WIDTH {8} \
+   CONFIG.C_PROBE43_WIDTH {64} \
    CONFIG.C_PROBE44_MU_CNT {1} \
    CONFIG.C_PROBE44_TYPE {0} \
    CONFIG.C_PROBE44_WIDTH {16} \

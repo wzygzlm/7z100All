@@ -61,7 +61,7 @@ entity bd_d325_wrapper is
     probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe44 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     probe5 : in STD_LOGIC_VECTOR ( 7 downto 0 );
     probe6 : in STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -119,7 +119,7 @@ architecture STRUCTURE of bd_d325_wrapper is
     probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 63 downto 0 );
     probe44 : in STD_LOGIC_VECTOR ( 15 downto 0 );
     resetn : in STD_LOGIC;
     SLOT_0_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -190,7 +190,7 @@ bd_d325_i: component bd_d325
       probe40(0) => probe40(0),
       probe41(0) => probe41(0),
       probe42(0) => probe42(0),
-      probe43(7 downto 0) => probe43(7 downto 0),
+      probe43(63 downto 0) => probe43(63 downto 0),
       probe44(15 downto 0) => probe44(15 downto 0),
       probe5(7 downto 0) => probe5(7 downto 0),
       probe6(13 downto 0) => probe6(13 downto 0),

@@ -614,35 +614,41 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_ulpi_wrapper_0_0/brd_ulpi_wrapper_0_0.xci">
+          <Proxy FileSetName="brd_ulpi_wrapper_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_usb_cdc_core_0_0/brd_usb_cdc_core_0_0.xci">
+          <Proxy FileSetName="brd_usb_cdc_core_0_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_USBFifoToDVSSPI_0_0/brd_USBFifoToDVSSPI_0_0.xci">
           <Proxy FileSetName="brd_USBFifoToDVSSPI_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_SPI_Master_With_Sing_0_2/brd_SPI_Master_With_Sing_0_2.xci">
           <Proxy FileSetName="brd_SPI_Master_With_Sing_0_2"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_usb_cdc_core_0_0/brd_usb_cdc_core_0_0.xci">
-          <Proxy FileSetName="brd_usb_cdc_core_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_ulpi_wrapper_0_0/brd_ulpi_wrapper_0_0.xci">
-          <Proxy FileSetName="brd_ulpi_wrapper_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_system_ila_0_1/brd_system_ila_0_1.xci">
           <Proxy FileSetName="brd_system_ila_0_1"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_dataSwitch_0_0/brd_dataSwitch_0_0.xci">
-          <Proxy FileSetName="brd_dataSwitch_0_0"/>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_xbar_0/brd_xbar_0.xci">
+          <Proxy FileSetName="brd_xbar_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_testAERDVSSM_0_0/brd_testAERDVSSM_0_0.xci">
-          <Proxy FileSetName="brd_testAERDVSSM_0_0"/>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventsGeneratorViaFi_0_0/brd_eventsGeneratorViaFi_0_0.xci">
+          <Proxy FileSetName="brd_eventsGeneratorViaFi_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_LEDShifter_0_0/brd_LEDShifter_0_0.xci">
-          <Proxy FileSetName="brd_LEDShifter_0_0"/>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventStreamSwitch_0_0/brd_eventStreamSwitch_0_0.xci">
+          <Proxy FileSetName="brd_eventStreamSwitch_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventSimulator_0_0/brd_eventSimulator_0_0.xci">
           <Proxy FileSetName="brd_eventSimulator_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventStreamSwitch_0_0/brd_eventStreamSwitch_0_0.xci">
-          <Proxy FileSetName="brd_eventStreamSwitch_0_0"/>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_LEDShifter_0_0/brd_LEDShifter_0_0.xci">
+          <Proxy FileSetName="brd_LEDShifter_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_testAERDVSSM_0_0/brd_testAERDVSSM_0_0.xci">
+          <Proxy FileSetName="brd_testAERDVSSM_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_dataSwitch_0_0/brd_dataSwitch_0_0.xci">
+          <Proxy FileSetName="brd_dataSwitch_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/brd/hdl/brd_wrapper.vhd">
@@ -1364,6 +1370,18 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
+    <FileSet Name="brd_xbar_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/brd_xbar_0">
+      <Config>
+        <Option Name="TopModule" Val="brd_xbar_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="brd_eventsGeneratorViaFi_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/brd_eventsGeneratorViaFi_0_0">
+      <Config>
+        <Option Name="TopModule" Val="brd_eventsGeneratorViaFi_0_0"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -1477,6 +1495,26 @@
     <Run Id="brd_eventSimulator_0_0_synth_1" Type="Ft3:Synth" SrcSet="brd_eventSimulator_0_0" Part="xc7z100ffg900-1" ConstrsSet="brd_eventSimulator_0_0" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/brd_eventSimulator_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="brd_xbar_0_synth_1" Type="Ft3:Synth" SrcSet="brd_xbar_0" Part="xc7z100ffg900-1" ConstrsSet="brd_xbar_0" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/brd_xbar_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="brd_eventsGeneratorViaFi_0_0_synth_1" Type="Ft3:Synth" SrcSet="brd_eventsGeneratorViaFi_0_0" Part="xc7z100ffg900-1" ConstrsSet="brd_eventsGeneratorViaFi_0_0" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/brd_eventsGeneratorViaFi_0_0_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1647,6 +1685,40 @@
     <Run Id="brd_eventSimulator_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z100ffg900-1" ConstrsSet="brd_eventSimulator_0_0" Description="Default settings for Implementation." WriteIncrSynthDcp="false" SynthRun="brd_eventSimulator_0_0_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="brd_xbar_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z100ffg900-1" ConstrsSet="brd_xbar_0" Description="Default settings for Implementation." WriteIncrSynthDcp="false" SynthRun="brd_xbar_0_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="brd_eventsGeneratorViaFi_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z100ffg900-1" ConstrsSet="brd_eventsGeneratorViaFi_0_0" Description="Default settings for Implementation." WriteIncrSynthDcp="false" SynthRun="brd_eventsGeneratorViaFi_0_0_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
