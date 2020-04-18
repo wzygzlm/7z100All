@@ -83,7 +83,7 @@ int SD_Init()
     }
     return XST_SUCCESS;
 }
-int SD_Transfer_read(char *FileName,u32 DestinationAddress,u32 ByteLength)
+int SD_Transfer_read(char *FileName,u64 fileOffset, u32 DestinationAddress,u32 ByteLength, u64 *dataRead)
 {
     FIL fil;
     FRESULT rc;
@@ -94,13 +94,18 @@ int SD_Transfer_read(char *FileName,u32 DestinationAddress,u32 ByteLength)
         xil_printf("ERROR : f_open returned %d\r\n",rc);
         return XST_FAILURE;
     }
-    rc = f_lseek(&fil, 0);
+    if( fileOffset > (fil.fsize) )
+    {
+    	fileOffset = 0;
+    }
+    rc = f_lseek(&fil, fileOffset);
     if(rc)
     {
         xil_printf("ERROR : f_lseek returned %d\r\n",rc);
         return XST_FAILURE;
     }
     rc = f_read(&fil, (void*)DestinationAddress,ByteLength,&br);
+    *dataRead = br;
     if(rc)
     {
         xil_printf("ERROR : f_read returned %d\r\n",rc);
@@ -161,23 +166,36 @@ int main(void)
 	Status = XEventsgeneratorviafile_Initialize(&EGVF, XPAR_EVENTSGENERATORVIAFI_0_DEVICE_ID);
 
 	SD_Init();
-    SD_Transfer_read("cbrd.aed",(u32)picture1,800*600*3+1);
+
+	int offset = 0;
+	int eventsReadNumPerTime = 80000;
+	u64 dataReadOut;
+    SD_Transfer_read("cbrd.aed",offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
 
     while(1)
     {
-        for(int i = 0; i < 800*600 *3; i += 8)
+    	int bytesToRead;
+        if(dataReadOut < eventsReadNumPerTime * 8)
+        {
+        	offset = 0;
+        	bytesToRead = dataReadOut;
+        }
+        else
+        {
+            offset += eventsReadNumPerTime * 8;
+            bytesToRead = eventsReadNumPerTime * 8;
+        }
+
+        for(int i = 0; i < bytesToRead; i += 8)
         {
         	u32 data1 = (picture1[i] << 24) + (picture1[i+1] << 16) + (picture1[i+2] << 8) + picture1[i+3];
-//        	int pol = (data1 & POLMASK) >> POLSHIFT;
-//        	int x = (data1 & XMASK) >> XSHIFT;
-//        	int y = (data1 & YMASK) >> YSHIFT;
-//        	data1 = (y << 16) + (x << 1) + pol;
         	u32 data2 = (picture1[i+4] << 24) + (picture1[i+5] << 16) + (picture1[i+6] << 8) + picture1[i+7];
         	u64 data = ((u64)data2 << 32) + data1;
         	XEventsgeneratorviafile_Set_input_V(&EGVF, data);
         	XEventsgeneratorviafile_Set_counterIn_V(&EGVF, i/8);
         	XEventsgeneratorviafile_Set_input_V_vld(&EGVF);
         }
+        SD_Transfer_read("cbrd.aed",offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
     }
 
 
