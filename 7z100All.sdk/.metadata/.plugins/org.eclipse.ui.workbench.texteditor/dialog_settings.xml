@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="/* Definitions for pe" key="selection"/>
+		<item value="get_ldnumber" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="get_ldnumber"/>
+			<item value="path"/>
+			<item value="find_volume"/>
+			<item value="string"/>
+			<item value="fsize"/>
+			<item value="rewind"/>
 			<item value="EVENTG"/>
 			<item value="EVENT"/>
-			<item value="event"/>
-			<item value="_USE_LFN"/>
-			<item value="ni"/>
-			<item value="create_name"/>
-			<item value="FR_INVALID_NAME"/>
-			<item value="INVALID_NAME"/>
 		</list>
 		<list key="replacehistory">
 		</list>

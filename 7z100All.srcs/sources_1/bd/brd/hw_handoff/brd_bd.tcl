@@ -1756,14 +1756,6 @@ HDL_ATTRIBUTE.DEBUG {true} \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets c_counter_binary_0_Q]
   connect_bd_net -net const_VCC_dout [get_bd_pins EFAST_input_0/ap_start] [get_bd_pins EFAST_output_0/ap_start] [get_bd_pins EFAST_process_data_0/ap_start] [get_bd_pins EVABMOFStream_0/ap_start] [get_bd_pins EVMUXDataToXYTSStream_0/ap_start] [get_bd_pins RawStreamToFIFO_0/ap_start] [get_bd_pins XYTSStreamToRawStream_0/ap_start] [get_bd_pins const_VCC/dout] [get_bd_pins eventSimulator_0/ap_start] [get_bd_pins eventStreamSwitch_0/ap_start] [get_bd_pins eventStreamToConstEn_0/ap_start] [get_bd_pins eventsGeneratorViaFi_0/ap_start] [get_bd_pins processing_system7_0/SPI0_SS_I]
-  connect_bd_net -net counterOut_V [get_bd_pins eventsGeneratorViaFi_0/counterOut_V] [get_bd_pins system_ila_0/probe43]
-  set_property -dict [ list \
-HDL_ATTRIBUTE.DEBUG {true} \
- ] [get_bd_nets counterOut_V]
-  connect_bd_net -net counterOut_V_ap_vld [get_bd_pins eventsGeneratorViaFi_0/counterOut_V_ap_vld] [get_bd_pins system_ila_0/probe42]
-  set_property -dict [ list \
-HDL_ATTRIBUTE.DEBUG {true} \
- ] [get_bd_nets counterOut_V_ap_vld]
   connect_bd_net -net ctrl_ack_r_do [get_bd_pins system_ila_2/probe36] [get_bd_pins usb_cdc_core_0/ctrl_ack_r_do]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \

@@ -3340,24 +3340,6 @@
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
         </bd:hdl_attributes>
       </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>counterOut_V_ap_vld</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="counterOut_V_ap_vld"/>
-        <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe42"/>
-        <bd:hdl_attributes>
-          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
-          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
-        </bd:hdl_attributes>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>counterOut_V</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="counterOut_V"/>
-        <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="probe43"/>
-        <bd:hdl_attributes>
-          <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
-          <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
-        </bd:hdl_attributes>
-      </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>
       <spirit:hierConnection spirit:interfaceRef="DDR/processing_system7_0_DDR">

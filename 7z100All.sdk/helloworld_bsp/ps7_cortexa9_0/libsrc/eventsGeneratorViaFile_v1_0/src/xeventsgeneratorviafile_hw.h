@@ -17,24 +17,9 @@
 // 0x18 : Control signal of input_V
 //        bit 0  - input_V_ap_vld (Read/Write/SC)
 //        others - reserved
-// 0x1c : Data signal of counterIn_V
-//        bit 31~0 - counterIn_V[31:0] (Read/Write)
-// 0x20 : Data signal of counterIn_V
-//        bit 31~0 - counterIn_V[63:32] (Read/Write)
-// 0x24 : reserved
-// 0x28 : Data signal of status_V
-//        bit 31~0 - status_V[31:0] (Read)
-// 0x2c : Control signal of status_V
-//        bit 0  - status_V_ap_vld (Read/COR)
-//        others - reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
-#define XEVENTSGENERATORVIAFILE_CONFIG_ADDR_INPUT_V_DATA     0x10
-#define XEVENTSGENERATORVIAFILE_CONFIG_BITS_INPUT_V_DATA     64
-#define XEVENTSGENERATORVIAFILE_CONFIG_ADDR_INPUT_V_CTRL     0x18
-#define XEVENTSGENERATORVIAFILE_CONFIG_ADDR_COUNTERIN_V_DATA 0x1c
-#define XEVENTSGENERATORVIAFILE_CONFIG_BITS_COUNTERIN_V_DATA 64
-#define XEVENTSGENERATORVIAFILE_CONFIG_ADDR_STATUS_V_DATA    0x28
-#define XEVENTSGENERATORVIAFILE_CONFIG_BITS_STATUS_V_DATA    32
-#define XEVENTSGENERATORVIAFILE_CONFIG_ADDR_STATUS_V_CTRL    0x2c
+#define XEVENTSGENERATORVIAFILE_CONFIG_ADDR_INPUT_V_DATA 0x10
+#define XEVENTSGENERATORVIAFILE_CONFIG_BITS_INPUT_V_DATA 64
+#define XEVENTSGENERATORVIAFILE_CONFIG_ADDR_INPUT_V_CTRL 0x18
 

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventsGeneratorViaFile:1.0
--- IP Revision: 2004181125
+-- IP Revision: 2004181448
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,8 +55,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY brd_eventsGeneratorViaFi_0_0 IS
   PORT (
-    counterOut_V_ap_vld : OUT STD_LOGIC;
-    s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+    s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     s_axi_config_AWVALID : IN STD_LOGIC;
     s_axi_config_AWREADY : OUT STD_LOGIC;
     s_axi_config_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -66,7 +65,7 @@ ENTITY brd_eventsGeneratorViaFi_0_0 IS
     s_axi_config_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     s_axi_config_BVALID : OUT STD_LOGIC;
     s_axi_config_BREADY : IN STD_LOGIC;
-    s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+    s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     s_axi_config_ARVALID : IN STD_LOGIC;
     s_axi_config_ARREADY : OUT STD_LOGIC;
     s_axi_config_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -79,7 +78,6 @@ ENTITY brd_eventsGeneratorViaFi_0_0 IS
     ap_done : OUT STD_LOGIC;
     ap_idle : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
-    counterOut_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     xStreamOut_V_V_TVALID : OUT STD_LOGIC;
     xStreamOut_V_V_TREADY : IN STD_LOGIC;
     xStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -104,8 +102,7 @@ ARCHITECTURE brd_eventsGeneratorViaFi_0_0_arch OF brd_eventsGeneratorViaFi_0_0 I
       C_S_AXI_CONFIG_DATA_WIDTH : INTEGER
     );
     PORT (
-      counterOut_V_ap_vld : OUT STD_LOGIC;
-      s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+      s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       s_axi_config_AWVALID : IN STD_LOGIC;
       s_axi_config_AWREADY : OUT STD_LOGIC;
       s_axi_config_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -115,7 +112,7 @@ ARCHITECTURE brd_eventsGeneratorViaFi_0_0_arch OF brd_eventsGeneratorViaFi_0_0 I
       s_axi_config_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       s_axi_config_BVALID : OUT STD_LOGIC;
       s_axi_config_BREADY : IN STD_LOGIC;
-      s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+      s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       s_axi_config_ARVALID : IN STD_LOGIC;
       s_axi_config_ARREADY : OUT STD_LOGIC;
       s_axi_config_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -128,7 +125,6 @@ ARCHITECTURE brd_eventsGeneratorViaFi_0_0_arch OF brd_eventsGeneratorViaFi_0_0 I
       ap_done : OUT STD_LOGIC;
       ap_idle : OUT STD_LOGIC;
       ap_ready : OUT STD_LOGIC;
-      counterOut_V : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       xStreamOut_V_V_TVALID : OUT STD_LOGIC;
       xStreamOut_V_V_TREADY : IN STD_LOGIC;
       xStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -169,9 +165,6 @@ ARCHITECTURE brd_eventsGeneratorViaFi_0_0_arch OF brd_eventsGeneratorViaFi_0_0 I
 "ncy {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, C" & 
 "LK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF xStreamOut_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 xStreamOut_V_V TVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF counterOut_V: SIGNAL IS "XIL_INTERFACENAME counterOut_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} " & 
-"value false}}}}}";
-  ATTRIBUTE X_INTERFACE_INFO OF counterOut_V: SIGNAL IS "xilinx.com:signal:data:1.0 counterOut_V DATA";
   ATTRIBUTE X_INTERFACE_INFO OF ap_ready: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl ready";
   ATTRIBUTE X_INTERFACE_INFO OF ap_idle: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl idle";
   ATTRIBUTE X_INTERFACE_INFO OF ap_done: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl done";
@@ -200,17 +193,16 @@ ARCHITECTURE brd_eventsGeneratorViaFi_0_0_arch OF brd_eventsGeneratorViaFi_0_0 I
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_WDATA: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config WDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_config_AWADDR: SIGNAL IS "XIL_INTERFACENAME s_axi_config, ADDR_WIDTH 6, DATA_WIDTH 32, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, ID" & 
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_config_AWADDR: SIGNAL IS "XIL_INTERFACENAME s_axi_config, ADDR_WIDTH 5, DATA_WIDTH 32, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, ID" & 
 "_WIDTH 0, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 0, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWADDR: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWADDR";
 BEGIN
   U0 : eventsGeneratorViaFile
     GENERIC MAP (
-      C_S_AXI_CONFIG_ADDR_WIDTH => 6,
+      C_S_AXI_CONFIG_ADDR_WIDTH => 5,
       C_S_AXI_CONFIG_DATA_WIDTH => 32
     )
     PORT MAP (
-      counterOut_V_ap_vld => counterOut_V_ap_vld,
       s_axi_config_AWADDR => s_axi_config_AWADDR,
       s_axi_config_AWVALID => s_axi_config_AWVALID,
       s_axi_config_AWREADY => s_axi_config_AWREADY,
@@ -234,7 +226,6 @@ BEGIN
       ap_done => ap_done,
       ap_idle => ap_idle,
       ap_ready => ap_ready,
-      counterOut_V => counterOut_V,
       xStreamOut_V_V_TVALID => xStreamOut_V_V_TVALID,
       xStreamOut_V_V_TREADY => xStreamOut_V_V_TREADY,
       xStreamOut_V_V_TDATA => xStreamOut_V_V_TDATA,

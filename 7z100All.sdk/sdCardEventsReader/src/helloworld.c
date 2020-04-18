@@ -34,12 +34,12 @@ XEventsgeneratorviafile EGVF;
 #define VIDEO_BASEADDR1 DDR_BASEADDR + 0x2000000
 #define VIDEO_BASEADDR2 DDR_BASEADDR + 0x3000000
 
-#define YSHIFT 22
-#define YMASK (511 << YSHIFT) // 9 bits from bits 22 to 30
-#define XSHIFT 12
-#define XMASK (1023 << XSHIFT) // 10 bits from bits 12 to 21
-#define POLSHIFT 11
-#define POLMASK (1 << POLSHIFT)  // 1 bit at bit 11
+#define POLARITY_SHIFT 11
+#define POLARITY_MASK (1 << POLARITY_SHIFT)  // 1 bit at bit 11
+#define POLARITY_Y_ADDR_SHIFT 22
+#define POLARITY_Y_ADDR_MASK (511 << POLARITY_Y_ADDR_SHIFT) // 9 bits from bits 22 to 30
+#define POLARITY_X_ADDR_SHIFT 12
+#define POLARITY_X_ADDR_MASK (1023 << POLARITY_X_ADDR_SHIFT) // 10 bits from bits 12 to 21
 
 void Xil_DCacheFlush(void);
 
@@ -83,6 +83,7 @@ int SD_Init()
     }
     return XST_SUCCESS;
 }
+
 int SD_Transfer_read(char *FileName,u64 fileOffset, u32 DestinationAddress,u32 ByteLength, u64 *dataRead)
 {
     FIL fil;
@@ -167,22 +168,73 @@ int main(void)
 
 	SD_Init();
 
+	char *fileName = "data.aed";
 	int offset = 0;
-	int eventsReadNumPerTime = 80000;
 	u64 dataReadOut;
-    SD_Transfer_read("cbrd.aed",offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
+	int dataStartOffset = 0;
+
+//	// Try to get the file header
+//	unsigned char tmpC;
+//	int breakcond = 0;
+//	while (!breakcond)
+//	{
+//		SD_Transfer_read(fileName,offset,(u32)&tmpC,1, &dataReadOut);
+//		offset++;
+//		if(tmpC == 'H')
+//		{
+//			SD_Transfer_read(fileName,offset,(u32)&tmpC,1, &dataReadOut);
+//			offset++;
+//			if(tmpC == 'e')
+//			{
+//				SD_Transfer_read(fileName,offset,(u32)&tmpC,1, &dataReadOut);
+//				offset++;
+//				if(tmpC == 'a')
+//				{
+//					SD_Transfer_read(fileName,offset,(u32)&tmpC,1, &dataReadOut);
+//					offset++;
+//					if(tmpC == 'd')
+//					{
+//						SD_Transfer_read(fileName,offset,(u32)&tmpC,1, &dataReadOut);
+//						offset++;
+//						if(tmpC == 'e')
+//						{
+//							SD_Transfer_read(fileName,offset,(u32)&tmpC,1, &dataReadOut);
+//							offset++;
+//							if(tmpC == 'r')
+//							{
+//								SD_Transfer_read(fileName,offset,(u32)&tmpC,1, &dataReadOut);
+//								offset++;
+//								breakcond = 1;
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	offset++;
+//	dataStartOffset = offset;
+
+	int eventsReadNumPerTime = 8000;
+    SD_Transfer_read(fileName,offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
 
     while(1)
     {
+//        u32 tmpGpioData = XGpio_DiscreteRead(&Gpio, 1);
+//        if((tmpGpioData & 0x10000) == 0)  // In live mode, we ignore the data
+//        {
+//        	continue;
+//        }
+
     	int bytesToRead;
         if(dataReadOut < eventsReadNumPerTime * 8)
         {
-        	offset = 0;
+        	offset = dataStartOffset;
         	bytesToRead = dataReadOut;
         }
         else
         {
-            offset += eventsReadNumPerTime * 8;
+            offset +=  eventsReadNumPerTime * 8;
             bytesToRead = eventsReadNumPerTime * 8;
         }
 
@@ -190,12 +242,19 @@ int main(void)
         {
         	u32 data1 = (picture1[i] << 24) + (picture1[i+1] << 16) + (picture1[i+2] << 8) + picture1[i+3];
         	u32 data2 = (picture1[i+4] << 24) + (picture1[i+5] << 16) + (picture1[i+6] << 8) + picture1[i+7];
-        	u64 data = ((u64)data2 << 32) + data1;
+
+        	int x = ((data1) & POLARITY_X_ADDR_MASK) >> POLARITY_X_ADDR_SHIFT;
+        	x = 345 - x;
+        	int y = ((data1) & POLARITY_Y_ADDR_MASK) >> POLARITY_Y_ADDR_SHIFT;
+        	y = 259 - y;
+        	int pol  = ((data1) & POLARITY_MASK) >> POLARITY_SHIFT;
+        	data1 = (y << POLARITY_Y_ADDR_SHIFT) + (x << POLARITY_X_ADDR_SHIFT)+ (pol << POLARITY_SHIFT);
+
+			u64 data = ((u64)data2 << 32) + data1;
         	XEventsgeneratorviafile_Set_input_V(&EGVF, data);
-        	XEventsgeneratorviafile_Set_counterIn_V(&EGVF, i/8);
         	XEventsgeneratorviafile_Set_input_V_vld(&EGVF);
         }
-        SD_Transfer_read("cbrd.aed",offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
+        SD_Transfer_read(fileName,offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
     }
 
 

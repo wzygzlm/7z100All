@@ -1012,7 +1012,7 @@
           <spirit:configurableElementValue spirit:referenceId="C_PROBE46_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE45_WIDTH">16</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE44_WIDTH">16</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="C_PROBE43_WIDTH">64</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_PROBE43_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE42_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE41_WIDTH">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE40_WIDTH">1</spirit:configurableElementValue>

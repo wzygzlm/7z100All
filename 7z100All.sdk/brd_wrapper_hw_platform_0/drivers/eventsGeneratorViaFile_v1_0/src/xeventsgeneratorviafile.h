@@ -85,10 +85,6 @@ void XEventsgeneratorviafile_Set_input_V(XEventsgeneratorviafile *InstancePtr, u
 u64 XEventsgeneratorviafile_Get_input_V(XEventsgeneratorviafile *InstancePtr);
 void XEventsgeneratorviafile_Set_input_V_vld(XEventsgeneratorviafile *InstancePtr);
 u32 XEventsgeneratorviafile_Get_input_V_vld(XEventsgeneratorviafile *InstancePtr);
-void XEventsgeneratorviafile_Set_counterIn_V(XEventsgeneratorviafile *InstancePtr, u64 Data);
-u64 XEventsgeneratorviafile_Get_counterIn_V(XEventsgeneratorviafile *InstancePtr);
-u32 XEventsgeneratorviafile_Get_status_V(XEventsgeneratorviafile *InstancePtr);
-u32 XEventsgeneratorviafile_Get_status_V_vld(XEventsgeneratorviafile *InstancePtr);
 
 #ifdef __cplusplus
 }

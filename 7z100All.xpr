@@ -614,11 +614,20 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_dataSwitch_0_0/brd_dataSwitch_0_0.xci">
+          <Proxy FileSetName="brd_dataSwitch_0_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_ulpi_wrapper_0_0/brd_ulpi_wrapper_0_0.xci">
           <Proxy FileSetName="brd_ulpi_wrapper_0_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_system_ila_0_1/brd_system_ila_0_1.xci">
+          <Proxy FileSetName="brd_system_ila_0_1"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_usb_cdc_core_0_0/brd_usb_cdc_core_0_0.xci">
           <Proxy FileSetName="brd_usb_cdc_core_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_xbar_0/brd_xbar_0.xci">
+          <Proxy FileSetName="brd_xbar_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_USBFifoToDVSSPI_0_0/brd_USBFifoToDVSSPI_0_0.xci">
           <Proxy FileSetName="brd_USBFifoToDVSSPI_0_0"/>
@@ -626,29 +635,20 @@
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_SPI_Master_With_Sing_0_2/brd_SPI_Master_With_Sing_0_2.xci">
           <Proxy FileSetName="brd_SPI_Master_With_Sing_0_2"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_system_ila_0_1/brd_system_ila_0_1.xci">
-          <Proxy FileSetName="brd_system_ila_0_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_xbar_0/brd_xbar_0.xci">
-          <Proxy FileSetName="brd_xbar_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventsGeneratorViaFi_0_0/brd_eventsGeneratorViaFi_0_0.xci">
-          <Proxy FileSetName="brd_eventsGeneratorViaFi_0_0"/>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventSimulator_0_0/brd_eventSimulator_0_0.xci">
+          <Proxy FileSetName="brd_eventSimulator_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventStreamSwitch_0_0/brd_eventStreamSwitch_0_0.xci">
           <Proxy FileSetName="brd_eventStreamSwitch_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventSimulator_0_0/brd_eventSimulator_0_0.xci">
-          <Proxy FileSetName="brd_eventSimulator_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_LEDShifter_0_0/brd_LEDShifter_0_0.xci">
-          <Proxy FileSetName="brd_LEDShifter_0_0"/>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_eventsGeneratorViaFi_0_0/brd_eventsGeneratorViaFi_0_0.xci">
+          <Proxy FileSetName="brd_eventsGeneratorViaFi_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_testAERDVSSM_0_0/brd_testAERDVSSM_0_0.xci">
           <Proxy FileSetName="brd_testAERDVSSM_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_dataSwitch_0_0/brd_dataSwitch_0_0.xci">
-          <Proxy FileSetName="brd_dataSwitch_0_0"/>
+        <CompFileExtendedInfo CompFileName="brd.bd" FileRelPathName="ip/brd_LEDShifter_0_0/brd_LEDShifter_0_0.xci">
+          <Proxy FileSetName="brd_LEDShifter_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/brd/hdl/brd_wrapper.vhd">
