@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Sat Apr 18 00:19:41 2020
+-- Date        : Sat Apr 18 19:57:12 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_system_ila_0_1/brd_system_ila_0_1_stub.vhdl
@@ -57,22 +57,7 @@ entity brd_system_ila_0_1 is
     probe39 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe44 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    SLOT_0_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    SLOT_0_AXIS_tlast : in STD_LOGIC;
-    SLOT_0_AXIS_tvalid : in STD_LOGIC;
-    SLOT_0_AXIS_tready : in STD_LOGIC;
-    SLOT_1_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    SLOT_1_AXIS_tlast : in STD_LOGIC;
-    SLOT_1_AXIS_tvalid : in STD_LOGIC;
-    SLOT_1_AXIS_tready : in STD_LOGIC;
-    SLOT_2_AXIS_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    SLOT_2_AXIS_tlast : in STD_LOGIC;
-    SLOT_2_AXIS_tvalid : in STD_LOGIC;
-    SLOT_2_AXIS_tready : in STD_LOGIC;
-    resetn : in STD_LOGIC
+    probe42 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
 
 end brd_system_ila_0_1;
@@ -81,7 +66,7 @@ architecture stub of brd_system_ila_0_1 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "clk,probe0[0:0],probe1[10:0],probe2[0:0],probe3[0:0],probe4[0:0],probe5[7:0],probe6[13:0],probe7[0:0],probe8[0:0],probe9[0:0],probe10[0:0],probe11[0:0],probe12[31:0],probe13[63:0],probe14[0:0],probe15[0:0],probe16[0:0],probe17[0:0],probe18[15:0],probe19[63:0],probe20[0:0],probe21[0:0],probe22[15:0],probe23[15:0],probe24[63:0],probe25[63:0],probe26[0:0],probe27[15:0],probe28[15:0],probe29[0:0],probe30[15:0],probe31[0:0],probe32[0:0],probe33[15:0],probe34[63:0],probe35[7:0],probe36[0:0],probe37[9:0],probe38[0:0],probe39[0:0],probe40[0:0],probe41[0:0],probe42[0:0],probe43[63:0],probe44[15:0],SLOT_0_AXIS_tdata[15:0],SLOT_0_AXIS_tlast,SLOT_0_AXIS_tvalid,SLOT_0_AXIS_tready,SLOT_1_AXIS_tdata[15:0],SLOT_1_AXIS_tlast,SLOT_1_AXIS_tvalid,SLOT_1_AXIS_tready,SLOT_2_AXIS_tdata[63:0],SLOT_2_AXIS_tlast,SLOT_2_AXIS_tvalid,SLOT_2_AXIS_tready,resetn";
+attribute black_box_pad_pin of stub : architecture is "clk,probe0[0:0],probe1[10:0],probe2[0:0],probe3[0:0],probe4[0:0],probe5[7:0],probe6[13:0],probe7[0:0],probe8[0:0],probe9[0:0],probe10[0:0],probe11[0:0],probe12[31:0],probe13[63:0],probe14[0:0],probe15[0:0],probe16[0:0],probe17[0:0],probe18[15:0],probe19[63:0],probe20[0:0],probe21[0:0],probe22[15:0],probe23[15:0],probe24[63:0],probe25[63:0],probe26[0:0],probe27[15:0],probe28[15:0],probe29[0:0],probe30[15:0],probe31[0:0],probe32[0:0],probe33[15:0],probe34[63:0],probe35[7:0],probe36[0:0],probe37[9:0],probe38[0:0],probe39[0:0],probe40[0:0],probe41[0:0],probe42[15:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "bd_d325,Vivado 2018.1";
 begin

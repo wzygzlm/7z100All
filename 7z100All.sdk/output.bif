@@ -2,6 +2,6 @@
 the_ROM_image:
 {
 	[bootloader]E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk\zynqDavisFsbl.elf
-	[load = 0x100000]E:\PhD_project\vivado_prjs\davisZynq\7z100All\brd_wrapper.bit
-	E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk\helloworld_ddr\Debug\helloworld_ddr.elf
+	[load = 0x100000]E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk\brd_wrapper.bit
+	E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk\sdCardEventsReader\Debug\sdCardEventsReader.elf
 }

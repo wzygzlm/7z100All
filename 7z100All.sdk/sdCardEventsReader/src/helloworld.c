@@ -160,6 +160,27 @@ int main(void)
 		return XST_FAILURE;
 	}
 
+	XGpio_SetDataDirection(&Gpio, 1, 0);              // Output for control
+
+	u32 tmpGpioData = XGpio_DiscreteRead(&Gpio, 1);
+	tmpGpioData = tmpGpioData | 0x8;
+	XGpio_DiscreteWrite(&Gpio, 1, tmpGpioData);
+	tmpGpioData = tmpGpioData  & ~0x8;
+	XGpio_DiscreteWrite(&Gpio, 1, tmpGpioData);
+
+	tmpGpioData = XGpio_DiscreteRead(&Gpio, 1);
+	tmpGpioData = tmpGpioData | 0x3; // Reset cdc core and ULPI wrapper
+	tmpGpioData = tmpGpioData & ~0x4; // Disable cdc core
+	XGpio_DiscreteWrite(&Gpio, 1, tmpGpioData);
+
+	tmpGpioData = tmpGpioData & ~0x3; // stop resetting cdc core and ULPI wrapper
+	tmpGpioData = tmpGpioData | 0x4; // enable cdc core
+	XGpio_DiscreteWrite(&Gpio, 1, tmpGpioData);
+
+	tmpGpioData = XGpio_DiscreteRead(&Gpio, 1);
+	tmpGpioData = tmpGpioData | 0x8; // enable host ack
+	XGpio_DiscreteWrite(&Gpio, 1, tmpGpioData);
+
 
 //	XGpio_SetDataDirection(&Gpio, 2, 0xffffffff);     // Input for status monitor
 	XGpio_SetDataDirection(&Gpio, 1, 0);              // Output for control
@@ -168,7 +189,7 @@ int main(void)
 
 	SD_Init();
 
-	char *fileName = "data.aed";
+	char *fileName = "OFRet.bin";
 	int offset = 0;
 	u64 dataReadOut;
 	int dataStartOffset = 0;
@@ -244,11 +265,12 @@ int main(void)
         	u32 data2 = (picture1[i+4] << 24) + (picture1[i+5] << 16) + (picture1[i+6] << 8) + picture1[i+7];
 
         	int x = ((data1) & POLARITY_X_ADDR_MASK) >> POLARITY_X_ADDR_SHIFT;
-        	x = 345 - x;
+        	x = x;
         	int y = ((data1) & POLARITY_Y_ADDR_MASK) >> POLARITY_Y_ADDR_SHIFT;
         	y = 259 - y;
         	int pol  = ((data1) & POLARITY_MASK) >> POLARITY_SHIFT;
-        	data1 = (y << POLARITY_Y_ADDR_SHIFT) + (x << POLARITY_X_ADDR_SHIFT)+ (pol << POLARITY_SHIFT);
+        	int custData = (data1 & 0x3ff);
+        	data1 = (y << POLARITY_Y_ADDR_SHIFT) + (x << POLARITY_X_ADDR_SHIFT)+ (pol << POLARITY_SHIFT) + custData;
 
 			u64 data = ((u64)data2 << 32) + data1;
         	XEventsgeneratorviafile_Set_input_V(&EGVF, data);

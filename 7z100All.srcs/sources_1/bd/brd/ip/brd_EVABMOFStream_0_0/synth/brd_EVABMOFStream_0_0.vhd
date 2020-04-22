@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVABMOFStream:1.0
--- IP Revision: 2004151558
+-- IP Revision: 2004220921
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -142,7 +142,7 @@ ARCHITECTURE brd_EVABMOFStream_0_0_arch OF brd_EVABMOFStream_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_EVABMOFStream_0_0_arch : ARCHITECTURE IS "brd_EVABMOFStream_0_0,EVABMOFStream,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVABMOFStream_0_0_arch: ARCHITECTURE IS "brd_EVABMOFStream_0_0,EVABMOFStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVABMOFStream,x_ipVersion=1.0,x_ipCoreRevision=2004151558,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_EVABMOFStream_0_0_arch: ARCHITECTURE IS "brd_EVABMOFStream_0_0,EVABMOFStream,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=EVABMOFStream,x_ipVersion=1.0,x_ipCoreRevision=2004220921,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF ap_idle: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl idle";

@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Thu Apr 16 16:33:56 2020
+-- Date        : Thu Apr 16 16:33:54 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_eventStreamSwitch_0_0/brd_eventStreamSwitch_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top brd_eventStreamSwitch_0_0 -prefix
+--               brd_eventStreamSwitch_0_0_ brd_eventStreamSwitch_0_0_sim_netlist.vhdl
 -- Design      : brd_eventStreamSwitch_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -60,8 +60,6 @@ entity brd_eventStreamSwitch_0_0_eventStreamSwitch is
     polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
     polStreamOut_V_V_TVALID : out STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_eventStreamSwitch_0_0_eventStreamSwitch : entity is "eventStreamSwitch";
 end brd_eventStreamSwitch_0_0_eventStreamSwitch;
 
 architecture STRUCTURE of brd_eventStreamSwitch_0_0_eventStreamSwitch is

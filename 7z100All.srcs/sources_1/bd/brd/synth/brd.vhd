@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
---Date        : Sat Apr 18 14:54:38 2020
+--Date        : Wed Apr 22 10:45:52 2020
 --Host        : mbp-win10 running 64-bit major release  (build 9200)
 --Command     : generate_target brd.bd
 --Design      : brd
@@ -2308,22 +2308,7 @@ architecture STRUCTURE of brd is
     probe39 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe40 : in STD_LOGIC_VECTOR ( 0 to 0 );
     probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe42 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe43 : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    probe44 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    SLOT_0_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    SLOT_0_AXIS_tlast : in STD_LOGIC;
-    SLOT_0_AXIS_tvalid : in STD_LOGIC;
-    SLOT_0_AXIS_tready : in STD_LOGIC;
-    SLOT_1_AXIS_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    SLOT_1_AXIS_tlast : in STD_LOGIC;
-    SLOT_1_AXIS_tvalid : in STD_LOGIC;
-    SLOT_1_AXIS_tready : in STD_LOGIC;
-    SLOT_2_AXIS_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    SLOT_2_AXIS_tlast : in STD_LOGIC;
-    SLOT_2_AXIS_tvalid : in STD_LOGIC;
-    SLOT_2_AXIS_tready : in STD_LOGIC;
-    resetn : in STD_LOGIC
+    probe42 : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component brd_system_ila_0_1;
   component brd_system_ila_2_1 is
@@ -3106,6 +3091,70 @@ architecture STRUCTURE of brd is
     lastTsReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 )
   );
   end component brd_RawStreamToFIFO_0_0;
+  component brd_eventSimulator_0_0 is
+  port (
+    ap_clk : in STD_LOGIC;
+    ap_rst_n : in STD_LOGIC;
+    ap_start : in STD_LOGIC;
+    ap_done : out STD_LOGIC;
+    ap_idle : out STD_LOGIC;
+    ap_ready : out STD_LOGIC;
+    xStreamOut_V_V_TVALID : out STD_LOGIC;
+    xStreamOut_V_V_TREADY : in STD_LOGIC;
+    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamOut_V_V_TVALID : out STD_LOGIC;
+    yStreamOut_V_V_TREADY : in STD_LOGIC;
+    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamOut_V_V_TVALID : out STD_LOGIC;
+    tsStreamOut_V_V_TREADY : in STD_LOGIC;
+    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamOut_V_V_TVALID : out STD_LOGIC;
+    polStreamOut_V_V_TREADY : in STD_LOGIC;
+    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component brd_eventSimulator_0_0;
+  component brd_eventsGeneratorViaFi_0_0 is
+  port (
+    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_AWVALID : in STD_LOGIC;
+    s_axi_config_AWREADY : out STD_LOGIC;
+    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_config_WVALID : in STD_LOGIC;
+    s_axi_config_WREADY : out STD_LOGIC;
+    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_BVALID : out STD_LOGIC;
+    s_axi_config_BREADY : in STD_LOGIC;
+    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_ARVALID : in STD_LOGIC;
+    s_axi_config_ARREADY : out STD_LOGIC;
+    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_RVALID : out STD_LOGIC;
+    s_axi_config_RREADY : in STD_LOGIC;
+    ap_clk : in STD_LOGIC;
+    ap_rst_n : in STD_LOGIC;
+    ap_start : in STD_LOGIC;
+    ap_done : out STD_LOGIC;
+    ap_idle : out STD_LOGIC;
+    ap_ready : out STD_LOGIC;
+    xStreamOut_V_V_TVALID : out STD_LOGIC;
+    xStreamOut_V_V_TREADY : in STD_LOGIC;
+    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamOut_V_V_TVALID : out STD_LOGIC;
+    yStreamOut_V_V_TREADY : in STD_LOGIC;
+    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamOut_V_V_TVALID : out STD_LOGIC;
+    tsStreamOut_V_V_TREADY : in STD_LOGIC;
+    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamOut_V_V_TVALID : out STD_LOGIC;
+    polStreamOut_V_V_TREADY : in STD_LOGIC;
+    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    custDataStreamOut_V_V_TVALID : out STD_LOGIC;
+    custDataStreamOut_V_V_TREADY : in STD_LOGIC;
+    custDataStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component brd_eventsGeneratorViaFi_0_0;
   component brd_EVABMOFStream_0_0 is
   port (
     status_V_ap_vld : out STD_LOGIC;
@@ -3193,67 +3242,6 @@ architecture STRUCTURE of brd is
     polStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component brd_eventStreamSwitch_0_0;
-  component brd_eventSimulator_0_0 is
-  port (
-    ap_clk : in STD_LOGIC;
-    ap_rst_n : in STD_LOGIC;
-    ap_start : in STD_LOGIC;
-    ap_done : out STD_LOGIC;
-    ap_idle : out STD_LOGIC;
-    ap_ready : out STD_LOGIC;
-    xStreamOut_V_V_TVALID : out STD_LOGIC;
-    xStreamOut_V_V_TREADY : in STD_LOGIC;
-    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamOut_V_V_TVALID : out STD_LOGIC;
-    yStreamOut_V_V_TREADY : in STD_LOGIC;
-    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamOut_V_V_TVALID : out STD_LOGIC;
-    tsStreamOut_V_V_TREADY : in STD_LOGIC;
-    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamOut_V_V_TVALID : out STD_LOGIC;
-    polStreamOut_V_V_TREADY : in STD_LOGIC;
-    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component brd_eventSimulator_0_0;
-  component brd_eventsGeneratorViaFi_0_0 is
-  port (
-    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_AWVALID : in STD_LOGIC;
-    s_axi_config_AWREADY : out STD_LOGIC;
-    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_config_WVALID : in STD_LOGIC;
-    s_axi_config_WREADY : out STD_LOGIC;
-    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_BVALID : out STD_LOGIC;
-    s_axi_config_BREADY : in STD_LOGIC;
-    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_ARVALID : in STD_LOGIC;
-    s_axi_config_ARREADY : out STD_LOGIC;
-    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_RVALID : out STD_LOGIC;
-    s_axi_config_RREADY : in STD_LOGIC;
-    ap_clk : in STD_LOGIC;
-    ap_rst_n : in STD_LOGIC;
-    ap_start : in STD_LOGIC;
-    ap_done : out STD_LOGIC;
-    ap_idle : out STD_LOGIC;
-    ap_ready : out STD_LOGIC;
-    xStreamOut_V_V_TVALID : out STD_LOGIC;
-    xStreamOut_V_V_TREADY : in STD_LOGIC;
-    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamOut_V_V_TVALID : out STD_LOGIC;
-    yStreamOut_V_V_TREADY : in STD_LOGIC;
-    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamOut_V_V_TVALID : out STD_LOGIC;
-    tsStreamOut_V_V_TREADY : in STD_LOGIC;
-    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamOut_V_V_TVALID : out STD_LOGIC;
-    polStreamOut_V_V_TREADY : in STD_LOGIC;
-    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component brd_eventsGeneratorViaFi_0_0;
   signal DVSAERData_AI_0_1 : STD_LOGIC_VECTOR ( 10 downto 0 );
   attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of DVSAERData_AI_0_1 : signal is std.standard.true;
@@ -3509,43 +3497,6 @@ architecture STRUCTURE of brd is
   signal ep2_tx_data_w_do : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute MARK_DEBUG of ep2_tx_data_w_do : signal is std.standard.true;
   attribute debug of ep2_tx_data_w_do : signal is "true";
-  signal eventSimulator_0_tsStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 63 downto 0 );
-  attribute MARK_DEBUG of eventSimulator_0_tsStreamOut_V_V_TDATA : signal is std.standard.true;
-  attribute conn_bus_info : string;
-  attribute conn_bus_info of eventSimulator_0_tsStreamOut_V_V_TDATA : signal is "eventSimulator_0_tsStreamOut_V_V xilinx.com:interface:axis:1.0 None TDATA";
-  attribute debug of eventSimulator_0_tsStreamOut_V_V_TDATA : signal is "true";
-  signal eventSimulator_0_tsStreamOut_V_V_TREADY : STD_LOGIC;
-  attribute MARK_DEBUG of eventSimulator_0_tsStreamOut_V_V_TREADY : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_tsStreamOut_V_V_TREADY : signal is "eventSimulator_0_tsStreamOut_V_V xilinx.com:interface:axis:1.0 None TREADY";
-  attribute debug of eventSimulator_0_tsStreamOut_V_V_TREADY : signal is "true";
-  signal eventSimulator_0_tsStreamOut_V_V_TVALID : STD_LOGIC;
-  attribute MARK_DEBUG of eventSimulator_0_tsStreamOut_V_V_TVALID : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_tsStreamOut_V_V_TVALID : signal is "eventSimulator_0_tsStreamOut_V_V xilinx.com:interface:axis:1.0 None TVALID";
-  attribute debug of eventSimulator_0_tsStreamOut_V_V_TVALID : signal is "true";
-  signal eventSimulator_0_xStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of eventSimulator_0_xStreamOut_V_V_TDATA : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_xStreamOut_V_V_TDATA : signal is "eventSimulator_0_xStreamOut_V_V xilinx.com:interface:axis:1.0 None TDATA";
-  attribute debug of eventSimulator_0_xStreamOut_V_V_TDATA : signal is "true";
-  signal eventSimulator_0_xStreamOut_V_V_TREADY : STD_LOGIC;
-  attribute MARK_DEBUG of eventSimulator_0_xStreamOut_V_V_TREADY : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_xStreamOut_V_V_TREADY : signal is "eventSimulator_0_xStreamOut_V_V xilinx.com:interface:axis:1.0 None TREADY";
-  attribute debug of eventSimulator_0_xStreamOut_V_V_TREADY : signal is "true";
-  signal eventSimulator_0_xStreamOut_V_V_TVALID : STD_LOGIC;
-  attribute MARK_DEBUG of eventSimulator_0_xStreamOut_V_V_TVALID : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_xStreamOut_V_V_TVALID : signal is "eventSimulator_0_xStreamOut_V_V xilinx.com:interface:axis:1.0 None TVALID";
-  attribute debug of eventSimulator_0_xStreamOut_V_V_TVALID : signal is "true";
-  signal eventSimulator_0_yStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute MARK_DEBUG of eventSimulator_0_yStreamOut_V_V_TDATA : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_yStreamOut_V_V_TDATA : signal is "eventSimulator_0_yStreamOut_V_V xilinx.com:interface:axis:1.0 None TDATA";
-  attribute debug of eventSimulator_0_yStreamOut_V_V_TDATA : signal is "true";
-  signal eventSimulator_0_yStreamOut_V_V_TREADY : STD_LOGIC;
-  attribute MARK_DEBUG of eventSimulator_0_yStreamOut_V_V_TREADY : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_yStreamOut_V_V_TREADY : signal is "eventSimulator_0_yStreamOut_V_V xilinx.com:interface:axis:1.0 None TREADY";
-  attribute debug of eventSimulator_0_yStreamOut_V_V_TREADY : signal is "true";
-  signal eventSimulator_0_yStreamOut_V_V_TVALID : STD_LOGIC;
-  attribute MARK_DEBUG of eventSimulator_0_yStreamOut_V_V_TVALID : signal is std.standard.true;
-  attribute conn_bus_info of eventSimulator_0_yStreamOut_V_V_TVALID : signal is "eventSimulator_0_yStreamOut_V_V xilinx.com:interface:axis:1.0 None TVALID";
-  attribute debug of eventSimulator_0_yStreamOut_V_V_TVALID : signal is "true";
   signal eventStreamSwitch_0_polStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal eventStreamSwitch_0_polStreamOut_V_V_TREADY : STD_LOGIC;
   signal eventStreamSwitch_0_polStreamOut_V_V_TVALID : STD_LOGIC;
@@ -3567,6 +3518,15 @@ architecture STRUCTURE of brd is
   signal eventsGeneratorViaFi_0_polStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal eventsGeneratorViaFi_0_polStreamOut_V_V_TREADY : STD_LOGIC;
   signal eventsGeneratorViaFi_0_polStreamOut_V_V_TVALID : STD_LOGIC;
+  signal eventsGeneratorViaFi_0_tsStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal eventsGeneratorViaFi_0_tsStreamOut_V_V_TREADY : STD_LOGIC;
+  signal eventsGeneratorViaFi_0_tsStreamOut_V_V_TVALID : STD_LOGIC;
+  signal eventsGeneratorViaFi_0_xStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal eventsGeneratorViaFi_0_xStreamOut_V_V_TREADY : STD_LOGIC;
+  signal eventsGeneratorViaFi_0_xStreamOut_V_V_TVALID : STD_LOGIC;
+  signal eventsGeneratorViaFi_0_yStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal eventsGeneratorViaFi_0_yStreamOut_V_V_TREADY : STD_LOGIC;
+  signal eventsGeneratorViaFi_0_yStreamOut_V_V_TVALID : STD_LOGIC;
   signal fifo_generator_0_almost_full : STD_LOGIC;
   attribute MARK_DEBUG of fifo_generator_0_almost_full : signal is std.standard.true;
   attribute debug of fifo_generator_0_almost_full : signal is "true";
@@ -4096,6 +4056,8 @@ architecture STRUCTURE of brd is
   signal NLW_eventsGeneratorViaFi_0_ap_done_UNCONNECTED : STD_LOGIC;
   signal NLW_eventsGeneratorViaFi_0_ap_idle_UNCONNECTED : STD_LOGIC;
   signal NLW_eventsGeneratorViaFi_0_ap_ready_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventsGeneratorViaFi_0_custDataStreamOut_V_V_TVALID_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventsGeneratorViaFi_0_custDataStreamOut_V_V_TDATA_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_fifo_generator_0_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_1_full_UNCONNECTED : STD_LOGIC;
   signal NLW_fifo_generator_2_almost_full_UNCONNECTED : STD_LOGIC;
@@ -4815,27 +4777,27 @@ eventStreamSwitch_0: component brd_eventStreamSwitch_0_0
       tsStreamIn0_V_V_TDATA(63 downto 0) => EFAST_output_0_tsStreamOut_V_V_TDATA(63 downto 0),
       tsStreamIn0_V_V_TREADY => EFAST_output_0_tsStreamOut_V_V_TREADY,
       tsStreamIn0_V_V_TVALID => EFAST_output_0_tsStreamOut_V_V_TVALID,
-      tsStreamIn1_V_V_TDATA(63 downto 0) => eventSimulator_0_tsStreamOut_V_V_TDATA(63 downto 0),
-      tsStreamIn1_V_V_TREADY => eventSimulator_0_tsStreamOut_V_V_TREADY,
-      tsStreamIn1_V_V_TVALID => eventSimulator_0_tsStreamOut_V_V_TVALID,
+      tsStreamIn1_V_V_TDATA(63 downto 0) => eventsGeneratorViaFi_0_tsStreamOut_V_V_TDATA(63 downto 0),
+      tsStreamIn1_V_V_TREADY => eventsGeneratorViaFi_0_tsStreamOut_V_V_TREADY,
+      tsStreamIn1_V_V_TVALID => eventsGeneratorViaFi_0_tsStreamOut_V_V_TVALID,
       tsStreamOut_V_V_TDATA(63 downto 0) => eventStreamSwitch_0_tsStreamOut_V_V_TDATA(63 downto 0),
       tsStreamOut_V_V_TREADY => eventStreamSwitch_0_tsStreamOut_V_V_TREADY,
       tsStreamOut_V_V_TVALID => eventStreamSwitch_0_tsStreamOut_V_V_TVALID,
       xStreamIn0_V_V_TDATA(15 downto 0) => EFAST_output_0_xStreamOut_V_V_TDATA(15 downto 0),
       xStreamIn0_V_V_TREADY => EFAST_output_0_xStreamOut_V_V_TREADY,
       xStreamIn0_V_V_TVALID => EFAST_output_0_xStreamOut_V_V_TVALID,
-      xStreamIn1_V_V_TDATA(15 downto 0) => eventSimulator_0_xStreamOut_V_V_TDATA(15 downto 0),
-      xStreamIn1_V_V_TREADY => eventSimulator_0_xStreamOut_V_V_TREADY,
-      xStreamIn1_V_V_TVALID => eventSimulator_0_xStreamOut_V_V_TVALID,
+      xStreamIn1_V_V_TDATA(15 downto 0) => eventsGeneratorViaFi_0_xStreamOut_V_V_TDATA(15 downto 0),
+      xStreamIn1_V_V_TREADY => eventsGeneratorViaFi_0_xStreamOut_V_V_TREADY,
+      xStreamIn1_V_V_TVALID => eventsGeneratorViaFi_0_xStreamOut_V_V_TVALID,
       xStreamOut_V_V_TDATA(15 downto 0) => eventStreamSwitch_0_xStreamOut_V_V_TDATA(15 downto 0),
       xStreamOut_V_V_TREADY => eventStreamSwitch_0_xStreamOut_V_V_TREADY,
       xStreamOut_V_V_TVALID => eventStreamSwitch_0_xStreamOut_V_V_TVALID,
       yStreamIn0_V_V_TDATA(15 downto 0) => EFAST_output_0_yStreamOut_V_V_TDATA(15 downto 0),
       yStreamIn0_V_V_TREADY => EFAST_output_0_yStreamOut_V_V_TREADY,
       yStreamIn0_V_V_TVALID => EFAST_output_0_yStreamOut_V_V_TVALID,
-      yStreamIn1_V_V_TDATA(15 downto 0) => eventSimulator_0_yStreamOut_V_V_TDATA(15 downto 0),
-      yStreamIn1_V_V_TREADY => eventSimulator_0_yStreamOut_V_V_TREADY,
-      yStreamIn1_V_V_TVALID => eventSimulator_0_yStreamOut_V_V_TVALID,
+      yStreamIn1_V_V_TDATA(15 downto 0) => eventsGeneratorViaFi_0_yStreamOut_V_V_TDATA(15 downto 0),
+      yStreamIn1_V_V_TREADY => eventsGeneratorViaFi_0_yStreamOut_V_V_TREADY,
+      yStreamIn1_V_V_TVALID => eventsGeneratorViaFi_0_yStreamOut_V_V_TVALID,
       yStreamOut_V_V_TDATA(15 downto 0) => eventStreamSwitch_0_yStreamOut_V_V_TDATA(15 downto 0),
       yStreamOut_V_V_TREADY => eventStreamSwitch_0_yStreamOut_V_V_TREADY,
       yStreamOut_V_V_TVALID => eventStreamSwitch_0_yStreamOut_V_V_TVALID
@@ -4917,6 +4879,9 @@ eventsGeneratorViaFi_0: component brd_eventsGeneratorViaFi_0_0
       ap_ready => NLW_eventsGeneratorViaFi_0_ap_ready_UNCONNECTED,
       ap_rst_n => proc_sys_reset_0_peripheral_aresetn(0),
       ap_start => const_VCC_dout(0),
+      custDataStreamOut_V_V_TDATA(15 downto 0) => NLW_eventsGeneratorViaFi_0_custDataStreamOut_V_V_TDATA_UNCONNECTED(15 downto 0),
+      custDataStreamOut_V_V_TREADY => '1',
+      custDataStreamOut_V_V_TVALID => NLW_eventsGeneratorViaFi_0_custDataStreamOut_V_V_TVALID_UNCONNECTED,
       polStreamOut_V_V_TDATA(7 downto 0) => eventsGeneratorViaFi_0_polStreamOut_V_V_TDATA(7 downto 0),
       polStreamOut_V_V_TREADY => eventsGeneratorViaFi_0_polStreamOut_V_V_TREADY,
       polStreamOut_V_V_TVALID => eventsGeneratorViaFi_0_polStreamOut_V_V_TVALID,
@@ -4937,15 +4902,15 @@ eventsGeneratorViaFi_0: component brd_eventsGeneratorViaFi_0_0
       s_axi_config_WREADY => ps7_0_axi_periph_M04_AXI_WREADY,
       s_axi_config_WSTRB(3 downto 0) => ps7_0_axi_periph_M04_AXI_WSTRB(3 downto 0),
       s_axi_config_WVALID => ps7_0_axi_periph_M04_AXI_WVALID,
-      tsStreamOut_V_V_TDATA(63 downto 0) => eventSimulator_0_tsStreamOut_V_V_TDATA(63 downto 0),
-      tsStreamOut_V_V_TREADY => eventSimulator_0_tsStreamOut_V_V_TREADY,
-      tsStreamOut_V_V_TVALID => eventSimulator_0_tsStreamOut_V_V_TVALID,
-      xStreamOut_V_V_TDATA(15 downto 0) => eventSimulator_0_xStreamOut_V_V_TDATA(15 downto 0),
-      xStreamOut_V_V_TREADY => eventSimulator_0_xStreamOut_V_V_TREADY,
-      xStreamOut_V_V_TVALID => eventSimulator_0_xStreamOut_V_V_TVALID,
-      yStreamOut_V_V_TDATA(15 downto 0) => eventSimulator_0_yStreamOut_V_V_TDATA(15 downto 0),
-      yStreamOut_V_V_TREADY => eventSimulator_0_yStreamOut_V_V_TREADY,
-      yStreamOut_V_V_TVALID => eventSimulator_0_yStreamOut_V_V_TVALID
+      tsStreamOut_V_V_TDATA(63 downto 0) => eventsGeneratorViaFi_0_tsStreamOut_V_V_TDATA(63 downto 0),
+      tsStreamOut_V_V_TREADY => eventsGeneratorViaFi_0_tsStreamOut_V_V_TREADY,
+      tsStreamOut_V_V_TVALID => eventsGeneratorViaFi_0_tsStreamOut_V_V_TVALID,
+      xStreamOut_V_V_TDATA(15 downto 0) => eventsGeneratorViaFi_0_xStreamOut_V_V_TDATA(15 downto 0),
+      xStreamOut_V_V_TREADY => eventsGeneratorViaFi_0_xStreamOut_V_V_TREADY,
+      xStreamOut_V_V_TVALID => eventsGeneratorViaFi_0_xStreamOut_V_V_TVALID,
+      yStreamOut_V_V_TDATA(15 downto 0) => eventsGeneratorViaFi_0_yStreamOut_V_V_TDATA(15 downto 0),
+      yStreamOut_V_V_TREADY => eventsGeneratorViaFi_0_yStreamOut_V_V_TREADY,
+      yStreamOut_V_V_TVALID => eventsGeneratorViaFi_0_yStreamOut_V_V_TVALID
     );
 fifo_generator_0: component brd_fifo_generator_0_0
      port map (
@@ -5315,18 +5280,6 @@ ps7_0_axi_periph: entity work.brd_ps7_0_axi_periph_1
     );
 system_ila_0: component brd_system_ila_0_1
      port map (
-      SLOT_0_AXIS_tdata(15 downto 0) => eventSimulator_0_xStreamOut_V_V_TDATA(15 downto 0),
-      SLOT_0_AXIS_tlast => '0',
-      SLOT_0_AXIS_tready => eventSimulator_0_xStreamOut_V_V_TREADY,
-      SLOT_0_AXIS_tvalid => eventSimulator_0_xStreamOut_V_V_TVALID,
-      SLOT_1_AXIS_tdata(15 downto 0) => eventSimulator_0_yStreamOut_V_V_TDATA(15 downto 0),
-      SLOT_1_AXIS_tlast => '0',
-      SLOT_1_AXIS_tready => eventSimulator_0_yStreamOut_V_V_TREADY,
-      SLOT_1_AXIS_tvalid => eventSimulator_0_yStreamOut_V_V_TVALID,
-      SLOT_2_AXIS_tdata(63 downto 0) => eventSimulator_0_tsStreamOut_V_V_TDATA(63 downto 0),
-      SLOT_2_AXIS_tlast => '0',
-      SLOT_2_AXIS_tready => eventSimulator_0_tsStreamOut_V_V_TREADY,
-      SLOT_2_AXIS_tvalid => eventSimulator_0_tsStreamOut_V_V_TVALID,
       clk => processing_system7_0_FCLK_CLK0,
       probe0(0) => xlconstant_1_dout(0),
       probe1(10 downto 0) => DVSAERData_AI_0_1(10 downto 0),
@@ -5365,15 +5318,12 @@ system_ila_0: component brd_system_ila_0_1
       probe4(0) => usb_cdc_core_0_inport_accept_o1,
       probe40(0) => fifo_generator_1_prog_full,
       probe41(0) => fifo_generator_0_prog_full1,
-      probe42(0) => '0',
-      probe43(63 downto 0) => B"0000000000000000000000000000000000000000000000000000000000000000",
-      probe44(15 downto 0) => xlslice_4_Dout(15 downto 0),
+      probe42(15 downto 0) => xlslice_4_Dout(15 downto 0),
       probe5(7 downto 0) => fifo_generator_0_dout(7 downto 0),
       probe6(13 downto 0) => wr_data_count(13 downto 0),
       probe7(0) => testAERDVSSM_0_AERSMOutFifoWrite_SO1,
       probe8(0) => util_vector_logic_1_Res(0),
-      probe9(0) => fifo_generator_0_almost_full,
-      resetn => proc_sys_reset_0_peripheral_aresetn(0)
+      probe9(0) => fifo_generator_0_almost_full
     );
 system_ila_2: component brd_system_ila_2_1
      port map (
