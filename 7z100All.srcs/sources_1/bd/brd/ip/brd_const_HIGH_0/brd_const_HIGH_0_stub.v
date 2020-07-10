@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Sat Apr  4 15:12:47 2020
+// Date        : Fri Jul 10 14:07:01 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub -rename_top brd_const_HIGH_0 -prefix
 //               brd_const_HIGH_0_ brd_xlconstant_0_1_stub.v

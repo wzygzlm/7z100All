@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Sat Apr  4 15:22:24 2020
+// Date        : Fri Jul 10 14:34:29 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top brd_util_vector_logic_4_0 -prefix
-//               brd_util_vector_logic_4_0_ brd_util_vector_logic_4_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_util_vector_logic_4_0_1/brd_util_vector_logic_4_0_stub.v
 // Design      : brd_util_vector_logic_4_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z100ffg900-1

@@ -1,11 +1,11 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Sat Apr  4 15:15:26 2020
+-- Date        : Fri Jul 10 14:07:02 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top brd_util_vector_logic_2_1 -prefix
---               brd_util_vector_logic_2_1_ brd_util_vector_logic_3_0_sim_netlist.vhdl
--- Design      : brd_util_vector_logic_3_0
+-- Command     : write_vhdl -force -mode funcsim
+--               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_util_vector_logic_2_1/brd_util_vector_logic_2_1_sim_netlist.vhdl
+-- Design      : brd_util_vector_logic_2_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z100ffg900-1
@@ -23,7 +23,7 @@ entity brd_util_vector_logic_2_1 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of brd_util_vector_logic_2_1 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of brd_util_vector_logic_2_1 : entity is "brd_util_vector_logic_3_0,util_vector_logic_v2_0_1_util_vector_logic,{}";
+  attribute CHECK_LICENSE_TYPE of brd_util_vector_logic_2_1 : entity is "brd_util_vector_logic_2_1,util_vector_logic_v2_0_1_util_vector_logic,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of brd_util_vector_logic_2_1 : entity is "yes";
   attribute X_CORE_INFO : string;

@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Sat Apr  4 15:24:23 2020
+// Date        : Fri Jul 10 14:31:19 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top brd_fifo_generator_2_0 -prefix
-//               brd_fifo_generator_2_0_ brd_fifo_generator_2_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_2_0/brd_fifo_generator_2_0_sim_netlist.v
 // Design      : brd_fifo_generator_2_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -599,6 +599,7 @@ module brd_fifo_generator_2_0
         .wr_rst_busy(NLW_U0_wr_rst_busy_UNCONNECTED));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module brd_fifo_generator_2_0_blk_mem_gen_generic_cstr
    (dout,
     clk,
@@ -641,6 +642,7 @@ module brd_fifo_generator_2_0_blk_mem_gen_generic_cstr
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module brd_fifo_generator_2_0_blk_mem_gen_prim_width
    (dout,
     clk,
@@ -710,6 +712,7 @@ module brd_fifo_generator_2_0_blk_mem_gen_prim_width__parameterized0
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module brd_fifo_generator_2_0_blk_mem_gen_prim_wrapper
    (dout,
     clk,
@@ -1207,6 +1210,7 @@ module brd_fifo_generator_2_0_blk_mem_gen_prim_wrapper__parameterized0
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module brd_fifo_generator_2_0_blk_mem_gen_top
    (dout,
     clk,
@@ -1241,6 +1245,7 @@ module brd_fifo_generator_2_0_blk_mem_gen_top
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_1" *) 
 module brd_fifo_generator_2_0_blk_mem_gen_v8_4_1
    (dout,
     clk,
@@ -1275,6 +1280,7 @@ module brd_fifo_generator_2_0_blk_mem_gen_v8_4_1
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_1_synth" *) 
 module brd_fifo_generator_2_0_blk_mem_gen_v8_4_1_synth
    (dout,
     clk,
@@ -1309,6 +1315,7 @@ module brd_fifo_generator_2_0_blk_mem_gen_v8_4_1_synth
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "compare" *) 
 module brd_fifo_generator_2_0_compare
    (comp0,
     v1_reg);
@@ -1595,6 +1602,7 @@ module brd_fifo_generator_2_0_compare_3
         .O(ram_empty_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module brd_fifo_generator_2_0_fifo_generator_ramfifo
    (dout,
     empty,
@@ -1673,6 +1681,7 @@ module brd_fifo_generator_2_0_fifo_generator_ramfifo
         .ram_empty_fb_i_reg(ram_rd_en_i));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module brd_fifo_generator_2_0_fifo_generator_top
    (dout,
     empty,
@@ -1778,7 +1787,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "10" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "10" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_2" *) 
 module brd_fifo_generator_2_0_fifo_generator_v13_2_2
    (backup,
     backup_marker,
@@ -2793,6 +2802,7 @@ module brd_fifo_generator_2_0_fifo_generator_v13_2_2
         .wr_en(wr_en));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_v13_2_2_synth" *) 
 module brd_fifo_generator_2_0_fifo_generator_v13_2_2_synth
    (dout,
     empty,
@@ -2831,6 +2841,7 @@ module brd_fifo_generator_2_0_fifo_generator_v13_2_2_synth
         .wr_en(wr_en));
 endmodule
 
+(* ORIG_REF_NAME = "memory" *) 
 module brd_fifo_generator_2_0_memory
    (dout,
     clk,
@@ -2865,6 +2876,7 @@ module brd_fifo_generator_2_0_memory
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module brd_fifo_generator_2_0_rd_bin_cntr
    (v1_reg,
     Q,
@@ -3371,6 +3383,7 @@ module brd_fifo_generator_2_0_rd_bin_cntr
         .O(ram_empty_i_reg_3));
 endmodule
 
+(* ORIG_REF_NAME = "rd_logic" *) 
 module brd_fifo_generator_2_0_rd_logic
    (out,
     empty,
@@ -3454,6 +3467,7 @@ module brd_fifo_generator_2_0_rd_logic
         .v1_reg_2(\c2/v1_reg ));
 endmodule
 
+(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module brd_fifo_generator_2_0_rd_status_flags_ss
    (out,
     empty,
@@ -3545,6 +3559,7 @@ module brd_fifo_generator_2_0_rd_status_flags_ss
         .R(1'b0));
 endmodule
 
+(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module brd_fifo_generator_2_0_wr_bin_cntr
    (Q,
     \gcc0.gc1.gsym.count_d2_reg[9]_0 ,
@@ -3900,6 +3915,7 @@ module brd_fifo_generator_2_0_wr_bin_cntr
         .R(1'b0));
 endmodule
 
+(* ORIG_REF_NAME = "wr_logic" *) 
 module brd_fifo_generator_2_0_wr_logic
    (out,
     full,
@@ -3965,6 +3981,7 @@ module brd_fifo_generator_2_0_wr_logic
         .\gcc0.gc1.gsym.count_d2_reg[9]_0 (\gcc0.gc1.gsym.count_d2_reg[9] ));
 endmodule
 
+(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module brd_fifo_generator_2_0_wr_status_flags_ss
    (out,
     full,

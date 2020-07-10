@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Sat Apr  4 15:24:23 2020
+// Date        : Fri Jul 10 14:33:28 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top brd_fifo_generator_1_0 -prefix
-//               brd_fifo_generator_1_0_ brd_fifo_generator_1_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_1_0/brd_fifo_generator_1_0_sim_netlist.v
 // Design      : brd_fifo_generator_1_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -603,6 +603,7 @@ module brd_fifo_generator_1_0
         .wr_rst_busy(NLW_U0_wr_rst_busy_UNCONNECTED));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module brd_fifo_generator_1_0_blk_mem_gen_generic_cstr
    (dout,
     clk,
@@ -637,6 +638,7 @@ module brd_fifo_generator_1_0_blk_mem_gen_generic_cstr
         .ram_full_fb_i_reg(ram_full_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module brd_fifo_generator_1_0_blk_mem_gen_prim_width
    (dout,
     clk,
@@ -671,6 +673,7 @@ module brd_fifo_generator_1_0_blk_mem_gen_prim_width
         .ram_full_fb_i_reg(ram_full_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module brd_fifo_generator_1_0_blk_mem_gen_prim_wrapper
    (dout,
     clk,
@@ -825,6 +828,7 @@ module brd_fifo_generator_1_0_blk_mem_gen_prim_wrapper
         .WEBWE({1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module brd_fifo_generator_1_0_blk_mem_gen_top
    (dout,
     clk,
@@ -859,6 +863,7 @@ module brd_fifo_generator_1_0_blk_mem_gen_top
         .ram_full_fb_i_reg(ram_full_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_1" *) 
 module brd_fifo_generator_1_0_blk_mem_gen_v8_4_1
    (dout,
     clk,
@@ -893,6 +898,7 @@ module brd_fifo_generator_1_0_blk_mem_gen_v8_4_1
         .ram_full_fb_i_reg(ram_full_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_1_synth" *) 
 module brd_fifo_generator_1_0_blk_mem_gen_v8_4_1_synth
    (dout,
     clk,
@@ -927,6 +933,7 @@ module brd_fifo_generator_1_0_blk_mem_gen_v8_4_1_synth
         .ram_full_fb_i_reg(ram_full_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "compare" *) 
 module brd_fifo_generator_1_0_compare
    (comp0,
     v1_reg);
@@ -1213,6 +1220,7 @@ module brd_fifo_generator_1_0_compare_3
         .O(ram_empty_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "dc_ss" *) 
 module brd_fifo_generator_1_0_dc_ss
    (Q,
     out,
@@ -1239,6 +1247,7 @@ module brd_fifo_generator_1_0_dc_ss
         .rd_en(rd_en));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module brd_fifo_generator_1_0_fifo_generator_ramfifo
    (data_count,
     dout,
@@ -1345,6 +1354,7 @@ module brd_fifo_generator_1_0_fifo_generator_ramfifo
         .ram_full_fb_i_reg(p_17_out));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module brd_fifo_generator_1_0_fifo_generator_top
    (DATA_COUNT,
     dout,
@@ -1458,7 +1468,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "10" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "10" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_2" *) 
 module brd_fifo_generator_1_0_fifo_generator_v13_2_2
    (backup,
     backup_marker,
@@ -2466,6 +2476,7 @@ module brd_fifo_generator_1_0_fifo_generator_v13_2_2
         .wr_en(wr_en));
 endmodule
 
+(* ORIG_REF_NAME = "fifo_generator_v13_2_2_synth" *) 
 module brd_fifo_generator_1_0_fifo_generator_v13_2_2_synth
    (data_count,
     dout,
@@ -2512,6 +2523,7 @@ module brd_fifo_generator_1_0_fifo_generator_v13_2_2_synth
         .wr_en(wr_en));
 endmodule
 
+(* ORIG_REF_NAME = "memory" *) 
 module brd_fifo_generator_1_0_memory
    (dout,
     clk,
@@ -2546,6 +2558,7 @@ module brd_fifo_generator_1_0_memory
         .ram_full_fb_i_reg(ram_full_fb_i_reg));
 endmodule
 
+(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module brd_fifo_generator_1_0_rd_bin_cntr
    (S,
     Q,
@@ -3121,6 +3134,7 @@ module brd_fifo_generator_1_0_rd_bin_cntr
         .O(S[0]));
 endmodule
 
+(* ORIG_REF_NAME = "rd_logic" *) 
 module brd_fifo_generator_1_0_rd_logic
    (out,
     empty,
@@ -3228,6 +3242,7 @@ module brd_fifo_generator_1_0_rd_logic
         .v1_reg_2(\c2/v1_reg ));
 endmodule
 
+(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module brd_fifo_generator_1_0_rd_status_flags_ss
    (out,
     empty,
@@ -3319,6 +3334,7 @@ module brd_fifo_generator_1_0_rd_status_flags_ss
         .R(1'b0));
 endmodule
 
+(* ORIG_REF_NAME = "updn_cntr" *) 
 module brd_fifo_generator_1_0_updn_cntr
    (Q,
     out,
@@ -3538,6 +3554,7 @@ module brd_fifo_generator_1_0_updn_cntr
         .S({1'b0,1'b0,1'b0,\count[9]_i_3_n_0 }));
 endmodule
 
+(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module brd_fifo_generator_1_0_wr_bin_cntr
    (Q,
     \gcc0.gc1.gsym.count_d2_reg[9]_0 ,
@@ -3893,6 +3910,7 @@ module brd_fifo_generator_1_0_wr_bin_cntr
         .R(1'b0));
 endmodule
 
+(* ORIG_REF_NAME = "wr_logic" *) 
 module brd_fifo_generator_1_0_wr_logic
    (out,
     full,
@@ -3989,6 +4007,7 @@ module brd_fifo_generator_1_0_wr_logic
         .\gcc0.gc1.gsym.count_d2_reg[9]_0 (Q));
 endmodule
 
+(* ORIG_REF_NAME = "wr_pf_ss" *) 
 module brd_fifo_generator_1_0_wr_pf_ss
    (prog_full,
     E,
@@ -4200,6 +4219,7 @@ module brd_fifo_generator_1_0_wr_pf_ss
         .S({1'b0,1'b0,\gc0.count_d1_reg[9] }));
 endmodule
 
+(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module brd_fifo_generator_1_0_wr_status_flags_ss
    (out,
     full,
