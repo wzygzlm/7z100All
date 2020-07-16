@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:XYTSStreamToRawStream:1.0
--- IP Revision: 2003101222
+-- IP Revision: 2007152237
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -62,6 +62,7 @@ ENTITY brd_XYTSStreamToRawStream_0_0 IS
     tsDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
     yDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
     nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
+    tsWrappedVal_V_ap_vld : OUT STD_LOGIC;
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     ap_start : IN STD_LOGIC;
@@ -92,7 +93,8 @@ ENTITY brd_XYTSStreamToRawStream_0_0 IS
     glLastYReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     tsDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
     yDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-    nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+    nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+    tsWrappedVal_V : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
   );
 END brd_XYTSStreamToRawStream_0_0;
 
@@ -108,6 +110,7 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
       tsDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
       yDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
       nonMonTSDiffFlgReg_V_ap_vld : OUT STD_LOGIC;
+      tsWrappedVal_V_ap_vld : OUT STD_LOGIC;
       ap_clk : IN STD_LOGIC;
       ap_rst_n : IN STD_LOGIC;
       ap_start : IN STD_LOGIC;
@@ -138,11 +141,15 @@ ARCHITECTURE brd_XYTSStreamToRawStream_0_0_arch OF brd_XYTSStreamToRawStream_0_0
       glLastYReg_V : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       tsDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
       yDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-      nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0)
+      nonMonTSDiffFlgReg_V : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+      tsWrappedVal_V : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
     );
   END COMPONENT XYTSStreamToRawStream;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF tsWrappedVal_V: SIGNAL IS "XIL_INTERFACENAME tsWrappedVal_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 12} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}" & 
+"} value false}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF tsWrappedVal_V: SIGNAL IS "xilinx.com:signal:data:1.0 tsWrappedVal_V DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF nonMonTSDiffFlgReg_V: SIGNAL IS "XIL_INTERFACENAME nonMonTSDiffFlgReg_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maxim" & 
 "um {}} value false}}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF nonMonTSDiffFlgReg_V: SIGNAL IS "xilinx.com:signal:data:1.0 nonMonTSDiffFlgReg_V DATA";
@@ -222,6 +229,7 @@ BEGIN
       tsDiffFlgReg_V_ap_vld => tsDiffFlgReg_V_ap_vld,
       yDiffFlgReg_V_ap_vld => yDiffFlgReg_V_ap_vld,
       nonMonTSDiffFlgReg_V_ap_vld => nonMonTSDiffFlgReg_V_ap_vld,
+      tsWrappedVal_V_ap_vld => tsWrappedVal_V_ap_vld,
       ap_clk => ap_clk,
       ap_rst_n => ap_rst_n,
       ap_start => ap_start,
@@ -252,6 +260,7 @@ BEGIN
       glLastYReg_V => glLastYReg_V,
       tsDiffFlgReg_V => tsDiffFlgReg_V,
       yDiffFlgReg_V => yDiffFlgReg_V,
-      nonMonTSDiffFlgReg_V => nonMonTSDiffFlgReg_V
+      nonMonTSDiffFlgReg_V => nonMonTSDiffFlgReg_V,
+      tsWrappedVal_V => tsWrappedVal_V
     );
 END brd_XYTSStreamToRawStream_0_0_arch;

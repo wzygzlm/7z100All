@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:SFAST_process_data:1.0
--- IP Revision: 2007101533
+-- IP Revision: 2007161326
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -136,7 +136,7 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_SFAST_process_data_0_0_arch : ARCHITECTURE IS "brd_SFAST_process_data_0_0,SFAST_process_data,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_SFAST_process_data_0_0_arch: ARCHITECTURE IS "brd_SFAST_process_data_0_0,SFAST_process_data,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=SFAST_process_data,x_ipVersion=1.0,x_ipCoreRevision=2007101533,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_SFAST_process_data_0_0_arch: ARCHITECTURE IS "brd_SFAST_process_data_0_0,SFAST_process_data,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=SFAST_process_data,x_ipVersion=1.0,x_ipCoreRevision=2007161326,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF ap_idle: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl idle";

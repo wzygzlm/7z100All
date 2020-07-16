@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Jul 10 14:20:21 2020
+-- Date        : Thu Jul 16 14:00:25 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_EVMUXDataToXYTSStream_0_0/brd_EVMUXDataToXYTSStream_0_0_stub.vhdl
@@ -43,15 +43,15 @@ entity brd_EVMUXDataToXYTSStream_0_0 is
     ap_done : out STD_LOGIC;
     ap_idle : out STD_LOGIC;
     ap_ready : out STD_LOGIC;
-    xStreamOut_V_V_TVALID : out STD_LOGIC;
-    xStreamOut_V_V_TREADY : in STD_LOGIC;
-    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamOut_V_V_TVALID : out STD_LOGIC;
-    yStreamOut_V_V_TREADY : in STD_LOGIC;
-    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
     tsStreamOut_V_V_TVALID : out STD_LOGIC;
     tsStreamOut_V_V_TREADY : in STD_LOGIC;
     tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    yStreamOut_V_V_TVALID : out STD_LOGIC;
+    yStreamOut_V_V_TREADY : in STD_LOGIC;
+    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    xStreamOut_V_V_TVALID : out STD_LOGIC;
+    xStreamOut_V_V_TREADY : in STD_LOGIC;
+    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
     polStreamOut_V_V_TVALID : out STD_LOGIC;
     polStreamOut_V_V_TREADY : in STD_LOGIC;
     polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -71,7 +71,7 @@ architecture stub of brd_EVMUXDataToXYTSStream_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "dataReg_V_ap_vld,xRegReg_V_ap_vld,yRegReg_V_ap_vld,tsRegReg_V_ap_vld,polRegReg_V_ap_vld,tsWrapRegReg_V_ap_vld,s_axi_config_AWADDR[5:0],s_axi_config_AWVALID,s_axi_config_AWREADY,s_axi_config_WDATA[31:0],s_axi_config_WSTRB[3:0],s_axi_config_WVALID,s_axi_config_WREADY,s_axi_config_BRESP[1:0],s_axi_config_BVALID,s_axi_config_BREADY,s_axi_config_ARADDR[5:0],s_axi_config_ARVALID,s_axi_config_ARREADY,s_axi_config_RDATA[31:0],s_axi_config_RRESP[1:0],s_axi_config_RVALID,s_axi_config_RREADY,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,xStreamOut_V_V_TVALID,xStreamOut_V_V_TREADY,xStreamOut_V_V_TDATA[15:0],yStreamOut_V_V_TVALID,yStreamOut_V_V_TREADY,yStreamOut_V_V_TDATA[15:0],tsStreamOut_V_V_TVALID,tsStreamOut_V_V_TREADY,tsStreamOut_V_V_TDATA[63:0],polStreamOut_V_V_TVALID,polStreamOut_V_V_TREADY,polStreamOut_V_V_TDATA[7:0],eventFIFOIn_V[15:0],eventFIFODataValid_V[0:0],dataReg_V[15:0],xRegReg_V[15:0],yRegReg_V[15:0],tsRegReg_V[63:0],polRegReg_V[0:0],tsWrapRegReg_V[47:0]";
+attribute black_box_pad_pin of stub : architecture is "dataReg_V_ap_vld,xRegReg_V_ap_vld,yRegReg_V_ap_vld,tsRegReg_V_ap_vld,polRegReg_V_ap_vld,tsWrapRegReg_V_ap_vld,s_axi_config_AWADDR[5:0],s_axi_config_AWVALID,s_axi_config_AWREADY,s_axi_config_WDATA[31:0],s_axi_config_WSTRB[3:0],s_axi_config_WVALID,s_axi_config_WREADY,s_axi_config_BRESP[1:0],s_axi_config_BVALID,s_axi_config_BREADY,s_axi_config_ARADDR[5:0],s_axi_config_ARVALID,s_axi_config_ARREADY,s_axi_config_RDATA[31:0],s_axi_config_RRESP[1:0],s_axi_config_RVALID,s_axi_config_RREADY,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,tsStreamOut_V_V_TVALID,tsStreamOut_V_V_TREADY,tsStreamOut_V_V_TDATA[63:0],yStreamOut_V_V_TVALID,yStreamOut_V_V_TREADY,yStreamOut_V_V_TDATA[15:0],xStreamOut_V_V_TVALID,xStreamOut_V_V_TREADY,xStreamOut_V_V_TDATA[15:0],polStreamOut_V_V_TVALID,polStreamOut_V_V_TREADY,polStreamOut_V_V_TDATA[7:0],eventFIFOIn_V[15:0],eventFIFODataValid_V[0:0],dataReg_V[15:0],xRegReg_V[15:0],yRegReg_V[15:0],tsRegReg_V[63:0],polRegReg_V[0:0],tsWrapRegReg_V[47:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "EVMUXDataToXYTSStream,Vivado 2018.1";
 begin

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventStreamSwitch:1.0
--- IP Revision: 2007101533
+-- IP Revision: 2007152121
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -168,7 +168,7 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_eventStreamSwitch_0_0_arch : ARCHITECTURE IS "brd_eventStreamSwitch_0_0,eventStreamSwitch,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_eventStreamSwitch_0_0_arch: ARCHITECTURE IS "brd_eventStreamSwitch_0_0,eventStreamSwitch,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=eventStreamSwitch,x_ipVersion=1.0,x_ipCoreRevision=2007101533,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_eventStreamSwitch_0_0_arch: ARCHITECTURE IS "brd_eventStreamSwitch_0_0,eventStreamSwitch,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=eventStreamSwitch,x_ipVersion=1.0,x_ipCoreRevision=2007152121,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn1_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn1_V_V TDATA";

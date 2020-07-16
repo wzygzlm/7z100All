@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Fri Jul 10 14:18:39 2020
+// Date        : Thu Jul 16 14:01:09 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top brd_auto_pc_0 -prefix
 //               brd_auto_pc_0_ brd_auto_pc_0_sim_netlist.v

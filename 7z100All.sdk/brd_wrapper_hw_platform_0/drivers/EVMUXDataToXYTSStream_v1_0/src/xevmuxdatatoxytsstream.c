@@ -63,3 +63,24 @@ u32 XEvmuxdatatoxytsstream_Get_status_colNum_vld(XEvmuxdatatoxytsstream *Instanc
     return Data & 0x1;
 }
 
+u64 XEvmuxdatatoxytsstream_Get_status_absTsUnit10ns(XEvmuxdatatoxytsstream *InstancePtr) {
+    u64 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvmuxdatatoxytsstream_ReadReg(InstancePtr->Config_BaseAddress, XEVMUXDATATOXYTSSTREAM_CONFIG_ADDR_STATUS_ABSTSUNIT10NS_DATA);
+    Data += (u64)XEvmuxdatatoxytsstream_ReadReg(InstancePtr->Config_BaseAddress, XEVMUXDATATOXYTSSTREAM_CONFIG_ADDR_STATUS_ABSTSUNIT10NS_DATA + 4) << 32;
+    return Data;
+}
+
+u32 XEvmuxdatatoxytsstream_Get_status_absTsUnit10ns_vld(XEvmuxdatatoxytsstream *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvmuxdatatoxytsstream_ReadReg(InstancePtr->Config_BaseAddress, XEVMUXDATATOXYTSSTREAM_CONFIG_ADDR_STATUS_ABSTSUNIT10NS_CTRL);
+    return Data & 0x1;
+}
+
