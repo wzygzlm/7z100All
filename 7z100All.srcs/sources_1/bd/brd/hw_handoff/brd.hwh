@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 16 16:49:50 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 16 19:42:00 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="brd" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -1334,6 +1334,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="O" NAME="status_inEventsNum_ap_vld" SIGIS="undef"/>
+        <PORT DIR="O" NAME="status_outEventsNum_ap_vld" SIGIS="undef"/>
+        <PORT DIR="O" NAME="status_cornerEventsNum_ap_vld" SIGIS="undef"/>
         <PORT DIR="I" NAME="xStreamIn_V_V_TVALID" SIGIS="undef" SIGNAME="c_addsub_0_S">
           <CONNECTIONS>
             <CONNECTION INSTANCE="c_addsub_0" PORT="S"/>
@@ -1457,11 +1460,19 @@
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="cornerStreamIn0_V_V_TREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="isFinalCornerStream_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="SFAST_process_data_0_isFinalCornerStream_V_V_TDATA">
+        <PORT DIR="O" LEFT="15" NAME="isFinalCornerStream_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="SFAST_process_data_0_isFinalCornerStream_V_V_TDATA">
           <CONNECTIONS>
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="cornerStreamIn0_V_V_TDATA"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="31" NAME="config_V" RIGHT="0" SIGIS="data" SIGNAME="config_data_const_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="config_data_const" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="63" NAME="status_inEventsNum" RIGHT="0" SIGIS="data"/>
+        <PORT DIR="O" LEFT="63" NAME="status_outEventsNum" RIGHT="0" SIGIS="data"/>
+        <PORT DIR="O" LEFT="63" NAME="status_cornerEventsNum" RIGHT="0" SIGIS="data"/>
         <PORT CLKFREQUENCY="99989998" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
@@ -1635,7 +1646,7 @@
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="SFAST_process_data_0_isFinalCornerStream_V_V" NAME="isFinalCornerStream_V_V" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
-          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="1"/>
+          <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="2"/>
           <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}"/>
           <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
@@ -5451,6 +5462,23 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE FULLNAME="/config_data_const" HWVERSION="1.1" INSTANCE="config_data_const" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x00000000"/>
+        <PARAMETER NAME="Component_Name" VALUE="brd_xlcons_data_0x5a5a_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="config_data_const_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="SFAST_process_data_0" PORT="config_V"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE FULLNAME="/cons_HIGH" HWVERSION="1.1" INSTANCE="cons_HIGH" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -5509,9 +5537,9 @@
             <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_start"/>
+            <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="SFAST_process_data_0" PORT="ap_start"/>
-            <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_start"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5735,7 +5763,35 @@
     </MODULE>
     <MODULE FULLNAME="/eventStreamSwitch_0" HWVERSION="1.0" INSTANCE="eventStreamSwitch_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="eventStreamSwitch" VLNV="xilinx.com:hls:eventStreamSwitch:1.0">
       <DOCUMENTS/>
+      <ADDRESSBLOCKS>
+        <ADDRESSBLOCK ACCESS="read-write" INTERFACE="s_axi_config" NAME="Reg" RANGE="65536" USAGE="register">
+          <REGISTERS>
+            <REGISTER NAME="config_V">
+              <PROPERTY NAME="DESCRIPTION" VALUE="Data signal of config_V"/>
+              <PROPERTY NAME="ADDRESS_OFFSET" VALUE="16"/>
+              <PROPERTY NAME="SIZE" VALUE="32"/>
+              <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+              <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
+              <PROPERTY NAME="RESET_VALUE" VALUE="0"/>
+              <FIELDS>
+                <FIELD NAME="config_V">
+                  <PROPERTY NAME="DESCRIPTION" VALUE="Bit 31 to 0 Data signal of config_V"/>
+                  <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="ACCESS" VALUE="write-only"/>
+                  <PROPERTY NAME="MODIFIED_READ_VALUES" VALUE=""/>
+                  <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
+                  <PROPERTY NAME="READ_ACTION" VALUE=""/>
+                  <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="32"/>
+                </FIELD>
+              </FIELDS>
+            </REGISTER>
+          </REGISTERS>
+        </ADDRESSBLOCK>
+      </ADDRESSBLOCKS>
       <PARAMETERS>
+        <PARAMETER NAME="C_S_AXI_CONFIG_ADDR_WIDTH" VALUE="5"/>
+        <PARAMETER NAME="C_S_AXI_CONFIG_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="Component_Name" VALUE="brd_eventStreamSwitch_0_0"/>
         <PARAMETER NAME="clk_period" VALUE="10"/>
         <PARAMETER NAME="machine" VALUE="64"/>
@@ -5743,8 +5799,95 @@
         <PARAMETER NAME="latency" VALUE="2"/>
         <PARAMETER NAME="II" VALUE="1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+        <PARAMETER NAME="C_S_AXI_CONFIG_BASEADDR" VALUE="0x43C20000"/>
+        <PARAMETER NAME="C_S_AXI_CONFIG_HIGHADDR" VALUE="0x43C2FFFF"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="I" LEFT="4" NAME="s_axi_config_AWADDR" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_AWADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_AWVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_AWVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_AWREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_AWREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="s_axi_config_WDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="s_axi_config_WSTRB" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WSTRB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_WVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_WREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_config_BRESP" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_BRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_BVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_BVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_BREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_BREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="s_axi_config_ARADDR" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_ARADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_ARVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_ARVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_ARREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_ARREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="s_axi_config_RDATA" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="s_axi_config_RRESP" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="s_axi_config_RVALID" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="s_axi_config_RREADY" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_AXI_rready"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="99989998" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
@@ -5980,6 +6123,58 @@
         </PORT>
       </PORTS>
       <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="ps7_0_axi_periph_M05_AXI" DATAWIDTH="32" NAME="s_axi_config" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="5"/>
+          <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+          <PARAMETER NAME="PROTOCOL" VALUE="AXI4LITE"/>
+          <PARAMETER NAME="READ_WRITE_MODE" VALUE="READ_WRITE"/>
+          <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="99989998"/>
+          <PARAMETER NAME="ID_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="AWUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="ARUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="RUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="BUSER_WIDTH" VALUE="0"/>
+          <PARAMETER NAME="HAS_BURST" VALUE="0"/>
+          <PARAMETER NAME="HAS_LOCK" VALUE="0"/>
+          <PARAMETER NAME="HAS_PROT" VALUE="0"/>
+          <PARAMETER NAME="HAS_CACHE" VALUE="0"/>
+          <PARAMETER NAME="HAS_QOS" VALUE="0"/>
+          <PARAMETER NAME="HAS_REGION" VALUE="0"/>
+          <PARAMETER NAME="HAS_WSTRB" VALUE="1"/>
+          <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
+          <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
+          <PARAMETER NAME="SUPPORTS_NARROW_BURST" VALUE="0"/>
+          <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="1"/>
+          <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
+          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="CLK_DOMAIN" VALUE="brd_processing_system7_0_0_FCLK_CLK0"/>
+          <PARAMETER NAME="NUM_READ_THREADS" VALUE="1"/>
+          <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="1"/>
+          <PARAMETER NAME="RUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PARAMETER NAME="WUSER_BITS_PER_BYTE" VALUE="0"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="s_axi_config_AWADDR"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="s_axi_config_AWVALID"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="s_axi_config_AWREADY"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="s_axi_config_WDATA"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="s_axi_config_WSTRB"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="s_axi_config_WVALID"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="s_axi_config_WREADY"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="s_axi_config_BRESP"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="s_axi_config_BVALID"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="s_axi_config_BREADY"/>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="s_axi_config_ARADDR"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="s_axi_config_ARVALID"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="s_axi_config_ARREADY"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="s_axi_config_RDATA"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="s_axi_config_RRESP"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="s_axi_config_RVALID"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="s_axi_config_RREADY"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="__NOC__" NAME="ap_ctrl" TYPE="TARGET" VLNV="xilinx.com:interface:acc_handshake:1.0">
           <PARAMETER NAME="LAYERED_METADATA" VALUE="xilinx.com:interface:datatypes:1.0 {start {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} done {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} idle {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} ready {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}"/>
           <PORTMAPS>
@@ -9373,17 +9568,18 @@
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="eventSimulator_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ARESETN"/>
-            <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_rst_n"/>
-            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_ARESETN"/>
             <CONNECTION INSTANCE="SFAST_process_data_0" PORT="ap_rst_n"/>
-            <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_rst_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -10819,6 +11015,9 @@
             <CONNECTION INSTANCE="RawStreamToFIFO_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="eventSimulator_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
@@ -10826,11 +11025,9 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M03_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M04_ACLK"/>
-            <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M05_ACLK"/>
             <CONNECTION INSTANCE="SFAST_process_data_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="39995998" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
@@ -11118,6 +11315,7 @@
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x43000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4300FFFF" INSTANCE="axi_vdma_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI_LITE"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_S_AXI_CONFIG_BASEADDR" BASEVALUE="0x43C00000" HIGHNAME="C_S_AXI_CONFIG_HIGHADDR" HIGHVALUE="0x43C0FFFF" INSTANCE="eventStreamToConstEn_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi_config"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_S_AXI_CONFIG_BASEADDR" BASEVALUE="0x43C10000" HIGHNAME="C_S_AXI_CONFIG_HIGHADDR" HIGHVALUE="0x43C1FFFF" INSTANCE="eventsGeneratorViaFi_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi_config"/>
+        <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_S_AXI_CONFIG_BASEADDR" BASEVALUE="0x43C20000" HIGHNAME="C_S_AXI_CONFIG_HIGHADDR" HIGHVALUE="0x43C2FFFF" INSTANCE="eventStreamSwitch_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi_config"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_S_AXI_CONFIG_BASEADDR" BASEVALUE="0x43C30000" HIGHNAME="C_S_AXI_CONFIG_HIGHADDR" HIGHVALUE="0x43C3FFFF" INSTANCE="EVMUXDataToXYTSStream_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="s_axi_config"/>
       </MEMORYMAP>
       <PERIPHERALS>
@@ -11125,6 +11323,7 @@
         <PERIPHERAL INSTANCE="axi_vdma_0"/>
         <PERIPHERAL INSTANCE="eventStreamToConstEn_0"/>
         <PERIPHERAL INSTANCE="eventsGeneratorViaFi_0"/>
+        <PERIPHERAL INSTANCE="eventStreamSwitch_0"/>
         <PERIPHERAL INSTANCE="EVMUXDataToXYTSStream_0"/>
       </PERIPHERALS>
     </MODULE>
@@ -11134,7 +11333,7 @@
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="NUM_SI" VALUE="1"/>
-        <PARAMETER NAME="NUM_MI" VALUE="5"/>
+        <PARAMETER NAME="NUM_MI" VALUE="6"/>
         <PARAMETER NAME="STRATEGY" VALUE="0"/>
         <PARAMETER NAME="ENABLE_ADVANCED_OPTIONS" VALUE="0"/>
         <PARAMETER NAME="ENABLE_PROTOCOL_CHECKERS" VALUE="0"/>
@@ -12131,6 +12330,103 @@
             <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="s_axi_config_RREADY"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="M05_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_ARESETN" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_AWADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_AWADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_awvalid" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_AWVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_AWVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_awready" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_AWREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_AWREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_WDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M05_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WSTRB">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_WSTRB"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_wvalid" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_WVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_wready" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_WREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_WREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_BRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_BRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_bvalid" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_BVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_BVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_bready" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_BREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_BREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M05_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_ARADDR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_ARADDR"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M05_AXI_arvalid" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_ARVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_ARVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_arready" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_ARREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_ARREADY"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M05_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RDATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_RDATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M05_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RRESP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_RRESP"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M05_AXI_rvalid" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RVALID">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_RVALID"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M05_AXI_rready" SIGIS="undef" SIGNAME="eventStreamSwitch_0_s_axi_config_RREADY">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="s_axi_config_RREADY"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="processing_system7_0_M_AXI_GP0" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -12277,6 +12573,29 @@
             <PORTMAP LOGICAL="RRESP" PHYSICAL="M04_AXI_rresp"/>
             <PORTMAP LOGICAL="RVALID" PHYSICAL="M04_AXI_rvalid"/>
             <PORTMAP LOGICAL="RREADY" PHYSICAL="M04_AXI_rready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="ps7_0_axi_periph_M05_AXI" DATAWIDTH="32" NAME="M05_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="M05_AXI_awaddr"/>
+            <PORTMAP LOGICAL="AWPROT" PHYSICAL="M05_AXI_awprot"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="M05_AXI_awvalid"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="M05_AXI_awready"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="M05_AXI_wdata"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="M05_AXI_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="M05_AXI_wvalid"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="M05_AXI_wready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="M05_AXI_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="M05_AXI_bvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="M05_AXI_bready"/>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="M05_AXI_araddr"/>
+            <PORTMAP LOGICAL="ARPROT" PHYSICAL="M05_AXI_arprot"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="M05_AXI_arvalid"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="M05_AXI_arready"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="M05_AXI_rdata"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="M05_AXI_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="M05_AXI_rvalid"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="M05_AXI_rready"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>

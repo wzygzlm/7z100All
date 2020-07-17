@@ -191,6 +191,25 @@
 
 /******************************************************************/
 
+/* Definitions for driver EVENTSTREAMSWITCH */
+#define XPAR_XEVENTSTREAMSWITCH_NUM_INSTANCES 1
+
+/* Definitions for peripheral EVENTSTREAMSWITCH_0 */
+#define XPAR_EVENTSTREAMSWITCH_0_DEVICE_ID 0
+#define XPAR_EVENTSTREAMSWITCH_0_S_AXI_CONFIG_BASEADDR 0x43C20000
+#define XPAR_EVENTSTREAMSWITCH_0_S_AXI_CONFIG_HIGHADDR 0x43C2FFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral EVENTSTREAMSWITCH_0 */
+#define XPAR_XEVENTSTREAMSWITCH_0_DEVICE_ID XPAR_EVENTSTREAMSWITCH_0_DEVICE_ID
+#define XPAR_XEVENTSTREAMSWITCH_0_S_AXI_CONFIG_BASEADDR 0x43C20000
+#define XPAR_XEVENTSTREAMSWITCH_0_S_AXI_CONFIG_HIGHADDR 0x43C2FFFF
+
+
+/******************************************************************/
+
 /* Definitions for driver EVENTSTREAMTOCONSTENCNTFRAMESTREAM */
 #define XPAR_XEVENTSTREAMTOCONSTENCNTFRAMESTREAM_NUM_INSTANCES 1
 

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventStreamSwitch:1.0
--- IP Revision: 2007152121
+-- IP Revision: 2007161814
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,6 +55,23 @@ USE ieee.numeric_std.ALL;
 
 ENTITY brd_eventStreamSwitch_0_0 IS
   PORT (
+    s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+    s_axi_config_AWVALID : IN STD_LOGIC;
+    s_axi_config_AWREADY : OUT STD_LOGIC;
+    s_axi_config_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    s_axi_config_WSTRB : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    s_axi_config_WVALID : IN STD_LOGIC;
+    s_axi_config_WREADY : OUT STD_LOGIC;
+    s_axi_config_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+    s_axi_config_BVALID : OUT STD_LOGIC;
+    s_axi_config_BREADY : IN STD_LOGIC;
+    s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+    s_axi_config_ARVALID : IN STD_LOGIC;
+    s_axi_config_ARREADY : OUT STD_LOGIC;
+    s_axi_config_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    s_axi_config_RRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+    s_axi_config_RVALID : OUT STD_LOGIC;
+    s_axi_config_RREADY : IN STD_LOGIC;
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     ap_start : IN STD_LOGIC;
@@ -111,7 +128,28 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF brd_eventStreamSwitch_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT eventStreamSwitch IS
+    GENERIC (
+      C_S_AXI_CONFIG_ADDR_WIDTH : INTEGER;
+      C_S_AXI_CONFIG_DATA_WIDTH : INTEGER
+    );
     PORT (
+      s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+      s_axi_config_AWVALID : IN STD_LOGIC;
+      s_axi_config_AWREADY : OUT STD_LOGIC;
+      s_axi_config_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      s_axi_config_WSTRB : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      s_axi_config_WVALID : IN STD_LOGIC;
+      s_axi_config_WREADY : OUT STD_LOGIC;
+      s_axi_config_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+      s_axi_config_BVALID : OUT STD_LOGIC;
+      s_axi_config_BREADY : IN STD_LOGIC;
+      s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+      s_axi_config_ARVALID : IN STD_LOGIC;
+      s_axi_config_ARREADY : OUT STD_LOGIC;
+      s_axi_config_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      s_axi_config_RRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+      s_axi_config_RVALID : OUT STD_LOGIC;
+      s_axi_config_RREADY : IN STD_LOGIC;
       ap_clk : IN STD_LOGIC;
       ap_rst_n : IN STD_LOGIC;
       ap_start : IN STD_LOGIC;
@@ -261,12 +299,52 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF ap_start: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl start";
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_rst_n: SIGNAL IS "XIL_INTERFACENAME ap_rst_n, POLARITY ACTIVE_LOW, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {RST {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF ap_rst_n: SIGNAL IS "xilinx.com:signal:reset:1.0 ap_rst_n RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF xStreamOut_V_V:yStreamOut_V_V:tsStreamOut_V_V:polStreamOut_V_V:cornerStreamOut_V_V:xStreamIn0_V_V:yStreamIn0_V_V:tsStreamIn0_V_V:polStreamIn0_V_V:cornerStreamIn0_V_V:xStreamIn1_V_V:yStreamIn1_V_V:tsStreamIn1_V_V:polStreamIn1_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type i" & 
-"mmediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF s_axi_config:xStreamOut_V_V:yStreamOut_V_V:tsStreamOut_V_V:polStreamOut_V_V:cornerStreamOut_V_V:xStreamIn0_V_V:yStreamIn0_V_V:tsStreamIn0_V_V:polStreamIn0_V_V:cornerStreamIn0_V_V:xStreamIn1_V_V:yStreamIn1_V_V:tsStreamIn1_V_V:polStreamIn1_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {r" & 
+"esolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF ap_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ap_clk CLK";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RRESP: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RRESP";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RDATA: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_ARREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config ARREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_ARVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config ARVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_ARADDR: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config ARADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_BREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config BREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_BVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config BVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_BRESP: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config BRESP";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_WREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config WREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_WVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config WVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_WSTRB: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config WSTRB";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_WDATA: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config WDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWVALID";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_config_AWADDR: SIGNAL IS "XIL_INTERFACENAME s_axi_config, ADDR_WIDTH 5, DATA_WIDTH 32, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, ID" & 
+"_WIDTH 0, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 0, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWADDR: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWADDR";
 BEGIN
   U0 : eventStreamSwitch
+    GENERIC MAP (
+      C_S_AXI_CONFIG_ADDR_WIDTH => 5,
+      C_S_AXI_CONFIG_DATA_WIDTH => 32
+    )
     PORT MAP (
+      s_axi_config_AWADDR => s_axi_config_AWADDR,
+      s_axi_config_AWVALID => s_axi_config_AWVALID,
+      s_axi_config_AWREADY => s_axi_config_AWREADY,
+      s_axi_config_WDATA => s_axi_config_WDATA,
+      s_axi_config_WSTRB => s_axi_config_WSTRB,
+      s_axi_config_WVALID => s_axi_config_WVALID,
+      s_axi_config_WREADY => s_axi_config_WREADY,
+      s_axi_config_BRESP => s_axi_config_BRESP,
+      s_axi_config_BVALID => s_axi_config_BVALID,
+      s_axi_config_BREADY => s_axi_config_BREADY,
+      s_axi_config_ARADDR => s_axi_config_ARADDR,
+      s_axi_config_ARVALID => s_axi_config_ARVALID,
+      s_axi_config_ARREADY => s_axi_config_ARREADY,
+      s_axi_config_RDATA => s_axi_config_RDATA,
+      s_axi_config_RRESP => s_axi_config_RRESP,
+      s_axi_config_RVALID => s_axi_config_RVALID,
+      s_axi_config_RREADY => s_axi_config_RREADY,
       ap_clk => ap_clk,
       ap_rst_n => ap_rst_n,
       ap_start => ap_start,

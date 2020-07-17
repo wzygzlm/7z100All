@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:SFAST_process_data:1.0
--- IP Revision: 2007161326
+-- IP Revision: 2007161937
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,6 +55,9 @@ USE ieee.numeric_std.ALL;
 
 ENTITY brd_SFAST_process_data_0_0 IS
   PORT (
+    status_inEventsNum_ap_vld : OUT STD_LOGIC;
+    status_outEventsNum_ap_vld : OUT STD_LOGIC;
+    status_cornerEventsNum_ap_vld : OUT STD_LOGIC;
     xStreamIn_V_V_TVALID : IN STD_LOGIC;
     xStreamIn_V_V_TREADY : OUT STD_LOGIC;
     xStreamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -81,7 +84,11 @@ ENTITY brd_SFAST_process_data_0_0 IS
     polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     isFinalCornerStream_V_V_TVALID : OUT STD_LOGIC;
     isFinalCornerStream_V_V_TREADY : IN STD_LOGIC;
-    isFinalCornerStream_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    isFinalCornerStream_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    config_V : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    status_inEventsNum : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+    status_outEventsNum : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+    status_cornerEventsNum : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     ap_clk : IN STD_LOGIC;
     ap_rst_n : IN STD_LOGIC;
     ap_done : OUT STD_LOGIC;
@@ -96,6 +103,9 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF brd_SFAST_process_data_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT SFAST_process_data IS
     PORT (
+      status_inEventsNum_ap_vld : OUT STD_LOGIC;
+      status_outEventsNum_ap_vld : OUT STD_LOGIC;
+      status_cornerEventsNum_ap_vld : OUT STD_LOGIC;
       xStreamIn_V_V_TVALID : IN STD_LOGIC;
       xStreamIn_V_V_TREADY : OUT STD_LOGIC;
       xStreamIn_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -122,7 +132,11 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
       polStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
       isFinalCornerStream_V_V_TVALID : OUT STD_LOGIC;
       isFinalCornerStream_V_V_TREADY : IN STD_LOGIC;
-      isFinalCornerStream_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      isFinalCornerStream_V_V_TDATA : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      config_V : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      status_inEventsNum : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+      status_outEventsNum : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+      status_cornerEventsNum : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       ap_clk : IN STD_LOGIC;
       ap_rst_n : IN STD_LOGIC;
       ap_done : OUT STD_LOGIC;
@@ -145,9 +159,21 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF xStreamIn_V_V:yStreamIn_V_V:tsStreamIn_V_V:polStreamIn_V_V:xStreamOut_V_V:yStreamOut_V_V:tsStreamOut_V_V:polStreamOut_V_V:isFinalCornerStream_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attri" & 
 "bs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF ap_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ap_clk CLK";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF status_cornerEventsNum: SIGNAL IS "XIL_INTERFACENAME status_cornerEventsNum, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} ma" & 
+"ximum {}} value true}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF status_cornerEventsNum: SIGNAL IS "xilinx.com:signal:data:1.0 status_cornerEventsNum DATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF status_outEventsNum: SIGNAL IS "XIL_INTERFACENAME status_outEventsNum, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maxim" & 
+"um {}} value true}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF status_outEventsNum: SIGNAL IS "xilinx.com:signal:data:1.0 status_outEventsNum DATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF status_inEventsNum: SIGNAL IS "XIL_INTERFACENAME status_inEventsNum, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximu" & 
+"m {}} value true}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF status_inEventsNum: SIGNAL IS "xilinx.com:signal:data:1.0 status_inEventsNum DATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF config_V: SIGNAL IS "XIL_INTERFACENAME config_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} valu" & 
+"e false}}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF config_V: SIGNAL IS "xilinx.com:signal:data:1.0 config_V DATA";
   ATTRIBUTE X_INTERFACE_INFO OF isFinalCornerStream_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 isFinalCornerStream_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF isFinalCornerStream_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 isFinalCornerStream_V_V TREADY";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF isFinalCornerStream_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME isFinalCornerStream_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediat" & 
+  ATTRIBUTE X_INTERFACE_PARAMETER OF isFinalCornerStream_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME isFinalCornerStream_V_V, TDATA_NUM_BYTES 2, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediat" & 
 "e dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0" & 
 ".000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF isFinalCornerStream_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 isFinalCornerStream_V_V TVALID";
@@ -198,6 +224,9 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
 BEGIN
   U0 : SFAST_process_data
     PORT MAP (
+      status_inEventsNum_ap_vld => status_inEventsNum_ap_vld,
+      status_outEventsNum_ap_vld => status_outEventsNum_ap_vld,
+      status_cornerEventsNum_ap_vld => status_cornerEventsNum_ap_vld,
       xStreamIn_V_V_TVALID => xStreamIn_V_V_TVALID,
       xStreamIn_V_V_TREADY => xStreamIn_V_V_TREADY,
       xStreamIn_V_V_TDATA => xStreamIn_V_V_TDATA,
@@ -225,6 +254,10 @@ BEGIN
       isFinalCornerStream_V_V_TVALID => isFinalCornerStream_V_V_TVALID,
       isFinalCornerStream_V_V_TREADY => isFinalCornerStream_V_V_TREADY,
       isFinalCornerStream_V_V_TDATA => isFinalCornerStream_V_V_TDATA,
+      config_V => config_V,
+      status_inEventsNum => status_inEventsNum,
+      status_outEventsNum => status_outEventsNum,
+      status_cornerEventsNum => status_cornerEventsNum,
       ap_clk => ap_clk,
       ap_rst_n => ap_rst_n,
       ap_done => ap_done,
