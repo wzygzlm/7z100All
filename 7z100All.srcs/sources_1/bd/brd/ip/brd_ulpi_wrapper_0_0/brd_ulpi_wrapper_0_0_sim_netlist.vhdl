@@ -1,8 +1,8 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Fri Jan 17 20:21:44 2020
--- Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+-- Date        : Mon Jul 20 21:27:21 2020
+-- Host        : mbp-win10 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_ulpi_wrapper_0_0/brd_ulpi_wrapper_0_0_sim_netlist.vhdl
 -- Design      : brd_ulpi_wrapper_0_0
@@ -16,31 +16,31 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity brd_ulpi_wrapper_0_0_ulpi_wrapper is
   port (
-    \state_o[0]\ : out STD_LOGIC;
     \state_o[1]\ : out STD_LOGIC;
+    \state_o[0]\ : out STD_LOGIC;
     mode_update_o : out STD_LOGIC;
-    otg_update_o : out STD_LOGIC;
     tx_wr_idx_q_d : out STD_LOGIC;
     utmi_tx_accept_o : out STD_LOGIC;
     ulpi_data_out_i_d : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ulpi_dir_q_do : out STD_LOGIC;
     xcvrselect_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
     termselect_o : out STD_LOGIC;
     opmode_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
     utmi_rxactive_o : out STD_LOGIC;
-    utmi_tx_ready_o : out STD_LOGIC;
     ulpi_stp_o : out STD_LOGIC;
     ulpi_data_in_o_d : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    utmi_data_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ulpi_nxt_q_do : out STD_LOGIC;
     utmi_rxvalid_o : out STD_LOGIC;
-    ulpi_dir_i_resample_q_do : out STD_LOGIC;
-    ulpi_nxt_i_resample_q_do : out STD_LOGIC;
     utmi_data_in_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
     utmi_linestate_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    otg_update_o : out STD_LOGIC;
+    utmi_tx_ready_o : out STD_LOGIC;
     turnaround_d : out STD_LOGIC;
     otg_complete_o : out STD_LOGIC;
     mode_complete_o : out STD_LOGIC;
     utmi_txready_o : out STD_LOGIC;
     tx_delay_complete_o : out STD_LOGIC;
-    ulpi_clk_pos_o : out STD_LOGIC;
     utmi_rxerror_o : out STD_LOGIC;
     ulpi_data_io : inout STD_LOGIC_VECTOR ( 7 downto 0 );
     ulpi_dir_i : in STD_LOGIC;
@@ -53,7 +53,6 @@ entity brd_ulpi_wrapper_0_0_ulpi_wrapper is
     utmi_op_mode_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
     utmi_dmpulldown_i : in STD_LOGIC;
     utmi_dppulldown_i : in STD_LOGIC;
-    sample_clk_i : in STD_LOGIC;
     utmi_data_out_i : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -62,7 +61,8 @@ end brd_ulpi_wrapper_0_0_ulpi_wrapper;
 
 architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   signal data_q : STD_LOGIC_VECTOR ( 5 downto 0 );
-  signal \data_q[6]_i_1_n_0\ : STD_LOGIC;
+  signal \data_q[6]_i_2_n_0\ : STD_LOGIC;
+  signal data_q_0 : STD_LOGIC;
   signal \data_q_reg_n_0_[0]\ : STD_LOGIC;
   signal \data_q_reg_n_0_[1]\ : STD_LOGIC;
   signal \data_q_reg_n_0_[2]\ : STD_LOGIC;
@@ -77,14 +77,15 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   signal mode_update_q_i_2_n_0 : STD_LOGIC;
   signal mode_update_q_i_3_n_0 : STD_LOGIC;
   signal mode_update_q_i_4_n_0 : STD_LOGIC;
+  signal mode_write_q : STD_LOGIC;
   signal mode_write_q_i_1_n_0 : STD_LOGIC;
+  signal mode_write_q_i_2_n_0 : STD_LOGIC;
   signal mode_write_q_reg_n_0 : STD_LOGIC;
   signal \^opmode_o\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \^otg_update_o\ : STD_LOGIC;
   signal otg_update_q_i_1_n_0 : STD_LOGIC;
   signal otg_update_q_i_2_n_0 : STD_LOGIC;
   signal otg_write_q_i_1_n_0 : STD_LOGIC;
-  signal otg_write_q_i_2_n_0 : STD_LOGIC;
   signal otg_write_q_reg_n_0 : STD_LOGIC;
   signal phy_reset_q : STD_LOGIC;
   signal phy_reset_q_i_1_n_0 : STD_LOGIC;
@@ -116,7 +117,6 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   signal \^tx_wr_idx_q_d\ : STD_LOGIC;
   signal tx_wr_idx_q_i_1_n_0 : STD_LOGIC;
   signal tx_wr_idx_q_i_2_n_0 : STD_LOGIC;
-  signal ulpi_clk_q : STD_LOGIC;
   signal \^ulpi_data_out_i_d\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal ulpi_data_q : STD_LOGIC;
   signal \ulpi_data_q[0]_rep_i_1_n_0\ : STD_LOGIC;
@@ -126,18 +126,16 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   signal \ulpi_data_q[2]_rep_i_1_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[2]_rep_i_2_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[2]_rep_i_3_n_0\ : STD_LOGIC;
+  signal \ulpi_data_q[2]_rep_i_4_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[3]_rep_i_1_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[3]_rep_i_2_n_0\ : STD_LOGIC;
-  signal \ulpi_data_q[3]_rep_i_3_n_0\ : STD_LOGIC;
-  signal \ulpi_data_q[3]_rep_i_4_n_0\ : STD_LOGIC;
-  signal \ulpi_data_q[3]_rep_i_5_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[4]_rep_i_1_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[4]_rep_i_2_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[5]_rep_i_1_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[5]_rep_i_2_n_0\ : STD_LOGIC;
+  signal \ulpi_data_q[5]_rep_i_3_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[6]_rep_i_1_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[6]_rep_i_2_n_0\ : STD_LOGIC;
-  signal \ulpi_data_q[6]_rep_i_3_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[7]_rep_i_2_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[7]_rep_i_3_n_0\ : STD_LOGIC;
   signal \ulpi_data_q[7]_rep_i_4_n_0\ : STD_LOGIC;
@@ -152,8 +150,17 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   signal \ulpi_data_q_reg_n_0_[5]\ : STD_LOGIC;
   signal \ulpi_data_q_reg_n_0_[6]\ : STD_LOGIC;
   signal \ulpi_data_q_reg_n_0_[7]\ : STD_LOGIC;
-  signal ulpi_dir_q : STD_LOGIC;
+  signal \^ulpi_dir_q_do\ : STD_LOGIC;
   signal ulpi_stp_q13_out : STD_LOGIC;
+  signal ulpi_stp_q_i_2_n_0 : STD_LOGIC;
+  signal \utmi_data_q[0]_i_1_n_0\ : STD_LOGIC;
+  signal \utmi_data_q[1]_i_1_n_0\ : STD_LOGIC;
+  signal \utmi_data_q[2]_i_1_n_0\ : STD_LOGIC;
+  signal \utmi_data_q[3]_i_1_n_0\ : STD_LOGIC;
+  signal \utmi_data_q[4]_i_1_n_0\ : STD_LOGIC;
+  signal \utmi_data_q[5]_i_1_n_0\ : STD_LOGIC;
+  signal \utmi_data_q[6]_i_1_n_0\ : STD_LOGIC;
+  signal \utmi_data_q[7]_i_1_n_0\ : STD_LOGIC;
   signal \^utmi_linestate_o\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \utmi_linestate_q[0]_i_1_n_0\ : STD_LOGIC;
   signal \utmi_linestate_q[1]_i_1_n_0\ : STD_LOGIC;
@@ -164,7 +171,6 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   signal utmi_rxvalid_q : STD_LOGIC;
   signal \^utmi_tx_accept_o\ : STD_LOGIC;
   signal utmi_tx_accept_o_INST_0_i_1_n_0 : STD_LOGIC;
-  signal utmi_tx_accept_o_INST_0_i_2_n_0 : STD_LOGIC;
   signal \^utmi_tx_ready_o\ : STD_LOGIC;
   signal \^xcvrselect_o\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute BOX_TYPE : string;
@@ -177,29 +183,32 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   attribute BOX_TYPE of \ULPIBUS[6].IOBUF_inst\ : label is "PRIMITIVE";
   attribute BOX_TYPE of \ULPIBUS[7].IOBUF_inst\ : label is "PRIMITIVE";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \data_q[1]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \data_q[2]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \data_q[3]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \data_q[4]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \data_q[5]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of mode_complete_o_INST_0 : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of mode_update_q_i_2 : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of otg_complete_o_INST_0 : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \state_q[0]_i_2\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \state_q[0]_i_3\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \state_q[1]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of turnaround_d_INST_0 : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of tx_delay_complete_o_INST_0 : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \tx_delay_q[0]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \tx_delay_q[1]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \tx_delay_q[2]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \tx_valid_q[0]_i_2\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of tx_wr_idx_q_i_1 : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \ulpi_data_q[3]_rep_i_2\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \ulpi_data_q[3]_rep_i_4\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \ulpi_data_q[6]_rep_i_3\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \ulpi_data_q[7]_rep_i_3\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \ulpi_data_q[7]_rep_i_7\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \data_q[1]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \data_q[2]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \data_q[3]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \data_q[4]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \data_q[5]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \data_q[6]_i_2\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of mode_complete_o_INST_0 : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of mode_write_q_i_2 : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of otg_complete_o_INST_0 : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \state_q[0]_i_2\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \state_q[0]_i_3\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \state_q[1]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of turnaround_d_INST_0 : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of tx_delay_complete_o_INST_0 : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \tx_delay_q[0]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \tx_delay_q[1]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \tx_delay_q[2]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \tx_valid_q[0]_i_2\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of tx_wr_idx_q_i_1 : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \ulpi_data_q[0]_rep_i_2\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \ulpi_data_q[2]_rep_i_3\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \ulpi_data_q[2]_rep_i_4\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \ulpi_data_q[5]_rep_i_3\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \ulpi_data_q[6]_rep_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \ulpi_data_q[7]_rep_i_4\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \ulpi_data_q[7]_rep_i_6\ : label is "soft_lutpair6";
   attribute ORIG_CELL_NAME : string;
   attribute ORIG_CELL_NAME of \ulpi_data_q_reg[0]\ : label is "ulpi_data_q_reg[0]";
   attribute IOB : string;
@@ -226,12 +235,21 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0_ulpi_wrapper is
   attribute ORIG_CELL_NAME of \ulpi_data_q_reg[7]\ : label is "ulpi_data_q_reg[7]";
   attribute IOB of \ulpi_data_q_reg[7]_rep\ : label is "TRUE";
   attribute ORIG_CELL_NAME of \ulpi_data_q_reg[7]_rep\ : label is "ulpi_data_q_reg[7]";
+  attribute SOFT_HLUTNM of ulpi_stp_q_i_1 : label is "soft_lutpair7";
   attribute IOB of ulpi_stp_q_reg : label is "TRUE";
-  attribute SOFT_HLUTNM of \utmi_linestate_q[0]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \utmi_data_q[0]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \utmi_data_q[1]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \utmi_data_q[2]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \utmi_data_q[3]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \utmi_data_q[4]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \utmi_data_q[5]_i_1\ : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \utmi_data_q[6]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of \utmi_data_q[7]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \utmi_linestate_q[0]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \utmi_linestate_q[1]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of utmi_tx_accept_o_INST_0_i_1 : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of utmi_tx_accept_o_INST_0_i_2 : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of utmi_tx_ready_o_INST_0 : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of utmi_rxvalid_q_i_1 : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of utmi_tx_accept_o_INST_0_i_1 : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of utmi_tx_ready_o_INST_0 : label is "soft_lutpair6";
 begin
   mode_update_o <= \^mode_update_o\;
   opmode_o(1 downto 0) <= \^opmode_o\(1 downto 0);
@@ -241,6 +259,7 @@ begin
   termselect_o <= \^termselect_o\;
   tx_wr_idx_q_d <= \^tx_wr_idx_q_d\;
   ulpi_data_out_i_d(7 downto 0) <= \^ulpi_data_out_i_d\(7 downto 0);
+  ulpi_dir_q_do <= \^ulpi_dir_q_do\;
   utmi_linestate_o(1 downto 0) <= \^utmi_linestate_o\(1 downto 0);
   utmi_rxactive_o <= \^utmi_rxactive_o\;
   utmi_rxerror_o <= \^utmi_rxerror_o\;
@@ -314,22 +333,22 @@ begin
     );
 \data_q[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E2"
+      INIT => X"B8"
     )
         port map (
-      I0 => dppulldown_q,
+      I0 => \^xcvrselect_o\(1),
       I1 => \^mode_update_o\,
-      I2 => \^xcvrselect_o\(1),
+      I2 => dppulldown_q,
       O => data_q(1)
     );
 \data_q[2]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"E2"
+      INIT => X"B8"
     )
         port map (
-      I0 => dmpulldown_q,
+      I0 => \^termselect_o\,
       I1 => \^mode_update_o\,
-      I2 => \^termselect_o\,
+      I2 => dmpulldown_q,
       O => data_q(2)
     );
 \data_q[3]_i_1\: unisim.vcomponents.LUT2
@@ -361,21 +380,31 @@ begin
     );
 \data_q[6]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000001100000010"
+      INIT => X"0000000000001110"
     )
         port map (
       I0 => ulpi_dir_i,
-      I1 => ulpi_dir_q,
-      I2 => \^otg_update_o\,
-      I3 => \^state_o[0]\,
+      I1 => \^ulpi_dir_q_do\,
+      I2 => \^mode_update_o\,
+      I3 => \^otg_update_o\,
       I4 => \^state_o[1]\,
-      I5 => \^mode_update_o\,
-      O => \data_q[6]_i_1_n_0\
+      I5 => \^state_o[0]\,
+      O => data_q_0
+    );
+\data_q[6]_i_2\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"10"
+    )
+        port map (
+      I0 => \^state_o[0]\,
+      I1 => \^state_o[1]\,
+      I2 => \^mode_update_o\,
+      O => \data_q[6]_i_2_n_0\
     );
 \data_q_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => \data_q[6]_i_1_n_0\,
+      CE => data_q_0,
       CLR => ulpi_rst_i,
       D => data_q(0),
       Q => \data_q_reg_n_0_[0]\
@@ -383,7 +412,7 @@ begin
 \data_q_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => \data_q[6]_i_1_n_0\,
+      CE => data_q_0,
       CLR => ulpi_rst_i,
       D => data_q(1),
       Q => \data_q_reg_n_0_[1]\
@@ -391,7 +420,7 @@ begin
 \data_q_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => \data_q[6]_i_1_n_0\,
+      CE => data_q_0,
       CLR => ulpi_rst_i,
       D => data_q(2),
       Q => \data_q_reg_n_0_[2]\
@@ -399,7 +428,7 @@ begin
 \data_q_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => \data_q[6]_i_1_n_0\,
+      CE => data_q_0,
       CLR => ulpi_rst_i,
       D => data_q(3),
       Q => \data_q_reg_n_0_[3]\
@@ -407,7 +436,7 @@ begin
 \data_q_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => \data_q[6]_i_1_n_0\,
+      CE => data_q_0,
       CLR => ulpi_rst_i,
       D => data_q(4),
       Q => \data_q_reg_n_0_[4]\
@@ -415,7 +444,7 @@ begin
 \data_q_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => \data_q[6]_i_1_n_0\,
+      CE => data_q_0,
       CLR => ulpi_rst_i,
       D => data_q(5),
       Q => \data_q_reg_n_0_[5]\
@@ -423,9 +452,9 @@ begin
 \data_q_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => \data_q[6]_i_1_n_0\,
+      CE => data_q_0,
       CLR => ulpi_rst_i,
-      D => \^mode_update_o\,
+      D => \data_q[6]_i_2_n_0\,
       Q => \data_q_reg_n_0_[6]\
     );
 dmpulldown_q_reg: unisim.vcomponents.FDPE
@@ -450,44 +479,45 @@ mode_complete_o_INST_0: unisim.vcomponents.LUT5
     )
         port map (
       I0 => mode_write_q_reg_n_0,
-      I1 => ulpi_nxt_i,
-      I2 => \^state_o[0]\,
-      I3 => \^state_o[1]\,
+      I1 => \^state_o[0]\,
+      I2 => \^state_o[1]\,
+      I3 => ulpi_nxt_i,
       I4 => ulpi_dir_i,
       O => mode_complete_o
     );
-mode_update_q_i_1: unisim.vcomponents.LUT5
+mode_update_q_i_1: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"FF7FAA2A"
+      INIT => X"54"
     )
         port map (
-      I0 => \^mode_update_o\,
-      I1 => mode_write_q_reg_n_0,
-      I2 => mode_update_q_i_2_n_0,
-      I3 => ulpi_dir_i,
-      I4 => mode_update_q_i_3_n_0,
+      I0 => mode_update_q_i_2_n_0,
+      I1 => mode_update_q_i_3_n_0,
+      I2 => \^mode_update_o\,
       O => mode_update_q_i_1_n_0
     );
-mode_update_q_i_2: unisim.vcomponents.LUT3
+mode_update_q_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"80"
+      INIT => X"4000000000000000"
     )
         port map (
-      I0 => ulpi_nxt_i,
-      I1 => \^state_o[0]\,
+      I0 => ulpi_dir_i,
+      I1 => ulpi_nxt_i,
       I2 => \^state_o[1]\,
+      I3 => \^state_o[0]\,
+      I4 => mode_write_q_reg_n_0,
+      I5 => \^mode_update_o\,
       O => mode_update_q_i_2_n_0
     );
 mode_update_q_i_3: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"BEFFFFBE"
+      INIT => X"FFFF6FF6"
     )
         port map (
-      I0 => mode_update_q_i_4_n_0,
-      I1 => \^opmode_o\(1),
-      I2 => utmi_op_mode_i(1),
-      I3 => \^opmode_o\(0),
-      I4 => utmi_op_mode_i(0),
+      I0 => \^opmode_o\(1),
+      I1 => utmi_op_mode_i(1),
+      I2 => \^opmode_o\(0),
+      I3 => utmi_op_mode_i(0),
+      I4 => mode_update_q_i_4_n_0,
       O => mode_update_q_i_3_n_0
     );
 mode_update_q_i_4: unisim.vcomponents.LUT6
@@ -495,12 +525,12 @@ mode_update_q_i_4: unisim.vcomponents.LUT6
       INIT => X"6FF6FFFFFFFF6FF6"
     )
         port map (
-      I0 => utmi_termselect_i,
-      I1 => \^termselect_o\,
+      I0 => utmi_xcvrselect_i(0),
+      I1 => \^xcvrselect_o\(0),
       I2 => \^xcvrselect_o\(1),
       I3 => utmi_xcvrselect_i(1),
-      I4 => \^xcvrselect_o\(0),
-      I5 => utmi_xcvrselect_i(0),
+      I4 => \^termselect_o\,
+      I5 => utmi_termselect_i,
       O => mode_update_q_i_4_n_0
     );
 mode_update_q_reg: unisim.vcomponents.FDCE
@@ -513,16 +543,26 @@ mode_update_q_reg: unisim.vcomponents.FDCE
     );
 mode_write_q_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FDFFFDFD01000101"
+      INIT => X"BBBBBBBA8888888A"
     )
         port map (
-      I0 => \ulpi_data_q[3]_rep_i_2_n_0\,
-      I1 => ulpi_dir_i,
-      I2 => ulpi_dir_q,
-      I3 => mode_update_q_i_2_n_0,
-      I4 => \state_q[0]_i_3_n_0\,
+      I0 => \data_q[6]_i_2_n_0\,
+      I1 => data_q_0,
+      I2 => \^ulpi_dir_q_do\,
+      I3 => ulpi_dir_i,
+      I4 => mode_write_q_i_2_n_0,
       I5 => mode_write_q_reg_n_0,
       O => mode_write_q_i_1_n_0
+    );
+mode_write_q_i_2: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"7F"
+    )
+        port map (
+      I0 => \^state_o[0]\,
+      I1 => \^state_o[1]\,
+      I2 => ulpi_nxt_i,
+      O => mode_write_q_i_2_n_0
     );
 mode_write_q_reg: unisim.vcomponents.FDCE
      port map (
@@ -554,9 +594,9 @@ otg_complete_o_INST_0: unisim.vcomponents.LUT5
     )
         port map (
       I0 => otg_write_q_reg_n_0,
-      I1 => ulpi_nxt_i,
-      I2 => \^state_o[0]\,
-      I3 => \^state_o[1]\,
+      I1 => \^state_o[0]\,
+      I2 => \^state_o[1]\,
+      I3 => ulpi_nxt_i,
       I4 => ulpi_dir_i,
       O => otg_complete_o
     );
@@ -580,9 +620,9 @@ otg_update_q_i_2: unisim.vcomponents.LUT6
         port map (
       I0 => \^otg_update_o\,
       I1 => ulpi_dir_i,
-      I2 => \^state_o[1]\,
-      I3 => \^state_o[0]\,
-      I4 => ulpi_nxt_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^state_o[1]\,
+      I4 => \^state_o[0]\,
       I5 => otg_write_q_reg_n_0,
       O => otg_update_q_i_2_n_0
     );
@@ -596,29 +636,29 @@ otg_update_q_reg: unisim.vcomponents.FDCE
     );
 otg_write_q_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0002FFFF00020000"
+      INIT => X"0100FFFF01000000"
     )
         port map (
-      I0 => \^otg_update_o\,
+      I0 => \^mode_update_o\,
       I1 => \^state_o[1]\,
       I2 => \^state_o[0]\,
-      I3 => \^mode_update_o\,
-      I4 => otg_write_q_i_2_n_0,
+      I3 => \^otg_update_o\,
+      I4 => mode_write_q,
       I5 => otg_write_q_reg_n_0,
       O => otg_write_q_i_1_n_0
     );
 otg_write_q_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"1000000011111111"
+      INIT => X"ABAAAAAAAAAAAAAA"
     )
         port map (
-      I0 => ulpi_dir_i,
-      I1 => ulpi_dir_q,
-      I2 => ulpi_nxt_i,
+      I0 => data_q_0,
+      I1 => \^ulpi_dir_q_do\,
+      I2 => ulpi_dir_i,
       I3 => \^state_o[0]\,
       I4 => \^state_o[1]\,
-      I5 => \state_q[0]_i_3_n_0\,
-      O => otg_write_q_i_2_n_0
+      I5 => ulpi_nxt_i,
+      O => mode_write_q
     );
 otg_write_q_reg: unisim.vcomponents.FDCE
      port map (
@@ -628,16 +668,13 @@ otg_write_q_reg: unisim.vcomponents.FDCE
       D => otg_write_q_i_1_n_0,
       Q => otg_write_q_reg_n_0
     );
-phy_reset_q_i_1: unisim.vcomponents.LUT5
+phy_reset_q_i_1: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"AAAA2AAA"
+      INIT => X"2"
     )
         port map (
       I0 => phy_reset_q,
-      I1 => \^mode_update_o\,
-      I2 => mode_write_q_reg_n_0,
-      I3 => mode_update_q_i_2_n_0,
-      I4 => ulpi_dir_i,
+      I1 => mode_update_q_i_2_n_0,
       O => phy_reset_q_i_1_n_0
     );
 phy_reset_q_reg: unisim.vcomponents.FDPE
@@ -650,12 +687,12 @@ phy_reset_q_reg: unisim.vcomponents.FDPE
     );
 \state_q[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"20AAFFFF00AA0000"
+      INIT => X"08AAFFFF00AA0000"
     )
         port map (
       I0 => \state_q[0]_i_2_n_0\,
-      I1 => \^state_o[1]\,
-      I2 => ulpi_nxt_i,
+      I1 => ulpi_nxt_i,
+      I2 => \^state_o[1]\,
       I3 => \state_q[0]_i_3_n_0\,
       I4 => ulpi_data_q,
       I5 => \^state_o[0]\,
@@ -663,48 +700,46 @@ phy_reset_q_reg: unisim.vcomponents.FDPE
     );
 \state_q[0]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"9D"
+      INIT => X"A7"
     )
         port map (
-      I0 => ulpi_dir_q,
-      I1 => ulpi_dir_i,
-      I2 => ulpi_nxt_i,
+      I0 => ulpi_dir_i,
+      I1 => ulpi_nxt_i,
+      I2 => \^ulpi_dir_q_do\,
       O => \state_q[0]_i_2_n_0\
     );
 \state_q[0]_i_3\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FCFD"
-    )
-        port map (
-      I0 => \^mode_update_o\,
-      I1 => \^state_o[1]\,
-      I2 => \^state_o[0]\,
-      I3 => \^otg_update_o\,
-      O => \state_q[0]_i_3_n_0\
-    );
-\state_q[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0070FFFF00F80000"
+      INIT => X"EEEF"
     )
         port map (
       I0 => \^state_o[0]\,
-      I1 => ulpi_nxt_i,
-      I2 => \^utmi_tx_ready_o\,
-      I3 => \state_q[1]_i_2_n_0\,
-      I4 => ulpi_data_q,
-      I5 => \^state_o[1]\,
-      O => \state_q[1]_i_1_n_0\
+      I1 => \^state_o[1]\,
+      I2 => \^otg_update_o\,
+      I3 => \^mode_update_o\,
+      O => \state_q[0]_i_3_n_0\
     );
-\state_q[1]_i_2\: unisim.vcomponents.LUT5
+\state_q[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"0302FFFF"
+      INIT => X"B8"
     )
         port map (
-      I0 => \^otg_update_o\,
-      I1 => \^state_o[0]\,
+      I0 => \state_q[1]_i_2_n_0\,
+      I1 => ulpi_data_q,
       I2 => \^state_o[1]\,
-      I3 => \^mode_update_o\,
-      I4 => \state_q[0]_i_2_n_0\,
+      O => \state_q[1]_i_1_n_0\
+    );
+\state_q[1]_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"4440444044404444"
+    )
+        port map (
+      I0 => ulpi_stp_q_i_2_n_0,
+      I1 => \state_q[0]_i_2_n_0\,
+      I2 => \^state_o[0]\,
+      I3 => \^state_o[1]\,
+      I4 => \^otg_update_o\,
+      I5 => \^mode_update_o\,
       O => \state_q[1]_i_2_n_0\
     );
 \state_q_reg[0]\: unisim.vcomponents.FDCE
@@ -736,7 +771,7 @@ turnaround_d_INST_0: unisim.vcomponents.LUT2
       INIT => X"6"
     )
         port map (
-      I0 => ulpi_dir_q,
+      I0 => \^ulpi_dir_q_do\,
       I1 => ulpi_dir_i,
       O => turnaround_d
     );
@@ -1059,47 +1094,91 @@ tx_wr_idx_q_reg: unisim.vcomponents.FDCE
       D => tx_wr_idx_q_i_1_n_0,
       Q => \^tx_wr_idx_q_d\
     );
-ulpi_clk_pos_o_INST_0: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"6"
-    )
-        port map (
-      I0 => ulpi_clk60_i,
-      I1 => ulpi_clk_q,
-      O => ulpi_clk_pos_o
-    );
-ulpi_clk_q_reg: unisim.vcomponents.FDCE
+\ulpi_data_out_i_q_reg[0]\: unisim.vcomponents.FDCE
      port map (
-      C => sample_clk_i,
+      C => ulpi_clk60_i,
       CE => '1',
       CLR => ulpi_rst_i,
-      D => ulpi_clk60_i,
-      Q => ulpi_clk_q
+      D => \^ulpi_data_out_i_d\(0),
+      Q => utmi_data_in_o(0)
+    );
+\ulpi_data_out_i_q_reg[1]\: unisim.vcomponents.FDCE
+     port map (
+      C => ulpi_clk60_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => \^ulpi_data_out_i_d\(1),
+      Q => utmi_data_in_o(1)
+    );
+\ulpi_data_out_i_q_reg[2]\: unisim.vcomponents.FDCE
+     port map (
+      C => ulpi_clk60_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => \^ulpi_data_out_i_d\(2),
+      Q => utmi_data_in_o(2)
+    );
+\ulpi_data_out_i_q_reg[3]\: unisim.vcomponents.FDCE
+     port map (
+      C => ulpi_clk60_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => \^ulpi_data_out_i_d\(3),
+      Q => utmi_data_in_o(3)
+    );
+\ulpi_data_out_i_q_reg[4]\: unisim.vcomponents.FDCE
+     port map (
+      C => ulpi_clk60_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => \^ulpi_data_out_i_d\(4),
+      Q => utmi_data_in_o(4)
+    );
+\ulpi_data_out_i_q_reg[5]\: unisim.vcomponents.FDCE
+     port map (
+      C => ulpi_clk60_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => \^ulpi_data_out_i_d\(5),
+      Q => utmi_data_in_o(5)
+    );
+\ulpi_data_out_i_q_reg[6]\: unisim.vcomponents.FDCE
+     port map (
+      C => ulpi_clk60_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => \^ulpi_data_out_i_d\(6),
+      Q => utmi_data_in_o(6)
+    );
+\ulpi_data_out_i_q_reg[7]\: unisim.vcomponents.FDCE
+     port map (
+      C => ulpi_clk60_i,
+      CE => '1',
+      CLR => ulpi_rst_i,
+      D => \^ulpi_data_out_i_d\(7),
+      Q => utmi_data_in_o(7)
     );
 \ulpi_data_q[0]_rep_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"A8A8A8080808A808"
+      INIT => X"AAAAA8080000A808"
     )
         port map (
-      I0 => \ulpi_data_q[0]_rep_i_2_n_0\,
-      I1 => \data_q_reg_n_0_[0]\,
-      I2 => \ulpi_data_q[3]_rep_i_4_n_0\,
-      I3 => \tx_buffer_q_reg[0]\(0),
-      I4 => tx_rd_idx_q,
-      I5 => \tx_buffer_q_reg[1]\(0),
+      I0 => \state_q[1]_i_2_n_0\,
+      I1 => \tx_buffer_q_reg[0]\(0),
+      I2 => tx_rd_idx_q,
+      I3 => \tx_buffer_q_reg[1]\(0),
+      I4 => \ulpi_data_q[0]_rep_i_2_n_0\,
+      I5 => \data_q_reg_n_0_[0]\,
       O => \ulpi_data_q[0]_rep_i_1_n_0\
     );
-\ulpi_data_q[0]_rep_i_2\: unisim.vcomponents.LUT6
+\ulpi_data_q[0]_rep_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"4444440044444404"
+      INIT => X"20"
     )
         port map (
-      I0 => \ulpi_data_q[2]_rep_i_3_n_0\,
-      I1 => \state_q[0]_i_2_n_0\,
-      I2 => \^mode_update_o\,
-      I3 => \^state_o[1]\,
-      I4 => \^state_o[0]\,
-      I5 => \^otg_update_o\,
+      I0 => ulpi_nxt_i,
+      I1 => \^state_o[1]\,
+      I2 => \^state_o[0]\,
       O => \ulpi_data_q[0]_rep_i_2_n_0\
     );
 \ulpi_data_q[1]_rep_i_1\: unisim.vcomponents.LUT6
@@ -1117,93 +1196,44 @@ ulpi_clk_q_reg: unisim.vcomponents.FDCE
     );
 \ulpi_data_q[1]_rep_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000EEE222E2"
+      INIT => X"00000000FFE200E2"
     )
         port map (
-      I0 => \data_q_reg_n_0_[1]\,
-      I1 => \ulpi_data_q[3]_rep_i_4_n_0\,
-      I2 => \tx_buffer_q_reg[0]\(1),
-      I3 => tx_rd_idx_q,
-      I4 => \tx_buffer_q_reg[1]\(1),
-      I5 => \ulpi_data_q[2]_rep_i_3_n_0\,
+      I0 => \tx_buffer_q_reg[0]\(1),
+      I1 => tx_rd_idx_q,
+      I2 => \tx_buffer_q_reg[1]\(1),
+      I3 => \ulpi_data_q[0]_rep_i_2_n_0\,
+      I4 => \data_q_reg_n_0_[1]\,
+      I5 => ulpi_stp_q_i_2_n_0,
       O => \ulpi_data_q[1]_rep_i_2_n_0\
     );
 \ulpi_data_q[2]_rep_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000C700C7C7C7C7"
+      INIT => X"B500B5B5B500B500"
     )
         port map (
-      I0 => ulpi_nxt_i,
-      I1 => ulpi_dir_i,
-      I2 => ulpi_dir_q,
-      I3 => \ulpi_data_q[2]_rep_i_2_n_0\,
-      I4 => \ulpi_data_q[2]_rep_i_3_n_0\,
-      I5 => \ulpi_data_q[3]_rep_i_2_n_0\,
+      I0 => \^ulpi_dir_q_do\,
+      I1 => ulpi_nxt_i,
+      I2 => ulpi_dir_i,
+      I3 => \data_q[6]_i_2_n_0\,
+      I4 => ulpi_stp_q_i_2_n_0,
+      I5 => \ulpi_data_q[2]_rep_i_2_n_0\,
       O => \ulpi_data_q[2]_rep_i_1_n_0\
     );
 \ulpi_data_q[2]_rep_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00000000EEE222E2"
+      INIT => X"EEE222E200000000"
     )
         port map (
       I0 => \data_q_reg_n_0_[2]\,
-      I1 => \ulpi_data_q[3]_rep_i_4_n_0\,
+      I1 => \ulpi_data_q[2]_rep_i_3_n_0\,
       I2 => \tx_buffer_q_reg[0]\(2),
       I3 => tx_rd_idx_q,
       I4 => \tx_buffer_q_reg[1]\(2),
-      I5 => \ulpi_data_q[3]_rep_i_5_n_0\,
+      I5 => \ulpi_data_q[2]_rep_i_4_n_0\,
       O => \ulpi_data_q[2]_rep_i_2_n_0\
     );
-\ulpi_data_q[2]_rep_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"FF53005353535353"
-    )
-        port map (
-      I0 => \tx_valid_q_reg_n_0_[1]\,
-      I1 => \tx_valid_q_reg_n_0_[0]\,
-      I2 => tx_rd_idx_q,
-      I3 => ulpi_nxt_i,
-      I4 => \^state_o[1]\,
-      I5 => \^state_o[0]\,
-      O => \ulpi_data_q[2]_rep_i_3_n_0\
-    );
-\ulpi_data_q[3]_rep_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"8888888880888000"
-    )
-        port map (
-      I0 => \ulpi_data_q[3]_rep_i_2_n_0\,
-      I1 => \state_q[0]_i_2_n_0\,
-      I2 => \ulpi_data_q[3]_rep_i_3_n_0\,
-      I3 => \ulpi_data_q[3]_rep_i_4_n_0\,
-      I4 => \data_q_reg_n_0_[3]\,
-      I5 => \ulpi_data_q[3]_rep_i_5_n_0\,
-      O => \ulpi_data_q[3]_rep_i_1_n_0\
-    );
-\ulpi_data_q[3]_rep_i_2\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"EF"
-    )
-        port map (
-      I0 => \^state_o[0]\,
-      I1 => \^state_o[1]\,
-      I2 => \^mode_update_o\,
-      O => \ulpi_data_q[3]_rep_i_2_n_0\
-    );
-\ulpi_data_q[3]_rep_i_3\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"4540050040400000"
-    )
-        port map (
-      I0 => mode_update_q_i_2_n_0,
-      I1 => \tx_buffer_q_reg[1]\(3),
-      I2 => tx_rd_idx_q,
-      I3 => \tx_buffer_q_reg[0]\(3),
-      I4 => \tx_valid_q_reg_n_0_[1]\,
-      I5 => \tx_valid_q_reg_n_0_[0]\,
-      O => \ulpi_data_q[3]_rep_i_3_n_0\
-    );
-\ulpi_data_q[3]_rep_i_4\: unisim.vcomponents.LUT3
+\ulpi_data_q[2]_rep_i_3\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"DF"
     )
@@ -1211,115 +1241,135 @@ ulpi_clk_q_reg: unisim.vcomponents.FDCE
       I0 => \^state_o[0]\,
       I1 => \^state_o[1]\,
       I2 => ulpi_nxt_i,
-      O => \ulpi_data_q[3]_rep_i_4_n_0\
+      O => \ulpi_data_q[2]_rep_i_3_n_0\
     );
-\ulpi_data_q[3]_rep_i_5\: unisim.vcomponents.LUT3
+\ulpi_data_q[2]_rep_i_4\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"02"
+      INIT => X"FD"
     )
         port map (
       I0 => \^otg_update_o\,
       I1 => \^state_o[0]\,
       I2 => \^state_o[1]\,
-      O => \ulpi_data_q[3]_rep_i_5_n_0\
+      O => \ulpi_data_q[2]_rep_i_4_n_0\
+    );
+\ulpi_data_q[3]_rep_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0C0C0C0C0C0C4404"
+    )
+        port map (
+      I0 => \^mode_update_o\,
+      I1 => \state_q[0]_i_2_n_0\,
+      I2 => \ulpi_data_q[3]_rep_i_2_n_0\,
+      I3 => \^otg_update_o\,
+      I4 => \^state_o[0]\,
+      I5 => \^state_o[1]\,
+      O => \ulpi_data_q[3]_rep_i_1_n_0\
+    );
+\ulpi_data_q[3]_rep_i_2\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"AAAAABFBFFFFABFB"
+    )
+        port map (
+      I0 => ulpi_stp_q_i_2_n_0,
+      I1 => \tx_buffer_q_reg[0]\(3),
+      I2 => tx_rd_idx_q,
+      I3 => \tx_buffer_q_reg[1]\(3),
+      I4 => \ulpi_data_q[0]_rep_i_2_n_0\,
+      I5 => \data_q_reg_n_0_[3]\,
+      O => \ulpi_data_q[3]_rep_i_2_n_0\
     );
 \ulpi_data_q[4]_rep_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000000000000A02A"
+      INIT => X"0F001F0000000000"
     )
         port map (
-      I0 => \state_q[0]_i_3_n_0\,
-      I1 => ulpi_nxt_i,
-      I2 => ulpi_dir_i,
-      I3 => ulpi_dir_q,
-      I4 => \ulpi_data_q[7]_rep_i_7_n_0\,
+      I0 => \^mode_update_o\,
+      I1 => \^otg_update_o\,
+      I2 => \ulpi_data_q[5]_rep_i_3_n_0\,
+      I3 => \state_q[0]_i_2_n_0\,
+      I4 => \^utmi_tx_ready_o\,
       I5 => \ulpi_data_q[4]_rep_i_2_n_0\,
       O => \ulpi_data_q[4]_rep_i_1_n_0\
     );
 \ulpi_data_q[4]_rep_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"D0DDD0D0D0DDDDDD"
+      INIT => X"B8B8B8888888B888"
     )
         port map (
       I0 => \data_q_reg_n_0_[4]\,
-      I1 => \ulpi_data_q[3]_rep_i_4_n_0\,
-      I2 => \ulpi_data_q[6]_rep_i_2_n_0\,
-      I3 => \tx_buffer_q_reg[1]\(4),
+      I1 => \ulpi_data_q[0]_rep_i_2_n_0\,
+      I2 => \ulpi_data_q[7]_rep_i_7_n_0\,
+      I3 => \tx_buffer_q_reg[0]\(4),
       I4 => tx_rd_idx_q,
-      I5 => \tx_buffer_q_reg[0]\(4),
+      I5 => \tx_buffer_q_reg[1]\(4),
       O => \ulpi_data_q[4]_rep_i_2_n_0\
     );
 \ulpi_data_q[5]_rep_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000000000000A02A"
+      INIT => X"00AA000002AA0000"
     )
         port map (
-      I0 => \state_q[0]_i_3_n_0\,
-      I1 => ulpi_nxt_i,
-      I2 => ulpi_dir_i,
-      I3 => ulpi_dir_q,
-      I4 => \ulpi_data_q[7]_rep_i_7_n_0\,
-      I5 => \ulpi_data_q[5]_rep_i_2_n_0\,
+      I0 => \ulpi_data_q[5]_rep_i_2_n_0\,
+      I1 => \^mode_update_o\,
+      I2 => \^otg_update_o\,
+      I3 => \ulpi_data_q[5]_rep_i_3_n_0\,
+      I4 => \state_q[0]_i_2_n_0\,
+      I5 => \^utmi_tx_ready_o\,
       O => \ulpi_data_q[5]_rep_i_1_n_0\
     );
 \ulpi_data_q[5]_rep_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"B0BBB0B0B0BBBBBB"
+      INIT => X"B8B8B8888888B888"
     )
         port map (
-      I0 => \ulpi_data_q[3]_rep_i_4_n_0\,
-      I1 => \data_q_reg_n_0_[5]\,
-      I2 => \ulpi_data_q[6]_rep_i_2_n_0\,
-      I3 => \tx_buffer_q_reg[1]\(5),
+      I0 => \data_q_reg_n_0_[5]\,
+      I1 => \ulpi_data_q[0]_rep_i_2_n_0\,
+      I2 => \ulpi_data_q[7]_rep_i_7_n_0\,
+      I3 => \tx_buffer_q_reg[0]\(5),
       I4 => tx_rd_idx_q,
-      I5 => \tx_buffer_q_reg[0]\(5),
+      I5 => \tx_buffer_q_reg[1]\(5),
       O => \ulpi_data_q[5]_rep_i_2_n_0\
     );
-\ulpi_data_q[6]_rep_i_1\: unisim.vcomponents.LUT6
+\ulpi_data_q[5]_rep_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"00000000FFFF5404"
+      INIT => X"1"
     )
         port map (
-      I0 => \ulpi_data_q[6]_rep_i_2_n_0\,
-      I1 => \tx_buffer_q_reg[0]\(6),
-      I2 => tx_rd_idx_q,
-      I3 => \tx_buffer_q_reg[1]\(6),
-      I4 => \ulpi_data_q[6]_rep_i_3_n_0\,
-      I5 => \state_q[1]_i_2_n_0\,
+      I0 => \^state_o[1]\,
+      I1 => \^state_o[0]\,
+      O => \ulpi_data_q[5]_rep_i_3_n_0\
+    );
+\ulpi_data_q[6]_rep_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => \state_q[1]_i_2_n_0\,
+      I1 => \ulpi_data_q[6]_rep_i_2_n_0\,
       O => \ulpi_data_q[6]_rep_i_1_n_0\
     );
-\ulpi_data_q[6]_rep_i_2\: unisim.vcomponents.LUT5
+\ulpi_data_q[6]_rep_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"888FF8FF"
+      INIT => X"55555555303F0000"
     )
         port map (
-      I0 => \^state_o[0]\,
-      I1 => ulpi_nxt_i,
+      I0 => \data_q_reg_n_0_[6]\,
+      I1 => \tx_buffer_q_reg[1]\(6),
       I2 => tx_rd_idx_q,
-      I3 => \tx_valid_q_reg_n_0_[0]\,
-      I4 => \tx_valid_q_reg_n_0_[1]\,
+      I3 => \tx_buffer_q_reg[0]\(6),
+      I4 => \ulpi_data_q[7]_rep_i_6_n_0\,
+      I5 => \ulpi_data_q[0]_rep_i_2_n_0\,
       O => \ulpi_data_q[6]_rep_i_2_n_0\
-    );
-\ulpi_data_q[6]_rep_i_3\: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"0E020202"
-    )
-        port map (
-      I0 => \^utmi_tx_ready_o\,
-      I1 => \^state_o[0]\,
-      I2 => \^state_o[1]\,
-      I3 => ulpi_nxt_i,
-      I4 => \data_q_reg_n_0_[6]\,
-      O => \ulpi_data_q[6]_rep_i_3_n_0\
     );
 \ulpi_data_q[7]_rep_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0DFF0D0D0D0D0D0D"
+      INIT => X"44FF444444445454"
     )
         port map (
       I0 => \ulpi_data_q[7]_rep_i_3_n_0\,
       I1 => \ulpi_data_q[7]_rep_i_4_n_0\,
-      I2 => \ulpi_data_q[7]_rep_i_5_n_0\,
+      I2 => \^utmi_tx_ready_o\,
       I3 => \state_q[0]_i_2_n_0\,
       I4 => \^state_o[1]\,
       I5 => \^state_o[0]\,
@@ -1327,74 +1377,74 @@ ulpi_clk_q_reg: unisim.vcomponents.FDCE
     );
 \ulpi_data_q[7]_rep_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000C700C7C7C7C7"
+      INIT => X"888A888A888A8888"
     )
         port map (
-      I0 => ulpi_nxt_i,
-      I1 => ulpi_dir_i,
-      I2 => ulpi_dir_q,
-      I3 => \ulpi_data_q[7]_rep_i_6_n_0\,
-      I4 => \ulpi_data_q[7]_rep_i_7_n_0\,
-      I5 => \state_q[0]_i_3_n_0\,
+      I0 => \state_q[0]_i_2_n_0\,
+      I1 => \ulpi_data_q[7]_rep_i_5_n_0\,
+      I2 => \^state_o[0]\,
+      I3 => \^state_o[1]\,
+      I4 => \^otg_update_o\,
+      I5 => \^mode_update_o\,
       O => \ulpi_data_q[7]_rep_i_2_n_0\
     );
-\ulpi_data_q[7]_rep_i_3\: unisim.vcomponents.LUT5
+\ulpi_data_q[7]_rep_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"FF0FFF11"
+      INIT => X"E"
     )
         port map (
-      I0 => \^otg_update_o\,
-      I1 => \^mode_update_o\,
-      I2 => ulpi_nxt_i,
-      I3 => \^state_o[1]\,
-      I4 => \^state_o[0]\,
+      I0 => \^ulpi_dir_q_do\,
+      I1 => ulpi_dir_i,
       O => \ulpi_data_q[7]_rep_i_3_n_0\
     );
-\ulpi_data_q[7]_rep_i_4\: unisim.vcomponents.LUT6
+\ulpi_data_q[7]_rep_i_4\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8B888B888B8B8888"
+      INIT => X"ABABABA8"
     )
         port map (
       I0 => ulpi_nxt_i,
       I1 => \^state_o[1]\,
       I2 => \^state_o[0]\,
-      I3 => \tx_valid_q_reg_n_0_[1]\,
-      I4 => \tx_valid_q_reg_n_0_[0]\,
-      I5 => tx_rd_idx_q,
+      I3 => \^otg_update_o\,
+      I4 => \^mode_update_o\,
       O => \ulpi_data_q[7]_rep_i_4_n_0\
     );
-\ulpi_data_q[7]_rep_i_5\: unisim.vcomponents.LUT2
+\ulpi_data_q[7]_rep_i_5\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"E"
+      INIT => X"4044400000000000"
     )
         port map (
-      I0 => ulpi_dir_q,
-      I1 => ulpi_dir_i,
+      I0 => \ulpi_data_q[0]_rep_i_2_n_0\,
+      I1 => \ulpi_data_q[7]_rep_i_6_n_0\,
+      I2 => \tx_buffer_q_reg[1]\(7),
+      I3 => tx_rd_idx_q,
+      I4 => \tx_buffer_q_reg[0]\(7),
+      I5 => \ulpi_data_q[7]_rep_i_7_n_0\,
       O => \ulpi_data_q[7]_rep_i_5_n_0\
     );
-\ulpi_data_q[7]_rep_i_6\: unisim.vcomponents.LUT6
+\ulpi_data_q[7]_rep_i_6\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000E200E200E200"
+      INIT => X"EEEFFEFF"
     )
         port map (
-      I0 => \tx_buffer_q_reg[0]\(7),
-      I1 => tx_rd_idx_q,
-      I2 => \tx_buffer_q_reg[1]\(7),
-      I3 => \^utmi_tx_ready_o\,
-      I4 => ulpi_nxt_i,
-      I5 => \^state_o[0]\,
+      I0 => \^state_o[0]\,
+      I1 => \^state_o[1]\,
+      I2 => tx_rd_idx_q,
+      I3 => \tx_valid_q_reg_n_0_[0]\,
+      I4 => \tx_valid_q_reg_n_0_[1]\,
       O => \ulpi_data_q[7]_rep_i_6_n_0\
     );
-\ulpi_data_q[7]_rep_i_7\: unisim.vcomponents.LUT5
+\ulpi_data_q[7]_rep_i_7\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000000E4"
+      INIT => X"7F7F7F00007F0000"
     )
         port map (
-      I0 => tx_rd_idx_q,
-      I1 => \tx_valid_q_reg_n_0_[0]\,
-      I2 => \tx_valid_q_reg_n_0_[1]\,
-      I3 => \^state_o[0]\,
-      I4 => \^state_o[1]\,
+      I0 => ulpi_nxt_i,
+      I1 => \^state_o[1]\,
+      I2 => \^state_o[0]\,
+      I3 => tx_rd_idx_q,
+      I4 => \tx_valid_q_reg_n_0_[0]\,
+      I5 => \tx_valid_q_reg_n_0_[1]\,
       O => \ulpi_data_q[7]_rep_i_7_n_0\
     );
 \ulpi_data_q_reg[0]\: unisim.vcomponents.FDCE
@@ -1525,42 +1575,46 @@ ulpi_clk_q_reg: unisim.vcomponents.FDCE
       D => \ulpi_data_q[7]_rep_i_2_n_0\,
       Q => ulpi_data_in_o_d(7)
     );
-ulpi_dir_i_resample_q_reg: unisim.vcomponents.FDRE
-     port map (
-      C => sample_clk_i,
-      CE => '1',
-      D => ulpi_dir_i,
-      Q => ulpi_dir_i_resample_q_do,
-      R => '0'
-    );
 ulpi_dir_q_reg: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
       CE => '1',
       CLR => ulpi_rst_i,
       D => ulpi_dir_i,
-      Q => ulpi_dir_q
+      Q => \^ulpi_dir_q_do\
     );
-ulpi_nxt_i_resample_q_reg: unisim.vcomponents.FDRE
+ulpi_nxt_q_reg: unisim.vcomponents.FDCE
      port map (
-      C => sample_clk_i,
+      C => ulpi_clk60_i,
       CE => '1',
+      CLR => ulpi_rst_i,
       D => ulpi_nxt_i,
-      Q => ulpi_nxt_i_resample_q_do,
-      R => '0'
+      Q => ulpi_nxt_q_do
     );
-ulpi_stp_q_i_1: unisim.vcomponents.LUT6
+ulpi_stp_q_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"000000000000D000"
+      INIT => X"00000080"
     )
         port map (
-      I0 => \^utmi_tx_ready_o\,
-      I1 => \^state_o[0]\,
-      I2 => ulpi_nxt_i,
-      I3 => \^state_o[1]\,
-      I4 => ulpi_dir_q,
-      I5 => ulpi_dir_i,
+      I0 => ulpi_stp_q_i_2_n_0,
+      I1 => ulpi_nxt_i,
+      I2 => \^state_o[1]\,
+      I3 => \^ulpi_dir_q_do\,
+      I4 => ulpi_dir_i,
       O => ulpi_stp_q13_out
+    );
+ulpi_stp_q_i_2: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FF53005353535353"
+    )
+        port map (
+      I0 => \tx_valid_q_reg_n_0_[1]\,
+      I1 => \tx_valid_q_reg_n_0_[0]\,
+      I2 => tx_rd_idx_q,
+      I3 => \^state_o[0]\,
+      I4 => \^state_o[1]\,
+      I5 => ulpi_nxt_i,
+      O => ulpi_stp_q_i_2_n_0
     );
 ulpi_stp_q_reg: unisim.vcomponents.FDPE
      port map (
@@ -1570,91 +1624,179 @@ ulpi_stp_q_reg: unisim.vcomponents.FDPE
       PRE => ulpi_rst_i,
       Q => ulpi_stp_o
     );
+\utmi_data_q[0]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"BFFF"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(0),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[0]_i_1_n_0\
+    );
+\utmi_data_q[1]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(1),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[1]_i_1_n_0\
+    );
+\utmi_data_q[2]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"BFFF"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(2),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[2]_i_1_n_0\
+    );
+\utmi_data_q[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(3),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[3]_i_1_n_0\
+    );
+\utmi_data_q[4]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"BFFF"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(4),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[4]_i_1_n_0\
+    );
+\utmi_data_q[5]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(5),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[5]_i_1_n_0\
+    );
+\utmi_data_q[6]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"BFFF"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(6),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[6]_i_1_n_0\
+    );
+\utmi_data_q[7]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"8000"
+    )
+        port map (
+      I0 => \^ulpi_data_out_i_d\(7),
+      I1 => ulpi_dir_i,
+      I2 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
+      O => \utmi_data_q[7]_i_1_n_0\
+    );
 \utmi_data_q_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(0),
-      Q => utmi_data_in_o(0)
+      D => \utmi_data_q[0]_i_1_n_0\,
+      Q => utmi_data_q_do(0)
     );
 \utmi_data_q_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(1),
-      Q => utmi_data_in_o(1)
+      D => \utmi_data_q[1]_i_1_n_0\,
+      Q => utmi_data_q_do(1)
     );
 \utmi_data_q_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(2),
-      Q => utmi_data_in_o(2)
+      D => \utmi_data_q[2]_i_1_n_0\,
+      Q => utmi_data_q_do(2)
     );
 \utmi_data_q_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(3),
-      Q => utmi_data_in_o(3)
+      D => \utmi_data_q[3]_i_1_n_0\,
+      Q => utmi_data_q_do(3)
     );
 \utmi_data_q_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(4),
-      Q => utmi_data_in_o(4)
+      D => \utmi_data_q[4]_i_1_n_0\,
+      Q => utmi_data_q_do(4)
     );
 \utmi_data_q_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(5),
-      Q => utmi_data_in_o(5)
+      D => \utmi_data_q[5]_i_1_n_0\,
+      Q => utmi_data_q_do(5)
     );
 \utmi_data_q_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(6),
-      Q => utmi_data_in_o(6)
+      D => \utmi_data_q[6]_i_1_n_0\,
+      Q => utmi_data_q_do(6)
     );
 \utmi_data_q_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => ulpi_clk60_i,
-      CE => utmi_rxvalid_q,
+      CE => '1',
       CLR => ulpi_rst_i,
-      D => \^ulpi_data_out_i_d\(7),
-      Q => utmi_data_in_o(7)
+      D => \utmi_data_q[7]_i_1_n_0\,
+      Q => utmi_data_q_do(7)
     );
 \utmi_linestate_q[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFBF0080"
+      INIT => X"EFFF2000"
     )
         port map (
       I0 => \^ulpi_data_out_i_d\(0),
-      I1 => ulpi_dir_q,
+      I1 => ulpi_nxt_i,
       I2 => ulpi_dir_i,
-      I3 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
       I4 => \^utmi_linestate_o\(0),
       O => \utmi_linestate_q[0]_i_1_n_0\
     );
 \utmi_linestate_q[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FFBF0080"
+      INIT => X"EFFF2000"
     )
         port map (
       I0 => \^ulpi_data_out_i_d\(1),
-      I1 => ulpi_dir_q,
+      I1 => ulpi_nxt_i,
       I2 => ulpi_dir_i,
-      I3 => ulpi_nxt_i,
+      I3 => \^ulpi_dir_q_do\,
       I4 => \^utmi_linestate_o\(1),
       O => \utmi_linestate_q[1]_i_1_n_0\
     );
@@ -1676,14 +1818,14 @@ ulpi_stp_q_reg: unisim.vcomponents.FDPE
     );
 utmi_rxactive_q_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FE00FFFF0A00F000"
+      INIT => X"FFEF0F0F0FA00000"
     )
         port map (
       I0 => \^ulpi_data_out_i_d\(4),
       I1 => \^ulpi_data_out_i_d\(5),
-      I2 => ulpi_nxt_i,
-      I3 => ulpi_dir_i,
-      I4 => ulpi_dir_q,
+      I2 => \^ulpi_dir_q_do\,
+      I3 => ulpi_nxt_i,
+      I4 => ulpi_dir_i,
       I5 => \^utmi_rxactive_o\,
       O => utmi_rxactive_q_i_1_n_0
     );
@@ -1697,14 +1839,14 @@ utmi_rxactive_q_reg: unisim.vcomponents.FDCE
     );
 utmi_rxerror_q_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFAFFF00008000"
+      INIT => X"FAFFFFFF08000000"
     )
         port map (
       I0 => \^ulpi_data_out_i_d\(5),
       I1 => \^ulpi_data_out_i_d\(4),
-      I2 => ulpi_dir_q,
+      I2 => ulpi_nxt_i,
       I3 => ulpi_dir_i,
-      I4 => ulpi_nxt_i,
+      I4 => \^ulpi_dir_q_do\,
       I5 => \^utmi_rxerror_o\,
       O => utmi_rxerror_q_i_1_n_0
     );
@@ -1721,9 +1863,9 @@ utmi_rxvalid_q_i_1: unisim.vcomponents.LUT3
       INIT => X"80"
     )
         port map (
-      I0 => ulpi_nxt_i,
-      I1 => ulpi_dir_i,
-      I2 => ulpi_dir_q,
+      I0 => \^ulpi_dir_q_do\,
+      I1 => ulpi_nxt_i,
+      I2 => ulpi_dir_i,
       O => utmi_rxvalid_q
     );
 utmi_rxvalid_q_reg: unisim.vcomponents.FDCE
@@ -1736,35 +1878,25 @@ utmi_rxvalid_q_reg: unisim.vcomponents.FDCE
     );
 utmi_tx_accept_o_INST_0: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0044004F00440044"
+      INIT => X"000F000000010001"
     )
         port map (
-      I0 => \^state_o[0]\,
-      I1 => utmi_tx_accept_o_INST_0_i_1_n_0,
-      I2 => \^otg_update_o\,
-      I3 => ulpi_dir_i,
-      I4 => ulpi_dir_q,
-      I5 => utmi_tx_accept_o_INST_0_i_2_n_0,
+      I0 => utmi_tx_accept_o_INST_0_i_1_n_0,
+      I1 => \^ulpi_dir_q_do\,
+      I2 => ulpi_dir_i,
+      I3 => \^state_o[0]\,
+      I4 => ulpi_nxt_i,
+      I5 => \^state_o[1]\,
       O => \^utmi_tx_accept_o\
     );
 utmi_tx_accept_o_INST_0_i_1: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => ulpi_nxt_i,
-      I1 => \^state_o[1]\,
-      O => utmi_tx_accept_o_INST_0_i_1_n_0
-    );
-utmi_tx_accept_o_INST_0_i_2: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"01"
+      INIT => X"E"
     )
         port map (
       I0 => \^mode_update_o\,
-      I1 => \^state_o[0]\,
-      I2 => \^state_o[1]\,
-      O => utmi_tx_accept_o_INST_0_i_2_n_0
+      I1 => \^otg_update_o\,
+      O => utmi_tx_accept_o_INST_0_i_1_n_0
     );
 utmi_tx_ready_o_INST_0: unisim.vcomponents.LUT3
     generic map(
@@ -1818,8 +1950,6 @@ entity brd_ulpi_wrapper_0_0 is
     ulpi_dir_i : in STD_LOGIC;
     ulpi_nxt_i : in STD_LOGIC;
     ulpi_stp_o : out STD_LOGIC;
-    sample_clk_i : in STD_LOGIC;
-    ulpi_clk_pos_o : out STD_LOGIC;
     mode_update_o : out STD_LOGIC;
     otg_update_o : out STD_LOGIC;
     state_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -1838,9 +1968,9 @@ entity brd_ulpi_wrapper_0_0 is
     turnaround_d : out STD_LOGIC;
     tx_wr_idx_q_d : out STD_LOGIC;
     tx_rd_idx_q_d : out STD_LOGIC;
-    test_for_debug_q_do : out STD_LOGIC;
-    ulpi_dir_i_resample_q_do : out STD_LOGIC;
-    ulpi_nxt_i_resample_q_do : out STD_LOGIC;
+    utmi_data_q_do : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    ulpi_dir_q_do : out STD_LOGIC;
+    ulpi_nxt_q_do : out STD_LOGIC;
     utmi_txvalid_i : in STD_LOGIC;
     utmi_txready_o : out STD_LOGIC;
     utmi_rxvalid_o : out STD_LOGIC;
@@ -1877,15 +2007,12 @@ architecture STRUCTURE of brd_ulpi_wrapper_0_0 is
   attribute IOSTANDARD of ulpi_dir_i : signal is "LVCMOS33";
   attribute SLEW : string;
   attribute SLEW of ulpi_dir_i : signal is "SLOW";
-  signal \^utmi_rxvalid_o\ : STD_LOGIC;
 begin
   \^ulpi_dir_i\ <= ulpi_dir_i;
-  test_for_debug_q_do <= \^utmi_rxvalid_o\;
   tx_rd_idx_q_d <= \^tx_wr_idx_q_d\;
   tx_wr_idx_q_d <= \^tx_wr_idx_q_d\;
   ulpi_data_dir_d <= \^ulpi_dir_i\;
   ulpi_reg_read_flag_d <= \<const0>\;
-  utmi_rxvalid_o <= \^utmi_rxvalid_o\;
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -1897,7 +2024,6 @@ U0: entity work.brd_ulpi_wrapper_0_0_ulpi_wrapper
       opmode_o(1 downto 0) => opmode_o(1 downto 0),
       otg_complete_o => otg_complete_o,
       otg_update_o => otg_update_o,
-      sample_clk_i => sample_clk_i,
       \state_o[0]\ => state_o(0),
       \state_o[1]\ => state_o(1),
       termselect_o => termselect_o,
@@ -1905,25 +2031,25 @@ U0: entity work.brd_ulpi_wrapper_0_0_ulpi_wrapper
       tx_delay_complete_o => tx_delay_complete_o,
       tx_wr_idx_q_d => \^tx_wr_idx_q_d\,
       ulpi_clk60_i => ulpi_clk60_i,
-      ulpi_clk_pos_o => ulpi_clk_pos_o,
       ulpi_data_in_o_d(7 downto 0) => ulpi_data_in_o_d(7 downto 0),
       ulpi_data_io(7 downto 0) => ulpi_data_io(7 downto 0),
       ulpi_data_out_i_d(7 downto 0) => ulpi_data_out_i_d(7 downto 0),
       ulpi_dir_i => \^ulpi_dir_i\,
-      ulpi_dir_i_resample_q_do => ulpi_dir_i_resample_q_do,
+      ulpi_dir_q_do => ulpi_dir_q_do,
       ulpi_nxt_i => ulpi_nxt_i,
-      ulpi_nxt_i_resample_q_do => ulpi_nxt_i_resample_q_do,
+      ulpi_nxt_q_do => ulpi_nxt_q_do,
       ulpi_rst_i => ulpi_rst_i,
       ulpi_stp_o => ulpi_stp_o,
       utmi_data_in_o(7 downto 0) => utmi_data_in_o(7 downto 0),
       utmi_data_out_i(7 downto 0) => utmi_data_out_i(7 downto 0),
+      utmi_data_q_do(7 downto 0) => utmi_data_q_do(7 downto 0),
       utmi_dmpulldown_i => utmi_dmpulldown_i,
       utmi_dppulldown_i => utmi_dppulldown_i,
       utmi_linestate_o(1 downto 0) => utmi_linestate_o(1 downto 0),
       utmi_op_mode_i(1 downto 0) => utmi_op_mode_i(1 downto 0),
       utmi_rxactive_o => utmi_rxactive_o,
       utmi_rxerror_o => utmi_rxerror_o,
-      utmi_rxvalid_o => \^utmi_rxvalid_o\,
+      utmi_rxvalid_o => utmi_rxvalid_o,
       utmi_termselect_i => utmi_termselect_i,
       utmi_tx_accept_o => utmi_tx_accept_o,
       utmi_tx_ready_o => utmi_tx_ready_o,

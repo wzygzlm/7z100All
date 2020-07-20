@@ -104,6 +104,12 @@ module usbf_device_core
     ,output          usbf_ep_data_bit_r_do
     ,output          usbf_new_data_bit_r_do
 
+    ,output          usbfrx_shift_en_w_do
+    ,output [ 7:0]   usbfrx_data_w_do
+    ,output          usbfrx_data_ready_w_do
+    ,output          usbfrx_crc_byte_w_do
+    ,output          usbfrx_rx_active_w_do
+    
     // Outputs
     ,output          intr_o
     ,output [  7:0]  utmi_data_o
@@ -392,6 +398,13 @@ u_sie_rx
 
     .handshake_valid_o(rx_handshake_w),
 
+    // Debug
+    .usbfrx_shift_en_w_do(usbfrx_shift_en_w_do),
+    .usbfrx_data_w_do(usbfrx_data_w_do),
+    .usbfrx_data_ready_w_do(usbfrx_data_ready_w_do),
+    .usbfrx_crc_byte_w_do(usbfrx_crc_byte_w_do),
+    .usbfrx_rx_active_w_do(usbfrx_rx_active_w_do),
+    
     .data_valid_o(rx_data_valid_w),
     .data_strb_o(rx_strb_o),
     .data_o(rx_data_o),

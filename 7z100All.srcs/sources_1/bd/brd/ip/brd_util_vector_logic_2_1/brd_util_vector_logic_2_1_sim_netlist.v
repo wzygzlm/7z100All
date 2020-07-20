@@ -1,8 +1,8 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Wed Jan 15 15:54:37 2020
-// Host        : DESKTOP-3TNSMFC running 64-bit major release  (build 9200)
+// Date        : Mon Jul 20 21:20:53 2020
+// Host        : mbp-win10 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top brd_util_vector_logic_2_1 -prefix
 //               brd_util_vector_logic_2_1_ brd_util_vector_logic_3_0_sim_netlist.v
 // Design      : brd_util_vector_logic_3_0

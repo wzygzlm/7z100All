@@ -47,10 +47,6 @@ module ulpi_wrapper
     input             ulpi_nxt_i,
     output            ulpi_stp_o,
     
-    // High speed Sample clock
-    input             sample_clk_i,
-    output            ulpi_clk_pos_o,
-    
     // Debug Signals
     output            mode_update_o,
     output            otg_update_o,  
@@ -70,9 +66,9 @@ module ulpi_wrapper
     output            turnaround_d,
     output            tx_wr_idx_q_d,
     output            tx_rd_idx_q_d,
-    output            test_for_debug_q_do,
-    output            ulpi_dir_i_resample_q_do,
-    output            ulpi_nxt_i_resample_q_do,
+    output [7:0]      utmi_data_q_do,
+    output            ulpi_dir_q_do,
+    output            ulpi_nxt_q_do,
 
     // UTMI Interface (SIE)
     input             utmi_txvalid_i,
@@ -92,35 +88,6 @@ module ulpi_wrapper
 
 wire [7:0]      ulpi_data_out_i;
 wire [7:0]      ulpi_data_in_o; 
-
-//-----------------------------------------------------------------
-// Resample
-//-----------------------------------------------------------------
-reg ulpi_clk_q;
-
-always @ (posedge sample_clk_i or posedge ulpi_rst_i)
-if (ulpi_rst_i)
-    ulpi_clk_q <= 1'b0;
-else
-    ulpi_clk_q <= ulpi_clk60_i;
-
-assign ulpi_clk_pos_o = ulpi_clk_q ^ ulpi_clk60_i;
-
-reg             ulpi_dir_i_resample_q, ulpi_dir_i_resample2_q;
-reg             ulpi_nxt_i_resample_q, ulpi_nxt_i_resample2_q;
-
-always @ (posedge sample_clk_i)
-//if(ulpi_clk_pos_o)
-begin    
-    ulpi_dir_i_resample_q <= ulpi_dir_i;
-    ulpi_nxt_i_resample_q <= ulpi_nxt_i;
-
-    ulpi_dir_i_resample2_q <= ulpi_dir_i_resample_q;
-    ulpi_nxt_i_resample2_q <= ulpi_nxt_i_resample_q;    
-end
-
-assign ulpi_dir_i_resample_q_do = ulpi_dir_i_resample_q;
-assign ulpi_nxt_i_resample_q_do = ulpi_nxt_i_resample_q;
 
 //-----------------------------------------------------------------
 // States
@@ -230,6 +197,19 @@ else
 
 wire turnaround_w = ulpi_dir_q ^ ulpi_dir_i;
 
+reg [7:0] ulpi_data_out_i_q;
+reg ulpi_nxt_q;
+always @ (posedge ulpi_clk60_i or posedge ulpi_rst_i)
+if (ulpi_rst_i)
+begin
+    ulpi_data_out_i_q <= 8'b0;
+    ulpi_nxt_q <= 0;
+end
+else
+begin
+    ulpi_data_out_i_q <= ulpi_data_out_i;
+    ulpi_nxt_q <= ulpi_nxt_i;
+end
 //-----------------------------------------------------------------
 // Rx - Tx delay
 //-----------------------------------------------------------------
@@ -316,8 +296,6 @@ reg                 utmi_rxactive_q;
 reg [1:0]           utmi_linestate_q;
 reg [7:0]           utmi_data_q;
 
-reg                 test_for_debug_q;
-
 always @ (posedge ulpi_clk60_i or posedge ulpi_rst_i)
 if (ulpi_rst_i)
 begin
@@ -337,15 +315,13 @@ begin
 
     mode_write_q        <= 1'b0;
     otg_write_q         <= 1'b0;
-    
-    test_for_debug_q    <= 1'b0;       // Only for debug, nowhere used, could be safely removed after debugging.
 end
 else
 begin
     ulpi_stp_q          <= 1'b0;
     utmi_rxvalid_q      <= 1'b0;
-
-    test_for_debug_q    <= 1'b0;       // Default value is 0.
+    
+    utmi_data_q         <= 8'h55;
     
 //    ulpi_data_wr_q      <= ulpi_dir_i;
     
@@ -433,7 +409,6 @@ begin
             utmi_rxvalid_q  <= 1'b1;
             utmi_data_q     <= ulpi_data_out_i;
             ulpi_data_wr_q  <= 1;
-            test_for_debug_q <= 1'b1;           // Only set to 1 when rx data is valid.    
         end
         //-----------------------------------------------------------------
         // Output
@@ -552,7 +527,7 @@ assign ulpi_stp_o           = ulpi_stp_q;
 
 // UTMI Interface
 assign utmi_linestate_o     = utmi_linestate_q;
-assign utmi_data_in_o       = utmi_data_q;
+assign utmi_data_in_o       = ulpi_data_out_i_q;
 assign utmi_rxerror_o       = utmi_rxerror_q;
 assign utmi_rxactive_o      = utmi_rxactive_q;
 assign utmi_rxvalid_o       = utmi_rxvalid_q;
@@ -580,5 +555,7 @@ assign tx_delay_q_d         = tx_delay_q;
 assign tx_wr_idx_q_d        = tx_wr_idx_q;
 assign tx_rd_idx_q_d        = tx_wr_idx_q;
 
-assign test_for_debug_q_do  = test_for_debug_q;
+assign utmi_data_q_do       = utmi_data_q; 
+assign ulpi_dir_q_do        = ulpi_dir_q;
+assign ulpi_nxt_q_do        = ulpi_nxt_q;
 endmodule

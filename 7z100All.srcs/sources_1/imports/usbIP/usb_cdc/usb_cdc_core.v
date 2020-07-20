@@ -106,7 +106,16 @@ module usb_cdc_core
     ,output          status_stage_w_do
     ,output          ep2_tx_data_valid_w_do
     ,output [  7:0]  ep2_tx_data_w_do
-        
+    ,output          ep2_tx_data_last_w_do
+    ,output          ep2_tx_data_accept_w_do
+    ,output          inport_valid_q_do
+ 
+     ,output         usbfrx_shift_en_w_do
+    ,output [ 7:0]   usbfrx_data_w_do
+    ,output          usbfrx_data_ready_w_do
+    ,output          usbfrx_crc_byte_w_do
+    ,output          usbfrx_rx_active_w_do
+           
     // Interrupts
     ,output          vendorReqRecived_o
 
@@ -685,7 +694,13 @@ u_core
     .usbf_ep_data_bit_r_do(usbf_ep_data_bit_r_do),
     .usbf_new_data_bit_r_do(usbf_new_data_bit_r_do),
     .tx_sent_data_counter_o(tx_sent_data_counter_o),
-    
+
+    .usbfrx_shift_en_w_do(usbfrx_shift_en_w_do),
+    .usbfrx_data_w_do(usbfrx_data_w_do),
+    .usbfrx_data_ready_w_do(usbfrx_data_ready_w_do),
+    .usbfrx_crc_byte_w_do(usbfrx_crc_byte_w_do),
+    .usbfrx_rx_active_w_do(usbfrx_rx_active_w_do),
+        
     // Status
     .reg_sts_rst_clr_i(1'b1),
     .reg_sts_rst_o(usb_reset_w),
@@ -1299,23 +1314,39 @@ assign ep3_rx_space_w      = 1'b0;
 //-----------------------------------------------------------------
 // Stream I/O
 //-----------------------------------------------------------------
-reg       inport_valid_q;
+reg       inport_valid_q, inport_valid_q_q;
 reg [7:0] inport_data_q;
-wire      inport_last_w  = !inport_valid_i || (tx_sent_data_counter_o >= 499);
+
+reg       inport_last_q;
+always @ (posedge clk_i or posedge rst_i)
+if (rst_i)
+begin
+    inport_last_q <= 1'b0;
+end
+else 
+begin
+    inport_last_q <= (!inport_valid_i ) || (tx_sent_data_counter_o >= 1023);
+end
+//wire      inport_last_w  = inport_last_q;
+wire      inport_last_w  = (!inport_valid_q_q ) || (tx_sent_data_counter_o >= 1023);
+
 //wire      inport_last_w  = !inport_valid_i;
 
 always @ (posedge clk_i or posedge rst_i)
 if (rst_i)
 begin
     inport_valid_q <= 1'b0;
+    inport_valid_q_q <= 1'b0;
     inport_data_q  <= 8'b0;
 end
-else if (inport_accept_o)
+else 
+if (inport_accept_o)
 begin
-    inport_valid_q <= inport_valid_i;
+    inport_valid_q_q <= !inport_valid_i;
+    inport_valid_q <= inport_valid_q_q;
     inport_data_q  <= inport_data_i;
 end
-
+ 
 assign ep2_tx_data_valid_w = inport_valid_q;
 assign ep2_tx_data_w       = inport_data_q;
 assign ep2_tx_ready_w      = ep2_tx_data_valid_w;
@@ -1402,7 +1433,10 @@ assign ep0_rx_setup_w_do = ep0_rx_setup_w;
 assign ctrl_stall_r_do = ctrl_stall_r;
 assign ctrl_ack_r_do = ctrl_ack_r;
 
-assign ep2_tx_data_valid_w_do = ep2_tx_data_valid_w;
-assign ep2_tx_data_w_do       = ep2_tx_data_w;
+assign ep2_tx_data_valid_w_do  = ep2_tx_data_valid_w;
+assign ep2_tx_data_w_do        = ep2_tx_data_w;
+assign ep2_tx_data_last_w_do   = ep2_tx_data_last_w;
+assign ep2_tx_data_accept_w_do = ep2_tx_data_accept_w;
+assign inport_valid_q_do       = inport_valid_q_q;
 
 endmodule

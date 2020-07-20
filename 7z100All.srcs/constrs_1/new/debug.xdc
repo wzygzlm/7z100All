@@ -45,3 +45,10 @@
 #set_property MARK_DEBUG true [get_nets {brd_i/testAERDVSSM_0/U0/multiplexerSM/State_DN[4]}]
 #set_property MARK_DEBUG true [get_nets {brd_i/testAERDVSSM_0/U0/multiplexerSM/State_DP[4]}]
 
+
+#set_max_delay -datapath_only -from [get_ports ulpi_dir_i_0] -to [get_pins brd_i/ulpi_wrapper_0/U0/ulpi_dir_q_reg/D] 6.000
+#set_max_delay -datapath_only -from [get_ports ulpi_dir_i_0] -to [get_pins {brd_i/system_ila_2/U0/ila_lib/U0/ila_core_inst/u_trig/U_TM/N_DDR_MODE.G_NMU[16].U_M/allx_typeA_match_detection.ltlib_v1_0_0_allx_typeA_inst/probeDelay1_reg[0]/D}] 8.480
+#set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+#set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+#set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+#connect_debug_port dbg_hub/clk [get_nets ulpi_clk60_i_0_IBUF_BUFG]

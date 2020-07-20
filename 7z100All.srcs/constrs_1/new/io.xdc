@@ -223,8 +223,30 @@ set_property LOC AC28 [ get_ports ulpi_clk60_i_0]
 set_property IOSTANDARD LVCMOS33 [ get_ports ulpi_clk60_i_0]
 create_clock -period "16.667" -name ulpi_clk60_i_0 [get_ports "ulpi_clk60_i_0"]
 
+set_clock_latency -source -rise -early 3 [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]]
+#set_clock_latency -source -rise -late 3 [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]]
+
 set ulpi_input {ulpi_data_io_0* ulpi_dir_i_0 ulpi_nxt_i_0}
 set ulpi_output {ulpi_data_io_0* ulpi_stp_o_0}
+set_input_delay  -min 0 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_dir_i_0]
+set_input_delay  -max 3 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_dir_i_0]
+set_input_delay  -min 0 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_nxt_i_0]
+set_input_delay  -max 0 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_nxt_i_0]
+
+#set_input_delay  -min 2 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_dir_i_0]
+#set_input_delay  -max 4.8 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_dir_i_0]
+#set_input_delay  -min 2 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_nxt_i_0]
+#set_input_delay  -max 4.8 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] [get_ports ulpi_nxt_i_0]
+#set_property IOB TRUE [get_ports ulpi_dir_i_0]
+#set_property IOB TRUE [get_ports ulpi_nxt_i_0]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[7]}]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[6]}]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[5]}]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[4]}]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[3]}]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[2]}]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[1]}]
+#set_property IOB TRUE [get_ports {ulpi_data_io_0[0]}]
 #set_input_delay  -min 2 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] $ulpi_input
 #set_input_delay  -max 4.8 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] $ulpi_input
 #set_output_delay -min -0.5 -clock [get_clocks -of_objects [get_pins -hier *ulpi_clk60_i_0]] $ulpi_output

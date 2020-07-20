@@ -85,6 +85,8 @@ u64 XEvmuxdatatoxytsstream_Get_status_rowNum(XEvmuxdatatoxytsstream *InstancePtr
 u32 XEvmuxdatatoxytsstream_Get_status_rowNum_vld(XEvmuxdatatoxytsstream *InstancePtr);
 u64 XEvmuxdatatoxytsstream_Get_status_colNum(XEvmuxdatatoxytsstream *InstancePtr);
 u32 XEvmuxdatatoxytsstream_Get_status_colNum_vld(XEvmuxdatatoxytsstream *InstancePtr);
+u64 XEvmuxdatatoxytsstream_Get_status_absTsUnit10ns(XEvmuxdatatoxytsstream *InstancePtr);
+u32 XEvmuxdatatoxytsstream_Get_status_absTsUnit10ns_vld(XEvmuxdatatoxytsstream *InstancePtr);
 
 #ifdef __cplusplus
 }

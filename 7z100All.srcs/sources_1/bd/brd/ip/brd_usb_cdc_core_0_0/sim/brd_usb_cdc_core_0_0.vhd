@@ -112,6 +112,14 @@ ENTITY brd_usb_cdc_core_0_0 IS
     status_stage_w_do : OUT STD_LOGIC;
     ep2_tx_data_valid_w_do : OUT STD_LOGIC;
     ep2_tx_data_w_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    ep2_tx_data_last_w_do : OUT STD_LOGIC;
+    ep2_tx_data_accept_w_do : OUT STD_LOGIC;
+    inport_valid_q_do : OUT STD_LOGIC;
+    usbfrx_shift_en_w_do : OUT STD_LOGIC;
+    usbfrx_data_w_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    usbfrx_data_ready_w_do : OUT STD_LOGIC;
+    usbfrx_crc_byte_w_do : OUT STD_LOGIC;
+    usbfrx_rx_active_w_do : OUT STD_LOGIC;
     vendorReqRecived_o : OUT STD_LOGIC;
     axi_bram_addr_o : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     axi_bram_w_data_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -197,6 +205,14 @@ ARCHITECTURE brd_usb_cdc_core_0_0_arch OF brd_usb_cdc_core_0_0 IS
       status_stage_w_do : OUT STD_LOGIC;
       ep2_tx_data_valid_w_do : OUT STD_LOGIC;
       ep2_tx_data_w_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      ep2_tx_data_last_w_do : OUT STD_LOGIC;
+      ep2_tx_data_accept_w_do : OUT STD_LOGIC;
+      inport_valid_q_do : OUT STD_LOGIC;
+      usbfrx_shift_en_w_do : OUT STD_LOGIC;
+      usbfrx_data_w_do : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      usbfrx_data_ready_w_do : OUT STD_LOGIC;
+      usbfrx_crc_byte_w_do : OUT STD_LOGIC;
+      usbfrx_rx_active_w_do : OUT STD_LOGIC;
       vendorReqRecived_o : OUT STD_LOGIC;
       axi_bram_addr_o : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       axi_bram_w_data_o : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -279,6 +295,14 @@ BEGIN
       status_stage_w_do => status_stage_w_do,
       ep2_tx_data_valid_w_do => ep2_tx_data_valid_w_do,
       ep2_tx_data_w_do => ep2_tx_data_w_do,
+      ep2_tx_data_last_w_do => ep2_tx_data_last_w_do,
+      ep2_tx_data_accept_w_do => ep2_tx_data_accept_w_do,
+      inport_valid_q_do => inport_valid_q_do,
+      usbfrx_shift_en_w_do => usbfrx_shift_en_w_do,
+      usbfrx_data_w_do => usbfrx_data_w_do,
+      usbfrx_data_ready_w_do => usbfrx_data_ready_w_do,
+      usbfrx_crc_byte_w_do => usbfrx_crc_byte_w_do,
+      usbfrx_rx_active_w_do => usbfrx_rx_active_w_do,
       vendorReqRecived_o => vendorReqRecived_o,
       axi_bram_addr_o => axi_bram_addr_o,
       axi_bram_w_data_o => axi_bram_w_data_o,
