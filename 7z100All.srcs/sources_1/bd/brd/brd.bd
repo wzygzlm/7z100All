@@ -1581,13 +1581,6 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>EVABMOFStreamWithCon_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="hls" spirit:name="EVABMOFStreamWithControl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_EVABMOFStreamWithCon_0_0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>eventStreamSwitch_0</spirit:instanceName>
         <spirit:componentRef spirit:library="hls" spirit:name="eventStreamSwitch" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
@@ -1608,6 +1601,13 @@
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_xlcons_data_0x5a5a_0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="CONST_WIDTH">32</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="CONST_VAL">0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>EVABMOFStreamWithCon_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="hls" spirit:name="EVABMOFStreamWithControl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_EVABMOFStreamWithCon_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -1864,9 +1864,9 @@
         <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_start"/>
-        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_start"/>
+        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_start"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_0_peripheral_aresetn</spirit:name>
@@ -1882,16 +1882,16 @@
         <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_rst_n"/>
-        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M01_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M05_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_rst_n"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_1_peripheral_aresetn</spirit:name>
@@ -1931,7 +1931,8 @@
         <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_clk"/>
-        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1939,9 +1940,8 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M05_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_clk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>processing_system7_0_FCLK_CLK1</spirit:name>
