@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Thu Jul 16 13:57:48 2020
+// Date        : Mon Jul 20 23:45:20 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_1_0/brd_fifo_generator_1_0_sim_netlist.v
@@ -25,7 +25,7 @@ module brd_fifo_generator_1_0
     empty,
     data_count,
     prog_full);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 core_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME core_clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *) input clk;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 core_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME core_clk, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *) input clk;
   (* x_interface_info = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) input [15:0]din;
   (* x_interface_info = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
   (* x_interface_info = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) input rd_en;
@@ -1335,7 +1335,7 @@ module brd_fifo_generator_1_0_fifo_generator_ramfifo
         .\gc0.count_d1_reg[7] ({\gntv_or_sync_fifo.gl0.rd_n_26 ,\gntv_or_sync_fifo.gl0.rd_n_27 ,\gntv_or_sync_fifo.gl0.rd_n_28 ,\gntv_or_sync_fifo.gl0.rd_n_29 }),
         .\gc0.count_d1_reg[9] ({\gntv_or_sync_fifo.gl0.rd_n_30 ,\gntv_or_sync_fifo.gl0.rd_n_31 }),
         .\gcc0.gc1.gsym.count_d1_reg[9] (wr_pntr_plus2),
-        .\gcc0.gc1.gsym.count_reg[0] (p_17_out),
+        .\gcc0.gc1.gsym.count_reg[9] (p_17_out),
         .out(\gntv_or_sync_fifo.gl0.wr_n_0 ),
         .prog_full(prog_full),
         .ram_empty_fb_i_reg(p_2_out),
@@ -2639,7 +2639,7 @@ module brd_fifo_generator_1_0_rd_bin_cntr
         .I1(rd_pntr_plus1[1]),
         .I2(rd_pntr_plus1[2]),
         .O(plusOp__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gc0.count[3]_i_1 
@@ -2648,7 +2648,7 @@ module brd_fifo_generator_1_0_rd_bin_cntr
         .I2(rd_pntr_plus1[2]),
         .I3(rd_pntr_plus1[3]),
         .O(plusOp__0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gc0.count[4]_i_1 
@@ -2683,7 +2683,7 @@ module brd_fifo_generator_1_0_rd_bin_cntr
         .I1(rd_pntr_plus1[6]),
         .I2(rd_pntr_plus1[7]),
         .O(plusOp__0[7]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gc0.count[8]_i_1 
@@ -2692,7 +2692,7 @@ module brd_fifo_generator_1_0_rd_bin_cntr
         .I2(rd_pntr_plus1[7]),
         .I3(rd_pntr_plus1[8]),
         .O(plusOp__0[8]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gc0.count[9]_i_1 
@@ -3595,7 +3595,7 @@ module brd_fifo_generator_1_0_wr_bin_cntr
         .I1(Q[1]),
         .I2(Q[2]),
         .O(plusOp__1[2]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gcc0.gc1.gsym.count[3]_i_1 
@@ -3604,7 +3604,7 @@ module brd_fifo_generator_1_0_wr_bin_cntr
         .I2(Q[2]),
         .I3(Q[3]),
         .O(plusOp__1[3]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gcc0.gc1.gsym.count[4]_i_1 
@@ -3639,7 +3639,7 @@ module brd_fifo_generator_1_0_wr_bin_cntr
         .I1(Q[6]),
         .I2(Q[7]),
         .O(plusOp__1[7]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gcc0.gc1.gsym.count[8]_i_1 
@@ -3648,7 +3648,7 @@ module brd_fifo_generator_1_0_wr_bin_cntr
         .I2(Q[7]),
         .I3(Q[8]),
         .O(plusOp__1[8]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gcc0.gc1.gsym.count[9]_i_1 
@@ -3915,7 +3915,7 @@ module brd_fifo_generator_1_0_wr_logic
    (out,
     full,
     almost_full,
-    \gcc0.gc1.gsym.count_reg[0] ,
+    \gcc0.gc1.gsym.count_reg[9] ,
     Q,
     prog_full,
     \count_reg[9] ,
@@ -3935,7 +3935,7 @@ module brd_fifo_generator_1_0_wr_logic
   output out;
   output full;
   output almost_full;
-  output [0:0]\gcc0.gc1.gsym.count_reg[0] ;
+  output [0:0]\gcc0.gc1.gsym.count_reg[9] ;
   output [9:0]Q;
   output prog_full;
   output [0:0]\count_reg[9] ;
@@ -3964,7 +3964,7 @@ module brd_fifo_generator_1_0_wr_logic
   wire [3:0]\gc0.count_d1_reg[7] ;
   wire [1:0]\gc0.count_d1_reg[9] ;
   wire [9:0]\gcc0.gc1.gsym.count_d1_reg[9] ;
-  wire [0:0]\gcc0.gc1.gsym.count_reg[0] ;
+  wire [0:0]\gcc0.gc1.gsym.count_reg[9] ;
   wire out;
   wire p_1_out;
   wire prog_full;
@@ -3984,9 +3984,9 @@ module brd_fifo_generator_1_0_wr_logic
         .\gc0.count_d1_reg[9] (\gc0.count_d1_reg[9] ),
         .p_1_out(p_1_out),
         .prog_full(prog_full),
-        .ram_full_fb_i_reg(\gcc0.gc1.gsym.count_reg[0] ));
+        .ram_full_fb_i_reg(\gcc0.gc1.gsym.count_reg[9] ));
   brd_fifo_generator_1_0_wr_status_flags_ss \gwss.wsts 
-       (.E(\gcc0.gc1.gsym.count_reg[0] ),
+       (.E(\gcc0.gc1.gsym.count_reg[9] ),
         .almost_full(almost_full),
         .clk(clk),
         .\count_reg[9] (\count_reg[9] ),
@@ -4001,7 +4001,7 @@ module brd_fifo_generator_1_0_wr_logic
         .wr_en(wr_en));
   brd_fifo_generator_1_0_wr_bin_cntr wpntr
        (.\DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram (\DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram ),
-        .E(\gcc0.gc1.gsym.count_reg[0] ),
+        .E(\gcc0.gc1.gsym.count_reg[9] ),
         .Q(\gcc0.gc1.gsym.count_d1_reg[9] ),
         .clk(clk),
         .\gcc0.gc1.gsym.count_d2_reg[9]_0 (Q));

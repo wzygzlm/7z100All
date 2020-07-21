@@ -535,7 +535,7 @@ ARCHITECTURE brd_fifo_generator_1_1_arch OF brd_fifo_generator_1_1 IS
   ATTRIBUTE X_INTERFACE_INFO OF rd_en: SIGNAL IS "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN";
   ATTRIBUTE X_INTERFACE_INFO OF wr_en: SIGNAL IS "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN";
   ATTRIBUTE X_INTERFACE_INFO OF din: SIGNAL IS "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME core_clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME core_clk, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 core_clk CLK";
 BEGIN
   U0 : fifo_generator_v13_2_2

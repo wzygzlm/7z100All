@@ -191,6 +191,25 @@
 
 /******************************************************************/
 
+/* Definitions for driver EVENTSTREAMDUPLICATE */
+#define XPAR_XEVENTSTREAMDUPLICATE_NUM_INSTANCES 1
+
+/* Definitions for peripheral EVENTSTREAMDUPLICATE_0 */
+#define XPAR_EVENTSTREAMDUPLICATE_0_DEVICE_ID 0
+#define XPAR_EVENTSTREAMDUPLICATE_0_S_AXI_CONFIG_BASEADDR 0x43C40000
+#define XPAR_EVENTSTREAMDUPLICATE_0_S_AXI_CONFIG_HIGHADDR 0x43C4FFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral EVENTSTREAMDUPLICATE_0 */
+#define XPAR_XEVENTSTREAMDUPLICATE_0_DEVICE_ID XPAR_EVENTSTREAMDUPLICATE_0_DEVICE_ID
+#define XPAR_XEVENTSTREAMDUPLICATE_0_S_AXI_CONFIG_BASEADDR 0x43C40000
+#define XPAR_XEVENTSTREAMDUPLICATE_0_S_AXI_CONFIG_HIGHADDR 0x43C4FFFF
+
+
+/******************************************************************/
+
 /* Definitions for driver EVENTSTREAMSWITCH */
 #define XPAR_XEVENTSTREAMSWITCH_NUM_INSTANCES 1
 

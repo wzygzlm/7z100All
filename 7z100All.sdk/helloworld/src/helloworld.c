@@ -53,6 +53,9 @@
 
 XGpio Gpio; /* The Instance of the GPIO Driver */
 
+#include "xeventstreamtoconstencntframestream.h"
+XEventstreamtoconstencntframestream etf_inst;
+
 
 // Macros
 #define REG_READ(addr) \
@@ -203,6 +206,42 @@ int main()
 	tmpGpioData = XGpio_DiscreteRead(&Gpio, 1);
 	tmpGpioData = tmpGpioData | 0x8; // enable host ack
 	XGpio_DiscreteWrite(&Gpio, 1, tmpGpioData);
+
+    print("VDMA application on davis 7z045 using PMOD VGA\n\r");
+    //Initialize the ETF IP
+    Status = XEventstreamtoconstencntframestream_Initialize(&etf_inst, XPAR_EVENTSTREAMTOCONSTEN_0_DEVICE_ID);
+    if(Status!= XST_SUCCESS)
+    {
+    	xil_printf("ETF configuration failed\r\n");
+    	return(XST_FAILURE);
+    }
+
+    // Configure teh ETF
+    uint32_t configEn = XEventstreamtoconstencntframestream_Get_ctrl_V(&etf_inst);
+    uint32_t sliceDuration = XEventstreamtoconstencntframestream_Get_configRegs_V(&etf_inst);
+    configEn = 0x11;
+    sliceDuration = 20;
+    XEventstreamtoconstencntframestream_Set_configRegs_V(&etf_inst, sliceDuration);   // Set config enable
+    XEventstreamtoconstencntframestream_Set_ctrl_V(&etf_inst, configEn);
+    XEventstreamtoconstencntframestream_Set_configRegs_V(&etf_inst, sliceDuration);   // Clear config enable
+
+	/* Start of VDMA Configuration */
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x30, 0x8B);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xAC, 0xD000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xB0, 0xE000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xB4, 0xF000000);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0xA8, 800*3);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0xA4, 800*3);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xA0, 600);
+
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x00, 0x8B);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x5C, 0xD000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x60, 0xE000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x64, 0xF000000);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x58, 800*3);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x54, 800*3);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x50, 600);
+	/* End of VDMA Configuration */
 
 //	while(1)
 //	{

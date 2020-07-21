@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Thu Jul 16 13:57:48 2020
+-- Date        : Mon Jul 20 23:45:20 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_1_0/brd_fifo_generator_1_0_sim_netlist.vhdl
@@ -545,12 +545,12 @@ architecture STRUCTURE of brd_fifo_generator_1_0_rd_bin_cntr is
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \gc0.count[1]_i_1\ : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of \gc0.count[2]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \gc0.count[3]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \gc0.count[4]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \gc0.count[3]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \gc0.count[4]_i_1\ : label is "soft_lutpair0";
   attribute SOFT_HLUTNM of \gc0.count[6]_i_1\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \gc0.count[7]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \gc0.count[8]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \gc0.count[9]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \gc0.count[8]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \gc0.count[9]_i_1\ : label is "soft_lutpair1";
 begin
   Q(9 downto 0) <= \^q\(9 downto 0);
 \gc0.count[0]_i_1\: unisim.vcomponents.LUT1
@@ -1592,12 +1592,12 @@ architecture STRUCTURE of brd_fifo_generator_1_0_wr_bin_cntr is
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[1]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[2]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[3]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[4]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[3]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[4]_i_1\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[6]_i_1\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[7]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[8]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[9]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[8]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[9]_i_1\ : label is "soft_lutpair5";
 begin
   Q(9 downto 0) <= \^q\(9 downto 0);
   \gcc0.gc1.gsym.count_d2_reg[9]_0\(9 downto 0) <= \^gcc0.gc1.gsym.count_d2_reg[9]_0\(9 downto 0);
@@ -2756,7 +2756,7 @@ entity brd_fifo_generator_1_0_wr_logic is
     \out\ : out STD_LOGIC;
     full : out STD_LOGIC;
     almost_full : out STD_LOGIC;
-    \gcc0.gc1.gsym.count_reg[0]\ : out STD_LOGIC_VECTOR ( 0 to 0 );
+    \gcc0.gc1.gsym.count_reg[9]\ : out STD_LOGIC_VECTOR ( 0 to 0 );
     Q : out STD_LOGIC_VECTOR ( 9 downto 0 );
     prog_full : out STD_LOGIC;
     \count_reg[9]\ : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2780,11 +2780,11 @@ end brd_fifo_generator_1_0_wr_logic;
 
 architecture STRUCTURE of brd_fifo_generator_1_0_wr_logic is
   signal \^q\ : STD_LOGIC_VECTOR ( 9 downto 0 );
-  signal \^gcc0.gc1.gsym.count_reg[0]\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \^gcc0.gc1.gsym.count_reg[9]\ : STD_LOGIC_VECTOR ( 0 to 0 );
   signal p_1_out : STD_LOGIC;
 begin
   Q(9 downto 0) <= \^q\(9 downto 0);
-  \gcc0.gc1.gsym.count_reg[0]\(0) <= \^gcc0.gc1.gsym.count_reg[0]\(0);
+  \gcc0.gc1.gsym.count_reg[9]\(0) <= \^gcc0.gc1.gsym.count_reg[9]\(0);
 \gwss.gpf.wrpf\: entity work.brd_fifo_generator_1_0_wr_pf_ss
      port map (
       E(0) => E(0),
@@ -2795,11 +2795,11 @@ begin
       \gc0.count_d1_reg[9]\(1 downto 0) => \gc0.count_d1_reg[9]\(1 downto 0),
       p_1_out => p_1_out,
       prog_full => prog_full,
-      ram_full_fb_i_reg(0) => \^gcc0.gc1.gsym.count_reg[0]\(0)
+      ram_full_fb_i_reg(0) => \^gcc0.gc1.gsym.count_reg[9]\(0)
     );
 \gwss.wsts\: entity work.brd_fifo_generator_1_0_wr_status_flags_ss
      port map (
-      E(0) => \^gcc0.gc1.gsym.count_reg[0]\(0),
+      E(0) => \^gcc0.gc1.gsym.count_reg[9]\(0),
       almost_full => almost_full,
       clk => clk,
       \count_reg[9]\(0) => \count_reg[9]\(0),
@@ -2816,7 +2816,7 @@ begin
 wpntr: entity work.brd_fifo_generator_1_0_wr_bin_cntr
      port map (
       \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram\(9 downto 0) => \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram\(9 downto 0),
-      E(0) => \^gcc0.gc1.gsym.count_reg[0]\(0),
+      E(0) => \^gcc0.gc1.gsym.count_reg[9]\(0),
       Q(9 downto 0) => \gcc0.gc1.gsym.count_d1_reg[9]\(9 downto 0),
       clk => clk,
       \gcc0.gc1.gsym.count_d2_reg[9]_0\(9 downto 0) => \^q\(9 downto 0)
@@ -3040,7 +3040,7 @@ begin
       \gc0.count_d1_reg[9]\(1) => \gntv_or_sync_fifo.gl0.rd_n_30\,
       \gc0.count_d1_reg[9]\(0) => \gntv_or_sync_fifo.gl0.rd_n_31\,
       \gcc0.gc1.gsym.count_d1_reg[9]\(9 downto 0) => wr_pntr_plus2(9 downto 0),
-      \gcc0.gc1.gsym.count_reg[0]\(0) => p_17_out,
+      \gcc0.gc1.gsym.count_reg[9]\(0) => p_17_out,
       \out\ => \gntv_or_sync_fifo.gl0.wr_n_0\,
       prog_full => prog_full,
       ram_empty_fb_i_reg => p_2_out,
@@ -4876,7 +4876,7 @@ architecture STRUCTURE of brd_fifo_generator_1_0 is
   attribute x_interface_info of almost_full : signal is "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE ALMOST_FULL";
   attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 core_clk CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME core_clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME core_clk, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   attribute x_interface_info of empty : signal is "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY";
   attribute x_interface_info of full : signal is "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL";
   attribute x_interface_info of rd_en : signal is "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN";

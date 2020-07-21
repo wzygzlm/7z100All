@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Thu Jul 16 13:47:08 2020
+-- Date        : Mon Jul 20 23:24:02 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_v_tc_0_0/brd_v_tc_0_0_sim_netlist.vhdl
@@ -5954,7 +5954,7 @@ architecture STRUCTURE of brd_v_tc_0_0_tc_top is
   attribute srl_bus_name of \generate_en_d_reg[1]_srl2___U_TC_TOP_detect_en_d_reg_r_0\ : label is "U0/\U_TC_TOP/generate_en_d_reg ";
   attribute srl_name of \generate_en_d_reg[1]_srl2___U_TC_TOP_detect_en_d_reg_r_0\ : label is "U0/\U_TC_TOP/generate_en_d_reg[1]_srl2___U_TC_TOP_detect_en_d_reg_r_0 ";
   attribute SOFT_HLUTNM of generate_en_d_reg_gate : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \intr_status_int[11]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \intr_status_int[10]_i_1\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \intr_status_int[9]_i_1\ : label is "soft_lutpair2";
 begin
   active_video_out <= \^active_video_out\;
@@ -7221,7 +7221,7 @@ architecture STRUCTURE of brd_v_tc_0_0 is
   attribute x_interface_info of active_video_out : signal is "xilinx.com:interface:video_timing:2.0 vtiming_out ACTIVE_VIDEO";
   attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 clk_intf CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF vtiming_in:vtiming_out, ASSOCIATED_RESET resetn, ASSOCIATED_CLKEN clken, FREQ_HZ 39995998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK1";
+  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME clk_intf, ASSOCIATED_BUSIF vtiming_in:vtiming_out, ASSOCIATED_RESET resetn, ASSOCIATED_CLKEN clken, FREQ_HZ 3.9996e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK1";
   attribute x_interface_info of clken : signal is "xilinx.com:signal:clockenable:1.0 clken_intf CE";
   attribute x_interface_parameter of clken : signal is "XIL_INTERFACENAME clken_intf, POLARITY ACTIVE_LOW";
   attribute x_interface_info of hblank_out : signal is "xilinx.com:interface:video_timing:2.0 vtiming_out HBLANK";
