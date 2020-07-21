@@ -1634,16 +1634,6 @@
         <spirit:activeInterface spirit:busRef="custDataStreamIn_V_V" spirit:componentRef="XYTSStreamToRawStream_0"/>
       </spirit:interconnection>
       <spirit:interconnection>
-        <spirit:name>eventStreamDuplicate_0_xStreamOut1_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="xStreamOut1_V_V" spirit:componentRef="eventStreamDuplicate_0"/>
-        <spirit:activeInterface spirit:busRef="xStream_V_V" spirit:componentRef="eventStreamToConstEn_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>eventStreamDuplicate_0_yStreamOut1_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="yStreamOut1_V_V" spirit:componentRef="eventStreamDuplicate_0"/>
-        <spirit:activeInterface spirit:busRef="yStream_V_V" spirit:componentRef="eventStreamToConstEn_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
         <spirit:name>eventStreamDuplicate_0_polStreamOut1_V_V</spirit:name>
         <spirit:activeInterface spirit:busRef="polStreamOut1_V_V" spirit:componentRef="eventStreamDuplicate_0"/>
         <spirit:activeInterface spirit:busRef="polStream_V_V" spirit:componentRef="eventStreamToConstEn_0"/>
@@ -1652,6 +1642,16 @@
         <spirit:name>eventStreamDuplicate_0_tsStreamOut1_V_V</spirit:name>
         <spirit:activeInterface spirit:busRef="tsStreamOut1_V_V" spirit:componentRef="eventStreamDuplicate_0"/>
         <spirit:activeInterface spirit:busRef="tsStream_V_V" spirit:componentRef="eventStreamToConstEn_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>eventStreamDuplicate_0_xStreamOut1_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="xStreamOut1_V_V" spirit:componentRef="eventStreamDuplicate_0"/>
+        <spirit:activeInterface spirit:busRef="yStream_V_V" spirit:componentRef="eventStreamToConstEn_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>eventStreamDuplicate_0_yStreamOut1_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="yStreamOut1_V_V" spirit:componentRef="eventStreamDuplicate_0"/>
+        <spirit:activeInterface spirit:busRef="xStream_V_V" spirit:componentRef="eventStreamToConstEn_0"/>
       </spirit:interconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
@@ -1755,6 +1755,7 @@
         <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamDuplicate_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M01_ARESETN"/>
@@ -1762,7 +1763,6 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M05_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamDuplicate_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M06_ARESETN"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
@@ -1805,6 +1805,7 @@
         <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamDuplicate_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1813,7 +1814,6 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M03_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M04_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M05_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamDuplicate_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M06_ACLK"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>

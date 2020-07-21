@@ -173,7 +173,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_CONFIG.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI_CONFIG.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -437,7 +437,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AP_CLK.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AP_CLK.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -678,7 +678,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.FRAMESTREAM.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.FRAMESTREAM.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -806,7 +806,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.XSTREAM_V_V.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.XSTREAM_V_V.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -934,7 +934,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.YSTREAM_V_V.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.YSTREAM_V_V.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1062,7 +1062,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.POLSTREAM_V_V.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.POLSTREAM_V_V.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1190,7 +1190,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.TSSTREAM_V_V.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.TSSTREAM_V_V.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1317,7 +1317,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CUSTDATASTREAM_V_V.FREQ_HZ">9.999e+07</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CUSTDATASTREAM_V_V.FREQ_HZ">99989998</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1637,11 +1637,11 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 21:39:51 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 16:35:39 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:e1720ddb</spirit:value>
+            <spirit:value>8:6d3beb5f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1661,7 +1661,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:e1720ddb</spirit:value>
+            <spirit:value>8:6d3beb5f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1677,11 +1677,11 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 21:39:43 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 16:35:18 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:e1720ddb</spirit:value>
+            <spirit:value>8:6d3beb5f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1701,7 +1701,7 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:664bd779</spirit:value>
+            <spirit:value>8:7e939e95</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1717,11 +1717,11 @@ um {}} value 2} bitoffset {attribs {resolve_type immediate dependency {} format 
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 21:39:43 UTC 2020</spirit:value>
+            <spirit:value>Tue Jul 21 16:35:18 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:664bd779</spirit:value>
+            <spirit:value>8:7e939e95</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>

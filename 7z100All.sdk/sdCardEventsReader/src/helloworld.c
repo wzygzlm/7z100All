@@ -24,6 +24,9 @@ XGpio Gpio; /* The Instance of the GPIO Driver */
 #include "xeventsgeneratorviafile.h"
 XEventsgeneratorviafile EGVF;
 
+#include "xeventstreamtoconstencntframestream.h"
+XEventstreamtoconstencntframestream etf_inst;
+
 #define DDR_BASEADDR        0x100000
 #define VDMA_BASEADDR       XPAR_AXI_VDMA_0_BASEADDR
 #define H_STRIDE            800
@@ -128,29 +131,14 @@ int main(void)
 	init_platform();
 
     u32 i;
-    xil_printf("Starting the first VDMA \n\r");
 
-    //VDMA configurateAXI VDMA0
-    /*****************DDR Write setting**********************/
-    //Xil_Out32((VDMA_BASEADDR + 0x030), 0x3);// enable circular mode
-    //Xil_Out32((VDMA_BASEADDR + 0x0AC), VIDEO_BASEADDR0);  // start address
-    //Xil_Out32((VDMA_BASEADDR + 0x0B0), VIDEO_BASEADDR1);  // start address
-    //Xil_Out32((VDMA_BASEADDR + 0x0B4), VIDEO_BASEADDR2);  // start address
-    //Xil_Out32((VDMA_BASEADDR + 0x0A8), (H_STRIDE*4));     // h offset (800 * 4) bytes
-    //Xil_Out32((VDMA_BASEADDR + 0x0A4), (H_ACTIVE*4));     // h size (600 * 4) bytes
-    //Xil_Out32((VDMA_BASEADDR + 0x0A0), V_ACTIVE);         // v size (600)
-    /*****************DDR read setting**********************/
-    Xil_Out32((VDMA_BASEADDR + 0x000), 0x3);        // enable circular mode
-    Xil_Out32((VDMA_BASEADDR + 0x05c), VIDEO_BASEADDR0);    // start address
-    Xil_Out32((VDMA_BASEADDR + 0x060), VIDEO_BASEADDR1);    // start address
-    Xil_Out32((VDMA_BASEADDR + 0x064), VIDEO_BASEADDR2);    // start address
-    Xil_Out32((VDMA_BASEADDR + 0x058), (H_STRIDE*3));       // h offset (800 * 4) bytes
-    Xil_Out32((VDMA_BASEADDR + 0x054), (H_ACTIVE*3));       // h size (800 * 4) bytes
-    Xil_Out32((VDMA_BASEADDR + 0x050), V_ACTIVE);           // v size (600)
-
-    for(i=0;i<H_STRIDE*H_ACTIVE;i++)
+    print("VDMA application on davis 7z100 using PMOD VGA\n\r");
+    //Initialize the ETF IP
+    Status = XEventstreamtoconstencntframestream_Initialize(&etf_inst, XPAR_EVENTSTREAMTOCONSTEN_0_DEVICE_ID);
+    if(Status!= XST_SUCCESS)
     {
-        Xil_Out32(VIDEO_BASEADDR0+i,0);
+    	xil_printf("ETF configuration failed\r\n");
+    	return(XST_FAILURE);
     }
 
 	/* Initialize the GPIO driver */
@@ -184,6 +172,35 @@ int main(void)
 
 //	XGpio_SetDataDirection(&Gpio, 2, 0xffffffff);     // Input for status monitor
 	XGpio_SetDataDirection(&Gpio, 1, 0);              // Output for control
+
+
+    // Configure the ETF
+    uint32_t configEn = XEventstreamtoconstencntframestream_Get_ctrl_V(&etf_inst);
+    uint32_t sliceDuration = XEventstreamtoconstencntframestream_Get_configRegs_V(&etf_inst);
+    configEn = 0x1401; // basic pixel value is 0x14, and enable configuration
+    sliceDuration = 20;
+    XEventstreamtoconstencntframestream_Set_configRegs_V(&etf_inst, sliceDuration);   // Set config enable
+    XEventstreamtoconstencntframestream_Set_ctrl_V(&etf_inst, configEn);
+    XEventstreamtoconstencntframestream_Set_configRegs_V(&etf_inst, sliceDuration);   // Clear config enable
+
+	/* Start of VDMA Configuration */
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x30, 0x8B);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xAC, 0xD000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xB0, 0xE000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xB4, 0xF000000);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0xA8, 800*3);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0xA4, 800*3);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0xA0, 600);
+
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x00, 0x8B);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x5C, 0xD000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x60, 0xE000000);
+    Xil_Out32(XPAR_AXI_VDMA_0_BASEADDR + 0x64, 0xF000000);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x58, 800*3);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x54, 800*3);
+    Xil_Out32 (XPAR_AXI_VDMA_0_BASEADDR + 0x50, 600);
+	/* End of VDMA Configuration */
+
 
 	Status = XEventsgeneratorviafile_Initialize(&EGVF, XPAR_EVENTSGENERATORVIAFI_0_DEVICE_ID);
 

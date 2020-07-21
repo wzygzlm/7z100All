@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk" key="bootgen_files_selection"/>
+	<item value="E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk\sdCardEventsReader\Debug" key="bootgen_files_selection"/>
 	<item value="E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.runs\impl_1" key="program_fpga_view_bit_bmm_browse_key"/>
 	<item value="E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk" key="zynq_flash_files_selection"/>
-	<item value="E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk" key="last_stored_selection"/>
+	<item value="E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.sdk\sdCardEventsReader\Debug" key="last_stored_selection"/>
 </section>

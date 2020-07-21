@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Mon Jul 20 23:45:19 2020
+-- Date        : Mon Jul 20 21:26:46 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_2_1/brd_fifo_generator_2_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top brd_fifo_generator_2_1 -prefix
+--               brd_fifo_generator_2_1_ brd_fifo_generator_2_1_sim_netlist.vhdl
 -- Design      : brd_fifo_generator_2_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -24,8 +24,6 @@ entity brd_fifo_generator_2_1_blk_mem_gen_prim_wrapper is
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 );
     din : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end brd_fifo_generator_2_1_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_blk_mem_gen_prim_wrapper is
@@ -196,8 +194,6 @@ entity brd_fifo_generator_2_1_compare is
     comp0 : out STD_LOGIC;
     v1_reg : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_compare : entity is "compare";
 end brd_fifo_generator_2_1_compare;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_compare is
@@ -550,8 +546,6 @@ entity brd_fifo_generator_2_1_rd_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_rd_bin_cntr : entity is "rd_bin_cntr";
 end brd_fifo_generator_2_1_rd_bin_cntr;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_rd_bin_cntr is
@@ -562,12 +556,12 @@ architecture STRUCTURE of brd_fifo_generator_2_1_rd_bin_cntr is
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \gc0.count[1]_i_1\ : label is "soft_lutpair3";
   attribute SOFT_HLUTNM of \gc0.count[2]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \gc0.count[3]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \gc0.count[4]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \gc0.count[3]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \gc0.count[4]_i_1\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \gc0.count[6]_i_1\ : label is "soft_lutpair2";
   attribute SOFT_HLUTNM of \gc0.count[7]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \gc0.count[8]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \gc0.count[9]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \gc0.count[8]_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \gc0.count[9]_i_1\ : label is "soft_lutpair0";
 begin
   Q(9 downto 0) <= \^q\(9 downto 0);
 \gc0.count[0]_i_1\: unisim.vcomponents.LUT1
@@ -1196,8 +1190,6 @@ entity brd_fifo_generator_2_1_wr_bin_cntr is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_wr_bin_cntr : entity is "wr_bin_cntr";
 end brd_fifo_generator_2_1_wr_bin_cntr;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_wr_bin_cntr is
@@ -1208,12 +1200,12 @@ architecture STRUCTURE of brd_fifo_generator_2_1_wr_bin_cntr is
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[1]_i_1\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[2]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[3]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[4]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[3]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[4]_i_1\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[6]_i_1\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[7]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[8]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[9]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[8]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \gcc0.gc1.gsym.count[9]_i_1\ : label is "soft_lutpair4";
 begin
   Q(9 downto 0) <= \^q\(9 downto 0);
   \gcc0.gc1.gsym.count_d2_reg[9]_0\(9 downto 0) <= \^gcc0.gc1.gsym.count_d2_reg[9]_0\(9 downto 0);
@@ -1680,8 +1672,6 @@ entity brd_fifo_generator_2_1_blk_mem_gen_prim_width is
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 );
     din : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end brd_fifo_generator_2_1_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_blk_mem_gen_prim_width is
@@ -1717,8 +1707,6 @@ entity brd_fifo_generator_2_1_rd_status_flags_ss is
     ram_full_fb_i_reg : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_rd_status_flags_ss : entity is "rd_status_flags_ss";
 end brd_fifo_generator_2_1_rd_status_flags_ss;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_rd_status_flags_ss is
@@ -1809,8 +1797,6 @@ entity brd_fifo_generator_2_1_wr_status_flags_ss is
     ram_empty_fb_i_reg : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_wr_status_flags_ss : entity is "wr_status_flags_ss";
 end brd_fifo_generator_2_1_wr_status_flags_ss;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_wr_status_flags_ss is
@@ -1935,8 +1921,6 @@ entity brd_fifo_generator_2_1_blk_mem_gen_generic_cstr is
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 );
     din : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end brd_fifo_generator_2_1_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_blk_mem_gen_generic_cstr is
@@ -1973,8 +1957,6 @@ entity brd_fifo_generator_2_1_rd_logic is
     \gcc0.gc1.gsym.count_d1_reg[9]\ : in STD_LOGIC_VECTOR ( 9 downto 0 );
     \gcc0.gc1.gsym.count_reg[9]\ : in STD_LOGIC_VECTOR ( 9 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_rd_logic : entity is "rd_logic";
 end brd_fifo_generator_2_1_rd_logic;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_rd_logic is
@@ -2043,8 +2025,6 @@ entity brd_fifo_generator_2_1_wr_logic is
     ram_empty_fb_i_reg : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_wr_logic : entity is "wr_logic";
 end brd_fifo_generator_2_1_wr_logic;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_wr_logic is
@@ -2088,8 +2068,6 @@ entity brd_fifo_generator_2_1_blk_mem_gen_top is
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 );
     din : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end brd_fifo_generator_2_1_blk_mem_gen_top;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_blk_mem_gen_top is
@@ -2119,8 +2097,6 @@ entity brd_fifo_generator_2_1_blk_mem_gen_v8_4_1_synth is
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 );
     din : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_blk_mem_gen_v8_4_1_synth : entity is "blk_mem_gen_v8_4_1_synth";
 end brd_fifo_generator_2_1_blk_mem_gen_v8_4_1_synth;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_blk_mem_gen_v8_4_1_synth is
@@ -2150,8 +2126,6 @@ entity brd_fifo_generator_2_1_blk_mem_gen_v8_4_1 is
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 );
     din : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_blk_mem_gen_v8_4_1 : entity is "blk_mem_gen_v8_4_1";
 end brd_fifo_generator_2_1_blk_mem_gen_v8_4_1;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_blk_mem_gen_v8_4_1 is
@@ -2181,8 +2155,6 @@ entity brd_fifo_generator_2_1_memory is
     Q : in STD_LOGIC_VECTOR ( 9 downto 0 );
     din : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_memory : entity is "memory";
 end brd_fifo_generator_2_1_memory;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_memory is
@@ -2213,8 +2185,6 @@ entity brd_fifo_generator_2_1_fifo_generator_ramfifo is
     rd_en : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_fifo_generator_ramfifo : entity is "fifo_generator_ramfifo";
 end brd_fifo_generator_2_1_fifo_generator_ramfifo;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_fifo_generator_ramfifo is
@@ -2290,8 +2260,6 @@ entity brd_fifo_generator_2_1_fifo_generator_top is
     rd_en : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_fifo_generator_top : entity is "fifo_generator_top";
 end brd_fifo_generator_2_1_fifo_generator_top;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_fifo_generator_top is
@@ -2323,8 +2291,6 @@ entity brd_fifo_generator_2_1_fifo_generator_v13_2_2_synth is
     rd_en : in STD_LOGIC;
     wr_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_fifo_generator_v13_2_2_synth : entity is "fifo_generator_v13_2_2_synth";
 end brd_fifo_generator_2_1_fifo_generator_v13_2_2_synth;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_fifo_generator_v13_2_2_synth is
@@ -2983,8 +2949,6 @@ entity brd_fifo_generator_2_1_fifo_generator_v13_2_2 is
   attribute C_WR_PNTR_WIDTH_WRCH of brd_fifo_generator_2_1_fifo_generator_v13_2_2 : entity is 4;
   attribute C_WR_RESPONSE_LATENCY : integer;
   attribute C_WR_RESPONSE_LATENCY of brd_fifo_generator_2_1_fifo_generator_v13_2_2 : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_fifo_generator_2_1_fifo_generator_v13_2_2 : entity is "fifo_generator_v13_2_2";
 end brd_fifo_generator_2_1_fifo_generator_v13_2_2;
 
 architecture STRUCTURE of brd_fifo_generator_2_1_fifo_generator_v13_2_2 is
@@ -4091,7 +4055,7 @@ architecture STRUCTURE of brd_fifo_generator_2_1 is
   attribute x_interface_info of almost_full : signal is "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE ALMOST_FULL";
   attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 core_clk CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME core_clk, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  attribute x_interface_parameter of clk : signal is "XIL_INTERFACENAME core_clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   attribute x_interface_info of empty : signal is "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY";
   attribute x_interface_info of full : signal is "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE FULL";
   attribute x_interface_info of rd_en : signal is "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN";

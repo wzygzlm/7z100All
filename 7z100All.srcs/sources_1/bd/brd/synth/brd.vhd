@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
---Date        : Tue Jul 21 11:14:54 2020
+--Date        : Tue Jul 21 19:13:35 2020
 --Host        : mbp-win10 running 64-bit major release  (build 9200)
 --Command     : generate_target brd.bd
 --Design      : brd
@@ -5193,12 +5193,12 @@ eventStreamToConstEn_0: component brd_eventStreamToConstEn_0_1
       vCnt_V_ap_vld => NLW_eventStreamToConstEn_0_vCnt_V_ap_vld_UNCONNECTED,
       vgaEn_V(0) => NLW_eventStreamToConstEn_0_vgaEn_V_UNCONNECTED(0),
       vgaEn_V_ap_vld => NLW_eventStreamToConstEn_0_vgaEn_V_ap_vld_UNCONNECTED,
-      xStream_V_V_TDATA(15 downto 0) => eventStreamDuplicate_0_xStreamOut1_V_V_TDATA(15 downto 0),
-      xStream_V_V_TREADY => eventStreamDuplicate_0_xStreamOut1_V_V_TREADY,
-      xStream_V_V_TVALID => eventStreamDuplicate_0_xStreamOut1_V_V_TVALID,
-      yStream_V_V_TDATA(15 downto 0) => eventStreamDuplicate_0_yStreamOut1_V_V_TDATA(15 downto 0),
-      yStream_V_V_TREADY => eventStreamDuplicate_0_yStreamOut1_V_V_TREADY,
-      yStream_V_V_TVALID => eventStreamDuplicate_0_yStreamOut1_V_V_TVALID
+      xStream_V_V_TDATA(15 downto 0) => eventStreamDuplicate_0_yStreamOut1_V_V_TDATA(15 downto 0),
+      xStream_V_V_TREADY => eventStreamDuplicate_0_yStreamOut1_V_V_TREADY,
+      xStream_V_V_TVALID => eventStreamDuplicate_0_yStreamOut1_V_V_TVALID,
+      yStream_V_V_TDATA(15 downto 0) => eventStreamDuplicate_0_xStreamOut1_V_V_TDATA(15 downto 0),
+      yStream_V_V_TREADY => eventStreamDuplicate_0_xStreamOut1_V_V_TREADY,
+      yStream_V_V_TVALID => eventStreamDuplicate_0_xStreamOut1_V_V_TVALID
     );
 eventsGeneratorViaFi_0: component brd_eventsGeneratorViaFi_0_0
      port map (

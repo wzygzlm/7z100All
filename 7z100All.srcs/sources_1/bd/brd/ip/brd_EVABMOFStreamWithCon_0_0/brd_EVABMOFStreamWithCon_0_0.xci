@@ -10,7 +10,7 @@
       <spirit:componentRef spirit:vendor="xilinx.com" spirit:library="hls" spirit:name="EVABMOFStreamWithControl" spirit:version="1.0"/>
       <spirit:configurableElementValues>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AP_CLK.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AP_CLK.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AP_CLK.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AP_CLK.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AP_CLK.PHASE">0.000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AP_CTRL.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {done {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} start {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_typ
@@ -19,7 +19,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AP_RST_N.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {RST {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONFIG_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -30,7 +30,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -41,7 +41,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -52,7 +52,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -64,7 +64,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.STATUS_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -75,7 +75,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -86,7 +86,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -97,7 +97,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -108,7 +108,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.HAS_TREADY">1</spirit:configurableElementValue>
@@ -119,7 +119,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.TDEST_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.TID_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.CLK_DOMAIN">brd_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.FREQ_HZ">9.999e+07</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.FREQ_HZ">99989998</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TKEEP">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TLAST">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TREADY">1</spirit:configurableElementValue>

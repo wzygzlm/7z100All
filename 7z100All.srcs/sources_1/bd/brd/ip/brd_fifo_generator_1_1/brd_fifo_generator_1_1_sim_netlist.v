@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Mon Jul 20 23:45:13 2020
+// Date        : Mon Jul 20 21:24:29 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_fifo_generator_1_1/brd_fifo_generator_1_1_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top brd_fifo_generator_1_1 -prefix
+//               brd_fifo_generator_1_1_ brd_fifo_generator_1_1_sim_netlist.v
 // Design      : brd_fifo_generator_1_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -23,7 +23,7 @@ module brd_fifo_generator_1_1
     full,
     almost_full,
     empty);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 core_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME core_clk, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *) input clk;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 core_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME core_clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0" *) input clk;
   (* x_interface_info = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_DATA" *) input [15:0]din;
   (* x_interface_info = "xilinx.com:interface:fifo_write:1.0 FIFO_WRITE WR_EN" *) input wr_en;
   (* x_interface_info = "xilinx.com:interface:fifo_read:1.0 FIFO_READ RD_EN" *) input rd_en;
@@ -599,7 +599,6 @@ module brd_fifo_generator_1_1
         .wr_rst_busy(NLW_U0_wr_rst_busy_UNCONNECTED));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module brd_fifo_generator_1_1_blk_mem_gen_generic_cstr
    (dout,
     clk,
@@ -634,7 +633,6 @@ module brd_fifo_generator_1_1_blk_mem_gen_generic_cstr
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module brd_fifo_generator_1_1_blk_mem_gen_prim_width
    (dout,
     clk,
@@ -669,7 +667,6 @@ module brd_fifo_generator_1_1_blk_mem_gen_prim_width
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module brd_fifo_generator_1_1_blk_mem_gen_prim_wrapper
    (dout,
     clk,
@@ -824,7 +821,6 @@ module brd_fifo_generator_1_1_blk_mem_gen_prim_wrapper
         .WEBWE({1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module brd_fifo_generator_1_1_blk_mem_gen_top
    (dout,
     clk,
@@ -859,7 +855,6 @@ module brd_fifo_generator_1_1_blk_mem_gen_top
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_1" *) 
 module brd_fifo_generator_1_1_blk_mem_gen_v8_4_1
    (dout,
     clk,
@@ -894,7 +889,6 @@ module brd_fifo_generator_1_1_blk_mem_gen_v8_4_1
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_1_synth" *) 
 module brd_fifo_generator_1_1_blk_mem_gen_v8_4_1_synth
    (dout,
     clk,
@@ -929,7 +923,6 @@ module brd_fifo_generator_1_1_blk_mem_gen_v8_4_1_synth
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "compare" *) 
 module brd_fifo_generator_1_1_compare
    (comp0,
     v1_reg);
@@ -1216,7 +1209,6 @@ module brd_fifo_generator_1_1_compare_3
         .O(ram_empty_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module brd_fifo_generator_1_1_fifo_generator_ramfifo
    (dout,
     empty,
@@ -1295,7 +1287,6 @@ module brd_fifo_generator_1_1_fifo_generator_ramfifo
         .ram_empty_fb_i_reg(ram_rd_en_i));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module brd_fifo_generator_1_1_fifo_generator_top
    (dout,
     empty,
@@ -1401,7 +1392,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "10" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "10" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_2" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) 
 module brd_fifo_generator_1_1_fifo_generator_v13_2_2
    (backup,
     backup_marker,
@@ -2416,7 +2407,6 @@ module brd_fifo_generator_1_1_fifo_generator_v13_2_2
         .wr_en(wr_en));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_2_synth" *) 
 module brd_fifo_generator_1_1_fifo_generator_v13_2_2_synth
    (dout,
     empty,
@@ -2455,7 +2445,6 @@ module brd_fifo_generator_1_1_fifo_generator_v13_2_2_synth
         .wr_en(wr_en));
 endmodule
 
-(* ORIG_REF_NAME = "memory" *) 
 module brd_fifo_generator_1_1_memory
    (dout,
     clk,
@@ -2490,7 +2479,6 @@ module brd_fifo_generator_1_1_memory
         .ram_empty_fb_i_reg(ram_empty_fb_i_reg));
 endmodule
 
-(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module brd_fifo_generator_1_1_rd_bin_cntr
    (v1_reg,
     Q,
@@ -2562,7 +2550,7 @@ module brd_fifo_generator_1_1_rd_bin_cntr
         .I1(rd_pntr_plus1[1]),
         .I2(rd_pntr_plus1[2]),
         .O(plusOp[2]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gc0.count[3]_i_1 
@@ -2571,7 +2559,7 @@ module brd_fifo_generator_1_1_rd_bin_cntr
         .I2(rd_pntr_plus1[2]),
         .I3(rd_pntr_plus1[3]),
         .O(plusOp[3]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gc0.count[4]_i_1 
@@ -2606,7 +2594,7 @@ module brd_fifo_generator_1_1_rd_bin_cntr
         .I1(rd_pntr_plus1[6]),
         .I2(rd_pntr_plus1[7]),
         .O(plusOp[7]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gc0.count[8]_i_1 
@@ -2615,7 +2603,7 @@ module brd_fifo_generator_1_1_rd_bin_cntr
         .I2(rd_pntr_plus1[7]),
         .I3(rd_pntr_plus1[8]),
         .O(plusOp[8]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gc0.count[9]_i_1 
@@ -2997,7 +2985,6 @@ module brd_fifo_generator_1_1_rd_bin_cntr
         .O(ram_empty_i_reg_3));
 endmodule
 
-(* ORIG_REF_NAME = "rd_logic" *) 
 module brd_fifo_generator_1_1_rd_logic
    (out,
     empty,
@@ -3081,7 +3068,6 @@ module brd_fifo_generator_1_1_rd_logic
         .v1_reg_2(\c2/v1_reg ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module brd_fifo_generator_1_1_rd_status_flags_ss
    (out,
     empty,
@@ -3173,7 +3159,6 @@ module brd_fifo_generator_1_1_rd_status_flags_ss
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module brd_fifo_generator_1_1_wr_bin_cntr
    (Q,
     \gcc0.gc1.gsym.count_d2_reg[9]_0 ,
@@ -3214,7 +3199,7 @@ module brd_fifo_generator_1_1_wr_bin_cntr
         .I1(Q[1]),
         .I2(Q[2]),
         .O(plusOp__0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gcc0.gc1.gsym.count[3]_i_1 
@@ -3223,7 +3208,7 @@ module brd_fifo_generator_1_1_wr_bin_cntr
         .I2(Q[2]),
         .I3(Q[3]),
         .O(plusOp__0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gcc0.gc1.gsym.count[4]_i_1 
@@ -3258,7 +3243,7 @@ module brd_fifo_generator_1_1_wr_bin_cntr
         .I1(Q[6]),
         .I2(Q[7]),
         .O(plusOp__0[7]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \gcc0.gc1.gsym.count[8]_i_1 
@@ -3267,7 +3252,7 @@ module brd_fifo_generator_1_1_wr_bin_cntr
         .I2(Q[7]),
         .I3(Q[8]),
         .O(plusOp__0[8]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \gcc0.gc1.gsym.count[9]_i_1 
@@ -3529,7 +3514,6 @@ module brd_fifo_generator_1_1_wr_bin_cntr
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "wr_logic" *) 
 module brd_fifo_generator_1_1_wr_logic
    (out,
     full,
@@ -3595,7 +3579,6 @@ module brd_fifo_generator_1_1_wr_logic
         .\gcc0.gc1.gsym.count_d2_reg[9]_0 (\gcc0.gc1.gsym.count_d2_reg[9] ));
 endmodule
 
-(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module brd_fifo_generator_1_1_wr_status_flags_ss
    (out,
     full,

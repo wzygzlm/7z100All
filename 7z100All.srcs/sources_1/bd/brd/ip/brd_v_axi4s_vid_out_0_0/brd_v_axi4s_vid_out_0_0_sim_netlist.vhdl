@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Mon Jul 20 23:24:23 2020
+-- Date        : Mon Jul 20 21:09:43 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_v_axi4s_vid_out_0_0/brd_v_axi4s_vid_out_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top brd_v_axi4s_vid_out_0_0 -prefix
+--               brd_v_axi4s_vid_out_0_0_ brd_v_axi4s_vid_out_0_0_sim_netlist.vhdl
 -- Design      : brd_v_axi4s_vid_out_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -38,8 +38,6 @@ entity brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_formatter is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     D : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_formatter : entity is "v_axi4s_vid_out_v4_0_9_formatter";
 end brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_formatter;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_formatter is
@@ -50,8 +48,8 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_formatt
   signal vtg_vblank_1 : STD_LOGIC;
   signal vtg_vblank_1_i_1_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of vblank_rising_i_1 : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of vtg_vblank_1_i_1 : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of vblank_rising_i_1 : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of vtg_vblank_1_i_1 : label is "soft_lutpair11";
 begin
   fivid_reset_full_frame <= \^fivid_reset_full_frame\;
 fivid_reset_full_frame_i_1: unisim.vcomponents.LUT5
@@ -477,8 +475,6 @@ entity brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_sync is
     \grdc.rd_data_count_i_reg[7]\ : in STD_LOGIC;
     fivid_reset_full_frame : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_sync : entity is "v_axi4s_vid_out_v4_0_9_sync";
 end brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_sync;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_sync is
@@ -755,15 +751,15 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_sync is
   signal \NLW_fifo_pix_error1_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_vtg_lag_reg[28]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_sequential_state[0]_i_11\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[1]_i_3\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[2]_i_3\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[2]_i_4\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_12\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_13\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_14\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_15\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_8\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[0]_i_11\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[1]_i_3\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[2]_i_2\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[2]_i_3\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[2]_i_4\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_13\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_14\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_15\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \FSM_sequential_state[3]_i_8\ : label is "soft_lutpair17";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[0]\ : label is "C_SYNC_FALN_EOL_LAGGING:0011,C_SYNC_FALN_EOL_LEADING:0000,C_SYNC_CALN_SOF_FIFO:0100,C_SYNC_LALN_SOF_LEADING:0110,C_SYNC_LALN_SOF_LAGGING:0101,C_SYNC_LALN_EOL_LAGGING:0111,C_SYNC_CALN_SOF_VTG:1000,C_SYNC_IDLE:0001,C_SYNC_LALN_EOL_LEADING:1100,C_SYNC_FALN_ACTIVE:0010,C_SYNC_FALN_LOCK:1011,C_SYNC_FALN_SOF_LAGGING:1010,C_SYNC_FALN_SOF_LEADING:1001";
   attribute KEEP : string;
@@ -774,21 +770,21 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_sync is
   attribute KEEP of \FSM_sequential_state_reg[2]\ : label is "yes";
   attribute FSM_ENCODED_STATES of \FSM_sequential_state_reg[3]\ : label is "C_SYNC_FALN_EOL_LAGGING:0011,C_SYNC_FALN_EOL_LEADING:0000,C_SYNC_CALN_SOF_FIFO:0100,C_SYNC_LALN_SOF_LEADING:0110,C_SYNC_LALN_SOF_LAGGING:0101,C_SYNC_LALN_EOL_LAGGING:0111,C_SYNC_CALN_SOF_VTG:1000,C_SYNC_IDLE:0001,C_SYNC_LALN_EOL_LEADING:1100,C_SYNC_FALN_ACTIVE:0010,C_SYNC_FALN_LOCK:1011,C_SYNC_FALN_SOF_LAGGING:1010,C_SYNC_FALN_SOF_LEADING:1001";
   attribute KEEP of \FSM_sequential_state_reg[3]\ : label is "yes";
-  attribute SOFT_HLUTNM of fifo_pix_error_i_1 : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of fifo_pix_error_i_2 : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \fifo_sof_cnt[0]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \fifo_sof_cnt[1]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \fifo_sof_cnt[2]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \fifo_sof_cnt[3]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \fifo_sof_cnt[4]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \fifo_sof_cnt[7]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \vtg_sof_cnt[0]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \vtg_sof_cnt[1]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \vtg_sof_cnt[2]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \vtg_sof_cnt[3]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \vtg_sof_cnt[4]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \vtg_sof_cnt[7]_i_3\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of vtg_sof_dly_i_1 : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of fifo_pix_error_i_1 : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \fifo_sof_cnt[0]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \fifo_sof_cnt[1]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \fifo_sof_cnt[2]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \fifo_sof_cnt[3]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \fifo_sof_cnt[4]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \fifo_sof_cnt[6]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \fifo_sof_cnt[7]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \vtg_sof_cnt[0]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \vtg_sof_cnt[1]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \vtg_sof_cnt[2]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \vtg_sof_cnt[3]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \vtg_sof_cnt[4]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \vtg_sof_cnt[7]_i_3\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of vtg_sof_dly_i_1 : label is "soft_lutpair17";
 begin
   src_in <= \^src_in\;
   status(24 downto 0) <= \^status\(24 downto 0);
@@ -4247,8 +4243,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_cdc_gray is
   attribute DEST_SYNC_FF of brd_v_axi4s_vid_out_0_0_xpm_cdc_gray : entity is 4;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of brd_v_axi4s_vid_out_0_0_xpm_cdc_gray : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_cdc_gray : entity is "xpm_cdc_gray";
   attribute REG_OUTPUT : integer;
   attribute REG_OUTPUT of brd_v_axi4s_vid_out_0_0_xpm_cdc_gray : entity is 0;
   attribute SIM_ASSERT_CHK : integer;
@@ -4409,15 +4403,6 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_cdc_gray is
   attribute ASYNC_REG_boolean of \dest_graysync_ff_reg[3][9]\ : label is std.standard.true;
   attribute KEEP of \dest_graysync_ff_reg[3][9]\ : label is "true";
   attribute XPM_CDC of \dest_graysync_ff_reg[3][9]\ : label is "GRAY";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \src_gray_ff[0]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \src_gray_ff[1]_i_1\ : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \src_gray_ff[2]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \src_gray_ff[3]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \src_gray_ff[4]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \src_gray_ff[5]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \src_gray_ff[6]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \src_gray_ff[7]_i_1\ : label is "soft_lutpair12";
 begin
   dest_out_bin(9) <= \dest_graysync_ff[3]\(9);
   dest_out_bin(8 downto 0) <= \^dest_out_bin\(8 downto 0);
@@ -5177,15 +5162,6 @@ architecture STRUCTURE of \brd_v_axi4s_vid_out_0_0_xpm_cdc_gray__1\ is
   attribute ASYNC_REG_boolean of \dest_graysync_ff_reg[3][9]\ : label is std.standard.true;
   attribute KEEP of \dest_graysync_ff_reg[3][9]\ : label is "true";
   attribute XPM_CDC of \dest_graysync_ff_reg[3][9]\ : label is "GRAY";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \src_gray_ff[0]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \src_gray_ff[1]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \src_gray_ff[2]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \src_gray_ff[3]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \src_gray_ff[4]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \src_gray_ff[5]_i_1\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \src_gray_ff[6]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \src_gray_ff[7]_i_1\ : label is "soft_lutpair3";
 begin
   dest_out_bin(9) <= \dest_graysync_ff[3]\(9);
   dest_out_bin(8 downto 0) <= \^dest_out_bin\(8 downto 0);
@@ -6031,17 +6007,6 @@ architecture STRUCTURE of \brd_v_axi4s_vid_out_0_0_xpm_cdc_gray__parameterized0\
   attribute ASYNC_REG_boolean of \dest_graysync_ff_reg[5][9]\ : label is std.standard.true;
   attribute KEEP of \dest_graysync_ff_reg[5][9]\ : label is "true";
   attribute XPM_CDC of \dest_graysync_ff_reg[5][9]\ : label is "GRAY";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \src_gray_ff[0]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \src_gray_ff[1]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \src_gray_ff[2]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \src_gray_ff[3]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \src_gray_ff[4]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \src_gray_ff[5]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \src_gray_ff[6]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \src_gray_ff[7]_i_1\ : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of \src_gray_ff[8]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of \src_gray_ff[9]_i_1\ : label is "soft_lutpair8";
 begin
   dest_out_bin(10) <= \dest_graysync_ff[5]\(10);
   dest_out_bin(9 downto 0) <= \^dest_out_bin\(9 downto 0);
@@ -7051,17 +7016,6 @@ architecture STRUCTURE of \brd_v_axi4s_vid_out_0_0_xpm_cdc_gray__parameterized1\
   attribute ASYNC_REG_boolean of \dest_graysync_ff_reg[3][9]\ : label is std.standard.true;
   attribute KEEP of \dest_graysync_ff_reg[3][9]\ : label is "true";
   attribute XPM_CDC of \dest_graysync_ff_reg[3][9]\ : label is "GRAY";
-  attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \src_gray_ff[0]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \src_gray_ff[1]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \src_gray_ff[2]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \src_gray_ff[3]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \src_gray_ff[4]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \src_gray_ff[5]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \src_gray_ff[6]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \src_gray_ff[7]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \src_gray_ff[8]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \src_gray_ff[9]_i_1\ : label is "soft_lutpair17";
 begin
   dest_out_bin(10) <= \dest_graysync_ff[3]\(10);
   dest_out_bin(9 downto 0) <= \^dest_out_bin\(9 downto 0);
@@ -7721,8 +7675,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_cdc_single is
   attribute DEST_SYNC_FF of brd_v_axi4s_vid_out_0_0_xpm_cdc_single : entity is 4;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of brd_v_axi4s_vid_out_0_0_xpm_cdc_single : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of brd_v_axi4s_vid_out_0_0_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -7894,8 +7846,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_cdc_sync_rst is
   attribute INIT of brd_v_axi4s_vid_out_0_0_xpm_cdc_sync_rst : entity is "0";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of brd_v_axi4s_vid_out_0_0_xpm_cdc_sync_rst : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_cdc_sync_rst : entity is "xpm_cdc_sync_rst";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of brd_v_axi4s_vid_out_0_0_xpm_cdc_sync_rst : entity is 0;
   attribute VERSION : integer;
@@ -8089,8 +8039,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_counter_updn is
     \gen_rst_ic.fifo_rd_rst_ic_reg\ : in STD_LOGIC;
     rd_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_counter_updn : entity is "xpm_counter_updn";
 end brd_v_axi4s_vid_out_0_0_xpm_counter_updn;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_counter_updn is
@@ -9220,10 +9168,10 @@ architecture STRUCTURE of \brd_v_axi4s_vid_out_0_0_xpm_counter_updn__parameteriz
   signal \count_value_i[9]_i_2__1_n_0\ : STD_LOGIC;
   signal \count_value_i_reg_n_0_[9]\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \count_value_i[3]_i_1__1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \count_value_i[4]_i_1__1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \count_value_i[7]_i_1__1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \count_value_i[8]_i_1__1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \count_value_i[3]_i_1__1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \count_value_i[4]_i_1__1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \count_value_i[7]_i_1__1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \count_value_i[8]_i_1__1\ : label is "soft_lutpair1";
 begin
   E(0) <= \^e\(0);
   Q(8 downto 0) <= \^q\(8 downto 0);
@@ -9560,12 +9508,12 @@ architecture STRUCTURE of \brd_v_axi4s_vid_out_0_0_xpm_counter_updn__parameteriz
   signal \NLW_gen_pf_ic_rc.gpf_ic.diff_pntr_pf_q_reg[10]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_gen_pf_ic_rc.gpf_ic.diff_pntr_pf_q_reg[4]_i_1_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \count_value_i[1]_i_1__0\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \count_value_i[2]_i_1__0\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \count_value_i[3]_i_1__0\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \count_value_i[4]_i_1__0\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \count_value_i[7]_i_1__0\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \count_value_i[8]_i_1__0\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \count_value_i[1]_i_1__0\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \count_value_i[2]_i_1__0\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \count_value_i[3]_i_1__0\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \count_value_i[4]_i_1__0\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \count_value_i[7]_i_1__0\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \count_value_i[8]_i_1__0\ : label is "soft_lutpair3";
 begin
   Q(8 downto 0) <= \^q\(8 downto 0);
 \count_value_i[0]_i_1__0\: unisim.vcomponents.LUT1
@@ -9996,12 +9944,12 @@ architecture STRUCTURE of \brd_v_axi4s_vid_out_0_0_xpm_counter_updn__parameteriz
   signal \count_value_i[9]_i_2_n_0\ : STD_LOGIC;
   signal \count_value_i_reg_n_0_[9]\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \count_value_i[0]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \count_value_i[2]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \count_value_i[3]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \count_value_i[4]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \count_value_i[7]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \count_value_i[8]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \count_value_i[0]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \count_value_i[2]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \count_value_i[3]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \count_value_i[4]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \count_value_i[7]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \count_value_i[8]_i_1\ : label is "soft_lutpair6";
 begin
   Q(8 downto 0) <= \^q\(8 downto 0);
 \count_value_i[0]_i_1\: unisim.vcomponents.LUT1
@@ -10280,8 +10228,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_bit is
     wr_en : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_bit : entity is "xpm_fifo_reg_bit";
 end brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_bit;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_bit is
@@ -10355,8 +10301,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_vec is
     D : in STD_LOGIC_VECTOR ( 9 downto 0 );
     wr_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_vec : entity is "xpm_fifo_reg_vec";
 end brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_vec;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_vec is
@@ -10378,8 +10322,8 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_fifo_reg_vec is
   signal \NLW_gen_pf_ic_rc.gen_full_rst_val.ram_full_i_reg_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \NLW_gen_pf_ic_rc.gen_full_rst_val.ram_full_i_reg_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \gen_pf_ic_rc.gen_full_rst_val.ram_full_i_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \gen_pf_ic_rc.gen_full_rst_val.ram_full_n_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \gen_pf_ic_rc.gen_full_rst_val.ram_full_i_i_1\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \gen_pf_ic_rc.gen_full_rst_val.ram_full_n_i_1\ : label is "soft_lutpair0";
 begin
   Q(9 downto 0) <= \^q\(9 downto 0);
 \gen_pf_ic_rc.gen_full_rst_val.ram_full_i_i_1\: unisim.vcomponents.LUT5
@@ -11455,8 +11399,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_memory_base is
   attribute MESSAGE_CONTROL of brd_v_axi4s_vid_out_0_0_xpm_memory_base : entity is 0;
   attribute NUM_CHAR_LOC : integer;
   attribute NUM_CHAR_LOC of brd_v_axi4s_vid_out_0_0_xpm_memory_base : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_memory_base : entity is "xpm_memory_base";
   attribute P_ECC_MODE : string;
   attribute P_ECC_MODE of brd_v_axi4s_vid_out_0_0_xpm_memory_base : entity is "no_ecc";
   attribute P_ENABLE_BYTE_WRITE_A : integer;
@@ -11853,8 +11795,6 @@ entity brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_cdc_single is
     src_in : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_cdc_single : entity is "v_axi4s_vid_out_v4_0_9_cdc_single";
 end brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_cdc_single;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_cdc_single is
@@ -11942,8 +11882,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_fifo_rst is
     \gen_fwft.empty_fwft_i_reg\ : in STD_LOGIC;
     rd_en : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_fifo_rst : entity is "xpm_fifo_rst";
 end brd_v_axi4s_vid_out_0_0_xpm_fifo_rst;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_fifo_rst is
@@ -12021,8 +11959,8 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_fifo_rst is
   attribute XPM_CDC of \gen_rst_ic.wrst_rd_inst\ : label is "SYNC_RST";
   attribute XPM_MODULE of \gen_rst_ic.wrst_rd_inst\ : label is "TRUE";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \grdc.rd_data_count_i[10]_i_1\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \guf.underflow_i_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \grdc.rd_data_count_i[10]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \guf.underflow_i_i_1\ : label is "soft_lutpair9";
 begin
   \syncstages_ff_reg[0]\ <= \^syncstages_ff_reg[0]\;
   wrst_busy <= \^wrst_busy\;
@@ -12461,8 +12399,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_fifo_base is
   attribute FULL_RESET_VALUE of brd_v_axi4s_vid_out_0_0_xpm_fifo_base : entity is 1;
   attribute FULL_RST_VAL : string;
   attribute FULL_RST_VAL of brd_v_axi4s_vid_out_0_0_xpm_fifo_base : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_fifo_base : entity is "xpm_fifo_base";
   attribute PE_THRESH_ADJ : integer;
   attribute PE_THRESH_ADJ of brd_v_axi4s_vid_out_0_0_xpm_fifo_base : entity is 8;
   attribute PE_THRESH_MAX : integer;
@@ -13798,8 +13734,6 @@ entity brd_v_axi4s_vid_out_0_0_xpm_fifo_async is
     fifo_eol_dly : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_xpm_fifo_async : entity is "xpm_fifo_async";
 end brd_v_axi4s_vid_out_0_0_xpm_fifo_async;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_xpm_fifo_async is
@@ -14061,8 +13995,6 @@ entity brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_fifo_async is
     fifo_eol_dly : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_fifo_async : entity is "v_axi4s_vid_out_v4_0_9_fifo_async";
 end brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_fifo_async;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_fifo_async is
@@ -14114,8 +14046,6 @@ entity brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_coupler is
     s_axis_video_tvalid : in STD_LOGIC;
     aclken : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_coupler : entity is "v_axi4s_vid_out_v4_0_9_coupler";
 end brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_coupler;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_coupler is
@@ -14123,8 +14053,8 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9_coupler
   signal \wr_en_i__0\ : STD_LOGIC;
   signal wr_rst_busy_i : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of FIFO_READY : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of wr_en_i : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of FIFO_READY : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of wr_en_i : label is "soft_lutpair10";
 begin
 FIFO_READY: unisim.vcomponents.LUT3
     generic map(
@@ -14241,8 +14171,6 @@ entity brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9 is
   attribute C_VTG_MASTER_SLAVE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9 : entity is 0;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9 : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9 : entity is "v_axi4s_vid_out_v4_0_9";
 end brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9;
 
 architecture STRUCTURE of brd_v_axi4s_vid_out_0_0_v_axi4s_vid_out_v4_0_9 is
@@ -14445,13 +14373,13 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of aclk : signal is "xilinx.com:signal:clock:1.0 aclk_intf CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of aclk : signal is "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF video_in, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  attribute X_INTERFACE_PARAMETER of aclk : signal is "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF video_in, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   attribute X_INTERFACE_INFO of aclken : signal is "xilinx.com:signal:clockenable:1.0 aclken_intf CE";
   attribute X_INTERFACE_PARAMETER of aclken : signal is "XIL_INTERFACENAME aclken_intf, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of aresetn : signal is "xilinx.com:signal:reset:1.0 aresetn_intf RST";
   attribute X_INTERFACE_PARAMETER of aresetn : signal is "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of s_axis_video_tlast : signal is "xilinx.com:interface:axis:1.0 video_in TLAST";
-  attribute X_INTERFACE_PARAMETER of s_axis_video_tlast : signal is "XIL_INTERFACENAME video_in, TDATA_NUM_BYTES 3, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA undef";
+  attribute X_INTERFACE_PARAMETER of s_axis_video_tlast : signal is "XIL_INTERFACENAME video_in, TDATA_NUM_BYTES 3, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 1, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of s_axis_video_tready : signal is "xilinx.com:interface:axis:1.0 video_in TREADY";
   attribute X_INTERFACE_INFO of s_axis_video_tuser : signal is "xilinx.com:interface:axis:1.0 video_in TUSER";
   attribute X_INTERFACE_INFO of s_axis_video_tvalid : signal is "xilinx.com:interface:axis:1.0 video_in TVALID";
@@ -14462,7 +14390,7 @@ architecture STRUCTURE of brd_v_axi4s_vid_out_0_0 is
   attribute X_INTERFACE_INFO of vid_io_out_ce : signal is "xilinx.com:signal:clockenable:1.0 vid_io_out_ce_intf CE";
   attribute X_INTERFACE_PARAMETER of vid_io_out_ce : signal is "XIL_INTERFACENAME vid_io_out_ce_intf, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of vid_io_out_clk : signal is "xilinx.com:signal:clock:1.0 vid_io_out_clk_intf CLK";
-  attribute X_INTERFACE_PARAMETER of vid_io_out_clk : signal is "XIL_INTERFACENAME vid_io_out_clk_intf, ASSOCIATED_BUSIF vid_io_out, FREQ_HZ 3.9996e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK1";
+  attribute X_INTERFACE_PARAMETER of vid_io_out_clk : signal is "XIL_INTERFACENAME vid_io_out_clk_intf, ASSOCIATED_BUSIF vid_io_out, FREQ_HZ 39995998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK1";
   attribute X_INTERFACE_INFO of vid_io_out_reset : signal is "xilinx.com:signal:reset:1.0 vid_io_out_reset_intf RST";
   attribute X_INTERFACE_PARAMETER of vid_io_out_reset : signal is "XIL_INTERFACENAME vid_io_out_reset_intf, POLARITY ACTIVE_HIGH";
   attribute X_INTERFACE_INFO of vid_vblank : signal is "xilinx.com:interface:vid_io:1.0 vid_io_out VBLANK";
