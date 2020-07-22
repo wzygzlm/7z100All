@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
---Date        : Wed Jul 22 11:46:01 2020
+--Date        : Wed Jul 22 17:59:10 2020
 --Host        : mbp-win10 running 64-bit major release  (build 9200)
 --Command     : generate_target brd.bd
 --Design      : brd
@@ -2761,7 +2761,7 @@ entity brd is
     vid_vsync : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of brd : entity is "brd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=brd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=67,numReposBlks=56,numNonXlnxBlks=0,numHierBlks=11,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=10,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=34,da_clkrst_cnt=41,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of brd : entity is "brd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=brd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=66,numReposBlks=55,numNonXlnxBlks=0,numHierBlks=11,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=10,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=34,da_clkrst_cnt=42,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of brd : entity is "brd.hwdef";
 end brd;
@@ -3529,11 +3529,6 @@ architecture STRUCTURE of brd is
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component brd_xlconstant_1_1;
-  component brd_xlconstant_1_2 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component brd_xlconstant_1_2;
   component brd_axis_data_fifo_0_0 is
   port (
     s_axis_aresetn : in STD_LOGIC;
@@ -3849,11 +3844,6 @@ architecture STRUCTURE of brd is
     tsWrappedVal_V : out STD_LOGIC_VECTOR ( 11 downto 0 )
   );
   end component brd_XYTSStreamToRawStream_0_0;
-  component brd_xlcons_data_0x5a5a_0 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component brd_xlcons_data_0x5a5a_0;
   component brd_eventStreamDuplicate_0_0 is
   port (
     s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -3926,75 +3916,6 @@ architecture STRUCTURE of brd is
     custDataStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component brd_eventStreamDuplicate_0_0;
-  component brd_eventStreamSwitch_0_0 is
-  port (
-    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_AWVALID : in STD_LOGIC;
-    s_axi_config_AWREADY : out STD_LOGIC;
-    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_config_WVALID : in STD_LOGIC;
-    s_axi_config_WREADY : out STD_LOGIC;
-    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_BVALID : out STD_LOGIC;
-    s_axi_config_BREADY : in STD_LOGIC;
-    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_ARVALID : in STD_LOGIC;
-    s_axi_config_ARREADY : out STD_LOGIC;
-    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_RVALID : out STD_LOGIC;
-    s_axi_config_RREADY : in STD_LOGIC;
-    ap_clk : in STD_LOGIC;
-    ap_rst_n : in STD_LOGIC;
-    ap_start : in STD_LOGIC;
-    ap_done : out STD_LOGIC;
-    ap_idle : out STD_LOGIC;
-    ap_ready : out STD_LOGIC;
-    xStreamOut_V_V_TVALID : out STD_LOGIC;
-    xStreamOut_V_V_TREADY : in STD_LOGIC;
-    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamOut_V_V_TVALID : out STD_LOGIC;
-    yStreamOut_V_V_TREADY : in STD_LOGIC;
-    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamOut_V_V_TVALID : out STD_LOGIC;
-    tsStreamOut_V_V_TREADY : in STD_LOGIC;
-    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamOut_V_V_TVALID : out STD_LOGIC;
-    polStreamOut_V_V_TREADY : in STD_LOGIC;
-    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    cornerStreamOut_V_V_TVALID : out STD_LOGIC;
-    cornerStreamOut_V_V_TREADY : in STD_LOGIC;
-    cornerStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    xStreamIn0_V_V_TVALID : in STD_LOGIC;
-    xStreamIn0_V_V_TREADY : out STD_LOGIC;
-    xStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamIn0_V_V_TVALID : in STD_LOGIC;
-    yStreamIn0_V_V_TREADY : out STD_LOGIC;
-    yStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamIn0_V_V_TVALID : in STD_LOGIC;
-    tsStreamIn0_V_V_TREADY : out STD_LOGIC;
-    tsStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamIn0_V_V_TVALID : in STD_LOGIC;
-    polStreamIn0_V_V_TREADY : out STD_LOGIC;
-    polStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    cornerStreamIn0_V_V_TVALID : in STD_LOGIC;
-    cornerStreamIn0_V_V_TREADY : out STD_LOGIC;
-    cornerStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    xStreamIn1_V_V_TVALID : in STD_LOGIC;
-    xStreamIn1_V_V_TREADY : out STD_LOGIC;
-    xStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamIn1_V_V_TVALID : in STD_LOGIC;
-    yStreamIn1_V_V_TREADY : out STD_LOGIC;
-    yStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamIn1_V_V_TVALID : in STD_LOGIC;
-    tsStreamIn1_V_V_TREADY : out STD_LOGIC;
-    tsStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamIn1_V_V_TVALID : in STD_LOGIC;
-    polStreamIn1_V_V_TREADY : out STD_LOGIC;
-    polStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component brd_eventStreamSwitch_0_0;
   component brd_SFAST_process_data_0_0 is
   port (
     s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 5 downto 0 );
@@ -4106,14 +4027,84 @@ architecture STRUCTURE of brd is
     pixelDataStream_V_V_TDATA : out STD_LOGIC_VECTOR ( 23 downto 0 )
   );
   end component brd_EVABMOFStreamWithCon_0_0;
+  component brd_eventStreamSwitch_0_0 is
+  port (
+    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_AWVALID : in STD_LOGIC;
+    s_axi_config_AWREADY : out STD_LOGIC;
+    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_config_WVALID : in STD_LOGIC;
+    s_axi_config_WREADY : out STD_LOGIC;
+    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_BVALID : out STD_LOGIC;
+    s_axi_config_BREADY : in STD_LOGIC;
+    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_ARVALID : in STD_LOGIC;
+    s_axi_config_ARREADY : out STD_LOGIC;
+    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_RVALID : out STD_LOGIC;
+    s_axi_config_RREADY : in STD_LOGIC;
+    ap_clk : in STD_LOGIC;
+    ap_rst_n : in STD_LOGIC;
+    ap_start : in STD_LOGIC;
+    ap_done : out STD_LOGIC;
+    ap_idle : out STD_LOGIC;
+    ap_ready : out STD_LOGIC;
+    xStreamOut_V_V_TVALID : out STD_LOGIC;
+    xStreamOut_V_V_TREADY : in STD_LOGIC;
+    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamOut_V_V_TVALID : out STD_LOGIC;
+    yStreamOut_V_V_TREADY : in STD_LOGIC;
+    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamOut_V_V_TVALID : out STD_LOGIC;
+    tsStreamOut_V_V_TREADY : in STD_LOGIC;
+    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamOut_V_V_TVALID : out STD_LOGIC;
+    polStreamOut_V_V_TREADY : in STD_LOGIC;
+    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    cornerStreamOut_V_V_TVALID : out STD_LOGIC;
+    cornerStreamOut_V_V_TREADY : in STD_LOGIC;
+    cornerStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    xStreamIn0_V_V_TVALID : in STD_LOGIC;
+    xStreamIn0_V_V_TREADY : out STD_LOGIC;
+    xStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamIn0_V_V_TVALID : in STD_LOGIC;
+    yStreamIn0_V_V_TREADY : out STD_LOGIC;
+    yStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamIn0_V_V_TVALID : in STD_LOGIC;
+    tsStreamIn0_V_V_TREADY : out STD_LOGIC;
+    tsStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamIn0_V_V_TVALID : in STD_LOGIC;
+    polStreamIn0_V_V_TREADY : out STD_LOGIC;
+    polStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    cornerStreamIn0_V_V_TVALID : in STD_LOGIC;
+    cornerStreamIn0_V_V_TREADY : out STD_LOGIC;
+    cornerStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    xStreamIn1_V_V_TVALID : in STD_LOGIC;
+    xStreamIn1_V_V_TREADY : out STD_LOGIC;
+    xStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamIn1_V_V_TVALID : in STD_LOGIC;
+    yStreamIn1_V_V_TREADY : out STD_LOGIC;
+    yStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamIn1_V_V_TVALID : in STD_LOGIC;
+    tsStreamIn1_V_V_TREADY : out STD_LOGIC;
+    tsStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamIn1_V_V_TVALID : in STD_LOGIC;
+    polStreamIn1_V_V_TREADY : out STD_LOGIC;
+    polStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component brd_eventStreamSwitch_0_0;
+  component brd_system_ila_0_1 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_system_ila_0_1;
   signal DVSAERData_AI_0_1 : STD_LOGIC_VECTOR ( 10 downto 0 );
-  attribute DEBUG : string;
-  attribute DEBUG of DVSAERData_AI_0_1 : signal is "true";
-  attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of DVSAERData_AI_0_1 : signal is std.standard.true;
   signal DVSAERReq_ABI_0_1 : STD_LOGIC;
-  attribute DEBUG of DVSAERReq_ABI_0_1 : signal is "true";
-  attribute MARK_DEBUG of DVSAERReq_ABI_0_1 : signal is std.standard.true;
   signal EVABMOFStreamWithCon_0_pixelDataStream_V_V_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal EVABMOFStreamWithCon_0_pixelDataStream_V_V_TREADY : STD_LOGIC;
   signal EVABMOFStreamWithCon_0_pixelDataStream_V_V_TVALID : STD_LOGIC;
@@ -4130,24 +4121,14 @@ architecture STRUCTURE of brd is
   signal EVABMOFStreamWithCon_0_yStreamOut_V_V_TREADY : STD_LOGIC;
   signal EVABMOFStreamWithCon_0_yStreamOut_V_V_TVALID : STD_LOGIC;
   signal EVFastCornerStream_0_xStreamIn_V_V_TREADY : STD_LOGIC;
-  attribute DEBUG of EVFastCornerStream_0_xStreamIn_V_V_TREADY : signal is "true";
-  attribute MARK_DEBUG of EVFastCornerStream_0_xStreamIn_V_V_TREADY : signal is std.standard.true;
   signal EVMUXDataToXYTSStream_0_polStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal EVMUXDataToXYTSStream_0_polStreamOut_V_V_TVALID : STD_LOGIC;
   signal EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TVALID : STD_LOGIC;
   signal EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute DEBUG of EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA : signal is "true";
-  attribute MARK_DEBUG of EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA : signal is std.standard.true;
   signal EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID : STD_LOGIC;
-  attribute DEBUG of EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID : signal is "true";
-  attribute MARK_DEBUG of EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID : signal is std.standard.true;
   signal EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute DEBUG of EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA : signal is "true";
-  attribute MARK_DEBUG of EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA : signal is std.standard.true;
   signal EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID : STD_LOGIC;
-  attribute DEBUG of EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID : signal is "true";
-  attribute MARK_DEBUG of EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID : signal is std.standard.true;
   signal IMUInterrupt_AI_0_1 : STD_LOGIC;
   signal LEDShifter_0_led : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal Net : STD_LOGIC;
@@ -4170,31 +4151,19 @@ architecture STRUCTURE of brd is
   signal SFAST_process_data_0_yStreamOut_V_V_TREADY : STD_LOGIC;
   signal SFAST_process_data_0_yStreamOut_V_V_TVALID : STD_LOGIC;
   signal SPI_Master_With_Sing_0_o_RX_Byte : STD_LOGIC_VECTOR ( 47 downto 0 );
-  attribute DEBUG of SPI_Master_With_Sing_0_o_RX_Byte : signal is "true";
-  attribute MARK_DEBUG of SPI_Master_With_Sing_0_o_RX_Byte : signal is std.standard.true;
   signal SPI_Master_With_Sing_0_o_RX_DV : STD_LOGIC;
-  attribute DEBUG of SPI_Master_With_Sing_0_o_RX_DV : signal is "true";
-  attribute MARK_DEBUG of SPI_Master_With_Sing_0_o_RX_DV : signal is std.standard.true;
   signal SPI_Master_With_Sing_0_o_SPI_CS_n : STD_LOGIC;
   signal SPI_Master_With_Sing_0_o_SPI_Clk : STD_LOGIC;
   signal SPI_Master_With_Sing_0_o_SPI_MOSI : STD_LOGIC;
   signal SPI_Master_With_Sing_0_o_TX_Ready : STD_LOGIC;
-  attribute DEBUG of SPI_Master_With_Sing_0_o_TX_Ready : signal is "true";
-  attribute MARK_DEBUG of SPI_Master_With_Sing_0_o_TX_Ready : signal is std.standard.true;
   signal StreamToFIFO_0_fifoDataOut_V_din : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal StreamToFIFO_0_fifoDataOut_V_write : STD_LOGIC;
-  attribute DEBUG of StreamToFIFO_0_fifoDataOut_V_write : signal is "true";
-  attribute MARK_DEBUG of StreamToFIFO_0_fifoDataOut_V_write : signal is std.standard.true;
   signal SyncInClock_AI_0_1 : STD_LOGIC;
   signal SyncInSignal1_AI_0_1 : STD_LOGIC;
   signal SyncInSignal2_AI_0_1 : STD_LOGIC;
   signal SyncInSignal_AI_0_1 : STD_LOGIC;
   signal USBFifoToDVSSPI_0_outputDataValid_o : STD_LOGIC;
-  attribute DEBUG of USBFifoToDVSSPI_0_outputDataValid_o : signal is "true";
-  attribute MARK_DEBUG of USBFifoToDVSSPI_0_outputDataValid_o : signal is std.standard.true;
   signal USBFifoToDVSSPI_0_outputData_o : STD_LOGIC_VECTOR ( 47 downto 0 );
-  attribute DEBUG of USBFifoToDVSSPI_0_outputData_o : signal is "true";
-  attribute MARK_DEBUG of USBFifoToDVSSPI_0_outputData_o : signal is std.standard.true;
   signal XYTSStreamToRawStream_0_streamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal XYTSStreamToRawStream_0_streamOut_V_V_TREADY : STD_LOGIC;
   signal XYTSStreamToRawStream_0_streamOut_V_V_TVALID : STD_LOGIC;
@@ -4271,16 +4240,9 @@ architecture STRUCTURE of brd is
   signal axis_data_fifo_0_M_AXIS_TREADY : STD_LOGIC;
   signal axis_data_fifo_0_M_AXIS_TVALID : STD_LOGIC;
   signal c_addsub_0_S : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute DEBUG of c_addsub_0_S : signal is "true";
-  attribute MARK_DEBUG of c_addsub_0_S : signal is std.standard.true;
   signal c_counter_binary_0_Q : STD_LOGIC_VECTOR ( 1 downto 0 );
-  attribute DEBUG of c_counter_binary_0_Q : signal is "true";
-  attribute MARK_DEBUG of c_counter_binary_0_Q : signal is std.standard.true;
-  signal config_data_const_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal const_VCC_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal dvs_resp_data_o : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute DEBUG of dvs_resp_data_o : signal is "true";
-  attribute MARK_DEBUG of dvs_resp_data_o : signal is std.standard.true;
   signal eventStreamDuplicate_0_custDataStreamOut0_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal eventStreamDuplicate_0_custDataStreamOut0_V_V_TREADY : STD_LOGIC;
   signal eventStreamDuplicate_0_custDataStreamOut0_V_V_TVALID : STD_LOGIC;
@@ -4342,41 +4304,23 @@ architecture STRUCTURE of brd is
   signal eventsGeneratorViaFi_0_yStreamOut_V_V_TREADY : STD_LOGIC;
   signal eventsGeneratorViaFi_0_yStreamOut_V_V_TVALID : STD_LOGIC;
   signal fifo_generator_0_almost_full : STD_LOGIC;
-  attribute DEBUG of fifo_generator_0_almost_full : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_0_almost_full : signal is std.standard.true;
   signal fifo_generator_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute DEBUG of fifo_generator_0_dout : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_0_dout : signal is std.standard.true;
   signal fifo_generator_0_empty : STD_LOGIC;
-  attribute DEBUG of fifo_generator_0_empty : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_0_empty : signal is std.standard.true;
   signal fifo_generator_0_prog_full : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute DEBUG of fifo_generator_0_prog_full : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_0_prog_full : signal is std.standard.true;
   signal fifo_generator_0_prog_full1 : STD_LOGIC;
+  attribute DEBUG : string;
   attribute DEBUG of fifo_generator_0_prog_full1 : signal is "true";
+  attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of fifo_generator_0_prog_full1 : signal is std.standard.true;
   signal fifo_generator_1_almost_full : STD_LOGIC;
-  attribute DEBUG of fifo_generator_1_almost_full : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_1_almost_full : signal is std.standard.true;
   signal fifo_generator_1_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute DEBUG of fifo_generator_1_dout : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_1_dout : signal is std.standard.true;
   signal fifo_generator_1_empty : STD_LOGIC;
-  attribute DEBUG of fifo_generator_1_empty : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_1_empty : signal is std.standard.true;
   signal fifo_generator_1_prog_full : STD_LOGIC;
   attribute DEBUG of fifo_generator_1_prog_full : signal is "true";
   attribute MARK_DEBUG of fifo_generator_1_prog_full : signal is std.standard.true;
   signal fifo_generator_2_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute DEBUG of fifo_generator_2_dout : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_2_dout : signal is std.standard.true;
   signal fifo_generator_3_dout : STD_LOGIC_VECTOR ( 63 downto 0 );
-  attribute DEBUG of fifo_generator_3_dout : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_3_dout : signal is std.standard.true;
   signal fifo_generator_4_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute DEBUG of fifo_generator_4_dout : signal is "true";
-  attribute MARK_DEBUG of fifo_generator_4_dout : signal is std.standard.true;
   signal proc_sys_reset_0_interconnect_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal proc_sys_reset_0_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal proc_sys_reset_1_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -4595,14 +4539,8 @@ architecture STRUCTURE of brd is
   signal ps7_0_axi_periph_M08_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal ps7_0_axi_periph_M08_AXI_WVALID : STD_LOGIC;
   signal rxDataComplete_o : STD_LOGIC;
-  attribute DEBUG of rxDataComplete_o : signal is "true";
-  attribute MARK_DEBUG of rxDataComplete_o : signal is std.standard.true;
   signal testAERDVSSM_0_AERSMOutFifoData_DO2 : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute DEBUG of testAERDVSSM_0_AERSMOutFifoData_DO2 : signal is "true";
-  attribute MARK_DEBUG of testAERDVSSM_0_AERSMOutFifoData_DO2 : signal is std.standard.true;
   signal testAERDVSSM_0_AERSMOutFifoWrite_SO1 : STD_LOGIC;
-  attribute DEBUG of testAERDVSSM_0_AERSMOutFifoWrite_SO1 : signal is "true";
-  attribute MARK_DEBUG of testAERDVSSM_0_AERSMOutFifoWrite_SO1 : signal is std.standard.true;
   signal testAERDVSSM_0_ChipBiasAddrSelect_SBO : STD_LOGIC;
   signal testAERDVSSM_0_ChipBiasBitIn_DO : STD_LOGIC;
   signal testAERDVSSM_0_ChipBiasClock_CBO : STD_LOGIC;
@@ -4610,8 +4548,6 @@ architecture STRUCTURE of brd is
   signal testAERDVSSM_0_ChipBiasEnable_SO : STD_LOGIC;
   signal testAERDVSSM_0_ChipBiasLatch_SBO : STD_LOGIC;
   signal testAERDVSSM_0_DVSAERAck_SBO : STD_LOGIC;
-  attribute DEBUG of testAERDVSSM_0_DVSAERAck_SBO : signal is "true";
-  attribute MARK_DEBUG of testAERDVSSM_0_DVSAERAck_SBO : signal is std.standard.true;
   signal testAERDVSSM_0_DVSAERReset_SBO : STD_LOGIC;
   signal testAERDVSSM_0_IMUClock_CZO : STD_LOGIC;
   signal testAERDVSSM_0_IMUFSync_SO : STD_LOGIC;
@@ -4620,46 +4556,20 @@ architecture STRUCTURE of brd is
   signal testAERDVSSM_0_SyncOutSignal_SO : STD_LOGIC;
   signal ulpi_clk60_i_0_1 : STD_LOGIC;
   signal ulpi_dir_i_0_1 : STD_LOGIC;
-  attribute DEBUG of ulpi_dir_i_0_1 : signal is "true";
-  attribute MARK_DEBUG of ulpi_dir_i_0_1 : signal is std.standard.true;
   signal ulpi_nxt_i_0_1 : STD_LOGIC;
-  attribute DEBUG of ulpi_nxt_i_0_1 : signal is "true";
-  attribute MARK_DEBUG of ulpi_nxt_i_0_1 : signal is std.standard.true;
   signal ulpi_wrapper_0_ulpi_stp_o : STD_LOGIC;
-  attribute DEBUG of ulpi_wrapper_0_ulpi_stp_o : signal is "true";
-  attribute MARK_DEBUG of ulpi_wrapper_0_ulpi_stp_o : signal is std.standard.true;
   signal ulpi_wrapper_0_utmi_data_in_o : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute DEBUG of ulpi_wrapper_0_utmi_data_in_o : signal is "true";
-  attribute MARK_DEBUG of ulpi_wrapper_0_utmi_data_in_o : signal is std.standard.true;
   signal ulpi_wrapper_0_utmi_linestate_o : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ulpi_wrapper_0_utmi_rxactive_o : STD_LOGIC;
-  attribute DEBUG of ulpi_wrapper_0_utmi_rxactive_o : signal is "true";
-  attribute MARK_DEBUG of ulpi_wrapper_0_utmi_rxactive_o : signal is std.standard.true;
   signal ulpi_wrapper_0_utmi_rxerror_o : STD_LOGIC;
   signal ulpi_wrapper_0_utmi_rxvalid_o : STD_LOGIC;
-  attribute DEBUG of ulpi_wrapper_0_utmi_rxvalid_o : signal is "true";
-  attribute MARK_DEBUG of ulpi_wrapper_0_utmi_rxvalid_o : signal is std.standard.true;
   signal ulpi_wrapper_0_utmi_txready_o : STD_LOGIC;
-  attribute DEBUG of ulpi_wrapper_0_utmi_txready_o : signal is "true";
-  attribute MARK_DEBUG of ulpi_wrapper_0_utmi_txready_o : signal is std.standard.true;
   signal usb_cdc_core_0_data_complete_o_do : STD_LOGIC;
-  attribute DEBUG of usb_cdc_core_0_data_complete_o_do : signal is "true";
-  attribute MARK_DEBUG of usb_cdc_core_0_data_complete_o_do : signal is std.standard.true;
   signal usb_cdc_core_0_ep0_rx_setup_w_do : STD_LOGIC;
-  attribute DEBUG of usb_cdc_core_0_ep0_rx_setup_w_do : signal is "true";
-  attribute MARK_DEBUG of usb_cdc_core_0_ep0_rx_setup_w_do : signal is std.standard.true;
   signal usb_cdc_core_0_inport_accept_o1 : STD_LOGIC;
-  attribute DEBUG of usb_cdc_core_0_inport_accept_o1 : signal is "true";
-  attribute MARK_DEBUG of usb_cdc_core_0_inport_accept_o1 : signal is std.standard.true;
   signal usb_cdc_core_0_outport_data_o : STD_LOGIC_VECTOR ( 7 downto 0 );
-  attribute DEBUG of usb_cdc_core_0_outport_data_o : signal is "true";
-  attribute MARK_DEBUG of usb_cdc_core_0_outport_data_o : signal is std.standard.true;
   signal usb_cdc_core_0_outport_valid_o : STD_LOGIC;
-  attribute DEBUG of usb_cdc_core_0_outport_valid_o : signal is "true";
-  attribute MARK_DEBUG of usb_cdc_core_0_outport_valid_o : signal is std.standard.true;
   signal usb_cdc_core_0_rx_out_do : STD_LOGIC;
-  attribute DEBUG of usb_cdc_core_0_rx_out_do : signal is "true";
-  attribute MARK_DEBUG of usb_cdc_core_0_rx_out_do : signal is std.standard.true;
   signal usb_cdc_core_0_utmi_data_out_o : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal usb_cdc_core_0_utmi_dmpulldown_o : STD_LOGIC;
   signal usb_cdc_core_0_utmi_dppulldown_o : STD_LOGIC;
@@ -4669,8 +4579,6 @@ architecture STRUCTURE of brd is
   signal usb_cdc_core_0_utmi_xcvrselect_o : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute DEBUG of util_vector_logic_1_Res : signal is "true";
-  attribute MARK_DEBUG of util_vector_logic_1_Res : signal is std.standard.true;
   signal util_vector_logic_2_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal v_axi4s_vid_out_0_vid_data : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal v_axi4s_vid_out_0_vid_hsync : STD_LOGIC;
@@ -4682,10 +4590,7 @@ architecture STRUCTURE of brd is
   signal v_tc_0_vtiming_out_VBLANK : STD_LOGIC;
   signal v_tc_0_vtiming_out_VSYNC : STD_LOGIC;
   signal wr_data_count : STD_LOGIC_VECTOR ( 13 downto 0 );
-  attribute DEBUG of wr_data_count : signal is "true";
-  attribute MARK_DEBUG of wr_data_count : signal is std.standard.true;
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal xlcons_data_0x5a5a_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal xlcons_valid_high_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal xlconstant_1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -4693,8 +4598,6 @@ architecture STRUCTURE of brd is
   signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlslice_1_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlslice_4_Dout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  attribute DEBUG of xlslice_4_Dout : signal is "true";
-  attribute MARK_DEBUG of xlslice_4_Dout : signal is std.standard.true;
   signal xlslice_5_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_EVABMOFStreamWithCon_0_ap_done_UNCONNECTED : STD_LOGIC;
   signal NLW_EVABMOFStreamWithCon_0_ap_idle_UNCONNECTED : STD_LOGIC;
@@ -5474,10 +5377,6 @@ c_addsub_as_invert_and_delay1: component brd_c_addsub_as_invert_and_delay_0
       CLK => ulpi_clk60_i_0_1,
       S(0) => NLW_c_addsub_as_invert_and_delay1_S_UNCONNECTED(0)
     );
-config_data_const: component brd_xlcons_data_0x5a5a_0
-     port map (
-      dout(31 downto 0) => config_data_const_dout(31 downto 0)
-    );
 cons_HIGH: component brd_xlconstant_0_1
      port map (
       dout(0) => xlconstant_1_dout(0)
@@ -6219,6 +6118,12 @@ ps7_0_axi_periph: entity work.brd_ps7_0_axi_periph_1
       S00_AXI_wstrb(3 downto 0) => processing_system7_0_M_AXI_GP0_WSTRB(3 downto 0),
       S00_AXI_wvalid => processing_system7_0_M_AXI_GP0_WVALID
     );
+system_ila_0: component brd_system_ila_0_1
+     port map (
+      clk => processing_system7_0_FCLK_CLK0,
+      probe0(0) => fifo_generator_1_prog_full,
+      probe1(0) => fifo_generator_0_prog_full1
+    );
 testAERDVSSM_0: component brd_testAERDVSSM_0_0
      port map (
       ADCClk_CI => processing_system7_0_FCLK_CLK0,
@@ -6461,10 +6366,6 @@ xlconcat_0: component brd_xlconcat_0_0
       In0(0) => '0',
       In1(0) => axi_gpio_0_ip2intc_irpt,
       dout(1 downto 0) => xlconcat_0_dout(1 downto 0)
-    );
-xlcons_data_0x5a5a: component brd_xlconstant_1_2
-     port map (
-      dout(15 downto 0) => xlcons_data_0x5a5a_dout(15 downto 0)
     );
 xlcons_valid_high: component brd_xlconstant_1_1
      port map (

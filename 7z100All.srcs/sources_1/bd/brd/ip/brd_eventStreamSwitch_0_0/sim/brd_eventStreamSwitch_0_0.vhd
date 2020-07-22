@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventStreamSwitch:1.0
--- IP Revision: 2007212151
+-- IP Revision: 2007221402
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

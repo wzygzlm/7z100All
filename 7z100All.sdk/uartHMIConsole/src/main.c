@@ -37,6 +37,12 @@ XEventstreamswitch evSwitch_inst;
 #include "xeventstreamduplicate.h"
 XEventstreamduplicate evDuplicate_inst;
 
+#include "xsfast_process_data.h"
+XSfast_process_data SFAST_inst;
+
+#include "xevabmofstreamwithcontrol.h"
+XEvabmofstreamwithcontrol ABMOF_inst;
+
 #define DDR_BASEADDR        0x100000
 #define VDMA_BASEADDR       XPAR_AXI_VDMA_0_BASEADDR
 #define H_STRIDE            800
@@ -185,6 +191,7 @@ int main(void)
     	xil_printf("EvMux configuration failed\r\n");
     	return(XST_FAILURE);
     }
+	xil_printf("Config EvMux Successfully.\r\n");
 
     //Initialize the evSwitch IP
     Status = XEventstreamswitch_Initialize(&evSwitch_inst, XPAR_EVENTSTREAMSWITCH_0_DEVICE_ID);
@@ -193,6 +200,7 @@ int main(void)
     	xil_printf("evSwitch configuration failed\r\n");
     	return(XST_FAILURE);
     }
+	xil_printf("Config evSwitch Successfully.\r\n");
 
     //Initialize the evDuplicate IP
     Status = XEventstreamduplicate_Initialize(&evDuplicate_inst, XPAR_EVENTSTREAMSWITCH_0_DEVICE_ID);
@@ -201,6 +209,26 @@ int main(void)
     	xil_printf("evDuplicate configuration failed\r\n");
     	return(XST_FAILURE);
     }
+	xil_printf("Config evDuplicate_inst Successfully.\r\n");
+	XEventstreamduplicate_Set_config_V(&evDuplicate_inst, 2);  // Use both jAER and VGA for display.
+
+    //Initialize the SFAST IP
+    Status = XSfast_process_data_Initialize(&SFAST_inst, XPAR_EVENTSTREAMSWITCH_0_DEVICE_ID);
+    if(Status!= XST_SUCCESS)
+    {
+    	xil_printf("SFAST configuration failed\r\n");
+    	return(XST_FAILURE);
+    }
+	xil_printf("Config SFAST Successfully.\r\n");
+
+    //Initialize the ABMOF IP
+    Status = XEvabmofstreamwithcontrol_Initialize(&ABMOF_inst, XPAR_EVENTSTREAMSWITCH_0_DEVICE_ID);
+    if(Status!= XST_SUCCESS)
+    {
+    	xil_printf("ABMOF configuration failed\r\n");
+    	return(XST_FAILURE);
+    }
+	xil_printf("Config ABMOF Successfully.\r\n");
 
 	/* Initialize the GPIO driver */
 	Status = XGpio_Initialize(&Gpio, XPAR_GPIO_0_DEVICE_ID);
@@ -290,36 +318,77 @@ int main(void)
 
 	// keys used: abcdef_hi_klmn_pqrst_vwx_z  123456789
 	printf("\n\n\n\n-----------------------------------------------------------------\n");
-	printf("------------------- ZYNQ DAVIS 346 CONFIG AND STATUS ------------------\n");
-	printf("-----------------------------------------------------------------\n");
+	printf("------------------- ZYNQ DAVIS 346 CONFIG AND STATUS ------------\n");
+	printf("--------------------CASE INSENSTIVE------------------------------\n");
 	printf(" Select one of the options below:\r\n");
-	printf(" ## Memory Test ##\r\n");
-	printf("    's' - Test 1MB length from address 0x100000\r\n");
-	printf("    '1' - Test 32MB length from address 0x100000\r\n");
-	printf("    '2' - Test 64MB length from address 0x100000\r\n");
-	printf("    '3' - Test 128MB length from address 0x100000\r\n");
-	printf("    '4' - Test 255MB length from address 0x100000\r\n");
-	printf("    '5' - Test 511MB length from address 0x100000\r\n");
-	printf("    '6' - Test 1023MB length from address 0x100000\r\n");
-	printf(" ## Read Data Eye Measurement Test\r\n");
-	printf("    'r' - Measure Read Data Eye\r\n");
-	printf(" ## Write Data Eye Measurement Test\r\n");
-	printf("    'i' - Measure Write Data Eye\r\n");
-	printf("    Other options for Write Eye Data Test:\r\n");
-	printf("         'f' - Fast Mode: Toggles Fast mode - ON/OFF\r\n");
-	printf("         'c' - Centre Mode: Toggles Centre mode - ON/OFF\r\n");
-	printf("         'e' - Vary the size of memory test for Read/Write Eye Measurement tests\r\n");
-	printf(" ## Data Cache Enable / Disable Option:\r\n");
-	printf("     'z' - D-Cache Enable / Disable\r\n");
+	printf(" ## Play mode ##\r\n");
+	printf("    'a' - Show play mode\r\n");
+	printf("    'b' - Change play mode\r\n");
+	printf(" ## Display mode\r\n");
+	printf("    'c' - Show display mode\r\n");
+	printf("    'd' - Change display mode\r\n");
+	printf(" ## event statistics\r\n");
+	printf("    'e' - Event rate info\r\n");
+	printf("    'f' - Reset max event rate\r\n");
+	printf("    'g' - Toggle ABMOF calc mode\r\n");
+	printf(" ## SFAST status and configuration\n");
+	printf("    'i' - Show corner event ration\r\n");
+	printf("    'j' - Reset max corner ratio\r\n");
+	printf("    'k' - Toggle SFAST output mode\r\n");
 	printf(" ## Other options\n");
+	printf("     'h' - Show available keys\n");
 	printf("     'v' - Verbose Mode ON/OFF\n");
 
 	printf("Type your command: \r\n");
 
     char c;
 
+    u64 lastRowNum = 0, lastColNum = 0, lastAbsStartTime10ns = 0;
+    u64 currentRowNum = 0, currentColNum = 0, currentAbsStartTime10ns = 0;
+    u64 deltaRowNum = 0, deltaColNum = 0, deltaAbsStartTime10ns = 0;
+    float eventRate = 0.0, maxEventRate = 0.0;
+
+    u64 lastOutEventNum = 0, lastCornerEventNum = 0;
+    u64 currentOutEventNum = 0, currentCornerEventNum = 0;
+    u64 deltaOutEventNum = 0, deltaCornerEventNum = 0;
+    float cornerRatio = 0.0, maxCornerRatio = 0.0;
+
     while(1)
     {
+    	currentRowNum = XEvmuxdatatoxytsstream_Get_status_rowNum(&evMuxToXYTS_inst);
+    	currentColNum = XEvmuxdatatoxytsstream_Get_status_colNum(&evMuxToXYTS_inst);
+    	currentAbsStartTime10ns = XEvmuxdatatoxytsstream_Get_status_absTsUnit10ns(&evMuxToXYTS_inst);
+
+    	deltaColNum = currentColNum - lastColNum;
+    	deltaAbsStartTime10ns = currentAbsStartTime10ns - lastAbsStartTime10ns;
+
+    	currentOutEventNum = XSfast_process_data_Get_status_outEventsNum(&SFAST_inst);
+    	currentCornerEventNum = XSfast_process_data_Get_status_cornerEventsNum(&SFAST_inst);
+    	deltaOutEventNum = currentOutEventNum - lastOutEventNum;
+    	deltaCornerEventNum = currentCornerEventNum - lastCornerEventNum;
+
+    	if(deltaAbsStartTime10ns >= 10000000)     // 100ms
+    	{
+        	lastRowNum = currentRowNum;
+        	lastColNum = currentColNum;
+        	lastAbsStartTime10ns = currentAbsStartTime10ns;
+
+    		eventRate = (float)deltaColNum/deltaAbsStartTime10ns;
+    		if(eventRate > maxEventRate)
+    		{
+    			maxEventRate = eventRate;
+        		printf("Got max event rate which is: %f Keps\r\n", maxEventRate*100*1000);
+    		}
+
+    		lastOutEventNum = currentOutEventNum;
+    		lastCornerEventNum = currentCornerEventNum;
+    		cornerRatio = (float)deltaCornerEventNum/deltaOutEventNum;
+    		if(cornerRatio > maxCornerRatio)
+    		{
+    			maxCornerRatio = cornerRatio;
+        		printf("Got max corner event ratio which is: %f Keps\r\n", cornerRatio);
+    		}
+    	}
 
 //
 //        c = inbyte();
@@ -346,33 +415,31 @@ int main(void)
         	if((c == 'h') || (c == 'H'))   // Display all supported keys
         	{
         		// keys used: abcdef_hi_klmn_pqrst_vwx_z  123456789
-				printf("\n\n\n\n-----------------------------------------------------------------\n");
-				printf("------------------- ZYNQ DAVIS 346 CONFIG AND STATUS ------------------\n");
-				printf("-----------------------------------------------------------------\n");
-				printf(" Select one of the options below:\r\n");
-				printf(" ## Memory Test ##\r\n");
-				printf("    's' - Test 1MB length from address 0x100000\r\n");
-				printf("    '1' - Test 32MB length from address 0x100000\r\n");
-				printf("    '2' - Test 64MB length from address 0x100000\r\n");
-				printf("    '3' - Test 128MB length from address 0x100000\r\n");
-				printf("    '4' - Test 255MB length from address 0x100000\r\n");
-				printf("    '5' - Test 511MB length from address 0x100000\r\n");
-				printf("    '6' - Test 1023MB length from address 0x100000\r\n");
-				printf(" ## Read Data Eye Measurement Test\r\n");
-				printf("    'r' - Measure Read Data Eye\r\n");
-				printf(" ## Write Data Eye Measurement Test\r\n");
-				printf("    'i' - Measure Write Data Eye\r\n");
-				printf("    Other options for Write Eye Data Test:\r\n");
-				printf("         'f' - Fast Mode: Toggles Fast mode - ON/OFF\r\n");
-				printf("         'c' - Centre Mode: Toggles Centre mode - ON/OFF\r\n");
-				printf("         'e' - Vary the size of memory test for Read/Write Eye Measurement tests\r\n");
-				printf(" ## Data Cache Enable / Disable Option:\r\n");
-				printf("     'z' - D-Cache Enable / Disable\r\n");
-				printf(" ## Other options\n");
-				printf("     'v' - Verbose Mode ON/OFF\n");
+        		printf("\n\n\n\n-----------------------------------------------------------------\n");
+        		printf("------------------- ZYNQ DAVIS 346 CONFIG AND STATUS ------------\n");
+        		printf("--------------------CASE INSENSTIVE------------------------------\n");
+        		printf(" Select one of the options below:\r\n");
+        		printf(" ## Play mode ##\r\n");
+        		printf("    'a' - Show play mode\r\n");
+        		printf("    'b' - Change play mode\r\n");
+        		printf(" ## Display mode\r\n");
+        		printf("    'c' - Show display mode\r\n");
+        		printf("    'd' - Change display mode\r\n");
+        		printf(" ## event statistics\r\n");
+        		printf("    'e' - Event rate info\r\n");
+        		printf("    'f' - Reset max event rate\r\n");
+        		printf("    'g' - Toggle ABMOF calc mode\r\n");
+        		printf(" ## SFAST status and configuration\n");
+        		printf("    'i' - Show corner event ration\r\n");
+        		printf("    'j' - Reset max corner ratio\r\n");
+        		printf("    'k' - Toggle SFAST output mode\r\n");
+        		printf(" ## Other options\n");
+        		printf("     'h' - Show available keys\n");
+        		printf("     'v' - Verbose Mode ON/OFF\n");
         	}
         	if((c == 'a') || (c == 'A'))   // display current mode
         	{
+    			printf("%c\n\r" , c);
         		u32 tmpConfig = XEventstreamswitch_Get_config_V(&evSwitch_inst);
         		tmpConfig &= 0x1;    // LSB
         		if(tmpConfig == 0)
@@ -386,18 +453,19 @@ int main(void)
         	}
         	if((c == 'b') || (c == 'B'))
         	{
+    			printf("%c\n\r" , c);
         		printf("Choose which mode to be used: 0 - live mode. 1 - playback mode.\r\n");
         		printf("Your choice: ");
-        		outbyte(' ');
         		char commandChar = inbyte();
-				outbyte(commandChar);
+				printf("%c\n\r" , commandChar);
 				if( (commandChar == '0') || (commandChar == '1') )
 				{
 					commandChar = commandChar - '0';
 				}
 				else
 				{
-					continue;
+	    	        	printf("Choice not supported.\r\nType your command: \n\r");
+	    				continue;
 				}
         		u32 tmpConfig = XEventstreamswitch_Get_config_V(&evSwitch_inst);
         		tmpConfig = ((tmpConfig >> 1) << 1) + commandChar;   // Set LSB to commandChar;
@@ -405,6 +473,7 @@ int main(void)
         	}
         	if((c == 'c') || (c == 'C'))   // display current display
         	{
+    			printf("%c\n\r" , c);
         		u32 tmpConfig = XEventstreamduplicate_Get_config_V(&evDuplicate_inst);
         		tmpConfig &= 0x3;    // LSB
         		if(tmpConfig == 0)
@@ -426,25 +495,55 @@ int main(void)
         	}
         	if((c == 'd') || (c == 'D'))
         	{
+    			printf("%c\n\r" , c);
         		printf("Choose which display to be used: 0 - jAER. 1 - VGA. 2 - both. 3 - none. \r\n");
         		printf("Your choice: ");
-        		outbyte(' ');
         		char commandChar = inbyte();
-    			outbyte(commandChar);
+				printf("%c\n\r" , commandChar);
     			if( (commandChar == '0') || (commandChar == '1') || (commandChar == '2') || (commandChar == '3') )
     			{
     				commandChar = commandChar - '0';
     			}
     			else
     			{
+    	        	printf("Choice not supported.\r\nType your command: \n\r");
     				continue;
     			}
         		u32 tmpConfig = XEventstreamduplicate_Get_config_V(&evDuplicate_inst);
         		tmpConfig = ((tmpConfig >> 2) << 2) + commandChar;   // Set the two LSBs to commandChar;
         		XEventstreamduplicate_Set_config_V(&evDuplicate_inst, tmpConfig);
         	}
-
-        	printf("Type your command: \r\n");
+        	if((c == 'e') || (c == 'E'))   // show current eventRate
+        	{
+        		printf("Current event rate is: %f Keps\r\n", eventRate*100*1000);
+        		printf("Current max event rate is: %f Keps\r\n", maxEventRate*100*1000);
+        	}
+        	if((c == 'f') || (c == 'F'))   // reset max eventRate
+        	{
+        		maxEventRate = 0.0;
+        	}
+        	if((c == 'g') || (c == 'G'))   // toggle calc ABMOF for all or only corners
+        	{
+        		u32 tmpConfig = XEventstreamswitch_Get_config_V(&evSwitch_inst);
+        		tmpConfig ^= 1UL << 1;
+        		XEventstreamswitch_Set_config_V(&evSwitch_inst, tmpConfig);
+        	}
+        	if((c == 'i') || (c == 'I'))   // show corner event ratio
+        	{
+        		printf("Current corner ratio is: %f\r\n", cornerRatio);
+        		printf("Current max corner ratio is: %f\r\n", maxCornerRatio);
+        	}
+        	if((c == 'j') || (c == 'J'))   // reset max corner ratio
+        	{
+        		maxCornerRatio = 0.0;
+        	}
+        	if((c == 'k') || (c == 'K'))   // toggle SFAST output all or only corner events
+        	{
+        		u32 tmpConfig = XSfast_process_data_Get_config_V(&SFAST_inst);
+        		tmpConfig ^= 1UL << 1;
+        		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig);
+        	}
+        	printf("Type your command: \n\r");
     	}
 
 
