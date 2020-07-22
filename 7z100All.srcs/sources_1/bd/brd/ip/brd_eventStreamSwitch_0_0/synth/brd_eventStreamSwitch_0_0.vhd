@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventStreamSwitch:1.0
--- IP Revision: 2007161814
+-- IP Revision: 2007212151
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -93,7 +93,6 @@ ENTITY brd_eventStreamSwitch_0_0 IS
     cornerStreamOut_V_V_TVALID : OUT STD_LOGIC;
     cornerStreamOut_V_V_TREADY : IN STD_LOGIC;
     cornerStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-    select_V : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     xStreamIn0_V_V_TVALID : IN STD_LOGIC;
     xStreamIn0_V_V_TREADY : OUT STD_LOGIC;
     xStreamIn0_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -171,7 +170,6 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
       cornerStreamOut_V_V_TVALID : OUT STD_LOGIC;
       cornerStreamOut_V_V_TREADY : IN STD_LOGIC;
       cornerStreamOut_V_V_TDATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-      select_V : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       xStreamIn0_V_V_TVALID : IN STD_LOGIC;
       xStreamIn0_V_V_TREADY : OUT STD_LOGIC;
       xStreamIn0_V_V_TDATA : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
@@ -206,7 +204,7 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_eventStreamSwitch_0_0_arch : ARCHITECTURE IS "brd_eventStreamSwitch_0_0,eventStreamSwitch,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_eventStreamSwitch_0_0_arch: ARCHITECTURE IS "brd_eventStreamSwitch_0_0,eventStreamSwitch,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=eventStreamSwitch,x_ipVersion=1.0,x_ipCoreRevision=2007161814,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=5,C_S_AXI_CONFIG_DATA_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_eventStreamSwitch_0_0_arch: ARCHITECTURE IS "brd_eventStreamSwitch_0_0,eventStreamSwitch,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=eventStreamSwitch,x_ipVersion=1.0,x_ipCoreRevision=2007212151,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=5,C_S_AXI_CONFIG_DATA_WIDTH=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn1_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn1_V_V TDATA";
@@ -263,9 +261,6 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
 "ncy {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, C" & 
 "LK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF xStreamIn0_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 xStreamIn0_V_V TVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF select_V: SIGNAL IS "XIL_INTERFACENAME select_V, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value" & 
-" false}}}}}";
-  ATTRIBUTE X_INTERFACE_INFO OF select_V: SIGNAL IS "xilinx.com:signal:data:1.0 select_V DATA";
   ATTRIBUTE X_INTERFACE_INFO OF cornerStreamOut_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 cornerStreamOut_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF cornerStreamOut_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 cornerStreamOut_V_V TREADY";
   ATTRIBUTE X_INTERFACE_PARAMETER OF cornerStreamOut_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME cornerStreamOut_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate de" & 
@@ -372,7 +367,6 @@ BEGIN
       cornerStreamOut_V_V_TVALID => cornerStreamOut_V_V_TVALID,
       cornerStreamOut_V_V_TREADY => cornerStreamOut_V_V_TREADY,
       cornerStreamOut_V_V_TDATA => cornerStreamOut_V_V_TDATA,
-      select_V => select_V,
       xStreamIn0_V_V_TVALID => xStreamIn0_V_V_TVALID,
       xStreamIn0_V_V_TREADY => xStreamIn0_V_V_TREADY,
       xStreamIn0_V_V_TDATA => xStreamIn0_V_V_TDATA,

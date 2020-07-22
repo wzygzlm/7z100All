@@ -1728,7 +1728,7 @@ HDL_ATTRIBUTE.DEBUG {true} \
   connect_bd_net -net xlconstant_ONE_dout [get_bd_pins util_vector_logic_2/Op2] [get_bd_pins xlconstant_ONE/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins usb_cdc_core_0/rst_i] [get_bd_pins xlslice_0/Dout]
   connect_bd_net -net xlslice_1_Dout [get_bd_pins ulpi_wrapper_0/ulpi_rst_i] [get_bd_pins xlslice_1/Dout]
-  connect_bd_net -net xlslice_4_Dout [get_bd_pins eventStreamSwitch_0/select_V] [get_bd_pins xlslice_4/Dout]
+  connect_bd_net -net xlslice_4_Dout [get_bd_pins xlslice_4/Dout]
   set_property -dict [ list \
 HDL_ATTRIBUTE.DEBUG {true} \
  ] [get_bd_nets xlslice_4_Dout]

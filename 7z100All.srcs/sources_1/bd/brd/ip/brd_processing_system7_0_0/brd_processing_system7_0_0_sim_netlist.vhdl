@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Mon Jul 20 21:12:23 2020
+-- Date        : Tue Jul 21 22:04:49 2020
 -- Host        : mbp-win10 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top brd_processing_system7_0_0 -prefix
---               brd_processing_system7_0_0_ brd_processing_system7_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_processing_system7_0_0/brd_processing_system7_0_0_sim_netlist.vhdl
 -- Design      : brd_processing_system7_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -814,6 +814,8 @@ entity brd_processing_system7_0_0_processing_system7_v5_5_processing_system7 is
   attribute C_USE_S_AXI_HP3 of brd_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is 0;
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of brd_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is "brd_processing_system7_0_0.hwdef";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of brd_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is "processing_system7_v5_5_processing_system7";
   attribute POWER : string;
   attribute POWER of brd_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is "<PROCESSOR name={system} numA9Cores={2} clockFreq={666.666666} load={0.5} /><MEMORY name={code} memType={DDR3} dataWidth={16} clockFreq={533.333333} readRate={0.5} writeRate={0.5} /><IO interface={SPI} ioStandard={} bidis={0} ioBank={} clockFreq={123.064613} usageRate={0.5} /><IO interface={I2C} ioStandard={} bidis={0} ioBank={} clockFreq={111.099998} usageRate={0.5} /><IO interface={I2C} ioStandard={LVCMOS33} bidis={2} ioBank={Vcco_p1} clockFreq={111.099998} usageRate={0.5} /><IO interface={UART} ioStandard={LVCMOS33} bidis={2} ioBank={Vcco_p1} clockFreq={99.989998} usageRate={0.5} /><IO interface={SD} ioStandard={LVCMOS33} bidis={6} ioBank={Vcco_p1} clockFreq={99.989998} usageRate={0.5} /><IO interface={USB} ioStandard={LVCMOS33} bidis={12} ioBank={Vcco_p1} clockFreq={60} usageRate={0.5} /><IO interface={USB} ioStandard={LVCMOS33} bidis={12} ioBank={Vcco_p1} clockFreq={60} usageRate={0.5} /><IO interface={NAND} ioStandard={} bidis={14} ioBank={} clockFreq={99.989998} usageRate={0.5} /><PLL domain={Processor} vco={1333.200} /><PLL domain={Memory} vco={1066.560} /><PLL domain={IO} vco={1599.840} /><AXI interface={S_AXI_HP0} dataWidth={64} clockFreq={99} usageRate={0.5} /><AXI interface={M_AXI_GP0} dataWidth={32} clockFreq={99} usageRate={0.5} />/>";
   attribute USE_TRACE_DATA_EDGE_DETECTOR : integer;
@@ -3908,13 +3910,13 @@ architecture STRUCTURE of brd_processing_system7_0_0 is
   attribute X_INTERFACE_INFO of DDR_WEB : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
   attribute X_INTERFACE_INFO of FCLK_CLK0 : signal is "xilinx.com:signal:clock:1.0 FCLK_CLK0 CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of FCLK_CLK0 : signal is "XIL_INTERFACENAME FCLK_CLK0, FREQ_HZ 9.999e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  attribute X_INTERFACE_PARAMETER of FCLK_CLK0 : signal is "XIL_INTERFACENAME FCLK_CLK0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   attribute X_INTERFACE_INFO of FCLK_CLK1 : signal is "xilinx.com:signal:clock:1.0 FCLK_CLK1 CLK";
-  attribute X_INTERFACE_PARAMETER of FCLK_CLK1 : signal is "XIL_INTERFACENAME FCLK_CLK1, FREQ_HZ 3.9996e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK1";
+  attribute X_INTERFACE_PARAMETER of FCLK_CLK1 : signal is "XIL_INTERFACENAME FCLK_CLK1, FREQ_HZ 39995998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK1";
   attribute X_INTERFACE_INFO of FCLK_CLK2 : signal is "xilinx.com:signal:clock:1.0 FCLK_CLK2 CLK";
-  attribute X_INTERFACE_PARAMETER of FCLK_CLK2 : signal is "XIL_INTERFACENAME FCLK_CLK2, FREQ_HZ 5.92533e+07, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK2";
+  attribute X_INTERFACE_PARAMETER of FCLK_CLK2 : signal is "XIL_INTERFACENAME FCLK_CLK2, FREQ_HZ 59253330, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK2";
   attribute X_INTERFACE_INFO of FCLK_CLK3 : signal is "xilinx.com:signal:clock:1.0 FCLK_CLK3 CLK";
-  attribute X_INTERFACE_PARAMETER of FCLK_CLK3 : signal is "XIL_INTERFACENAME FCLK_CLK3, FREQ_HZ 1.23065e+08, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK3";
+  attribute X_INTERFACE_PARAMETER of FCLK_CLK3 : signal is "XIL_INTERFACENAME FCLK_CLK3, FREQ_HZ 123064613, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK3";
   attribute X_INTERFACE_INFO of FCLK_RESET0_N : signal is "xilinx.com:signal:reset:1.0 FCLK_RESET0_N RST";
   attribute X_INTERFACE_PARAMETER of FCLK_RESET0_N : signal is "XIL_INTERFACENAME FCLK_RESET0_N, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of I2C1_SCL_I : signal is "xilinx.com:interface:iic:1.0 IIC_1 SCL_I";

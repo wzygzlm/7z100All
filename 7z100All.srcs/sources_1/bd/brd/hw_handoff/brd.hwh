@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 21 19:13:45 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jul 21 22:03:10 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="brd" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -5453,10 +5453,10 @@
             <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_start"/>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="SFAST_process_data_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_start"/>
             <CONNECTION INSTANCE="eventStreamDuplicate_0" PORT="ap_start"/>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_start"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6580,11 +6580,6 @@
         <PORT DIR="O" LEFT="7" NAME="cornerStreamOut_V_V_TDATA" RIGHT="0" SIGIS="undef" SIGNAME="EVABMOFStreamWithCon_0_controlStreamIn_V_V_TDATA">
           <CONNECTIONS>
             <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="controlStreamIn_V_V_TDATA"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="select_V" RIGHT="0" SIGIS="data" SIGNAME="xlslice_4_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="xlslice_4" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="xStreamIn0_V_V_TVALID" SIGIS="undef" SIGNAME="SFAST_process_data_0_xStreamOut_V_V_TVALID">
@@ -10158,10 +10153,10 @@
             <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_rst_n"/>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="SFAST_process_data_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="eventStreamDuplicate_0" PORT="ap_rst_n"/>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_rst_n"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
@@ -11606,10 +11601,10 @@
             <CONNECTION INSTANCE="eventsGeneratorViaFi_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="EVMUXDataToXYTSStream_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="XYTSStreamToRawStream_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="SFAST_process_data_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="EVABMOFStreamWithCon_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="eventStreamDuplicate_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
@@ -14587,11 +14582,7 @@
             <CONNECTION INSTANCE="axi_gpio_0" PORT="gpio_io_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_4_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="eventStreamSwitch_0" PORT="select_V"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="15" NAME="Dout" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
