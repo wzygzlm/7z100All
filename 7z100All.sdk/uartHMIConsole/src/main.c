@@ -34,6 +34,9 @@ XEvmuxdatatoxytsstream evMuxToXYTS_inst;
 #include "xeventstreamswitch.h"
 XEventstreamswitch evSwitch_inst;
 
+#include "xeventstreamduplicate.h"
+XEventstreamduplicate evDuplicate_inst;
+
 #define DDR_BASEADDR        0x100000
 #define VDMA_BASEADDR       XPAR_AXI_VDMA_0_BASEADDR
 #define H_STRIDE            800
@@ -188,6 +191,14 @@ int main(void)
     if(Status!= XST_SUCCESS)
     {
     	xil_printf("evSwitch configuration failed\r\n");
+    	return(XST_FAILURE);
+    }
+
+    //Initialize the evDuplicate IP
+    Status = XEventstreamduplicate_Initialize(&evDuplicate_inst, XPAR_EVENTSTREAMSWITCH_0_DEVICE_ID);
+    if(Status!= XST_SUCCESS)
+    {
+    	xil_printf("evDuplicate configuration failed\r\n");
     	return(XST_FAILURE);
     }
 
@@ -389,12 +400,53 @@ int main(void)
 					continue;
 				}
         		u32 tmpConfig = XEventstreamswitch_Get_config_V(&evSwitch_inst);
-        		tmpConfig = ((tmpConfig >> 1) << 1) + commandChar;   // Set LSB to c;
+        		tmpConfig = ((tmpConfig >> 1) << 1) + commandChar;   // Set LSB to commandChar;
         		XEventstreamswitch_Set_config_V(&evSwitch_inst, tmpConfig);
+        	}
+        	if((c == 'c') || (c == 'C'))   // display current display
+        	{
+        		u32 tmpConfig = XEventstreamduplicate_Get_config_V(&evDuplicate_inst);
+        		tmpConfig &= 0x3;    // LSB
+        		if(tmpConfig == 0)
+        		{
+        			printf("Current display is jAER.\r\n");
+        		}
+        		else if(tmpConfig == 1)
+        		{
+        			printf("Current display is VGA.\r\n");
+        		}
+        		else if(tmpConfig == 2)
+        		{
+        			printf("Current display is jAER and VGA.\r\n");
+        		}
+        		else
+        		{
+        			printf("Current no display.\r\n");
+        		}
+        	}
+        	if((c == 'd') || (c == 'D'))
+        	{
+        		printf("Choose which display to be used: 0 - jAER. 1 - VGA. 2 - both. 3 - none. \r\n");
+        		printf("Your choice: ");
+        		outbyte(' ');
+        		char commandChar = inbyte();
+    			outbyte(commandChar);
+    			if( (commandChar == '0') || (commandChar == '1') || (commandChar == '2') || (commandChar == '3') )
+    			{
+    				commandChar = commandChar - '0';
+    			}
+    			else
+    			{
+    				continue;
+    			}
+        		u32 tmpConfig = XEventstreamduplicate_Get_config_V(&evDuplicate_inst);
+        		tmpConfig = ((tmpConfig >> 2) << 2) + commandChar;   // Set the two LSBs to commandChar;
+        		XEventstreamduplicate_Set_config_V(&evDuplicate_inst, tmpConfig);
         	}
 
         	printf("Type your command: \r\n");
     	}
+
 
     	int bytesToRead;
         if(dataReadOut < eventsReadNumPerTime * 8)

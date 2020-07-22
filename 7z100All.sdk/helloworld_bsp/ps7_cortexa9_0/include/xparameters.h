@@ -30,6 +30,25 @@
  
  
 /******************************************************************/
+/* Definitions for driver EVABMOFSTREAMWITHCONTROL */
+#define XPAR_XEVABMOFSTREAMWITHCONTROL_NUM_INSTANCES 1
+
+/* Definitions for peripheral EVABMOFSTREAMWITHCON_0 */
+#define XPAR_EVABMOFSTREAMWITHCON_0_DEVICE_ID 0
+#define XPAR_EVABMOFSTREAMWITHCON_0_S_AXI_CONFIG_BASEADDR 0x43C60000
+#define XPAR_EVABMOFSTREAMWITHCON_0_S_AXI_CONFIG_HIGHADDR 0x43C6FFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral EVABMOFSTREAMWITHCON_0 */
+#define XPAR_XEVABMOFSTREAMWITHCONTROL_0_DEVICE_ID XPAR_EVABMOFSTREAMWITHCON_0_DEVICE_ID
+#define XPAR_XEVABMOFSTREAMWITHCONTROL_0_S_AXI_CONFIG_BASEADDR 0x43C60000
+#define XPAR_XEVABMOFSTREAMWITHCONTROL_0_S_AXI_CONFIG_HIGHADDR 0x43C6FFFF
+
+
+/******************************************************************/
+
 /* Definitions for driver EVMUXDATATOXYTSSTREAM */
 #define XPAR_XEVMUXDATATOXYTSSTREAM_NUM_INSTANCES 1
 
@@ -45,6 +64,25 @@
 #define XPAR_XEVMUXDATATOXYTSSTREAM_0_DEVICE_ID XPAR_EVMUXDATATOXYTSSTREAM_0_DEVICE_ID
 #define XPAR_XEVMUXDATATOXYTSSTREAM_0_S_AXI_CONFIG_BASEADDR 0x43C30000
 #define XPAR_XEVMUXDATATOXYTSSTREAM_0_S_AXI_CONFIG_HIGHADDR 0x43C3FFFF
+
+
+/******************************************************************/
+
+/* Definitions for driver SFAST_PROCESS_DATA */
+#define XPAR_XSFAST_PROCESS_DATA_NUM_INSTANCES 1
+
+/* Definitions for peripheral SFAST_PROCESS_DATA_0 */
+#define XPAR_SFAST_PROCESS_DATA_0_DEVICE_ID 0
+#define XPAR_SFAST_PROCESS_DATA_0_S_AXI_CONFIG_BASEADDR 0x43C50000
+#define XPAR_SFAST_PROCESS_DATA_0_S_AXI_CONFIG_HIGHADDR 0x43C5FFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral SFAST_PROCESS_DATA_0 */
+#define XPAR_XSFAST_PROCESS_DATA_0_DEVICE_ID XPAR_SFAST_PROCESS_DATA_0_DEVICE_ID
+#define XPAR_XSFAST_PROCESS_DATA_0_S_AXI_CONFIG_BASEADDR 0x43C50000
+#define XPAR_XSFAST_PROCESS_DATA_0_S_AXI_CONFIG_HIGHADDR 0x43C5FFFF
 
 
 /******************************************************************/
