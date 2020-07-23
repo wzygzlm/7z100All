@@ -388,7 +388,7 @@ int main(void)
     		if(cornerRatio > maxCornerRatio)
     		{
     			maxCornerRatio = cornerRatio;
-        		printf("Got max corner event ratio which is: %f Keps\r\n", cornerRatio);
+        		printf("Got max corner event ratio which is: %f\r\n", cornerRatio);
     		}
     	}
 
@@ -556,7 +556,8 @@ int main(void)
         	if((c == 'l') || (c == 'L'))   // show SFAST threshold
         	{
     			printf("%c\n\r" , c);
-        		printf("Current SFAST threshold is: %f\r\n", XSfast_process_data_Get_status_currentThreshold(&SFAST_inst));
+    			u32 SFASTCurrentThreshold = XSfast_process_data_Get_status_currentThreshold(&SFAST_inst);
+        		printf("Current SFAST threshold is: %d\r\n", SFASTCurrentThreshold);
         	}
         	if((c == 'm') || (c == 'M'))   // show corner event ratio
         	{
