@@ -101,3 +101,23 @@ u32 XSfast_process_data_Get_status_cornerEventsNum_vld(XSfast_process_data *Inst
     return Data & 0x1;
 }
 
+u32 XSfast_process_data_Get_status_currentThreshold(XSfast_process_data *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XSfast_process_data_ReadReg(InstancePtr->Config_BaseAddress, XSFAST_PROCESS_DATA_CONFIG_ADDR_STATUS_CURRENTTHRESHOLD_DATA);
+    return Data;
+}
+
+u32 XSfast_process_data_Get_status_currentThreshold_vld(XSfast_process_data *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XSfast_process_data_ReadReg(InstancePtr->Config_BaseAddress, XSFAST_PROCESS_DATA_CONFIG_ADDR_STATUS_CURRENTTHRESHOLD_CTRL);
+    return Data & 0x1;
+}
+

@@ -89,6 +89,8 @@ u64 XSfast_process_data_Get_status_outEventsNum(XSfast_process_data *InstancePtr
 u32 XSfast_process_data_Get_status_outEventsNum_vld(XSfast_process_data *InstancePtr);
 u64 XSfast_process_data_Get_status_cornerEventsNum(XSfast_process_data *InstancePtr);
 u32 XSfast_process_data_Get_status_cornerEventsNum_vld(XSfast_process_data *InstancePtr);
+u32 XSfast_process_data_Get_status_currentThreshold(XSfast_process_data *InstancePtr);
+u32 XSfast_process_data_Get_status_currentThreshold_vld(XSfast_process_data *InstancePtr);
 
 #ifdef __cplusplus
 }

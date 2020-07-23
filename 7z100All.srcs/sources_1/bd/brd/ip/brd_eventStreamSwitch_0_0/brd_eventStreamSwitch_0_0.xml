@@ -2391,11 +2391,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 22 12:06:58 UTC 2020</spirit:value>
+            <spirit:value>Wed Jul 22 21:00:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:705cc61b</spirit:value>
+            <spirit:value>8:202c1d87</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2411,11 +2411,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 22 12:06:58 UTC 2020</spirit:value>
+            <spirit:value>Wed Jul 22 21:00:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:705cc61b</spirit:value>
+            <spirit:value>8:202c1d87</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2431,11 +2431,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 22 12:06:58 UTC 2020</spirit:value>
+            <spirit:value>Wed Jul 22 21:00:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:35901e44</spirit:value>
+            <spirit:value>8:c6ad8055</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2451,11 +2451,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 22 12:06:58 UTC 2020</spirit:value>
+            <spirit:value>Wed Jul 22 21:00:05 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:35901e44</spirit:value>
+            <spirit:value>8:c6ad8055</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2469,11 +2469,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 22 12:09:33 UTC 2020</spirit:value>
+            <spirit:value>Wed Jul 22 21:02:56 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:705cc61b</spirit:value>
+            <spirit:value>8:202c1d87</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3429,11 +3429,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/822d/hdl/vhdl/eventStreamSwitch_config_s_axi.vhd</spirit:name>
+        <spirit:name>../../ipshared/9521/hdl/vhdl/eventStreamSwitch_config_s_axi.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/822d/hdl/vhdl/eventStreamSwitch.vhd</spirit:name>
+        <spirit:name>../../ipshared/9521/hdl/vhdl/eventStreamSwitch.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -3448,12 +3448,12 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/822d/hdl/vhdl/eventStreamSwitch_config_s_axi.vhd</spirit:name>
+        <spirit:name>../../ipshared/9521/hdl/vhdl/eventStreamSwitch_config_s_axi.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/822d/hdl/vhdl/eventStreamSwitch.vhd</spirit:name>
+        <spirit:name>../../ipshared/9521/hdl/vhdl/eventStreamSwitch.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -3568,7 +3568,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>Eventstreamswitch</xilinx:displayName>
-      <xilinx:coreRevision>2007221402</xilinx:coreRevision>
+      <xilinx:coreRevision>2007222257</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AP_CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AP_CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>

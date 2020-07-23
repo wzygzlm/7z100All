@@ -1253,9 +1253,46 @@ proc create_root_design { parentCell } {
   set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
   set_property -dict [ list \
    CONFIG.C_MON_TYPE {NATIVE} \
+   CONFIG.C_NUM_MONITOR_SLOTS {1} \
    CONFIG.C_NUM_OF_PROBES {2} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE1_TYPE {0} \
+   CONFIG.C_SLOT_0_APC_EN {0} \
+   CONFIG.C_SLOT_0_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_0_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_0_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_0_TYPE {0} \
+   CONFIG.C_SLOT_1_APC_EN {0} \
+   CONFIG.C_SLOT_1_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_1_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_1_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_1_TYPE {0} \
+   CONFIG.C_SLOT_2_APC_EN {0} \
+   CONFIG.C_SLOT_2_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_2_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_2_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_2_TYPE {0} \
+   CONFIG.C_SLOT_3_APC_EN {0} \
+   CONFIG.C_SLOT_3_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_3_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_3_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_3_TYPE {0} \
+   CONFIG.C_SLOT_4_APC_EN {0} \
+   CONFIG.C_SLOT_4_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_4_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_4_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_5_APC_EN {0} \
+   CONFIG.C_SLOT_5_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_5_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_5_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_6_APC_EN {0} \
+   CONFIG.C_SLOT_6_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_6_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_6_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
+   CONFIG.C_SLOT_7_APC_EN {0} \
+   CONFIG.C_SLOT_7_AXI_DATA_SEL {1} \
+   CONFIG.C_SLOT_7_AXI_TRIG_SEL {1} \
+   CONFIG.C_SLOT_7_INTF_TYPE {xilinx.com:interface:axis_rtl:1.0} \
  ] $system_ila_0
 
   # Create instance: testAERDVSSM_0, and set properties

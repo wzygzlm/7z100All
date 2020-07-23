@@ -1393,13 +1393,6 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>SFAST_process_data_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="hls" spirit:name="SFAST_process_data" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_SFAST_process_data_0_0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>EVABMOFStreamWithCon_0</spirit:instanceName>
         <spirit:componentRef spirit:library="hls" spirit:name="EVABMOFStreamWithControl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
@@ -1407,21 +1400,65 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>eventStreamSwitch_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="hls" spirit:name="eventStreamSwitch" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_eventStreamSwitch_0_0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>system_ila_0</spirit:instanceName>
         <spirit:componentRef spirit:library="ip" spirit:name="system_ila" spirit:vendor="xilinx.com" spirit:version="1.1"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_system_ila_0_1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_3_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_2_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_1_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_0_TYPE">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_0_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_1_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_2_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_3_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_4_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_5_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_6_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_7_APC_EN">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_0_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_1_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_2_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_3_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_4_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_5_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_6_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_7_AXI_DATA_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_0_AXI_TRIG_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_1_AXI_TRIG_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_2_AXI_TRIG_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_3_AXI_TRIG_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_4_AXI_TRIG_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_5_AXI_TRIG_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_6_AXI_TRIG_SEL">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_7_AXI_TRIG_SEL">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE1_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_PROBE0_TYPE">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_NUM_OF_PROBES">2</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_NUM_MONITOR_SLOTS">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_0_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_1_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_2_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_3_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_4_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_5_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_6_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="C_SLOT_7_INTF_TYPE">xilinx.com:interface:axis_rtl:1.0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="C_MON_TYPE">NATIVE</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>SFAST_process_data_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="hls" spirit:name="SFAST_process_data" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_SFAST_process_data_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>eventStreamSwitch_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="hls" spirit:name="eventStreamSwitch" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_eventStreamSwitch_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -1729,8 +1766,8 @@
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="eventStreamDuplicate_0" spirit:portRef="ap_start"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_start"/>
+        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_start"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
@@ -1748,9 +1785,7 @@
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="eventStreamDuplicate_0" spirit:portRef="ap_rst_n"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_rst_n"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M01_ARESETN"/>
@@ -1761,6 +1796,8 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M06_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M07_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M08_ARESETN"/>
+        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_rst_n"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_1_peripheral_aresetn</spirit:name>
@@ -1800,9 +1837,8 @@
         <spirit:internalPortReference spirit:componentRef="EVMUXDataToXYTSStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="eventStreamDuplicate_0" spirit:portRef="ap_clk"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_clk"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1814,7 +1850,8 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M06_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M07_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M08_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="clk"/>
+        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_clk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>processing_system7_0_FCLK_CLK1</spirit:name>

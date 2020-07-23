@@ -335,6 +335,8 @@ int main(void)
 	printf("    'i' - Show corner event ration\r\n");
 	printf("    'j' - Reset max corner ratio\r\n");
 	printf("    'k' - Toggle SFAST output mode\r\n");
+	printf("    'l' - Show SFAST threshold\r\n");
+	printf("    'm' - Set SFAST threshold\r\n");
 	printf(" ## Other options\n");
 	printf("     'h' - Show available keys\n");
 	printf("     'v' - Verbose Mode ON/OFF\n");
@@ -433,6 +435,8 @@ int main(void)
         		printf("    'i' - Show corner event ration\r\n");
         		printf("    'j' - Reset max corner ratio\r\n");
         		printf("    'k' - Toggle SFAST output mode\r\n");
+        		printf("    'l' - Show SFAST threshold\r\n");
+        		printf("    'm' - Set SFAST threshold\r\n");
         		printf(" ## Other options\n");
         		printf("     'h' - Show available keys\n");
         		printf("     'v' - Verbose Mode ON/OFF\n");
@@ -515,34 +519,72 @@ int main(void)
         	}
         	if((c == 'e') || (c == 'E'))   // show current eventRate
         	{
+    			printf("%c\n\r" , c);
         		printf("Current event rate is: %f Keps\r\n", eventRate*100*1000);
         		printf("Current max event rate is: %f Keps\r\n", maxEventRate*100*1000);
         	}
         	if((c == 'f') || (c == 'F'))   // reset max eventRate
         	{
+    			printf("%c\n\r" , c);
         		maxEventRate = 0.0;
         	}
         	if((c == 'g') || (c == 'G'))   // toggle calc ABMOF for all or only corners
         	{
+        		printf("%c\n\r" , c);
         		u32 tmpConfig = XEventstreamswitch_Get_config_V(&evSwitch_inst);
         		tmpConfig ^= 1UL << 1;
         		XEventstreamswitch_Set_config_V(&evSwitch_inst, tmpConfig);
         	}
         	if((c == 'i') || (c == 'I'))   // show corner event ratio
         	{
+    			printf("%c\n\r" , c);
         		printf("Current corner ratio is: %f\r\n", cornerRatio);
         		printf("Current max corner ratio is: %f\r\n", maxCornerRatio);
         	}
         	if((c == 'j') || (c == 'J'))   // reset max corner ratio
         	{
+    			printf("%c\n\r" , c);
         		maxCornerRatio = 0.0;
         	}
         	if((c == 'k') || (c == 'K'))   // toggle SFAST output all or only corner events
         	{
+    			printf("%c\n\r" , c);
         		u32 tmpConfig = XSfast_process_data_Get_config_V(&SFAST_inst);
         		tmpConfig ^= 1UL << 1;
         		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig);
         	}
+        	if((c == 'l') || (c == 'L'))   // show SFAST threshold
+        	{
+    			printf("%c\n\r" , c);
+        		printf("Current SFAST threshold is: %f\r\n", XSfast_process_data_Get_status_currentThreshold(&SFAST_inst));
+        	}
+        	if((c == 'm') || (c == 'M'))   // show corner event ratio
+        	{
+    			printf("%c\n\r" , c);
+        		u32 tmpConfig = XSfast_process_data_Get_config_V(&SFAST_inst);
+        		printf("Set new threshold in HEX, range from 0x0 - 0xf. \r\n");
+        		char commandChar = inbyte();
+				printf("New threshold: %c\n\r" , commandChar);
+				if(commandChar >= '0' && commandChar <= '9')
+				{
+					commandChar = commandChar - '0';
+				}
+				else if(commandChar >= 'a' && commandChar <= 'f')
+				{
+					commandChar = commandChar - 'a' + 0xa;
+				}
+				else
+				{
+    	        	printf("Value not supported.\r\nType your command: \n\r");
+    				continue;
+				}
+				char low8Bits = tmpConfig & 0xff;
+				low8Bits |= 0x04;      // set bit 2 to 1 so the threshold will use external config
+				u16 new16Bits = ((u16)commandChar << 8) + low8Bits;
+        		tmpConfig = ((tmpConfig >> 16) << 16) + new16Bits;
+        		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig);
+        	}
+
         	printf("Type your command: \n\r");
     	}
 

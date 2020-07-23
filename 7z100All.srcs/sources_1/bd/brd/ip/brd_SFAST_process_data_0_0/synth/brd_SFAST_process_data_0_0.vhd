@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:SFAST_process_data:1.0
--- IP Revision: 2007220944
+-- IP Revision: 2007222043
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -55,7 +55,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY brd_SFAST_process_data_0_0 IS
   PORT (
-    s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+    s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
     s_axi_config_AWVALID : IN STD_LOGIC;
     s_axi_config_AWREADY : OUT STD_LOGIC;
     s_axi_config_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -65,7 +65,7 @@ ENTITY brd_SFAST_process_data_0_0 IS
     s_axi_config_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     s_axi_config_BVALID : OUT STD_LOGIC;
     s_axi_config_BREADY : IN STD_LOGIC;
-    s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+    s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
     s_axi_config_ARVALID : IN STD_LOGIC;
     s_axi_config_ARREADY : OUT STD_LOGIC;
     s_axi_config_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -117,7 +117,7 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
       C_S_AXI_CONFIG_DATA_WIDTH : INTEGER
     );
     PORT (
-      s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+      s_axi_config_AWADDR : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
       s_axi_config_AWVALID : IN STD_LOGIC;
       s_axi_config_AWREADY : OUT STD_LOGIC;
       s_axi_config_WDATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -127,7 +127,7 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
       s_axi_config_BRESP : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       s_axi_config_BVALID : OUT STD_LOGIC;
       s_axi_config_BREADY : IN STD_LOGIC;
-      s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
+      s_axi_config_ARADDR : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
       s_axi_config_ARVALID : IN STD_LOGIC;
       s_axi_config_ARREADY : OUT STD_LOGIC;
       s_axi_config_RDATA : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -174,7 +174,7 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF brd_SFAST_process_data_0_0_arch : ARCHITECTURE IS "brd_SFAST_process_data_0_0,SFAST_process_data,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF brd_SFAST_process_data_0_0_arch: ARCHITECTURE IS "brd_SFAST_process_data_0_0,SFAST_process_data,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=SFAST_process_data,x_ipVersion=1.0,x_ipCoreRevision=2007220944,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=6,C_S_AXI_CONFIG_DATA_WIDTH=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF brd_SFAST_process_data_0_0_arch: ARCHITECTURE IS "brd_SFAST_process_data_0_0,SFAST_process_data,{x_ipProduct=Vivado 2018.1,x_ipVendor=xilinx.com,x_ipLibrary=hls,x_ipName=SFAST_process_data,x_ipVersion=1.0,x_ipCoreRevision=2007222043,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S_AXI_CONFIG_ADDR_WIDTH=7,C_S_AXI_CONFIG_DATA_WIDTH=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF isFinalCornerStream_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 isFinalCornerStream_V_V TDATA";
@@ -255,13 +255,13 @@ ARCHITECTURE brd_SFAST_process_data_0_0_arch OF brd_SFAST_process_data_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_WDATA: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config WDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_config_AWADDR: SIGNAL IS "XIL_INTERFACENAME s_axi_config, ADDR_WIDTH 6, DATA_WIDTH 32, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, ID" & 
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axi_config_AWADDR: SIGNAL IS "XIL_INTERFACENAME s_axi_config, ADDR_WIDTH 7, DATA_WIDTH 32, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, ID" & 
 "_WIDTH 0, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 0, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_AWADDR: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config AWADDR";
 BEGIN
   U0 : SFAST_process_data
     GENERIC MAP (
-      C_S_AXI_CONFIG_ADDR_WIDTH => 6,
+      C_S_AXI_CONFIG_ADDR_WIDTH => 7,
       C_S_AXI_CONFIG_DATA_WIDTH => 32
     )
     PORT MAP (

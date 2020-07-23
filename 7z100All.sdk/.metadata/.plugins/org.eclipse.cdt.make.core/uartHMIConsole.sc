@@ -2,6 +2,7 @@
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="xilinx.gnu.armv7.exe.debug.128148673;xilinx.gnu.armv7.exe.debug.128148673.">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="#undef __ARM_FP16_ARGS" removed="true"/>
 <includePath path="#undef __ARM_NEON_FP" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_FP16_SCALAR_ARITHMETIC" removed="true"/>
 <includePath path="d:\xilinx\sdk\2018.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\../lib/gcc/arm-none-eabi/7.2.1/include"/>
@@ -20,6 +21,7 @@
 <includePath path="#undef __ARM_FP" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_SAT" removed="true"/>
 <includePath path="d:\xilinx\sdk\2018.1\gnu\aarch32\nt\gcc-arm-none-eabi\bin\../arm-none-eabi/libc/usr/include"/>
+<includePath path="#undef __ARM_FP16_FORMAT_ALTERNATIVE" removed="true"/>
 <includePath path="#undef __THUMBEL__" removed="true"/>
 <includePath path="#undef __ARM_ASM_SYNTAX_UNIFIED__" removed="true"/>
 <includePath path="#undef __ARM_FEATURE_QRDMX" removed="true"/>
