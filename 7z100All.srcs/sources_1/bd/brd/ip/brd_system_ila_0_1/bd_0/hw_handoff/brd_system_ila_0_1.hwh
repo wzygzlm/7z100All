@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Jul 22 23:00:10 2020" VIVADOVERSION="2018.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jul 23 14:44:26 2020" VIVADOVERSION="2018.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z100" NAME="bd_d325" PACKAGE="ffg900" SPEEDGRADE="-1"/>
 
@@ -17,6 +17,26 @@
     <PORT DIR="I" LEFT="0" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe1">
       <CONNECTIONS>
         <CONNECTION INSTANCE="ila_lib" PORT="probe1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="probe2" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe2">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ila_lib" PORT="probe2"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="probe3" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe3">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ila_lib" PORT="probe3"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe4">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ila_lib" PORT="probe4"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe5">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ila_lib" PORT="probe5"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -44,7 +64,7 @@
         <PARAMETER NAME="C_SLOT_0_AXI_PROTOCOL" VALUE="AXI4"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="2"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="6"/>
         <PARAMETER NAME="C_DATA_DEPTH" VALUE="1024"/>
         <PARAMETER NAME="C_MAJOR_VERSION" VALUE="2018"/>
         <PARAMETER NAME="C_MINOR_VERSION" VALUE="1"/>
@@ -3177,6 +3197,26 @@
         <PORT DIR="I" LEFT="0" NAME="probe1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="probe1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe2" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="probe2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe3" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="probe3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="probe4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_probe5">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="probe5"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

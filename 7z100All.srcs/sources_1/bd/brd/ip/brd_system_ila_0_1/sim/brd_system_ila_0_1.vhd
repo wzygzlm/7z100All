@@ -57,7 +57,11 @@ ENTITY brd_system_ila_0_1 IS
   PORT (
     clk : IN STD_LOGIC;
     probe0 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe1 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+    probe1 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe2 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe3 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe4 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
   );
 END brd_system_ila_0_1;
 
@@ -68,7 +72,11 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
     PORT (
       clk : IN STD_LOGIC;
       probe0 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe1 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+      probe1 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe2 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe3 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe4 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
     );
   END COMPONENT bd_d325;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -80,6 +88,10 @@ BEGIN
     PORT MAP (
       clk => clk,
       probe0 => probe0,
-      probe1 => probe1
+      probe1 => probe1,
+      probe2 => probe2,
+      probe3 => probe3,
+      probe4 => probe4,
+      probe5 => probe5
     );
 END brd_system_ila_0_1_arch;

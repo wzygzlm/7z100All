@@ -160,6 +160,10 @@ proc create_root_design { parentCell } {
   set clk [ create_bd_port -dir I -type clk clk ]
   set probe0 [ create_bd_port -dir I -from 0 -to 0 probe0 ]
   set probe1 [ create_bd_port -dir I -from 0 -to 0 probe1 ]
+  set probe2 [ create_bd_port -dir I -from 0 -to 0 probe2 ]
+  set probe3 [ create_bd_port -dir I -from 0 -to 0 probe3 ]
+  set probe4 [ create_bd_port -dir I -from 0 -to 0 probe4 ]
+  set probe5 [ create_bd_port -dir I -from 0 -to 0 probe5 ]
 
   # Create instance: ila_lib, and set properties
   set ila_lib [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_lib ]
@@ -173,13 +177,25 @@ proc create_root_design { parentCell } {
    CONFIG.C_ILA_CLK_FREQ {99989998} \
    CONFIG.C_INPUT_PIPE_STAGES {0} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {2} \
+   CONFIG.C_NUM_OF_PROBES {6} \
    CONFIG.C_PROBE0_MU_CNT {1} \
    CONFIG.C_PROBE0_TYPE {0} \
    CONFIG.C_PROBE0_WIDTH {1} \
    CONFIG.C_PROBE1_MU_CNT {1} \
    CONFIG.C_PROBE1_TYPE {0} \
    CONFIG.C_PROBE1_WIDTH {1} \
+   CONFIG.C_PROBE2_MU_CNT {1} \
+   CONFIG.C_PROBE2_TYPE {0} \
+   CONFIG.C_PROBE2_WIDTH {1} \
+   CONFIG.C_PROBE3_MU_CNT {1} \
+   CONFIG.C_PROBE3_TYPE {0} \
+   CONFIG.C_PROBE3_WIDTH {1} \
+   CONFIG.C_PROBE4_MU_CNT {1} \
+   CONFIG.C_PROBE4_TYPE {0} \
+   CONFIG.C_PROBE4_WIDTH {1} \
+   CONFIG.C_PROBE5_MU_CNT {1} \
+   CONFIG.C_PROBE5_TYPE {0} \
+   CONFIG.C_PROBE5_WIDTH {1} \
    CONFIG.C_TIME_TAG_WIDTH {32} \
    CONFIG.C_TRIGIN_EN {false} \
    CONFIG.C_TRIGOUT_EN {false} \
@@ -190,6 +206,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net clk_1 [get_bd_ports clk] [get_bd_pins ila_lib/clk]
   connect_bd_net -net probe0_1 [get_bd_ports probe0] [get_bd_pins ila_lib/probe0]
   connect_bd_net -net probe1_1 [get_bd_ports probe1] [get_bd_pins ila_lib/probe1]
+  connect_bd_net -net probe2_1 [get_bd_ports probe2] [get_bd_pins ila_lib/probe2]
+  connect_bd_net -net probe3_1 [get_bd_ports probe3] [get_bd_pins ila_lib/probe3]
+  connect_bd_net -net probe4_1 [get_bd_ports probe4] [get_bd_pins ila_lib/probe4]
+  connect_bd_net -net probe5_1 [get_bd_ports probe5] [get_bd_pins ila_lib/probe5]
 
   # Create address segments
 

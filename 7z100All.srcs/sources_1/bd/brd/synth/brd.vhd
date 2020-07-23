@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
---Date        : Wed Jul 22 22:59:48 2020
+--Date        : Thu Jul 23 14:44:14 2020
 --Host        : mbp-win10 running 64-bit major release  (build 9200)
 --Command     : generate_target brd.bd
 --Design      : brd
@@ -2796,7 +2796,8 @@ architecture STRUCTURE of brd is
     s_axi_rvalid : out STD_LOGIC;
     s_axi_rready : in STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
-    gpio_io_o : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    gpio_io_o : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    gpio2_io_i : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component brd_axi_gpio_0_0;
   component brd_axi_smc_0 is
@@ -3977,7 +3978,11 @@ architecture STRUCTURE of brd is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component brd_system_ila_0_1;
   component brd_SFAST_process_data_0_0 is
@@ -4127,6 +4132,10 @@ architecture STRUCTURE of brd is
   signal EVMUXDataToXYTSStream_0_tsStreamOut_V_V_TVALID : STD_LOGIC;
   signal EVMUXDataToXYTSStream_0_xStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID : STD_LOGIC;
+  attribute DEBUG : string;
+  attribute DEBUG of EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID : signal is "true";
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID : signal is std.standard.true;
   signal EVMUXDataToXYTSStream_0_yStreamOut_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal EVMUXDataToXYTSStream_0_yStreamOut_V_V_TVALID : STD_LOGIC;
   signal IMUInterrupt_AI_0_1 : STD_LOGIC;
@@ -4158,6 +4167,8 @@ architecture STRUCTURE of brd is
   signal SPI_Master_With_Sing_0_o_TX_Ready : STD_LOGIC;
   signal StreamToFIFO_0_fifoDataOut_V_din : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal StreamToFIFO_0_fifoDataOut_V_write : STD_LOGIC;
+  attribute DEBUG of StreamToFIFO_0_fifoDataOut_V_write : signal is "true";
+  attribute MARK_DEBUG of StreamToFIFO_0_fifoDataOut_V_write : signal is std.standard.true;
   signal SyncInClock_AI_0_1 : STD_LOGIC;
   signal SyncInSignal1_AI_0_1 : STD_LOGIC;
   signal SyncInSignal2_AI_0_1 : STD_LOGIC;
@@ -4242,6 +4253,7 @@ architecture STRUCTURE of brd is
   signal c_addsub_0_S : STD_LOGIC_VECTOR ( 0 to 0 );
   signal c_counter_binary_0_Q : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal const_VCC_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal dataSwitch_0_data_o_num2 : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal dvs_resp_data_o : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal eventStreamDuplicate_0_custDataStreamOut0_V_V_TDATA : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal eventStreamDuplicate_0_custDataStreamOut0_V_V_TREADY : STD_LOGIC;
@@ -4304,15 +4316,17 @@ architecture STRUCTURE of brd is
   signal eventsGeneratorViaFi_0_yStreamOut_V_V_TREADY : STD_LOGIC;
   signal eventsGeneratorViaFi_0_yStreamOut_V_V_TVALID : STD_LOGIC;
   signal fifo_generator_0_almost_full : STD_LOGIC;
+  attribute DEBUG of fifo_generator_0_almost_full : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_0_almost_full : signal is std.standard.true;
   signal fifo_generator_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal fifo_generator_0_empty : STD_LOGIC;
   signal fifo_generator_0_prog_full : STD_LOGIC_VECTOR ( 0 to 0 );
   signal fifo_generator_0_prog_full1 : STD_LOGIC;
-  attribute DEBUG : string;
   attribute DEBUG of fifo_generator_0_prog_full1 : signal is "true";
-  attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of fifo_generator_0_prog_full1 : signal is std.standard.true;
   signal fifo_generator_1_almost_full : STD_LOGIC;
+  attribute DEBUG of fifo_generator_1_almost_full : signal is "true";
+  attribute MARK_DEBUG of fifo_generator_1_almost_full : signal is std.standard.true;
   signal fifo_generator_1_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal fifo_generator_1_empty : STD_LOGIC;
   signal fifo_generator_1_prog_full : STD_LOGIC;
@@ -4675,7 +4689,6 @@ architecture STRUCTURE of brd is
   signal NLW_dataSwitch_0_data_o_1_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_dataSwitch_0_data_o_2_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_dataSwitch_0_data_o_num1_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
-  signal NLW_dataSwitch_0_data_o_num2_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal NLW_eventSimulator_0_ap_done_UNCONNECTED : STD_LOGIC;
   signal NLW_eventSimulator_0_ap_idle_UNCONNECTED : STD_LOGIC;
   signal NLW_eventSimulator_0_ap_ready_UNCONNECTED : STD_LOGIC;
@@ -5187,6 +5200,7 @@ XYTSStreamToRawStream_0: component brd_XYTSStreamToRawStream_0_0
     );
 axi_gpio_0: component brd_axi_gpio_0_0
      port map (
+      gpio2_io_i(31 downto 0) => dataSwitch_0_data_o_num2(31 downto 0),
       gpio_io_o(31 downto 0) => axi_gpio_0_gpio_io_o(31 downto 0),
       ip2intc_irpt => axi_gpio_0_ip2intc_irpt,
       s_axi_aclk => processing_system7_0_FCLK_CLK0,
@@ -5400,7 +5414,7 @@ dataSwitch_0: component brd_dataSwitch_0_0
       data_o_1(15 downto 0) => NLW_dataSwitch_0_data_o_1_UNCONNECTED(15 downto 0),
       data_o_2(15 downto 0) => NLW_dataSwitch_0_data_o_2_UNCONNECTED(15 downto 0),
       data_o_num1(63 downto 0) => NLW_dataSwitch_0_data_o_num1_UNCONNECTED(63 downto 0),
-      data_o_num2(63 downto 0) => NLW_dataSwitch_0_data_o_num2_UNCONNECTED(63 downto 0),
+      data_o_num2(63 downto 0) => dataSwitch_0_data_o_num2(63 downto 0),
       data_o_vd1 => NLW_dataSwitch_0_data_o_vd1_UNCONNECTED,
       data_o_vd2 => NLW_dataSwitch_0_data_o_vd2_UNCONNECTED,
       data_vd_i => EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID,
@@ -6122,7 +6136,11 @@ system_ila_0: component brd_system_ila_0_1
      port map (
       clk => processing_system7_0_FCLK_CLK0,
       probe0(0) => fifo_generator_1_prog_full,
-      probe1(0) => fifo_generator_0_prog_full1
+      probe1(0) => fifo_generator_0_prog_full1,
+      probe2(0) => fifo_generator_0_almost_full,
+      probe3(0) => StreamToFIFO_0_fifoDataOut_V_write,
+      probe4(0) => EVMUXDataToXYTSStream_0_xStreamOut_V_V_TVALID,
+      probe5(0) => fifo_generator_1_almost_full
     );
 testAERDVSSM_0: component brd_testAERDVSSM_0_0
      port map (
