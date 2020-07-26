@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
-// Date        : Tue Jul 21 18:38:09 2020
+// Date        : Tue Jul 21 18:38:06 2020
 // Host        : mbp-win10 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_eventStreamDuplicate_0_0/brd_eventStreamDuplicate_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top brd_eventStreamDuplicate_0_0 -prefix
+//               brd_eventStreamDuplicate_0_0_ brd_eventStreamDuplicate_0_0_sim_netlist.v
 // Design      : brd_eventStreamDuplicate_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -294,7 +294,7 @@ module brd_eventStreamDuplicate_0_0
         .yStreamOut1_V_V_TVALID(yStreamOut1_V_V_TVALID));
 endmodule
 
-(* C_S_AXI_CONFIG_ADDR_WIDTH = "5" *) (* C_S_AXI_CONFIG_DATA_WIDTH = "32" *) (* ORIG_REF_NAME = "eventStreamDuplicate" *) 
+(* C_S_AXI_CONFIG_ADDR_WIDTH = "5" *) (* C_S_AXI_CONFIG_DATA_WIDTH = "32" *) 
 module brd_eventStreamDuplicate_0_0_eventStreamDuplicate
    (ap_clk,
     ap_rst_n,
@@ -8957,7 +8957,6 @@ module brd_eventStreamDuplicate_0_0_eventStreamDuplicate
         .O(yStreamOut1_V_V_TDATA[9]));
 endmodule
 
-(* ORIG_REF_NAME = "eventStreamDuplicate_config_s_axi" *) 
 module brd_eventStreamDuplicate_0_0_eventStreamDuplicate_config_s_axi
    (out,
     s_axi_config_RVALID,

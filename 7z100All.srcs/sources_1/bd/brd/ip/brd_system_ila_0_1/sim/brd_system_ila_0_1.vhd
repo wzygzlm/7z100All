@@ -61,7 +61,13 @@ ENTITY brd_system_ila_0_1 IS
     probe2 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe3 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     probe4 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+    probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    probe6 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    SLOT_0_AXIS_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    SLOT_0_AXIS_tlast : IN STD_LOGIC;
+    SLOT_0_AXIS_tvalid : IN STD_LOGIC;
+    SLOT_0_AXIS_tready : IN STD_LOGIC;
+    resetn : IN STD_LOGIC
   );
 END brd_system_ila_0_1;
 
@@ -76,12 +82,26 @@ ARCHITECTURE brd_system_ila_0_1_arch OF brd_system_ila_0_1 IS
       probe2 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe3 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
       probe4 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+      probe5 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      probe6 : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      SLOT_0_AXIS_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      SLOT_0_AXIS_tlast : IN STD_LOGIC;
+      SLOT_0_AXIS_tvalid : IN STD_LOGIC;
+      SLOT_0_AXIS_tready : IN STD_LOGIC;
+      resetn : IN STD_LOGIC
     );
   END COMPONENT bd_d325;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME CLK.clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF resetn: SIGNAL IS "XIL_INTERFACENAME RST.resetn, POLARITY ACTIVE_LOW";
+  ATTRIBUTE X_INTERFACE_INFO OF resetn: SIGNAL IS "xilinx.com:signal:reset:1.0 RST.resetn RST";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXIS_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_0_AXIS TREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXIS_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_0_AXIS TVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXIS_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_0_AXIS TLAST";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF SLOT_0_AXIS_tdata: SIGNAL IS "XIL_INTERFACENAME SLOT_0_AXIS, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffs" & 
+"et {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXIS_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 SLOT_0_AXIS TDATA";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME CLK.clk, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF SLOT_0_AXIS, ASSOCIATED_RESET resetn";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 CLK.clk CLK";
 BEGIN
   U0 : bd_d325
@@ -92,6 +112,12 @@ BEGIN
       probe2 => probe2,
       probe3 => probe3,
       probe4 => probe4,
-      probe5 => probe5
+      probe5 => probe5,
+      probe6 => probe6,
+      SLOT_0_AXIS_tdata => SLOT_0_AXIS_tdata,
+      SLOT_0_AXIS_tlast => SLOT_0_AXIS_tlast,
+      SLOT_0_AXIS_tvalid => SLOT_0_AXIS_tvalid,
+      SLOT_0_AXIS_tready => SLOT_0_AXIS_tready,
+      resetn => resetn
     );
 END brd_system_ila_0_1_arch;

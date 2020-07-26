@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="XYTS" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="XYTS"/>
 			<item value="boolean"/>
 			<item value="Bool"/>
 			<item value="bool"/>
@@ -15,7 +16,6 @@
 			<item value="MUX"/>
 			<item value="get_ldnumber"/>
 			<item value="path"/>
-			<item value="find_volume"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventStreamSwitch:1.0
--- IP Revision: 2007222257
+-- IP Revision: 2007252129
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -119,7 +119,10 @@ ENTITY brd_eventStreamSwitch_0_0 IS
     tsStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     polStreamIn1_V_V_TVALID : IN STD_LOGIC;
     polStreamIn1_V_V_TREADY : OUT STD_LOGIC;
-    polStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0)
+    polStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    cornerStreamIn1_V_V_TVALID : IN STD_LOGIC;
+    cornerStreamIn1_V_V_TREADY : OUT STD_LOGIC;
+    cornerStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END brd_eventStreamSwitch_0_0;
 
@@ -196,11 +199,19 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
       tsStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
       polStreamIn1_V_V_TVALID : IN STD_LOGIC;
       polStreamIn1_V_V_TREADY : OUT STD_LOGIC;
-      polStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0)
+      polStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      cornerStreamIn1_V_V_TVALID : IN STD_LOGIC;
+      cornerStreamIn1_V_V_TREADY : OUT STD_LOGIC;
+      cornerStreamIn1_V_V_TDATA : IN STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT eventStreamSwitch;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_INFO OF cornerStreamIn1_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 cornerStreamIn1_V_V TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF cornerStreamIn1_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 cornerStreamIn1_V_V TREADY";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF cornerStreamIn1_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME cornerStreamIn1_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, TDEST_WIDTH 0, TID_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, " & 
+"HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_INFO OF cornerStreamIn1_V_V_TVALID: SIGNAL IS "xilinx.com:interface:axis:1.0 cornerStreamIn1_V_V TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn1_V_V_TDATA: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn1_V_V TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF polStreamIn1_V_V_TREADY: SIGNAL IS "xilinx.com:interface:axis:1.0 polStreamIn1_V_V TREADY";
   ATTRIBUTE X_INTERFACE_PARAMETER OF polStreamIn1_V_V_TVALID: SIGNAL IS "XIL_INTERFACENAME polStreamIn1_V_V, TDATA_NUM_BYTES 1, TUSER_WIDTH 0, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate depen" & 
@@ -294,8 +305,8 @@ ARCHITECTURE brd_eventStreamSwitch_0_0_arch OF brd_eventStreamSwitch_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF ap_start: SIGNAL IS "xilinx.com:interface:acc_handshake:1.0 ap_ctrl start";
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_rst_n: SIGNAL IS "XIL_INTERFACENAME ap_rst_n, POLARITY ACTIVE_LOW, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {RST {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}";
   ATTRIBUTE X_INTERFACE_INFO OF ap_rst_n: SIGNAL IS "xilinx.com:signal:reset:1.0 ap_rst_n RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF s_axi_config:xStreamOut_V_V:yStreamOut_V_V:tsStreamOut_V_V:polStreamOut_V_V:cornerStreamOut_V_V:xStreamIn0_V_V:yStreamIn0_V_V:tsStreamIn0_V_V:polStreamIn0_V_V:cornerStreamIn0_V_V:xStreamIn1_V_V:yStreamIn1_V_V:tsStreamIn1_V_V:polStreamIn1_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {r" & 
-"esolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_BUSIF s_axi_config:xStreamOut_V_V:yStreamOut_V_V:tsStreamOut_V_V:polStreamOut_V_V:cornerStreamOut_V_V:xStreamIn0_V_V:yStreamIn0_V_V:tsStreamIn0_V_V:polStreamIn0_V_V:cornerStreamIn0_V_V:xStreamIn1_V_V:yStreamIn1_V_V:tsStreamIn1_V_V:polStreamIn1_V_V:cornerStreamIn1_V_V, ASSOCIATED_RESET ap_rst_n, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} " & 
+"bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}, FREQ_HZ 99989998, PHASE 0.000, CLK_DOMAIN brd_processing_system7_0_0_FCLK_CLK0";
   ATTRIBUTE X_INTERFACE_INFO OF ap_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ap_clk CLK";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RREADY: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axi_config_RVALID: SIGNAL IS "xilinx.com:interface:aximm:1.0 s_axi_config RVALID";
@@ -387,6 +398,9 @@ BEGIN
       tsStreamIn1_V_V_TDATA => tsStreamIn1_V_V_TDATA,
       polStreamIn1_V_V_TVALID => polStreamIn1_V_V_TVALID,
       polStreamIn1_V_V_TREADY => polStreamIn1_V_V_TREADY,
-      polStreamIn1_V_V_TDATA => polStreamIn1_V_V_TDATA
+      polStreamIn1_V_V_TDATA => polStreamIn1_V_V_TDATA,
+      cornerStreamIn1_V_V_TVALID => cornerStreamIn1_V_V_TVALID,
+      cornerStreamIn1_V_V_TREADY => cornerStreamIn1_V_V_TREADY,
+      cornerStreamIn1_V_V_TDATA => cornerStreamIn1_V_V_TDATA
     );
 END brd_eventStreamSwitch_0_0_arch;

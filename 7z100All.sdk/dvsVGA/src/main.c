@@ -589,7 +589,7 @@ int main()
     	return(XST_FAILURE);
     }
 
-    // Configure teh ETF
+    // Configure the ETF
     uint32_t configEn = XEventstreamtoconstencntframestream_Get_ctrl_V(&etf_inst);
     uint32_t sliceDuration = XEventstreamtoconstencntframestream_Get_configRegs_V(&etf_inst);
     configEn = 0x11;

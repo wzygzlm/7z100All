@@ -1036,6 +1036,28 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
       </spirit:parameters>
     </spirit:busInterface>
     <spirit:busInterface>
+      <spirit:name>rotateInfoOutReg_V</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>DATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>rotateInfoOutReg_V</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>LAYERED_METADATA</spirit:name>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.ROTATEINFOOUTREG_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}}}</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
       <spirit:name>nonMonTSDiffFlgReg_V</spirit:name>
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="data_rtl" spirit:version="1.0"/>
@@ -1083,24 +1105,6 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
   <spirit:model>
     <spirit:views>
       <spirit:view>
-        <spirit:name>xilinx_externalfiles</spirit:name>
-        <spirit:displayName>External Files</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:external.files</spirit:envIdentifier>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_externalfiles_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 16:35:45 UTC 2020</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:ff65f1dd</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
         <spirit:name>xilinx_vhdlsynthesis</spirit:name>
         <spirit:displayName>VHDL Synthesis</spirit:displayName>
         <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
@@ -1112,11 +1116,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 19:06:06 UTC 2020</spirit:value>
+            <spirit:value>Sat Jul 25 21:45:19 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:ff65f1dd</spirit:value>
+            <spirit:value>8:60d5b328</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1132,11 +1136,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 16:35:20 UTC 2020</spirit:value>
+            <spirit:value>Sat Jul 25 21:45:19 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:ff65f1dd</spirit:value>
+            <spirit:value>8:60d5b328</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1152,11 +1156,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 20 19:06:06 UTC 2020</spirit:value>
+            <spirit:value>Sat Jul 25 21:45:19 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:b8b1dc52</spirit:value>
+            <spirit:value>8:07b56eb0</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1172,11 +1176,29 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jul 21 16:35:20 UTC 2020</spirit:value>
+            <spirit:value>Sat Jul 25 21:45:19 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:b8b1dc52</spirit:value>
+            <spirit:value>8:07b56eb0</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_externalfiles</spirit:name>
+        <spirit:displayName>External Files</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:external.files</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_externalfiles_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Sat Jul 25 21:47:33 UTC 2020</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>8:60d5b328</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1249,6 +1271,19 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
       </spirit:port>
       <spirit:port>
         <spirit:name>yDiffFlgReg_V_ap_vld</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>rotateInfoOutReg_V_ap_vld</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:wireTypeDefs>
@@ -1725,6 +1760,23 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>rotateInfoOutReg_V</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">63</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_vhdlsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_vhdlbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>nonMonTSDiffFlgReg_V</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
@@ -1762,6 +1814,42 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
   </spirit:model>
   <spirit:fileSets>
     <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>constraints/XYTSStreamToRawStream_ooc.xdc</spirit:name>
+        <spirit:userFileType>xdc</spirit:userFileType>
+        <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/5d7d/hdl/vhdl/XYTSStreamToRawStream.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>synth/brd_XYTSStreamToRawStream_0_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>../../ipshared/5d7d/hdl/vhdl/XYTSStreamToRawStream.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>sim/brd_XYTSStreamToRawStream_0_0.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
       <spirit:name>xilinx_externalfiles_view_fileset</spirit:name>
       <spirit:file>
         <spirit:name>brd_XYTSStreamToRawStream_0_0.dcp</spirit:name>
@@ -1794,42 +1882,6 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_simulation</spirit:userFileType>
         <spirit:userFileType>USED_IN_single_language</spirit:userFileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlsynthesis_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>constraints/XYTSStreamToRawStream_ooc.xdc</spirit:name>
-        <spirit:userFileType>xdc</spirit:userFileType>
-        <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>../../ipshared/cf48/hdl/vhdl/XYTSStreamToRawStream.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlsynthesiswrapper_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>synth/brd_XYTSStreamToRawStream_0_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:logicalName>xil_defaultlib</spirit:logicalName>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>../../ipshared/cf48/hdl/vhdl/XYTSStreamToRawStream.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>sim/brd_XYTSStreamToRawStream_0_0.vhd</spirit:name>
-        <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
@@ -1899,7 +1951,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>Xytsstreamtorawstream</xilinx:displayName>
-      <xilinx:coreRevision>2007152237</xilinx:coreRevision>
+      <xilinx:coreRevision>2007252333</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AP_CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AP_CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
@@ -1964,9 +2016,9 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="ba0d3d98"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="87f7b879"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="b8acccf9"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="0d45f689"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="235fc0bb"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="2015cf11"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="6de3ff2e"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>

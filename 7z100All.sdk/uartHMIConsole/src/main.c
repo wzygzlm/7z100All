@@ -43,6 +43,9 @@ XSfast_process_data SFAST_inst;
 #include "xevabmofstreamwithcontrol.h"
 XEvabmofstreamwithcontrol ABMOF_inst;
 
+//#include "xxytsstreamtorawstream.h"
+//XXytsstreamtorawstream XYTS_inst;
+
 #define DDR_BASEADDR        0x100000
 #define VDMA_BASEADDR       XPAR_AXI_VDMA_0_BASEADDR
 #define H_STRIDE            800
@@ -230,6 +233,16 @@ int main(void)
     }
 	xil_printf("Config ABMOF Successfully.\r\n");
 
+//    //Initialize the XYTS IP
+//    Status = XXytsstreamtorawstream_Initialize(&XYTS_inst, XPAR_EVMUXDATATOXYTSSTREAM_0_DEVICE_ID);
+//    if(Status!= XST_SUCCESS)
+//    {
+//    	xil_printf("XYTS configuration failed\r\n");
+//    	return(XST_FAILURE);
+//    }
+//	xil_printf("Config XYTS Successfully.\r\n");
+
+
 	/* Initialize the GPIO driver */
 	Status = XGpio_Initialize(&Gpio, XPAR_GPIO_0_DEVICE_ID);
 	if (Status != XST_SUCCESS) {
@@ -266,7 +279,7 @@ int main(void)
 
 	SD_Init();
 
-	char *fileName = "OFRet.bin";
+	char *fileName = "Corner.bin";
 	int offset = 0;
 	u64 dataReadOut;
 	int dataStartOffset = 0;
@@ -313,7 +326,7 @@ int main(void)
 //	offset++;
 //	dataStartOffset = offset;
 
-	int eventsReadNumPerTime = 8000;
+	int eventsReadNumPerTime = 2000;
     SD_Transfer_read(fileName,offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
 
 	// keys used: abcdef_hi_klmn_pqrst_vwx_z  123456789
@@ -355,6 +368,8 @@ int main(void)
     u64 deltaOutEventNum = 0, deltaCornerEventNum = 0;
     float cornerRatio = 0.0, maxCornerRatio = 0.0;
 
+    float lastDeltaTs = 0.0;
+
     while(1)
     {
     	currentRowNum = XEvmuxdatatoxytsstream_Get_status_rowNum(&evMuxToXYTS_inst);
@@ -392,6 +407,22 @@ int main(void)
     		}
     	}
 
+//    	u64 rotateInfo = XXytsstreamtorawstream_Get_rotateInfoOut_V(&XYTS_inst);
+//    	if((rotateInfo >> 63) != 0)
+//    	{
+//    		printf("Got a rotate flag and deltaTs is: %lld\r\n", rotateInfo & ~(1ULL << 63));
+//    	}
+
+    	u32 statusABMOF = XEvabmofstreamwithcontrol_Get_status_V(&ABMOF_inst);
+    	float currentDeltaTs = (statusABMOF & 0xfff) * 0.5;
+    	if(currentDeltaTs != lastDeltaTs)
+    	{
+    		lastDeltaTs = currentDeltaTs;
+    		if(currentDeltaTs >= 11.5)
+    		{
+//    			printf("DeltaTs(ms) from ABMOF is : %f\r\n", currentDeltaTs);
+    		}
+    	}
 //
 //        c = inbyte();
 //        if(c == '\r')
@@ -612,7 +643,7 @@ int main(void)
         	int y = ((data1) & POLARITY_Y_ADDR_MASK) >> POLARITY_Y_ADDR_SHIFT;
         	y = 259 - y;
         	int pol  = ((data1) & POLARITY_MASK) >> POLARITY_SHIFT;
-        	int custData = (data1 & 0x3ff);
+        	int custData = (data1 & 0x7ff);
         	data1 = (y << POLARITY_Y_ADDR_SHIFT) + (x << POLARITY_X_ADDR_SHIFT)+ (pol << POLARITY_SHIFT) + custData;
 
 			u64 data = ((u64)data2 << 32) + data1;

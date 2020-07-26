@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:eventsGeneratorViaFile:1.0
--- IP Revision: 2004181939
+-- IP Revision: 2007232158
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
