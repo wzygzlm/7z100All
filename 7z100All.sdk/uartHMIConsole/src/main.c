@@ -326,7 +326,7 @@ int main(void)
 //	offset++;
 //	dataStartOffset = offset;
 
-	int eventsReadNumPerTime = 2000;
+	int eventsReadNumPerTime = 8000;
     SD_Transfer_read(fileName,offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
 
 	// keys used: abcdef_hi_klmn_pqrst_vwx_z  123456789
