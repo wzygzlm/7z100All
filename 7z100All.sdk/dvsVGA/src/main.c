@@ -626,6 +626,7 @@ int main()
 		xil_printf("Init Failed\r\n");
 		return XST_FAILURE;
 	}
+	xil_printf("SPI Init succeed.\r\n");
 
 	Status = PreferencesListSetup(&SpiInstance);
 	if (Status != XST_SUCCESS) {

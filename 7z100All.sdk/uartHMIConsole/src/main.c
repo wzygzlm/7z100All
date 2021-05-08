@@ -46,6 +46,17 @@ XEvabmofstreamwithcontrol ABMOF_inst;
 //#include "xxytsstreamtorawstream.h"
 //XXytsstreamtorawstream XYTS_inst;
 
+// DVS configuration
+#include "DVSConfig.h"
+/************************** Variable Definitions *****************************/
+
+/*
+ * The instances to support the device drivers are global such that the
+ * are initialized to zero each time the program runs.  They could be local
+ * but should at least be static so they are zeroed.
+ */
+static XSpiPs SpiInstance;
+
 #define DDR_BASEADDR        0x100000
 #define VDMA_BASEADDR       XPAR_AXI_VDMA_0_BASEADDR
 #define H_STRIDE            800
@@ -250,6 +261,20 @@ int main(void)
 		return XST_FAILURE;
 	}
 
+//	/* Initialize the DVS */
+//	Status = dvsSPIInit(&SpiInstance, SPI_DEVICE_ID);
+//	if (Status != XST_SUCCESS) {
+//		xil_printf("DVS Init Failed\r\n");
+////		return XST_FAILURE;
+//	}
+//
+//	/* Send Bias to DVS */
+//	Status = PreferencesListSetup(&SpiInstance);
+//	if (Status != XST_SUCCESS) {
+//		xil_printf("DVS Configure Failed\r\n");
+////		return XST_FAILURE;
+//	}
+
 	XGpio_SetDataDirection(&Gpio, 1, 0);              // Output for control
 
 	u32 tmpGpioData = XGpio_DiscreteRead(&Gpio, 1);
@@ -343,8 +368,8 @@ int main(void)
 	printf(" ## event statistics\r\n");
 	printf("    'e' - Event rate info\r\n");
 	printf("    'f' - Reset max event rate\r\n");
-	printf("    'g' - Toggle ABMOF calc mode\r\n");
 	printf(" ## ABMOF status and configuration\n");
+	printf("    'g' - Toggle ABMOF calculating mode\r\n");
 	printf("    'i' - Show ABMOF area event cnt threshold\r\n");
 	printf("    'j' - Set ABMOF area event cnt threshold\r\n");
 	printf(" ## SFAST status and configuration\n");
@@ -441,10 +466,10 @@ int main(void)
     			printf("DeltaTs(ms) from ABMOF is : %f\r\n", currentDeltaTs);
     		}
     	}
-		u32 dumpSFASTThr = XSfast_process_data_Get_status_currentThreshold(&SFAST_inst);
+		u32 currentABMOFAreaCntThr = XEvabmofstreamwithcontrol_Get_status_currentAreaCntThr(&ABMOF_inst);
 		if(verboseMode == 1)
 		{
-			printf("SFAST's threshold is : %f\r\n", dumpSFASTThr);
+			printf("ABMOF's threshold is : %ld\r\n", currentABMOFAreaCntThr);
 		}
 
 //
@@ -485,8 +510,8 @@ int main(void)
         		printf(" ## event statistics\r\n");
         		printf("    'e' - Event rate info\r\n");
         		printf("    'f' - Reset max event rate\r\n");
-        		printf("    'g' - Toggle ABMOF calc mode\r\n");
         		printf(" ## ABMOF status and configuration\n");
+        		printf("    'g' - Toggle ABMOF calculating mode\r\n");
         		printf("    'i' - Show ABMOF area event cnt threshold\r\n");
         		printf("    'j' - Set ABMOF area event cnt threshold\r\n");
         		printf(" ## SFAST status and configuration\n");
@@ -588,12 +613,12 @@ int main(void)
     			printf("%c\n\r" , c);
         		maxEventRate = 0.0;
         	}
-        	if((c == 'g') || (c == 'G'))   // toggle calc ABMOF for all or only corners
+        	if((c == 'g') || (c == 'G'))   // toggle calculating ABMOF on all or only corners
         	{
         		printf("%c\n\r" , c);
-        		u32 tmpConfig = XEventstreamswitch_Get_config_V(&evSwitch_inst);
-        		tmpConfig ^= 1UL << 1;
-        		XEventstreamswitch_Set_config_V(&evSwitch_inst, tmpConfig);
+        		u32 tmpConfig = XSfast_process_data_Get_config_V(&SFAST_inst);
+        		tmpConfig ^= 1UL << 0;
+        		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig);
         	}
         	if((c == 'i') || (c == 'I'))   // show ABMOF area cnt threshold
         	{
