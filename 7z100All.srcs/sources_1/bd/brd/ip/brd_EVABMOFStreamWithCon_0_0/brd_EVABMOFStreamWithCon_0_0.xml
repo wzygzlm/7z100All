@@ -153,7 +153,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>ADDR_WIDTH</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONFIG.ADDR_WIDTH">5</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONFIG.ADDR_WIDTH">6</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>DATA_WIDTH</spirit:name>
@@ -1220,8 +1220,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>LAYERED_METADATA</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type
- immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>TDEST_WIDTH</spirit:name>
@@ -1348,8 +1347,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>LAYERED_METADATA</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type
- immediate dependency {} format long minimum {} maximum {}} value 16} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 16}</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>TDEST_WIDTH</spirit:name>
@@ -1476,8 +1474,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>LAYERED_METADATA</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type
- immediate dependency {} format long minimum {} maximum {}} value 64} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 64}</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>TDEST_WIDTH</spirit:name>
@@ -1604,8 +1601,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>LAYERED_METADATA</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type
- immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 8}</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>TDEST_WIDTH</spirit:name>
@@ -1732,8 +1728,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>LAYERED_METADATA</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}} TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type
- immediate dependency {} format long minimum {} maximum {}} value 17} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} TDATA_WIDTH 24}</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.LAYERED_METADATA">xilinx.com:interface:datatypes:1.0 {CLK {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 1} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0}}}}</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>TDEST_WIDTH</spirit:name>
@@ -1863,9 +1858,9 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
           </spirit:field>
         </spirit:register>
         <spirit:register>
-          <spirit:name>status_V</spirit:name>
-          <spirit:displayName>status_V</spirit:displayName>
-          <spirit:description>Data signal of status_V</spirit:description>
+          <spirit:name>status_currentDeltaTSHW</spirit:name>
+          <spirit:displayName>status_currentDeltaTSHW</spirit:displayName>
+          <spirit:description>Data signal of status_currentDeltaTSHW</spirit:description>
           <spirit:addressOffset>24</spirit:addressOffset>
           <spirit:size spirit:format="long">32</spirit:size>
           <spirit:access>read-only</spirit:access>
@@ -1873,8 +1868,8 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
             <spirit:value spirit:format="long">0</spirit:value>
           </spirit:reset>
           <spirit:field>
-            <spirit:name>status_V</spirit:name>
-            <spirit:description>Bit 31 to 0 Data signal of status_V</spirit:description>
+            <spirit:name>status_currentDeltaTSHW</spirit:name>
+            <spirit:description>Bit 31 to 0 Data signal of status_currentDeltaTSHW</spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
             <spirit:bitWidth spirit:format="long">32</spirit:bitWidth>
             <spirit:access>read-only</spirit:access>
@@ -1887,9 +1882,9 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
           </spirit:field>
         </spirit:register>
         <spirit:register>
-          <spirit:name>status_V_ctrl</spirit:name>
-          <spirit:displayName>status_V_ctrl</spirit:displayName>
-          <spirit:description>Control signal of status_V</spirit:description>
+          <spirit:name>status_currentDeltaTSHW_ctrl</spirit:name>
+          <spirit:displayName>status_currentDeltaTSHW_ctrl</spirit:displayName>
+          <spirit:description>Control signal of status_currentDeltaTSHW</spirit:description>
           <spirit:addressOffset>28</spirit:addressOffset>
           <spirit:size spirit:format="long">32</spirit:size>
           <spirit:access>read-only</spirit:access>
@@ -1897,8 +1892,69 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
             <spirit:value spirit:format="long">0</spirit:value>
           </spirit:reset>
           <spirit:field>
-            <spirit:name>status_V_ap_vld</spirit:name>
-            <spirit:description>Control signal status_V_ap_vld</spirit:description>
+            <spirit:name>status_currentDeltaTSHW_ap_vld</spirit:name>
+            <spirit:description>Control signal status_currentDeltaTSHW_ap_vld</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth spirit:format="long">1</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+            <spirit:writeValueConstraint>
+              <spirit:minimum>0</spirit:minimum>
+              <spirit:maximum>0</spirit:maximum>
+            </spirit:writeValueConstraint>
+            <spirit:readAction>modify</spirit:readAction>
+            <spirit:testable spirit:testConstraint="unconstrained">false</spirit:testable>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>RESERVED</spirit:name>
+            <spirit:description>Reserved.  0s on read.</spirit:description>
+            <spirit:bitOffset>1</spirit:bitOffset>
+            <spirit:bitWidth spirit:format="long">31</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+            <spirit:writeValueConstraint>
+              <spirit:minimum>0</spirit:minimum>
+              <spirit:maximum>0</spirit:maximum>
+            </spirit:writeValueConstraint>
+            <spirit:readAction>modify</spirit:readAction>
+            <spirit:testable spirit:testConstraint="unconstrained">false</spirit:testable>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>status_currentAreaCntThr</spirit:name>
+          <spirit:displayName>status_currentAreaCntThr</spirit:displayName>
+          <spirit:description>Data signal of status_currentAreaCntThr</spirit:description>
+          <spirit:addressOffset>32</spirit:addressOffset>
+          <spirit:size spirit:format="long">32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value spirit:format="long">0</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>status_currentAreaCntThr</spirit:name>
+            <spirit:description>Bit 31 to 0 Data signal of status_currentAreaCntThr</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth spirit:format="long">32</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+            <spirit:writeValueConstraint>
+              <spirit:minimum>0</spirit:minimum>
+              <spirit:maximum>0</spirit:maximum>
+            </spirit:writeValueConstraint>
+            <spirit:readAction>modify</spirit:readAction>
+            <spirit:testable spirit:testConstraint="unconstrained">false</spirit:testable>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>status_currentAreaCntThr_ctrl</spirit:name>
+          <spirit:displayName>status_currentAreaCntThr_ctrl</spirit:displayName>
+          <spirit:description>Control signal of status_currentAreaCntThr</spirit:description>
+          <spirit:addressOffset>36</spirit:addressOffset>
+          <spirit:size spirit:format="long">32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value spirit:format="long">0</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>status_currentAreaCntThr_ap_vld</spirit:name>
+            <spirit:description>Control signal status_currentAreaCntThr_ap_vld</spirit:description>
             <spirit:bitOffset>0</spirit:bitOffset>
             <spirit:bitWidth spirit:format="long">1</spirit:bitWidth>
             <spirit:access>read-only</spirit:access>
@@ -1940,11 +1996,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 27 10:39:39 UTC 2020</spirit:value>
+            <spirit:value>Sat May 08 10:50:32 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:90cea543</spirit:value>
+            <spirit:value>8:cb23d249</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1960,11 +2016,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 27 10:39:39 UTC 2020</spirit:value>
+            <spirit:value>Sat May 08 10:50:32 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:90cea543</spirit:value>
+            <spirit:value>8:cb23d249</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1980,11 +2036,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 27 10:39:39 UTC 2020</spirit:value>
+            <spirit:value>Sat May 08 10:50:32 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:6eafade3</spirit:value>
+            <spirit:value>8:ae6166bd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2000,11 +2056,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 27 10:39:39 UTC 2020</spirit:value>
+            <spirit:value>Sat May 08 10:50:33 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:6eafade3</spirit:value>
+            <spirit:value>8:ae6166bd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2018,11 +2074,11 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jul 27 10:50:10 UTC 2020</spirit:value>
+            <spirit:value>Sat May 08 11:01:08 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>8:90cea543</spirit:value>
+            <spirit:value>8:cb23d249</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2033,7 +2089,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH&apos;)) - 1)">5</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -2179,7 +2235,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH&apos;)) - 1)">5</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -2789,7 +2845,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
     <spirit:modelParameters>
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
         <spirit:name>C_S_AXI_CONFIG_ADDR_WIDTH</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH">5</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_CONFIG_ADDR_WIDTH">6</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_S_AXI_CONFIG_DATA_WIDTH</spirit:name>
@@ -2806,427 +2862,455 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_3.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_3.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_4.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_4.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_5.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_5.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/Block_proc.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/Block_proc.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colSADSumScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/Block_proc467.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colSADSumScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colSADSumScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colSADSumScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colSADSumScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumNgs.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colSADSumScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumOgC.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumNgs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumOgC.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_3.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_4.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_3.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_5.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_4.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colZeroCntScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_5.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colZeroCntScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colZeroCntScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colZeroCntScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colZeroCntScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWith0iy.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colZeroCntScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWith1iI.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWith0iy.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWith2iS.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWith1iI.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithControl_config_s_axi.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWith2iS.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithHfu.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithCon_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithMgi.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithCon_2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithThq.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithControl_config_s_axi.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithYie.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithHfu.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithZio.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithMgi.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedback.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithThq.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedback_OFRetRegs.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithYie.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedbackAndCombineOu.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithZio.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedbackAndCombineOu_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedback.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w1_d18_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedback_OFRetRegs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w1_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedbackAndCombineOu.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w2_d0_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedbackAndCombineOu_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w2_d10_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w1_d18_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w2_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w1_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w6_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w2_d0_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w6_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w2_d10_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w8_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w2_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w8_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w6_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w9_d18_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w6_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w10_d0_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w8_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w10_d10_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w8_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w10_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w9_d18_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w15_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w10_d0_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w16_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w10_d10_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w18_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w10_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w32_d0_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w15_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w42_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w16_d18_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w52_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w16_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w76_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w18_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w96_d70_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w32_d0_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w112_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w32_d2_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w124_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w42_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w126_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w52_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w336_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w76_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w372_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w96_d70_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w112_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale0W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w124_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w126_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale1W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w336_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w372_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale2W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/getInitOffsetForNext.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale0W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/getInitOffsetForNext_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/min.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale1W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/minWide.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/reOrderStreamScale0W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale2W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/reOrderStreamScale1W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/getInitOffsetForNext.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rotateSliceAllScabkb.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/getInitOffsetForNext_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rotateSliceAllScales.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/min.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale0WithSe.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/minWide.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale0WitUhA.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/reOrderStreamScale0W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale1WithSe.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/reOrderStreamScale1W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale1WitPgM.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rotateSliceAllScabkb.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale2WithSe.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rotateSliceAllScales.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale2WitIfE.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale0WithSe.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale0WitUhA.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale1WithSe.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale1WitPgM.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadSumScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale2WithSe.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadSumScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale2WitIfE.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadSumScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_accumul6jw.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_accumulbck.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_accumulbil.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadSumScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_Block_pbkl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadSumScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_colStre5jm.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadSumScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_colStrebbk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_accumul8jQ.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_colStrebhl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_accumulbek.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_findStr7jG.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_accumulbkl.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_findStrbdk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_Block_p4jc.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_findStrbjl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_Block_pbml.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_getInit8jQ.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_colStre7jG.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_getInitbek.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_colStrebdk.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_reOrderbak.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_colStrebjl.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_reOrderbgk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_EVABMOF3i2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rotateS3i2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_findStr9j0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rwSlice4jc.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_findStrbfk.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rwSlice9j0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_findStrbll.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rwSlicebfk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_getInitbak.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/truncateStreamWithCo.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_getInitbgk.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithControl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_reOrderbck.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_reOrderbil.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rotateS5jm.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rwSlice6jw.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rwSlicebbk.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rwSlicebhl.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/truncateStreamWithCo.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithControl.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -3241,532 +3325,567 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_3.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_3.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_4.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_4.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/accumulateStreamScal_5.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/accumulateStreamScal_5.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/Block_proc.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/Block_proc.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colSADSumScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/Block_proc467.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colSADSumScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colSADSumScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colSADSumScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colSADSumScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumNgs.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colSADSumScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumOgC.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumNgs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumOgC.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_3.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_4.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_3.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colStreamToColSumSca_5.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_4.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colZeroCntScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colStreamToColSumSca_5.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colZeroCntScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colZeroCntScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/colZeroCntScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colZeroCntScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWith0iy.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/colZeroCntScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWith1iI.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWith0iy.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWith2iS.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWith1iI.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithControl_config_s_axi.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWith2iS.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithHfu.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithCon_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithMgi.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithCon_2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithThq.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithControl_config_s_axi.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithYie.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithHfu.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithZio.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithMgi.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedback.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithThq.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedback_OFRetRegs.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithYie.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedbackAndCombineOu.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithZio.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/feedbackAndCombineOu_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedback.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w1_d18_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedback_OFRetRegs.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w1_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedbackAndCombineOu.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w2_d0_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/feedbackAndCombineOu_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w2_d10_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w1_d18_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w2_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w1_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w6_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w2_d0_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w6_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w2_d10_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w8_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w2_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w8_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w6_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w9_d18_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w6_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w10_d0_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w8_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w10_d10_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w8_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w10_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w9_d18_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w15_d30_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w10_d0_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w16_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w10_d10_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w18_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w10_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w32_d0_A.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w15_d30_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w42_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w16_d18_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w52_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w16_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w76_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w18_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w96_d70_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w32_d0_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w112_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w32_d2_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w124_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w42_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w126_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w52_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w336_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w76_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/fifo_w372_d20_S.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w96_d70_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w112_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale0W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w124_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w126_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale1W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w336_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/fifo_w372_d20_S.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/findStreamMinScale2W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/getInitOffsetForNext.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale0W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/getInitOffsetForNext_1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/min.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale1W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/minWide.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/reOrderStreamScale0W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/findStreamMinScale2W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/reOrderStreamScale1W.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/getInitOffsetForNext.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rotateSliceAllScabkb.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/getInitOffsetForNext_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rotateSliceAllScales.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/min.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale0WithSe.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/minWide.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale0WitUhA.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/reOrderStreamScale0W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale1WithSe.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/reOrderStreamScale1W.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale1WitPgM.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rotateSliceAllScabkb.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale2WithSe.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rotateSliceAllScales.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/rwSlicesScale2WitIfE.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale0WithSe.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale0WitUhA.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale1WithSe.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale1WitPgM.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadSumScale0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale2WithSe.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadSumScale1.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/rwSlicesScale2WitIfE.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/sadSumScale2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_accumul6jw.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_accumulbck.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_accumulbil.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadSumScale0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_Block_pbkl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadSumScale1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_colStre5jm.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/sadSumScale2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_colStrebbk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_accumul8jQ.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_colStrebhl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_accumulbek.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_findStr7jG.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_accumulbkl.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_findStrbdk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_Block_p4jc.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_findStrbjl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_Block_pbml.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_getInit8jQ.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_colStre7jG.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_getInitbek.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_colStrebdk.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_reOrderbak.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_colStrebjl.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_reOrderbgk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_EVABMOF3i2.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rotateS3i2.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_findStr9j0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rwSlice4jc.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_findStrbfk.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rwSlice9j0.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_findStrbll.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/start_for_rwSlicebfk.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_getInitbak.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/truncateStreamWithCo.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_getInitbgk.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/62ed/hdl/vhdl/EVABMOFStreamWithControl.vhd</spirit:name>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_reOrderbck.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_reOrderbil.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rotateS5jm.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rwSlice6jw.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rwSlicebbk.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/start_for_rwSlicebhl.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/truncateStreamWithCo.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/827d/hdl/vhdl/EVABMOFStreamWithControl.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -3857,7 +3976,7 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>latency</spirit:name>
-      <spirit:value spirit:id="PARAM_VALUE.latency" spirit:order="5">70</spirit:value>
+      <spirit:value spirit:id="PARAM_VALUE.latency" spirit:order="5">71</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -3881,57 +4000,51 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>Evabmofstreamwithcontrol</xilinx:displayName>
-      <xilinx:coreRevision>2007271237</xilinx:coreRevision>
+      <xilinx:coreRevision>2105081247</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AP_CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.AP_CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CONTROLSTREAMIN_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.LAYERED_METADATA" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.PHASE" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TDATA_NUM_BYTES" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TUSER_WIDTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.LAYERED_METADATA" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.PIXELDATASTREAM_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMIN_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.PHASE" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.TDATA_NUM_BYTES" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.TUSER_WIDTH" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.POLSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.ARUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.AWUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.BUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.HAS_BRESP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.HAS_BURST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.HAS_CACHE" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
@@ -3942,86 +4055,77 @@ tatype {name {attribs {resolve_type immediate dependency {} format string minimu
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.HAS_RRESP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.HAS_WSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.ID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.LAYERED_METADATA" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.MAX_BURST_LENGTH" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.NUM_READ_OUTSTANDING" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.NUM_WRITE_OUTSTANDING" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.LAYERED_METADATA" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.MAX_BURST_LENGTH" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.NUM_READ_OUTSTANDING" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.NUM_WRITE_OUTSTANDING" xilinx:valueSource="user" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.RUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.SUPPORTS_NARROW_BURST" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.SUPPORTS_NARROW_BURST" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI_CONFIG.WUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMIN_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.PHASE" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TDATA_NUM_BYTES" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TUSER_WIDTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TSSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMIN_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.PHASE" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TDATA_NUM_BYTES" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TUSER_WIDTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.XSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.LAYERED_METADATA" xilinx:valueSource="ip_propagated" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMIN_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valueSource="propagated" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.PHASE" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.TDATA_NUM_BYTES" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.TUSER_WIDTH" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TKEEP" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TLAST" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.LAYERED_METADATA" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.YSTREAMOUT_V_V.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd_and_user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2018.1</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="c1fd8476"/>
-      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="a11fc338"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a08950c0"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="59cb3f06"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="33a0b57b"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="b7815a00"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="91b69baf"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="c0bd2111"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="e5803b6a"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="2f89c2fe"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="bae53229"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="92a5fd81"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

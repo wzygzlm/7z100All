@@ -83,8 +83,10 @@ int XEvabmofstreamwithcontrol_Release(XEvabmofstreamwithcontrol *InstancePtr);
 
 void XEvabmofstreamwithcontrol_Set_config_V(XEvabmofstreamwithcontrol *InstancePtr, u32 Data);
 u32 XEvabmofstreamwithcontrol_Get_config_V(XEvabmofstreamwithcontrol *InstancePtr);
-u32 XEvabmofstreamwithcontrol_Get_status_V(XEvabmofstreamwithcontrol *InstancePtr);
-u32 XEvabmofstreamwithcontrol_Get_status_V_vld(XEvabmofstreamwithcontrol *InstancePtr);
+u32 XEvabmofstreamwithcontrol_Get_status_currentDeltaTSHW(XEvabmofstreamwithcontrol *InstancePtr);
+u32 XEvabmofstreamwithcontrol_Get_status_currentDeltaTSHW_vld(XEvabmofstreamwithcontrol *InstancePtr);
+u32 XEvabmofstreamwithcontrol_Get_status_currentAreaCntThr(XEvabmofstreamwithcontrol *InstancePtr);
+u32 XEvabmofstreamwithcontrol_Get_status_currentAreaCntThr_vld(XEvabmofstreamwithcontrol *InstancePtr);
 
 #ifdef __cplusplus
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="Digilent JTAG-SMT2 210251A516AD/2-xc7z100" key="brd_wrapper_hw_platform_0-device"/>
+	<item value="Auto Detect" key="brd_wrapper_hw_platform_0-device"/>
 	<item value="" key="brd_wrapper_hw_platform_0-bmmFile"/>
 	<item value="E:\PhD_project\vivado_prjs\davisZynq\7z100All\7z100All.runs\impl_1\brd_wrapper.bit" key="brd_wrapper_hw_platform_0-bitFile"/>
 	<item value="brd_wrapper_hw_platform_0" key="programfpga.hwplatform"/>

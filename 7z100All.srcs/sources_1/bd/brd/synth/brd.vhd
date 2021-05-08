@@ -1,8 +1,8 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
---Date        : Mon Jul 27 12:39:29 2020
---Host        : mbp-win10 running 64-bit major release  (build 9200)
+--Date        : Sat May  8 13:17:26 2021
+--Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 --Command     : generate_target brd.bd
 --Design      : brd
 --Purpose     : IP block netlist
@@ -3848,6 +3848,94 @@ architecture STRUCTURE of brd is
     resetn : in STD_LOGIC
   );
   end component brd_system_ila_0_1;
+  component brd_eventsGeneratorViaFi_0_0 is
+  port (
+    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_AWVALID : in STD_LOGIC;
+    s_axi_config_AWREADY : out STD_LOGIC;
+    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_config_WVALID : in STD_LOGIC;
+    s_axi_config_WREADY : out STD_LOGIC;
+    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_BVALID : out STD_LOGIC;
+    s_axi_config_BREADY : in STD_LOGIC;
+    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_ARVALID : in STD_LOGIC;
+    s_axi_config_ARREADY : out STD_LOGIC;
+    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_RVALID : out STD_LOGIC;
+    s_axi_config_RREADY : in STD_LOGIC;
+    ap_clk : in STD_LOGIC;
+    ap_rst_n : in STD_LOGIC;
+    ap_start : in STD_LOGIC;
+    ap_done : out STD_LOGIC;
+    ap_idle : out STD_LOGIC;
+    ap_ready : out STD_LOGIC;
+    xStreamOut_V_V_TVALID : out STD_LOGIC;
+    xStreamOut_V_V_TREADY : in STD_LOGIC;
+    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamOut_V_V_TVALID : out STD_LOGIC;
+    yStreamOut_V_V_TREADY : in STD_LOGIC;
+    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamOut_V_V_TVALID : out STD_LOGIC;
+    tsStreamOut_V_V_TREADY : in STD_LOGIC;
+    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamOut_V_V_TVALID : out STD_LOGIC;
+    polStreamOut_V_V_TREADY : in STD_LOGIC;
+    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    custDataStreamOut_V_V_TVALID : out STD_LOGIC;
+    custDataStreamOut_V_V_TREADY : in STD_LOGIC;
+    custDataStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component brd_eventsGeneratorViaFi_0_0;
+  component brd_XYTSStreamToRawStream_0_0 is
+  port (
+    tsReg_V_ap_vld : out STD_LOGIC;
+    glLastTSReg_V_ap_vld : out STD_LOGIC;
+    yReg_V_ap_vld : out STD_LOGIC;
+    glLastYReg_V_ap_vld : out STD_LOGIC;
+    tsDiffFlgReg_V_ap_vld : out STD_LOGIC;
+    yDiffFlgReg_V_ap_vld : out STD_LOGIC;
+    rotateInfoOutReg_V_ap_vld : out STD_LOGIC;
+    nonMonTSDiffFlgReg_V_ap_vld : out STD_LOGIC;
+    tsWrappedVal_V_ap_vld : out STD_LOGIC;
+    ap_clk : in STD_LOGIC;
+    ap_rst_n : in STD_LOGIC;
+    ap_start : in STD_LOGIC;
+    ap_done : out STD_LOGIC;
+    ap_idle : out STD_LOGIC;
+    ap_ready : out STD_LOGIC;
+    streamOut_V_V_TVALID : out STD_LOGIC;
+    streamOut_V_V_TREADY : in STD_LOGIC;
+    streamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    xStreamIn_V_V_TVALID : in STD_LOGIC;
+    xStreamIn_V_V_TREADY : out STD_LOGIC;
+    xStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamIn_V_V_TVALID : in STD_LOGIC;
+    yStreamIn_V_V_TREADY : out STD_LOGIC;
+    yStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamIn_V_V_TVALID : in STD_LOGIC;
+    tsStreamIn_V_V_TREADY : out STD_LOGIC;
+    tsStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamIn_V_V_TVALID : in STD_LOGIC;
+    polStreamIn_V_V_TREADY : out STD_LOGIC;
+    polStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    custDataStreamIn_V_V_TVALID : in STD_LOGIC;
+    custDataStreamIn_V_V_TREADY : out STD_LOGIC;
+    custDataStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    glLastTSReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    yReg_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    glLastYReg_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
+    yDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
+    rotateInfoOutReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
+    tsWrappedVal_V : out STD_LOGIC_VECTOR ( 11 downto 0 )
+  );
+  end component brd_XYTSStreamToRawStream_0_0;
   component brd_SFAST_process_data_0_0 is
   port (
     s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 6 downto 0 );
@@ -3902,169 +3990,9 @@ architecture STRUCTURE of brd is
     isFinalCornerStream_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component brd_SFAST_process_data_0_0;
-  component brd_eventsGeneratorViaFi_0_0 is
-  port (
-    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_AWVALID : in STD_LOGIC;
-    s_axi_config_AWREADY : out STD_LOGIC;
-    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_config_WVALID : in STD_LOGIC;
-    s_axi_config_WREADY : out STD_LOGIC;
-    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_BVALID : out STD_LOGIC;
-    s_axi_config_BREADY : in STD_LOGIC;
-    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_ARVALID : in STD_LOGIC;
-    s_axi_config_ARREADY : out STD_LOGIC;
-    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_RVALID : out STD_LOGIC;
-    s_axi_config_RREADY : in STD_LOGIC;
-    ap_clk : in STD_LOGIC;
-    ap_rst_n : in STD_LOGIC;
-    ap_start : in STD_LOGIC;
-    ap_done : out STD_LOGIC;
-    ap_idle : out STD_LOGIC;
-    ap_ready : out STD_LOGIC;
-    xStreamOut_V_V_TVALID : out STD_LOGIC;
-    xStreamOut_V_V_TREADY : in STD_LOGIC;
-    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamOut_V_V_TVALID : out STD_LOGIC;
-    yStreamOut_V_V_TREADY : in STD_LOGIC;
-    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamOut_V_V_TVALID : out STD_LOGIC;
-    tsStreamOut_V_V_TREADY : in STD_LOGIC;
-    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamOut_V_V_TVALID : out STD_LOGIC;
-    polStreamOut_V_V_TREADY : in STD_LOGIC;
-    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    custDataStreamOut_V_V_TVALID : out STD_LOGIC;
-    custDataStreamOut_V_V_TREADY : in STD_LOGIC;
-    custDataStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 )
-  );
-  end component brd_eventsGeneratorViaFi_0_0;
-  component brd_eventStreamSwitch_0_0 is
-  port (
-    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_AWVALID : in STD_LOGIC;
-    s_axi_config_AWREADY : out STD_LOGIC;
-    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_config_WVALID : in STD_LOGIC;
-    s_axi_config_WREADY : out STD_LOGIC;
-    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_BVALID : out STD_LOGIC;
-    s_axi_config_BREADY : in STD_LOGIC;
-    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s_axi_config_ARVALID : in STD_LOGIC;
-    s_axi_config_ARREADY : out STD_LOGIC;
-    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_config_RVALID : out STD_LOGIC;
-    s_axi_config_RREADY : in STD_LOGIC;
-    ap_clk : in STD_LOGIC;
-    ap_rst_n : in STD_LOGIC;
-    ap_start : in STD_LOGIC;
-    ap_done : out STD_LOGIC;
-    ap_idle : out STD_LOGIC;
-    ap_ready : out STD_LOGIC;
-    xStreamOut_V_V_TVALID : out STD_LOGIC;
-    xStreamOut_V_V_TREADY : in STD_LOGIC;
-    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamOut_V_V_TVALID : out STD_LOGIC;
-    yStreamOut_V_V_TREADY : in STD_LOGIC;
-    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamOut_V_V_TVALID : out STD_LOGIC;
-    tsStreamOut_V_V_TREADY : in STD_LOGIC;
-    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamOut_V_V_TVALID : out STD_LOGIC;
-    polStreamOut_V_V_TREADY : in STD_LOGIC;
-    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    cornerStreamOut_V_V_TVALID : out STD_LOGIC;
-    cornerStreamOut_V_V_TREADY : in STD_LOGIC;
-    cornerStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    xStreamIn0_V_V_TVALID : in STD_LOGIC;
-    xStreamIn0_V_V_TREADY : out STD_LOGIC;
-    xStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamIn0_V_V_TVALID : in STD_LOGIC;
-    yStreamIn0_V_V_TREADY : out STD_LOGIC;
-    yStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamIn0_V_V_TVALID : in STD_LOGIC;
-    tsStreamIn0_V_V_TREADY : out STD_LOGIC;
-    tsStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamIn0_V_V_TVALID : in STD_LOGIC;
-    polStreamIn0_V_V_TREADY : out STD_LOGIC;
-    polStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    cornerStreamIn0_V_V_TVALID : in STD_LOGIC;
-    cornerStreamIn0_V_V_TREADY : out STD_LOGIC;
-    cornerStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    xStreamIn1_V_V_TVALID : in STD_LOGIC;
-    xStreamIn1_V_V_TREADY : out STD_LOGIC;
-    xStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamIn1_V_V_TVALID : in STD_LOGIC;
-    yStreamIn1_V_V_TREADY : out STD_LOGIC;
-    yStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamIn1_V_V_TVALID : in STD_LOGIC;
-    tsStreamIn1_V_V_TREADY : out STD_LOGIC;
-    tsStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamIn1_V_V_TVALID : in STD_LOGIC;
-    polStreamIn1_V_V_TREADY : out STD_LOGIC;
-    polStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    cornerStreamIn1_V_V_TVALID : in STD_LOGIC;
-    cornerStreamIn1_V_V_TREADY : out STD_LOGIC;
-    cornerStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component brd_eventStreamSwitch_0_0;
-  component brd_XYTSStreamToRawStream_0_0 is
-  port (
-    tsReg_V_ap_vld : out STD_LOGIC;
-    glLastTSReg_V_ap_vld : out STD_LOGIC;
-    yReg_V_ap_vld : out STD_LOGIC;
-    glLastYReg_V_ap_vld : out STD_LOGIC;
-    tsDiffFlgReg_V_ap_vld : out STD_LOGIC;
-    yDiffFlgReg_V_ap_vld : out STD_LOGIC;
-    rotateInfoOutReg_V_ap_vld : out STD_LOGIC;
-    nonMonTSDiffFlgReg_V_ap_vld : out STD_LOGIC;
-    tsWrappedVal_V_ap_vld : out STD_LOGIC;
-    ap_clk : in STD_LOGIC;
-    ap_rst_n : in STD_LOGIC;
-    ap_start : in STD_LOGIC;
-    ap_done : out STD_LOGIC;
-    ap_idle : out STD_LOGIC;
-    ap_ready : out STD_LOGIC;
-    streamOut_V_V_TVALID : out STD_LOGIC;
-    streamOut_V_V_TREADY : in STD_LOGIC;
-    streamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    xStreamIn_V_V_TVALID : in STD_LOGIC;
-    xStreamIn_V_V_TREADY : out STD_LOGIC;
-    xStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamIn_V_V_TVALID : in STD_LOGIC;
-    yStreamIn_V_V_TREADY : out STD_LOGIC;
-    yStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsStreamIn_V_V_TVALID : in STD_LOGIC;
-    tsStreamIn_V_V_TREADY : out STD_LOGIC;
-    tsStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    polStreamIn_V_V_TVALID : in STD_LOGIC;
-    polStreamIn_V_V_TREADY : out STD_LOGIC;
-    polStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    custDataStreamIn_V_V_TVALID : in STD_LOGIC;
-    custDataStreamIn_V_V_TREADY : out STD_LOGIC;
-    custDataStreamIn_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    glLastTSReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    yReg_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    glLastYReg_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    tsDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
-    yDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
-    rotateInfoOutReg_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    nonMonTSDiffFlgReg_V : out STD_LOGIC_VECTOR ( 0 to 0 );
-    tsWrappedVal_V : out STD_LOGIC_VECTOR ( 11 downto 0 )
-  );
-  end component brd_XYTSStreamToRawStream_0_0;
   component brd_EVABMOFStreamWithCon_0_0 is
   port (
-    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 5 downto 0 );
     s_axi_config_AWVALID : in STD_LOGIC;
     s_axi_config_AWREADY : out STD_LOGIC;
     s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -4074,7 +4002,7 @@ architecture STRUCTURE of brd is
     s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_config_BVALID : out STD_LOGIC;
     s_axi_config_BREADY : in STD_LOGIC;
-    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 5 downto 0 );
     s_axi_config_ARVALID : in STD_LOGIC;
     s_axi_config_ARREADY : out STD_LOGIC;
     s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -4119,6 +4047,88 @@ architecture STRUCTURE of brd is
     pixelDataStream_V_V_TDATA : out STD_LOGIC_VECTOR ( 23 downto 0 )
   );
   end component brd_EVABMOFStreamWithCon_0_0;
+  component brd_eventStreamSwitch_0_0 is
+  port (
+    outputX_V_ap_vld : out STD_LOGIC;
+    outputY_V_ap_vld : out STD_LOGIC;
+    outputTs_V_ap_vld : out STD_LOGIC;
+    outputPol_V_ap_vld : out STD_LOGIC;
+    outputCor_V_ap_vld : out STD_LOGIC;
+    s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_AWVALID : in STD_LOGIC;
+    s_axi_config_AWREADY : out STD_LOGIC;
+    s_axi_config_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_config_WVALID : in STD_LOGIC;
+    s_axi_config_WREADY : out STD_LOGIC;
+    s_axi_config_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_BVALID : out STD_LOGIC;
+    s_axi_config_BREADY : in STD_LOGIC;
+    s_axi_config_ARADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s_axi_config_ARVALID : in STD_LOGIC;
+    s_axi_config_ARREADY : out STD_LOGIC;
+    s_axi_config_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_config_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_config_RVALID : out STD_LOGIC;
+    s_axi_config_RREADY : in STD_LOGIC;
+    ap_clk : in STD_LOGIC;
+    ap_rst_n : in STD_LOGIC;
+    ap_start : in STD_LOGIC;
+    ap_done : out STD_LOGIC;
+    ap_idle : out STD_LOGIC;
+    ap_ready : out STD_LOGIC;
+    xStreamIn0_V_V_TVALID : in STD_LOGIC;
+    xStreamIn0_V_V_TREADY : out STD_LOGIC;
+    xStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamIn0_V_V_TVALID : in STD_LOGIC;
+    yStreamIn0_V_V_TREADY : out STD_LOGIC;
+    yStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    polStreamIn0_V_V_TVALID : in STD_LOGIC;
+    polStreamIn0_V_V_TREADY : out STD_LOGIC;
+    polStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    tsStreamIn0_V_V_TVALID : in STD_LOGIC;
+    tsStreamIn0_V_V_TREADY : out STD_LOGIC;
+    tsStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    cornerStreamIn0_V_V_TVALID : in STD_LOGIC;
+    cornerStreamIn0_V_V_TREADY : out STD_LOGIC;
+    cornerStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    xStreamIn1_V_V_TVALID : in STD_LOGIC;
+    xStreamIn1_V_V_TREADY : out STD_LOGIC;
+    xStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamIn1_V_V_TVALID : in STD_LOGIC;
+    yStreamIn1_V_V_TREADY : out STD_LOGIC;
+    yStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    polStreamIn1_V_V_TVALID : in STD_LOGIC;
+    polStreamIn1_V_V_TREADY : out STD_LOGIC;
+    polStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    tsStreamIn1_V_V_TVALID : in STD_LOGIC;
+    tsStreamIn1_V_V_TREADY : out STD_LOGIC;
+    tsStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    cornerStreamIn1_V_V_TVALID : in STD_LOGIC;
+    cornerStreamIn1_V_V_TREADY : out STD_LOGIC;
+    cornerStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    xStreamOut_V_V_TVALID : out STD_LOGIC;
+    xStreamOut_V_V_TREADY : in STD_LOGIC;
+    xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamOut_V_V_TVALID : out STD_LOGIC;
+    yStreamOut_V_V_TREADY : in STD_LOGIC;
+    yStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamOut_V_V_TVALID : out STD_LOGIC;
+    tsStreamOut_V_V_TREADY : in STD_LOGIC;
+    tsStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamOut_V_V_TVALID : out STD_LOGIC;
+    polStreamOut_V_V_TREADY : in STD_LOGIC;
+    polStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    cornerStreamOut_V_V_TVALID : out STD_LOGIC;
+    cornerStreamOut_V_V_TREADY : in STD_LOGIC;
+    cornerStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    outputX_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    outputY_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    outputTs_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    outputPol_V : out STD_LOGIC_VECTOR ( 0 to 0 );
+    outputCor_V : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component brd_eventStreamSwitch_0_0;
   signal DVSAERData_AI_0_1 : STD_LOGIC_VECTOR ( 10 downto 0 );
   signal DVSAERReq_ABI_0_1 : STD_LOGIC;
   signal EVABMOFStreamWithCon_0_pixelDataStream_V_V_TDATA : STD_LOGIC_VECTOR ( 23 downto 0 );
@@ -4736,6 +4746,16 @@ architecture STRUCTURE of brd is
   signal NLW_eventStreamSwitch_0_ap_done_UNCONNECTED : STD_LOGIC;
   signal NLW_eventStreamSwitch_0_ap_idle_UNCONNECTED : STD_LOGIC;
   signal NLW_eventStreamSwitch_0_ap_ready_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventStreamSwitch_0_outputCor_V_ap_vld_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventStreamSwitch_0_outputPol_V_ap_vld_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventStreamSwitch_0_outputTs_V_ap_vld_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventStreamSwitch_0_outputX_V_ap_vld_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventStreamSwitch_0_outputY_V_ap_vld_UNCONNECTED : STD_LOGIC;
+  signal NLW_eventStreamSwitch_0_outputCor_V_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_eventStreamSwitch_0_outputPol_V_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_eventStreamSwitch_0_outputTs_V_UNCONNECTED : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal NLW_eventStreamSwitch_0_outputX_V_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_eventStreamSwitch_0_outputY_V_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_eventStreamToConstEn_0_ap_done_UNCONNECTED : STD_LOGIC;
   signal NLW_eventStreamToConstEn_0_ap_idle_UNCONNECTED : STD_LOGIC;
   signal NLW_eventStreamToConstEn_0_ap_ready_UNCONNECTED : STD_LOGIC;
@@ -4970,10 +4990,10 @@ EVABMOFStreamWithCon_0: component brd_EVABMOFStreamWithCon_0_0
       polStreamOut_V_V_TDATA(7 downto 0) => EVABMOFStreamWithCon_0_polStreamOut_V_V_TDATA(7 downto 0),
       polStreamOut_V_V_TREADY => EVABMOFStreamWithCon_0_polStreamOut_V_V_TREADY,
       polStreamOut_V_V_TVALID => EVABMOFStreamWithCon_0_polStreamOut_V_V_TVALID,
-      s_axi_config_ARADDR(4 downto 0) => ps7_0_axi_periph_M08_AXI_ARADDR(4 downto 0),
+      s_axi_config_ARADDR(5 downto 0) => ps7_0_axi_periph_M08_AXI_ARADDR(5 downto 0),
       s_axi_config_ARREADY => ps7_0_axi_periph_M08_AXI_ARREADY,
       s_axi_config_ARVALID => ps7_0_axi_periph_M08_AXI_ARVALID,
-      s_axi_config_AWADDR(4 downto 0) => ps7_0_axi_periph_M08_AXI_AWADDR(4 downto 0),
+      s_axi_config_AWADDR(5 downto 0) => ps7_0_axi_periph_M08_AXI_AWADDR(5 downto 0),
       s_axi_config_AWREADY => ps7_0_axi_periph_M08_AXI_AWREADY,
       s_axi_config_AWVALID => ps7_0_axi_periph_M08_AXI_AWVALID,
       s_axi_config_BREADY => ps7_0_axi_periph_M08_AXI_BREADY,
@@ -5558,6 +5578,16 @@ eventStreamSwitch_0: component brd_eventStreamSwitch_0_0
       cornerStreamOut_V_V_TDATA(7 downto 0) => eventStreamSwitch_0_cornerStreamOut_V_V_TDATA(7 downto 0),
       cornerStreamOut_V_V_TREADY => eventStreamSwitch_0_cornerStreamOut_V_V_TREADY,
       cornerStreamOut_V_V_TVALID => eventStreamSwitch_0_cornerStreamOut_V_V_TVALID,
+      outputCor_V(0) => NLW_eventStreamSwitch_0_outputCor_V_UNCONNECTED(0),
+      outputCor_V_ap_vld => NLW_eventStreamSwitch_0_outputCor_V_ap_vld_UNCONNECTED,
+      outputPol_V(0) => NLW_eventStreamSwitch_0_outputPol_V_UNCONNECTED(0),
+      outputPol_V_ap_vld => NLW_eventStreamSwitch_0_outputPol_V_ap_vld_UNCONNECTED,
+      outputTs_V(63 downto 0) => NLW_eventStreamSwitch_0_outputTs_V_UNCONNECTED(63 downto 0),
+      outputTs_V_ap_vld => NLW_eventStreamSwitch_0_outputTs_V_ap_vld_UNCONNECTED,
+      outputX_V(15 downto 0) => NLW_eventStreamSwitch_0_outputX_V_UNCONNECTED(15 downto 0),
+      outputX_V_ap_vld => NLW_eventStreamSwitch_0_outputX_V_ap_vld_UNCONNECTED,
+      outputY_V(15 downto 0) => NLW_eventStreamSwitch_0_outputY_V_UNCONNECTED(15 downto 0),
+      outputY_V_ap_vld => NLW_eventStreamSwitch_0_outputY_V_ap_vld_UNCONNECTED,
       polStreamIn0_V_V_TDATA(7 downto 0) => SFAST_process_data_0_polStreamOut_V_V_TDATA(7 downto 0),
       polStreamIn0_V_V_TREADY => SFAST_process_data_0_polStreamOut_V_V_TREADY,
       polStreamIn0_V_V_TVALID => SFAST_process_data_0_polStreamOut_V_V_TVALID,

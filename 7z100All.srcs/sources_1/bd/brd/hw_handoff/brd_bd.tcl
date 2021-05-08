@@ -199,6 +199,11 @@ proc create_root_design { parentCell } {
   # Create instance: EVABMOFStreamWithCon_0, and set properties
   set EVABMOFStreamWithCon_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:EVABMOFStreamWithControl:1.0 EVABMOFStreamWithCon_0 ]
 
+  set_property -dict [ list \
+   CONFIG.NUM_READ_OUTSTANDING {1} \
+   CONFIG.NUM_WRITE_OUTSTANDING {1} \
+ ] [get_bd_intf_pins /EVABMOFStreamWithCon_0/s_axi_config]
+
   # Create instance: EVMUXDataToXYTSStream_0, and set properties
   set EVMUXDataToXYTSStream_0 [ create_bd_cell -type ip -vlnv xilinx.com:hls:EVMUXDataToXYTSStream:1.0 EVMUXDataToXYTSStream_0 ]
 

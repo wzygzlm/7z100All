@@ -13,16 +13,24 @@
 // 0x10 : Data signal of config_V
 //        bit 31~0 - config_V[31:0] (Read/Write)
 // 0x14 : reserved
-// 0x18 : Data signal of status_V
-//        bit 31~0 - status_V[31:0] (Read)
-// 0x1c : Control signal of status_V
-//        bit 0  - status_V_ap_vld (Read/COR)
+// 0x18 : Data signal of status_currentDeltaTSHW
+//        bit 31~0 - status_currentDeltaTSHW[31:0] (Read)
+// 0x1c : Control signal of status_currentDeltaTSHW
+//        bit 0  - status_currentDeltaTSHW_ap_vld (Read/COR)
+//        others - reserved
+// 0x20 : Data signal of status_currentAreaCntThr
+//        bit 31~0 - status_currentAreaCntThr[31:0] (Read)
+// 0x24 : Control signal of status_currentAreaCntThr
+//        bit 0  - status_currentAreaCntThr_ap_vld (Read/COR)
 //        others - reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
-#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_CONFIG_V_DATA 0x10
-#define XEVABMOFSTREAMWITHCONTROL_CONFIG_BITS_CONFIG_V_DATA 32
-#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_V_DATA 0x18
-#define XEVABMOFSTREAMWITHCONTROL_CONFIG_BITS_STATUS_V_DATA 32
-#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_V_CTRL 0x1c
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_CONFIG_V_DATA                 0x10
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_BITS_CONFIG_V_DATA                 32
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTDELTATSHW_DATA  0x18
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_BITS_STATUS_CURRENTDELTATSHW_DATA  32
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTDELTATSHW_CTRL  0x1c
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTAREACNTTHR_DATA 0x20
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_BITS_STATUS_CURRENTAREACNTTHR_DATA 32
+#define XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTAREACNTTHR_CTRL 0x24
 

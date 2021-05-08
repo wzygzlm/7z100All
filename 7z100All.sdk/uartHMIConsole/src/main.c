@@ -344,12 +344,17 @@ int main(void)
 	printf("    'e' - Event rate info\r\n");
 	printf("    'f' - Reset max event rate\r\n");
 	printf("    'g' - Toggle ABMOF calc mode\r\n");
+	printf(" ## ABMOF status and configuration\n");
+	printf("    'i' - Show ABMOF area event cnt threshold\r\n");
+	printf("    'j' - Set ABMOF area event cnt threshold\r\n");
 	printf(" ## SFAST status and configuration\n");
-	printf("    'i' - Show corner event ration\r\n");
-	printf("    'j' - Reset max corner ratio\r\n");
-	printf("    'k' - Toggle SFAST output mode\r\n");
-	printf("    'l' - Show SFAST threshold\r\n");
-	printf("    'm' - Set SFAST threshold\r\n");
+	printf("    'l' - Show corner event ration\r\n");
+	printf("    'm' - Reset max corner ratio\r\n");
+	printf("    'n' - Toggle SFAST output mode\r\n");
+	printf("    'o' - Show SFAST threshold\r\n");
+	printf("    'p' - Set SFAST threshold\r\n");
+	printf("    'q' - Show SFAST area cnt threshold\r\n");
+	printf("    'r' - Set SFAST area cnt threshold\r\n");
 	printf(" ## Other options\n");
 	printf("     'h' - Show available keys\n");
 	printf("     'v' - Verbose Mode ON/OFF\n");
@@ -370,6 +375,19 @@ int main(void)
 
     float lastDeltaTs = 0.0;
 
+    int verboseMode = 0;
+
+    // For setting SFAST Threshold
+    u16 ToSetSFASTThrVal = 3;
+	int setSFASTThrEn = 0;
+
+    // For setting SFAST area event cnt Threshold
+    u16 ToSetSFASTAreaCntThrVal = 700;
+	int setSFASTAreaCntThrEn = 0;
+
+    // For setting ABMOF area cnt Threshold
+    u16 ToSetABMOFAreaCntThrVal = 700;
+	int setABMOFAreaCntThrEn = 0;
     while(1)
     {
     	currentRowNum = XEvmuxdatatoxytsstream_Get_status_rowNum(&evMuxToXYTS_inst);
@@ -413,16 +431,22 @@ int main(void)
 //    		printf("Got a rotate flag and deltaTs is: %lld\r\n", rotateInfo & ~(1ULL << 63));
 //    	}
 
-    	u32 statusABMOF = XEvabmofstreamwithcontrol_Get_status_V(&ABMOF_inst);
-    	float currentDeltaTs = (statusABMOF & 0xfff) * 0.5;
+    	u32 deltaTSHWABMOF = XEvabmofstreamwithcontrol_Get_status_currentDeltaTSHW(&ABMOF_inst);
+    	float currentDeltaTs = (deltaTSHWABMOF & 0xfff) * 0.5;
     	if(currentDeltaTs != lastDeltaTs)
     	{
     		lastDeltaTs = currentDeltaTs;
-    		if(currentDeltaTs >= 11.5)
+    		if(currentDeltaTs >= 11.5 && verboseMode == 1)
     		{
-//    			printf("DeltaTs(ms) from ABMOF is : %f\r\n", currentDeltaTs);
+    			printf("DeltaTs(ms) from ABMOF is : %f\r\n", currentDeltaTs);
     		}
     	}
+		u32 dumpSFASTThr = XSfast_process_data_Get_status_currentThreshold(&SFAST_inst);
+		if(verboseMode == 1)
+		{
+			printf("SFAST's threshold is : %f\r\n", dumpSFASTThr);
+		}
+
 //
 //        c = inbyte();
 //        if(c == '\r')
@@ -462,12 +486,17 @@ int main(void)
         		printf("    'e' - Event rate info\r\n");
         		printf("    'f' - Reset max event rate\r\n");
         		printf("    'g' - Toggle ABMOF calc mode\r\n");
+        		printf(" ## ABMOF status and configuration\n");
+        		printf("    'i' - Show ABMOF area event cnt threshold\r\n");
+        		printf("    'j' - Set ABMOF area event cnt threshold\r\n");
         		printf(" ## SFAST status and configuration\n");
-        		printf("    'i' - Show corner event ration\r\n");
-        		printf("    'j' - Reset max corner ratio\r\n");
-        		printf("    'k' - Toggle SFAST output mode\r\n");
-        		printf("    'l' - Show SFAST threshold\r\n");
-        		printf("    'm' - Set SFAST threshold\r\n");
+        		printf("    'l' - Show corner event ration\r\n");
+        		printf("    'm' - Reset max corner ratio\r\n");
+        		printf("    'n' - Toggle SFAST output mode\r\n");
+        		printf("    'o' - Show SFAST threshold\r\n");
+        		printf("    'p' - Set SFAST threshold\r\n");
+        		printf("    'q' - Show SFAST area cnt threshold\r\n");
+        		printf("    'r' - Set SFAST area cnt threshold\r\n");
         		printf(" ## Other options\n");
         		printf("     'h' - Show available keys\n");
         		printf("     'v' - Verbose Mode ON/OFF\n");
@@ -566,34 +595,92 @@ int main(void)
         		tmpConfig ^= 1UL << 1;
         		XEventstreamswitch_Set_config_V(&evSwitch_inst, tmpConfig);
         	}
-        	if((c == 'i') || (c == 'I'))   // show corner event ratio
+        	if((c == 'i') || (c == 'I'))   // show ABMOF area cnt threshold
+        	{
+    			printf("%c\n\r" , c);
+    			u32 ABMOFAreaCntCurrentThreshold = XEvabmofstreamwithcontrol_Get_status_currentAreaCntThr(&ABMOF_inst);
+        		printf("Current ABMOF area threshold is: %d\r\n", ABMOFAreaCntCurrentThreshold);
+        	}
+        	if((c == 'j') || (c == 'J'))   // show ABMOF and SFAST area cnt threshold
+        	{
+    			printf("%c\n\r" , c);
+        		u32 tmpConfigABMOF = XEvabmofstreamwithcontrol_Get_config_V(&ABMOF_inst);
+        		u32 tmpConfigSFAST = XSfast_process_data_Get_config_V(&SFAST_inst);
+
+        		printf("Set new area event cnt threshold for ABMOF. Please input 4 numbers. "
+        				"For number smaller than 1000, pad 0 at the beginning.\r\n");
+        		char commandChar0 = inbyte();
+        		char commandChar1 = inbyte();
+        		char commandChar2 = inbyte();
+        		char commandChar3 = inbyte();
+				if(commandChar0 >= '0' && commandChar0 <= '9'
+						&& commandChar1 >= '0' && commandChar1 <= '9'
+						&& commandChar2 >= '0' && commandChar2 <= '9'
+						&& commandChar3 >= '0' && commandChar3 <= '9')
+				{
+					commandChar0 = commandChar0 - '0';
+					commandChar1 = commandChar1 - '0';
+					commandChar2 = commandChar2 - '0';
+					commandChar3 = commandChar3 - '0';
+				}
+				else
+				{
+    	        	printf("Value not supported.\r\nType your command: \n\r");
+    				continue;
+				}
+				u16 commandVal = (commandChar0 * 1000) + (commandChar1 * 100) + (commandChar2 * 10) + commandChar3;
+				printf("New threshold: %d\n\r" , commandVal);
+
+				char low8BitsSFAST = tmpConfigSFAST & 0xff;
+				low8BitsSFAST |= 0x08;      // set bit 2 to 1 so the threshold will use external config
+				u32 new24BitsSFAST = ((u32)commandVal << 8) + low8BitsSFAST;
+        		tmpConfigSFAST = ((tmpConfigSFAST >> 24) << 24) + new24BitsSFAST;
+        		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfigSFAST); // Enable the config bit and send the config value
+           		for(int i = 0; i< 1000; i++);   // Delay some time for config big to make sure HW capture it.
+        		tmpConfigSFAST &= ~0x08;
+        		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfigSFAST); // Clear the config bit
+
+				char low8BitsABMOF = tmpConfigABMOF & 0xff;
+				low8BitsABMOF |= 0x01;      // set bit 0 to 1 so the ABMOF threshold will use external config
+				u32 new24BitsABMOF = ((u32)commandVal << 8) + low8BitsABMOF;
+        		tmpConfigABMOF = ((tmpConfigABMOF >> 24) << 24) + new24BitsABMOF;
+        		XEvabmofstreamwithcontrol_Set_config_V(&ABMOF_inst, tmpConfigABMOF); // Enable the config bit and send the config value
+           		for(int i = 0; i< 1000; i++);  // Delay some time for config big to make sure HW capture it.
+        		tmpConfigABMOF &= ~0x01;
+        		XEvabmofstreamwithcontrol_Set_config_V(&ABMOF_inst, tmpConfigABMOF); // Clear the config bit
+
+        		ToSetABMOFAreaCntThrVal = commandVal;
+        		setABMOFAreaCntThrEn = 1;
+        		ToSetSFASTAreaCntThrVal = commandVal;
+        		setSFASTAreaCntThrEn = 1;
+        	}
+        	if((c == 'l') || (c == 'L'))   // show corner event ratio
         	{
     			printf("%c\n\r" , c);
         		printf("Current corner ratio is: %f\r\n", cornerRatio);
         		printf("Current max corner ratio is: %f\r\n", maxCornerRatio);
         	}
-        	if((c == 'j') || (c == 'J'))   // reset max corner ratio
+        	if((c == 'm') || (c == 'M'))   // reset max corner ratio
         	{
     			printf("%c\n\r" , c);
         		maxCornerRatio = 0.0;
         	}
-        	if((c == 'k') || (c == 'K'))   // toggle SFAST output all or only corner events
+        	if((c == 'n') || (c == 'N'))   // toggle SFAST output all or only corner events
         	{
     			printf("%c\n\r" , c);
         		u32 tmpConfig = XSfast_process_data_Get_config_V(&SFAST_inst);
         		tmpConfig ^= 1UL << 1;
         		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig);
         	}
-        	if((c == 'l') || (c == 'L'))   // show SFAST threshold
+        	if((c == 'o') || (c == 'O'))   // show SFAST threshold
         	{
     			printf("%c\n\r" , c);
     			u32 SFASTCurrentThreshold = XSfast_process_data_Get_status_currentThreshold(&SFAST_inst);
         		printf("Current SFAST threshold is: %d\r\n", SFASTCurrentThreshold);
         	}
-        	if((c == 'm') || (c == 'M'))   // show corner event ratio
+        	if((c == 'p') || (c == 'P'))   // set SFAST threshold
         	{
     			printf("%c\n\r" , c);
-        		u32 tmpConfig = XSfast_process_data_Get_config_V(&SFAST_inst);
         		printf("Set new threshold in HEX, range from 0x0 - 0xf. \r\n");
         		char commandChar = inbyte();
 				printf("New threshold: %c\n\r" , commandChar);
@@ -610,16 +697,68 @@ int main(void)
     	        	printf("Value not supported.\r\nType your command: \n\r");
     				continue;
 				}
-				char low8Bits = tmpConfig & 0xff;
-				low8Bits |= 0x04;      // set bit 2 to 1 so the threshold will use external config
-				u16 new16Bits = ((u16)commandChar << 8) + low8Bits;
-        		tmpConfig = ((tmpConfig >> 16) << 16) + new16Bits;
-        		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig);
-        	}
 
+				ToSetSFASTThrVal = commandChar;
+				setSFASTThrEn = 1;
+        	}
+        	if((c == 'q') || (c == 'Q'))   // show SFAST area cnt threshold
+        	{
+    			printf("%c\n\r" , c);
+    			u32 SFASTAreaCntCurrentThreshold = XSfast_process_data_Get_status_currentAreaCntThr(&SFAST_inst);
+        		printf("Current SFAST area cnt threshold is: %d\r\n", SFASTAreaCntCurrentThreshold);
+        	}
+        	if((c == 'v') || (c == 'V'))   // show SFAST area cnt threshold
+        	{
+    			printf("%c\n\r" , c);
+        		if(verboseMode == 0)
+        		{
+        			verboseMode = 1;
+        			printf("Verbose Mode on.\r\n");
+        		}
+        		else
+        		{
+        			verboseMode = 0;
+        			printf("Verbose Mode off.\r\n");
+        		}
+        	}
         	printf("Type your command: \n\r");
     	}
 
+    	// set SFAST threshold
+		u32 tmpConfig;
+        if(setSFASTThrEn == 1)
+        {
+        	tmpConfig = XSfast_process_data_Get_config_V(&SFAST_inst);
+    		char low8Bits = tmpConfig & 0xff;
+    		low8Bits |= 0x04;      // set bit 2 to 1 to set SFAST threshold
+    		u16 new16Bits = ((u16)ToSetSFASTThrVal << 8) + low8Bits;
+    		tmpConfig = ((tmpConfig >> 16) << 16) + new16Bits;
+    		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig); // Enable the config bit and send the value
+        }
+
+        // set SFAST area event cnt
+		u32 tmpConfigSFAST;
+        if(setSFASTAreaCntThrEn == 1)
+        {
+        	tmpConfigSFAST = XSfast_process_data_Get_config_V(&SFAST_inst);
+			char low8BitsSFAST = tmpConfigSFAST & 0xff;
+			low8BitsSFAST |= 0x08;      // set bit 2 to 1 so the threshold will use external config
+			u32 new24BitsSFAST = ((u32)ToSetSFASTAreaCntThrVal << 8) + low8BitsSFAST;
+    		tmpConfigSFAST = ((tmpConfigSFAST >> 24) << 24) + new24BitsSFAST;
+    		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfigSFAST); // Enable the config bit and send the config value
+        }
+
+        // set ABMOF area event cnt
+		u32 tmpConfigABMOF;
+        if(setABMOFAreaCntThrEn == 1)
+        {
+        	tmpConfigABMOF = XEvabmofstreamwithcontrol_Get_config_V(&ABMOF_inst);
+			char low8BitsABMOF = tmpConfigABMOF & 0xff;
+			low8BitsABMOF |= 0x01;      // set bit 0 to 1 so the ABMOF threshold will use external config
+			u32 new24BitsABMOF = ((u32)ToSetABMOFAreaCntThrVal << 8) + low8BitsABMOF;
+    		tmpConfigABMOF = ((tmpConfigABMOF >> 24) << 24) + new24BitsABMOF;
+    		XEvabmofstreamwithcontrol_Set_config_V(&ABMOF_inst, tmpConfigABMOF); // Enable the config bit and send the config value
+        }
 
     	int bytesToRead;
         if(dataReadOut < eventsReadNumPerTime * 8)
@@ -651,8 +790,30 @@ int main(void)
         	XEventsgeneratorviafile_Set_input_V_vld(&EGVF);
         }
         SD_Transfer_read(fileName,offset,(u32)picture1,eventsReadNumPerTime * 8, &dataReadOut);
-    }
 
+        // Configuration can only be valid after events have been sent to those IPs.
+        // Now we can disable the corresponding bits.
+        if(setSFASTThrEn == 1)
+        {
+        	tmpConfig &= ~0x04;
+        	XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfig); // Clear the config bit
+        	setSFASTThrEn = 0;
+        }
+
+        if(setSFASTAreaCntThrEn == 1)
+        {
+    		tmpConfigSFAST &= ~0x08;
+    		XSfast_process_data_Set_config_V(&SFAST_inst, tmpConfigSFAST); // Clear the config bit
+    		setSFASTAreaCntThrEn = 0;
+        }
+
+        if(setABMOFAreaCntThrEn == 1)
+        {
+    		tmpConfigABMOF &= ~0x01;
+    		XEvabmofstreamwithcontrol_Set_config_V(&ABMOF_inst, tmpConfigABMOF); // Clear the config bit
+    		setABMOFAreaCntThrEn = 0;
+        }
+    }
 
     return 0;
 }

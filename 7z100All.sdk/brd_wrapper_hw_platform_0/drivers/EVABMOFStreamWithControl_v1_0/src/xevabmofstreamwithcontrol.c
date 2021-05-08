@@ -38,23 +38,43 @@ u32 XEvabmofstreamwithcontrol_Get_config_V(XEvabmofstreamwithcontrol *InstancePt
     return Data;
 }
 
-u32 XEvabmofstreamwithcontrol_Get_status_V(XEvabmofstreamwithcontrol *InstancePtr) {
+u32 XEvabmofstreamwithcontrol_Get_status_currentDeltaTSHW(XEvabmofstreamwithcontrol *InstancePtr) {
     u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_V_DATA);
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTDELTATSHW_DATA);
     return Data;
 }
 
-u32 XEvabmofstreamwithcontrol_Get_status_V_vld(XEvabmofstreamwithcontrol *InstancePtr) {
+u32 XEvabmofstreamwithcontrol_Get_status_currentDeltaTSHW_vld(XEvabmofstreamwithcontrol *InstancePtr) {
     u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_V_CTRL);
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTDELTATSHW_CTRL);
+    return Data & 0x1;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentAreaCntThr(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTAREACNTTHR_DATA);
+    return Data;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentAreaCntThr_vld(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTAREACNTTHR_CTRL);
     return Data & 0x1;
 }
 
