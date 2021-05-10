@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="tmpConfigABMOF" key="selection"/>
+		<item value="Configure Failed" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Configure Failed"/>
+			<item value="Configure"/>
+			<item value="PreferencesListSetup"/>
+			<item value="dvsSPIInit"/>
+			<item value="REG_READ"/>
 			<item value="tmpConfigABMOF"/>
 			<item value="XYTS"/>
 			<item value="boolean"/>
-			<item value="Bool"/>
-			<item value="bool"/>
-			<item value="switch"/>
-			<item value="MUX"/>
-			<item value="get_ldnumber"/>
 		</list>
 		<list key="replacehistory">
 		</list>

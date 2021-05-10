@@ -78,3 +78,83 @@ u32 XEvabmofstreamwithcontrol_Get_status_currentAreaCntThr_vld(XEvabmofstreamwit
     return Data & 0x1;
 }
 
+u32 XEvabmofstreamwithcontrol_Get_status_currentFeedbackAreaCntThr(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTFEEDBACKAREACNTTHR_DATA);
+    return Data;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentFeedbackAreaCntThr_vld(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTFEEDBACKAREACNTTHR_CTRL);
+    return Data & 0x1;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentOFHistCntSum(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTOFHISTCNTSUM_DATA);
+    return Data;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentOFHistCntSum_vld(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTOFHISTCNTSUM_CTRL);
+    return Data & 0x1;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentOFHistRadiusSum(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTOFHISTRADIUSSUM_DATA);
+    return Data;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentOFHistRadiusSum_vld(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTOFHISTRADIUSSUM_CTRL);
+    return Data & 0x1;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentAverageTgtValue(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTAVERAGETGTVALUE_DATA);
+    return Data;
+}
+
+u32 XEvabmofstreamwithcontrol_Get_status_currentAverageTgtValue_vld(XEvabmofstreamwithcontrol *InstancePtr) {
+    u32 Data;
+
+    Xil_AssertNonvoid(InstancePtr != NULL);
+    Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+    Data = XEvabmofstreamwithcontrol_ReadReg(InstancePtr->Config_BaseAddress, XEVABMOFSTREAMWITHCONTROL_CONFIG_ADDR_STATUS_CURRENTAVERAGETGTVALUE_CTRL);
+    return Data & 0x1;
+}
+

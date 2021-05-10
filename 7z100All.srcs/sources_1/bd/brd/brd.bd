@@ -1447,6 +1447,15 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
+        <spirit:instanceName>dummyData</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="xlconstant" spirit:vendor="xilinx.com" spirit:version="1.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_xlconstant_1_2</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CONST_WIDTH">8</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CONST_VAL">0xff</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
         <spirit:instanceName>SFAST_process_data_0</spirit:instanceName>
         <spirit:componentRef spirit:library="hls" spirit:name="SFAST_process_data" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
@@ -1454,17 +1463,17 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>EVABMOFStreamWithCon_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="hls" spirit:name="EVABMOFStreamWithControl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_EVABMOFStreamWithCon_0_0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>eventStreamSwitch_0</spirit:instanceName>
         <spirit:componentRef spirit:library="hls" spirit:name="eventStreamSwitch" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_eventStreamSwitch_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>EVABMOFStreamWithCon_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="hls" spirit:name="EVABMOFStreamWithControl" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">brd_EVABMOFStreamWithCon_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -1538,31 +1547,6 @@
         <spirit:name>ps7_0_axi_periph_M04_AXI</spirit:name>
         <spirit:activeInterface spirit:busRef="M04_AXI" spirit:componentRef="ps7_0_axi_periph"/>
         <spirit:activeInterface spirit:busRef="s_axi_config" spirit:componentRef="eventsGeneratorViaFi_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>SFAST_process_data_0_xStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="xStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
-        <spirit:activeInterface spirit:busRef="xStreamIn0_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>SFAST_process_data_0_yStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="yStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
-        <spirit:activeInterface spirit:busRef="yStreamIn0_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>SFAST_process_data_0_tsStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="tsStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
-        <spirit:activeInterface spirit:busRef="tsStreamIn0_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>SFAST_process_data_0_polStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="polStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
-        <spirit:activeInterface spirit:busRef="polStreamIn0_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>SFAST_process_data_0_isFinalCornerStream_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="isFinalCornerStream_V_V" spirit:componentRef="SFAST_process_data_0"/>
-        <spirit:activeInterface spirit:busRef="cornerStreamIn0_V_V" spirit:componentRef="eventStreamSwitch_0"/>
       </spirit:interconnection>
       <spirit:interconnection>
         <spirit:name>ps7_0_axi_periph_M05_AXI</spirit:name>
@@ -1639,31 +1623,6 @@
         <spirit:activeInterface spirit:busRef="s_axi_config" spirit:componentRef="EVABMOFStreamWithCon_0"/>
       </spirit:interconnection>
       <spirit:interconnection>
-        <spirit:name>eventStreamSwitch_0_xStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="xStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-        <spirit:activeInterface spirit:busRef="xStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>eventStreamSwitch_0_yStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="yStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-        <spirit:activeInterface spirit:busRef="yStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>eventStreamSwitch_0_tsStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="tsStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-        <spirit:activeInterface spirit:busRef="tsStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>eventStreamSwitch_0_polStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="polStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-        <spirit:activeInterface spirit:busRef="polStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
-        <spirit:name>eventStreamSwitch_0_cornerStreamOut_V_V</spirit:name>
-        <spirit:activeInterface spirit:busRef="cornerStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
-        <spirit:activeInterface spirit:busRef="controlStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
-      </spirit:interconnection>
-      <spirit:interconnection>
         <spirit:name>EVABMOFStreamWithCon_0_xStreamOut_V_V</spirit:name>
         <spirit:activeInterface spirit:busRef="xStreamOut_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
         <spirit:activeInterface spirit:busRef="xStreamIn_V_V" spirit:componentRef="eventStreamDuplicate_0"/>
@@ -1712,6 +1671,51 @@
         <spirit:name>eventsGeneratorViaFi_0_custDataStreamOut_V_V</spirit:name>
         <spirit:activeInterface spirit:busRef="custDataStreamOut_V_V" spirit:componentRef="eventsGeneratorViaFi_0"/>
         <spirit:activeInterface spirit:busRef="cornerStreamIn1_V_V" spirit:componentRef="eventStreamSwitch_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>eventStreamSwitch_0_xStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="xStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
+        <spirit:activeInterface spirit:busRef="xStreamIn_V_V" spirit:componentRef="SFAST_process_data_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>eventStreamSwitch_0_yStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="yStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
+        <spirit:activeInterface spirit:busRef="yStreamIn_V_V" spirit:componentRef="SFAST_process_data_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>eventStreamSwitch_0_tsStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="tsStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
+        <spirit:activeInterface spirit:busRef="tsStreamIn_V_V" spirit:componentRef="SFAST_process_data_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>eventStreamSwitch_0_polStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="polStreamOut_V_V" spirit:componentRef="eventStreamSwitch_0"/>
+        <spirit:activeInterface spirit:busRef="polStreamIn_V_V" spirit:componentRef="SFAST_process_data_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>SFAST_process_data_0_xStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="xStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
+        <spirit:activeInterface spirit:busRef="xStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>SFAST_process_data_0_yStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="yStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
+        <spirit:activeInterface spirit:busRef="yStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>SFAST_process_data_0_tsStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="tsStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
+        <spirit:activeInterface spirit:busRef="tsStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>SFAST_process_data_0_polStreamOut_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="polStreamOut_V_V" spirit:componentRef="SFAST_process_data_0"/>
+        <spirit:activeInterface spirit:busRef="polStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
+      </spirit:interconnection>
+      <spirit:interconnection>
+        <spirit:name>SFAST_process_data_0_isFinalCornerStream_V_V</spirit:name>
+        <spirit:activeInterface spirit:busRef="isFinalCornerStream_V_V" spirit:componentRef="SFAST_process_data_0"/>
+        <spirit:activeInterface spirit:busRef="controlStreamIn_V_V" spirit:componentRef="EVABMOFStreamWithCon_0"/>
       </spirit:interconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
@@ -1787,8 +1791,8 @@
         <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_start"/>
-        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_start"/>
         <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_start"/>
+        <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_start"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_0_peripheral_aresetn</spirit:name>
@@ -1806,6 +1810,8 @@
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="resetn"/>
         <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_rst_n"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M01_ARESETN"/>
@@ -1816,9 +1822,7 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M06_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M07_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M08_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_rst_n"/>
         <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_rst_n"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_rst_n"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_1_peripheral_aresetn</spirit:name>
@@ -1859,6 +1863,8 @@
         <spirit:internalPortReference spirit:componentRef="system_ila_0" spirit:portRef="clk"/>
         <spirit:internalPortReference spirit:componentRef="eventsGeneratorViaFi_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="XYTSStreamToRawStream_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_clk"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1870,9 +1876,7 @@
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M06_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M07_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M08_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="ap_clk"/>
         <spirit:internalPortReference spirit:componentRef="EVABMOFStreamWithCon_0" spirit:portRef="ap_clk"/>
-        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="ap_clk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>processing_system7_0_FCLK_CLK1</spirit:name>
@@ -2339,7 +2343,7 @@
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>EVFastCornerStream_0_xStreamIn_V_V_TREADY</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="xStreamIn_V_V_TREADY"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="xStreamIn0_V_V_TREADY"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_1" spirit:portRef="rd_en"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_2" spirit:portRef="rd_en"/>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_3" spirit:portRef="rd_en"/>
@@ -2349,7 +2353,7 @@
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_1_dout</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_1" spirit:portRef="dout"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="xStreamIn_V_V_TDATA"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="xStreamIn0_V_V_TDATA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_1_empty</spirit:name>
@@ -2359,25 +2363,26 @@
       <spirit:adHocConnection>
         <spirit:name>c_addsub_0_S</spirit:name>
         <spirit:internalPortReference spirit:componentRef="c_addsub_0" spirit:portRef="S"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="xStreamIn_V_V_TVALID"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="yStreamIn_V_V_TVALID"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="tsStreamIn_V_V_TVALID"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="polStreamIn_V_V_TVALID"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="xStreamIn0_V_V_TVALID"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="yStreamIn0_V_V_TVALID"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="polStreamIn0_V_V_TVALID"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="tsStreamIn0_V_V_TVALID"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="cornerStreamIn0_V_V_TVALID"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_2_dout</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_2" spirit:portRef="dout"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="yStreamIn_V_V_TDATA"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="yStreamIn0_V_V_TDATA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_3_dout</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_3" spirit:portRef="dout"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="tsStreamIn_V_V_TDATA"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="tsStreamIn0_V_V_TDATA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_4_dout</spirit:name>
         <spirit:internalPortReference spirit:componentRef="fifo_generator_4" spirit:portRef="dout"/>
-        <spirit:internalPortReference spirit:componentRef="SFAST_process_data_0" spirit:portRef="polStreamIn_V_V_TDATA"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="polStreamIn0_V_V_TDATA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>fifo_generator_1_almost_full</spirit:name>
@@ -2426,6 +2431,11 @@
           <bd:hdl_attribute bd:name="DEBUG" bd:value="true"/>
           <bd:hdl_attribute bd:name="MARK_DEBUG" bd:value="true"/>
         </bd:hdl_attributes>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>xlconstant_1_dout1</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="dummyData" spirit:portRef="dout"/>
+        <spirit:internalPortReference spirit:componentRef="eventStreamSwitch_0" spirit:portRef="cornerStreamIn0_V_V_TDATA"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>

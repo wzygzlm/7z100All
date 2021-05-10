@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.1 (win64) Build 2188600 Wed Apr  4 18:40:38 MDT 2018
--- Date        : Sat May  8 13:19:11 2021
+-- Date        : Sat May  8 18:58:53 2021
 -- Host        : DESKTOP-MC69HMJ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               E:/PhD_project/vivado_prjs/davisZynq/7z100All/7z100All.srcs/sources_1/bd/brd/ip/brd_eventStreamSwitch_0_0/brd_eventStreamSwitch_0_0_stub.vhdl
@@ -14,11 +14,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity brd_eventStreamSwitch_0_0 is
   Port ( 
-    outputX_V_ap_vld : out STD_LOGIC;
-    outputY_V_ap_vld : out STD_LOGIC;
-    outputTs_V_ap_vld : out STD_LOGIC;
-    outputPol_V_ap_vld : out STD_LOGIC;
-    outputCor_V_ap_vld : out STD_LOGIC;
     s_axi_config_AWADDR : in STD_LOGIC_VECTOR ( 4 downto 0 );
     s_axi_config_AWVALID : in STD_LOGIC;
     s_axi_config_AWREADY : out STD_LOGIC;
@@ -42,36 +37,6 @@ entity brd_eventStreamSwitch_0_0 is
     ap_done : out STD_LOGIC;
     ap_idle : out STD_LOGIC;
     ap_ready : out STD_LOGIC;
-    xStreamIn0_V_V_TVALID : in STD_LOGIC;
-    xStreamIn0_V_V_TREADY : out STD_LOGIC;
-    xStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamIn0_V_V_TVALID : in STD_LOGIC;
-    yStreamIn0_V_V_TREADY : out STD_LOGIC;
-    yStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    polStreamIn0_V_V_TVALID : in STD_LOGIC;
-    polStreamIn0_V_V_TREADY : out STD_LOGIC;
-    polStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    tsStreamIn0_V_V_TVALID : in STD_LOGIC;
-    tsStreamIn0_V_V_TREADY : out STD_LOGIC;
-    tsStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    cornerStreamIn0_V_V_TVALID : in STD_LOGIC;
-    cornerStreamIn0_V_V_TREADY : out STD_LOGIC;
-    cornerStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    xStreamIn1_V_V_TVALID : in STD_LOGIC;
-    xStreamIn1_V_V_TREADY : out STD_LOGIC;
-    xStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    yStreamIn1_V_V_TVALID : in STD_LOGIC;
-    yStreamIn1_V_V_TREADY : out STD_LOGIC;
-    yStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    polStreamIn1_V_V_TVALID : in STD_LOGIC;
-    polStreamIn1_V_V_TREADY : out STD_LOGIC;
-    polStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    tsStreamIn1_V_V_TVALID : in STD_LOGIC;
-    tsStreamIn1_V_V_TREADY : out STD_LOGIC;
-    tsStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    cornerStreamIn1_V_V_TVALID : in STD_LOGIC;
-    cornerStreamIn1_V_V_TREADY : out STD_LOGIC;
-    cornerStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
     xStreamOut_V_V_TVALID : out STD_LOGIC;
     xStreamOut_V_V_TREADY : in STD_LOGIC;
     xStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -87,11 +52,36 @@ entity brd_eventStreamSwitch_0_0 is
     cornerStreamOut_V_V_TVALID : out STD_LOGIC;
     cornerStreamOut_V_V_TREADY : in STD_LOGIC;
     cornerStreamOut_V_V_TDATA : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    outputX_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    outputY_V : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    outputTs_V : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    outputPol_V : out STD_LOGIC_VECTOR ( 0 to 0 );
-    outputCor_V : out STD_LOGIC_VECTOR ( 0 to 0 )
+    xStreamIn0_V_V_TVALID : in STD_LOGIC;
+    xStreamIn0_V_V_TREADY : out STD_LOGIC;
+    xStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamIn0_V_V_TVALID : in STD_LOGIC;
+    yStreamIn0_V_V_TREADY : out STD_LOGIC;
+    yStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamIn0_V_V_TVALID : in STD_LOGIC;
+    tsStreamIn0_V_V_TREADY : out STD_LOGIC;
+    tsStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamIn0_V_V_TVALID : in STD_LOGIC;
+    polStreamIn0_V_V_TREADY : out STD_LOGIC;
+    polStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    cornerStreamIn0_V_V_TVALID : in STD_LOGIC;
+    cornerStreamIn0_V_V_TREADY : out STD_LOGIC;
+    cornerStreamIn0_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    xStreamIn1_V_V_TVALID : in STD_LOGIC;
+    xStreamIn1_V_V_TREADY : out STD_LOGIC;
+    xStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    yStreamIn1_V_V_TVALID : in STD_LOGIC;
+    yStreamIn1_V_V_TREADY : out STD_LOGIC;
+    yStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    tsStreamIn1_V_V_TVALID : in STD_LOGIC;
+    tsStreamIn1_V_V_TREADY : out STD_LOGIC;
+    tsStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    polStreamIn1_V_V_TVALID : in STD_LOGIC;
+    polStreamIn1_V_V_TREADY : out STD_LOGIC;
+    polStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    cornerStreamIn1_V_V_TVALID : in STD_LOGIC;
+    cornerStreamIn1_V_V_TREADY : out STD_LOGIC;
+    cornerStreamIn1_V_V_TDATA : in STD_LOGIC_VECTOR ( 7 downto 0 )
   );
 
 end brd_eventStreamSwitch_0_0;
@@ -100,7 +90,7 @@ architecture stub of brd_eventStreamSwitch_0_0 is
 attribute syn_black_box : boolean;
 attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
-attribute black_box_pad_pin of stub : architecture is "outputX_V_ap_vld,outputY_V_ap_vld,outputTs_V_ap_vld,outputPol_V_ap_vld,outputCor_V_ap_vld,s_axi_config_AWADDR[4:0],s_axi_config_AWVALID,s_axi_config_AWREADY,s_axi_config_WDATA[31:0],s_axi_config_WSTRB[3:0],s_axi_config_WVALID,s_axi_config_WREADY,s_axi_config_BRESP[1:0],s_axi_config_BVALID,s_axi_config_BREADY,s_axi_config_ARADDR[4:0],s_axi_config_ARVALID,s_axi_config_ARREADY,s_axi_config_RDATA[31:0],s_axi_config_RRESP[1:0],s_axi_config_RVALID,s_axi_config_RREADY,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,xStreamIn0_V_V_TVALID,xStreamIn0_V_V_TREADY,xStreamIn0_V_V_TDATA[15:0],yStreamIn0_V_V_TVALID,yStreamIn0_V_V_TREADY,yStreamIn0_V_V_TDATA[15:0],polStreamIn0_V_V_TVALID,polStreamIn0_V_V_TREADY,polStreamIn0_V_V_TDATA[7:0],tsStreamIn0_V_V_TVALID,tsStreamIn0_V_V_TREADY,tsStreamIn0_V_V_TDATA[63:0],cornerStreamIn0_V_V_TVALID,cornerStreamIn0_V_V_TREADY,cornerStreamIn0_V_V_TDATA[7:0],xStreamIn1_V_V_TVALID,xStreamIn1_V_V_TREADY,xStreamIn1_V_V_TDATA[15:0],yStreamIn1_V_V_TVALID,yStreamIn1_V_V_TREADY,yStreamIn1_V_V_TDATA[15:0],polStreamIn1_V_V_TVALID,polStreamIn1_V_V_TREADY,polStreamIn1_V_V_TDATA[7:0],tsStreamIn1_V_V_TVALID,tsStreamIn1_V_V_TREADY,tsStreamIn1_V_V_TDATA[63:0],cornerStreamIn1_V_V_TVALID,cornerStreamIn1_V_V_TREADY,cornerStreamIn1_V_V_TDATA[7:0],xStreamOut_V_V_TVALID,xStreamOut_V_V_TREADY,xStreamOut_V_V_TDATA[15:0],yStreamOut_V_V_TVALID,yStreamOut_V_V_TREADY,yStreamOut_V_V_TDATA[15:0],tsStreamOut_V_V_TVALID,tsStreamOut_V_V_TREADY,tsStreamOut_V_V_TDATA[63:0],polStreamOut_V_V_TVALID,polStreamOut_V_V_TREADY,polStreamOut_V_V_TDATA[7:0],cornerStreamOut_V_V_TVALID,cornerStreamOut_V_V_TREADY,cornerStreamOut_V_V_TDATA[7:0],outputX_V[15:0],outputY_V[15:0],outputTs_V[63:0],outputPol_V[0:0],outputCor_V[0:0]";
+attribute black_box_pad_pin of stub : architecture is "s_axi_config_AWADDR[4:0],s_axi_config_AWVALID,s_axi_config_AWREADY,s_axi_config_WDATA[31:0],s_axi_config_WSTRB[3:0],s_axi_config_WVALID,s_axi_config_WREADY,s_axi_config_BRESP[1:0],s_axi_config_BVALID,s_axi_config_BREADY,s_axi_config_ARADDR[4:0],s_axi_config_ARVALID,s_axi_config_ARREADY,s_axi_config_RDATA[31:0],s_axi_config_RRESP[1:0],s_axi_config_RVALID,s_axi_config_RREADY,ap_clk,ap_rst_n,ap_start,ap_done,ap_idle,ap_ready,xStreamOut_V_V_TVALID,xStreamOut_V_V_TREADY,xStreamOut_V_V_TDATA[15:0],yStreamOut_V_V_TVALID,yStreamOut_V_V_TREADY,yStreamOut_V_V_TDATA[15:0],tsStreamOut_V_V_TVALID,tsStreamOut_V_V_TREADY,tsStreamOut_V_V_TDATA[63:0],polStreamOut_V_V_TVALID,polStreamOut_V_V_TREADY,polStreamOut_V_V_TDATA[7:0],cornerStreamOut_V_V_TVALID,cornerStreamOut_V_V_TREADY,cornerStreamOut_V_V_TDATA[7:0],xStreamIn0_V_V_TVALID,xStreamIn0_V_V_TREADY,xStreamIn0_V_V_TDATA[15:0],yStreamIn0_V_V_TVALID,yStreamIn0_V_V_TREADY,yStreamIn0_V_V_TDATA[15:0],tsStreamIn0_V_V_TVALID,tsStreamIn0_V_V_TREADY,tsStreamIn0_V_V_TDATA[63:0],polStreamIn0_V_V_TVALID,polStreamIn0_V_V_TREADY,polStreamIn0_V_V_TDATA[7:0],cornerStreamIn0_V_V_TVALID,cornerStreamIn0_V_V_TREADY,cornerStreamIn0_V_V_TDATA[7:0],xStreamIn1_V_V_TVALID,xStreamIn1_V_V_TREADY,xStreamIn1_V_V_TDATA[15:0],yStreamIn1_V_V_TVALID,yStreamIn1_V_V_TREADY,yStreamIn1_V_V_TDATA[15:0],tsStreamIn1_V_V_TVALID,tsStreamIn1_V_V_TREADY,tsStreamIn1_V_V_TDATA[63:0],polStreamIn1_V_V_TVALID,polStreamIn1_V_V_TREADY,polStreamIn1_V_V_TDATA[7:0],cornerStreamIn1_V_V_TVALID,cornerStreamIn1_V_V_TREADY,cornerStreamIn1_V_V_TDATA[7:0]";
 attribute x_core_info : string;
 attribute x_core_info of stub : architecture is "eventStreamSwitch,Vivado 2018.1";
 begin
