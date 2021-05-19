@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:EVABMOFStreamWithControl:1.0
--- IP Revision: 2105101658
+-- IP Revision: 2105182224
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

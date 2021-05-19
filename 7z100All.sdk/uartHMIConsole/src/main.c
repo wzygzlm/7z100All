@@ -383,6 +383,10 @@ int main(void)
 	printf("    'r' - Show SFAST threshold\r\n");
 	printf("    's' - Set SFAST threshold\r\n");
 	printf("    't' - Show SFAST area cnt threshold\r\n");
+	printf(" ## SD card files configuration\n");
+	printf("    'u' - Show current event number per packet\r\n");
+	printf("    'w' - Set current event number per packet\r\n");
+	printf("    'x' - Change file on the sd card to be sent\r\n");
 	printf(" ## Other options\n");
 	printf("     'h' - Show available keys\n");
 	printf("     'v' - Verbose Mode ON/OFF\n");
@@ -549,6 +553,10 @@ int main(void)
         		printf("    'r' - Show SFAST threshold\r\n");
         		printf("    's' - Set SFAST threshold\r\n");
         		printf("    't' - Show SFAST area cnt threshold\r\n");
+        		printf(" ## SD card files configuration\n");
+        		printf("    'u' - Show current event number per packet\r\n");
+        		printf("    'w' - Set current event number per packet\r\n");
+        		printf("    'x' - Change file on the sd card to be sent\r\n");
         		printf(" ## Other options\n");
         		printf("     'h' - Show available keys\n");
         		printf("     'v' - Verbose Mode ON/OFF\n");
@@ -831,6 +839,90 @@ int main(void)
     			printf("%c\n\r" , c);
     			u32 SFASTAreaCntCurrentThreshold = XSfast_process_data_Get_status_currentAreaCntThr(&SFAST_inst);
         		printf("Current SFAST area cnt threshold is: %ld\r\n", SFASTAreaCntCurrentThreshold);
+        	}
+
+        	if((c == 'u') || (c == 'U'))   // set event number per packet to be sent
+        	{
+    			printf("%c\n\r" , c);
+        		printf("Current event number per packet is: %ld\r\n", eventsReadNumPerTime);
+        	}
+        	if((c == 'w') || (c == 'W'))   // set event number per packet to be sent
+        	{
+    			printf("%c\n\r" , c);
+        		printf("Set event number per packet to be sent every time. Please input 5 numbers. "
+        				"For number smaller than 10000, pad 0 at the beginning.\r\n");
+        		char commandChar0 = inbyte();
+        		char commandChar1 = inbyte();
+        		char commandChar2 = inbyte();
+        		char commandChar3 = inbyte();
+        		char commandChar4 = inbyte();
+				if(commandChar0 >= '0' && commandChar0 <= '9'
+						&& commandChar1 >= '0' && commandChar1 <= '9'
+						&& commandChar2 >= '0' && commandChar2 <= '9'
+						&& commandChar3 >= '0' && commandChar3 <= '9'
+						&& commandChar4 >= '0' && commandChar4 <= '9')
+				{
+					commandChar0 = commandChar0 - '0';
+					commandChar1 = commandChar1 - '0';
+					commandChar2 = commandChar2 - '0';
+					commandChar3 = commandChar3 - '0';
+					commandChar4 = commandChar4 - '0';
+				}
+				else
+				{
+    	        	printf("Value not supported.\r\nType your command: \n\r");
+    				continue;
+				}
+				u32 commandVal = (commandChar0 * 10000) + (commandChar1 * 1000) + (commandChar2 * 100)
+						+ (commandChar3 * 10) + commandChar4;
+				printf("New threshold: %d\n\r" , commandVal);
+    			eventsReadNumPerTime = commandVal;
+        		printf("New event number per packet is: %ld\r\n", eventsReadNumPerTime);
+        	}
+        	if((c == 'x') || (c == 'X'))   //choose file name
+        	{
+    			printf("%c\n\r" , c);
+        		printf("Select a new file to be sent, range from 00 - 99. "
+        				"Please input 2 numbers.\r\n"
+        				"A number represents a file. "
+        				"For example, 00 is 'Corner00.bin', 01 is 'Corner01.bin' \r\n");
+        		char commandChar[2];
+        		commandChar[0] = inbyte();
+        		commandChar[1] = inbyte();
+				char fileTmpName[80] = "Corner";
+				if(commandChar[0] >= '0' && commandChar[0] <= '9'
+						&& commandChar[1] >= '0' && commandChar[1] <= '9')
+				{
+					if(commandChar[0] != '9' ||  commandChar[1] != '9')  // 99 is kept for Corner.bin
+					{
+						strcat(fileTmpName, commandChar);
+					}
+					strcat(fileTmpName, ".bin");
+				}
+				else
+				{
+    	        	printf("Value not supported.\r\nKeep the previous file unchanged.\n\r");
+				    strcpy(fileTmpName, fileName);
+				}
+				printf("New file name is: %s\r\n", fileTmpName);
+
+			    FIL fil;
+			    FRESULT rc;
+			    rc = f_open(&fil,fileTmpName,FA_READ);
+			    if(rc)
+			    {
+					printf("File not exists on sd card.\r\n");
+				    continue;
+			    }
+				else
+				{
+				    rc = f_close(&fil);
+				    if(rc)
+				    {
+				        xil_printf(" ERROR : f_close returned %d\r\n", rc);
+				    }
+				    strcpy(fileName, fileTmpName);
+				}
         	}
 
         	if((c == 'v') || (c == 'V'))   // show SFAST area cnt threshold
